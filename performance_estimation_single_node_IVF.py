@@ -17,13 +17,13 @@ Supposed storage of IVF
 
 """
 IVF PQ16 reach 95% recall:
-nlist=1024 nprobe=16
-nlist=2048 nprobe=32
-nlist=4096 nprobe=32
-nlist=8192 nprobe=32
-nlist=16384 nprobe=64
-nlist=32768 nprobe=??
-nlist=65536 nprobe=64
+--nlist=1024 --nprobe=16
+--nlist=2048 --nprobe=32
+--nlist=4096 --nprobe=32
+--nlist=8192 --nprobe=32
+--nlist=16384 --nprobe=64
+--nlist=32768 --nprobe=64
+--nlist=65536 --nprobe=64
 """
 
 parser = argparse.ArgumentParser()
@@ -70,7 +70,7 @@ class IVF:
         self.HBM_storage_limit = 8 * 1e9
         self.DDR_storage_limit = 32 * 1e9
         self.float_size = 4
-        self.DRAM_access_latency = 200 * 1e-9
+        self.DRAM_access_latency = 300 * 1e-9
         self.DDR_channels = 2
         self.HBM_channels = 32
 
@@ -101,6 +101,7 @@ class IVF:
         print("Flops / query: {} M".format(self.flops_needed / 1e6))
 
 
+        # NOTE! This is average latency, not the e2e latency
         latency_HBM_scan = self.HBM_scan / self.HBM_bandwidth + \
             self.HBM_access_count / self.HBM_channels * self.DRAM_access_latency
         latency_DDR_scan = self.DDR_scan / self.DDR_bandwidth + \
@@ -111,6 +112,7 @@ class IVF:
         # print("\nWithout considering pipeline, Latency = sum of latency (scan + computation) in all stages.")
         print("\nConsidering overlapping: Estimated Latency = Max(latency_HBM_scan, latency_DDR_scan, latency_computation).")
         print("Latency:{:.2f} us\nThroughput:{:.2f} QPS".format(latency * 1e6, throughput))
+        print("Distance table construction -> suppose the best case scenario that each channel can be evenly accessed for PQ codebook loading")
         print("Latency break down in us:\nlatency_HBM_scan:{:.2f}\nlatency_DDR_scan:{:.2f}\nlatency_computation:{:.2f}".format(
             latency_HBM_scan * 1e6, latency_DDR_scan * 1e6, latency_computation * 1e6))
 
