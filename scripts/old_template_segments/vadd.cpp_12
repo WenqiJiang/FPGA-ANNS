@@ -1,0 +1,1 @@
+    reduction_add_single(embedding_buffer0, DATA_SIZE0, result_buffer0);

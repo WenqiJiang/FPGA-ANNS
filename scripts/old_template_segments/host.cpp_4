@@ -1,0 +1,2 @@
+    cl_mem_ext_ptr_t embedding0Ext, 
+        access_idxExt, sourcce_hw_resultsExt;

@@ -1,0 +1,5 @@
+    for (int i = 0 ; i < TABLE_SIZE1 ; i++) {
+        for (int j = 0; j < DATA_SIZE1; j++) {
+            embedding1[i * DATA_SIZE1 + j] = i * TABLE_NUM + 1;
+        }
+    }

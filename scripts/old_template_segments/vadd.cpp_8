@@ -1,0 +1,1 @@
+        idx_buffer0[i] = idx_buffer_all[i * TABLE_NUM + 0]; 

@@ -1,0 +1,3 @@
+    OCL_CHECK(
+        err, err = q.enqueueMigrateMemObjects({buffer_embedding1, 
+        buffer_idx}, 0/* 0 means from host*/));	

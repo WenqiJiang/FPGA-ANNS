@@ -1,0 +1,3 @@
+        reduction_add_all(
+            embedding_buffer0,
+            vout_buffer);

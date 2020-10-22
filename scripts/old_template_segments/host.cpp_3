@@ -1,0 +1,4 @@
+            access_idx[idx_base_addr + 1] = j;
+            for (int k = 0; k < DATA_SIZE1; k++) {
+                source_sw_results[result_addr] += embedding1[access_idx[idx_base_addr + 1] * DATA_SIZE1 + k];
+            }

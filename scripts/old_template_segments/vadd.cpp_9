@@ -1,0 +1,1 @@
+    load_single_embedding(idx_buffer0, table0, embedding_buffer0, DATA_SIZE0);

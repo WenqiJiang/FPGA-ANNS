@@ -1,0 +1,1 @@
+#pragma HLS INTERFACE m_axi port=table0 offset=slave bundle=gmem

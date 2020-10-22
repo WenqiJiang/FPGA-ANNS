@@ -1,0 +1,3 @@
+#define DATA_SIZE0 4
+#define TABLE_SIZE0 10000
+#define TABLE_NUM 15

@@ -1,0 +1,1 @@
+#pragma HLS INTERFACE s_axilite port=table0  bundle=control

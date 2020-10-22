@@ -1,0 +1,1 @@
+    OCL_CHECK(err, err = krnl_vector_add.setArg(16, buffer_output));

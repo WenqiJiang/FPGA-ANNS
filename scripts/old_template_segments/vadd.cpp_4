@@ -1,0 +1,5 @@
+        load_embeddings(
+            table0, 
+            access_idx, i * BATCH_SIZE * TABLE_NUM,
+            embedding_buffer0
+            );

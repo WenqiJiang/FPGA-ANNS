@@ -1,0 +1,3 @@
+    void reduction_add_all(
+        int embedding_buffer0[BATCH_SIZE * DATA_SIZE0], 
+        int vout_buffer[BATCH_SIZE]);

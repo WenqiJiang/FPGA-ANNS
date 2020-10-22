@@ -1,0 +1,17 @@
+    float reg = 
+        s_result_buffer_HBM0.read() + s_result_buffer_HBM1.read() + 
+        s_result_buffer_HBM2.read() + s_result_buffer_HBM3.read() + 
+        s_result_buffer_HBM4.read() + s_result_buffer_HBM5.read() + 
+        s_result_buffer_HBM6.read() + s_result_buffer_HBM7.read() + 
+        s_result_buffer_HBM8.read() + s_result_buffer_HBM9.read() + 
+        s_result_buffer_HBM10.read() + s_result_buffer_HBM11.read() + 
+        s_result_buffer_HBM12.read() + s_result_buffer_HBM13.read() + 
+        s_result_buffer_HBM14.read() + s_result_buffer_HBM15.read() + 
+        s_result_buffer_HBM16.read() + s_result_buffer_HBM17.read() + 
+        s_result_buffer_HBM18.read() + s_result_buffer_HBM19.read() + 
+        s_result_buffer_HBM20.read() + s_result_buffer_HBM21.read() + 
+        s_result_buffer_HBM22.read() + s_result_buffer_HBM23.read() + 
+        s_result_buffer_HBM24.read() + s_result_buffer_HBM25.read() + 
+        s_result_buffer_HBM26.read() + s_result_buffer_HBM27.read() + 
+        s_result_buffer_HBM28.read() + s_result_buffer_HBM29.read() + 
+        s_result_buffer_HBM30.read() + s_result_buffer_HBM31.read()

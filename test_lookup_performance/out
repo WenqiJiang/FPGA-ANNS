@@ -1,0 +1,47 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 3840
+i = 1 result = 0
+i = 2 result = 8.5046e+14
+i = 3 result = 2.09057e+08
+i = 4 result = 1.66057e-07
+i = 5 result = 0
+i = 6 result = 4.25995e-43
+i = 7 result = 1.12104e-44
+i = 8 result = 0
+i = 9 result = 1.12104e-44
+i = 10 result = 2.05345e-37
+i = 11 result = 0
+i = 12 result = 0
+i = 13 result = 0
+i = 14 result = 2.05769e-37
+i = 15 result = 0
+i = 16 result = 1.68156e-44
+i = 17 result = 0
+i = 18 result = 0
+i = 19 result = 0
+i = 20 result = 0
+i = 21 result = 0
+i = 22 result = 2.05347e-37
+i = 23 result = 0
+i = 24 result = 1.54143e-44
+i = 25 result = 0
+i = 26 result = 1.09471e+27
+i = 27 result = 50.0932
+i = 28 result = 4.88533e-39
+i = 29 result = 4.1037e-41
+i = 30 result = 1.4013e-45
+i = 31 result = 0
+TEST PASSED

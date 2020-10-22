@@ -1,0 +1,5 @@
+void vadd(  
+    const int *table0,
+    const int *access_idx,   
+    int *out
+    )

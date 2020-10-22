@@ -1,0 +1,2 @@
+    OCL_CHECK(err, cl::Buffer buffer_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+            embedding0_size_bytes, &embedding0Ext, &err));

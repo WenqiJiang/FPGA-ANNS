@@ -1,0 +1,1 @@
+    int idx_buffer0[BATCH_SIZE];

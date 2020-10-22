@@ -1,0 +1,3 @@
+    embedding1Ext.obj = embedding1.data();
+    embedding1Ext.param = 0;
+    embedding1Ext.flags = 

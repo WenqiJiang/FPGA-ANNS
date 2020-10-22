@@ -1,0 +1,1 @@
+    std::vector<int, aligned_allocator<int>> embedding0(TABLE_SIZE0 * DATA_SIZE0);

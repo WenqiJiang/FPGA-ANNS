@@ -1,0 +1,1 @@
+    size_t embedding0_size_bytes = sizeof(int) * TABLE_SIZE0 * DATA_SIZE0;

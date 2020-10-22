@@ -1,0 +1,1 @@
+    int embedding_buffer0[BATCH_SIZE * DATA_SIZE0];
