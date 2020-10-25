@@ -1,0 +1,1392 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/vadd.hw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/logs/vadd.hw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:42291
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/xclbin/vadd.hw_emu.xo.compile_summary, at Thu Oct 22 10:43:26 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 22 10:43:26 2020
+Running Rule Check Server on port:43477
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/vadd.hw_emu/v++_compile_vadd.hw_emu_guidance.html', at Thu Oct 22 10:43:27 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/vadd.hw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/vadd.hw_emu/system_estimate_vadd.hw_emu.xtxt
+Add Instance estimate_distance_2097152_43 estimate_distance_2097152_43_U0 3866
+Add Instance estimate_distance_2097152_44 estimate_distance_2097152_44_U0 3938
+Add Instance estimate_distance_2097152_45 estimate_distance_2097152_45_U0 4010
+Add Instance estimate_distance_2097152_46 estimate_distance_2097152_46_U0 4082
+Add Instance estimate_distance_2097152_47 estimate_distance_2097152_47_U0 4154
+Add Instance estimate_distance_2097152_48 estimate_distance_2097152_48_U0 4226
+Add Instance estimate_distance_2097152_49 estimate_distance_2097152_49_U0 4298
+Add Instance estimate_distance_2097152_50 estimate_distance_2097152_50_U0 4370
+Add Instance estimate_distance_2097152_51 estimate_distance_2097152_51_U0 4442
+Add Instance estimate_distance_2097152_52 estimate_distance_2097152_52_U0 4514
+Add Instance estimate_distance_2097152_53 estimate_distance_2097152_53_U0 4586
+Add Instance estimate_distance_2097152_54 estimate_distance_2097152_54_U0 4658
+Add Instance estimate_distance_2097152_55 estimate_distance_2097152_55_U0 4730
+Add Instance estimate_distance_2097152_56 estimate_distance_2097152_56_U0 4802
+Add Instance estimate_distance_2097152_57 estimate_distance_2097152_57_U0 4874
+Add Instance estimate_distance_2097152_58 estimate_distance_2097152_58_U0 4946
+Add Instance estimate_distance_2097152_59 estimate_distance_2097152_59_U0 5018
+Add Instance estimate_distance_2097152_60 estimate_distance_2097152_60_U0 5090
+Add Instance estimate_distance_2097152_61 estimate_distance_2097152_61_U0 5162
+Add Instance estimate_distance_2097152_62 estimate_distance_2097152_62_U0 5234
+Add Instance estimate_distance_2097152_63 estimate_distance_2097152_63_U0 5306
+Add Instance estimate_distance_2097152_64 estimate_distance_2097152_64_U0 5378
+Add Instance estimate_distance_2097152_65 estimate_distance_2097152_65_U0 5450
+Add Instance estimate_distance_2097152_66 estimate_distance_2097152_66_U0 5522
+Add Instance estimate_distance_2097152_67 estimate_distance_2097152_67_U0 5594
+Add Instance estimate_distance_2097152_68 estimate_distance_2097152_68_U0 5666
+Add Instance estimate_distance_2097152_69 estimate_distance_2097152_69_U0 5738
+Add Instance estimate_distance_2097152_70 estimate_distance_2097152_70_U0 5810
+Add Instance estimate_distance_2097152_71 estimate_distance_2097152_71_U0 5882
+Add Instance estimate_distance_2097152_72 estimate_distance_2097152_72_U0 5954
+Add Instance estimate_distance_2097152_73 estimate_distance_2097152_73_U0 6026
+Add Instance estimate_distance_2097152_s estimate_distance_2097152_U0 6098
+Add Instance write_result write_result_U0 6170
+Add Instance vadd_entry1028 vadd_entry1028_U0 6209
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 49m 43s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw_emu.xclbin' xclbin/vadd.hw_emu.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:36411
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/xclbin/vadd.hw_emu.xclbin.link_summary, at Thu Oct 22 11:33:11 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 22 11:33:11 2020
+Running Rule Check Server on port:44273
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html', at Thu Oct 22 11:33:12 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [11:33:22] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/xclbin/vadd.hw_emu.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target emu --output_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Thu Oct 22 11:33:29 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/xclbin/vadd.hw_emu.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM30' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM31' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [11:33:34] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/emu/emu.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [11:33:41] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 353402 ; free virtual = 468746
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [11:33:41] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.table_HBM28:HBM[28] -sp vadd_1.table_HBM29:HBM[29] -sp vadd_1.table_HBM30:HBM[30] -sp vadd_1.table_HBM31:HBM[31] -sp vadd_1.table_DDR0:DDR[0] -sp vadd_1.table_DDR1:DDR[1] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM29, sptag: HBM[29]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM30, sptag: HBM[30]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM31, sptag: HBM[31]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR0, sptag: DDR[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR1, sptag: DDR[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM28 to HBM[28] for directive vadd_1.table_HBM28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM29 to HBM[29] for directive vadd_1.table_HBM29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM30 to HBM[30] for directive vadd_1.table_HBM30:HBM[30]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM31 to HBM[31] for directive vadd_1.table_HBM31:HBM[31]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR0 to DDR[0] for directive vadd_1.table_DDR0:DDR[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR1 to DDR[1] for directive vadd_1.table_DDR1:DDR[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [11:33:47] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 353412 ; free virtual = 468756
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [11:33:47] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int --target_bd emu/emu.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd emu/emu.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [11:33:51] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 353399 ; free virtual = 468748
+INFO: [v++ 60-1441] [11:33:51] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:29 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 353420 ; free virtual = 468769
+INFO: [v++ 60-1443] [11:33:51] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [11:33:55] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 353419 ; free virtual = 468768
+INFO: [v++ 60-1443] [11:33:55] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw_emu.xclbin xclbin/vadd.hw_emu.xo  --generatedByXclbinName vadd.hw_emu --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [11:33:56] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 353419 ; free virtual = 468768
+INFO: [v++ 60-1443] [11:33:56] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw_emu -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link --emulation_mode debug_waveform --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/.tlog/v++_link_vadd.hw_emu --iprepo /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/vivado/vpl/.local/hw_platform
+[11:35:01] Run vpl: Step create_project: Started
+Creating Vivado project.
+[11:35:04] Run vpl: Step create_project: Completed
+[11:35:04] Run vpl: Step create_bd: Started
+[11:37:08] Run vpl: Step create_bd: RUNNING...
+[11:38:04] Run vpl: Step create_bd: Completed
+[11:38:04] Run vpl: Step update_bd: Started
+[11:39:43] Run vpl: Step update_bd: RUNNING...
+[11:41:02] Run vpl: Step update_bd: Completed
+[11:41:02] Run vpl: Step generate_target: Started
+[11:42:37] Run vpl: Step generate_target: RUNNING...
+[11:44:26] Run vpl: Step generate_target: RUNNING...
+[11:44:36] Run vpl: Step generate_target: Completed
+[11:44:36] Run vpl: Step config_hw_emulation: Started
+[11:46:31] Run vpl: Step config_hw_emulation: RUNNING...
+[11:48:46] Run vpl: Step config_hw_emulation: RUNNING...
+[11:50:35] Run vpl: Step config_hw_emulation: RUNNING...
+[11:52:30] Run vpl: Step config_hw_emulation: RUNNING...
+[11:54:17] Run vpl: Step config_hw_emulation: RUNNING...
+[11:56:33] Run vpl: Step config_hw_emulation: RUNNING...
+[11:57:57] Run vpl: Step config_hw_emulation: Completed
+[11:58:16] Run vpl: FINISHED. Run Status: config_hw_emulation Complete!
+INFO: [v++ 60-1441] [11:59:48] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:00:18 ; elapsed = 00:25:51 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 346631 ; free virtual = 468641
+INFO: [v++ 60-1443] [11:59:48] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'kernel2_clk_clk' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'kernel_clk_clk' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (KERNEL) clock: kernel2_clk_clk = 500, Kernel (DATA) clock: kernel_clk_clk = 140
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [12:00:51] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:44 ; elapsed = 00:01:04 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 345892 ; free virtual = 468620
+INFO: [v++ 60-1443] [12:00:51] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --key-value SYS:mode:hw_emu --add-section DEBUG_DATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/consolidated.cf --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/behav.xse --force --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_DATA'(4) was successfully added.
+Size   : 245918 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/consolidated.cf'
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 5624 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 751137587 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/behav.xse'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 12266 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 28097 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 36066 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (751502709 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [12:00:54] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:03 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 345173 ; free virtual = 468618
+INFO: [v++ 60-1443] [12:00:54] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [12:00:59] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 345173 ; free virtual = 468617
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/link/system_estimate_vadd.hw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.hw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 27m 49s
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=hw_emu ./host ./xclbin/vadd.hw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw_emu.xclbin
+Loading: './xclbin/vadd.hw_emu.xclbin'
+Finished loading binary...
+INFO: [HW-EM 01] Hardware emulation runs simulation underneath. Using a large data set will result in long simulation times. It is recommended that a small dataset is used for faster execution. The flow uses approximate models for DDR memory and interconnect and hence the performance data generated is approximate.
+INFO::[ Vitis-EM 22 ] [Time elapsed: 5 minute(s) 58 seconds, Emulation time: 0.0293215 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 9 minute(s) 8 seconds, Emulation time: 0.045241 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 17 minute(s) 55 seconds, Emulation time: 0.0891357 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 19 minute(s) 17 seconds, Emulation time: 0.0958921 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 27 minute(s) 54 seconds, Emulation time: 0.137851 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 29 minute(s) 19 seconds, Emulation time: 0.144265 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+INFO::[ Vitis-EM 22 ] [Time elapsed: 34 minute(s) 21 seconds, Emulation time: 0.154364 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 39 minute(s) 38 seconds, Emulation time: 0.154906 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 44 minute(s) 32 seconds, Emulation time: 0.171612 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 56.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 56.000 KB              WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 49 minute(s) 41 seconds, Emulation time: 0.193695 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 249.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 249.000 KB             WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 54 minute(s) 49 seconds, Emulation time: 0.213478 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 422.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 422.000 KB             WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 59 minute(s) 49 seconds, Emulation time: 0.231483 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 580.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 580.000 KB             WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 64 minute(s) 49 seconds, Emulation time: 0.249367 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 736.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 736.000 KB             WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 69 minute(s) 58 seconds, Emulation time: 0.267893 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 899.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 899.000 KB             WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 75 minute(s) 9 seconds, Emulation time: 0.286826 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1064.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1064.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 80 minute(s) 8 seconds, Emulation time: 0.307074 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1241.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1241.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 85 minute(s) 16 seconds, Emulation time: 0.328178 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1426.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1426.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 90 minute(s) 24 seconds, Emulation time: 0.349512 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1613.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1613.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 95 minute(s) 32 seconds, Emulation time: 0.370752 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1799.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1799.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 100 minute(s) 40 seconds, Emulation time: 0.391971 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 1984.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 1984.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 105 minute(s) 48 seconds, Emulation time: 0.41339 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 2172.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 2172.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 110 minute(s) 56 seconds, Emulation time: 0.435016 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 2361.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 2361.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 116 minute(s) 4 seconds, Emulation time: 0.456677 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 2551.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 2551.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 121 minute(s) 11 seconds, Emulation time: 0.47836 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 2740.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 2740.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 126 minute(s) 20 seconds, Emulation time: 0.500108 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 2931.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 2931.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 131 minute(s) 30 seconds, Emulation time: 0.521462 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 3118.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 3118.000 KB            WR = 0.000 KB        
+
+INFO::[ Vitis-EM 22 ] [Time elapsed: 136 minute(s) 38 seconds, Emulation time: 0.54301 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 3306.000 KB            WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 3306.000 KB            WR = 0.000 KB        
+
+Makefile:117: recipe for target 'check' failed
