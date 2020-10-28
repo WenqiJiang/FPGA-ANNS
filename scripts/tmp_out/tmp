@@ -1,17 +1,16 @@
-    float reg = 
-        s_result_buffer_HBM0.read() + s_result_buffer_HBM1.read() + 
-        s_result_buffer_HBM2.read() + s_result_buffer_HBM3.read() + 
-        s_result_buffer_HBM4.read() + s_result_buffer_HBM5.read() + 
-        s_result_buffer_HBM6.read() + s_result_buffer_HBM7.read() + 
-        s_result_buffer_HBM8.read() + s_result_buffer_HBM9.read() + 
-        s_result_buffer_HBM10.read() + s_result_buffer_HBM11.read() + 
-        s_result_buffer_HBM12.read() + s_result_buffer_HBM13.read() + 
-        s_result_buffer_HBM14.read() + s_result_buffer_HBM15.read() + 
-        s_result_buffer_HBM16.read() + s_result_buffer_HBM17.read() + 
-        s_result_buffer_HBM18.read() + s_result_buffer_HBM19.read() + 
-        s_result_buffer_HBM20.read() + s_result_buffer_HBM21.read() + 
-        s_result_buffer_HBM22.read() + s_result_buffer_HBM23.read() + 
-        s_result_buffer_HBM24.read() + s_result_buffer_HBM25.read() + 
-        s_result_buffer_HBM26.read() + s_result_buffer_HBM27.read() + 
-        s_result_buffer_HBM28.read() + s_result_buffer_HBM29.read() + 
-        s_result_buffer_HBM30.read() + s_result_buffer_HBM31.read()
+    init_distance_table_partition(distance_lookup_table_local_A_0, 0);
+    init_distance_table_partition(distance_lookup_table_local_A_1, 1);
+    init_distance_table_partition(distance_lookup_table_local_A_2, 2);
+    init_distance_table_partition(distance_lookup_table_local_A_3, 3);
+    init_distance_table_partition(distance_lookup_table_local_A_4, 4);
+    init_distance_table_partition(distance_lookup_table_local_A_5, 5);
+    init_distance_table_partition(distance_lookup_table_local_A_6, 6);
+    init_distance_table_partition(distance_lookup_table_local_A_7, 7);
+    init_distance_table_partition(distance_lookup_table_local_A_8, 8);
+    init_distance_table_partition(distance_lookup_table_local_A_9, 9);
+    init_distance_table_partition(distance_lookup_table_local_A_10, 10);
+    init_distance_table_partition(distance_lookup_table_local_A_11, 11);
+    init_distance_table_partition(distance_lookup_table_local_A_12, 12);
+    init_distance_table_partition(distance_lookup_table_local_A_13, 13);
+    init_distance_table_partition(distance_lookup_table_local_A_14, 14);
+    init_distance_table_partition(distance_lookup_table_local_A_15, 15);

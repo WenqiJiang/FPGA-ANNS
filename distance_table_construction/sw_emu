@@ -1,4 +1,6 @@
 mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+mkdir -p ./xclbin
 /opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
 Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
 
@@ -7,21 +9,18 @@ Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
     ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 
 INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
-	Reports: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.sw_emu/vadd/reports/vadd.sw_emu
-	Log files: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.sw_emu/vadd/logs/vadd.sw_emu
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/distance_table_construction/_x.sw_emu/vadd/reports/vadd.sw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/distance_table_construction/_x.sw_emu/vadd/logs/vadd.sw_emu
 WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
-Running Dispatch Server on port:34393
-INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/xclbin/vadd.sw_emu.xo.compile_summary, at Sun Oct 25 18:23:20 2020
-INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sun Oct 25 18:23:21 2020
-Running Rule Check Server on port:37077
-INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Sun Oct 25 18:23:22 2020
+Running Dispatch Server on port:41165
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/distance_table_construction/xclbin/vadd.sw_emu.xo.compile_summary, at Tue Oct 27 08:54:07 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Oct 27 08:54:08 2020
+Running Rule Check Server on port:37669
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/distance_table_construction/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Tue Oct 27 08:54:08 2020
 INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
 INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
 INFO: [v++ 60-585] Compiling for software emulation target
 INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
 INFO: [v++ 60-242] Creating kernel: 'vadd'
 INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
-ERROR: [v++ 60-300] Failed to build kernel(ip) vadd, see log for details: /mnt/scratch/wenqi/FPGA-ANNS/test_lookup_performance_axi_512/_x.sw_emu/vadd/vadd.sw_emu/vadd/vivado_hls.log
-ERROR: [v++ 60-599] Kernel compilation failed to complete
-ERROR: [v++ 60-592] Failed to finish compilation
 Makefile:90: recipe for target 'xclbin/vadd.sw_emu.xo' failed

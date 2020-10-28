@@ -273,6 +273,109 @@ void vadd(
 #pragma HLS resource variable=distance_lookup_table_HBM31 core=RAM_2P_BRAM
 
     init_distance_table(distance_lookup_table);
+    copy_distance_table_wrapper(
+        distance_lookup_table,
+        distance_lookup_table_HBM0, distance_lookup_table_HBM1, 
+        distance_lookup_table_HBM2, distance_lookup_table_HBM3, 
+        distance_lookup_table_HBM4, distance_lookup_table_HBM5, 
+        distance_lookup_table_HBM6, distance_lookup_table_HBM7, 
+        distance_lookup_table_HBM8, distance_lookup_table_HBM9, 
+        distance_lookup_table_HBM10, distance_lookup_table_HBM11, 
+        distance_lookup_table_HBM12, distance_lookup_table_HBM13, 
+        distance_lookup_table_HBM14, distance_lookup_table_HBM15, 
+        distance_lookup_table_HBM16, distance_lookup_table_HBM17, 
+        distance_lookup_table_HBM18, distance_lookup_table_HBM19, 
+        distance_lookup_table_HBM20, distance_lookup_table_HBM21, 
+        distance_lookup_table_HBM22, distance_lookup_table_HBM23, 
+        distance_lookup_table_HBM24, distance_lookup_table_HBM25, 
+        distance_lookup_table_HBM26, distance_lookup_table_HBM27, 
+        distance_lookup_table_HBM28, distance_lookup_table_HBM29, 
+        distance_lookup_table_HBM30, distance_lookup_table_HBM31);
+
+//////////////////////////////    Distance Computation     ////////////////////////////// 
+    estimate_distance_wrapper(
+        table_HBM0, table_HBM1, table_HBM2, table_HBM3, 
+        table_HBM4, table_HBM5, table_HBM6, table_HBM7, 
+        table_HBM8, table_HBM9, table_HBM10, table_HBM11, 
+        table_HBM12, table_HBM13, table_HBM14, table_HBM15, 
+        table_HBM16, table_HBM17, table_HBM18, table_HBM19, 
+        table_HBM20, table_HBM21, table_HBM22, table_HBM23, 
+        table_HBM24, table_HBM25, table_HBM26, table_HBM27, 
+        table_HBM28, table_HBM29, table_HBM30, table_HBM31, 
+        distance_lookup_table_HBM0, distance_lookup_table_HBM1, 
+        distance_lookup_table_HBM2, distance_lookup_table_HBM3, 
+        distance_lookup_table_HBM4, distance_lookup_table_HBM5, 
+        distance_lookup_table_HBM6, distance_lookup_table_HBM7, 
+        distance_lookup_table_HBM8, distance_lookup_table_HBM9, 
+        distance_lookup_table_HBM10, distance_lookup_table_HBM11, 
+        distance_lookup_table_HBM12, distance_lookup_table_HBM13, 
+        distance_lookup_table_HBM14, distance_lookup_table_HBM15, 
+        distance_lookup_table_HBM16, distance_lookup_table_HBM17, 
+        distance_lookup_table_HBM18, distance_lookup_table_HBM19, 
+        distance_lookup_table_HBM20, distance_lookup_table_HBM21, 
+        distance_lookup_table_HBM22, distance_lookup_table_HBM23, 
+        distance_lookup_table_HBM24, distance_lookup_table_HBM25, 
+        distance_lookup_table_HBM26, distance_lookup_table_HBM27, 
+        distance_lookup_table_HBM28, distance_lookup_table_HBM29, 
+        distance_lookup_table_HBM30, distance_lookup_table_HBM31,
+        s_result_buffer_HBM0, s_result_buffer_HBM1, 
+        s_result_buffer_HBM2, s_result_buffer_HBM3, 
+        s_result_buffer_HBM4, s_result_buffer_HBM5, 
+        s_result_buffer_HBM6, s_result_buffer_HBM7, 
+        s_result_buffer_HBM8, s_result_buffer_HBM9, 
+        s_result_buffer_HBM10, s_result_buffer_HBM11, 
+        s_result_buffer_HBM12, s_result_buffer_HBM13, 
+        s_result_buffer_HBM14, s_result_buffer_HBM15, 
+        s_result_buffer_HBM16, s_result_buffer_HBM17, 
+        s_result_buffer_HBM18, s_result_buffer_HBM19, 
+        s_result_buffer_HBM20, s_result_buffer_HBM21, 
+        s_result_buffer_HBM22, s_result_buffer_HBM23, 
+        s_result_buffer_HBM24, s_result_buffer_HBM25, 
+        s_result_buffer_HBM26, s_result_buffer_HBM27, 
+        s_result_buffer_HBM28, s_result_buffer_HBM29, 
+        s_result_buffer_HBM30, s_result_buffer_HBM31);
+
+//////////////////////////////     Write results     ////////////////////////////// 
+    write_result(
+        s_result_buffer_HBM0, s_result_buffer_HBM1, s_result_buffer_HBM2, s_result_buffer_HBM3, 
+        s_result_buffer_HBM4, s_result_buffer_HBM5, s_result_buffer_HBM6, s_result_buffer_HBM7, 
+        s_result_buffer_HBM8, s_result_buffer_HBM9, s_result_buffer_HBM10, s_result_buffer_HBM11, 
+        s_result_buffer_HBM12, s_result_buffer_HBM13, s_result_buffer_HBM14, s_result_buffer_HBM15, 
+        s_result_buffer_HBM16, s_result_buffer_HBM17, s_result_buffer_HBM18, s_result_buffer_HBM19, 
+        s_result_buffer_HBM20, s_result_buffer_HBM21, s_result_buffer_HBM22, s_result_buffer_HBM23, 
+        s_result_buffer_HBM24, s_result_buffer_HBM25, s_result_buffer_HBM26, s_result_buffer_HBM27, 
+        s_result_buffer_HBM28, s_result_buffer_HBM29, s_result_buffer_HBM30, s_result_buffer_HBM31,
+        out_PLRAM);
+}
+
+void init_distance_table(float reference_table[16][256]) {
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 256; j++) {
+            #pragma HLS pipeline II=1
+            reference_table[i][j] = i + j;
+        }
+    }
+}
+
+void copy_distance_table_wrapper(
+    float distance_lookup_table[16][256],
+    float distance_lookup_table_HBM0[16][256], float distance_lookup_table_HBM1[16][256], 
+    float distance_lookup_table_HBM2[16][256], float distance_lookup_table_HBM3[16][256], 
+    float distance_lookup_table_HBM4[16][256], float distance_lookup_table_HBM5[16][256], 
+    float distance_lookup_table_HBM6[16][256], float distance_lookup_table_HBM7[16][256], 
+    float distance_lookup_table_HBM8[16][256], float distance_lookup_table_HBM9[16][256], 
+    float distance_lookup_table_HBM10[16][256], float distance_lookup_table_HBM11[16][256], 
+    float distance_lookup_table_HBM12[16][256], float distance_lookup_table_HBM13[16][256], 
+    float distance_lookup_table_HBM14[16][256], float distance_lookup_table_HBM15[16][256], 
+    float distance_lookup_table_HBM16[16][256], float distance_lookup_table_HBM17[16][256], 
+    float distance_lookup_table_HBM18[16][256], float distance_lookup_table_HBM19[16][256], 
+    float distance_lookup_table_HBM20[16][256], float distance_lookup_table_HBM21[16][256], 
+    float distance_lookup_table_HBM22[16][256], float distance_lookup_table_HBM23[16][256], 
+    float distance_lookup_table_HBM24[16][256], float distance_lookup_table_HBM25[16][256], 
+    float distance_lookup_table_HBM26[16][256], float distance_lookup_table_HBM27[16][256], 
+    float distance_lookup_table_HBM28[16][256], float distance_lookup_table_HBM29[16][256], 
+    float distance_lookup_table_HBM30[16][256], float distance_lookup_table_HBM31[16][256]
+) {
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM0);
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM1);
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM2);
@@ -305,8 +408,69 @@ void vadd(
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM29);
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM30);
     copy_distance_table(distance_lookup_table, distance_lookup_table_HBM31);
+}
 
-//////////////////////////////    Distance Computation     ////////////////////////////// 
+void copy_distance_table(float reference_table[16][256], float table[16][256]) {
+    /* copy the reference distance table to the local table connected to 
+     * each DRAM channel */
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 256; j++) {
+            #pragma HLS pipeline II=1
+            table[i][j] = reference_table[i][j];
+        }
+    }
+}
+
+void estimate_distance_wrapper(
+    const t_axi* table_HBM0, const t_axi* table_HBM1, 
+    const t_axi* table_HBM2, const t_axi* table_HBM3, 
+    const t_axi* table_HBM4, const t_axi* table_HBM5, 
+    const t_axi* table_HBM6, const t_axi* table_HBM7, 
+    const t_axi* table_HBM8, const t_axi* table_HBM9, 
+    const t_axi* table_HBM10, const t_axi* table_HBM11, 
+    const t_axi* table_HBM12, const t_axi* table_HBM13, 
+    const t_axi* table_HBM14, const t_axi* table_HBM15, 
+    const t_axi* table_HBM16, const t_axi* table_HBM17, 
+    const t_axi* table_HBM18, const t_axi* table_HBM19, 
+    const t_axi* table_HBM20, const t_axi* table_HBM21, 
+    const t_axi* table_HBM22, const t_axi* table_HBM23, 
+    const t_axi* table_HBM24, const t_axi* table_HBM25, 
+    const t_axi* table_HBM26, const t_axi* table_HBM27, 
+    const t_axi* table_HBM28, const t_axi* table_HBM29, 
+    const t_axi* table_HBM30, const t_axi* table_HBM31, 
+    float distance_lookup_table_HBM0[16][256], float distance_lookup_table_HBM1[16][256], 
+    float distance_lookup_table_HBM2[16][256], float distance_lookup_table_HBM3[16][256], 
+    float distance_lookup_table_HBM4[16][256], float distance_lookup_table_HBM5[16][256], 
+    float distance_lookup_table_HBM6[16][256], float distance_lookup_table_HBM7[16][256], 
+    float distance_lookup_table_HBM8[16][256], float distance_lookup_table_HBM9[16][256], 
+    float distance_lookup_table_HBM10[16][256], float distance_lookup_table_HBM11[16][256], 
+    float distance_lookup_table_HBM12[16][256], float distance_lookup_table_HBM13[16][256], 
+    float distance_lookup_table_HBM14[16][256], float distance_lookup_table_HBM15[16][256], 
+    float distance_lookup_table_HBM16[16][256], float distance_lookup_table_HBM17[16][256], 
+    float distance_lookup_table_HBM18[16][256], float distance_lookup_table_HBM19[16][256], 
+    float distance_lookup_table_HBM20[16][256], float distance_lookup_table_HBM21[16][256], 
+    float distance_lookup_table_HBM22[16][256], float distance_lookup_table_HBM23[16][256], 
+    float distance_lookup_table_HBM24[16][256], float distance_lookup_table_HBM25[16][256], 
+    float distance_lookup_table_HBM26[16][256], float distance_lookup_table_HBM27[16][256], 
+    float distance_lookup_table_HBM28[16][256], float distance_lookup_table_HBM29[16][256], 
+    float distance_lookup_table_HBM30[16][256], float distance_lookup_table_HBM31[16][256],
+    hls::stream<float>& s_result_buffer_HBM0, hls::stream<float>& s_result_buffer_HBM1, 
+    hls::stream<float>& s_result_buffer_HBM2, hls::stream<float>& s_result_buffer_HBM3, 
+    hls::stream<float>& s_result_buffer_HBM4, hls::stream<float>& s_result_buffer_HBM5, 
+    hls::stream<float>& s_result_buffer_HBM6, hls::stream<float>& s_result_buffer_HBM7, 
+    hls::stream<float>& s_result_buffer_HBM8, hls::stream<float>& s_result_buffer_HBM9, 
+    hls::stream<float>& s_result_buffer_HBM10, hls::stream<float>& s_result_buffer_HBM11, 
+    hls::stream<float>& s_result_buffer_HBM12, hls::stream<float>& s_result_buffer_HBM13, 
+    hls::stream<float>& s_result_buffer_HBM14, hls::stream<float>& s_result_buffer_HBM15, 
+    hls::stream<float>& s_result_buffer_HBM16, hls::stream<float>& s_result_buffer_HBM17, 
+    hls::stream<float>& s_result_buffer_HBM18, hls::stream<float>& s_result_buffer_HBM19, 
+    hls::stream<float>& s_result_buffer_HBM20, hls::stream<float>& s_result_buffer_HBM21, 
+    hls::stream<float>& s_result_buffer_HBM22, hls::stream<float>& s_result_buffer_HBM23, 
+    hls::stream<float>& s_result_buffer_HBM24, hls::stream<float>& s_result_buffer_HBM25, 
+    hls::stream<float>& s_result_buffer_HBM26, hls::stream<float>& s_result_buffer_HBM27, 
+    hls::stream<float>& s_result_buffer_HBM28, hls::stream<float>& s_result_buffer_HBM29, 
+    hls::stream<float>& s_result_buffer_HBM30, hls::stream<float>& s_result_buffer_HBM31
+) {
     estimate_distance<2097152>(table_HBM0, 0, distance_lookup_table_HBM0, s_result_buffer_HBM0);
     estimate_distance<2097152>(table_HBM1, 0, distance_lookup_table_HBM1, s_result_buffer_HBM1);
     estimate_distance<2097152>(table_HBM2, 0, distance_lookup_table_HBM2, s_result_buffer_HBM2);
@@ -339,38 +503,6 @@ void vadd(
     estimate_distance<2097152>(table_HBM29, 0, distance_lookup_table_HBM29, s_result_buffer_HBM29);
     estimate_distance<2097152>(table_HBM30, 0, distance_lookup_table_HBM30, s_result_buffer_HBM30);
     estimate_distance<2097152>(table_HBM31, 0, distance_lookup_table_HBM31, s_result_buffer_HBM31);
-
-//////////////////////////////     Write results     ////////////////////////////// 
-    write_result(
-        s_result_buffer_HBM0, s_result_buffer_HBM1, s_result_buffer_HBM2, s_result_buffer_HBM3, 
-        s_result_buffer_HBM4, s_result_buffer_HBM5, s_result_buffer_HBM6, s_result_buffer_HBM7, 
-        s_result_buffer_HBM8, s_result_buffer_HBM9, s_result_buffer_HBM10, s_result_buffer_HBM11, 
-        s_result_buffer_HBM12, s_result_buffer_HBM13, s_result_buffer_HBM14, s_result_buffer_HBM15, 
-        s_result_buffer_HBM16, s_result_buffer_HBM17, s_result_buffer_HBM18, s_result_buffer_HBM19, 
-        s_result_buffer_HBM20, s_result_buffer_HBM21, s_result_buffer_HBM22, s_result_buffer_HBM23, 
-        s_result_buffer_HBM24, s_result_buffer_HBM25, s_result_buffer_HBM26, s_result_buffer_HBM27, 
-        s_result_buffer_HBM28, s_result_buffer_HBM29, s_result_buffer_HBM30, s_result_buffer_HBM31,
-        out_PLRAM);
-}
-
-void init_distance_table(float reference_table[16][256]) {
-    for (int i = 0; i < 16; i++) {
-        for (int j = 0; j < 256; j++) {
-            #pragma HLS pipeline II=1
-            reference_table[i][j] = i + j;
-        }
-    }
-}
-
-void copy_distance_table(float reference_table[16][256], float table[16][256]) {
-    /* copy the reference distance table to the local table connected to 
-     * each DRAM channel */
-    for (int i = 0; i < 16; i++) {
-        for (int j = 0; j < 256; j++) {
-            #pragma HLS pipeline II=1
-            table[i][j] = reference_table[i][j];
-        }
-    }
 }
 
 template<const int PQ_NUM_PER_BANK>
@@ -400,8 +532,9 @@ void estimate_distance(
 #pragma HLS resource variable=distance_lookup_table_local3 core=RAM_2P_BRAM
 
     for (int j = 0; j < 256; j++) {
-    #pragma HLS pipeline II=1
+    // #pragma HLS pipeline II=1
         for (int i = 0; i < 16; i++) {
+        #pragma HLS UNROLL
             float dist_reg = distance_lookup_table[i][j];
             distance_lookup_table_local_0[i][j] = dist_reg;
             distance_lookup_table_local_1[i][j] = dist_reg;

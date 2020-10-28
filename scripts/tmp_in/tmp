@@ -1,2 +1,1 @@
-    float reg = 
-        s_result_buffer_HBM0.read()
+    init_distance_table_partition(distance_lookup_table_local_A_0, 0);
