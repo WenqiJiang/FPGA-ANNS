@@ -1,0 +1,127 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/vadd.sw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/logs/vadd.sw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:45081
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/xclbin/vadd.sw_emu.xo.compile_summary, at Thu Oct 29 15:56:06 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 29 15:56:06 2020
+Running Rule Check Server on port:41735
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Thu Oct 29 15:56:07 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/vadd.sw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/vadd.sw_emu/system_estimate_vadd.sw_emu.xtxt
+Add Instance estimate_distance_wrapper6 estimate_distance_wrapper6_U0 1112
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_890 890
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_899 899
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_908 908
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_917 917
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_926 926
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_935 935
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_944 944
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_953 953
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_962 962
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_971 971
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_980 980
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_989 989
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_998 998
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1007 1007
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1016 1016
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1025 1025
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1034 1034
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1043 1043
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1052 1052
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1061 1061
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1070 1070
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1079 1079
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1088 1088
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1097 1097
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1106 1106
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1115 1115
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1124 1124
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1133 1133
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1142 1142
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1151 1151
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1160 1160
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1169 1169
+Add Instance write_result write_result_U0 1246
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 3m 24s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.sw_emu.xclbin' xclbin/vadd.sw_emu.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:40779
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/xclbin/vadd.sw_emu.xclbin.link_summary, at Thu Oct 29 15:59:32 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 29 15:59:32 2020
+Running Rule Check Server on port:36819
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Thu Oct 29 15:59:33 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-645] kernel flags are '-g -I /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/src -g'
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/link/system_estimate_vadd.sw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/fourth_test/_x.sw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 0m 12s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=sw_emu ./host ./xclbin/vadd.sw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 0
+TEST PASSED

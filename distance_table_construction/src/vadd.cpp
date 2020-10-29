@@ -619,7 +619,7 @@ void compute_cell_distance(
 void sort_input_stream_128(
     hls::stream<float>& s_partial_cell_distance, int start_cell_id,
     hls::stream<float>& s_partial_cell_distance_sorted,
-    hls::stream<float>& s_partial_cell_id_sorted) {
+    hls::stream<int>& s_partial_cell_id_sorted) {
     // Given input stream of 128 numbers (CENTROIDS_PER_PARTITION), 
     // generate an output array of top 32 (nprobe) smallest numbers (increasing order)
     // as well as the corresponding cell IDs
@@ -629,29 +629,89 @@ void sort_input_stream_128(
     sort32()
     merge()
     merge()
-    float origin_distance_array[CENTROIDS_PER_PARTITION];
-    float origin_id_array[CENTROIDS_PER_PARTITION];
+}
 
-    float intermidiate_distance_array_0[CENTROIDS_PER_PARTITION];
-    float intermidiate_id_array_0[CENTROIDS_PER_PARTITION];
+void sort_input_stream_32(
+    hls::stream<float>& s_partial_cell_distance,
+    hls::stream<int>& s_partial_cell_id,
+    hls::stream<float>& s_partial_cell_distance_sorted,
+    hls::stream<int>& s_partial_cell_id_sorted) {
+    // Given input stream of 32 numbers, 
+    // generate an output array of top 32 (nprobe) smallest numbers (increasing order)
+    // as well as the corresponding cell IDs
+
+    float origin_distance_array[32];
+    float origin_id_array[32];
+
+    float intermidiate_distance_array_0[32];
+    float intermidiate_id_array_0[32];
 
     for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
+        
+        for (int i = 0; i < )
+    }
+}
 
-        for (int i = 0; i < CENTROIDS_PER_PARTITION; i++) {
-        #pragma HLS pipeline
-            origin_distance_array[i] = s_partial_cell_distance.read();
-            origin_id_array[i] = start_cell_id + i;
-        }
+template<const int input_stream_len>
+void merge_streams(
+    hls::stream<float>& s_input_distance_0, hls::stream<float>& s_input_distance_1,
+    hls::stream<int>& s_input_cell_id_0, hls::stream<float>& s_input_cell_id_1,
+    hls::stream<float>& s_output_distance, hls::stream<int>& s_output_cell_id
+) {
+    // This function merge two sorted streams to a single sorted stream, 
+    // without filtering out elements like in merge_streams_nprobe.
 
-        // Round 0 
-        for (int i = 0; i < CENTROIDS_PER_PARTITION / 2; i++) {
+    float reg0, reg1; 
+    int id0, id1;
+    int count0, count1;
 
+    for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
+        
+        reg0 = s_input_distance_0.read();
+        reg1 = s_input_distance_1.read();
+        id0 = s_input_cell_id_0.read();
+        id1 = s_input_cell_id_1.read();
+        count0 = 1; // the number of read operations
+        count1 = 1;
+
+        // output the smallest 32 numbers and ids
+        for (int i = 0; i < 2 * input_stream_len; i++) { 
+        #pragma HLS pipeline II=1
+            if (reg0 < reg1 && count0 <= input_stream_len) {
+                s_output_distance.write(reg0);
+                s_output_cell_id.write(id0); 
+                
+                if (count0 < input_stream_len) {
+                    reg0 = s_input_distance_0.read(); 
+                }
+                // after the final time, count0 = input_stream_len + 1
+                count0++; 
+            }
+            else if (reg1 < reg0 && count1 <= input_stream_len) {
+                s_output_distance.write(reg1);
+                s_output_cell_id.write(id1); 
+                
+                if (count1 < input_stream_len) {
+                    reg1 = s_input_distance_1.read(); 
+                }
+                // after the final time, count1 = input_stream_len + 1
+                count1++; 
+            }
+            else if (count0 > input_stream_len) {
+                s_output_distance.write(reg1);
+                s_output_cell_id.write(id1); 
+                count1++; 
+            }
+            else if (count1 > input_stream_len) {
+                s_output_distance.write(reg0);
+                s_output_cell_id.write(id0); 
+                count0++; 
+            }
         }
     }
 }
 
-
-void merge_streams(
+void merge_streams_nprobe(
     hls::stream<float>& s_input_distance_0, hls::stream<float>& s_input_distance_1,
     hls::stream<int>& s_input_cell_id_0, hls::stream<float>& s_input_cell_id_1,
     hls::stream<float>& s_output_distance, hls::stream<int>& s_output_cell_id
@@ -694,10 +754,12 @@ void merge_streams(
 
         // consume the rest
         for (int i = 0; i < NPROBE - count0; i++) {
+        #pragma HLS pipeline II=1
             s_input_distance_0.read();
             s_input_cell_id_0.read();
         }
         for (int i = 0; i < NPROBE - count1; i++) {
+        #pragma HLS pipeline II=1
             s_input_distance_1.read();
             s_input_cell_id_1.read();
         }

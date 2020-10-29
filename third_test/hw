@@ -1,0 +1,516 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:35445
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/third_test/xclbin/vadd.hw.xo.compile_summary, at Thu Oct 29 12:02:09 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 29 12:02:09 2020
+Running Rule Check Server on port:37631
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Thu Oct 29 12:02:10 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance estimate_distance_wrapper6 estimate_distance_wrapper6_U0 1112
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_890 890
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_899 899
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_908 908
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_917 917
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_926 926
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_935 935
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_944 944
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_953 953
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_962 962
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_971 971
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_980 980
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_989 989
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_998 998
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1007 1007
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1016 1016
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1025 1025
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1034 1034
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1043 1043
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1052 1052
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1061 1061
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1070 1070
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1079 1079
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1088 1088
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1097 1097
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1106 1106
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1115 1115
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1124 1124
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1133 1133
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1142 1142
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1151 1151
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1160 1160
+Add Instance estimate_distance_1024_s grp_estimate_distance_1024_s_fu_1169 1169
+Add Instance write_result write_result_U0 1246
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 3m 31s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:45411
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/third_test/xclbin/vadd.hw.xclbin.link_summary, at Thu Oct 29 12:05:42 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Oct 29 12:05:42 2020
+Running Rule Check Server on port:43781
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Thu Oct 29 12:05:43 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [12:05:50] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/third_test/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Thu Oct 29 12:05:56 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/third_test/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM30' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM31' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [12:05:59] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [12:06:06] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 379762 ; free virtual = 468811
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [12:06:06] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.table_HBM28:HBM[28] -sp vadd_1.table_HBM29:HBM[29] -sp vadd_1.table_HBM30:HBM[30] -sp vadd_1.table_HBM31:HBM[31] -sp vadd_1.table_DDR0:DDR[0] -sp vadd_1.table_DDR1:DDR[1] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM29, sptag: HBM[29]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM30, sptag: HBM[30]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM31, sptag: HBM[31]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR0, sptag: DDR[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR1, sptag: DDR[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM28 to HBM[28] for directive vadd_1.table_HBM28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM29 to HBM[29] for directive vadd_1.table_HBM29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM30 to HBM[30] for directive vadd_1.table_HBM30:HBM[30]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM31 to HBM[31] for directive vadd_1.table_HBM31:HBM[31]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR0 to DDR[0] for directive vadd_1.table_DDR0:DDR[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR1 to DDR[1] for directive vadd_1.table_DDR1:DDR[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [12:06:12] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 379757 ; free virtual = 468807
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [12:06:12] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [12:06:16] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 379742 ; free virtual = 468802
+INFO: [v++ 60-1441] [12:06:16] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:26 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 379759 ; free virtual = 468819
+INFO: [v++ 60-1443] [12:06:16] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [12:06:19] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 379749 ; free virtual = 468818
+INFO: [v++ 60-1443] [12:06:19] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+INFO: [v++ 60-1441] [12:06:21] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 379745 ; free virtual = 468817
+INFO: [v++ 60-1443] [12:06:21] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/third_test/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[12:07:33] Run vpl: Step create_project: Started
+Creating Vivado project.
+[12:07:36] Run vpl: Step create_project: Completed
+[12:07:36] Run vpl: Step create_bd: Started
+[12:10:00] Run vpl: Step create_bd: RUNNING...
+[12:12:32] Run vpl: Step create_bd: RUNNING...
+[12:14:59] Run vpl: Step create_bd: RUNNING...
+[12:18:10] Run vpl: Step create_bd: RUNNING...
+[12:20:10] Run vpl: Step create_bd: RUNNING...
+[12:21:46] Run vpl: Step create_bd: Completed
+[12:21:46] Run vpl: Step update_bd: Started
+[12:24:08] Run vpl: Step update_bd: RUNNING...
+[12:26:42] Run vpl: Step update_bd: RUNNING...
+[12:26:37] Run vpl: Step update_bd: Completed
+[12:26:37] Run vpl: Step generate_target: Started
+[12:28:46] Run vpl: Step generate_target: RUNNING...
+[12:31:16] Run vpl: Step generate_target: RUNNING...
+[12:33:17] Run vpl: Step generate_target: RUNNING...
+[12:35:50] Run vpl: Step generate_target: RUNNING...
+[12:38:12] Run vpl: Step generate_target: RUNNING...
+[12:42:03] Run vpl: Step generate_target: RUNNING...
+[12:41:04] Run vpl: Step generate_target: Completed
+[12:41:04] Run vpl: Step config_hw_runs: Started
+[12:42:42] Run vpl: Step config_hw_runs: Completed
+[12:42:42] Run vpl: Step synth: Started
+[12:44:13] Block-level synthesis in progress, 0 of 70 jobs complete, 8 jobs running.
+[12:48:10] Block-level synthesis in progress, 11 of 70 jobs complete, 5 jobs running.
+[12:52:09] Block-level synthesis in progress, 21 of 70 jobs complete, 8 jobs running.
+[12:55:51] Block-level synthesis in progress, 26 of 70 jobs complete, 8 jobs running.
+[12:57:43] Block-level synthesis in progress, 35 of 70 jobs complete, 5 jobs running.
+[13:01:44] Block-level synthesis in progress, 46 of 70 jobs complete, 6 jobs running.
+[13:04:52] Block-level synthesis in progress, 51 of 70 jobs complete, 7 jobs running.
+[13:10:38] Block-level synthesis in progress, 69 of 70 jobs complete, 1 job running.
+[13:14:56] Top-level synthesis in progress.
+[13:18:46] Top-level synthesis in progress.
+[13:23:20] Top-level synthesis in progress.
+[13:28:05] Top-level synthesis in progress.
+[13:31:52] Top-level synthesis in progress.
+[13:33:20] Top-level synthesis in progress.
+[13:34:53] Top-level synthesis in progress.
+[13:36:22] Top-level synthesis in progress.
+[13:37:53] Top-level synthesis in progress.
+[13:39:24] Top-level synthesis in progress.
+[13:40:56] Top-level synthesis in progress.
+[13:42:28] Top-level synthesis in progress.
+[13:44:00] Top-level synthesis in progress.
+[13:45:31] Top-level synthesis in progress.
+[13:47:02] Top-level synthesis in progress.
+[13:48:33] Top-level synthesis in progress.
+[13:50:04] Top-level synthesis in progress.
+[13:51:37] Top-level synthesis in progress.
+[13:53:08] Top-level synthesis in progress.
+[13:54:39] Top-level synthesis in progress.
+[13:56:13] Top-level synthesis in progress.
+[13:57:44] Top-level synthesis in progress.
+[13:59:15] Top-level synthesis in progress.
+[14:00:48] Top-level synthesis in progress.
+[14:02:23] Top-level synthesis in progress.
+[14:03:55] Top-level synthesis in progress.
+[14:05:26] Top-level synthesis in progress.
+[14:07:01] Top-level synthesis in progress.
+[14:09:35] Top-level synthesis in progress.
+[14:12:05] Top-level synthesis in progress.
+[14:14:00] Top-level synthesis in progress.
+[14:15:31] Top-level synthesis in progress.
+[14:17:04] Top-level synthesis in progress.
+[14:18:36] Top-level synthesis in progress.
+[14:20:18] Top-level synthesis in progress.
+[14:24:37] Top-level synthesis in progress.
+[14:26:09] Top-level synthesis in progress.
+[14:27:47] Top-level synthesis in progress.
+[14:32:01] Top-level synthesis in progress.
+[14:34:28] Top-level synthesis in progress.
+[14:36:00] Top-level synthesis in progress.
+[14:37:32] Top-level synthesis in progress.
+[14:39:03] Top-level synthesis in progress.
+[14:40:32] Top-level synthesis in progress.
+[14:42:06] Top-level synthesis in progress.
+[14:43:38] Top-level synthesis in progress.
+[14:45:10] Top-level synthesis in progress.
+[14:46:43] Top-level synthesis in progress.
+[14:48:16] Top-level synthesis in progress.
+[14:49:50] Top-level synthesis in progress.
+[14:52:01] Top-level synthesis in progress.
+[14:53:31] Top-level synthesis in progress.
+[14:55:03] Top-level synthesis in progress.
+[14:56:35] Top-level synthesis in progress.
+[14:58:05] Top-level synthesis in progress.
+[14:59:38] Top-level synthesis in progress.
+[15:01:07] Top-level synthesis in progress.
+[15:02:38] Top-level synthesis in progress.
+[15:04:09] Top-level synthesis in progress.
+[15:05:40] Top-level synthesis in progress.
+[15:07:09] Top-level synthesis in progress.
+[15:08:41] Top-level synthesis in progress.
+[15:10:12] Top-level synthesis in progress.
+[15:11:45] Top-level synthesis in progress.
+[15:13:18] Top-level synthesis in progress.
+[15:14:51] Top-level synthesis in progress.
+[15:16:27] Top-level synthesis in progress.
+[15:18:39] Top-level synthesis in progress.
+[15:20:10] Top-level synthesis in progress.
+[15:21:41] Top-level synthesis in progress.
+[15:23:10] Top-level synthesis in progress.
+[15:24:42] Top-level synthesis in progress.
+[15:26:12] Top-level synthesis in progress.
+[15:27:43] Top-level synthesis in progress.
+[15:29:17] Top-level synthesis in progress.
+[15:30:48] Top-level synthesis in progress.
+[15:32:48] Top-level synthesis in progress.
+[15:34:18] Top-level synthesis in progress.
+[15:35:49] Top-level synthesis in progress.
+[15:37:20] Top-level synthesis in progress.
+[15:38:53] Top-level synthesis in progress.
+[15:40:24] Top-level synthesis in progress.
+[15:41:55] Top-level synthesis in progress.
+[15:43:26] Top-level synthesis in progress.
+[15:44:56] Top-level synthesis in progress.
+[15:46:26] Top-level synthesis in progress.
+[15:47:59] Top-level synthesis in progress.
+[15:49:33] Top-level synthesis in progress.
+[15:51:02] Top-level synthesis in progress.
+[15:52:33] Top-level synthesis in progress.
+[15:54:05] Top-level synthesis in progress.
+[15:55:36] Top-level synthesis in progress.
+[15:57:10] Top-level synthesis in progress.
+[15:59:39] Top-level synthesis in progress.
+[16:01:09] Top-level synthesis in progress.
+[16:02:40] Top-level synthesis in progress.
+[16:04:14] Top-level synthesis in progress.
+[16:06:32] Top-level synthesis in progress.
+[16:08:04] Top-level synthesis in progress.
+[16:09:35] Top-level synthesis in progress.
+[16:11:06] Top-level synthesis in progress.
+[16:12:36] Top-level synthesis in progress.
+[16:14:10] Top-level synthesis in progress.
+[16:16:17] Top-level synthesis in progress.
+[16:17:49] Top-level synthesis in progress.
+[16:19:50] Top-level synthesis in progress.
+[16:21:23] Top-level synthesis in progress.
+[16:23:52] Top-level synthesis in progress.
+[16:25:22] Top-level synthesis in progress.
+[16:26:54] Top-level synthesis in progress.
+[16:28:26] Top-level synthesis in progress.
+[16:29:58] Top-level synthesis in progress.
+[16:31:31] Top-level synthesis in progress.
+[16:32:59] Top-level synthesis in progress.
+[16:34:31] Top-level synthesis in progress.
+[16:36:00] Top-level synthesis in progress.
+[16:37:30] Top-level synthesis in progress.
+[16:38:59] Top-level synthesis in progress.
+[16:40:29] Top-level synthesis in progress.
+[16:41:59] Top-level synthesis in progress.
+[16:43:29] Top-level synthesis in progress.
+[16:45:00] Top-level synthesis in progress.
+[16:46:51] Top-level synthesis in progress.
+[16:51:30] Top-level synthesis in progress.
+[16:55:28] Top-level synthesis in progress.
+[16:57:01] Top-level synthesis in progress.
+[16:59:18] Top-level synthesis in progress.
+[17:01:31] Top-level synthesis in progress.
+[17:03:00] Top-level synthesis in progress.
+[17:04:31] Top-level synthesis in progress.
+[17:06:02] Top-level synthesis in progress.
+[17:07:33] Top-level synthesis in progress.
+[17:09:06] Top-level synthesis in progress.
+[17:10:39] Top-level synthesis in progress.
+[17:12:09] Top-level synthesis in progress.
+[17:13:39] Top-level synthesis in progress.
+[17:15:10] Top-level synthesis in progress.
+[17:16:41] Top-level synthesis in progress.
+[17:18:14] Top-level synthesis in progress.
+[17:19:46] Top-level synthesis in progress.
+[17:21:15] Top-level synthesis in progress.
+[17:22:45] Top-level synthesis in progress.
+[17:24:21] Top-level synthesis in progress.
+[17:26:51] Top-level synthesis in progress.
+[17:28:20] Top-level synthesis in progress.
+[17:29:48] Top-level synthesis in progress.
+[17:31:20] Top-level synthesis in progress.
+[17:32:50] Top-level synthesis in progress.
+[17:34:21] Top-level synthesis in progress.
+[17:35:53] Top-level synthesis in progress.
+[17:37:24] Top-level synthesis in progress.
+[17:39:00] Top-level synthesis in progress.
+[17:40:38] Top-level synthesis in progress.
+[17:44:20] Top-level synthesis in progress.
+[17:46:32] Top-level synthesis in progress.
+[17:48:01] Top-level synthesis in progress.
+[17:49:33] Top-level synthesis in progress.
+[17:51:07] Top-level synthesis in progress.
+[17:52:36] Top-level synthesis in progress.
+[17:54:06] Top-level synthesis in progress.
+[17:55:38] Top-level synthesis in progress.
+[17:57:10] Top-level synthesis in progress.
+[17:58:40] Top-level synthesis in progress.
+[18:00:09] Top-level synthesis in progress.
+[18:01:39] Top-level synthesis in progress.
+[18:03:10] Top-level synthesis in progress.
+[18:04:40] Top-level synthesis in progress.
+[18:06:10] Top-level synthesis in progress.
+[18:07:42] Top-level synthesis in progress.
+[18:09:12] Top-level synthesis in progress.
+[18:10:44] Top-level synthesis in progress.
+[18:12:13] Top-level synthesis in progress.
+[18:13:42] Top-level synthesis in progress.
+[18:15:09] Top-level synthesis in progress.
+[18:16:39] Top-level synthesis in progress.
+[18:18:09] Top-level synthesis in progress.
+[18:19:38] Top-level synthesis in progress.
+[18:21:09] Top-level synthesis in progress.
+[18:22:37] Top-level synthesis in progress.
+[18:24:07] Top-level synthesis in progress.
+[18:25:37] Top-level synthesis in progress.
+[18:27:05] Top-level synthesis in progress.
+[18:28:33] Top-level synthesis in progress.
+[18:30:04] Top-level synthesis in progress.
+[18:31:33] Top-level synthesis in progress.
+[18:33:03] Top-level synthesis in progress.
+[18:34:33] Top-level synthesis in progress.
+[18:36:04] Top-level synthesis in progress.
+[18:37:33] Top-level synthesis in progress.
+[18:39:04] Top-level synthesis in progress.
+[18:40:34] Top-level synthesis in progress.
+[18:42:03] Top-level synthesis in progress.
+[18:43:33] Top-level synthesis in progress.
+[18:45:04] Top-level synthesis in progress.
+[18:46:34] Top-level synthesis in progress.
+[18:48:03] Top-level synthesis in progress.
+[18:49:34] Top-level synthesis in progress.
+[18:51:04] Top-level synthesis in progress.
+[18:52:33] Top-level synthesis in progress.
+[18:54:06] Top-level synthesis in progress.
+[18:55:38] Top-level synthesis in progress.
+[18:57:08] Top-level synthesis in progress.
+[18:58:38] Top-level synthesis in progress.
+[19:00:10] Top-level synthesis in progress.
+[19:01:39] Top-level synthesis in progress.
+[19:03:07] Top-level synthesis in progress.
+[19:04:37] Top-level synthesis in progress.
+[19:06:06] Top-level synthesis in progress.
+[19:07:37] Top-level synthesis in progress.
+[19:09:08] Top-level synthesis in progress.
+[19:10:37] Top-level synthesis in progress.
+[19:12:08] Top-level synthesis in progress.
+[19:13:37] Top-level synthesis in progress.
+[19:15:08] Top-level synthesis in progress.
+[19:16:43] Top-level synthesis in progress.
+[19:18:12] Top-level synthesis in progress.
+[19:19:39] Top-level synthesis in progress.
+[19:21:08] Top-level synthesis in progress.
+[19:22:37] Top-level synthesis in progress.
+[19:24:04] Top-level synthesis in progress.
+[19:25:33] Top-level synthesis in progress.
+[19:27:03] Top-level synthesis in progress.
+[19:28:33] Top-level synthesis in progress.
+[19:30:03] Top-level synthesis in progress.
+[19:31:31] Top-level synthesis in progress.
+[19:32:59] Top-level synthesis in progress.
+[19:34:26] Top-level synthesis in progress.
+[19:35:56] Top-level synthesis in progress.
+[19:37:24] Top-level synthesis in progress.
+[19:38:53] Top-level synthesis in progress.
+[19:40:21] Top-level synthesis in progress.
+[19:41:50] Top-level synthesis in progress.
+[19:43:19] Top-level synthesis in progress.
+[19:44:49] Top-level synthesis in progress.
+[19:46:18] Top-level synthesis in progress.
+[19:47:48] Top-level synthesis in progress.

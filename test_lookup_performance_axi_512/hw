@@ -445,3 +445,4 @@ Creating Vivado project.
 [00:49:20] Top-level synthesis in progress.
 [00:51:55] Run vpl: Step synth: Completed
 [00:51:55] Run vpl: Step impl: Started
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
