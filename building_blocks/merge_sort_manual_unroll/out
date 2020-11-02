@@ -1,0 +1,401 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 0
+i = 1 result = 2
+i = 2 result = 2
+i = 3 result = 13
+i = 4 result = 15
+i = 5 result = 19
+i = 6 result = 20
+i = 7 result = 33
+i = 8 result = 33
+i = 9 result = 36
+i = 10 result = 38
+i = 11 result = 43
+i = 12 result = 56
+i = 13 result = 63
+i = 14 result = 64
+i = 15 result = 68
+i = 16 result = 69
+i = 17 result = 70
+i = 18 result = 71
+i = 19 result = 76
+i = 20 result = 78
+i = 21 result = 78
+i = 22 result = 80
+i = 23 result = 83
+i = 24 result = 84
+i = 25 result = 90
+i = 26 result = 92
+i = 27 result = 97
+i = 28 result = 97
+i = 29 result = 98
+i = 30 result = 98
+i = 31 result = 99
+TEST PASSED
+Program begins...
+Broadcasting stream...
+Finished broadcasting stream...
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 2
+i = 1
+branch 4
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...1
+i = 0
+branch 1
+i = 1
+branch 3
+Merging stream...2
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 1
+i = 1
+branch 2
+i = 2
+branch 1
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 1
+i = 1
+branch 1
+i = 2
+branch 3
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 1
+i = 1
+branch 1
+i = 2
+branch 3
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 3
+Merging stream...2
+i = 0
+branch 2
+i = 1
+branch 2
+i = 2
+branch 4
+i = 3
+branch 4
+Merging stream...2
+i = 0
+branch 2
+i = 1
+branch 2
+i = 2
+branch 4
+i = 3
+branch 4
+Merging stream...4
+i = 0
+branch 1
+i = 1
+branch 1
+i = 2
+branch 2
+i = 3
+branch 2
+i = 4
+branch 1
+i = 5
+branch 1
+i = 6
+branch 3
+i = 7
+branch 3
+Merging stream...4
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 2
+i = 4
+branch 2
+i = 5
+branch 2
+i = 6
+branch 4
+i = 7
+branch 4
+Merging stream...4
+i = 0
+branch 1
+i = 1
+branch 2
+i = 2
+branch 2
+i = 3
+branch 1
+i = 4
+branch 2
+i = 5
+branch 2
+i = 6
+branch 4
+i = 7
+branch 4
+Merging stream...4
+i = 0
+branch 1
+i = 1
+branch 2
+i = 2
+branch 2
+i = 3
+branch 2
+i = 4
+branch 1
+i = 5
+branch 1
+i = 6
+branch 2
+i = 7
+branch 4
+Merging stream...8
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 2
+i = 3
+branch 1
+i = 4
+branch 2
+i = 5
+branch 1
+i = 6
+branch 1
+i = 7
+branch 2
+i = 8
+branch 2
+i = 9
+branch 2
+i = 10
+branch 2
+i = 11
+branch 1
+i = 12
+branch 1
+i = 13
+branch 1
+i = 14
+branch 2
+i = 15
+branch 4
+Merging stream...8
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 2
+i = 4
+branch 1
+i = 5
+branch 1
+i = 6
+branch 1
+i = 7
+branch 2
+i = 8
+branch 1
+i = 9
+branch 2
+i = 10
+branch 2
+i = 11
+branch 1
+i = 12
+branch 2
+i = 13
+branch 2
+i = 14
+branch 1
+i = 15
+branch 3
+Merging stream...16
+i = 0
+branch 2
+i = 1
+branch 1
+i = 2
+branch 1
+i = 3
+branch 1
+i = 4
+branch 2
+i = 5
+branch 2
+i = 6
+branch 1
+i = 7
+branch 2
+i = 8
+branch 2
+i = 9
+branch 2
+i = 10
+branch 2
+i = 11
+branch 1
+i = 12
+branch 1
+i = 13
+branch 2
+i = 14
+branch 2
+i = 15
+branch 2
+i = 16
+branch 1
+i = 17
+branch 2
+i = 18
+branch 1
+i = 19
+branch 2
+i = 20
+branch 2
+i = 21
+branch 1
+i = 22
+branch 1
+i = 23
+branch 1
+i = 24
+branch 1
+i = 25
+branch 2
+i = 26
+branch 1
+i = 27
+branch 2
+i = 28
+branch 1
+i = 29
+branch 2
+i = 30
+branch 4
+i = 31
+branch 4

@@ -1,0 +1,126 @@
+Profile Summary
+Generated on: 2020-10-30 09:47:21
+Msec since Epoch: 1604047641357
+Profiled application: host
+Target platform: 
+Tool version: 2019.2
+XRT build version: 2.3.1301
+Build version branch: 2019.2
+Build version hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build version date: 2019-10-24 20:05:16
+Target devices: xilinx_u280_xdma_201920_3-0
+Flow mode: CPU Emulation
+
+OpenCL API Calls
+API Name,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+clFinish,1,15885.4,15885.4,15885.4,15885.4,
+clCreateProgramWithBinary,1,74.3302,74.3302,74.3302,74.3302,
+clReleaseKernel,1,20.9517,20.9517,20.9517,20.9517,
+clCreateBuffer,33,9.8651,0.039766,0.298942,2.16227,
+clReleaseProgram,1,1.74717,1.74717,1.74717,1.74717,
+clReleaseMemObject,99,1.16558,0.009559,0.0117735,0.028928,
+clCreateKernel,1,1.13261,1.13261,1.13261,1.13261,
+clRetainMemObject,66,0.680325,0.00953,0.010308,0.029073,
+clSetKernelArg,33,0.367594,0.009739,0.0111392,0.035839,
+clEnqueueTask,1,0.208498,0.208498,0.208498,0.208498,
+clEnqueueMigrateMemObjects,2,0.201637,0.04424,0.100819,0.157397,
+clGetExtensionFunctionAddress,2,0.119898,0.032806,0.059949,0.087092,
+clGetPlatformInfo,6,0.065751,0.010028,0.0109585,0.013323,
+clGetDeviceIDs,2,0.055801,0.01305,0.0279005,0.042751,
+clGetExtensionFunctionAddressForPlatform,2,0.037845,0.011293,0.0189225,0.026552,
+clReleaseDevice,2,0.024273,0.012,0.0121365,0.012273,
+clRetainDevice,2,0.024073,0.011062,0.0120365,0.013011,
+clCreateContext,1,0.020341,0.020341,0.020341,0.020341,
+clReleaseCommandQueue,1,0.015932,0.015932,0.015932,0.015932,
+clCreateCommandQueue,1,0.015529,0.015529,0.015529,0.015529,
+clReleaseContext,1,0.012971,0.012971,0.012971,0.012971,
+
+
+Kernel Execution
+Kernel,Number Of Enqueues,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+vadd,1,8.59595,8.59595,8.59595,8.59595,
+
+
+Compute Unit Utilization
+Device,Compute Unit,Kernel,Global Work Size,Local Work Size,Number Of Calls,Dataflow Execution,Max Overlapping Executions,Dataflow Acceleration,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),Clock Frequency (MHz),
+xilinx_u280_xdma_201920_3-0,vadd_1,vadd,1:1:1,1:1:1,1,No,0,1.000000x,7.82932,7.82932,7.82932,7.82932,300,
+
+
+Data Transfer: Host to Global Memory
+Context:Number of Devices,Transfer Type,Number Of Buffer Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Buffer Size (KB),Total Time (ms),Average Time (ms),
+
+
+Data Transfer: Kernels to Global Memory
+Device,Compute Unit/Port Name,Kernel Arguments,Memory Resources,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Average Latency (ns),
+
+
+Top Data Transfer: Kernels to Global Memory
+Device,Compute Unit,Number of Transfers,Average Bytes per Transfer,Transfer Efficiency (%),Total Data Transfer (MB),Total Write (MB),Total Read (MB),Total Transfer Rate (MB/s),
+
+
+Top Kernel Execution
+Kernel Instance Address,Kernel,Context ID,Command Queue ID,Device,Start Time (ms),Duration (ms),Global Work Size,Local Work Size,
+93974299327024,vadd,0,0,xilinx_u280_xdma_201920_3-0,16150.8,8.59595,1:1:1,1:1:1,
+
+
+Top Memory Writes: Host to Global Memory
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Writing Rate(MB/s),
+0,0,0,272.533,N/A,8.58993e+06,N/A,
+
+
+Top Memory Reads: Host to Global Memory
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Reading Rate(MB/s),
+8321499136,0,0,16159.6,N/A,0.128,N/A,
+
+
+Guidance Parameters
+Parameter,Element,Value,
+DEVICE_EXEC_TIME,xilinx_u280_xdma_201920_3-0,8.595946,
+CU_CALLS,xilinx_u280_xdma_201920_3-0|vadd_1,1,
+MEMORY_BIT_WIDTH,xilinx_u280_xdma_201920_3-0,512,
+MIGRATE_MEM,host,2,
+MEMORY_USAGE,,33,
+PLRAM_DEVICE,all,1,
+HBM_DEVICE,all,1,
+KDMA_DEVICE,all,0,
+P2P_DEVICE,all,0,
+P2P_HOST_TRANSFERS,host,0,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem0,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem1,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem10,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem11,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem12,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem13,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem14,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem15,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem16,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem17,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem18,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem19,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem2,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem20,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem21,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem22,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem23,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem24,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem25,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem26,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem27,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem28,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem29,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem3,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem30,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem31,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem34,32,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem4,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem5,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem6,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem7,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem8,512,
+PORT_BIT_WIDTH,vadd_1/m_axi_gmem9,512,
+KERNEL_COUNT,vadd,1,
+OBJECTS_RELEASED,all,1,
+TRACE_MEMORY,all,NA,
+CU_CONTEXT_EN,all,0,
+
+

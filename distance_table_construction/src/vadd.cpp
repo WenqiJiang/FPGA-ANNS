@@ -682,6 +682,7 @@ void merge_streams(
                 s_output_cell_id.write(id0); 
                 
                 if (count0 < input_stream_len) {
+                    // TODO: BUG, also need to read ID
                     reg0 = s_input_distance_0.read(); 
                 }
                 // after the final time, count0 = input_stream_len + 1
