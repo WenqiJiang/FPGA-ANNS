@@ -322,3 +322,202 @@ Creating Vivado project.
 [12:50:16] Run vpl: Step create_project: Completed
 [12:50:16] Run vpl: Step create_bd: Started
 [12:52:04] Run vpl: Step create_bd: RUNNING...
+[12:53:39] Run vpl: Step create_bd: RUNNING...
+[12:54:31] Run vpl: Step create_bd: Completed
+[12:54:31] Run vpl: Step update_bd: Started
+[12:55:59] Run vpl: Step update_bd: RUNNING...
+[12:57:31] Run vpl: Step update_bd: RUNNING...
+[12:58:29] Run vpl: Step update_bd: Completed
+[12:58:29] Run vpl: Step generate_target: Started
+[13:00:07] Run vpl: Step generate_target: RUNNING...
+[13:01:57] Run vpl: Step generate_target: RUNNING...
+[13:01:53] Run vpl: Step generate_target: Completed
+[13:01:53] Run vpl: Step config_hw_emulation: Started
+[13:03:50] Run vpl: Step config_hw_emulation: RUNNING...
+[13:06:21] Run vpl: Step config_hw_emulation: RUNNING...
+[13:07:55] Run vpl: Step config_hw_emulation: RUNNING...
+[13:12:30] Run vpl: Step config_hw_emulation: Completed
+[13:15:34] Run vpl: FINISHED. Run Status: config_hw_emulation Complete!
+INFO: [v++ 60-1441] [13:21:46] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:00:16 ; elapsed = 00:32:22 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 278674 ; free virtual = 445853
+INFO: [v++ 60-1443] [13:21:46] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'kernel2_clk_clk' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'kernel_clk_clk' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (KERNEL) clock: kernel2_clk_clk = 500, Kernel (DATA) clock: kernel_clk_clk = 140
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [13:23:12] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:20 ; elapsed = 00:01:26 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 276300 ; free virtual = 443647
+INFO: [v++ 60-1443] [13:23:12] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --key-value SYS:mode:hw_emu --add-section DEBUG_DATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/consolidated.cf --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/behav.xse --force --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_DATA'(4) was successfully added.
+Size   : 153398 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/consolidated.cf'
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 5624 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 188439816 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/behav.xse'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 12028 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 18072 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 35491 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (188701320 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [13:23:13] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:01 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 276115 ; free virtual = 443642
+INFO: [v++ 60-1443] [13:23:13] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [13:23:15] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 276109 ; free virtual = 443636
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/reports/link/system_estimate_vadd.hw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/merge_sort_simplified/_x.hw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 34m 30s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=hw_emu ./host ./xclbin/vadd.hw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw_emu.xclbin
+Loading: './xclbin/vadd.hw_emu.xclbin'
+Finished loading binary...
+INFO: [HW-EM 01] Hardware emulation runs simulation underneath. Using a large data set will result in long simulation times. It is recommended that a small dataset is used for faster execution. The flow uses approximate models for DDR memory and interconnect and hence the performance data generated is approximate.
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 0
+i = 1 result = 2
+i = 2 result = 2
+i = 3 result = 13
+i = 4 result = 15
+i = 5 result = 19
+i = 6 result = 20
+i = 7 result = 33
+i = 8 result = 33
+i = 9 result = 36
+i = 10 result = 38
+i = 11 result = 43
+i = 12 result = 56
+i = 13 result = 63
+i = 14 result = 64
+i = 15 result = 68
+i = 16 result = 69
+i = 17 result = 70
+i = 18 result = 71
+i = 19 result = 76
+i = 20 result = 78
+i = 21 result = 78
+i = 22 result = 80
+i = 23 result = 83
+i = 24 result = 84
+i = 25 result = 90
+i = 26 result = 92
+i = 27 result = 97
+i = 28 result = 97
+i = 29 result = 98
+i = 30 result = 98
+i = 31 result = 99
+TEST PASSED
+INFO::[ Vitis-EM 22 ] [Time elapsed: 3 minute(s) 33 seconds, Emulation time: 0.284177 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.125 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.125 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [HW-EM 06-0] Waiting for the simulator process to exit
+INFO: [HW-EM 06-1] All the simulator processes exited successfully

@@ -1,0 +1,506 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:34239
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/xclbin/vadd.hw.xo.compile_summary, at Tue Nov  3 19:35:45 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Nov  3 19:35:45 2020
+Running Rule Check Server on port:46253
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Tue Nov  3 19:35:46 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 200 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 9.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 273.97 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 13m 51s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:40269
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/xclbin/vadd.hw.xclbin.link_summary, at Tue Nov  3 19:49:38 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Nov  3 19:49:38 2020
+Running Rule Check Server on port:34899
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Tue Nov  3 19:49:39 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [19:49:46] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Tue Nov  3 19:49:52 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [19:49:55] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [19:50:02] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 295.449 ; gain = 0.000 ; free physical = 215635 ; free virtual = 442153
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [19:50:02] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [19:50:08] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.449 ; gain = 0.000 ; free physical = 215705 ; free virtual = 442223
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [19:50:08] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [19:50:12] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 295.449 ; gain = 0.000 ; free physical = 215607 ; free virtual = 442130
+INFO: [v++ 60-1441] [19:50:12] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:26 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 215626 ; free virtual = 442149
+INFO: [v++ 60-1443] [19:50:12] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [19:50:15] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 215558 ; free virtual = 442082
+INFO: [v++ 60-1443] [19:50:15] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [v++ 60-1441] [19:50:17] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 215535 ; free virtual = 442058
+INFO: [v++ 60-1443] [19:50:17] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 200 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[19:51:26] Run vpl: Step create_project: Started
+Creating Vivado project.
+[19:51:29] Run vpl: Step create_project: Completed
+[19:51:29] Run vpl: Step create_bd: Started
+[19:53:30] Run vpl: Step create_bd: RUNNING...
+[19:55:28] Run vpl: Step create_bd: RUNNING...
+[19:57:23] Run vpl: Step create_bd: RUNNING...
+[19:59:42] Run vpl: Step create_bd: RUNNING...
+[20:01:34] Run vpl: Step create_bd: RUNNING...
+[20:03:37] Run vpl: Step create_bd: RUNNING...
+[20:04:02] Run vpl: Step create_bd: Completed
+[20:04:02] Run vpl: Step update_bd: Started
+[20:06:07] Run vpl: Step update_bd: RUNNING...
+[20:07:39] Run vpl: Step update_bd: Completed
+[20:07:39] Run vpl: Step generate_target: Started
+[20:09:26] Run vpl: Step generate_target: RUNNING...
+[20:11:23] Run vpl: Step generate_target: RUNNING...
+[20:13:03] Run vpl: Step generate_target: RUNNING...
+[20:14:53] Run vpl: Step generate_target: RUNNING...
+[20:16:51] Run vpl: Step generate_target: RUNNING...
+[20:17:12] Run vpl: Step generate_target: Completed
+[20:17:12] Run vpl: Step config_hw_runs: Started
+[20:18:46] Run vpl: Step config_hw_runs: Completed
+[20:18:46] Run vpl: Step synth: Started
+[20:20:26] Block-level synthesis in progress, 0 of 68 jobs complete, 8 jobs running.
+[20:21:50] Block-level synthesis in progress, 0 of 68 jobs complete, 8 jobs running.
+[20:23:16] Block-level synthesis in progress, 8 of 68 jobs complete, 8 jobs running.
+[20:24:48] Block-level synthesis in progress, 8 of 68 jobs complete, 8 jobs running.
+[20:26:16] Block-level synthesis in progress, 15 of 68 jobs complete, 8 jobs running.
+[20:27:38] Block-level synthesis in progress, 15 of 68 jobs complete, 8 jobs running.
+[20:29:06] Block-level synthesis in progress, 23 of 68 jobs complete, 8 jobs running.
+[20:30:34] Block-level synthesis in progress, 23 of 68 jobs complete, 8 jobs running.
+[20:32:00] Block-level synthesis in progress, 30 of 68 jobs complete, 8 jobs running.
+[20:33:01] Block-level synthesis in progress, 30 of 68 jobs complete, 8 jobs running.
+[20:34:27] Block-level synthesis in progress, 36 of 68 jobs complete, 6 jobs running.
+[20:36:17] Block-level synthesis in progress, 36 of 68 jobs complete, 8 jobs running.
+[20:37:26] Block-level synthesis in progress, 43 of 68 jobs complete, 7 jobs running.
+[20:38:54] Block-level synthesis in progress, 43 of 68 jobs complete, 8 jobs running.
+[20:40:20] Block-level synthesis in progress, 50 of 68 jobs complete, 7 jobs running.
+[20:41:46] Block-level synthesis in progress, 52 of 68 jobs complete, 6 jobs running.
+[20:43:08] Block-level synthesis in progress, 57 of 68 jobs complete, 8 jobs running.
+[20:44:32] Block-level synthesis in progress, 63 of 68 jobs complete, 5 jobs running.
+[20:45:54] Block-level synthesis in progress, 64 of 68 jobs complete, 4 jobs running.
+[20:47:22] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:48:46] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:50:10] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:51:34] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:52:57] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:54:21] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:55:46] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:57:08] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[20:58:39] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:00:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:01:28] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:02:52] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:04:16] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:05:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:07:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:08:34] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:10:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:11:39] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:13:54] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:15:17] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:16:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:18:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:19:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:21:05] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:22:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:23:54] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:25:19] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:26:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:28:08] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[21:29:04] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[21:30:32] Top-level synthesis in progress.
+[21:32:16] Top-level synthesis in progress.
+[21:33:41] Top-level synthesis in progress.
+[21:35:06] Top-level synthesis in progress.
+[21:36:32] Top-level synthesis in progress.
+[21:37:56] Top-level synthesis in progress.
+[21:39:22] Top-level synthesis in progress.
+[21:40:49] Top-level synthesis in progress.
+[21:42:13] Top-level synthesis in progress.
+[21:43:35] Top-level synthesis in progress.
+[21:44:40] Run vpl: Step synth: Completed
+[21:44:40] Run vpl: Step impl: Started
+[21:59:37] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 02h 09m 18s 
+
+[21:59:37] Starting logic optimization..
+[22:01:15] Phase 1 Retarget
+[22:01:15] Phase 2 Constant propagation
+[22:01:15] Phase 3 Sweep
+[22:03:59] Phase 4 BUFG optimization
+[22:03:59] Phase 5 Shift Register Optimization
+[22:03:59] Phase 6 Post Processing Netlist
+[22:09:17] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 09m 40s 
+
+[22:09:17] Starting logic placement..
+[22:10:37] Phase 1 Placer Initialization
+[22:10:37] Phase 1.1 Placer Initialization Netlist Sorting
+[22:13:52] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[22:15:32] Phase 1.3 Build Placer Netlist Model
+[22:17:02] Phase 1.4 Constrain Clocks/Macros
+[22:18:18] Phase 2 Global Placement
+[22:18:18] Phase 2.1 Floorplanning
+[22:23:15] Phase 2.2 Global Placement Core
+[22:35:38] Phase 2.2.1 Physical Synthesis In Placer
+[22:43:18] Phase 3 Detail Placement
+[22:43:18] Phase 3.1 Commit Multi Column Macros
+[22:43:18] Phase 3.2 Commit Most Macros & LUTRAMs
+[22:43:18] Phase 3.3 Area Swap Optimization
+[22:44:44] Phase 3.4 Pipeline Register Optimization
+[22:44:44] Phase 3.5 IO Cut Optimizer
+[22:44:44] Phase 3.6 Fast Optimization
+[22:46:25] Phase 3.7 Small Shape DP
+[22:46:25] Phase 3.7.1 Small Shape Clustering
+[22:56:38] Phase 3.7.2 Flow Legalize Slice Clusters
+[22:56:38] Phase 3.7.3 Slice Area Swap
+[23:01:51] Phase 3.7.4 Commit Slice Clusters
+[23:03:08] Phase 3.8 Place Remaining
+[23:03:08] Phase 3.9 Re-assign LUT pins
+[23:04:28] Phase 3.10 Pipeline Register Optimization
+[23:04:28] Phase 3.11 Fast Optimization
+[23:05:47] Phase 4 Post Placement Optimization and Clean-Up
+[23:05:47] Phase 4.1 Post Commit Optimization
+[23:07:07] Phase 4.1.1 Post Placement Optimization
+[23:07:07] Phase 4.1.1.1 BUFG Insertion
+[23:08:34] Phase 4.1.1.2 BUFG Replication
+[23:11:26] Phase 4.1.1.3 Replication
+[23:12:55] Phase 4.2 Post Placement Cleanup
+[23:14:20] Phase 4.3 Placer Reporting
+[23:14:20] Phase 4.4 Final Placement Cleanup
+[23:28:48] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 19m 30s 
+
+[23:28:48] Starting logic routing..
+[23:30:06] Phase 1 Build RT Design
+[23:34:00] Phase 2 Router Initialization
+[23:34:00] Phase 2.1 Fix Topology Constraints
+[23:34:00] Phase 2.2 Pre Route Cleanup
+[23:35:17] Phase 2.3 Global Clock Net Routing
+[23:35:17] Phase 2.4 Update Timing
+[23:38:09] Phase 2.5 Update Timing for Bus Skew
+[23:38:09] Phase 2.5.1 Update Timing
+[23:41:34] Phase 3 Initial Routing
+[23:41:34] Phase 3.1 Global Routing
+[23:45:08] Phase 3.2 Update Timing
+[23:48:37] Phase 4 Rip-up And Reroute
+[23:48:37] Phase 4.1 Global Iteration 0
+[01:32:02] Phase 4.2 Global Iteration 1
+[01:45:12] Phase 4.3 Global Iteration 2
+[02:07:05] Phase 4.4 Global Iteration 3
+[02:32:36] Phase 4.5 Global Iteration 4
+[02:57:00] Phase 4.6 Global Iteration 5
+[03:22:42] Phase 4.7 Global Iteration 6
+[03:47:10] Phase 4.8 Global Iteration 7
+[04:18:38] Phase 4.9 Global Iteration 8
+[04:54:55] Phase 4.10 Global Iteration 9
+[05:47:12] Phase 5 Delay and Skew Optimization
+[05:47:12] Phase 5.1 Delay CleanUp
+[05:47:12] Phase 5.1.1 Update Timing
+[05:48:29] Phase 5.1.2 Update Timing
+[05:50:59] Phase 5.2 Clock Skew Optimization
+[05:52:16] Phase 6 Post Hold Fix
+[05:52:16] Phase 6.1 Hold Fix Iter
+[05:52:16] Phase 6.1.1 Update Timing
+[05:53:35] Phase 6.1.2 Lut RouteThru Assignment for hold
+[05:53:35] Phase 6.2 Additional Hold Fix
+[05:56:11] Phase 7 Route finalize
+[05:56:11] Phase 8 Verifying routed nets
+[05:56:11] Phase 9 Depositing Routes
+[05:57:27] Phase 10 Leaf Clock Prog Delay Opt
+[06:01:17] Phase 10.1 Delay CleanUp
+[06:01:17] Phase 10.1.1 Update Timing
+[06:02:36] Phase 10.1.2 Update Timing
+[06:05:11] Phase 10.2 Hold Fix Iter
+[06:05:11] Phase 10.2.1 Update Timing
+[06:06:29] Phase 10.2.2 Lut RouteThru Assignment for hold
+[06:06:29] Phase 10.3 Additional Hold Fix
+[06:11:39] Phase 11 Depositing Routes
+[06:11:39] Phase 12 Post Router Timing
+[06:14:53] Phase 13 Physical Synthesis in Router
+[06:14:53] Phase 13.1 Physical Synthesis Initialization
+[06:18:07] Phase 13.2 Critical Path Optimization
+[06:20:59] Phase 14 Route finalize
+[06:22:18] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 06h 53m 29s 
+
+[06:22:18] Starting bitstream generation..
+[06:27:41] Phase 1 Physical Synthesis Initialization
+Starting optional post-route physical design optimization.
+[06:31:38] Phase 2 SLL Register Hold Fix Optimization
+[06:31:38] Phase 3 Critical Path Optimization
+[06:51:34] Phase 4 Hold Fix Optimization
+Finished optional post-route physical design optimization.
+[07:00:53] Creating bitmap...
+[07:07:18] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[07:08:38] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 46m 19s 
+[07:08:51] Run vpl: Step impl: Completed
+[07:09:10] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [07:09:14] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:12:47 ; elapsed = 11:18:57 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 194249 ; free virtual = 420124
+INFO: [v++ 60-1443] [07:09:14] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 410, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 151, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [07:09:19] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 194220 ; free virtual = 420096
+INFO: [v++ 60-1443] [07:09:19] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 4760 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 59636635 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 10398 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 14499 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 31584 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (59731547 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [07:09:19] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.30 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 194162 ; free virtual = 420094
+INFO: [v++ 60-1443] [07:09:19] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [07:09:20] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.39 ; elapsed = 00:00:00.46 . Memory (MB): peak = 679.312 ; gain = 0.000 ; free physical = 194210 ; free virtual = 420142
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link/system_estimate_vadd.hw.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/xclbin/vadd.hw.ltx
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/_x.hw/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 11h 19m 43s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+./host ./xclbin/vadd.hw.xclbin
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 31205
+UID: 522663
+[Wed Nov  4 07:10:37 2020]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_28_freq_240/host
+[XRT] WARNING: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+src/host.hpp:45 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:122: recipe for target 'check' failed

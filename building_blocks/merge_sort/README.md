@@ -2,12 +2,6 @@
 
 array_len = 32
 
-## Code
-
-```
-
-```
-
 ## Result
 
 148 CC
