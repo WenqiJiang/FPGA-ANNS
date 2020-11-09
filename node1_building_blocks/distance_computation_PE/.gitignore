@@ -1,5 +1,5 @@
 host 
-xclbin/
+xclbin
 ./xclbin
 ./xclbin/*
 .run/*

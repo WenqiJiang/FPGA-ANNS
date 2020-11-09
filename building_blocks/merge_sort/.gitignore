@@ -1,10 +1,10 @@
 host 
+xclbin
 ./xclbin
 ./xclbin/*
 .run/*
 TempConfig 
 system_estimate.xtxt 
-*.csv
 *.rpt
 *.protoinst 
 *.xo.*
@@ -21,4 +21,3 @@ _x.*
 *.wcfg
 *.wdb
 *.protoinst
-xclbin/
