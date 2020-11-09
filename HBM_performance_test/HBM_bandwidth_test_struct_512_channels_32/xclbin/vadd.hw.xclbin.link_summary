@@ -1,0 +1,1910 @@
+<ENTRY>
+{
+ "session": {
+  "name": "v++_link_vadd.hw",
+  "pid": "0",
+  "uuid": "9a4b4737-8479-480f-8da5-31059982b82e",
+  "description": "",
+  "timestamp": "0",
+  "outputFiles": [
+   {
+    "type": "JSON",
+    "mode": "CLIENT_ONLY",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/.tlog/v++_link_vadd.hw.xtl",
+    "continuous": true
+   },
+   {
+    "type": "JSON",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xclbin.link_summary",
+    "continuous": true
+   },
+   {
+    "type": "BINARY_PROTOBUF",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xclbin.link_summary.pb",
+    "continuous": true
+   }
+  ]
+ },
+ "thisFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xclbin.link_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Mon Nov  2 21:22:57 2020",
+ "timestampMillis": "1604348577859",
+ "buildStep": {
+  "cmdId": "c7dc6b83-f11a-4562-9b58-bc5ae151ee9b",
+  "name": "v++",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo ",
+  "args": [
+   "-t",
+   "hw",
+   "--config",
+   "design.cfg",
+   "--save-temps",
+   "--report",
+   "estimate",
+   "--temp_dir",
+   "./_x.hw/vadd",
+   "-l",
+   "--profile_kernel",
+   "data:all:all:all:all",
+   "-oxclbin/vadd.hw.xclbin",
+   "xclbin/vadd.hw.xo"
+  ],
+  "iniFiles": [
+   {
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/design.cfg",
+    "content": "platform=xilinx_u280_xdma_201920_3\nprofile_kernel=data:all:all:all\nkernel_frequency=140\ndebug=1\n\n[connectivity]\nnk=vadd:1:vadd_1\n# slr=vadd_1:SLR0\nsp=vadd_1.table_HBM0:HBM[0]\nsp=vadd_1.table_HBM1:HBM[1]\nsp=vadd_1.table_HBM2:HBM[2]\nsp=vadd_1.table_HBM3:HBM[3]\nsp=vadd_1.table_HBM4:HBM[4]\nsp=vadd_1.table_HBM5:HBM[5]\nsp=vadd_1.table_HBM6:HBM[6]\nsp=vadd_1.table_HBM7:HBM[7]\nsp=vadd_1.table_HBM8:HBM[8]\nsp=vadd_1.table_HBM9:HBM[9]\nsp=vadd_1.table_HBM10:HBM[10]\nsp=vadd_1.table_HBM11:HBM[11]\nsp=vadd_1.table_HBM12:HBM[12]\nsp=vadd_1.table_HBM13:HBM[13]\nsp=vadd_1.table_HBM14:HBM[14]\nsp=vadd_1.table_HBM15:HBM[15]\nsp=vadd_1.table_HBM16:HBM[16]\nsp=vadd_1.table_HBM17:HBM[17]\nsp=vadd_1.table_HBM18:HBM[18]\nsp=vadd_1.table_HBM19:HBM[19]\nsp=vadd_1.table_HBM20:HBM[20]\nsp=vadd_1.table_HBM21:HBM[21]\nsp=vadd_1.table_HBM22:HBM[22]\nsp=vadd_1.table_HBM23:HBM[23]\nsp=vadd_1.table_HBM24:HBM[24]\nsp=vadd_1.table_HBM25:HBM[25]\nsp=vadd_1.table_HBM26:HBM[26]\nsp=vadd_1.table_HBM27:HBM[27]\nsp=vadd_1.table_HBM28:HBM[28]\nsp=vadd_1.table_HBM29:HBM[29]\nsp=vadd_1.table_HBM30:HBM[30]\nsp=vadd_1.table_HBM31:HBM[31]\n# sp=vadd_1.table_DDR0:DDR[0]\n# sp=vadd_1.table_DDR1:DDR[1]\nsp=vadd_1.out_PLRAM:PLRAM[0]\n\n[vivado] \n#param=compiler.userPreSysLinkTcl=$(PWD)/tcl/plram.tcl \nparam=route.enableGlobalHoldIter=true\nparam=project.writeIntermediateCheckpoints=true\n# prop=run.impl_1.STEPS.PLACE_DESIGN.ARGS.DIRECTIVE=SSI_SpreadLogic_high\n# prop=run.impl_1.{STEPS.PLACE_DESIGN.ARGS.MORE OPTIONS}={-post_place_opt}\nprop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.IS_ENABLED}=true \n# prop=run.impl_1.STEPS.PHYS_OPT_DESIGN.ARGS.DIRECTIVE=ExploreWithHoldFix\n# prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-fanout_opt -critical_cell_opt -rewire -slr_crossing_opt -tns_cleanup -hold_fix -sll_reg_hold_fix -retime}\nprop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-slr_crossing_opt -tns_cleanup}\n#prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-hold_fix -slr_crossing_opt}\nprop=run.impl_1.STEPS.ROUTE_DESIGN.ARGS.DIRECTIVE=AlternateCLBRouting\n#prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-hold_fix}\nprop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED}=true \nprop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-critical_cell_opt -rewire -hold_fix -sll_reg_hold_fix -retime}\n#prop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-critical_cell_opt -rewire -slr_crossing_opt -tns_cleanup -hold_fix -sll_reg_hold_fix -retime}\n"
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:22:57 2020",
+ "timestampMillis": "1604348577861",
+ "status": {
+  "cmdId": "c7dc6b83-f11a-4562-9b58-bc5ae151ee9b",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Mon Nov  2 21:23:08 2020",
+ "timestampMillis": "1604348588474",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_u280_xdma_201920_3.xpfm",
+  "hardwareDsa": "xilinx_u280_xdma_201920_3.xsa",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_LINK",
+  "target": "TT_HW",
+  "binaryContainer": {
+   "base": {
+    "type": "BT_UKNOWN",
+    "name": "vadd.hw",
+    "file": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xclbin",
+    "reports": []
+   },
+   "kernels": []
+  },
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "vadd",
+     "file": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xo",
+     "reports": []
+    },
+    "sources": [
+     "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xo/vadd/vadd/cpu_sources/vadd.cpp"
+    ],
+    "cuNames": [
+     "vadd_1"
+    ]
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Nov  2 21:23:08 2020",
+ "timestampMillis": "1604348588832",
+ "buildStep": {
+  "cmdId": "689a0d1c-ee80-4498-af6e-e9f22830f303",
+  "name": "system_link",
+  "logFile": "",
+  "commandLine": "system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/sys_link",
+  "args": [
+   "--xo",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/xclbin/vadd.hw.xo",
+   "-keep",
+   "--config",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/syslinkConfig.ini",
+   "--xpfm",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--target",
+   "hw",
+   "--output_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int",
+   "--temp_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/sys_link"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:08 2020",
+ "timestampMillis": "1604348588833",
+ "status": {
+  "cmdId": "689a0d1c-ee80-4498-af6e-e9f22830f303",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:40 2020",
+ "timestampMillis": "1604348620260",
+ "status": {
+  "cmdId": "689a0d1c-ee80-4498-af6e-e9f22830f303",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Nov  2 21:23:40 2020",
+ "timestampMillis": "1604348620271",
+ "buildStep": {
+  "cmdId": "348163a2-26d1-44d6-899d-f9f606368f9a",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.1.xml",
+  "args": [
+   "-sdsl",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/sdsl.dat",
+   "-rtd",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/cf2sw.rtd",
+   "-xclbin",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.xml",
+   "-o",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.1.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:40 2020",
+ "timestampMillis": "1604348620273",
+ "status": {
+  "cmdId": "348163a2-26d1-44d6-899d-f9f606368f9a",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:43 2020",
+ "timestampMillis": "1604348623966",
+ "status": {
+  "cmdId": "348163a2-26d1-44d6-899d-f9f606368f9a",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Nov  2 21:23:43 2020",
+ "timestampMillis": "1604348623980",
+ "buildStep": {
+  "cmdId": "d0b05912-1db7-4bbe-baf6-70a6f2fa24fa",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/kernel_info.dat",
+  "args": [
+   "--rtdJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/cf2sw.rtd",
+   "--diagramJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModel.json",
+   "--platformFilePath",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--generatedByName",
+   "v++",
+   "--generatedByVersion",
+   "2019.2",
+   "--generatedByChangeList",
+   "2708876",
+   "--generatedByTimeStamp",
+   "Wed Nov  6 21:39:14 MST 2019",
+   "--generatedByOptions",
+   "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo ",
+   "--generatedByXclbinName",
+   "vadd.hw",
+   "--kernelInfoDataFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/kernel_info.dat"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:43 2020",
+ "timestampMillis": "1604348623981",
+ "status": {
+  "cmdId": "d0b05912-1db7-4bbe-baf6-70a6f2fa24fa",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Mon Nov  2 21:23:45 2020",
+ "timestampMillis": "1604348625668",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModel.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:45 2020",
+ "timestampMillis": "1604348625682",
+ "status": {
+  "cmdId": "d0b05912-1db7-4bbe-baf6-70a6f2fa24fa",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Nov  2 21:23:45 2020",
+ "timestampMillis": "1604348625700",
+ "buildStep": {
+  "cmdId": "e195e051-259b-4e75-9786-2080cb41892e",
+  "name": "vpl",
+  "logFile": "",
+  "commandLine": "vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/dr.bd.tcl",
+  "args": [
+   "-t",
+   "hw",
+   "-f",
+   "xilinx_u280_xdma_201920_3",
+   "-g",
+   "--kernel_frequency",
+   "140",
+   "--profile_kernel",
+   "data:all:all:all:all",
+   "-s",
+   "--output_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int",
+   "--log_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/logs/link",
+   "--report_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link",
+   "--config",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vplConfig.ini",
+   "-k",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/kernel_info.dat",
+   "--webtalk_flag",
+   "Vitis",
+   "--temp_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link",
+   "--no-info",
+   "--tlog_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/.tlog/v++_link_vadd.hw",
+   "--iprepo",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0",
+   "--messageDb",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/run_link/vpl.pb",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/dr.bd.tcl"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:45 2020",
+ "timestampMillis": "1604348625701",
+ "status": {
+  "cmdId": "e195e051-259b-4e75-9786-2080cb41892e",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Mon Nov  2 21:23:47 2020",
+ "timestampMillis": "1604348627415",
+ "buildStep": {
+  "cmdId": "602cf608-ee2f-47ea-9062-023671417618",
+  "name": "vpl",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/dr.bd.tcl ",
+  "args": [],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:23:47 2020",
+ "timestampMillis": "1604348627417",
+ "status": {
+  "cmdId": "602cf608-ee2f-47ea-9062-023671417618",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Mon Nov  2 21:25:36 2020",
+ "timestampMillis": "1604348736353",
+ "buildStep": {
+  "cmdId": "23ccfbe9-215c-4db6-b9ec-aeac3941622d",
+  "name": "vivado",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/vivado/vpl/vivado.log",
+  "commandLine": "vivado -log vivado.log -applog -m64 -messageDb vivado.pb -mode batch -source vpl.tcl -notrace",
+  "args": [
+   "-log",
+   "vivado.log",
+   "-applog",
+   " -m64",
+   "-messageDb",
+   "vivado.pb",
+   "-mode",
+   "batch",
+   "-source",
+   "vpl.tcl",
+   "-notrace"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Mon Nov  2 21:25:36 2020",
+ "timestampMillis": "1604348736354",
+ "status": {
+  "cmdId": "23ccfbe9-215c-4db6-b9ec-aeac3941622d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 00:14:46 2020",
+ "timestampMillis": "1604358886946",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/vivado/vpl/output/systemDiagramModel_synthed.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 01:27:59 2020",
+ "timestampMillis": "1604363279537",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/vivado/vpl/output/systemDiagramModel_placed.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 04:52:16 2020",
+ "timestampMillis": "1604375536703",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/vivado/vpl/output/systemDiagramModel_routed.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:42 2020",
+ "timestampMillis": "1604378322308",
+ "status": {
+  "cmdId": "23ccfbe9-215c-4db6-b9ec-aeac3941622d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:44 2020",
+ "timestampMillis": "1604378324472",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/kernel_util_routed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "GLOBAL_UTILIZATION_ROUTE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:44 2020",
+ "timestampMillis": "1604378324485",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/kernel_util_placed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "GLOBAL_UTILIZATION_PLACEMENT"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:44 2020",
+ "timestampMillis": "1604378324491",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/kernel_util_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_UTILIZATION_ROUTE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:44 2020",
+ "timestampMillis": "1604378324498",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/kernel_util_synthed.xutil",
+  "name": "",
+  "fileType": "XUTIL",
+  "reportType": "GLOBAL_UTILIZATION_SYNTHESIS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:44 2020",
+ "timestampMillis": "1604378324504",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/kernel_util_placed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_UTILIZATION_PLACEMENT"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325245",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_memory_subsystem_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325252",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_hmss_0_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325258",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_vadd_1_0_utilization_synth.rpt",
+  "name": "vadd",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325265",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_xbar_6_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325271",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_xbar_2_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325278",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_xbar_4_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325285",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_hub_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325292",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon10_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325298",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon11_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325305",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon12_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325311",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon13_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325317",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon14_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325324",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon15_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325331",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon16_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325337",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon17_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325343",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon18_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325349",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon19_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325356",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon20_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325362",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon21_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325369",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon22_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325375",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon23_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325382",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon24_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325389",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon25_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325395",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon26_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325401",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon27_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325408",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon28_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325415",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon29_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325421",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon30_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325427",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon31_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325434",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon32_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325441",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon33_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325447",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon5_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325454",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon6_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325460",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon7_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325467",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon8_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325473",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_dpa_mon9_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325480",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect2_1_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325487",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect3_2_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325493",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_hbm_inst_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325500",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect9_8_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325507",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect12_11_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325519",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect11_10_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325556",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect8_7_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325565",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect6_5_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325571",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect10_9_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325577",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect5_4_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325584",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect4_3_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325590",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect7_6_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325596",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_slice0_12_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325603",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_slice13_12_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325608",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_switch_2to1_12_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325614",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect14_13_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325620",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect15_14_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325626",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect16_15_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325632",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect17_16_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325638",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect18_17_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325644",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect19_18_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325651",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect20_19_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325657",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect21_20_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325758",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect22_21_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325764",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect23_22_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325770",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect24_23_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325776",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect25_24_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325782",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect26_25_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325788",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect27_26_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325832",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect28_27_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325839",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect29_28_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325845",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect30_29_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325851",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect31_30_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325858",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_5dca_interconnect32_31_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325864",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/bd_d216_interconnect_PLRAM_MEM00_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325870",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_m01_regslice_11_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325876",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_auto_cc_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325882",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_tier2_xbar_1_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325888",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_tier2_xbar_0_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325894",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_tier2_xbar_2_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325900",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_tier2_xbar_3_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325905",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/syn/pfm_dynamic_tier2_xbar_4_0_utilization_synth.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_UTILIZATION"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:45 2020",
+ "timestampMillis": "1604378325975",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326045",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_postroute_physopted.rpt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_REPORT_TIMING_SUMMARY"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326457",
+ "status": {
+  "cmdId": "602cf608-ee2f-47ea-9062-023671417618",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326517",
+ "status": {
+  "cmdId": "e195e051-259b-4e75-9786-2080cb41892e",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326540",
+ "buildStep": {
+  "cmdId": "c0d46371-530e-437f-9e61-6adb5f900a9b",
+  "name": "rtdgen",
+  "logFile": "",
+  "commandLine": "rtdgen",
+  "args": [],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326541",
+ "status": {
+  "cmdId": "c0d46371-530e-437f-9e61-6adb5f900a9b",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326556",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw_xml.rtd",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "XCLBIN_INFO"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326567",
+ "buildStep": {
+  "cmdId": "f3529789-f0ae-48fa-adbe-80fbe8b64b46",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xml",
+  "args": [
+   "-a",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/address_map.xml",
+   "-sdsl",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/sdsl.dat",
+   "-xclbin",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/xclbin_orig.xml",
+   "-rtd",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd",
+   "-o",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:46 2020",
+ "timestampMillis": "1604378326568",
+ "status": {
+  "cmdId": "f3529789-f0ae-48fa-adbe-80fbe8b64b46",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:50 2020",
+ "timestampMillis": "1604378330360",
+ "status": {
+  "cmdId": "f3529789-f0ae-48fa-adbe-80fbe8b64b46",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Nov  3 05:38:50 2020",
+ "timestampMillis": "1604378330365",
+ "buildStep": {
+  "cmdId": "753df001-8e4d-41c2-ac1a-8ba728d76a08",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModel_resource_use.json --diagramWithAddressesAndSlrsJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json",
+  "args": [
+   "--rtdJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd",
+   "--diagramJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModel_resource_use.json",
+   "--diagramWithAddressesAndSlrsJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:50 2020",
+ "timestampMillis": "1604378330367",
+ "status": {
+  "cmdId": "753df001-8e4d-41c2-ac1a-8ba728d76a08",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:51 2020",
+ "timestampMillis": "1604378331800",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM_PLUS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:51 2020",
+ "timestampMillis": "1604378331811",
+ "status": {
+  "cmdId": "753df001-8e4d-41c2-ac1a-8ba728d76a08",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:51 2020",
+ "timestampMillis": "1604378331817",
+ "status": {
+  "cmdId": "c0d46371-530e-437f-9e61-6adb5f900a9b",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Nov  3 05:38:51 2020",
+ "timestampMillis": "1604378331826",
+ "buildStep": {
+  "cmdId": "e49821ed-6d07-4008-a434-6030ff64cb6f",
+  "name": "xclbinutil",
+  "logFile": "",
+  "commandLine": "xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin",
+  "args": [
+   "--add-section",
+   "DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/debug_ip_layout.rtd",
+   "--add-section",
+   "BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/partial.bit",
+   "--force",
+   "--key-value",
+   "SYS:mode:hw_pr",
+   "--add-section",
+   ":JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.rtd",
+   "--append-section",
+   ":JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/appendSection.rtd",
+   "--add-section",
+   "CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw_xml.rtd",
+   "--add-section",
+   "BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw_build.rtd",
+   "--add-section",
+   "EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xml",
+   "--add-section",
+   "SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json",
+   "--output",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:51 2020",
+ "timestampMillis": "1604378331827",
+ "status": {
+  "cmdId": "e49821ed-6d07-4008-a434-6030ff64cb6f",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:52 2020",
+ "timestampMillis": "1604378332221",
+ "status": {
+  "cmdId": "e49821ed-6d07-4008-a434-6030ff64cb6f",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Tue Nov  3 05:38:52 2020",
+ "timestampMillis": "1604378332230",
+ "buildStep": {
+  "cmdId": "efcf347d-4c07-4bc8-b09f-e70a10c18a56",
+  "name": "xclbinutilinfo",
+  "logFile": "",
+  "commandLine": "xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin",
+  "args": [
+   "--quiet",
+   "--info",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin.info",
+   "--input",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/link/int/vadd.hw.xclbin"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:52 2020",
+ "timestampMillis": "1604378332231",
+ "status": {
+  "cmdId": "efcf347d-4c07-4bc8-b09f-e70a10c18a56",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:38:52 2020",
+ "timestampMillis": "1604378332708",
+ "status": {
+  "cmdId": "efcf347d-4c07-4bc8-b09f-e70a10c18a56",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:52 2020",
+ "timestampMillis": "1604378332760",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/system_estimate_vadd.hw.xtxt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SYSTEM_ESTIMATE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:53 2020",
+ "timestampMillis": "1604378333012",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:38:53 2020",
+ "timestampMillis": "1604378333014",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/v++_link_vadd.hw_guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Tue Nov  3 05:39:49 2020",
+ "timestampMillis": "1604378389180",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test_struct_512_channels_32/_x.hw/vadd/logs/optraceViewer.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "OPERATION_TRACE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Nov  3 05:39:49 2020",
+ "timestampMillis": "1604378389190",
+ "status": {
+  "cmdId": "c7dc6b83-f11a-4562-9b58-bc5ae151ee9b",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>

@@ -1,0 +1,705 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:44433
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/xclbin/vadd.hw.xo.compile_summary, at Sun Nov  8 21:25:59 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sun Nov  8 21:26:00 2020
+Running Rule Check Server on port:36037
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Sun Nov  8 21:26:01 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 171.24 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance load_HBM38 load_HBM38_U0 54566
+Add Instance load_HBM39 load_HBM39_U0 54765
+Add Instance load_HBM40 load_HBM40_U0 54964
+Add Instance load_HBM41 load_HBM41_U0 55163
+Add Instance load_HBM42 load_HBM42_U0 55362
+Add Instance load_HBM43 load_HBM43_U0 55561
+Add Instance load_HBM44 load_HBM44_U0 55760
+Add Instance load_HBM45 load_HBM45_U0 55959
+Add Instance load_HBM46 load_HBM46_U0 56158
+Add Instance load_HBM47 load_HBM47_U0 56357
+Add Instance load_HBM48 load_HBM48_U0 56556
+Add Instance load_HBM49 load_HBM49_U0 56755
+Add Instance load_HBM50 load_HBM50_U0 56954
+Add Instance load_HBM51 load_HBM51_U0 57153
+Add Instance load_HBM52 load_HBM52_U0 57352
+Add Instance load_HBM53 load_HBM53_U0 57551
+Add Instance load_HBM54 load_HBM54_U0 57750
+Add Instance load_HBM55 load_HBM55_U0 57949
+Add Instance load_HBM56 load_HBM56_U0 58148
+Add Instance load_HBM57 load_HBM57_U0 58347
+Add Instance load_HBM58 load_HBM58_U0 58546
+Add Instance load_HBM59 load_HBM59_U0 58745
+Add Instance load_HBM60 load_HBM60_U0 58944
+Add Instance load_HBM61 load_HBM61_U0 59143
+Add Instance load_HBM62 load_HBM62_U0 59342
+Add Instance load_HBM63 load_HBM63_U0 59541
+Add Instance load_HBM64 load_HBM64_U0 59740
+Add Instance load_HBM65 load_HBM65_U0 59939
+Add Instance vadd_entry32 vadd_entry32_U0 60138
+Add Instance write_results_28_s write_results_28_U0 65521
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 55m 40s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:39587
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/xclbin/vadd.hw.xclbin.link_summary, at Sun Nov  8 22:21:40 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sun Nov  8 22:21:40 2020
+Running Rule Check Server on port:41575
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Sun Nov  8 22:21:41 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [22:21:56] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Sun Nov  8 22:22:03 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [22:22:24] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [22:22:32] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 261379 ; free virtual = 423663
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [22:22:32] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [22:22:38] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 261429 ; free virtual = 423713
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [22:22:38] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [22:22:41] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 261416 ; free virtual = 423706
+INFO: [v++ 60-1441] [22:22:42] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:46 . Memory (MB): peak = 741.184 ; gain = 0.000 ; free physical = 261437 ; free virtual = 423726
+INFO: [v++ 60-1443] [22:22:42] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [22:22:45] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 741.184 ; gain = 0.000 ; free physical = 261433 ; free virtual = 423723
+INFO: [v++ 60-1443] [22:22:45] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [22:22:47] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 741.184 ; gain = 0.000 ; free physical = 261407 ; free virtual = 423698
+INFO: [v++ 60-1443] [22:22:47] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[22:24:12] Run vpl: Step create_project: Started
+Creating Vivado project.
+[22:24:15] Run vpl: Step create_project: Completed
+[22:24:15] Run vpl: Step create_bd: Started
+[22:26:24] Run vpl: Step create_bd: RUNNING...
+[22:28:29] Run vpl: Step create_bd: RUNNING...
+[22:30:22] Run vpl: Step create_bd: RUNNING...
+[22:32:36] Run vpl: Step create_bd: RUNNING...
+[22:34:16] Run vpl: Step create_bd: RUNNING...
+[22:36:05] Run vpl: Step create_bd: RUNNING...
+[22:36:24] Run vpl: Step create_bd: Completed
+[22:36:25] Run vpl: Step update_bd: Started
+[22:38:25] Run vpl: Step update_bd: RUNNING...
+[22:40:01] Run vpl: Step update_bd: Completed
+[22:40:01] Run vpl: Step generate_target: Started
+[22:41:44] Run vpl: Step generate_target: RUNNING...
+[22:43:41] Run vpl: Step generate_target: RUNNING...
+[22:45:19] Run vpl: Step generate_target: RUNNING...
+[22:47:08] Run vpl: Step generate_target: RUNNING...
+[22:49:07] Run vpl: Step generate_target: RUNNING...
+[22:50:19] Run vpl: Step generate_target: Completed
+[22:50:19] Run vpl: Step config_hw_runs: Started
+[22:52:13] Run vpl: Step config_hw_runs: Completed
+[22:52:13] Run vpl: Step synth: Started
+[22:54:00] Block-level synthesis in progress, 0 of 68 jobs complete, 8 jobs running.
+[22:55:25] Block-level synthesis in progress, 0 of 68 jobs complete, 8 jobs running.
+[22:56:48] Block-level synthesis in progress, 8 of 68 jobs complete, 8 jobs running.
+[22:58:10] Block-level synthesis in progress, 8 of 68 jobs complete, 8 jobs running.
+[22:59:32] Block-level synthesis in progress, 16 of 68 jobs complete, 0 jobs running.
+[23:00:50] Block-level synthesis in progress, 16 of 68 jobs complete, 8 jobs running.
+[23:02:15] Block-level synthesis in progress, 23 of 68 jobs complete, 1 job running.
+[23:03:39] Block-level synthesis in progress, 24 of 68 jobs complete, 8 jobs running.
+[23:05:06] Block-level synthesis in progress, 29 of 68 jobs complete, 4 jobs running.
+[23:06:28] Block-level synthesis in progress, 29 of 68 jobs complete, 8 jobs running.
+[23:07:47] Block-level synthesis in progress, 36 of 68 jobs complete, 2 jobs running.
+[23:09:05] Block-level synthesis in progress, 36 of 68 jobs complete, 8 jobs running.
+[23:10:30] Block-level synthesis in progress, 43 of 68 jobs complete, 5 jobs running.
+[23:11:22] Block-level synthesis in progress, 43 of 68 jobs complete, 8 jobs running.
+[23:12:52] Block-level synthesis in progress, 50 of 68 jobs complete, 7 jobs running.
+[23:14:41] Block-level synthesis in progress, 52 of 68 jobs complete, 6 jobs running.
+[23:16:00] Block-level synthesis in progress, 57 of 68 jobs complete, 8 jobs running.
+[23:17:27] Block-level synthesis in progress, 63 of 68 jobs complete, 2 jobs running.
+[23:18:52] Block-level synthesis in progress, 64 of 68 jobs complete, 4 jobs running.
+[23:20:17] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:21:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:23:04] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:24:28] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:25:54] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:27:16] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:28:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:30:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:31:27] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:32:55] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:34:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:35:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:37:08] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:38:32] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:39:59] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:41:23] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:42:47] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:44:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:45:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:47:04] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:48:26] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:49:50] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:51:13] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:52:36] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:53:59] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:55:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:56:47] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:58:11] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[23:59:34] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:02:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:03:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:05:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:06:32] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:07:58] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:09:26] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:10:51] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:12:17] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:13:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:15:05] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:16:30] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:17:55] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:19:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:20:45] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:22:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:23:32] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:24:56] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:26:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:27:45] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:29:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:30:35] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:32:00] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:33:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:34:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:36:15] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:37:41] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:39:07] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:40:32] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:42:00] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:43:25] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:44:50] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:46:15] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:47:41] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:49:07] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:50:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:51:56] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:53:28] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:55:17] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:57:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[00:59:22] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:00:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:02:16] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:03:43] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:05:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:06:35] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:08:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:09:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:10:57] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:12:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:13:52] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:15:18] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:16:45] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:18:11] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:19:37] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:21:04] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:22:30] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:23:57] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:25:23] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:26:48] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:28:15] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:29:43] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:31:12] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:32:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:34:08] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:35:36] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:37:05] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:38:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:39:57] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:42:46] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:44:10] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:45:37] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:47:02] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:48:29] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:49:54] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:51:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:52:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:54:15] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[01:55:43] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[02:02:41] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:04:28] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:05:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:07:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:08:43] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:10:10] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:11:36] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:13:01] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:14:29] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:15:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:17:19] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:18:44] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:20:07] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:21:30] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:22:56] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:24:18] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:25:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:27:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:28:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:29:58] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:31:23] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:32:50] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:34:16] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:35:42] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:37:08] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:38:34] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:39:59] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:41:23] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:42:49] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:44:14] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:45:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:47:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:48:29] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:49:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:51:20] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:52:43] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:54:06] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:55:30] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:56:52] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:58:16] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[02:59:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:01:02] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:02:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:03:50] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:05:14] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:06:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:08:06] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:09:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:10:59] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:12:25] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:13:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:15:18] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:16:42] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:18:09] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:19:36] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:21:03] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:22:28] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:23:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:25:18] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:26:42] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:28:07] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:29:32] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:30:56] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:32:20] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:33:46] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:35:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:36:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:37:59] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:39:24] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:40:50] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:42:15] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:43:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:45:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:46:32] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:48:00] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:49:25] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:50:49] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:52:14] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:53:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:55:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:56:29] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:57:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[03:59:19] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:00:44] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:02:08] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:03:31] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:04:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:06:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:07:41] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:09:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:10:30] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:11:56] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:13:20] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:14:46] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:16:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:17:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:19:02] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:20:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:21:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:23:19] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:24:43] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:26:08] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:27:34] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:28:59] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:30:26] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:31:49] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:33:13] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:34:39] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:36:04] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:37:28] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:38:52] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:40:18] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:41:42] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:43:07] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:44:31] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:45:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:47:24] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:48:48] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:50:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:51:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:53:02] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:54:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:55:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:57:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[04:58:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:00:02] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:01:25] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:02:48] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:04:11] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:05:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:06:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:08:21] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:09:45] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:11:09] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:12:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:14:01] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:15:26] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:16:50] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:18:15] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:19:39] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:21:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:22:32] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:23:56] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:25:20] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:26:44] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:28:09] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:29:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:30:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:32:23] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:33:47] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:35:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:36:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:37:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:39:22] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:40:46] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:42:11] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:43:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:45:00] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:46:24] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:47:49] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:49:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:50:36] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:52:02] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:53:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:54:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:56:19] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:57:43] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[05:59:07] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:00:31] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:01:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:03:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:04:41] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:06:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:07:29] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:08:54] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:10:19] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:11:43] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:13:10] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:14:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:15:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:17:23] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:18:48] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:20:14] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:21:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:23:00] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:24:24] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:25:46] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:27:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:28:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:30:00] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:31:24] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:32:47] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:34:10] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:35:32] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:36:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:38:20] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:39:44] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:41:10] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:42:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:43:59] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:45:23] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:46:50] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:48:15] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:49:39] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:51:04] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:52:28] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:53:53] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:55:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:56:39] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:58:04] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[06:59:28] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:00:52] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:02:16] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:03:40] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:05:04] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:06:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:07:51] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:09:13] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:10:37] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:12:01] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:13:27] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:14:51] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:16:17] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:17:42] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:19:08] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:20:34] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:21:58] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:23:22] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:24:46] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:26:09] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:27:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:28:58] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:30:22] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:31:47] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:33:12] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:34:35] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:35:58] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:37:22] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:38:44] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:40:08] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:41:33] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:42:57] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[07:44:21] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed

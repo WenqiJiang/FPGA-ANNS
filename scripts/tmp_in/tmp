@@ -1,1 +1,1 @@
-    out_PLRAM[0] = reg0.range(31, 0);
+        unsigned char lookup_idx_A_0 = PQ_code_A_0;

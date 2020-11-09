@@ -1,0 +1,143 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw.xclbin
+Loading: './xclbin/vadd.hw.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 13
+i = 1 result = 16
+i = 2 result = 17
+i = 3 result = 22
+i = 4 result = 26
+i = 5 result = 27
+i = 6 result = 29
+i = 7 result = 37
+i = 8 result = 38
+i = 9 result = 39
+i = 10 result = 41
+i = 11 result = 47
+i = 12 result = 49
+i = 13 result = 51
+i = 14 result = 55
+i = 15 result = 57
+i = 16 result = 60
+i = 17 result = 69
+i = 18 result = 70
+i = 19 result = 78
+i = 20 result = 83
+i = 21 result = 87
+i = 22 result = 96
+i = 23 result = 99
+i = 24 result = 109
+i = 25 result = 111
+i = 26 result = 113
+i = 27 result = 113
+i = 28 result = 126
+i = 29 result = 145
+i = 30 result = 151
+i = 31 result = 154
+i = 32 result = 1
+i = 33 result = 1
+i = 34 result = 5
+i = 35 result = 17
+i = 36 result = 18
+i = 37 result = 22
+i = 38 result = 29
+i = 39 result = 39
+i = 40 result = 52
+i = 41 result = 56
+i = 42 result = 60
+i = 43 result = 60
+i = 44 result = 62
+i = 45 result = 64
+i = 46 result = 73
+i = 47 result = 75
+i = 48 result = 75
+i = 49 result = 90
+i = 50 result = 91
+i = 51 result = 94
+i = 52 result = 94
+i = 53 result = 96
+i = 54 result = 107
+i = 55 result = 108
+i = 56 result = 109
+i = 57 result = 109
+i = 58 result = 114
+i = 59 result = 117
+i = 60 result = 122
+i = 61 result = 125
+i = 62 result = 140
+i = 63 result = 140
+i = 64 result = 16
+i = 65 result = 25
+i = 66 result = 27
+i = 67 result = 33
+i = 68 result = 35
+i = 69 result = 36
+i = 70 result = 43
+i = 71 result = 47
+i = 72 result = 59
+i = 73 result = 61
+i = 74 result = 65
+i = 75 result = 65
+i = 76 result = 68
+i = 77 result = 71
+i = 78 result = 71
+i = 79 result = 72
+i = 80 result = 77
+i = 81 result = 79
+i = 82 result = 82
+i = 83 result = 92
+i = 84 result = 98
+i = 85 result = 105
+i = 86 result = 108
+i = 87 result = 109
+i = 88 result = 109
+i = 89 result = 112
+i = 90 result = 113
+i = 91 result = 115
+i = 92 result = 116
+i = 93 result = 119
+i = 94 result = 120
+i = 95 result = 120
+i = 96 result = 0
+i = 97 result = 4
+i = 98 result = 22
+i = 99 result = 29
+i = 100 result = 30
+i = 101 result = 35
+i = 102 result = 39
+i = 103 result = 39
+i = 104 result = 40
+i = 105 result = 49
+i = 106 result = 50
+i = 107 result = 55
+i = 108 result = 61
+i = 109 result = 62
+i = 110 result = 70
+i = 111 result = 73
+i = 112 result = 76
+i = 113 result = 83
+i = 114 result = 83
+i = 115 result = 84
+i = 116 result = 85
+i = 117 result = 91
+i = 118 result = 98
+i = 119 result = 99
+i = 120 result = 99
+i = 121 result = 101
+i = 122 result = 103
+i = 123 result = 106
+i = 124 result = 116
+i = 125 result = 118
+i = 126 result = 138
+i = 127 result = 151
+TEST PASSED

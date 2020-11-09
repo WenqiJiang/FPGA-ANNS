@@ -1,0 +1,894 @@
+[ 6908.285396] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2d23c00-0xf2d258ff]
+[ 6908.285414] mig.m mig.m.11534359: dev ffff889b88fda810, mig_probe: MIG name: HBM[21], IO start: 0xf2d23c00, end: 0xf2d258ff mig->type 2
+[ 6908.285428] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534359 level 3
+[ 6908.285429] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534359 is active
+[ 6908.285430] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285431] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2da3c00-0xf2da58ff]
+[ 6908.285451] mig.m mig.m.11534360: dev ffff889b88fda010, mig_probe: MIG name: HBM[22], IO start: 0xf2da3c00, end: 0xf2da58ff mig->type 1
+[ 6908.285469] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534360 level 3
+[ 6908.285469] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534360 is active
+[ 6908.285470] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285471] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2da3c00-0xf2da58ff]
+[ 6908.285489] mig.m mig.m.11534361: dev ffff889b88fdac10, mig_probe: MIG name: HBM[23], IO start: 0xf2da3c00, end: 0xf2da58ff mig->type 2
+[ 6908.285501] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534361 level 3
+[ 6908.285502] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534361 is active
+[ 6908.285503] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285505] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2d43c00-0xf2d458ff]
+[ 6908.285523] mig.m mig.m.11534362: dev ffff889b85b4e010, mig_probe: MIG name: HBM[24], IO start: 0xf2d43c00, end: 0xf2d458ff mig->type 1
+[ 6908.285547] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534362 level 3
+[ 6908.285548] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534362 is active
+[ 6908.285549] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285550] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2d43c00-0xf2d458ff]
+[ 6908.285576] mig.m mig.m.11534363: dev ffff889b85b4e410, mig_probe: MIG name: HBM[25], IO start: 0xf2d43c00, end: 0xf2d458ff mig->type 2
+[ 6908.285589] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534363 level 3
+[ 6908.285590] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534363 is active
+[ 6908.285591] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285605] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2dc3c00-0xf2dc58ff]
+[ 6908.285621] mig.m mig.m.11534364: dev ffff889b88808410, mig_probe: MIG name: HBM[26], IO start: 0xf2dc3c00, end: 0xf2dc58ff mig->type 1
+[ 6908.285638] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534364 level 3
+[ 6908.285639] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534364 is active
+[ 6908.285640] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285643] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2dc3c00-0xf2dc58ff]
+[ 6908.285659] mig.m mig.m.11534365: dev ffff889b88b8e010, mig_probe: MIG name: HBM[27], IO start: 0xf2dc3c00, end: 0xf2dc58ff mig->type 2
+[ 6908.285670] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534365 level 3
+[ 6908.285671] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534365 is active
+[ 6908.285672] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285673] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2d63c00-0xf2d658ff]
+[ 6908.285688] mig.m mig.m.11534366: dev ffff889b89b31010, mig_probe: MIG name: HBM[28], IO start: 0xf2d63c00, end: 0xf2d658ff mig->type 1
+[ 6908.285703] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534366 level 3
+[ 6908.285704] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534366 is active
+[ 6908.285705] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285706] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2d63c00-0xf2d658ff]
+[ 6908.285731] mig.m mig.m.11534367: dev ffff889b88816010, mig_probe: MIG name: HBM[29], IO start: 0xf2d63c00, end: 0xf2d658ff mig->type 2
+[ 6908.285745] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534367 level 3
+[ 6908.285746] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534367 is active
+[ 6908.285747] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285749] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2de3c00-0xf2de58ff]
+[ 6908.285767] mig.m mig.m.11534368: dev ffff889b88abd410, mig_probe: MIG name: HBM[30], IO start: 0xf2de3c00, end: 0xf2de58ff mig->type 1
+[ 6908.285785] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534368 level 3
+[ 6908.285786] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534368 is active
+[ 6908.285787] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: creating subdev mig.m multi 1 level 3
+[ 6908.285789] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: resource [mem 0xf2de3c00-0xf2de58ff]
+[ 6908.285808] mig.m mig.m.11534369: dev ffff889b888a8c10, mig_probe: MIG name: HBM[31], IO start: 0xf2de3c00, end: 0xf2de58ff mig->type 2
+[ 6908.285822] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: Created subdev mig inst 11534369 level 3
+[ 6908.285823] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, __xocl_subdev_create: subdev mig.m inst 11534369 is active
+[ 6908.285829] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, cmc_access_ops: ep_gapping_demand_00 is 0x0, set New Feature Table to 0x20000000
+[ 6908.285830] xclmgmt 0000:00:0a.0: dev ffff889b8a0600a0, cmc_access_ops: No ep_cmc_mutex_00 resource, skip.
+[ 6908.285831] icap.m icap.m.16777216: dev ffff889b888a2010, icap_download_bitstream_axlf: icap_download_bitstream_axlf err: 0
+[ 6908.286594] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 7 via HW
+[ 6908.286845] icap.u icap.u.16777216: dev ffff889b88936010, get_axlf_section_hdr: section 8 offset: 63276736, size: 2808
+[ 6908.286910] icap.u icap.u.16777216: dev ffff889b88936010, icap_parse_bitstream_axlf_section: icap_parse_bitstream_axlf_section kind 8, err: 0
+[ 6908.286912] icap.u icap.u.16777216: dev ffff889b88936010, get_axlf_section_hdr: section 6 offset: 63275128, size: 1608
+[ 6908.286918] icap.u icap.u.16777216: dev ffff889b88936010, icap_parse_bitstream_axlf_section: icap_parse_bitstream_axlf_section kind 6, err: 0
+[ 6908.286919] icap.u icap.u.16777216: dev ffff889b88936010, get_axlf_section_hdr: section 7 offset: 63279544, size: 424
+[ 6908.286924] icap.u icap.u.16777216: dev ffff889b88936010, icap_parse_bitstream_axlf_section: icap_parse_bitstream_axlf_section kind 7, err: 0
+[ 6908.286925] icap.u icap.u.16777216: dev ffff889b88936010, get_axlf_section_hdr: section 9 offset: 816, size: 5624
+[ 6908.286931] icap.u icap.u.16777216: dev ffff889b88936010, icap_parse_bitstream_axlf_section: icap_parse_bitstream_axlf_section kind 9, err: 0
+[ 6908.286936] icap.u icap.u.16777216: dev ffff889b88936010, get_axlf_section_hdr: section 11 offset: 63279968, size: 410
+[ 6908.286947] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287024] mig.u mig.u.11534336: dev ffff889b88a1a010, ecc_reset: Unable to reset from userpf
+[ 6908.287034] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534336 level 3
+[ 6908.287036] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534336 is active
+[ 6908.287038] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287072] mig.u mig.u.11534337: dev ffff889b88b43410, ecc_reset: Unable to reset from userpf
+[ 6908.287076] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534337 level 3
+[ 6908.287078] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534337 is active
+[ 6908.287079] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287121] mig.u mig.u.11534338: dev ffff889b88810010, ecc_reset: Unable to reset from userpf
+[ 6908.287125] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534338 level 3
+[ 6908.287126] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534338 is active
+[ 6908.287128] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287158] mig.u mig.u.11534339: dev ffff889b8885f410, ecc_reset: Unable to reset from userpf
+[ 6908.287161] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534339 level 3
+[ 6908.287163] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534339 is active
+[ 6908.287164] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287190] mig.u mig.u.11534340: dev ffff889b8885f810, ecc_reset: Unable to reset from userpf
+[ 6908.287194] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534340 level 3
+[ 6908.287196] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534340 is active
+[ 6908.287197] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287226] mig.u mig.u.11534341: dev ffff889b89401410, ecc_reset: Unable to reset from userpf
+[ 6908.287230] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534341 level 3
+[ 6908.287231] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534341 is active
+[ 6908.287233] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287260] mig.u mig.u.11534342: dev ffff889b88b8f810, ecc_reset: Unable to reset from userpf
+[ 6908.287265] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534342 level 3
+[ 6908.287266] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534342 is active
+[ 6908.287267] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287308] mig.u mig.u.11534343: dev ffff889b88938810, ecc_reset: Unable to reset from userpf
+[ 6908.287312] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534343 level 3
+[ 6908.287313] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534343 is active
+[ 6908.287315] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287336] mig.u mig.u.11534344: dev ffff889b88afac10, ecc_reset: Unable to reset from userpf
+[ 6908.287340] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534344 level 3
+[ 6908.287341] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534344 is active
+[ 6908.287342] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287359] mig.u mig.u.11534345: dev ffff889b88afa010, ecc_reset: Unable to reset from userpf
+[ 6908.287362] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534345 level 3
+[ 6908.287363] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534345 is active
+[ 6908.287364] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287380] mig.u mig.u.11534346: dev ffff889b8884fc10, ecc_reset: Unable to reset from userpf
+[ 6908.287383] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534346 level 3
+[ 6908.287384] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534346 is active
+[ 6908.287384] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287406] mig.u mig.u.11534347: dev ffff889b8884f010, ecc_reset: Unable to reset from userpf
+[ 6908.287409] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534347 level 3
+[ 6908.287409] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534347 is active
+[ 6908.287411] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287427] mig.u mig.u.11534348: dev ffff889b8884f410, ecc_reset: Unable to reset from userpf
+[ 6908.287430] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534348 level 3
+[ 6908.287430] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534348 is active
+[ 6908.287431] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287446] mig.u mig.u.11534349: dev ffff889b88ab3810, ecc_reset: Unable to reset from userpf
+[ 6908.287449] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534349 level 3
+[ 6908.287449] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534349 is active
+[ 6908.287450] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287465] mig.u mig.u.11534350: dev ffff889b88ab3410, ecc_reset: Unable to reset from userpf
+[ 6908.287469] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534350 level 3
+[ 6908.287470] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534350 is active
+[ 6908.287471] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287488] mig.u mig.u.11534351: dev ffff889b88ab3010, ecc_reset: Unable to reset from userpf
+[ 6908.287491] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534351 level 3
+[ 6908.287491] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534351 is active
+[ 6908.287492] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287507] mig.u mig.u.11534352: dev ffff889b88ac7c10, ecc_reset: Unable to reset from userpf
+[ 6908.287511] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534352 level 3
+[ 6908.287511] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534352 is active
+[ 6908.287512] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287544] mig.u mig.u.11534353: dev ffff889b88a61010, ecc_reset: Unable to reset from userpf
+[ 6908.287548] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534353 level 3
+[ 6908.287549] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534353 is active
+[ 6908.287550] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287579] mig.u mig.u.11534354: dev ffff889b8885c810, ecc_reset: Unable to reset from userpf
+[ 6908.287584] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534354 level 3
+[ 6908.287585] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534354 is active
+[ 6908.287587] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287617] mig.u mig.u.11534355: dev ffff889b88aaf810, ecc_reset: Unable to reset from userpf
+[ 6908.287623] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534355 level 3
+[ 6908.287624] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534355 is active
+[ 6908.287625] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287660] mig.u mig.u.11534356: dev ffff889b88aaf010, ecc_reset: Unable to reset from userpf
+[ 6908.287665] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534356 level 3
+[ 6908.287666] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534356 is active
+[ 6908.287668] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287719] mig.u mig.u.11534357: dev ffff889b88aaf410, ecc_reset: Unable to reset from userpf
+[ 6908.287723] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534357 level 3
+[ 6908.287724] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534357 is active
+[ 6908.287725] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287788] mig.u mig.u.11534358: dev ffff889b88a1f010, ecc_reset: Unable to reset from userpf
+[ 6908.287792] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534358 level 3
+[ 6908.287793] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534358 is active
+[ 6908.287795] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287829] mig.u mig.u.11534359: dev ffff889b88a91010, ecc_reset: Unable to reset from userpf
+[ 6908.287833] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534359 level 3
+[ 6908.287834] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534359 is active
+[ 6908.287835] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287868] mig.u mig.u.11534360: dev ffff889b8893e410, ecc_reset: Unable to reset from userpf
+[ 6908.287872] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534360 level 3
+[ 6908.287873] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534360 is active
+[ 6908.287875] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287918] mig.u mig.u.11534361: dev ffff889b8893e010, ecc_reset: Unable to reset from userpf
+[ 6908.287923] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534361 level 3
+[ 6908.287924] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534361 is active
+[ 6908.287926] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287956] mig.u mig.u.11534362: dev ffff889b8a6a7010, ecc_reset: Unable to reset from userpf
+[ 6908.287961] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534362 level 3
+[ 6908.287963] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534362 is active
+[ 6908.287964] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.287991] mig.u mig.u.11534363: dev ffff889b88aab010, ecc_reset: Unable to reset from userpf
+[ 6908.287994] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534363 level 3
+[ 6908.287995] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534363 is active
+[ 6908.287997] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288054] mig.u mig.u.11534364: dev ffff889b88aabc10, ecc_reset: Unable to reset from userpf
+[ 6908.288087] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534364 level 3
+[ 6908.288088] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534364 is active
+[ 6908.288091] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288120] mig.u mig.u.11534365: dev ffff889b88af7c10, ecc_reset: Unable to reset from userpf
+[ 6908.288125] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534365 level 3
+[ 6908.288126] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534365 is active
+[ 6908.288128] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288156] mig.u mig.u.11534366: dev ffff889783e23c10, ecc_reset: Unable to reset from userpf
+[ 6908.288160] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534366 level 3
+[ 6908.288161] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534366 is active
+[ 6908.288163] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288186] mig.u mig.u.11534367: dev ffff889783e23010, ecc_reset: Unable to reset from userpf
+[ 6908.288191] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534367 level 3
+[ 6908.288192] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534367 is active
+[ 6908.288194] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288228] mig.u mig.u.11534368: dev ffff889783e23810, ecc_reset: Unable to reset from userpf
+[ 6908.288233] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534368 level 3
+[ 6908.288234] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534368 is active
+[ 6908.288236] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: creating subdev mig.u multi 1 level 3
+[ 6908.288260] mig.u mig.u.11534369: dev ffff889b89401010, ecc_reset: Unable to reset from userpf
+[ 6908.288264] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: Created subdev mig inst 11534369 level 3
+[ 6908.288265] xocl 0000:00:0a.1: dev ffff889b8a0658a0, __xocl_subdev_create: subdev mig.u inst 11534369 is active
+[ 6908.288267] icap.u icap.u.16777216: dev ffff889b88936010, icap_download_bitstream_axlf: icap_download_bitstream_axlf err: 0
+[ 6908.288270] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Topology count = 40, data_length = 1600
+[ 6908.288281] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[0]
+[ 6908.288283] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x0
+[ 6908.288284] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288284] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:1
+[ 6908.288285] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288286] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[1]
+[ 6908.288287] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x10000000
+[ 6908.288287] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288288] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:1
+[ 6908.288289] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288290] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[2]
+[ 6908.288291] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x20000000
+[ 6908.288291] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288292] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288292] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288293] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[3]
+[ 6908.288294] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x30000000
+[ 6908.288294] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288295] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288295] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288296] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[4]
+[ 6908.288297] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x40000000
+[ 6908.288298] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288299] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288300] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288301] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[5]
+[ 6908.288301] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x50000000
+[ 6908.288302] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288303] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288303] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288304] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[6]
+[ 6908.288304] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x60000000
+[ 6908.288305] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288306] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288306] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288307] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[7]
+[ 6908.288308] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x70000000
+[ 6908.288309] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288310] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288311] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288312] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[8]
+[ 6908.288313] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x80000000
+[ 6908.288314] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288314] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288315] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288315] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[9]
+[ 6908.288316] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x90000000
+[ 6908.288317] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288318] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288318] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288319] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[10]
+[ 6908.288320] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xa0000000
+[ 6908.288320] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288321] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288322] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288323] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[11]
+[ 6908.288323] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xb0000000
+[ 6908.288324] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288324] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288325] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288326] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[12]
+[ 6908.288326] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xc0000000
+[ 6908.288327] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288327] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288328] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288329] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[13]
+[ 6908.288330] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xd0000000
+[ 6908.288331] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288332] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288333] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288333] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[14]
+[ 6908.288334] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xe0000000
+[ 6908.288335] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288336] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288337] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288338] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[15]
+[ 6908.288338] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0xf0000000
+[ 6908.288339] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288340] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288340] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288341] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[16]
+[ 6908.288341] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x100000000
+[ 6908.288342] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288343] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288343] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288344] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[17]
+[ 6908.288345] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x110000000
+[ 6908.288346] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288346] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288347] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288348] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[18]
+[ 6908.288349] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x120000000
+[ 6908.288349] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288350] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288351] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288352] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[19]
+[ 6908.288352] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x130000000
+[ 6908.288353] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288354] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288355] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288355] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[20]
+[ 6908.288356] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x140000000
+[ 6908.288357] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288358] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288359] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288360] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[21]
+[ 6908.288361] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x150000000
+[ 6908.288362] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288362] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288363] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288363] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[22]
+[ 6908.288364] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x160000000
+[ 6908.288365] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288365] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288366] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288366] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[23]
+[ 6908.288367] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x170000000
+[ 6908.288368] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288368] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288369] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288370] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[24]
+[ 6908.288370] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x180000000
+[ 6908.288371] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288371] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288372] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288373] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[25]
+[ 6908.288373] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x190000000
+[ 6908.288374] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288375] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288375] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288376] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[26]
+[ 6908.288376] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1a0000000
+[ 6908.288377] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288378] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288378] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288379] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[27]
+[ 6908.288380] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1b0000000
+[ 6908.288381] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288382] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288383] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288384] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[28]
+[ 6908.288385] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1c0000000
+[ 6908.288385] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288386] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288387] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288387] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[29]
+[ 6908.288388] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1d0000000
+[ 6908.288389] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288389] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288390] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288391] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[30]
+[ 6908.288392] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1e0000000
+[ 6908.288393] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288394] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288394] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288395] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: HBM[31]
+[ 6908.288396] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x1f0000000
+[ 6908.288397] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x10000000
+[ 6908.288398] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288399] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288400] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: DDR[0]
+[ 6908.288401] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x4000000000
+[ 6908.288402] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x400000000
+[ 6908.288403] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288403] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288405] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: DDR[1]
+[ 6908.288405] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x8000000000
+[ 6908.288406] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x400000000
+[ 6908.288407] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288408] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288408] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[0]
+[ 6908.288409] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x200000000
+[ 6908.288410] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288411] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288411] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:1
+[ 6908.288412] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[1]
+[ 6908.288413] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x200400000
+[ 6908.288413] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288414] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288415] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:0
+[ 6908.288416] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[2]
+[ 6908.288416] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x200800000
+[ 6908.288417] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288418] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288418] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:0
+[ 6908.288419] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[3]
+[ 6908.288420] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x200c00000
+[ 6908.288420] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288421] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288422] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:0
+[ 6908.288423] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[4]
+[ 6908.288424] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x201000000
+[ 6908.288425] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288425] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288426] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:0
+[ 6908.288427] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Memory Bank: PLRAM[5]
+[ 6908.288427] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Base Address:0x201400000
+[ 6908.288428] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Size:0x20000
+[ 6908.288429] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Type:2
+[ 6908.288430] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   Used:0
+[ 6908.288431] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[0]
+[ 6908.288432] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x0, total size:0x10000000
+[ 6908.288433] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288469] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288470] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[1]
+[ 6908.288471] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x10000000, total size:0x10000000
+[ 6908.288472] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288495] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288496] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[2]
+[ 6908.288497] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x20000000, total size:0x10000000
+[ 6908.288498] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288515] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288516] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[3]
+[ 6908.288517] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x30000000, total size:0x10000000
+[ 6908.288518] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288529] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288530] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[4]
+[ 6908.288532] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x40000000, total size:0x10000000
+[ 6908.288533] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288544] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288545] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[5]
+[ 6908.288546] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x50000000, total size:0x10000000
+[ 6908.288547] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288558] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288559] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[6]
+[ 6908.288560] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x60000000, total size:0x10000000
+[ 6908.288562] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288584] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288585] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[7]
+[ 6908.288586] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x70000000, total size:0x10000000
+[ 6908.288587] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288599] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288600] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[8]
+[ 6908.288601] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x80000000, total size:0x10000000
+[ 6908.288601] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288611] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288612] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[9]
+[ 6908.288613] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x90000000, total size:0x10000000
+[ 6908.288614] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288626] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288627] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[10]
+[ 6908.288627] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xa0000000, total size:0x10000000
+[ 6908.288628] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288639] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288640] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[11]
+[ 6908.288641] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xb0000000, total size:0x10000000
+[ 6908.288642] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288653] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288654] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[12]
+[ 6908.288655] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xc0000000, total size:0x10000000
+[ 6908.288655] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288669] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288670] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[13]
+[ 6908.288671] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xd0000000, total size:0x10000000
+[ 6908.288671] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288684] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288685] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[14]
+[ 6908.288686] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xe0000000, total size:0x10000000
+[ 6908.288686] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288696] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288697] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[15]
+[ 6908.288698] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0xf0000000, total size:0x10000000
+[ 6908.288699] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288709] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288710] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[16]
+[ 6908.288711] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x100000000, total size:0x10000000
+[ 6908.288712] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288747] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288747] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[17]
+[ 6908.288748] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x110000000, total size:0x10000000
+[ 6908.288749] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288769] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288770] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[18]
+[ 6908.288770] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x120000000, total size:0x10000000
+[ 6908.288771] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288780] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288781] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[19]
+[ 6908.288782] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x130000000, total size:0x10000000
+[ 6908.288783] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288793] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288794] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[20]
+[ 6908.288795] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x140000000, total size:0x10000000
+[ 6908.288795] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288806] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288807] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[21]
+[ 6908.288807] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x150000000, total size:0x10000000
+[ 6908.288809] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288818] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288819] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[22]
+[ 6908.288820] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x160000000, total size:0x10000000
+[ 6908.288822] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288835] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288836] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[23]
+[ 6908.288837] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x170000000, total size:0x10000000
+[ 6908.288838] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288873] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288874] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[24]
+[ 6908.288875] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x180000000, total size:0x10000000
+[ 6908.288875] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288886] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288887] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[25]
+[ 6908.288889] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x190000000, total size:0x10000000
+[ 6908.288889] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288899] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288900] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[26]
+[ 6908.288901] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1a0000000, total size:0x10000000
+[ 6908.288901] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288913] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288913] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[27]
+[ 6908.288914] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1b0000000, total size:0x10000000
+[ 6908.288915] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288925] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288926] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[28]
+[ 6908.288928] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1c0000000, total size:0x10000000
+[ 6908.288929] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288940] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288941] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[29]
+[ 6908.288941] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1d0000000, total size:0x10000000
+[ 6908.288942] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288952] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288953] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[30]
+[ 6908.288954] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1e0000000, total size:0x10000000
+[ 6908.288954] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288964] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.288965] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: HBM[31]
+[ 6908.288966] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x1f0000000, total size:0x10000000
+[ 6908.288967] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.288978] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.289013] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: DDR[0]
+[ 6908.289014] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x4000000000, total size:0x400000000
+[ 6908.289015] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.289049] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.289050] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: DDR[1]
+[ 6908.289051] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x8000000000, total size:0x400000000
+[ 6908.289052] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.289098] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.289099] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Allocating Memory Bank: PLRAM[0]
+[ 6908.289100] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem:   base_addr:0x200000000, total size:0x20000
+[ 6908.289101] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: Found a new memory region
+[ 6908.289112] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_init_mem: drm_mm_init called
+[ 6908.289114] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Loaded xclbin 0edb938c-007d-46b4-85cf-debcd011e1b6
+[ 6908.290192] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 6908.290196] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(0)
+[ 6908.290197] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset resets
+[ 6908.290199] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec->xclbin(00000000-0000-0000-0000-000000000000),xclbin(0edb938c-007d-46b4-85cf-debcd011e1b6)
+[ 6908.290203] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0xffffffff) = 0, ctx=1
+[ 6908.290263] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_cfg_cmd: ert per feature rom = 1
+[ 6908.290266] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_cfg_cmd: dsa52 = 1
+[ 6908.290271] xocl 0000:00:0a.1: dev ffff889b8a0658a0, cu_reset: configured cu(0) base@0x1800000 poll@0x          (null) control(0) ctx(0)
+[ 6908.290274] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_cfg_cmd: configuring embedded scheduler mode
+[ 6908.290278] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_cfg_cmd: scheduler config ert(1), dataflow(0), slots(16), cudma(1), cuisr(0), cdma(0), cus(1)
+[ 6908.291566] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 6908.291568] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 6908.291575] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0xffffffff) = 0, ctx=0
+[ 6908.300079] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 6908.300119] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 6908.300284] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 6908.300287] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 6908.300370] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 6908.319141] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 6908.319222] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 6908.319444] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 6908.319447] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 6908.319466] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 6908.319473] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 6908.319479] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 6908.321478] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140001
+[ 6908.323472] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 6908.325468] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 6908.325473] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 6908.326111] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6908.326277] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 6908.326279] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(1)
+[ 6908.326281] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0xffffffff) = 0, ctx=1
+[ 6908.341074] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6908.341102] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 2
+[ 6908.341104] [drm] creating scheduler client for pid(895), ret: 0
+[ 6908.341148] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_native_mmap: successful native mmap @0x0 with size 0x2000000
+[ 6908.353701] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6908.366446] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6908.370178] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0x0) = 0, ctx=2
+[ 6908.450765] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6908.473422] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0x0) = 0, ctx=1
+[ 6908.473430] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 6908.473432] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 6908.473438] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 895, cu_idx 0xffffffff) = 0, ctx=0
+[ 6908.648109] [drm] client exits pid(895)
+[ 6908.648117] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 3
+[ 6908.651089] [drm] client exits pid(895)
+[ 6908.651092] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 6908.651093] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 6926.720145] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 6926.720148] [drm] creating scheduler client for pid(934), ret: 0
+[ 6926.721864] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 6926.721875] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 6926.722208] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 6926.722213] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 6926.722289] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 6926.728911] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 6926.728925] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 6926.729237] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 6926.729241] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 6926.729270] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 6926.729277] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 6926.729295] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 6926.731289] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 6926.733283] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 6926.735276] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 6926.735280] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 6926.735922] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.744853] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.822233] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xclbin_downloaded: xclbin is already downloaded
+[ 6926.822236] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Loaded xclbin 0edb938c-007d-46b4-85cf-debcd011e1b6
+[ 6926.822324] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 6926.822326] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(1)
+[ 6926.822329] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 934, cu_idx 0xffffffff) = 0, ctx=1
+[ 6926.822430] [drm] command scheduler is already configured for this device
+[ 6926.822466] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 6926.822468] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 6926.822474] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 934, cu_idx 0xffffffff) = 0, ctx=0
+[ 6926.830627] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.830759] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 6926.830761] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(1)
+[ 6926.830762] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 934, cu_idx 0xffffffff) = 0, ctx=1
+[ 6926.839917] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.839937] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 2
+[ 6926.839939] [drm] creating scheduler client for pid(934), ret: 0
+[ 6926.840023] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_native_mmap: successful native mmap @0x0 with size 0x2000000
+[ 6926.847803] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.855147] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 6926.859460] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 934, cu_idx 0x0) = 0, ctx=2
+[ 6981.266592] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6981.788132] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6982.300134] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6982.812076] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6983.324056] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6983.836122] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6984.348147] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6984.860053] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6985.372025] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6985.884155] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6986.396120] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6986.908113] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6987.420122] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6987.932061] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6988.444060] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6988.956060] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6989.468136] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6989.980138] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6990.492140] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6991.004056] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) waiting for 1 outstanding execs to finish
+[ 6991.516059] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: pid(934) gives up with 1 outstanding execs.
+[ 6991.518728] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: Please reset device with 'xbutil reset'
+[ 6991.520810] [drm] client exits pid(934)
+[ 6991.520814] xocl 0000:00:0a.1: dev ffff889b8a0658a0, destroy_client: CTX reclaim (0edb938c-007d-46b4-85cf-debcd011e1b6, 934, 0)
+[ 6991.520817] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 6991.520819] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 6991.520826] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6991.628063] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6991.736121] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6991.844121] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6991.952094] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.060123] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.168080] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.276096] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.384093] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.492121] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.600115] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.708115] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.816117] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6992.924085] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.032117] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.140087] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.248116] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.356091] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.464116] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 6993.572134] xocl 0000:00:0a.1: dev ffff889b8a0658a0, cmd_update_state: aborting stale exec pid (0) cmd(3)
+[ 6994.588076] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: unexpected outstanding commands 1 after flush
+[ 6994.590288] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 3
+[ 6994.591070] [drm] client exits pid(934)
+[ 6994.591074] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 6994.591077] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 7031.384985] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 7031.384988] [drm] creating scheduler client for pid(944), ret: 0
+[ 7031.386741] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7031.386749] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7031.387639] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7031.387644] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7031.387722] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7031.394068] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7031.394074] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7031.394236] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7031.394238] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7031.394259] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7031.394265] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7031.394272] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7031.396269] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 7031.398268] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7031.400265] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7031.400270] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7031.400681] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7031.410011] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7031.502367] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xclbin_downloaded: xclbin is already downloaded
+[ 7031.502370] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Loaded xclbin 0edb938c-007d-46b4-85cf-debcd011e1b6
+[ 7031.502481] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 7031.502483] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(1)
+[ 7031.502485] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0xffffffff) = 0, ctx=1
+[ 7031.502565] xocl 0000:00:0a.1: dev ffff889b8a0658a0, cmd_update_state: aborting stale exec pid (944) cmd(4)
+[ 7031.502588] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 7031.502589] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 7031.502595] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7031.608091] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7031.716086] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7031.824131] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7031.932083] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.040084] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.148110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.256107] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.364105] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.472109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.580110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.688087] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.796068] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7032.904109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7033.012107] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7033.120108] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7033.228107] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7033.336109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7033.444111] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7034.588143] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: unexpected outstanding commands 1 after flush
+[ 7034.590431] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0xffffffff) = 0, ctx=0
+[ 7034.592452] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7034.592463] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7034.592674] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7034.592677] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7034.592747] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7034.599156] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7034.599162] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7034.599406] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7034.599408] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7034.599423] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7034.599429] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7034.599435] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7034.601429] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 7034.603422] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7034.605416] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7034.605419] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7034.605953] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7034.606101] icap.u icap.u.16777216: dev ffff889b88936010, icap_lock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 locked, ref=1
+[ 7034.606102] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_reset: exec_reset(0) cfg(1)
+[ 7034.606104] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0xffffffff) = 0, ctx=1
+[ 7034.615151] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7034.615171] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 2
+[ 7034.615173] [drm] creating scheduler client for pid(944), ret: 0
+[ 7034.615239] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_native_mmap: successful native mmap @0x0 with size 0x2000000
+[ 7034.623242] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7034.631049] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7034.634406] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX add(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0x0) = 0, ctx=2
+[ 7034.699544] xocl 0000:00:0a.1: dev ffff889b8a0658a0, cmd_update_state: aborting stale exec pid (944) cmd(5)
+[ 7034.710497] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7034.711969] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0x0) = 0, ctx=1
+[ 7034.711973] icap.u icap.u.16777216: dev ffff889b88936010, icap_unlock_bitstream: bitstream 0edb938c-007d-46b4-85cf-debcd011e1b6 unlocked, ref=0
+[ 7034.711975] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: exec_stop(ffff889782c9c018)
+[ 7034.711981] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7034.816108] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7034.924109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.032108] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.140112] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.248109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.356122] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.464108] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.572110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.680087] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.788110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7035.896109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.004111] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.112110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.220084] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.328067] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.436110] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.544109] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7036.652127] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: Waiting for 1 outstanding commands to finish
+[ 7037.788123] xocl 0000:00:0a.1: dev ffff889b8a0658a0, exec_stop: unexpected outstanding commands 1 after flush
+[ 7037.790267] xocl_mb_sche mb_scheduler.u.5242880: dev ffff889b889d2c10, client_ioctl_ctx: CTX del(0edb938c-007d-46b4-85cf-debcd011e1b6, pid 944, cu_idx 0xffffffff) = 0, ctx=0
+[ 7037.984111] [drm] client exits pid(944)
+[ 7037.984117] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 3
+[ 7037.990552] [drm] client exits pid(944)
+[ 7037.990555] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 7037.990556] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 7118.071463] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 7118.071465] [drm] creating scheduler client for pid(956), ret: 0
+[ 7118.073430] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7118.073441] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7118.073631] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7118.073635] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7118.073707] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7118.080232] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7118.080238] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7118.080394] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7118.080395] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7118.080409] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7118.080415] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7118.080421] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7118.082415] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 7118.084409] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7118.086403] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7118.086407] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7118.091403] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7118.101252] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7118.778788] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper:  Current xclbin is in-use, can't change
+[ 7118.780899] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Failed to download xclbin, err: -16
+[ 7118.864117] [drm] client exits pid(956)
+[ 7118.864124] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 7118.864127] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 7137.804408] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 7137.804411] [drm] creating scheduler client for pid(963), ret: 0
+[ 7137.806150] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7137.806158] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7137.806401] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7137.806405] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7137.806475] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7137.812878] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7137.812884] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7137.813044] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7137.813046] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7137.813059] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7137.813065] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7137.813072] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7137.815065] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 7137.817059] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7137.819053] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7137.819056] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7137.819506] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7137.828248] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7137.903328] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper:  Current xclbin is in-use, can't change
+[ 7137.905523] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Failed to download xclbin, err: -16
+[ 7137.952111] [drm] client exits pid(963)
+[ 7137.952117] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 7137.952120] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 7171.614792] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 7171.614795] [drm] creating scheduler client for pid(972), ret: 0
+[ 7171.616646] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7171.616655] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7171.616840] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7171.616842] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7171.616910] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7171.623344] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7171.623350] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7171.623557] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7171.623559] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7171.623573] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7171.623579] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7171.623585] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7171.625579] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140001
+[ 7171.627573] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7171.629566] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7171.629570] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7171.630045] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7171.639257] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7171.710369] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper:  Current xclbin is in-use, can't change
+[ 7171.712604] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Failed to download xclbin, err: -16
+[ 7171.756122] [drm] client exits pid(972)
+[ 7171.756129] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 7171.756132] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10
+[ 7280.865752] xocl 0000:00:0a.1: dev ffff889b8a0658a0, _xocl_drvinst_open: OPEN 1
+[ 7280.865755] [drm] creating scheduler client for pid(1091), ret: 0
+[ 7280.867486] xmc.u xmc.u.12582912: dev ffff889b8880a010, xmc_read_from_peer: reading from peer
+[ 7280.867502] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7280.867848] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7280.867856] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 0
+[ 7280.867958] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7280.874785] icap.u icap.u.16777216: dev ffff889b88936010, icap_read_from_peer: reading from peer
+[ 7280.874794] mailbox.u mailbox.u.15728640: dev ffff889b8889cc10, mailbox_request: sending request: 10 via HW
+[ 7280.875104] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, process_request: received request from peer: 10, passed on
+[ 7280.875107] xclmgmt 0000:00:0a.0: xclmgmt_read_subdev_req: req kind 1
+[ 7280.875122] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 140
+[ 7280.875128] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 500
+[ 7280.875134] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_by_id: freq = 450
+[ 7280.877129] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 140000
+[ 7280.879123] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 500000
+[ 7280.881117] clock.m clock.m.23068672: dev ffff889b8885d410, clock_get_freq_counter_khz: khz: 450000
+[ 7280.881121] mailbox.m mailbox.m.15728640: dev ffff889b889cc810, mailbox_post_response: posting response for: 10 via HW
+[ 7280.881762] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7280.890978] icap.u icap.u.16777216: dev ffff889b88936010, icap_cached_ocl_frequency: no cached data for 3
+[ 7280.977185] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper:  Current xclbin is in-use, can't change
+[ 7280.979266] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_read_axlf_helper: Failed to download xclbin, err: -16
+[ 7281.020120] [drm] client exits pid(1091)
+[ 7281.020126] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: CLOSE 2
+[ 7281.020130] xocl 0000:00:0a.1: dev ffff889b8a0658a0, xocl_drvinst_close: NOTIFY ffff889b88932c10

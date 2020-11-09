@@ -1,0 +1,214 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw_emu.xclbin
+Loading: './xclbin/vadd.hw_emu.xclbin'
+Finished loading binary...
+INFO: [HW-EM 01] Hardware emulation runs simulation underneath. Using a large data set will result in long simulation times. It is recommended that a small dataset is used for faster execution. The flow uses approximate models for DDR memory and interconnect and hence the performance data generated is approximate.
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+INFO::[ Vitis-EM 22 ] [Time elapsed: 4 minute(s) 11 seconds, Emulation time: 0.212157 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 27.562 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+Comparing Results...
+i = 0 result = 4
+i = 1 result = 21
+i = 2 result = 21
+i = 3 result = 34
+i = 4 result = 36
+i = 5 result = 41
+i = 6 result = 44
+i = 7 result = 49
+i = 8 result = 51
+i = 9 result = 52
+i = 10 result = 54
+i = 11 result = 55
+i = 12 result = 61
+i = 13 result = 66
+i = 14 result = 74
+i = 15 result = 77
+i = 16 result = 84
+i = 17 result = 90
+i = 18 result = 93
+i = 19 result = 101
+i = 20 result = 104
+i = 21 result = 113
+i = 22 result = 118
+i = 23 result = 121
+i = 24 result = 136
+i = 25 result = 136
+i = 26 result = 137
+i = 27 result = 139
+i = 28 result = 144
+i = 29 result = 145
+i = 30 result = 155
+i = 31 result = 158
+i = 32 result = 2
+i = 33 result = 3
+i = 34 result = 5
+i = 35 result = 20
+i = 36 result = 21
+i = 37 result = 21
+i = 38 result = 25
+i = 39 result = 35
+i = 40 result = 37
+i = 41 result = 39
+i = 42 result = 41
+i = 43 result = 43
+i = 44 result = 45
+i = 45 result = 46
+i = 46 result = 47
+i = 47 result = 49
+i = 48 result = 52
+i = 49 result = 59
+i = 50 result = 62
+i = 51 result = 62
+i = 52 result = 68
+i = 53 result = 86
+i = 54 result = 86
+i = 55 result = 93
+i = 56 result = 103
+i = 57 result = 106
+i = 58 result = 109
+i = 59 result = 116
+i = 60 result = 117
+i = 61 result = 118
+i = 62 result = 120
+i = 63 result = 125
+i = 64 result = 4
+i = 65 result = 4
+i = 66 result = 9
+i = 67 result = 13
+i = 68 result = 16
+i = 69 result = 18
+i = 70 result = 23
+i = 71 result = 35
+i = 72 result = 36
+i = 73 result = 36
+i = 74 result = 43
+i = 75 result = 55
+i = 76 result = 58
+i = 77 result = 58
+i = 78 result = 59
+i = 79 result = 61
+i = 80 result = 66
+i = 81 result = 69
+i = 82 result = 72
+i = 83 result = 87
+i = 84 result = 89
+i = 85 result = 103
+i = 86 result = 105
+i = 87 result = 111
+i = 88 result = 112
+i = 89 result = 116
+i = 90 result = 122
+i = 91 result = 122
+i = 92 result = 129
+i = 93 result = 130
+i = 94 result = 147
+i = 95 result = 158
+i = 96 result = 9
+i = 97 result = 10
+i = 98 result = 11
+i = 99 result = 23
+i = 100 result = 25
+i = 101 result = 32
+i = 102 result = 32
+i = 103 result = 47
+i = 104 result = 58
+i = 105 result = 60
+i = 106 result = 62
+i = 107 result = 71
+i = 108 result = 79
+i = 109 result = 83
+i = 110 result = 86
+i = 111 result = 105
+i = 112 result = 107
+i = 113 result = 128
+i = 114 result = 157
+i = 115 result = 159
+i = 116 result = 159
+i = 117 result = 168
+i = 118 result = 170
+i = 119 result = 171
+i = 120 result = 173
+i = 121 result = 179
+i = 122 result = 187
+i = 123 result = 193
+i = 124 result = 202
+i = 125 result = 203
+i = 126 result = 212
+i = 127 result = 212
+TEST PASSED
+INFO::[ Vitis-EM 22 ] [Time elapsed: 6 minute(s) 31 seconds, Emulation time: 0.347948 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 32.000 KB              WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 0.500 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [HW-EM 06-0] Waiting for the simulator process to exit
+INFO: [HW-EM 06-1] All the simulator processes exited successfully

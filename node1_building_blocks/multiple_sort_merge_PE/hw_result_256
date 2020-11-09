@@ -1,0 +1,143 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw.xclbin
+Loading: './xclbin/vadd.hw.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 0
+i = 1 result = 0
+i = 2 result = 0
+i = 3 result = 0
+i = 4 result = 0
+i = 5 result = 0
+i = 6 result = 0
+i = 7 result = 0
+i = 8 result = 7
+i = 9 result = 7
+i = 10 result = 7
+i = 11 result = 7
+i = 12 result = 7
+i = 13 result = 7
+i = 14 result = 7
+i = 15 result = 7
+i = 16 result = 11
+i = 17 result = 11
+i = 18 result = 11
+i = 19 result = 11
+i = 20 result = 11
+i = 21 result = 11
+i = 22 result = 11
+i = 23 result = 11
+i = 24 result = 14
+i = 25 result = 14
+i = 26 result = 14
+i = 27 result = 14
+i = 28 result = 14
+i = 29 result = 14
+i = 30 result = 14
+i = 31 result = 14
+i = 32 result = 0
+i = 33 result = 0
+i = 34 result = 0
+i = 35 result = 0
+i = 36 result = 0
+i = 37 result = 0
+i = 38 result = 0
+i = 39 result = 0
+i = 40 result = 7
+i = 41 result = 7
+i = 42 result = 7
+i = 43 result = 7
+i = 44 result = 7
+i = 45 result = 7
+i = 46 result = 7
+i = 47 result = 7
+i = 48 result = 11
+i = 49 result = 11
+i = 50 result = 11
+i = 51 result = 11
+i = 52 result = 11
+i = 53 result = 11
+i = 54 result = 11
+i = 55 result = 11
+i = 56 result = 14
+i = 57 result = 14
+i = 58 result = 14
+i = 59 result = 14
+i = 60 result = 14
+i = 61 result = 14
+i = 62 result = 14
+i = 63 result = 14
+i = 64 result = 0
+i = 65 result = 0
+i = 66 result = 0
+i = 67 result = 0
+i = 68 result = 0
+i = 69 result = 0
+i = 70 result = 0
+i = 71 result = 0
+i = 72 result = 7
+i = 73 result = 7
+i = 74 result = 7
+i = 75 result = 7
+i = 76 result = 7
+i = 77 result = 7
+i = 78 result = 7
+i = 79 result = 7
+i = 80 result = 11
+i = 81 result = 11
+i = 82 result = 11
+i = 83 result = 11
+i = 84 result = 11
+i = 85 result = 11
+i = 86 result = 11
+i = 87 result = 11
+i = 88 result = 14
+i = 89 result = 14
+i = 90 result = 14
+i = 91 result = 14
+i = 92 result = 14
+i = 93 result = 14
+i = 94 result = 14
+i = 95 result = 14
+i = 96 result = 0
+i = 97 result = 0
+i = 98 result = 0
+i = 99 result = 0
+i = 100 result = 0
+i = 101 result = 0
+i = 102 result = 0
+i = 103 result = 0
+i = 104 result = 7
+i = 105 result = 7
+i = 106 result = 7
+i = 107 result = 7
+i = 108 result = 7
+i = 109 result = 7
+i = 110 result = 7
+i = 111 result = 7
+i = 112 result = 11
+i = 113 result = 11
+i = 114 result = 11
+i = 115 result = 11
+i = 116 result = 11
+i = 117 result = 11
+i = 118 result = 11
+i = 119 result = 11
+i = 120 result = 14
+i = 121 result = 14
+i = 122 result = 14
+i = 123 result = 14
+i = 124 result = 14
+i = 125 result = 14
+i = 126 result = 14
+i = 127 result = 14
+TEST PASSED

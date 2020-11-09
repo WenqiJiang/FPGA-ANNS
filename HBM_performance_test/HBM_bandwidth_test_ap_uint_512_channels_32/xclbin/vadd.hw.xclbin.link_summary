@@ -1,0 +1,413 @@
+<ENTRY>
+{
+ "session": {
+  "name": "v++_link_vadd.hw",
+  "pid": "0",
+  "uuid": "e37765f9-6484-4024-9525-21166c877425",
+  "description": "",
+  "timestamp": "0",
+  "outputFiles": [
+   {
+    "type": "JSON",
+    "mode": "CLIENT_ONLY",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/.tlog/v++_link_vadd.hw.xtl",
+    "continuous": true
+   },
+   {
+    "type": "JSON",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xclbin.link_summary",
+    "continuous": true
+   },
+   {
+    "type": "BINARY_PROTOBUF",
+    "mode": "LOCAL_IF_NO_CONNECT",
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xclbin.link_summary.pb",
+    "continuous": true
+   }
+  ]
+ },
+ "thisFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xclbin.link_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Fri Oct 30 11:46:40 2020",
+ "timestampMillis": "1604054800191",
+ "buildStep": {
+  "cmdId": "97fca8be-f924-49e4-ae75-e4398c1ee31c",
+  "name": "v++",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo ",
+  "args": [
+   "-t",
+   "hw",
+   "--config",
+   "design.cfg",
+   "--save-temps",
+   "--report",
+   "estimate",
+   "--temp_dir",
+   "./_x.hw/vadd",
+   "-l",
+   "--profile_kernel",
+   "data:all:all:all:all",
+   "-oxclbin/vadd.hw.xclbin",
+   "xclbin/vadd.hw.xo"
+  ],
+  "iniFiles": [
+   {
+    "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/design.cfg",
+    "content": "platform=xilinx_u280_xdma_201920_3\nprofile_kernel=data:all:all:all\nkernel_frequency=140\ndebug=1\n\n[connectivity]\nnk=vadd:1:vadd_1\n# slr=vadd_1:SLR0\nsp=vadd_1.table_HBM0:HBM[0]\nsp=vadd_1.table_HBM1:HBM[1]\nsp=vadd_1.table_HBM2:HBM[2]\nsp=vadd_1.table_HBM3:HBM[3]\nsp=vadd_1.table_HBM4:HBM[4]\nsp=vadd_1.table_HBM5:HBM[5]\nsp=vadd_1.table_HBM6:HBM[6]\nsp=vadd_1.table_HBM7:HBM[7]\nsp=vadd_1.table_HBM8:HBM[8]\nsp=vadd_1.table_HBM9:HBM[9]\nsp=vadd_1.table_HBM10:HBM[10]\nsp=vadd_1.table_HBM11:HBM[11]\nsp=vadd_1.table_HBM12:HBM[12]\nsp=vadd_1.table_HBM13:HBM[13]\nsp=vadd_1.table_HBM14:HBM[14]\nsp=vadd_1.table_HBM15:HBM[15]\nsp=vadd_1.table_HBM16:HBM[16]\nsp=vadd_1.table_HBM17:HBM[17]\nsp=vadd_1.table_HBM18:HBM[18]\nsp=vadd_1.table_HBM19:HBM[19]\nsp=vadd_1.table_HBM20:HBM[20]\nsp=vadd_1.table_HBM21:HBM[21]\nsp=vadd_1.table_HBM22:HBM[22]\nsp=vadd_1.table_HBM23:HBM[23]\nsp=vadd_1.table_HBM24:HBM[24]\nsp=vadd_1.table_HBM25:HBM[25]\nsp=vadd_1.table_HBM26:HBM[26]\nsp=vadd_1.table_HBM27:HBM[27]\nsp=vadd_1.table_HBM28:HBM[28]\nsp=vadd_1.table_HBM29:HBM[29]\nsp=vadd_1.table_HBM30:HBM[30]\nsp=vadd_1.table_HBM31:HBM[31]\n# sp=vadd_1.table_DDR0:DDR[0]\n# sp=vadd_1.table_DDR1:DDR[1]\nsp=vadd_1.out_PLRAM:PLRAM[0]\n\n[vivado] \n#param=compiler.userPreSysLinkTcl=$(PWD)/tcl/plram.tcl \nparam=route.enableGlobalHoldIter=true\nparam=project.writeIntermediateCheckpoints=true\n# prop=run.impl_1.STEPS.PLACE_DESIGN.ARGS.DIRECTIVE=SSI_SpreadLogic_high\n# prop=run.impl_1.{STEPS.PLACE_DESIGN.ARGS.MORE OPTIONS}={-post_place_opt}\nprop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.IS_ENABLED}=true \n# prop=run.impl_1.STEPS.PHYS_OPT_DESIGN.ARGS.DIRECTIVE=ExploreWithHoldFix\n# prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-fanout_opt -critical_cell_opt -rewire -slr_crossing_opt -tns_cleanup -hold_fix -sll_reg_hold_fix -retime}\nprop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-slr_crossing_opt -tns_cleanup}\n#prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-hold_fix -slr_crossing_opt}\nprop=run.impl_1.STEPS.ROUTE_DESIGN.ARGS.DIRECTIVE=AlternateCLBRouting\n#prop=run.impl_1.{STEPS.PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-hold_fix}\nprop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.IS_ENABLED}=true \nprop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-critical_cell_opt -rewire -hold_fix -sll_reg_hold_fix -retime}\n#prop=run.impl_1.{STEPS.POST_ROUTE_PHYS_OPT_DESIGN.ARGS.MORE OPTIONS}={-critical_cell_opt -rewire -slr_crossing_opt -tns_cleanup -hold_fix -sll_reg_hold_fix -retime}\n"
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:46:40 2020",
+ "timestampMillis": "1604054800193",
+ "status": {
+  "cmdId": "97fca8be-f924-49e4-ae75-e4398c1ee31c",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Fri Oct 30 11:46:50 2020",
+ "timestampMillis": "1604054810523",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_u280_xdma_201920_3.xpfm",
+  "hardwareDsa": "xilinx_u280_xdma_201920_3.xsa",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_LINK",
+  "target": "TT_HW",
+  "binaryContainer": {
+   "base": {
+    "type": "BT_UKNOWN",
+    "name": "vadd.hw",
+    "file": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xclbin",
+    "reports": []
+   },
+   "kernels": []
+  },
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "vadd",
+     "file": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xo",
+     "reports": []
+    },
+    "sources": [
+     "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xo/vadd/vadd/cpu_sources/vadd.cpp"
+    ],
+    "cuNames": [
+     "vadd_1"
+    ]
+   }
+  ]
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Oct 30 11:46:50 2020",
+ "timestampMillis": "1604054810933",
+ "buildStep": {
+  "cmdId": "9a8763e4-bbbd-4cd8-bb51-85c7403ec79e",
+  "name": "system_link",
+  "logFile": "",
+  "commandLine": "system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/sys_link",
+  "args": [
+   "--xo",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/xclbin/vadd.hw.xo",
+   "-keep",
+   "--config",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/syslinkConfig.ini",
+   "--xpfm",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--target",
+   "hw",
+   "--output_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int",
+   "--temp_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/sys_link"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:46:50 2020",
+ "timestampMillis": "1604054810934",
+ "status": {
+  "cmdId": "9a8763e4-bbbd-4cd8-bb51-85c7403ec79e",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:22 2020",
+ "timestampMillis": "1604054842530",
+ "status": {
+  "cmdId": "9a8763e4-bbbd-4cd8-bb51-85c7403ec79e",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Oct 30 11:47:22 2020",
+ "timestampMillis": "1604054842547",
+ "buildStep": {
+  "cmdId": "d798cbd0-c33c-4702-b306-d11d8e896795",
+  "name": "cf2sw",
+  "logFile": "",
+  "commandLine": "cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xclbin_orig.1.xml",
+  "args": [
+   "-sdsl",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/sdsl.dat",
+   "-rtd",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/cf2sw.rtd",
+   "-xclbin",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xclbin_orig.xml",
+   "-o",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xclbin_orig.1.xml"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:22 2020",
+ "timestampMillis": "1604054842548",
+ "status": {
+  "cmdId": "d798cbd0-c33c-4702-b306-d11d8e896795",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:26 2020",
+ "timestampMillis": "1604054846057",
+ "status": {
+  "cmdId": "d798cbd0-c33c-4702-b306-d11d8e896795",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Oct 30 11:47:26 2020",
+ "timestampMillis": "1604054846071",
+ "buildStep": {
+  "cmdId": "bd7d12e8-a351-46d7-be5a-28c714ee4f03",
+  "name": "rtd2_system_diagram",
+  "logFile": "",
+  "commandLine": "rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/kernel_info.dat",
+  "args": [
+   "--rtdJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/cf2sw.rtd",
+   "--diagramJsonFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/systemDiagramModel.json",
+   "--platformFilePath",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--generatedByName",
+   "v++",
+   "--generatedByVersion",
+   "2019.2",
+   "--generatedByChangeList",
+   "2708876",
+   "--generatedByTimeStamp",
+   "Wed Nov  6 21:39:14 MST 2019",
+   "--generatedByOptions",
+   "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo ",
+   "--generatedByXclbinName",
+   "vadd.hw",
+   "--kernelInfoDataFileName",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/kernel_info.dat"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:26 2020",
+ "timestampMillis": "1604054846073",
+ "status": {
+  "cmdId": "bd7d12e8-a351-46d7-be5a-28c714ee4f03",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Fri Oct 30 11:47:27 2020",
+ "timestampMillis": "1604054847840",
+ "report": {
+  "path": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/systemDiagramModel.json",
+  "name": "",
+  "fileType": "JSON",
+  "reportType": "SYSTEM_DIAGRAM"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:27 2020",
+ "timestampMillis": "1604054847879",
+ "status": {
+  "cmdId": "bd7d12e8-a351-46d7-be5a-28c714ee4f03",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Oct 30 11:47:27 2020",
+ "timestampMillis": "1604054847904",
+ "buildStep": {
+  "cmdId": "98475a1a-1bfa-435b-be56-7fb41167f7a9",
+  "name": "vpl",
+  "logFile": "",
+  "commandLine": "vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/dr.bd.tcl",
+  "args": [
+   "-t",
+   "hw",
+   "-f",
+   "xilinx_u280_xdma_201920_3",
+   "-g",
+   "--kernel_frequency",
+   "140",
+   "--profile_kernel",
+   "data:all:all:all:all",
+   "-s",
+   "--output_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int",
+   "--log_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/logs/link",
+   "--report_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/reports/link",
+   "--config",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/vplConfig.ini",
+   "-k",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/kernel_info.dat",
+   "--webtalk_flag",
+   "Vitis",
+   "--temp_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link",
+   "--no-info",
+   "--tlog_dir",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/.tlog/v++_link_vadd.hw",
+   "--iprepo",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0",
+   "--messageDb",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/run_link/vpl.pb",
+   "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/dr.bd.tcl"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:27 2020",
+ "timestampMillis": "1604054847906",
+ "status": {
+  "cmdId": "98475a1a-1bfa-435b-be56-7fb41167f7a9",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Fri Oct 30 11:47:29 2020",
+ "timestampMillis": "1604054849572",
+ "buildStep": {
+  "cmdId": "0a178a57-f57b-4837-ac92-cd9cd63a93f0",
+  "name": "vpl",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/link.steps.log",
+  "commandLine": "/opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/int/dr.bd.tcl ",
+  "args": [],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:47:29 2020",
+ "timestampMillis": "1604054849573",
+ "status": {
+  "cmdId": "0a178a57-f57b-4837-ac92-cd9cd63a93f0",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Fri Oct 30 11:49:29 2020",
+ "timestampMillis": "1604054969465",
+ "buildStep": {
+  "cmdId": "62b03c73-25b3-412b-bebe-6288c84f9e95",
+  "name": "vivado",
+  "logFile": "/mnt/scratch/wenqi/FPGA-ANNS/HBM_bandwidth_test/_x.hw/vadd/link/vivado/vpl/vivado.log",
+  "commandLine": "vivado -log vivado.log -applog -m64 -messageDb vivado.pb -mode batch -source vpl.tcl -notrace",
+  "args": [
+   "-log",
+   "vivado.log",
+   "-applog",
+   " -m64",
+   "-messageDb",
+   "vivado.pb",
+   "-mode",
+   "batch",
+   "-source",
+   "vpl.tcl",
+   "-notrace"
+  ],
+  "iniFiles": []
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Fri Oct 30 11:49:29 2020",
+ "timestampMillis": "1604054969467",
+ "status": {
+  "cmdId": "62b03c73-25b3-412b-bebe-6288c84f9e95",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>

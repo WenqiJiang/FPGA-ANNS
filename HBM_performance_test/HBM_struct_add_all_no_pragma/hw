@@ -1,0 +1,384 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:45079
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/xclbin/vadd.hw.xo.compile_summary, at Mon Nov  9 07:51:19 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov  9 07:51:19 2020
+Running Rule Check Server on port:40205
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Mon Nov  9 07:51:20 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'HBM_bank_PQ_code_A_0' (/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:176->/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/src/vadd.cpp:22) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 64, Depth = 122.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 171.24 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance load_HBM37 load_HBM37_U0 54566
+Add Instance load_HBM38 load_HBM38_U0 54765
+Add Instance load_HBM39 load_HBM39_U0 54964
+Add Instance load_HBM40 load_HBM40_U0 55163
+Add Instance load_HBM41 load_HBM41_U0 55362
+Add Instance load_HBM42 load_HBM42_U0 55561
+Add Instance load_HBM43 load_HBM43_U0 55760
+Add Instance load_HBM44 load_HBM44_U0 55959
+Add Instance load_HBM45 load_HBM45_U0 56158
+Add Instance load_HBM46 load_HBM46_U0 56357
+Add Instance load_HBM47 load_HBM47_U0 56556
+Add Instance load_HBM48 load_HBM48_U0 56755
+Add Instance load_HBM49 load_HBM49_U0 56954
+Add Instance load_HBM50 load_HBM50_U0 57153
+Add Instance load_HBM51 load_HBM51_U0 57352
+Add Instance load_HBM52 load_HBM52_U0 57551
+Add Instance load_HBM53 load_HBM53_U0 57750
+Add Instance load_HBM54 load_HBM54_U0 57949
+Add Instance load_HBM55 load_HBM55_U0 58148
+Add Instance load_HBM56 load_HBM56_U0 58347
+Add Instance load_HBM57 load_HBM57_U0 58546
+Add Instance load_HBM58 load_HBM58_U0 58745
+Add Instance load_HBM59 load_HBM59_U0 58944
+Add Instance load_HBM60 load_HBM60_U0 59143
+Add Instance load_HBM61 load_HBM61_U0 59342
+Add Instance load_HBM62 load_HBM62_U0 59541
+Add Instance load_HBM63 load_HBM63_U0 59740
+Add Instance load_HBM64 load_HBM64_U0 59939
+Add Instance vadd_entry32 vadd_entry32_U0 60138
+Add Instance write_results_28_s write_results_28_U0 65521
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 58m 45s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:42477
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/xclbin/vadd.hw.xclbin.link_summary, at Mon Nov  9 08:50:07 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov  9 08:50:07 2020
+Running Rule Check Server on port:38499
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Mon Nov  9 08:50:08 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [08:50:23] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Mon Nov  9 08:50:32 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [08:50:52] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [08:51:00] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 255571 ; free virtual = 427624
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [08:51:00] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [08:51:06] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 255622 ; free virtual = 427675
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [08:51:06] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [08:51:11] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 255607 ; free virtual = 427666
+INFO: [v++ 60-1441] [08:51:11] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:22 ; elapsed = 00:00:47 . Memory (MB): peak = 741.188 ; gain = 0.000 ; free physical = 255626 ; free virtual = 427685
+INFO: [v++ 60-1443] [08:51:11] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [08:51:14] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 741.188 ; gain = 0.000 ; free physical = 255625 ; free virtual = 427686
+INFO: [v++ 60-1443] [08:51:14] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [08:51:16] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 741.188 ; gain = 0.000 ; free physical = 255623 ; free virtual = 427683
+INFO: [v++ 60-1443] [08:51:16] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[08:52:50] Run vpl: Step create_project: Started
+Creating Vivado project.
+[08:52:54] Run vpl: Step create_project: Completed
+[08:52:54] Run vpl: Step create_bd: Started
+[08:55:37] Run vpl: Step create_bd: RUNNING...
+[08:57:45] Run vpl: Step create_bd: RUNNING...
+[09:00:07] Run vpl: Step create_bd: RUNNING...
+[09:03:29] Run vpl: Step create_bd: RUNNING...
+[09:05:11] Run vpl: Step create_bd: RUNNING...
+[09:05:34] Run vpl: Step create_bd: Completed
+[09:05:34] Run vpl: Step update_bd: Started
+[09:07:15] Run vpl: Step update_bd: RUNNING...
+[09:08:57] Run vpl: Step update_bd: RUNNING...
+[09:09:17] Run vpl: Step update_bd: Completed
+[09:09:17] Run vpl: Step generate_target: Started
+[09:11:18] Run vpl: Step generate_target: RUNNING...
+[09:13:00] Run vpl: Step generate_target: RUNNING...
+[09:14:40] Run vpl: Step generate_target: RUNNING...
+[09:16:48] Run vpl: Step generate_target: RUNNING...
+[09:18:41] Run vpl: Step generate_target: RUNNING...
+[09:20:15] Run vpl: Step generate_target: Completed
+[09:20:15] Run vpl: Step config_hw_runs: Started
+[09:22:27] Run vpl: Step config_hw_runs: Completed
+[09:22:27] Run vpl: Step synth: Started
+[09:25:11] Block-level synthesis in progress, 0 of 68 jobs complete, 8 jobs running.
+[09:28:00] Block-level synthesis in progress, 8 of 68 jobs complete, 8 jobs running.
+[09:30:14] Block-level synthesis in progress, 16 of 68 jobs complete, 5 jobs running.
+[09:31:35] Block-level synthesis in progress, 16 of 68 jobs complete, 8 jobs running.
+[09:32:59] Block-level synthesis in progress, 24 of 68 jobs complete, 2 jobs running.
+[09:34:21] Block-level synthesis in progress, 24 of 68 jobs complete, 8 jobs running.
+[09:35:47] Block-level synthesis in progress, 29 of 68 jobs complete, 4 jobs running.
+[09:37:22] Block-level synthesis in progress, 29 of 68 jobs complete, 8 jobs running.
+[09:38:36] Block-level synthesis in progress, 36 of 68 jobs complete, 6 jobs running.
+[09:39:54] Block-level synthesis in progress, 37 of 68 jobs complete, 7 jobs running.
+[09:41:19] Block-level synthesis in progress, 43 of 68 jobs complete, 5 jobs running.
+[09:42:48] Block-level synthesis in progress, 44 of 68 jobs complete, 7 jobs running.
+[09:43:36] Block-level synthesis in progress, 50 of 68 jobs complete, 8 jobs running.
+[09:45:29] Block-level synthesis in progress, 54 of 68 jobs complete, 5 jobs running.
+[09:46:47] Block-level synthesis in progress, 57 of 68 jobs complete, 8 jobs running.
+[09:48:04] Block-level synthesis in progress, 63 of 68 jobs complete, 3 jobs running.
+[09:49:30] Block-level synthesis in progress, 64 of 68 jobs complete, 4 jobs running.
+[09:50:55] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:52:18] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:53:41] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:55:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:56:27] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:57:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[09:59:12] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:00:36] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:02:02] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:03:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:04:46] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:06:10] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:07:32] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:08:58] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:10:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:11:48] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:13:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:14:38] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:16:01] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:17:25] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:18:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:20:13] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:21:38] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:23:03] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:24:29] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:25:52] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:27:19] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:28:45] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:30:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:31:38] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
