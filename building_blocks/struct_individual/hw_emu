@@ -1,0 +1,1409 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/vadd.hw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/logs/vadd.hw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:40809
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/xclbin/vadd.hw_emu.xo.compile_summary, at Mon Nov 16 19:53:17 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 19:53:17 2020
+Running Rule Check Server on port:40635
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/vadd.hw_emu/v++_compile_vadd.hw_emu_guidance.html', at Mon Nov 16 19:53:18 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/vadd.hw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/vadd.hw_emu/system_estimate_vadd.hw_emu.xtxt
+Add Instance reduction_1024_s reduction_1024_U0 634
+Add Instance feed_struct_1024_s feed_struct_1024_U0 655
+Add Instance init_array_16_5 init_array_16_5_U0 691
+Add Instance write_result_1024_s write_result_1024_U0 700
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 5m 58s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw_emu.xclbin' xclbin/vadd.hw_emu.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:33487
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/xclbin/vadd.hw_emu.xclbin.link_summary, at Mon Nov 16 19:59:18 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 19:59:18 2020
+Running Rule Check Server on port:40991
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html', at Mon Nov 16 19:59:19 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [19:59:27] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/xclbin/vadd.hw_emu.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target emu --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 19:59:37 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/xclbin/vadd.hw_emu.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM30' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM31' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [19:59:39] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/emu/emu.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [19:59:47] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 22641 ; free virtual = 420592
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [19:59:47] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.table_HBM28:HBM[28] -sp vadd_1.table_HBM29:HBM[29] -sp vadd_1.table_HBM30:HBM[30] -sp vadd_1.table_HBM31:HBM[31] -sp vadd_1.table_DDR0:DDR[0] -sp vadd_1.table_DDR1:DDR[1] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM29, sptag: HBM[29]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM30, sptag: HBM[30]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM31, sptag: HBM[31]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR0, sptag: DDR[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR1, sptag: DDR[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM28 to HBM[28] for directive vadd_1.table_HBM28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM29 to HBM[29] for directive vadd_1.table_HBM29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM30 to HBM[30] for directive vadd_1.table_HBM30:HBM[30]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM31 to HBM[31] for directive vadd_1.table_HBM31:HBM[31]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR0 to DDR[0] for directive vadd_1.table_DDR0:DDR[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR1 to DDR[1] for directive vadd_1.table_DDR1:DDR[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [19:59:53] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 22637 ; free virtual = 420585
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [19:59:53] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int --target_bd emu/emu.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd emu/emu.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [19:59:59] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 22510 ; free virtual = 420461
+INFO: [v++ 60-1441] [19:59:59] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:32 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 22528 ; free virtual = 420480
+INFO: [v++ 60-1443] [19:59:59] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [20:00:04] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 22490 ; free virtual = 420439
+INFO: [v++ 60-1443] [20:00:04] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw_emu.xclbin xclbin/vadd.hw_emu.xo  --generatedByXclbinName vadd.hw_emu --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [20:00:06] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 24783 ; free virtual = 422731
+INFO: [v++ 60-1443] [20:00:06] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw_emu -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link --emulation_mode debug_waveform --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/.tlog/v++_link_vadd.hw_emu --iprepo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/vivado/vpl/.local/hw_platform
+[20:01:57] Run vpl: Step create_project: Started
+Creating Vivado project.
+[20:02:02] Run vpl: Step create_project: Completed
+[20:02:02] Run vpl: Step create_bd: Started
+[20:07:07] Run vpl: Step create_bd: RUNNING...
+[20:07:40] Run vpl: Step create_bd: Completed
+[20:07:40] Run vpl: Step update_bd: Started
+[20:13:00] Run vpl: Step update_bd: RUNNING...
+[20:14:37] Run vpl: Step update_bd: Completed
+[20:14:37] Run vpl: Step generate_target: Started
+[20:19:55] Run vpl: Step generate_target: Completed
+[20:19:55] Run vpl: Step config_hw_emulation: Started
+[20:24:26] Run vpl: Step config_hw_emulation: RUNNING...
+[20:28:49] Run vpl: Step config_hw_emulation: RUNNING...
+[20:32:10] Run vpl: Step config_hw_emulation: RUNNING...
+[20:37:47] Run vpl: Step config_hw_emulation: RUNNING...
+[20:42:20] Run vpl: Step config_hw_emulation: RUNNING...
+[20:47:24] Run vpl: Step config_hw_emulation: RUNNING...
+[20:50:40] Run vpl: Step config_hw_emulation: Completed
+[20:52:47] Run vpl: FINISHED. Run Status: config_hw_emulation Complete!
+INFO: [v++ 60-1441] [20:56:17] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:00:20 ; elapsed = 00:56:12 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 51425 ; free virtual = 446154
+INFO: [v++ 60-1443] [20:56:17] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'kernel2_clk_clk' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'kernel_clk_clk' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (KERNEL) clock: kernel2_clk_clk = 500, Kernel (DATA) clock: kernel_clk_clk = 140
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [20:57:02] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:45 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 49487 ; free virtual = 444300
+INFO: [v++ 60-1443] [20:57:02] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --key-value SYS:mode:hw_emu --add-section DEBUG_DATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/consolidated.cf --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/behav.xse --force --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_DATA'(4) was successfully added.
+Size   : 201494 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/consolidated.cf'
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 5624 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 188977418 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/behav.xse'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 12028 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 18950 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 35491 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (189287904 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [20:57:03] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.95 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 49455 ; free virtual = 444448
+INFO: [v++ 60-1443] [20:57:03] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/int/vadd.hw_emu.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [20:57:05] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 679.316 ; gain = 0.000 ; free physical = 49456 ; free virtual = 444449
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/link/system_estimate_vadd.hw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/struct_individual/_x.hw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 57m 48s
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=hw_emu ./host ./xclbin/vadd.hw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw_emu.xclbin
+Loading: './xclbin/vadd.hw_emu.xclbin'
+Finished loading binary...
+INFO: [HW-EM 01] Hardware emulation runs simulation underneath. Using a large data set will result in long simulation times. It is recommended that a small dataset is used for faster execution. The flow uses approximate models for DDR memory and interconnect and hence the performance data generated is approximate.
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 result = 120
+i = 1 result = 120
+i = 2 result = 120
+i = 3 result = 120
+i = 4 result = 120
+i = 5 result = 120
+i = 6 result = 120
+i = 7 result = 120
+i = 8 result = 120
+i = 9 result = 120
+i = 10 result = 120
+i = 11 result = 120
+i = 12 result = 120
+i = 13 result = 120
+i = 14 result = 120
+i = 15 result = 120
+i = 16 result = 120
+i = 17 result = 120
+i = 18 result = 120
+i = 19 result = 120
+i = 20 result = 120
+i = 21 result = 120
+i = 22 result = 120
+i = 23 result = 120
+i = 24 result = 120
+i = 25 result = 120
+i = 26 result = 120
+i = 27 result = 120
+i = 28 result = 120
+i = 29 result = 120
+i = 30 result = 120
+i = 31 result = 120
+i = 32 result = 120
+i = 33 result = 120
+i = 34 result = 120
+i = 35 result = 120
+i = 36 result = 120
+i = 37 result = 120
+i = 38 result = 120
+i = 39 result = 120
+i = 40 result = 120
+i = 41 result = 120
+i = 42 result = 120
+i = 43 result = 120
+i = 44 result = 120
+i = 45 result = 120
+i = 46 result = 120
+i = 47 result = 120
+i = 48 result = 120
+i = 49 result = 120
+i = 50 result = 120
+i = 51 result = 120
+i = 52 result = 120
+i = 53 result = 120
+i = 54 result = 120
+i = 55 result = 120
+i = 56 result = 120
+i = 57 result = 120
+i = 58 result = 120
+i = 59 result = 120
+i = 60 result = 120
+i = 61 result = 120
+i = 62 result = 120
+i = 63 result = 120
+i = 64 result = 120
+i = 65 result = 120
+i = 66 result = 120
+i = 67 result = 120
+i = 68 result = 120
+i = 69 result = 120
+i = 70 result = 120
+i = 71 result = 120
+i = 72 result = 120
+i = 73 result = 120
+i = 74 result = 120
+i = 75 result = 120
+i = 76 result = 120
+i = 77 result = 120
+i = 78 result = 120
+i = 79 result = 120
+i = 80 result = 120
+i = 81 result = 120
+i = 82 result = 120
+i = 83 result = 120
+i = 84 result = 120
+i = 85 result = 120
+i = 86 result = 120
+i = 87 result = 120
+i = 88 result = 120
+i = 89 result = 120
+i = 90 result = 120
+i = 91 result = 120
+i = 92 result = 120
+i = 93 result = 120
+i = 94 result = 120
+i = 95 result = 120
+i = 96 result = 120
+i = 97 result = 120
+i = 98 result = 120
+i = 99 result = 120
+i = 100 result = 120
+i = 101 result = 120
+i = 102 result = 120
+i = 103 result = 120
+i = 104 result = 120
+i = 105 result = 120
+i = 106 result = 120
+i = 107 result = 120
+i = 108 result = 120
+i = 109 result = 120
+i = 110 result = 120
+i = 111 result = 120
+i = 112 result = 120
+i = 113 result = 120
+i = 114 result = 120
+i = 115 result = 120
+i = 116 result = 120
+i = 117 result = 120
+i = 118 result = 120
+i = 119 result = 120
+i = 120 result = 120
+i = 121 result = 120
+i = 122 result = 120
+i = 123 result = 120
+i = 124 result = 120
+i = 125 result = 120
+i = 126 result = 120
+i = 127 result = 120
+i = 128 result = 120
+i = 129 result = 120
+i = 130 result = 120
+i = 131 result = 120
+i = 132 result = 120
+i = 133 result = 120
+i = 134 result = 120
+i = 135 result = 120
+i = 136 result = 120
+i = 137 result = 120
+i = 138 result = 120
+i = 139 result = 120
+i = 140 result = 120
+i = 141 result = 120
+i = 142 result = 120
+i = 143 result = 120
+i = 144 result = 120
+i = 145 result = 120
+i = 146 result = 120
+i = 147 result = 120
+i = 148 result = 120
+i = 149 result = 120
+i = 150 result = 120
+i = 151 result = 120
+i = 152 result = 120
+i = 153 result = 120
+i = 154 result = 120
+i = 155 result = 120
+i = 156 result = 120
+i = 157 result = 120
+i = 158 result = 120
+i = 159 result = 120
+i = 160 result = 120
+i = 161 result = 120
+i = 162 result = 120
+i = 163 result = 120
+i = 164 result = 120
+i = 165 result = 120
+i = 166 result = 120
+i = 167 result = 120
+i = 168 result = 120
+i = 169 result = 120
+i = 170 result = 120
+i = 171 result = 120
+i = 172 result = 120
+i = 173 result = 120
+i = 174 result = 120
+i = 175 result = 120
+i = 176 result = 120
+i = 177 result = 120
+i = 178 result = 120
+i = 179 result = 120
+i = 180 result = 120
+i = 181 result = 120
+i = 182 result = 120
+i = 183 result = 120
+i = 184 result = 120
+i = 185 result = 120
+i = 186 result = 120
+i = 187 result = 120
+i = 188 result = 120
+i = 189 result = 120
+i = 190 result = 120
+i = 191 result = 120
+i = 192 result = 120
+i = 193 result = 120
+i = 194 result = 120
+i = 195 result = 120
+i = 196 result = 120
+i = 197 result = 120
+i = 198 result = 120
+i = 199 result = 120
+i = 200 result = 120
+i = 201 result = 120
+i = 202 result = 120
+i = 203 result = 120
+i = 204 result = 120
+i = 205 result = 120
+i = 206 result = 120
+i = 207 result = 120
+i = 208 result = 120
+i = 209 result = 120
+i = 210 result = 120
+i = 211 result = 120
+i = 212 result = 120
+i = 213 result = 120
+i = 214 result = 120
+i = 215 result = 120
+i = 216 result = 120
+i = 217 result = 120
+i = 218 result = 120
+i = 219 result = 120
+i = 220 result = 120
+i = 221 result = 120
+i = 222 result = 120
+i = 223 result = 120
+i = 224 result = 120
+i = 225 result = 120
+i = 226 result = 120
+i = 227 result = 120
+i = 228 result = 120
+i = 229 result = 120
+i = 230 result = 120
+i = 231 result = 120
+i = 232 result = 120
+i = 233 result = 120
+i = 234 result = 120
+i = 235 result = 120
+i = 236 result = 120
+i = 237 result = 120
+i = 238 result = 120
+i = 239 result = 120
+i = 240 result = 120
+i = 241 result = 120
+i = 242 result = 120
+i = 243 result = 120
+i = 244 result = 120
+i = 245 result = 120
+i = 246 result = 120
+i = 247 result = 120
+i = 248 result = 120
+i = 249 result = 120
+i = 250 result = 120
+i = 251 result = 120
+i = 252 result = 120
+i = 253 result = 120
+i = 254 result = 120
+i = 255 result = 120
+i = 256 result = 120
+i = 257 result = 120
+i = 258 result = 120
+i = 259 result = 120
+i = 260 result = 120
+i = 261 result = 120
+i = 262 result = 120
+i = 263 result = 120
+i = 264 result = 120
+i = 265 result = 120
+i = 266 result = 120
+i = 267 result = 120
+i = 268 result = 120
+i = 269 result = 120
+i = 270 result = 120
+i = 271 result = 120
+i = 272 result = 120
+i = 273 result = 120
+i = 274 result = 120
+i = 275 result = 120
+i = 276 result = 120
+i = 277 result = 120
+i = 278 result = 120
+i = 279 result = 120
+i = 280 result = 120
+i = 281 result = 120
+i = 282 result = 120
+i = 283 result = 120
+i = 284 result = 120
+i = 285 result = 120
+i = 286 result = 120
+i = 287 result = 120
+i = 288 result = 120
+i = 289 result = 120
+i = 290 result = 120
+i = 291 result = 120
+i = 292 result = 120
+i = 293 result = 120
+i = 294 result = 120
+i = 295 result = 120
+i = 296 result = 120
+i = 297 result = 120
+i = 298 result = 120
+i = 299 result = 120
+i = 300 result = 120
+i = 301 result = 120
+i = 302 result = 120
+i = 303 result = 120
+i = 304 result = 120
+i = 305 result = 120
+i = 306 result = 120
+i = 307 result = 120
+i = 308 result = 120
+i = 309 result = 120
+i = 310 result = 120
+i = 311 result = 120
+i = 312 result = 120
+i = 313 result = 120
+i = 314 result = 120
+i = 315 result = 120
+i = 316 result = 120
+i = 317 result = 120
+i = 318 result = 120
+i = 319 result = 120
+i = 320 result = 120
+i = 321 result = 120
+i = 322 result = 120
+i = 323 result = 120
+i = 324 result = 120
+i = 325 result = 120
+i = 326 result = 120
+i = 327 result = 120
+i = 328 result = 120
+i = 329 result = 120
+i = 330 result = 120
+i = 331 result = 120
+i = 332 result = 120
+i = 333 result = 120
+i = 334 result = 120
+i = 335 result = 120
+i = 336 result = 120
+i = 337 result = 120
+i = 338 result = 120
+i = 339 result = 120
+i = 340 result = 120
+i = 341 result = 120
+i = 342 result = 120
+i = 343 result = 120
+i = 344 result = 120
+i = 345 result = 120
+i = 346 result = 120
+i = 347 result = 120
+i = 348 result = 120
+i = 349 result = 120
+i = 350 result = 120
+i = 351 result = 120
+i = 352 result = 120
+i = 353 result = 120
+i = 354 result = 120
+i = 355 result = 120
+i = 356 result = 120
+i = 357 result = 120
+i = 358 result = 120
+i = 359 result = 120
+i = 360 result = 120
+i = 361 result = 120
+i = 362 result = 120
+i = 363 result = 120
+i = 364 result = 120
+i = 365 result = 120
+i = 366 result = 120
+i = 367 result = 120
+i = 368 result = 120
+i = 369 result = 120
+i = 370 result = 120
+i = 371 result = 120
+i = 372 result = 120
+i = 373 result = 120
+i = 374 result = 120
+i = 375 result = 120
+i = 376 result = 120
+i = 377 result = 120
+i = 378 result = 120
+i = 379 result = 120
+i = 380 result = 120
+i = 381 result = 120
+i = 382 result = 120
+i = 383 result = 120
+i = 384 result = 120
+i = 385 result = 120
+i = 386 result = 120
+i = 387 result = 120
+i = 388 result = 120
+i = 389 result = 120
+i = 390 result = 120
+i = 391 result = 120
+i = 392 result = 120
+i = 393 result = 120
+i = 394 result = 120
+i = 395 result = 120
+i = 396 result = 120
+i = 397 result = 120
+i = 398 result = 120
+i = 399 result = 120
+i = 400 result = 120
+i = 401 result = 120
+i = 402 result = 120
+i = 403 result = 120
+i = 404 result = 120
+i = 405 result = 120
+i = 406 result = 120
+i = 407 result = 120
+i = 408 result = 120
+i = 409 result = 120
+i = 410 result = 120
+i = 411 result = 120
+i = 412 result = 120
+i = 413 result = 120
+i = 414 result = 120
+i = 415 result = 120
+i = 416 result = 120
+i = 417 result = 120
+i = 418 result = 120
+i = 419 result = 120
+i = 420 result = 120
+i = 421 result = 120
+i = 422 result = 120
+i = 423 result = 120
+i = 424 result = 120
+i = 425 result = 120
+i = 426 result = 120
+i = 427 result = 120
+i = 428 result = 120
+i = 429 result = 120
+i = 430 result = 120
+i = 431 result = 120
+i = 432 result = 120
+i = 433 result = 120
+i = 434 result = 120
+i = 435 result = 120
+i = 436 result = 120
+i = 437 result = 120
+i = 438 result = 120
+i = 439 result = 120
+i = 440 result = 120
+i = 441 result = 120
+i = 442 result = 120
+i = 443 result = 120
+i = 444 result = 120
+i = 445 result = 120
+i = 446 result = 120
+i = 447 result = 120
+i = 448 result = 120
+i = 449 result = 120
+i = 450 result = 120
+i = 451 result = 120
+i = 452 result = 120
+i = 453 result = 120
+i = 454 result = 120
+i = 455 result = 120
+i = 456 result = 120
+i = 457 result = 120
+i = 458 result = 120
+i = 459 result = 120
+i = 460 result = 120
+i = 461 result = 120
+i = 462 result = 120
+i = 463 result = 120
+i = 464 result = 120
+i = 465 result = 120
+i = 466 result = 120
+i = 467 result = 120
+i = 468 result = 120
+i = 469 result = 120
+i = 470 result = 120
+i = 471 result = 120
+i = 472 result = 120
+i = 473 result = 120
+i = 474 result = 120
+i = 475 result = 120
+i = 476 result = 120
+i = 477 result = 120
+i = 478 result = 120
+i = 479 result = 120
+i = 480 result = 120
+i = 481 result = 120
+i = 482 result = 120
+i = 483 result = 120
+i = 484 result = 120
+i = 485 result = 120
+i = 486 result = 120
+i = 487 result = 120
+i = 488 result = 120
+i = 489 result = 120
+i = 490 result = 120
+i = 491 result = 120
+i = 492 result = 120
+i = 493 result = 120
+i = 494 result = 120
+i = 495 result = 120
+i = 496 result = 120
+i = 497 result = 120
+i = 498 result = 120
+i = 499 result = 120
+i = 500 result = 120
+i = 501 result = 120
+i = 502 result = 120
+i = 503 result = 120
+i = 504 result = 120
+i = 505 result = 120
+i = 506 result = 120
+i = 507 result = 120
+i = 508 result = 120
+i = 509 result = 120
+i = 510 result = 120
+i = 511 result = 120
+i = 512 result = 120
+i = 513 result = 120
+i = 514 result = 120
+i = 515 result = 120
+i = 516 result = 120
+i = 517 result = 120
+i = 518 result = 120
+i = 519 result = 120
+i = 520 result = 120
+i = 521 result = 120
+i = 522 result = 120
+i = 523 result = 120
+i = 524 result = 120
+i = 525 result = 120
+i = 526 result = 120
+i = 527 result = 120
+i = 528 result = 120
+i = 529 result = 120
+i = 530 result = 120
+i = 531 result = 120
+i = 532 result = 120
+i = 533 result = 120
+i = 534 result = 120
+i = 535 result = 120
+i = 536 result = 120
+i = 537 result = 120
+i = 538 result = 120
+i = 539 result = 120
+i = 540 result = 120
+i = 541 result = 120
+i = 542 result = 120
+i = 543 result = 120
+i = 544 result = 120
+i = 545 result = 120
+i = 546 result = 120
+i = 547 result = 120
+i = 548 result = 120
+i = 549 result = 120
+i = 550 result = 120
+i = 551 result = 120
+i = 552 result = 120
+i = 553 result = 120
+i = 554 result = 120
+i = 555 result = 120
+i = 556 result = 120
+i = 557 result = 120
+i = 558 result = 120
+i = 559 result = 120
+i = 560 result = 120
+i = 561 result = 120
+i = 562 result = 120
+i = 563 result = 120
+i = 564 result = 120
+i = 565 result = 120
+i = 566 result = 120
+i = 567 result = 120
+i = 568 result = 120
+i = 569 result = 120
+i = 570 result = 120
+i = 571 result = 120
+i = 572 result = 120
+i = 573 result = 120
+i = 574 result = 120
+i = 575 result = 120
+i = 576 result = 120
+i = 577 result = 120
+i = 578 result = 120
+i = 579 result = 120
+i = 580 result = 120
+i = 581 result = 120
+i = 582 result = 120
+i = 583 result = 120
+i = 584 result = 120
+i = 585 result = 120
+i = 586 result = 120
+i = 587 result = 120
+i = 588 result = 120
+i = 589 result = 120
+i = 590 result = 120
+i = 591 result = 120
+i = 592 result = 120
+i = 593 result = 120
+i = 594 result = 120
+i = 595 result = 120
+i = 596 result = 120
+i = 597 result = 120
+i = 598 result = 120
+i = 599 result = 120
+i = 600 result = 120
+i = 601 result = 120
+i = 602 result = 120
+i = 603 result = 120
+i = 604 result = 120
+i = 605 result = 120
+i = 606 result = 120
+i = 607 result = 120
+i = 608 result = 120
+i = 609 result = 120
+i = 610 result = 120
+i = 611 result = 120
+i = 612 result = 120
+i = 613 result = 120
+i = 614 result = 120
+i = 615 result = 120
+i = 616 result = 120
+i = 617 result = 120
+i = 618 result = 120
+i = 619 result = 120
+i = 620 result = 120
+i = 621 result = 120
+i = 622 result = 120
+i = 623 result = 120
+i = 624 result = 120
+i = 625 result = 120
+i = 626 result = 120
+i = 627 result = 120
+i = 628 result = 120
+i = 629 result = 120
+i = 630 result = 120
+i = 631 result = 120
+i = 632 result = 120
+i = 633 result = 120
+i = 634 result = 120
+i = 635 result = 120
+i = 636 result = 120
+i = 637 result = 120
+i = 638 result = 120
+i = 639 result = 120
+i = 640 result = 120
+i = 641 result = 120
+i = 642 result = 120
+i = 643 result = 120
+i = 644 result = 120
+i = 645 result = 120
+i = 646 result = 120
+i = 647 result = 120
+i = 648 result = 120
+i = 649 result = 120
+i = 650 result = 120
+i = 651 result = 120
+i = 652 result = 120
+i = 653 result = 120
+i = 654 result = 120
+i = 655 result = 120
+i = 656 result = 120
+i = 657 result = 120
+i = 658 result = 120
+i = 659 result = 120
+i = 660 result = 120
+i = 661 result = 120
+i = 662 result = 120
+i = 663 result = 120
+i = 664 result = 120
+i = 665 result = 120
+i = 666 result = 120
+i = 667 result = 120
+i = 668 result = 120
+i = 669 result = 120
+i = 670 result = 120
+i = 671 result = 120
+i = 672 result = 120
+i = 673 result = 120
+i = 674 result = 120
+i = 675 result = 120
+i = 676 result = 120
+i = 677 result = 120
+i = 678 result = 120
+i = 679 result = 120
+i = 680 result = 120
+i = 681 result = 120
+i = 682 result = 120
+i = 683 result = 120
+i = 684 result = 120
+i = 685 result = 120
+i = 686 result = 120
+i = 687 result = 120
+i = 688 result = 120
+i = 689 result = 120
+i = 690 result = 120
+i = 691 result = 120
+i = 692 result = 120
+i = 693 result = 120
+i = 694 result = 120
+i = 695 result = 120
+i = 696 result = 120
+i = 697 result = 120
+i = 698 result = 120
+i = 699 result = 120
+i = 700 result = 120
+i = 701 result = 120
+i = 702 result = 120
+i = 703 result = 120
+i = 704 result = 120
+i = 705 result = 120
+i = 706 result = 120
+i = 707 result = 120
+i = 708 result = 120
+i = 709 result = 120
+i = 710 result = 120
+i = 711 result = 120
+i = 712 result = 120
+i = 713 result = 120
+i = 714 result = 120
+i = 715 result = 120
+i = 716 result = 120
+i = 717 result = 120
+i = 718 result = 120
+i = 719 result = 120
+i = 720 result = 120
+i = 721 result = 120
+i = 722 result = 120
+i = 723 result = 120
+i = 724 result = 120
+i = 725 result = 120
+i = 726 result = 120
+i = 727 result = 120
+i = 728 result = 120
+i = 729 result = 120
+i = 730 result = 120
+i = 731 result = 120
+i = 732 result = 120
+i = 733 result = 120
+i = 734 result = 120
+i = 735 result = 120
+i = 736 result = 120
+i = 737 result = 120
+i = 738 result = 120
+i = 739 result = 120
+i = 740 result = 120
+i = 741 result = 120
+i = 742 result = 120
+i = 743 result = 120
+i = 744 result = 120
+i = 745 result = 120
+i = 746 result = 120
+i = 747 result = 120
+i = 748 result = 120
+i = 749 result = 120
+i = 750 result = 120
+i = 751 result = 120
+i = 752 result = 120
+i = 753 result = 120
+i = 754 result = 120
+i = 755 result = 120
+i = 756 result = 120
+i = 757 result = 120
+i = 758 result = 120
+i = 759 result = 120
+i = 760 result = 120
+i = 761 result = 120
+i = 762 result = 120
+i = 763 result = 120
+i = 764 result = 120
+i = 765 result = 120
+i = 766 result = 120
+i = 767 result = 120
+i = 768 result = 120
+i = 769 result = 120
+i = 770 result = 120
+i = 771 result = 120
+i = 772 result = 120
+i = 773 result = 120
+i = 774 result = 120
+i = 775 result = 120
+i = 776 result = 120
+i = 777 result = 120
+i = 778 result = 120
+i = 779 result = 120
+i = 780 result = 120
+i = 781 result = 120
+i = 782 result = 120
+i = 783 result = 120
+i = 784 result = 120
+i = 785 result = 120
+i = 786 result = 120
+i = 787 result = 120
+i = 788 result = 120
+i = 789 result = 120
+i = 790 result = 120
+i = 791 result = 120
+i = 792 result = 120
+i = 793 result = 120
+i = 794 result = 120
+i = 795 result = 120
+i = 796 result = 120
+i = 797 result = 120
+i = 798 result = 120
+i = 799 result = 120
+i = 800 result = 120
+i = 801 result = 120
+i = 802 result = 120
+i = 803 result = 120
+i = 804 result = 120
+i = 805 result = 120
+i = 806 result = 120
+i = 807 result = 120
+i = 808 result = 120
+i = 809 result = 120
+i = 810 result = 120
+i = 811 result = 120
+i = 812 result = 120
+i = 813 result = 120
+i = 814 result = 120
+i = 815 result = 120
+i = 816 result = 120
+i = 817 result = 120
+i = 818 result = 120
+i = 819 result = 120
+i = 820 result = 120
+i = 821 result = 120
+i = 822 result = 120
+i = 823 result = 120
+i = 824 result = 120
+i = 825 result = 120
+i = 826 result = 120
+i = 827 result = 120
+i = 828 result = 120
+i = 829 result = 120
+i = 830 result = 120
+i = 831 result = 120
+i = 832 result = 120
+i = 833 result = 120
+i = 834 result = 120
+i = 835 result = 120
+i = 836 result = 120
+i = 837 result = 120
+i = 838 result = 120
+i = 839 result = 120
+i = 840 result = 120
+i = 841 result = 120
+i = 842 result = 120
+i = 843 result = 120
+i = 844 result = 120
+i = 845 result = 120
+i = 846 result = 120
+i = 847 result = 120
+i = 848 result = 120
+i = 849 result = 120
+i = 850 result = 120
+i = 851 result = 120
+i = 852 result = 120
+i = 853 result = 120
+i = 854 result = 120
+i = 855 result = 120
+i = 856 result = 120
+i = 857 result = 120
+i = 858 result = 120
+i = 859 result = 120
+i = 860 result = 120
+i = 861 result = 120
+i = 862 result = 120
+i = 863 result = 120
+i = 864 result = 120
+i = 865 result = 120
+i = 866 result = 120
+i = 867 result = 120
+i = 868 result = 120
+i = 869 result = 120
+i = 870 result = 120
+i = 871 result = 120
+i = 872 result = 120
+i = 873 result = 120
+i = 874 result = 120
+i = 875 result = 120
+i = 876 result = 120
+i = 877 result = 120
+i = 878 result = 120
+i = 879 result = 120
+i = 880 result = 120
+i = 881 result = 120
+i = 882 result = 120
+i = 883 result = 120
+i = 884 result = 120
+i = 885 result = 120
+i = 886 result = 120
+i = 887 result = 120
+i = 888 result = 120
+i = 889 result = 120
+i = 890 result = 120
+i = 891 result = 120
+i = 892 result = 120
+i = 893 result = 120
+i = 894 result = 120
+i = 895 result = 120
+i = 896 result = 120
+i = 897 result = 120
+i = 898 result = 120
+i = 899 result = 120
+i = 900 result = 120
+i = 901 result = 120
+i = 902 result = 120
+i = 903 result = 120
+i = 904 result = 120
+i = 905 result = 120
+i = 906 result = 120
+i = 907 result = 120
+i = 908 result = 120
+i = 909 result = 120
+i = 910 result = 120
+i = 911 result = 120
+i = 912 result = 120
+i = 913 result = 120
+i = 914 result = 120
+i = 915 result = 120
+i = 916 result = 120
+i = 917 result = 120
+i = 918 result = 120
+i = 919 result = 120
+i = 920 result = 120
+i = 921 result = 120
+i = 922 result = 120
+i = 923 result = 120
+i = 924 result = 120
+i = 925 result = 120
+i = 926 result = 120
+i = 927 result = 120
+i = 928 result = 120
+i = 929 result = 120
+i = 930 result = 120
+i = 931 result = 120
+i = 932 result = 120
+i = 933 result = 120
+i = 934 result = 120
+i = 935 result = 120
+i = 936 result = 120
+i = 937 result = 120
+i = 938 result = 120
+i = 939 result = 120
+i = 940 result = 120
+i = 941 result = 120
+i = 942 result = 120
+i = 943 result = 120
+i = 944 result = 120
+i = 945 result = 120
+i = 946 result = 120
+i = 947 result = 120
+i = 948 result = 120
+i = 949 result = 120
+i = 950 result = 120
+i = 951 result = 120
+i = 952 result = 120
+i = 953 result = 120
+i = 954 result = 120
+i = 955 result = 120
+i = 956 result = 120
+i = 957 result = 120
+i = 958 result = 120
+i = 959 result = 120
+i = 960 result = 120
+i = 961 result = 120
+i = 962 result = 120
+i = 963 result = 120
+i = 964 result = 120
+i = 965 result = 120
+i = 966 result = 120
+i = 967 result = 120
+i = 968 result = 120
+i = 969 result = 120
+i = 970 result = 120
+i = 971 result = 120
+i = 972 result = 120
+i = 973 result = 120
+i = 974 result = 120
+i = 975 result = 120
+i = 976 result = 120
+i = 977 result = 120
+i = 978 result = 120
+i = 979 result = 120
+i = 980 result = 120
+i = 981 result = 120
+i = 982 result = 120
+i = 983 result = 120
+i = 984 result = 120
+i = 985 result = 120
+i = 986 result = 120
+i = 987 result = 120
+i = 988 result = 120
+i = 989 result = 120
+i = 990 result = 120
+i = 991 result = 120
+i = 992 result = 120
+i = 993 result = 120
+i = 994 result = 120
+i = 995 result = 120
+i = 996 result = 120
+i = 997 result = 120
+i = 998 result = 120
+i = 999 result = 120
+i = 1000 result = 120
+i = 1001 result = 120
+i = 1002 result = 120
+i = 1003 result = 120
+i = 1004 result = 120
+i = 1005 result = 120
+i = 1006 result = 120
+i = 1007 result = 120
+i = 1008 result = 120
+i = 1009 result = 120
+i = 1010 result = 120
+i = 1011 result = 120
+i = 1012 result = 120
+i = 1013 result = 120
+i = 1014 result = 120
+i = 1015 result = 120
+i = 1016 result = 120
+i = 1017 result = 120
+i = 1018 result = 120
+i = 1019 result = 120
+i = 1020 result = 120
+i = 1021 result = 120
+i = 1022 result = 120
+i = 1023 result = 120
+TEST PASSED
+INFO::[ Vitis-EM 22 ] [Time elapsed: 3 minute(s) 20 seconds, Emulation time: 0.285855 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_gmem0-HBM[0]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem17-HBM[17]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem18-HBM[18]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem19-HBM[19]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem2-HBM[2]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem20-HBM[20]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem21-HBM[21]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem22-HBM[22]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem23-HBM[23]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem24-HBM[24]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem25-HBM[25]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem1-HBM[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem26-HBM[26]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem27-HBM[27]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem28-HBM[28]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem29-HBM[29]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem3-HBM[3]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem30-HBM[30]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem31-HBM[31]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem32-DDR[0]          RD = 0.062 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem33-DDR[1]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem34-PLRAM[0]          RD = 0.000 KB               WR = 4.000 KB        
+vadd_1:m_axi_gmem10-HBM[10]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem4-HBM[4]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem5-HBM[5]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem11-HBM[11]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem12-HBM[12]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem13-HBM[13]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem14-HBM[14]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem15-HBM[15]          RD = 0.000 KB               WR = 0.000 KB        
+vadd_1:m_axi_gmem16-HBM[16]          RD = 0.000 KB               WR = 0.000 KB        
+
+INFO: [HW-EM 06-0] Waiting for the simulator process to exit
+INFO: [HW-EM 06-1] All the simulator processes exited successfully

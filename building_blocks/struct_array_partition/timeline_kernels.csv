@@ -1,0 +1,33 @@
+Kernel trace events
+Device, Binary, Kernel, Compute Unit, Function, Data Type, Index, Start Time (ms), End Time (ms), Value
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,top,top,0,0.173368,0.182089,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,outstanding,0,0.000000,0.173690,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,outstanding,0,0.173690,0.181460,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,outstanding,0,0.181460,0.181460,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,row,0,0.000000,0.173690,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,row,0,0.173690,0.181460,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,reduction_1024_U0,row,0,0.181460,0.181460,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,outstanding,0,0.000000,0.173618,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,outstanding,0,0.173618,0.173683,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,outstanding,0,0.173683,0.173683,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,row,0,0.000000,0.173618,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,row,0,0.173618,0.173683,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,Block_proc_U0,row,0,0.173683,0.173683,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,outstanding,0,0.000000,0.173683,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,outstanding,0,0.173683,0.181018,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,outstanding,0,0.181018,0.181018,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,row,0,0.000000,0.173683,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,row,0,0.173683,0.181018,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,feed_struct_1024_U0,row,0,0.181018,0.181018,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,outstanding,0,0.000000,0.173368,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,outstanding,0,0.173368,0.173618,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,outstanding,0,0.173618,0.173618,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,row,0,0.000000,0.173368,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,row,0,0.173368,0.173618,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,init_array_16_5_U0,row,0,0.173618,0.173618,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,outstanding,0,0.000000,0.173376,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,outstanding,0,0.173376,0.182089,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,outstanding,0,0.182089,0.182089,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,row,0,0.000000,0.173376,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,row,0,0.173376,0.182089,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_1024_U0,row,0,0.182089,0.182089,65535
