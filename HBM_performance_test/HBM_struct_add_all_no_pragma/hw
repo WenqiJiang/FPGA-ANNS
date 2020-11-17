@@ -395,3 +395,151 @@ Creating Vivado project.
 [10:47:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
 [10:49:09] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
 [10:50:34] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:52:01] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:53:29] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:54:53] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:56:19] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:57:44] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[10:59:10] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:01:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:03:06] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:05:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:06:39] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:08:06] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:09:31] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:10:56] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:12:26] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:14:08] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:18:19] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:26:11] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:30:29] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:33:07] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:35:07] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:36:33] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:38:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:42:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:45:49] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:47:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:48:40] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:50:14] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:52:26] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:56:11] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[11:58:34] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:02:24] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:04:52] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:06:20] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:07:42] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:09:45] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:12:56] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:15:00] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:16:27] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:17:58] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:19:27] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:20:59] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:22:27] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:23:55] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:25:22] Block-level synthesis in progress, 67 of 68 jobs complete, 1 job running.
+[12:31:05] Block-level synthesis in progress, 68 of 68 jobs complete, 0 jobs running.
+[12:33:03] Top-level synthesis in progress.
+[12:34:23] Top-level synthesis in progress.
+[12:35:47] Top-level synthesis in progress.
+[12:37:08] Top-level synthesis in progress.
+[12:38:30] Top-level synthesis in progress.
+[12:39:53] Top-level synthesis in progress.
+[12:41:18] Top-level synthesis in progress.
+[12:42:45] Top-level synthesis in progress.
+[12:44:09] Top-level synthesis in progress.
+[12:45:32] Top-level synthesis in progress.
+[12:46:56] Top-level synthesis in progress.
+[12:48:00] Run vpl: Step synth: Completed
+[12:48:00] Run vpl: Step impl: Started
+[09:56:08] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 25h 04m 49s 
+
+[09:56:08] Starting logic optimization..
+[09:57:30] Phase 1 Retarget
+[09:57:30] Phase 2 Constant propagation
+[09:58:51] Phase 3 Sweep
+[10:01:32] Phase 4 BUFG optimization
+[10:01:32] Phase 5 Shift Register Optimization
+[10:02:52] Phase 6 Post Processing Netlist
+[10:11:08] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 15m 00s 
+
+[10:11:08] Starting logic placement..
+[10:12:27] Phase 1 Placer Initialization
+[10:12:27] Phase 1.1 Placer Initialization Netlist Sorting
+[10:15:08] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[10:17:50] Phase 1.3 Build Placer Netlist Model
+[10:23:12] Phase 1.4 Constrain Clocks/Macros
+[10:24:36] Phase 2 Global Placement
+[10:24:36] Phase 2.1 Floorplanning
+[10:42:03] Phase 2.2 Global Placement Core
+[11:11:32] Phase 2.2.1 Physical Synthesis In Placer
+[11:28:51] Phase 3 Detail Placement
+[11:28:51] Phase 3.1 Commit Multi Column Macros
+[11:30:11] Phase 3.2 Commit Most Macros & LUTRAMs
+[11:31:30] Phase 3.3 Area Swap Optimization
+[11:34:07] Phase 3.4 Pipeline Register Optimization
+[11:34:07] Phase 3.5 IO Cut Optimizer
+[11:34:07] Phase 3.6 Fast Optimization
+[11:35:25] Phase 3.7 Small Shape DP
+[11:35:25] Phase 3.7.1 Small Shape Clustering
+[11:39:26] Phase 3.7.2 Flow Legalize Slice Clusters
+[11:39:26] Phase 3.7.3 Slice Area Swap
+[11:43:20] Phase 3.7.4 Commit Slice Clusters
+[11:46:06] Phase 3.8 Place Remaining
+[11:46:06] Phase 3.9 Re-assign LUT pins
+[11:48:45] Phase 3.10 Pipeline Register Optimization
+[11:48:45] Phase 3.11 Fast Optimization
+[11:52:41] Phase 4 Post Placement Optimization and Clean-Up
+[11:52:41] Phase 4.1 Post Commit Optimization
+[11:55:17] Phase 4.1.1 Post Placement Optimization
+[11:55:17] Phase 4.1.1.1 BUFG Insertion
+[12:05:58] Phase 4.1.1.2 BUFG Replication
+[12:13:55] Phase 4.2 Post Placement Cleanup
+[12:16:33] Phase 4.3 Placer Reporting
+[12:16:33] Phase 4.4 Final Placement Cleanup
+[13:07:20] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 02h 56m 11s 
+
+[13:07:20] Starting logic routing..
+[13:08:42] Phase 1 Build RT Design
+[13:15:29] Phase 2 Router Initialization
+[13:15:29] Phase 2.1 Fix Topology Constraints
+[13:15:29] Phase 2.2 Pre Route Cleanup
+[13:16:49] Phase 2.3 Global Clock Net Routing
+[13:18:11] Phase 2.4 Update Timing
+[13:24:57] Phase 2.5 Update Timing for Bus Skew
+[13:24:57] Phase 2.5.1 Update Timing
+[13:29:01] Phase 3 Initial Routing
+[13:29:01] Phase 3.1 Global Routing
+[13:34:28] Phase 3.2 Update Timing
+[13:44:03] Phase 3.3 Update Timing
+[13:50:51] Phase 3.4 Update Timing
+[14:00:18] Phase 3.5 Update Timing
+[14:04:19] Phase 3.6 Initial Routing Verification
+[14:07:03] Phase 4 Rip-up And Reroute
+[14:07:03] Phase 4.1 Global Iteration 0
+[14:07:03] Phase 4.2 Global Iteration 1
+[17:45:50] Phase 4.3 Global Iteration 2
+[18:33:43] Phase 5 Delay and Skew Optimization
+[18:33:43] Phase 5.1 Delay CleanUp
+[18:33:43] Phase 5.2 Clock Skew Optimization
+[18:35:05] Phase 6 Post Hold Fix
+[18:35:05] Phase 6.1 Hold Fix Iter
+[18:36:26] Phase 6.2 Additional Hold Fix
+[18:37:44] Phase 7 Route finalize
+[18:39:15] Phase 8 Verifying routed nets
+[18:42:35] Phase 9 Depositing Routes
+[18:51:59] Run vpl: Step impl: Failed
+[18:52:50] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while processing /mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1 :
+ERROR: [VPL 18-1000] Routing results verification failed due to partially-conflicted nets (Up to first 10 of violated nets):  pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[12]_i_29__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[13]_i_32__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[14]_i_10__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[14]_i_8__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[15]_i_22__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[15]_i_2__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[16]_i_30__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[1]_i_24__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[1]_i_9__22_n_1 pfm_top_i/dynamic_region/vadd_1/inst/load_HBM62_U0/data_p2[22]_i_11__22_n_1 
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, route_design ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/HBM_performance_test/HBM_struct_add_all_no_pragma/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [18:52:59] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:14:41 ; elapsed = 34:01:43 . Memory (MB): peak = 741.188 ; gain = 0.000 ; free physical = 221364 ; free virtual = 462039
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed

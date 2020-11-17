@@ -1,1 +1,1 @@
-        unsigned char lookup_idx_A_0 = PQ_code_A_0;
+  padding(s_float_result0, s_padded_result0);

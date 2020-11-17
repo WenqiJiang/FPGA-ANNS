@@ -1,0 +1,596 @@
+g++ -I..//common/includes/xcl2 -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 ..//common/includes/xcl2/xcl2.cpp src/host.cpp  -o 'host'  -L/opt/xilinx/xrt/lib -lOpenCL -lpthread  -lrt -lstdc++ 
+mkdir -p ./_x.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3 -c -k vadd -I'src' -o'_x.hw.xilinx_u280_xdma_201920_3/vadd.xo' 'src/vadd.cpp'
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/logs/vadd
+Running Dispatch Server on port:44997
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo.compile_summary, at Tue Nov 17 11:38:58 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Nov 17 11:38:58 2020
+Running Rule Check Server on port:34543
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/v++_compile_vadd_guidance.html', at Tue Nov 17 11:38:59 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/vadd/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining function 'ap_uint512_to_struct'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 8.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 108.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 213.27 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/system_estimate_vadd.xtxt
+Add Instance read36 read36_U0 4726
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read37 read37_U0 4749
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read38 read38_U0 4772
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read39 read39_U0 4795
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read40 read40_U0 4818
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read41 read41_U0 4841
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read42 read42_U0 4864
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read43 read43_U0 4887
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read44 read44_U0 4910
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read45 read45_U0 4933
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read46 read46_U0 4956
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read47 read47_U0 4979
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read48 read48_U0 5002
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read49 read49_U0 5025
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read50 read50_U0 5048
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read51 read51_U0 5071
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read52 read52_U0 5094
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read53 read53_U0 5117
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read54 read54_U0 5140
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read55 read55_U0 5163
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read56 read56_U0 5186
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read57 read57_U0 5209
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read58 read58_U0 5232
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read59 read59_U0 5255
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read60 read60_U0 5278
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read61 read61_U0 5301
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read62 read62_U0 5324
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read63 read63_U0 5347
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read64 read64_U0 5370
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance read_r read_U0 5393
+Add Instance ap_uint512_to_struct grp_ap_uint512_to_struct_fu_202 202
+Add Instance reduction65 reduction65_U0 5416
+Add Instance reduction66 reduction66_U0 5437
+Add Instance reduction67 reduction67_U0 5458
+Add Instance reduction68 reduction68_U0 5479
+Add Instance reduction69 reduction69_U0 5500
+Add Instance reduction70 reduction70_U0 5521
+Add Instance reduction71 reduction71_U0 5542
+Add Instance reduction72 reduction72_U0 5563
+Add Instance reduction73 reduction73_U0 5584
+Add Instance reduction74 reduction74_U0 5605
+Add Instance reduction75 reduction75_U0 5626
+Add Instance reduction76 reduction76_U0 5647
+Add Instance reduction77 reduction77_U0 5668
+Add Instance reduction78 reduction78_U0 5689
+Add Instance reduction79 reduction79_U0 5710
+Add Instance reduction80 reduction80_U0 5731
+Add Instance reduction81 reduction81_U0 5752
+Add Instance reduction82 reduction82_U0 5773
+Add Instance reduction83 reduction83_U0 5794
+Add Instance reduction84 reduction84_U0 5815
+Add Instance reduction85 reduction85_U0 5836
+Add Instance reduction86 reduction86_U0 5857
+Add Instance reduction87 reduction87_U0 5878
+Add Instance reduction88 reduction88_U0 5899
+Add Instance reduction89 reduction89_U0 5920
+Add Instance reduction90 reduction90_U0 5941
+Add Instance reduction91 reduction91_U0 5962
+Add Instance reduction92 reduction92_U0 5983
+Add Instance reduction93 reduction93_U0 6004
+Add Instance reduction reduction_U0 6025
+Add Instance write123 write123_U0 6046
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write124 write124_U0 6054
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write125 write125_U0 6062
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write126 write126_U0 6070
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write127 write127_U0 6078
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write128 write128_U0 6086
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write129 write129_U0 6094
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write130 write130_U0 6102
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write131 write131_U0 6110
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write132 write132_U0 6118
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write133 write133_U0 6126
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write134 write134_U0 6134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write135 write135_U0 6142
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write136 write136_U0 6150
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write137 write137_U0 6158
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write138 write138_U0 6166
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write139 write139_U0 6174
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write140 write140_U0 6182
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write141 write141_U0 6190
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write142 write142_U0 6198
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write143 write143_U0 6206
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write144 write144_U0 6214
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write145 write145_U0 6222
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write146 write146_U0 6230
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write147 write147_U0 6238
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write148 write148_U0 6246
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write149 write149_U0 6254
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write150 write150_U0 6262
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write151 write151_U0 6270
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance write_r write_U0 6278
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_134 134
+Add Instance HLS_REG_ap_uint_512_s grp_HLS_REG_ap_uint_512_s_fu_140 140
+Add Instance padding94 padding94_U0 6286
+Add Instance padding95 padding95_U0 6292
+Add Instance padding96 padding96_U0 6298
+Add Instance padding97 padding97_U0 6304
+Add Instance padding98 padding98_U0 6310
+Add Instance padding99 padding99_U0 6316
+Add Instance padding100 padding100_U0 6322
+Add Instance padding101 padding101_U0 6328
+Add Instance padding102 padding102_U0 6334
+Add Instance padding103 padding103_U0 6340
+Add Instance padding104 padding104_U0 6346
+Add Instance padding105 padding105_U0 6352
+Add Instance padding106 padding106_U0 6358
+Add Instance padding107 padding107_U0 6364
+Add Instance padding108 padding108_U0 6370
+Add Instance padding109 padding109_U0 6376
+Add Instance padding110 padding110_U0 6382
+Add Instance padding111 padding111_U0 6388
+Add Instance padding112 padding112_U0 6394
+Add Instance padding113 padding113_U0 6400
+Add Instance padding114 padding114_U0 6406
+Add Instance padding115 padding115_U0 6412
+Add Instance padding116 padding116_U0 6418
+Add Instance padding117 padding117_U0 6424
+Add Instance padding118 padding118_U0 6430
+Add Instance padding119 padding119_U0 6436
+Add Instance padding120 padding120_U0 6442
+Add Instance padding121 padding121_U0 6448
+Add Instance padding122 padding122_U0 6454
+Add Instance padding padding_U0 6460
+Add Instance vadd_entry181 vadd_entry181_U0 6466
+INFO: [v++ 60-586] Created _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 28m 9s
+mkdir -p ./build_dir.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l  -o'build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin' _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link
+Running Dispatch Server on port:43141
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin.link_summary, at Tue Nov 17 12:07:10 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Nov 17 12:07:10 2020
+Running Rule Check Server on port:41117
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd_guidance.html', at Tue Nov 17 12:07:11 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [12:07:24] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Tue Nov 17 12:07:30 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [12:07:40] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [12:07:47] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 74163 ; free virtual = 449900
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [12:07:47] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -sp vadd_1.m_axi_hbm0:HBM[0] -sp vadd_1.m_axi_hbm1:HBM[1] -sp vadd_1.m_axi_hbm2:HBM[2] -sp vadd_1.m_axi_hbm3:HBM[3] -sp vadd_1.m_axi_hbm4:HBM[4] -sp vadd_1.m_axi_hbm5:HBM[5] -sp vadd_1.m_axi_hbm6:HBM[6] -sp vadd_1.m_axi_hbm7:HBM[7] -sp vadd_1.m_axi_hbm8:HBM[8] -sp vadd_1.m_axi_hbm9:HBM[9] -sp vadd_1.m_axi_hbm10:HBM[10] -sp vadd_1.m_axi_hbm11:HBM[11] -sp vadd_1.m_axi_hbm12:HBM[12] -sp vadd_1.m_axi_hbm13:HBM[13] -sp vadd_1.m_axi_hbm14:HBM[14] -sp vadd_1.m_axi_hbm15:HBM[15] -sp vadd_1.m_axi_hbm16:HBM[16] -sp vadd_1.m_axi_hbm17:HBM[17] -sp vadd_1.m_axi_hbm18:HBM[18] -sp vadd_1.m_axi_hbm19:HBM[19] -sp vadd_1.m_axi_hbm20:HBM[20] -sp vadd_1.m_axi_hbm21:HBM[21] -sp vadd_1.m_axi_hbm22:HBM[22] -sp vadd_1.m_axi_hbm23:HBM[23] -sp vadd_1.m_axi_hbm24:HBM[24] -sp vadd_1.m_axi_hbm25:HBM[25] -sp vadd_1.m_axi_hbm26:HBM[26] -sp vadd_1.m_axi_hbm27:HBM[27] -sp vadd_1.m_axi_hbm28:HBM[28] -sp vadd_1.m_axi_hbm29:HBM[29] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm29, sptag: HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [SYSTEM_LINK 82-37] [12:07:54] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 74167 ; free virtual = 449904
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [12:07:54] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [12:07:58] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 74147 ; free virtual = 449889
+INFO: [v++ 60-1441] [12:07:58] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:34 . Memory (MB): peak = 687.020 ; gain = 0.000 ; free physical = 74185 ; free virtual = 449926
+INFO: [v++ 60-1443] [12:07:58] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [12:08:02] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 687.020 ; gain = 0.000 ; free physical = 74190 ; free virtual = 449932
+INFO: [v++ 60-1443] [12:08:02] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l -obuild_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin _x.hw.xilinx_u280_xdma_201920_3/vadd.xo  --generatedByXclbinName vadd --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [12:08:04] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 687.020 ; gain = 0.000 ; free physical = 74190 ; free virtual = 449932
+INFO: [v++ 60-1443] [12:08:04] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/.tlog/v++_link_vadd --iprepo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction_struct_uint512/build_dir.hw.xilinx_u280_xdma_201920_3/link/vivado/vpl/.local/hw_platform
+[12:09:21] Run vpl: Step create_project: Started
+Creating Vivado project.
+[12:09:25] Run vpl: Step create_project: Completed
+[12:09:25] Run vpl: Step create_bd: Started
+[12:11:34] Run vpl: Step create_bd: RUNNING...
+[12:14:17] Run vpl: Step create_bd: RUNNING...
+[12:16:11] Run vpl: Step create_bd: RUNNING...
+[12:18:01] Run vpl: Step create_bd: RUNNING...
+[12:20:01] Run vpl: Step create_bd: RUNNING...
+[12:22:48] Run vpl: Step create_bd: Completed
+[12:22:48] Run vpl: Step update_bd: Started
+[12:27:37] Run vpl: Step update_bd: RUNNING...
+[12:31:07] Run vpl: Step update_bd: RUNNING...
+[12:32:28] Run vpl: Step update_bd: Completed
+[12:32:28] Run vpl: Step generate_target: Started
+[12:34:57] Run vpl: Step generate_target: RUNNING...
+[12:38:00] Run vpl: Step generate_target: RUNNING...
+[12:40:58] Run vpl: Step generate_target: RUNNING...
+[12:43:01] Run vpl: Step generate_target: Completed
+[12:43:01] Run vpl: Step config_hw_runs: Started
+[12:44:02] Run vpl: Step config_hw_runs: Completed
+[12:44:02] Run vpl: Step synth: Started
+[12:45:14] Block-level synthesis in progress, 0 of 22 jobs complete, 8 jobs running.
+[12:48:25] Block-level synthesis in progress, 8 of 22 jobs complete, 7 jobs running.
+[12:51:27] Block-level synthesis in progress, 16 of 22 jobs complete, 5 jobs running.
+[12:54:26] Block-level synthesis in progress, 20 of 22 jobs complete, 2 jobs running.
+[12:56:49] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.

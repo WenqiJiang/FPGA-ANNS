@@ -1,0 +1,816 @@
+g++ -I..//common/includes/xcl2 -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 ..//common/includes/xcl2/xcl2.cpp src/host.cpp  -o 'host'  -L/opt/xilinx/xrt/lib -lOpenCL -lpthread  -lrt -lstdc++ 
+mkdir -p ./_x.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3 -c -k vadd -I'src' -o'_x.hw.xilinx_u280_xdma_201920_3/vadd.xo' 'src/vadd.cpp'
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/logs/vadd
+Running Dispatch Server on port:33779
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo.compile_summary, at Sat Nov 14 20:41:13 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sat Nov 14 20:41:13 2020
+Running Rule Check Server on port:35757
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/v++_compile_vadd_guidance.html', at Sat Nov 14 20:41:14 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/vadd/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining function 'HLS_REG<PQ_codes>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:229->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 6.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 16, Depth = 131.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'src_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:99->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+WARNING: [v++ 204-69] Unable to schedule bus request on port 'dest_items' (/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:136->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:227->/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/src/vadd.cpp:225) due to limited memory ports. Please consider using a memory core with more ports or partitioning the array.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 363.26 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/system_estimate_vadd.xtxt
+Add Instance read12 read12_U0 2664
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read13 read13_U0 2677
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read14 read14_U0 2690
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read15 read15_U0 2703
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read16 read16_U0 2716
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read17 read17_U0 2729
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read18 read18_U0 2742
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read19 read19_U0 2755
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read20 read20_U0 2768
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read21 read21_U0 2781
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read22 read22_U0 2794
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read23 read23_U0 2807
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read24 read24_U0 2820
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read25 read25_U0 2833
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read26 read26_U0 2846
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read27 read27_U0 2859
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read28 read28_U0 2872
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read29 read29_U0 2885
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read30 read30_U0 2898
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read31 read31_U0 2911
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read32 read32_U0 2924
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read33 read33_U0 2937
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read34 read34_U0 2950
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read35 read35_U0 2963
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read36 read36_U0 2976
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read37 read37_U0 2989
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read38 read38_U0 3002
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read39 read39_U0 3015
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read40 read40_U0 3028
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance read_r read_U0 3041
+Add Instance HLS_REG_PQ_codes_s grp_HLS_REG_PQ_codes_s_fu_397 397
+Add Instance write41 write41_U0 3054
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write42 write42_U0 3065
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write43 write43_U0 3076
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write44 write44_U0 3087
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write45 write45_U0 3098
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write46 write46_U0 3109
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write47 write47_U0 3120
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write48 write48_U0 3131
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write49 write49_U0 3142
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write50 write50_U0 3153
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write51 write51_U0 3164
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write52 write52_U0 3175
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write53 write53_U0 3186
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write54 write54_U0 3197
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write55 write55_U0 3208
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write56 write56_U0 3219
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write57 write57_U0 3230
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write58 write58_U0 3241
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write59 write59_U0 3252
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write60 write60_U0 3263
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write61 write61_U0 3274
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write62 write62_U0 3285
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write63 write63_U0 3296
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write64 write64_U0 3307
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write65 write65_U0 3318
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write66 write66_U0 3329
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write67 write67_U0 3340
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write68 write68_U0 3351
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write69 write69_U0 3362
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance write_r write_U0 3373
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_475 475
+Add Instance HLS_REG_float_s grp_HLS_REG_float_s_fu_481 481
+Add Instance vadd_entry70303 vadd_entry70303_U0 3384
+INFO: [v++ 60-586] Created _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 23m 9s
+mkdir -p ./build_dir.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l  -o'build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin' _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link
+Running Dispatch Server on port:44161
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin.link_summary, at Sat Nov 14 21:04:24 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sat Nov 14 21:04:24 2020
+Running Rule Check Server on port:35971
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd_guidance.html', at Sat Nov 14 21:04:25 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [21:04:38] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Sat Nov 14 21:04:48 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'repeat_num' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'data_num' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'run_write' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'run_read' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [21:05:03] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [21:05:09] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 192987 ; free virtual = 462536
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [21:05:09] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -sp vadd_1.m_axi_hbm0:HBM[0] -sp vadd_1.m_axi_hbm1:HBM[1] -sp vadd_1.m_axi_hbm2:HBM[2] -sp vadd_1.m_axi_hbm3:HBM[3] -sp vadd_1.m_axi_hbm4:HBM[4] -sp vadd_1.m_axi_hbm5:HBM[5] -sp vadd_1.m_axi_hbm6:HBM[6] -sp vadd_1.m_axi_hbm7:HBM[7] -sp vadd_1.m_axi_hbm8:HBM[8] -sp vadd_1.m_axi_hbm9:HBM[9] -sp vadd_1.m_axi_hbm10:HBM[10] -sp vadd_1.m_axi_hbm11:HBM[11] -sp vadd_1.m_axi_hbm12:HBM[12] -sp vadd_1.m_axi_hbm13:HBM[13] -sp vadd_1.m_axi_hbm14:HBM[14] -sp vadd_1.m_axi_hbm15:HBM[15] -sp vadd_1.m_axi_hbm16:HBM[16] -sp vadd_1.m_axi_hbm17:HBM[17] -sp vadd_1.m_axi_hbm18:HBM[18] -sp vadd_1.m_axi_hbm19:HBM[19] -sp vadd_1.m_axi_hbm20:HBM[20] -sp vadd_1.m_axi_hbm21:HBM[21] -sp vadd_1.m_axi_hbm22:HBM[22] -sp vadd_1.m_axi_hbm23:HBM[23] -sp vadd_1.m_axi_hbm24:HBM[24] -sp vadd_1.m_axi_hbm25:HBM[25] -sp vadd_1.m_axi_hbm26:HBM[26] -sp vadd_1.m_axi_hbm27:HBM[27] -sp vadd_1.m_axi_hbm28:HBM[28] -sp vadd_1.m_axi_hbm29:HBM[29] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm29, sptag: HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [SYSTEM_LINK 82-37] [21:05:16] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 193008 ; free virtual = 462558
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [21:05:16] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [21:05:20] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 192996 ; free virtual = 462551
+INFO: [v++ 60-1441] [21:05:20] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:42 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 193014 ; free virtual = 462568
+INFO: [v++ 60-1443] [21:05:21] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [21:05:25] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 193016 ; free virtual = 462570
+INFO: [v++ 60-1443] [21:05:25] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l -obuild_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin _x.hw.xilinx_u280_xdma_201920_3/vadd.xo  --generatedByXclbinName vadd --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [21:05:27] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 193014 ; free virtual = 462568
+INFO: [v++ 60-1443] [21:05:27] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/.tlog/v++_link_vadd --iprepo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/vivado/vpl/.local/hw_platform
+[21:07:00] Run vpl: Step create_project: Started
+Creating Vivado project.
+[21:07:03] Run vpl: Step create_project: Completed
+[21:07:03] Run vpl: Step create_bd: Started
+[21:10:57] Run vpl: Step create_bd: RUNNING...
+[21:14:42] Run vpl: Step create_bd: RUNNING...
+[21:17:30] Run vpl: Step create_bd: RUNNING...
+[21:22:04] Run vpl: Step create_bd: RUNNING...
+[21:25:42] Run vpl: Step create_bd: RUNNING...
+[21:26:00] Run vpl: Step create_bd: Completed
+[21:26:00] Run vpl: Step update_bd: Started
+[21:31:42] Run vpl: Step update_bd: RUNNING...
+[21:36:05] Run vpl: Step update_bd: RUNNING...
+[21:36:20] Run vpl: Step update_bd: Completed
+[21:36:20] Run vpl: Step generate_target: Started
+[21:39:05] Run vpl: Step generate_target: RUNNING...
+[21:42:58] Run vpl: Step generate_target: RUNNING...
+[21:45:58] Run vpl: Step generate_target: RUNNING...
+[21:48:08] Run vpl: Step generate_target: Completed
+[21:48:08] Run vpl: Step config_hw_runs: Started
+[21:50:04] Run vpl: Step config_hw_runs: Completed
+[21:50:04] Run vpl: Step synth: Started
+[21:55:45] Block-level synthesis in progress, 15 of 37 jobs complete, 8 jobs running.
+[22:00:54] Block-level synthesis in progress, 24 of 37 jobs complete, 8 jobs running.
+[22:08:29] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:13:20] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:18:23] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:23:36] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:28:05] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:32:09] Block-level synthesis in progress, 36 of 37 jobs complete, 1 job running.
+[22:39:45] Block-level synthesis in progress, 37 of 37 jobs complete, 0 jobs running.
+[22:43:04] Run vpl: Step synth: Completed
+[22:43:04] Run vpl: Step impl: Started
+[23:02:52] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 01h 57m 23s 
+
+[23:02:52] Starting logic optimization..
+[23:02:52] Phase 1 Retarget
+[23:04:32] Phase 2 Constant propagation
+[23:04:32] Phase 3 Sweep
+[23:06:18] Phase 4 BUFG optimization
+[23:06:18] Phase 5 Shift Register Optimization
+[23:06:18] Phase 6 Post Processing Netlist
+[23:14:32] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 11m 39s 
+
+[23:14:32] Starting logic placement..
+[23:16:15] Phase 1 Placer Initialization
+[23:16:15] Phase 1.1 Placer Initialization Netlist Sorting
+[23:17:56] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[23:19:33] Phase 1.3 Build Placer Netlist Model
+[23:22:50] Phase 1.4 Constrain Clocks/Macros
+[23:24:22] Phase 2 Global Placement
+[23:24:22] Phase 2.1 Floorplanning
+[23:27:49] Phase 2.2 Global Placement Core
+[23:37:38] Phase 2.2.1 Physical Synthesis In Placer
+[23:44:48] Phase 3 Detail Placement
+[23:44:48] Phase 3.1 Commit Multi Column Macros
+[23:44:48] Phase 3.2 Commit Most Macros & LUTRAMs
+[23:46:49] Phase 3.3 Area Swap Optimization
+[23:46:49] Phase 3.4 Pipeline Register Optimization
+[23:46:49] Phase 3.5 IO Cut Optimizer
+[23:46:49] Phase 3.6 Fast Optimization
+[23:49:19] Phase 3.7 Small Shape DP
+[23:49:19] Phase 3.7.1 Small Shape Clustering
+[23:49:19] Phase 3.7.2 Flow Legalize Slice Clusters
+[23:52:48] Phase 3.7.3 Slice Area Swap
+[23:52:48] Phase 3.7.4 Commit Slice Clusters
+[23:52:48] Phase 3.8 Place Remaining
+[23:52:48] Phase 3.9 Re-assign LUT pins
+[23:56:20] Phase 3.10 Pipeline Register Optimization
+[23:56:20] Phase 3.11 Fast Optimization
+[23:56:20] Phase 4 Post Placement Optimization and Clean-Up
+[23:56:20] Phase 4.1 Post Commit Optimization
+[00:00:38] Phase 4.1.1 Post Placement Optimization
+[00:00:38] Phase 4.1.1.1 BUFG Insertion
+[00:00:38] Phase 4.1.1.2 BUFG Replication
+[00:05:20] Phase 4.1.1.3 Replication
+[00:05:20] Phase 4.2 Post Placement Cleanup
+[00:05:20] Phase 4.3 Placer Reporting
+[00:05:20] Phase 4.4 Final Placement Cleanup
+[00:23:05] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 08m 33s 
+
+[00:23:05] Starting logic routing..
+[00:23:05] Phase 1 Build RT Design
+[00:27:24] Phase 2 Router Initialization
+[00:27:24] Phase 2.1 Fix Topology Constraints
+[00:27:24] Phase 2.2 Pre Route Cleanup
+[00:27:24] Phase 2.3 Global Clock Net Routing
+[00:27:24] Phase 2.4 Update Timing
+[00:32:25] Phase 2.5 Update Timing for Bus Skew
+[00:32:25] Phase 2.5.1 Update Timing
+[00:32:25] Phase 3 Initial Routing
+[00:32:25] Phase 3.1 Global Routing
+[00:37:22] Phase 4 Rip-up And Reroute
+[00:37:22] Phase 4.1 Global Iteration 0
+[00:55:55] Phase 4.2 Global Iteration 1
+[00:55:55] Phase 4.3 Global Iteration 2
+[01:00:28] Phase 4.4 Global Iteration 3
+[01:04:52] Phase 4.5 Global Iteration 4
+[01:04:52] Phase 5 Delay and Skew Optimization
+[01:04:52] Phase 5.1 Delay CleanUp
+[01:04:52] Phase 5.1.1 Update Timing
+[01:08:37] Phase 5.1.2 Update Timing
+[01:08:37] Phase 5.2 Clock Skew Optimization
+[01:08:37] Phase 6 Post Hold Fix
+[01:08:37] Phase 6.1 Hold Fix Iter
+[01:08:37] Phase 6.1.1 Update Timing
+[01:08:37] Phase 6.1.2 Lut RouteThru Assignment for hold
+[01:12:37] Phase 6.2 Additional Hold Fix
+[01:12:37] Phase 7 Leaf Clock Prog Delay Opt
+[01:16:25] Phase 7.1 Delay CleanUp
+[01:16:25] Phase 7.1.1 Update Timing
+[01:16:25] Phase 7.1.2 Update Timing
+[01:20:21] Phase 7.2 Hold Fix Iter
+[01:20:21] Phase 7.2.1 Update Timing
+[01:20:21] Phase 7.2.2 Lut RouteThru Assignment for hold
+[01:20:21] Phase 7.3 Additional Hold Fix
+[01:23:58] Phase 7.4 Global Iteration for Hold
+[01:23:58] Phase 7.4.1 Update Timing
+[01:23:58] Phase 8 Route finalize
+[01:23:58] Phase 9 Verifying routed nets
+[01:27:39] Phase 10 Depositing Routes
+[01:27:39] Phase 11 Post Router Timing
+[01:27:39] Phase 12 Physical Synthesis in Router
+[01:27:39] Phase 12.1 Physical Synthesis Initialization
+[01:31:16] Phase 12.2 Critical Path Optimization
+[01:31:16] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 01h 08m 10s 
+
+[01:31:16] Starting bitstream generation..
+[01:51:38] Creating bitmap...
+[01:59:01] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[01:59:01] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 27m 44s 
+[01:58:40] Run vpl: Step impl: Completed
+[02:01:47] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [02:03:58] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:02:03 ; elapsed = 04:58:30 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 185549 ; free virtual = 461153
+INFO: [v++ 60-1443] [02:03:58] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 234, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [02:04:06] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 185539 ; free virtual = 461143
+INFO: [v++ 60-1443] [02:04:06] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 61075415 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 16816 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 89212 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 50015 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (61268448 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [02:04:06] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.38 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 185479 ; free virtual = 461141
+INFO: [v++ 60-1443] [02:04:06] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [02:04:07] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.40 ; elapsed = 00:00:00.57 . Memory (MB): peak = 683.539 ; gain = 0.000 ; free physical = 185479 ; free virtual = 461141
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/system_estimate_vadd.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.ltx
+INFO: [v++ 60-586] Created build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 4h 59m 44s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./_x.hw.xilinx_u280_xdma_201920_3
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./_x.hw.xilinx_u280_xdma_201920_3 directory 
+./host ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+start host
+TOTAL DATA TRANSFER SIZE (per CH) 16777216 (1024.000000 MB)
+DATA ALLOCATION SIZE (per CH) 1048576 (64.000000 MB)
+run_write : 1 run_read : 1 
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 68594
+UID: 522663
+[Sun Nov 15 02:06:22 2020]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/wenqi_seq_reduction/host
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+..//common/includes/xcl2/xcl2.cpp:40 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:153: recipe for target 'check' failed

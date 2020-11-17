@@ -1,0 +1,668 @@
+g++ -I..//common/includes/xcl2 -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 ..//common/includes/xcl2/xcl2.cpp src/host.cpp  -o 'host'  -L/opt/xilinx/xrt/lib -lOpenCL -lpthread  -lrt -lstdc++ 
+mkdir -p ./_x.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3 -c -k vadd -I'src' -o'_x.hw.xilinx_u280_xdma_201920_3/vadd.xo' 'src/vadd.cpp'
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/logs/vadd
+Running Dispatch Server on port:33691
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo.compile_summary, at Mon Nov 16 06:58:05 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 06:58:05 2020
+Running Rule Check Server on port:34969
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/v++_compile_vadd_guidance.html', at Mon Nov 16 06:58:06 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/vadd/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 411.02 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/system_estimate_vadd.xtxt
+Add Instance write49 write49_U0 2664
+Add Instance write50 write50_U0 2675
+Add Instance write51 write51_U0 2686
+Add Instance write52 write52_U0 2697
+Add Instance write53 write53_U0 2708
+Add Instance write54 write54_U0 2719
+Add Instance write55 write55_U0 2730
+Add Instance write56 write56_U0 2741
+Add Instance write57 write57_U0 2752
+Add Instance write58 write58_U0 2763
+Add Instance write59 write59_U0 2774
+Add Instance write60 write60_U0 2785
+Add Instance write61 write61_U0 2796
+Add Instance write62 write62_U0 2807
+Add Instance write63 write63_U0 2818
+Add Instance write64 write64_U0 2829
+Add Instance write65 write65_U0 2840
+Add Instance write66 write66_U0 2851
+Add Instance write67 write67_U0 2862
+Add Instance write68 write68_U0 2873
+Add Instance write69 write69_U0 2884
+Add Instance write70 write70_U0 2895
+Add Instance write71 write71_U0 2906
+Add Instance write72 write72_U0 2917
+Add Instance write73 write73_U0 2928
+Add Instance write74 write74_U0 2939
+Add Instance write75 write75_U0 2950
+Add Instance write76 write76_U0 2961
+Add Instance write77 write77_U0 2972
+Add Instance write_r write_U0 2983
+Add Instance read20 read20_U0 2994
+Add Instance read21 read21_U0 3007
+Add Instance read22 read22_U0 3020
+Add Instance read23 read23_U0 3033
+Add Instance read24 read24_U0 3046
+Add Instance read25 read25_U0 3059
+Add Instance read26 read26_U0 3072
+Add Instance read27 read27_U0 3085
+Add Instance read28 read28_U0 3098
+Add Instance read29 read29_U0 3111
+Add Instance read30 read30_U0 3124
+Add Instance read31 read31_U0 3137
+Add Instance read32 read32_U0 3150
+Add Instance read33 read33_U0 3163
+Add Instance read34 read34_U0 3176
+Add Instance read35 read35_U0 3189
+Add Instance read36 read36_U0 3202
+Add Instance read37 read37_U0 3215
+Add Instance read38 read38_U0 3228
+Add Instance read39 read39_U0 3241
+Add Instance read40 read40_U0 3254
+Add Instance read41 read41_U0 3267
+Add Instance read42 read42_U0 3280
+Add Instance read43 read43_U0 3293
+Add Instance read44 read44_U0 3306
+Add Instance read45 read45_U0 3319
+Add Instance read46 read46_U0 3332
+Add Instance read47 read47_U0 3345
+Add Instance read48 read48_U0 3358
+Add Instance read_r read_U0 3371
+Add Instance vadd_entry78181 vadd_entry78181_U0 3384
+INFO: [v++ 60-586] Created _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 9m 26s
+mkdir -p ./build_dir.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l  -o'build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin' _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+WARNING: [v++ 60-1600] The option 'sp' was used directly on the command line, where its usage is deprecated. To ensure input line works for supported operating systems or shells, v++ supports specification for some options in a configuration file. As an alternative, please use 'connectivity.sp' in a configuration file. 
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link
+Running Dispatch Server on port:35871
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin.link_summary, at Mon Nov 16 07:07:33 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 07:07:33 2020
+Running Rule Check Server on port:35043
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd_guidance.html', at Mon Nov 16 07:07:34 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [07:07:45] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Mon Nov 16 07:07:52 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'in29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'repeat_num' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'data_num' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'run_write' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'run_read' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [07:07:57] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [07:08:04] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 148446 ; free virtual = 460852
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [07:08:04] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -sp vadd_1.m_axi_hbm0:HBM[0] -sp vadd_1.m_axi_hbm1:HBM[1] -sp vadd_1.m_axi_hbm2:HBM[2] -sp vadd_1.m_axi_hbm3:HBM[3] -sp vadd_1.m_axi_hbm4:HBM[4] -sp vadd_1.m_axi_hbm5:HBM[5] -sp vadd_1.m_axi_hbm6:HBM[6] -sp vadd_1.m_axi_hbm7:HBM[7] -sp vadd_1.m_axi_hbm8:HBM[8] -sp vadd_1.m_axi_hbm9:HBM[9] -sp vadd_1.m_axi_hbm10:HBM[10] -sp vadd_1.m_axi_hbm11:HBM[11] -sp vadd_1.m_axi_hbm12:HBM[12] -sp vadd_1.m_axi_hbm13:HBM[13] -sp vadd_1.m_axi_hbm14:HBM[14] -sp vadd_1.m_axi_hbm15:HBM[15] -sp vadd_1.m_axi_hbm16:HBM[16] -sp vadd_1.m_axi_hbm17:HBM[17] -sp vadd_1.m_axi_hbm18:HBM[18] -sp vadd_1.m_axi_hbm19:HBM[19] -sp vadd_1.m_axi_hbm20:HBM[20] -sp vadd_1.m_axi_hbm21:HBM[21] -sp vadd_1.m_axi_hbm22:HBM[22] -sp vadd_1.m_axi_hbm23:HBM[23] -sp vadd_1.m_axi_hbm24:HBM[24] -sp vadd_1.m_axi_hbm25:HBM[25] -sp vadd_1.m_axi_hbm26:HBM[26] -sp vadd_1.m_axi_hbm27:HBM[27] -sp vadd_1.m_axi_hbm28:HBM[28] -sp vadd_1.m_axi_hbm29:HBM[29] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: m_axi_hbm29, sptag: HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.in29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out0 to HBM[0] for directive vadd_1.m_axi_hbm0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out1 to HBM[1] for directive vadd_1.m_axi_hbm1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out2 to HBM[2] for directive vadd_1.m_axi_hbm2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out3 to HBM[3] for directive vadd_1.m_axi_hbm3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out4 to HBM[4] for directive vadd_1.m_axi_hbm4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out5 to HBM[5] for directive vadd_1.m_axi_hbm5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out6 to HBM[6] for directive vadd_1.m_axi_hbm6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out7 to HBM[7] for directive vadd_1.m_axi_hbm7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out8 to HBM[8] for directive vadd_1.m_axi_hbm8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out9 to HBM[9] for directive vadd_1.m_axi_hbm9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out10 to HBM[10] for directive vadd_1.m_axi_hbm10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out11 to HBM[11] for directive vadd_1.m_axi_hbm11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out12 to HBM[12] for directive vadd_1.m_axi_hbm12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out13 to HBM[13] for directive vadd_1.m_axi_hbm13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out14 to HBM[14] for directive vadd_1.m_axi_hbm14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out15 to HBM[15] for directive vadd_1.m_axi_hbm15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out16 to HBM[16] for directive vadd_1.m_axi_hbm16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out17 to HBM[17] for directive vadd_1.m_axi_hbm17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out18 to HBM[18] for directive vadd_1.m_axi_hbm18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out19 to HBM[19] for directive vadd_1.m_axi_hbm19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out20 to HBM[20] for directive vadd_1.m_axi_hbm20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out21 to HBM[21] for directive vadd_1.m_axi_hbm21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out22 to HBM[22] for directive vadd_1.m_axi_hbm22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out23 to HBM[23] for directive vadd_1.m_axi_hbm23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out24 to HBM[24] for directive vadd_1.m_axi_hbm24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out25 to HBM[25] for directive vadd_1.m_axi_hbm25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out26 to HBM[26] for directive vadd_1.m_axi_hbm26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out27 to HBM[27] for directive vadd_1.m_axi_hbm27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out28 to HBM[28] for directive vadd_1.m_axi_hbm28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out29 to HBM[29] for directive vadd_1.m_axi_hbm29:HBM[29]
+INFO: [SYSTEM_LINK 82-37] [07:08:10] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 148486 ; free virtual = 460873
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [07:08:10] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [07:08:14] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 295.453 ; gain = 0.000 ; free physical = 148478 ; free virtual = 460864
+INFO: [v++ 60-1441] [07:08:14] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:29 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 148496 ; free virtual = 460882
+INFO: [v++ 60-1443] [07:08:14] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [07:08:18] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 148502 ; free virtual = 460882
+INFO: [v++ 60-1443] [07:08:18] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps --sp vadd_1.m_axi_hbm0:HBM[0] --sp vadd_1.m_axi_hbm1:HBM[1] --sp vadd_1.m_axi_hbm2:HBM[2] --sp vadd_1.m_axi_hbm3:HBM[3] --sp vadd_1.m_axi_hbm4:HBM[4] --sp vadd_1.m_axi_hbm5:HBM[5] --sp vadd_1.m_axi_hbm6:HBM[6] --sp vadd_1.m_axi_hbm7:HBM[7] --sp vadd_1.m_axi_hbm8:HBM[8] --sp vadd_1.m_axi_hbm9:HBM[9] --sp vadd_1.m_axi_hbm10:HBM[10] --sp vadd_1.m_axi_hbm11:HBM[11] --sp vadd_1.m_axi_hbm12:HBM[12] --sp vadd_1.m_axi_hbm13:HBM[13] --sp vadd_1.m_axi_hbm14:HBM[14] --sp vadd_1.m_axi_hbm15:HBM[15] --sp vadd_1.m_axi_hbm16:HBM[16] --sp vadd_1.m_axi_hbm17:HBM[17] --sp vadd_1.m_axi_hbm18:HBM[18] --sp vadd_1.m_axi_hbm19:HBM[19] --sp vadd_1.m_axi_hbm20:HBM[20] --sp vadd_1.m_axi_hbm21:HBM[21] --sp vadd_1.m_axi_hbm22:HBM[22] --sp vadd_1.m_axi_hbm23:HBM[23] --sp vadd_1.m_axi_hbm24:HBM[24] --sp vadd_1.m_axi_hbm25:HBM[25] --sp vadd_1.m_axi_hbm26:HBM[26] --sp vadd_1.m_axi_hbm27:HBM[27] --sp vadd_1.m_axi_hbm28:HBM[28] --sp vadd_1.m_axi_hbm29:HBM[29] --report_level 2 --temp_dir ./build_dir.hw.xilinx_u280_xdma_201920_3 -l -obuild_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin _x.hw.xilinx_u280_xdma_201920_3/vadd.xo  --generatedByXclbinName vadd --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [07:08:20] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 148506 ; free virtual = 460882
+INFO: [v++ 60-1443] [07:08:20] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/.tlog/v++_link_vadd --iprepo /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/vivado/vpl/.local/hw_platform
+[07:09:46] Run vpl: Step create_project: Started
+Creating Vivado project.
+[07:09:51] Run vpl: Step create_project: Completed
+[07:09:51] Run vpl: Step create_bd: Started
+[07:11:53] Run vpl: Step create_bd: RUNNING...
+[07:13:43] Run vpl: Step create_bd: RUNNING...
+[07:15:33] Run vpl: Step create_bd: RUNNING...
+[07:18:41] Run vpl: Step create_bd: RUNNING...
+[07:21:25] Run vpl: Step create_bd: RUNNING...
+[07:23:39] Run vpl: Step create_bd: Completed
+[07:23:39] Run vpl: Step update_bd: Started
+[07:26:45] Run vpl: Step update_bd: RUNNING...
+[07:29:48] Run vpl: Step update_bd: RUNNING...
+[07:30:32] Run vpl: Step update_bd: Completed
+[07:30:32] Run vpl: Step generate_target: Started
+[07:32:52] Run vpl: Step generate_target: RUNNING...
+[07:35:01] Run vpl: Step generate_target: RUNNING...
+[07:36:45] Run vpl: Step generate_target: RUNNING...
+[07:39:33] Run vpl: Step generate_target: RUNNING...
+[07:40:53] Run vpl: Step generate_target: Completed
+[07:40:53] Run vpl: Step config_hw_runs: Started
+[07:41:56] Run vpl: Step config_hw_runs: Completed
+[07:41:56] Run vpl: Step synth: Started
+[07:43:24] Block-level synthesis in progress, 0 of 22 jobs complete, 8 jobs running.
+[07:44:44] Block-level synthesis in progress, 0 of 22 jobs complete, 8 jobs running.
+[07:46:01] Block-level synthesis in progress, 7 of 22 jobs complete, 7 jobs running.
+[07:47:08] Block-level synthesis in progress, 8 of 22 jobs complete, 7 jobs running.
+[07:48:51] Block-level synthesis in progress, 15 of 22 jobs complete, 3 jobs running.
+[07:49:53] Block-level synthesis in progress, 16 of 22 jobs complete, 5 jobs running.
+[07:51:56] Block-level synthesis in progress, 20 of 22 jobs complete, 2 jobs running.
+[07:56:04] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.
+[08:00:13] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.
+[08:04:16] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.
+[08:08:30] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.
+[08:12:33] Block-level synthesis in progress, 21 of 22 jobs complete, 1 job running.
+[08:16:52] Block-level synthesis in progress, 22 of 22 jobs complete, 0 jobs running.
+[08:23:35] Run vpl: Step synth: Completed
+[08:23:35] Run vpl: Step impl: Started
+[08:42:22] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 01h 34m 00s 
+
+[08:42:22] Starting logic optimization..
+[08:43:56] Phase 1 Retarget
+[08:43:56] Phase 2 Constant propagation
+[08:43:56] Phase 3 Sweep
+[08:45:43] Phase 4 BUFG optimization
+[08:45:43] Phase 5 Shift Register Optimization
+[08:47:25] Phase 6 Post Processing Netlist
+[08:55:34] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 13m 12s 
+
+[08:55:34] Starting logic placement..
+[08:57:14] Phase 1 Placer Initialization
+[08:57:14] Phase 1.1 Placer Initialization Netlist Sorting
+[08:58:44] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[09:00:23] Phase 1.3 Build Placer Netlist Model
+[09:03:43] Phase 1.4 Constrain Clocks/Macros
+[09:03:43] Phase 2 Global Placement
+[09:03:43] Phase 2.1 Floorplanning
+[09:08:38] Phase 2.2 Global Placement Core
+[09:21:54] Phase 2.2.1 Physical Synthesis In Placer
+[09:25:21] Phase 3 Detail Placement
+[09:25:21] Phase 3.1 Commit Multi Column Macros
+[09:25:21] Phase 3.2 Commit Most Macros & LUTRAMs
+[09:27:03] Phase 3.3 Area Swap Optimization
+[09:27:03] Phase 3.4 Pipeline Register Optimization
+[09:27:03] Phase 3.5 IO Cut Optimizer
+[09:27:03] Phase 3.6 Fast Optimization
+[09:28:44] Phase 3.7 Small Shape DP
+[09:28:44] Phase 3.7.1 Small Shape Clustering
+[09:28:44] Phase 3.7.2 Flow Legalize Slice Clusters
+[09:28:44] Phase 3.7.3 Slice Area Swap
+[09:31:58] Phase 3.7.4 Commit Slice Clusters
+[09:31:58] Phase 3.8 Place Remaining
+[09:31:58] Phase 3.9 Re-assign LUT pins
+[09:33:36] Phase 3.10 Pipeline Register Optimization
+[09:33:36] Phase 3.11 Fast Optimization
+[09:36:58] Phase 4 Post Placement Optimization and Clean-Up
+[09:36:58] Phase 4.1 Post Commit Optimization
+[09:36:58] Phase 4.1.1 Post Placement Optimization
+[09:36:58] Phase 4.1.1.1 BUFG Insertion
+[09:46:50] Phase 4.1.1.2 BUFG Replication
+[09:50:40] Phase 4.1.1.3 Replication
+[09:50:40] Phase 4.2 Post Placement Cleanup
+[09:50:40] Phase 4.3 Placer Reporting
+[09:50:40] Phase 4.4 Final Placement Cleanup
+[10:08:14] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 12m 39s 
+
+[10:08:14] Starting logic routing..
+[10:10:43] Phase 1 Build RT Design
+[10:12:52] Phase 2 Router Initialization
+[10:12:52] Phase 2.1 Fix Topology Constraints
+[10:12:52] Phase 2.2 Pre Route Cleanup
+[10:12:52] Phase 2.3 Global Clock Net Routing
+[10:14:41] Phase 2.4 Update Timing
+[10:16:36] Phase 2.5 Update Timing for Bus Skew
+[10:16:36] Phase 2.5.1 Update Timing
+[10:18:27] Phase 3 Initial Routing
+[10:18:27] Phase 3.1 Global Routing
+[10:20:29] Phase 4 Rip-up And Reroute
+[10:20:29] Phase 4.1 Global Iteration 0
+[10:42:42] Phase 4.2 Global Iteration 1
+[10:48:20] Phase 4.3 Global Iteration 2
+[10:52:18] Phase 4.4 Global Iteration 3
+[10:54:00] Phase 5 Delay and Skew Optimization
+[10:54:00] Phase 5.1 Delay CleanUp
+[10:54:00] Phase 5.1.1 Update Timing
+[10:55:56] Phase 5.1.2 Update Timing
+[10:57:45] Phase 5.2 Clock Skew Optimization
+[10:57:45] Phase 6 Post Hold Fix
+[10:57:45] Phase 6.1 Hold Fix Iter
+[10:57:45] Phase 6.1.1 Update Timing
+[10:59:34] Phase 6.1.2 Lut RouteThru Assignment for hold
+[10:59:34] Phase 6.2 Additional Hold Fix
+[11:01:21] Phase 7 Leaf Clock Prog Delay Opt
+[11:05:05] Phase 7.1 Delay CleanUp
+[11:05:05] Phase 7.1.1 Update Timing
+[11:06:57] Phase 7.1.2 Update Timing
+[11:06:57] Phase 7.2 Hold Fix Iter
+[11:06:57] Phase 7.2.1 Update Timing
+[11:08:55] Phase 7.2.2 Lut RouteThru Assignment for hold
+[11:08:55] Phase 7.3 Additional Hold Fix
+[11:14:30] Phase 8 Route finalize
+[11:14:30] Phase 9 Verifying routed nets
+[11:14:30] Phase 10 Depositing Routes
+[11:14:30] Phase 11 Post Router Timing
+[11:16:17] Phase 12 Physical Synthesis in Router
+[11:16:17] Phase 12.1 Physical Synthesis Initialization
+[11:18:01] Phase 12.2 Critical Path Optimization
+[11:19:51] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 01h 11m 36s 
+
+[11:19:51] Starting bitstream generation..
+[11:40:26] Creating bitmap...
+[11:45:55] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[11:45:55] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 26m 04s 
+[11:46:42] Run vpl: Step impl: Completed
+[11:48:04] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [11:49:24] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:02:04 ; elapsed = 04:41:04 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 93515 ; free virtual = 414000
+INFO: [v++ 60-1443] [11:49:24] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 439, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 236, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [11:49:31] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 93400 ; free virtual = 413896
+INFO: [v++ 60-1443] [11:49:31] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 51345735 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 17056 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 36232 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 50855 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (51487103 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [11:49:32] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.30 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 93348 ; free virtual = 413893
+INFO: [v++ 60-1443] [11:49:32] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/int/vadd.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [11:49:32] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.38 ; elapsed = 00:00:00.65 . Memory (MB): peak = 683.410 ; gain = 0.000 ; free physical = 93318 ; free virtual = 413864
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/system_estimate_vadd.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.ltx
+INFO: [v++ 60-586] Created build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/build_dir.hw.xilinx_u280_xdma_201920_3/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 4h 42m 0s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./_x.hw.xilinx_u280_xdma_201920_3
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./_x.hw.xilinx_u280_xdma_201920_3 directory 
+./host ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+start host
+TOTAL DATA TRANSFER SIZE (per CH) 16777216 (1024.000000 MB)
+DATA ALLOCATION SIZE (per CH) 1048576 (64.000000 MB)
+run_write : 1 run_read : 1 
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 61966
+UID: 522663
+[Mon Nov 16 11:51:20 2020]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/hbmbench/xilinx/seq_u280_ch30_rm_HLS_REG/host
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+..//common/includes/xcl2/xcl2.cpp:40 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:153: recipe for target 'check' failed
