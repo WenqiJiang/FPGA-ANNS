@@ -1,0 +1,303 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 1
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 2
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 3
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 4
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 5
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 6
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 7
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 8
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 9
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 10
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 11
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 12
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 13
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 14
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 15
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 16
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 17
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 18
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 19
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 20
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 21
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 22
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 23
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 24
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 25
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 26
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 27
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 28
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 29
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 30
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+i = 31
+      int = 0    float = 0
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.07374e+09
+      int = 3    float = 1.07794e+09
+      int = 4    float = 1.08213e+09
+      int = 5    float = 1.08423e+09
+      int = 6    float = 1.08632e+09
+      int = 7    float = 1.08842e+09
+TEST PASSED

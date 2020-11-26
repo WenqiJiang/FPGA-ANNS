@@ -1962,3 +1962,106 @@ vadd_1:m_axi_hbm15-HBM[15]          RD = 16363.000 KB           WR = 16330.000 K
 vadd_1:m_axi_hbm16-HBM[16]          RD = 16363.000 KB           WR = 16330.000 KB    
 
 
+INFO::[ Vitis-EM 22 ] [Time elapsed: 222 minute(s) 35 seconds, Emulation time: 1.02701 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_hbm0-HBM[0]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm17-HBM[17]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm18-HBM[18]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm19-HBM[19]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm2-HBM[2]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm20-HBM[20]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm21-HBM[21]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm22-HBM[22]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm23-HBM[23]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm24-HBM[24]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm25-HBM[25]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm1-HBM[1]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm26-HBM[26]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm27-HBM[27]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm28-HBM[28]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm29-HBM[29]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm3-HBM[3]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm4-HBM[4]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm5-HBM[5]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm6-HBM[6]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm7-HBM[7]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm8-HBM[8]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm10-HBM[10]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm9-HBM[9]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm11-HBM[11]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm12-HBM[12]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm13-HBM[13]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm14-HBM[14]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm15-HBM[15]          RD = 17180.000 KB           WR = 17148.000 KB    
+vadd_1:m_axi_hbm16-HBM[16]          RD = 17180.000 KB           WR = 17148.000 KB    
+
+^
+INFO::[ Vitis-EM 22 ] [Time elapsed: 227 minute(s) 38 seconds, Emulation time: 1.07336 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_hbm0-HBM[0]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm17-HBM[17]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm18-HBM[18]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm19-HBM[19]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm2-HBM[2]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm20-HBM[20]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm21-HBM[21]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm22-HBM[22]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm23-HBM[23]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm24-HBM[24]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm25-HBM[25]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm1-HBM[1]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm26-HBM[26]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm27-HBM[27]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm28-HBM[28]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm29-HBM[29]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm3-HBM[3]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm4-HBM[4]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm5-HBM[5]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm6-HBM[6]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm7-HBM[7]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm8-HBM[8]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm10-HBM[10]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm9-HBM[9]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm11-HBM[11]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm12-HBM[12]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm13-HBM[13]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm14-HBM[14]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm15-HBM[15]          RD = 17998.000 KB           WR = 17965.000 KB    
+vadd_1:m_axi_hbm16-HBM[16]          RD = 17998.000 KB           WR = 17965.000 KB    
+
+^
+INFO::[ Vitis-EM 22 ] [Time elapsed: 232 minute(s) 42 seconds, Emulation time: 1.12155 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_hbm0-HBM[0]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm17-HBM[17]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm18-HBM[18]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm19-HBM[19]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm2-HBM[2]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm20-HBM[20]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm21-HBM[21]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm22-HBM[22]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm23-HBM[23]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm24-HBM[24]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm25-HBM[25]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm1-HBM[1]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm26-HBM[26]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm27-HBM[27]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm28-HBM[28]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm29-HBM[29]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm3-HBM[3]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm4-HBM[4]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm5-HBM[5]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm6-HBM[6]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm7-HBM[7]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm8-HBM[8]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm10-HBM[10]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm9-HBM[9]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm11-HBM[11]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm12-HBM[12]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm13-HBM[13]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm14-HBM[14]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm15-HBM[15]          RD = 18849.000 KB           WR = 18816.000 KB    
+vadd_1:m_axi_hbm16-HBM[16]          RD = 18849.000 KB           WR = 18816.000 KB    
+
+^
+Makefile:143: recipe for target 'check' failed

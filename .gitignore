@@ -1,4 +1,5 @@
 .DS_Store
+delete
 *.swp
 *xclbin*
 */xclbin/*

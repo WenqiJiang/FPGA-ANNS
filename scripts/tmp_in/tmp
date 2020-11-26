@@ -1,1 +1,1 @@
-  padding(s_float_result0, s_padded_result0);
+    type_conversion_and_split<QUERY_NUM>(s_raw_input[0], s_PQ_0[0], s_PQ_1[0], s_PQ_2[0]);
