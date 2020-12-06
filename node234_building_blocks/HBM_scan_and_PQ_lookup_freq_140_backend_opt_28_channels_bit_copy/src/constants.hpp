@@ -9,10 +9,12 @@
 #define CENTROID_PARTITIONS 32
 #define CENTROIDS_PER_PARTITION (NLIST / CENTROID_PARTITIONS)
 
+#define HBM_CHANNEL_NUM 28 
+
 // #define ITER_NUM 2
 // #define QUERY_NUM_PER_ITER 1024 
 
-#define ITER_NUM 16
+#define ITER_NUM 128
 #define QUERY_NUM_PER_ITER (1024 * 1024) // 64 B * 1024 * 1024 = 64 MB
 #define QUERY_NUM (ITER_NUM * QUERY_NUM_PER_ITER) // 64 B * 1024 * 1024 = 64 MB
 
@@ -35,6 +37,19 @@ typedef struct {
     int vec_ID;
     float dist;
 } single_PQ_result; 
+
+typedef struct {
+    int vec_ID0;
+    float dist0;
+    int vec_ID1;
+    float dist1;
+    int vec_ID2;
+    float dist2;
+
+    // padd to 256 bits
+    int vec_ID_dummy;
+    float dist_dummy;
+} host_PQ_results;
 
 typedef ap_uint<256> result_t;
 typedef ap_uint<512> t_axi;

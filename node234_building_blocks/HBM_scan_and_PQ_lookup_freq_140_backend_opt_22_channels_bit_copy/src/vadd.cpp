@@ -19,11 +19,11 @@ void vadd(
     const t_axi* HBM_in16, const t_axi* HBM_in17, 
     const t_axi* HBM_in18, const t_axi* HBM_in19, 
     const t_axi* HBM_in20, const t_axi* HBM_in21, 
-    const t_axi* HBM_in22, const t_axi* HBM_in23, 
-    const t_axi* HBM_in24, const t_axi* HBM_in25, 
-    const t_axi* HBM_in26, const t_axi* HBM_in27, 
-    const t_axi* HBM_in28, const t_axi* HBM_in29, 
-    const t_axi* HBM_in30, const t_axi* HBM_in31, 
+    // const t_axi* HBM_in22, const t_axi* HBM_in23, 
+    // const t_axi* HBM_in24, const t_axi* HBM_in25, 
+    // const t_axi* HBM_in26, const t_axi* HBM_in27, 
+    // const t_axi* HBM_in28, const t_axi* HBM_in29, 
+    // const t_axi* HBM_in30, const t_axi* HBM_in31, 
     // const t_axi* table_DDR0, const t_axi* table_DDR1, 
     result_t* out_PLRAM
     )
@@ -50,16 +50,16 @@ void vadd(
 #pragma HLS INTERFACE m_axi port=HBM_in19  offset=slave bundle=gmem19
 #pragma HLS INTERFACE m_axi port=HBM_in20  offset=slave bundle=gmem20
 #pragma HLS INTERFACE m_axi port=HBM_in21  offset=slave bundle=gmem21
-#pragma HLS INTERFACE m_axi port=HBM_in22  offset=slave bundle=gmem22
-#pragma HLS INTERFACE m_axi port=HBM_in23  offset=slave bundle=gmem23
-#pragma HLS INTERFACE m_axi port=HBM_in24  offset=slave bundle=gmem24
-#pragma HLS INTERFACE m_axi port=HBM_in25  offset=slave bundle=gmem25
-#pragma HLS INTERFACE m_axi port=HBM_in26  offset=slave bundle=gmem26
-#pragma HLS INTERFACE m_axi port=HBM_in27  offset=slave bundle=gmem27
-#pragma HLS INTERFACE m_axi port=HBM_in28  offset=slave bundle=gmem28
-#pragma HLS INTERFACE m_axi port=HBM_in29  offset=slave bundle=gmem29
-#pragma HLS INTERFACE m_axi port=HBM_in30  offset=slave bundle=gmem30
-#pragma HLS INTERFACE m_axi port=HBM_in31  offset=slave bundle=gmem31
+// #pragma HLS INTERFACE m_axi port=HBM_in22  offset=slave bundle=gmem22
+// #pragma HLS INTERFACE m_axi port=HBM_in23  offset=slave bundle=gmem23
+// #pragma HLS INTERFACE m_axi port=HBM_in24  offset=slave bundle=gmem24
+// #pragma HLS INTERFACE m_axi port=HBM_in25  offset=slave bundle=gmem25
+// #pragma HLS INTERFACE m_axi port=HBM_in26  offset=slave bundle=gmem26
+// #pragma HLS INTERFACE m_axi port=HBM_in27  offset=slave bundle=gmem27
+// #pragma HLS INTERFACE m_axi port=HBM_in28  offset=slave bundle=gmem28
+// #pragma HLS INTERFACE m_axi port=HBM_in29  offset=slave bundle=gmem29
+// #pragma HLS INTERFACE m_axi port=HBM_in30  offset=slave bundle=gmem30
+// #pragma HLS INTERFACE m_axi port=HBM_in31  offset=slave bundle=gmem31
 
 // #pragma HLS INTERFACE m_axi port=table_DDR0  offset=slave bundle=gmem32
 // #pragma HLS INTERFACE m_axi port=table_DDR1  offset=slave bundle=gmem33
@@ -89,16 +89,16 @@ void vadd(
 #pragma HLS INTERFACE s_axilite port=HBM_in19  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_in20  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_in21  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in22  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in23  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in24  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in25  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in26  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in27  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in28  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in29  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in30  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_in31  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in22  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in23  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in24  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in25  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in26  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in27  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in28  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in29  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in30  bundle=control
+// #pragma HLS INTERFACE s_axilite port=HBM_in31  bundle=control
 
 // #pragma HLS INTERFACE s_axilite port=table_DDR0  bundle=control
 // #pragma HLS INTERFACE s_axilite port=table_DDR1  bundle=control
@@ -109,43 +109,43 @@ void vadd(
     
 #pragma HLS dataflow
 
-    hls::stream<t_axi> s_raw_input[32];
+    hls::stream<t_axi> s_raw_input[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_raw_input depth=4
 #pragma HLS array_partition variable=s_raw_input dim=1 complete
 #pragma HLS RESOURCE variable=s_raw_input core=FIFO_SRL
 
-    hls::stream<single_PQ> s_single_PQ_0[32];
+    hls::stream<single_PQ> s_single_PQ_0[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_0 depth=4
 #pragma HLS array_partition variable=s_single_PQ_0 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_0 core=FIFO_SRL
-    hls::stream<single_PQ> s_single_PQ_1[32];
+    hls::stream<single_PQ> s_single_PQ_1[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_1 depth=4
 #pragma HLS array_partition variable=s_single_PQ_1 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_1 core=FIFO_SRL
-    hls::stream<single_PQ> s_single_PQ_2[32];
+    hls::stream<single_PQ> s_single_PQ_2[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_2 depth=4 
 #pragma HLS array_partition variable=s_single_PQ_2 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_2 core=FIFO_SRL
 
-    hls::stream<single_PQ_result> s_single_PQ_result_0[32];
+    hls::stream<single_PQ_result> s_single_PQ_result_0[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_result_0 depth=4
 #pragma HLS array_partition variable=s_single_PQ_result_0 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_result_0 core=FIFO_SRL
-    hls::stream<single_PQ_result> s_single_PQ_result_1[32];
+    hls::stream<single_PQ_result> s_single_PQ_result_1[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_result_1 depth=4
 #pragma HLS array_partition variable=s_single_PQ_result_1 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_result_1 core=FIFO_SRL
-    hls::stream<single_PQ_result> s_single_PQ_result_2[32];
+    hls::stream<single_PQ_result> s_single_PQ_result_2[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_single_PQ_result_2 depth=4
 #pragma HLS array_partition variable=s_single_PQ_result_2 dim=1 complete
 #pragma HLS RESOURCE variable=s_single_PQ_result_2 core=FIFO_SRL
 
-    hls::stream<result_t> s_three_PQ_result[32];
+    hls::stream<result_t> s_three_PQ_result[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_three_PQ_result depth=4
 #pragma HLS array_partition variable=s_three_PQ_result dim=1 complete
 #pragma HLS RESOURCE variable=s_three_PQ_result core=FIFO_SRL
 
-    hls::stream<result_t> s_last_result[32];
+    hls::stream<result_t> s_last_result[HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_last_result depth=2
 #pragma HLS array_partition variable=s_last_result dim=1 complete
 #pragma HLS RESOURCE variable=s_last_result core=FIFO_SRL
@@ -172,16 +172,16 @@ void vadd(
     load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in19, s_raw_input[19]);
     load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in20, s_raw_input[20]);
     load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in21, s_raw_input[21]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in22, s_raw_input[22]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in23, s_raw_input[23]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in24, s_raw_input[24]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in25, s_raw_input[25]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in26, s_raw_input[26]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in27, s_raw_input[27]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in28, s_raw_input[28]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in29, s_raw_input[29]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in30, s_raw_input[30]);
-    load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in31, s_raw_input[31]); 
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in22, s_raw_input[22]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in23, s_raw_input[23]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in24, s_raw_input[24]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in25, s_raw_input[25]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in26, s_raw_input[26]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in27, s_raw_input[27]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in28, s_raw_input[28]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in29, s_raw_input[29]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in30, s_raw_input[30]);
+    // load_PQ_codes<ITER_NUM, QUERY_NUM_PER_ITER>(HBM_in31, s_raw_input[31]); 
 
     type_conversion_and_split_wrapper<QUERY_NUM>(
         s_raw_input, s_single_PQ_0, s_single_PQ_1, s_single_PQ_2); 
@@ -221,20 +221,26 @@ three_PQ_codes ap_uint512_to_three_PQ_codes(ap_uint<512> in) {
 #pragma HLS interface port=return register
     three_PQ_codes out;
 
-    out.PQ_0.vec_ID = in.range(31 + 0, 0 + 0);
+    ap_uint<32> tmp_int0 = in.range(31 + 0, 0 + 0);
+    out.PQ_0.vec_ID = *((int*)(&tmp_int0));
     for (int i = 0; i < 16; i++) {
 #pragma HLS UNROLL
-        out.PQ_0.PQ_code[i] = in.range(0 + 7 + 32 + i * 8, 0 + 32 + i * 8);
+        ap_uint<8> tmp_char = in.range(0 + 7 + 32 + i * 8, 0 + 32 + i * 8);
+        out.PQ_0.PQ_code[i] = *((unsigned char*)(&tmp_char));
     }
-    out.PQ_1.vec_ID = in.range(31 + 160, 0 + 160);
+    ap_uint<32> tmp_int1 = in.range(31 + 160, 0 + 160);
+    out.PQ_1.vec_ID = *((int*)(&tmp_int1));
     for (int i = 0; i < 16; i++) {
 #pragma HLS UNROLL
-        out.PQ_1.PQ_code[i] = in.range(160 + 7 + 32 + i * 8, 160 + 32 + i * 8);
+        ap_uint<8> tmp_char = in.range(160 + 7 + 32 + i * 8, 160 + 32 + i * 8);
+        out.PQ_1.PQ_code[i] = *((unsigned char*)(&tmp_char));
     }
-    out.PQ_2.vec_ID = in.range(31 + 320, 0 + 320);
+    ap_uint<32> tmp_int2 = in.range(31 + 320, 0 + 320);
+    out.PQ_2.vec_ID = *((int*)(&tmp_int2));
     for (int i = 0; i < 16; i++) {
 #pragma HLS UNROLL
-        out.PQ_2.PQ_code[i] = in.range(320 + 7 + 32 + i * 8, 320 + 32 + i * 8);
+        ap_uint<8> tmp_char = in.range(320 + 7 + 32 + i * 8, 320 + 32 + i * 8);
+        out.PQ_2.PQ_code[i] = *((unsigned char*)(&tmp_char));
     }
 
     return out;
@@ -243,12 +249,12 @@ three_PQ_codes ap_uint512_to_three_PQ_codes(ap_uint<512> in) {
 
 template<const int query_num>
 void type_conversion_and_split_wrapper(
-    hls::stream<t_axi> (&s_raw_input)[32],
-    hls::stream<single_PQ> (&s_single_PQ_0)[32],
-    hls::stream<single_PQ> (&s_single_PQ_1)[32],
-    hls::stream<single_PQ> (&s_single_PQ_2)[32]) {
+    hls::stream<t_axi> (&s_raw_input)[HBM_CHANNEL_NUM],
+    hls::stream<single_PQ> (&s_single_PQ_0)[HBM_CHANNEL_NUM],
+    hls::stream<single_PQ> (&s_single_PQ_1)[HBM_CHANNEL_NUM],
+    hls::stream<single_PQ> (&s_single_PQ_2)[HBM_CHANNEL_NUM]) {
 #pragma HLS inline
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < HBM_CHANNEL_NUM; i++) {
 #pragma HLS UNROLL
         type_conversion_and_split<query_num>(
             s_raw_input[i], s_single_PQ_0[i], s_single_PQ_1[i], s_single_PQ_2[i]);
@@ -284,15 +290,15 @@ void init_distance_table_partition(float table[512], float bias) {
 
 template<const int query_num>
 void PQ_lookup_computation_wrapper(
-    hls::stream<single_PQ> (&s_single_PQ_0)[32], 
-    hls::stream<single_PQ> (&s_single_PQ_1)[32],
-    hls::stream<single_PQ> (&s_single_PQ_2)[32],  
-    hls::stream<single_PQ_result> (&s_single_PQ_result_0)[32], 
-    hls::stream<single_PQ_result> (&s_single_PQ_result_1)[32], 
-    hls::stream<single_PQ_result> (&s_single_PQ_result_2)[32]) {
+    hls::stream<single_PQ> (&s_single_PQ_0)[HBM_CHANNEL_NUM], 
+    hls::stream<single_PQ> (&s_single_PQ_1)[HBM_CHANNEL_NUM],
+    hls::stream<single_PQ> (&s_single_PQ_2)[HBM_CHANNEL_NUM],  
+    hls::stream<single_PQ_result> (&s_single_PQ_result_0)[HBM_CHANNEL_NUM], 
+    hls::stream<single_PQ_result> (&s_single_PQ_result_1)[HBM_CHANNEL_NUM], 
+    hls::stream<single_PQ_result> (&s_single_PQ_result_2)[HBM_CHANNEL_NUM]) {
 #pragma HLS inline
 
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < HBM_CHANNEL_NUM; i++) {
 #pragma HLS UNROLL
         PQ_lookup_computation<query_num>(s_single_PQ_0[i], s_single_PQ_result_0[i]);
         PQ_lookup_computation<query_num>(s_single_PQ_1[i], s_single_PQ_result_1[i]);
@@ -352,14 +358,15 @@ void PQ_lookup_computation(
         unsigned char lookup_idx_6 = PQ_local.PQ_code[6];
         unsigned char lookup_idx_7 = PQ_local.PQ_code[7];
 
-        unsigned char lookup_idx_8 = PQ_local.PQ_code[8] + 256;
-        unsigned char lookup_idx_9 = PQ_local.PQ_code[9] + 256;
-        unsigned char lookup_idx_10 = PQ_local.PQ_code[10] + 256;
-        unsigned char lookup_idx_11 = PQ_local.PQ_code[11] + 256;
-        unsigned char lookup_idx_12 = PQ_local.PQ_code[12] + 256;
-        unsigned char lookup_idx_13 = PQ_local.PQ_code[13] + 256;
-        unsigned char lookup_idx_14 = PQ_local.PQ_code[14] + 256;
-        unsigned char lookup_idx_15 = PQ_local.PQ_code[15] + 256;
+        // not adding 256 here, it will overflow
+        unsigned char lookup_idx_8 = PQ_local.PQ_code[8];// + 256;
+        unsigned char lookup_idx_9 = PQ_local.PQ_code[9];// + 256;
+        unsigned char lookup_idx_10 = PQ_local.PQ_code[10];// + 256;
+        unsigned char lookup_idx_11 = PQ_local.PQ_code[11];// + 256;
+        unsigned char lookup_idx_12 = PQ_local.PQ_code[12];// + 256;
+        unsigned char lookup_idx_13 = PQ_local.PQ_code[13];// + 256;
+        unsigned char lookup_idx_14 = PQ_local.PQ_code[14];// + 256;
+        unsigned char lookup_idx_15 = PQ_local.PQ_code[15];// + 256;
 
         single_PQ_result out; 
         out.vec_ID = PQ_local.vec_ID;
@@ -369,10 +376,10 @@ void PQ_lookup_computation(
             distance_lookup_table_local_4[lookup_idx_4] + distance_lookup_table_local_5[lookup_idx_5] + 
             distance_lookup_table_local_6[lookup_idx_6] + distance_lookup_table_local_7[lookup_idx_7] + 
 
-            distance_lookup_table_local_0[lookup_idx_8] + distance_lookup_table_local_1[lookup_idx_9] + 
-            distance_lookup_table_local_2[lookup_idx_10] + distance_lookup_table_local_3[lookup_idx_11] + 
-            distance_lookup_table_local_4[lookup_idx_12] + distance_lookup_table_local_5[lookup_idx_13] + 
-            distance_lookup_table_local_6[lookup_idx_14] + distance_lookup_table_local_7[lookup_idx_15];
+            distance_lookup_table_local_0[((int)lookup_idx_8) + 256] + distance_lookup_table_local_1[((int)lookup_idx_9) + 256] + 
+            distance_lookup_table_local_2[((int)lookup_idx_10) + 256] + distance_lookup_table_local_3[((int)lookup_idx_11) + 256] + 
+            distance_lookup_table_local_4[((int)lookup_idx_12) + 256] + distance_lookup_table_local_5[((int)lookup_idx_13) + 256] + 
+            distance_lookup_table_local_6[((int)lookup_idx_14) + 256] + distance_lookup_table_local_7[((int)lookup_idx_15) + 256];
 
         s_single_PQ_result.write(out);
     }
@@ -380,13 +387,13 @@ void PQ_lookup_computation(
 
 template<const int query_num>
 void merge_result_wrapper(
-    hls::stream<single_PQ_result> (&s_single_PQ_result_0)[32],     
-    hls::stream<single_PQ_result> (&s_single_PQ_result_1)[32], 
-    hls::stream<single_PQ_result> (&s_single_PQ_result_2)[32], 
-    hls::stream<result_t> (&s_three_PQ_result)[32]) {
+    hls::stream<single_PQ_result> (&s_single_PQ_result_0)[HBM_CHANNEL_NUM],     
+    hls::stream<single_PQ_result> (&s_single_PQ_result_1)[HBM_CHANNEL_NUM], 
+    hls::stream<single_PQ_result> (&s_single_PQ_result_2)[HBM_CHANNEL_NUM], 
+    hls::stream<result_t> (&s_three_PQ_result)[HBM_CHANNEL_NUM]) {
 #pragma HLS inline
 
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < HBM_CHANNEL_NUM; i++) {
 #pragma HLS UNROLL
         merge_result<query_num>(
             s_single_PQ_result_0[i], s_single_PQ_result_1[i], s_single_PQ_result_2[i], s_three_PQ_result[i]);
@@ -408,24 +415,28 @@ void merge_result(
         single_PQ_result result_1 = s_single_PQ_result_1.read();
         single_PQ_result result_2 = s_single_PQ_result_2.read();
 
-        PQ_result.range(31, 0) = result_0.vec_ID;
-        PQ_result.range(63, 32) = result_0.dist;
-        PQ_result.range(95, 64) = result_1.vec_ID;
-        PQ_result.range(127, 96) = result_1.dist;
-        PQ_result.range(159, 128) = result_2.vec_ID;
-        PQ_result.range(191, 160) = result_2.dist;
+        float tmp_fl0 = result_0.dist;
+        float tmp_fl1 = result_1.dist;
+        float tmp_fl2 = result_2.dist;
 
+        PQ_result.range(31, 0) = *((ap_uint<32>*) (&(result_0.vec_ID)));
+        PQ_result.range(63, 32) = *((ap_uint<32>*) (&tmp_fl0));
+        PQ_result.range(95, 64) = *((ap_uint<32>*) (&(result_1.vec_ID)));
+        PQ_result.range(127, 96) = *((ap_uint<32>*) (&tmp_fl1));
+        PQ_result.range(159, 128) = *((ap_uint<32>*) (&(result_2.vec_ID)));
+        PQ_result.range(191, 160) = *((ap_uint<32>*) (&tmp_fl2));
+            
         s_three_PQ_result.write(PQ_result);
     }
 }
 
 template<const int query_num>
 void consume_and_write_wrapper(
-    hls::stream<result_t> (&s_three_PQ_result)[32],
-    hls::stream<result_t> (&s_last_result)[32]) {
+    hls::stream<result_t> (&s_three_PQ_result)[HBM_CHANNEL_NUM],
+    hls::stream<result_t> (&s_last_result)[HBM_CHANNEL_NUM]) {
 #pragma HLS inline
 
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < HBM_CHANNEL_NUM; i++) {
 #pragma HLS UNROLL
         consume_and_write<query_num>(s_three_PQ_result[i], s_last_result[i]);
     }
@@ -446,9 +457,9 @@ void consume_and_write(
 }
 
 void reduce_result(
-    hls::stream<result_t> (&s_last_result)[32], result_t* results_out) {
+    hls::stream<result_t> (&s_last_result)[HBM_CHANNEL_NUM], result_t* results_out) {
     
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < HBM_CHANNEL_NUM; i++) {
 #pragma HLS pipeline II=1
 // printf("reduce_result, i = %d\n", i);
         results_out[i] = s_last_result[i].read();

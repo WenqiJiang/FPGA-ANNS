@@ -12,7 +12,7 @@
 // #define ITER_NUM 2
 // #define QUERY_NUM_PER_ITER 1024 
 
-#define ITER_NUM 16
+#define ITER_NUM 128
 #define QUERY_NUM_PER_ITER (1024 * 1024) // 64 B * 1024 * 1024 = 64 MB
 #define QUERY_NUM (ITER_NUM * QUERY_NUM_PER_ITER) // 64 B * 1024 * 1024 = 64 MB
 
@@ -35,6 +35,19 @@ typedef struct {
     int vec_ID;
     float dist;
 } single_PQ_result; 
+
+typedef struct {
+    int vec_ID0;
+    unsigned int dist0;
+    int vec_ID1;
+    unsigned int dist1;
+    int vec_ID2;
+    unsigned int dist2;
+
+    // padd to 256 bits
+    int vec_ID_dummy;
+    unsigned int dist_dummy;
+} host_PQ_results;
 
 typedef ap_uint<256> result_t;
 typedef ap_uint<512> t_axi;

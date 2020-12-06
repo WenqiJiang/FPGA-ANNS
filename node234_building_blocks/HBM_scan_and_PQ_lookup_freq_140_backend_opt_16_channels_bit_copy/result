@@ -1,0 +1,79 @@
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.hw.xclbin
+Loading: './xclbin/vadd.hw.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 1
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 2
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 3
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 4
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 5
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 6
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 7
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 8
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 9
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 10
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 11
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 12
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 13
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 14
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+i = 15
+      vec_ID0 = 0    distance = 2104
+      vec_ID1 = 0    distance = 2104
+      vec_ID2 = 0    distance = 2104
+TEST PASSED

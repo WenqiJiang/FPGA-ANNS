@@ -130,9 +130,9 @@ int main(int argc, char** argv)
         for (int j = 0; j < 8; j++) {
             // int, then float
             int local_i = j;
-            float local_f = j;
+            float local_f = ((float) j) / 3;
             DDR_embedding0[i].range(31 + 64 * j, 0 + 64 * j) = local_i;
-            DDR_embedding0[i].range(63 + 64 * j, 32 + 64 * j) = local_f;
+            DDR_embedding0[i].range(63 + 64 * j, 32 + 64 * j) = *((ap_uint<32>*) (&local_f));
         }
     } 
 
@@ -516,7 +516,8 @@ int main(int argc, char** argv)
         for (int j = 0; j < 8; j++) {
             // int, then float
             int local_i = source_hw_results[i].range(31 + j * 64, 0 + j * 64);
-            float local_f= source_hw_results[i].range(63 + j * 64, 32 + j * 64);
+            ap_uint<32> tmp_f = source_hw_results[i].range(63 + j * 64, 32 + j * 64);
+            float local_f= *((float*)(&tmp_f));
             std::cout << "      int = " << local_i <<  "    float = " << local_f << std::endl;
         }
     } 

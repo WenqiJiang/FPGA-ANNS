@@ -54,13 +54,13 @@ int main(int argc, char** argv)
     size_t HBM_embedding25_size =  HBM_BANK25_SIZE;
     size_t HBM_embedding26_size =  HBM_BANK26_SIZE;
     size_t HBM_embedding27_size =  HBM_BANK27_SIZE;
-    size_t HBM_embedding28_size =  HBM_BANK28_SIZE;
-    size_t HBM_embedding29_size =  HBM_BANK29_SIZE;
-    size_t HBM_embedding30_size =  HBM_BANK30_SIZE;
-    size_t HBM_embedding31_size =  HBM_BANK31_SIZE;
+//     size_t HBM_embedding28_size =  HBM_BANK28_SIZE;
+//     size_t HBM_embedding29_size =  HBM_BANK29_SIZE;
+//     size_t HBM_embedding30_size =  HBM_BANK30_SIZE;
+//     size_t HBM_embedding31_size =  HBM_BANK31_SIZE;
 
-    size_t DDR_embedding0_size =  DDR_BANK0_SIZE;
-    size_t DDR_embedding1_size =  DDR_BANK1_SIZE;
+//     size_t DDR_embedding0_size =  DDR_BANK0_SIZE;
+//     size_t DDR_embedding1_size =  DDR_BANK1_SIZE;
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
     cl_int err;
@@ -96,16 +96,16 @@ int main(int argc, char** argv)
     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding25(HBM_embedding25_size, 0);
     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding26(HBM_embedding26_size, 0);
     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding27(HBM_embedding27_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding28(HBM_embedding28_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding29(HBM_embedding29_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding30(HBM_embedding30_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding31(HBM_embedding31_size, 0);
+//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding28(HBM_embedding28_size, 0);
+//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding29(HBM_embedding29_size, 0);
+//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding30(HBM_embedding30_size, 0);
+//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding31(HBM_embedding31_size, 0);
 
 //     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding0(DDR_embedding0_size, 0);
 //     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding1(DDR_embedding1_size, 0);
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int size_results_out = 256; // QUERY_NUM; 
+    int size_results_out = 28; // QUERY_NUM; 
     std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
     std::vector<result_t,aligned_allocator<result_t>> source_sw_results(size_results_out);
 
@@ -203,9 +203,9 @@ int main(int argc, char** argv)
         HBM_embedding12Ext, HBM_embedding13Ext, HBM_embedding14Ext, HBM_embedding15Ext, 
         HBM_embedding16Ext, HBM_embedding17Ext, HBM_embedding18Ext, HBM_embedding19Ext, 
         HBM_embedding20Ext, HBM_embedding21Ext, HBM_embedding22Ext, HBM_embedding23Ext, 
-        HBM_embedding24Ext, HBM_embedding25Ext, HBM_embedding26Ext, HBM_embedding27Ext, 
+        HBM_embedding24Ext, HBM_embedding25Ext, HBM_embedding26Ext, HBM_embedding27Ext, /*
         HBM_embedding28Ext, HBM_embedding29Ext, HBM_embedding30Ext, HBM_embedding31Ext, 
-        DDR_embedding0Ext, DDR_embedding1Ext,
+        DDR_embedding0Ext, DDR_embedding1Ext, */
         // PLRAM_embedding0Ext, PLRAM_embedding1Ext, PLRAM_embedding2Ext, PLRAM_embedding3Ext, 
         sourcce_hw_resultsExt;
 //////////////////////////////   TEMPLATE END  //////////////////////////////
@@ -295,18 +295,18 @@ int main(int argc, char** argv)
     HBM_embedding27Ext.obj = HBM_embedding27.data();
     HBM_embedding27Ext.param = 0;
     HBM_embedding27Ext.flags = bank[27];
-    HBM_embedding28Ext.obj = HBM_embedding28.data();
-    HBM_embedding28Ext.param = 0;
-    HBM_embedding28Ext.flags = bank[28];
-    HBM_embedding29Ext.obj = HBM_embedding29.data();
-    HBM_embedding29Ext.param = 0;
-    HBM_embedding29Ext.flags = bank[29];
-    HBM_embedding30Ext.obj = HBM_embedding30.data();
-    HBM_embedding30Ext.param = 0;
-    HBM_embedding30Ext.flags = bank[30];
-    HBM_embedding31Ext.obj = HBM_embedding31.data();
-    HBM_embedding31Ext.param = 0;
-    HBM_embedding31Ext.flags = bank[31];
+//     HBM_embedding28Ext.obj = HBM_embedding28.data();
+//     HBM_embedding28Ext.param = 0;
+//     HBM_embedding28Ext.flags = bank[28];
+//     HBM_embedding29Ext.obj = HBM_embedding29.data();
+//     HBM_embedding29Ext.param = 0;
+//     HBM_embedding29Ext.flags = bank[29];
+//     HBM_embedding30Ext.obj = HBM_embedding30.data();
+//     HBM_embedding30Ext.param = 0;
+//     HBM_embedding30Ext.flags = bank[30];
+//     HBM_embedding31Ext.obj = HBM_embedding31.data();
+//     HBM_embedding31Ext.param = 0;
+//     HBM_embedding31Ext.flags = bank[31];
 
 //     DDR_embedding0Ext.obj = DDR_embedding0.data();
 //     DDR_embedding0Ext.param = 0;
@@ -378,14 +378,14 @@ int main(int argc, char** argv)
             HBM_embedding26_size *sizeof(t_axi), &HBM_embedding26Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding27(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
             HBM_embedding27_size *sizeof(t_axi), &HBM_embedding27Ext, &err));
-    OCL_CHECK(err, cl::Buffer buffer_HBM_embedding28(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding28_size *sizeof(t_axi), &HBM_embedding28Ext, &err));
-    OCL_CHECK(err, cl::Buffer buffer_HBM_embedding29(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding29_size *sizeof(t_axi), &HBM_embedding29Ext, &err));
-    OCL_CHECK(err, cl::Buffer buffer_HBM_embedding30(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding30_size *sizeof(t_axi), &HBM_embedding30Ext, &err));
-    OCL_CHECK(err, cl::Buffer buffer_HBM_embedding31(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding31_size *sizeof(t_axi), &HBM_embedding31Ext, &err));
+//     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding28(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+//             HBM_embedding28_size *sizeof(t_axi), &HBM_embedding28Ext, &err));
+//     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding29(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+//             HBM_embedding29_size *sizeof(t_axi), &HBM_embedding29Ext, &err));
+//     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding30(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+//             HBM_embedding30_size *sizeof(t_axi), &HBM_embedding30Ext, &err));
+//     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding31(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+//             HBM_embedding31_size *sizeof(t_axi), &HBM_embedding31Ext, &err));
 
 //     OCL_CHECK(err, cl::Buffer buffer_DDR_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
 //             DDR_embedding0_size *sizeof(t_axi), &DDR_embedding0Ext, &err));
@@ -436,15 +436,15 @@ int main(int argc, char** argv)
     OCL_CHECK(err, err = krnl_vector_add.setArg(25, buffer_HBM_embedding25));
     OCL_CHECK(err, err = krnl_vector_add.setArg(26, buffer_HBM_embedding26));
     OCL_CHECK(err, err = krnl_vector_add.setArg(27, buffer_HBM_embedding27));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(28, buffer_HBM_embedding28));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(29, buffer_HBM_embedding29));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(30, buffer_HBM_embedding30));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(31, buffer_HBM_embedding31));
+//     OCL_CHECK(err, err = krnl_vector_add.setArg(28, buffer_HBM_embedding28));
+//     OCL_CHECK(err, err = krnl_vector_add.setArg(29, buffer_HBM_embedding29));
+//     OCL_CHECK(err, err = krnl_vector_add.setArg(30, buffer_HBM_embedding30));
+//     OCL_CHECK(err, err = krnl_vector_add.setArg(31, buffer_HBM_embedding31));
 
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(0 + 32, buffer_DDR_embedding0));
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(1 + 32, buffer_DDR_embedding1));
 
-    OCL_CHECK(err, err = krnl_vector_add.setArg(32, buffer_output));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(28, buffer_output));
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 // ------------------------------------------------------
 // Step 2: Copy Input data from Host to Global Memory on the device
@@ -459,8 +459,8 @@ int main(int argc, char** argv)
         buffer_HBM_embedding12, buffer_HBM_embedding13, buffer_HBM_embedding14, buffer_HBM_embedding15, 
         buffer_HBM_embedding16, buffer_HBM_embedding17, buffer_HBM_embedding18, buffer_HBM_embedding19, 
         buffer_HBM_embedding20, buffer_HBM_embedding21, buffer_HBM_embedding22, buffer_HBM_embedding23, 
-        buffer_HBM_embedding24, buffer_HBM_embedding25, buffer_HBM_embedding26, buffer_HBM_embedding27, 
-        buffer_HBM_embedding28, buffer_HBM_embedding29, buffer_HBM_embedding30, buffer_HBM_embedding31/*, 
+        buffer_HBM_embedding24, buffer_HBM_embedding25, buffer_HBM_embedding26, buffer_HBM_embedding27/*, 
+        buffer_HBM_embedding28, buffer_HBM_embedding29, buffer_HBM_embedding30, buffer_HBM_embedding31, 
         buffer_DDR_embedding0, buffer_DDR_embedding1*/}, 0/* 0 means from host*/));	
     std::cout << "Host to device finished..." << std::endl;
 //////////////////////////////   TEMPLATE END  //////////////////////////////
@@ -486,30 +486,17 @@ int main(int argc, char** argv)
 //     }
 
     // result_t = 256 bit = 3 * (ID + dist) + 1 dummy (ID + dist) = 8 float/int in total
+    host_PQ_results interpreted_result_array[28];
+    // single_PQ_result interpreted_result_array[28];
+    memcpy(interpreted_result_array, &source_hw_results[0], 28 * 32);
     for (int i = 0 ; i < size_results_out; i++) {
             std::cout << "i = " << i  << std::endl;
-            float vec_ID0, vec_ID1, vec_ID2, vec_ID_dummy;
-            float dist0, dist1, dist2, dist_dummy;
-            vec_ID0 = source_hw_results[i].range(31, 0);
-            vec_ID1 = source_hw_results[i].range(31 + 64, 0 + 64);
-            vec_ID2 = source_hw_results[i].range(31 + 64 * 2, 0 + 64 * 2);
-
-            dist0 = source_hw_results[i].range(63, 32);
-            dist1 = source_hw_results[i].range(63 + 64, 32 + 64);
-            dist2 = source_hw_results[i].range(63 + 64 * 2, 32 + 64 * 2);
-
-            // memcpy(&vec_ID0, &source_hw_results[8 * i], 4);
-            // memcpy(&vec_ID1, &source_hw_results[8 * i + 2], 4);
-            // memcpy(&vec_ID2, &source_hw_results[8 * i + 4], 4);
-            // memcpy(&vec_ID_dummy, &source_hw_results[8 * i + 6], 4);
-            // memcpy(&dist0, &source_hw_results[8 * i + 1], 4);
-            // memcpy(&dist1, &source_hw_results[8 * i + 3], 4);
-            // memcpy(&dist2, &source_hw_results[8 * i + 5], 4);
-            // memcpy(&dist_dummy, &source_hw_results[8 * i + 7], 4);
-            std::cout << "      vec_ID0 = " << vec_ID0 <<  "    distance = " << dist0 << std::endl;
-            std::cout << "      vec_ID1 = " << vec_ID1 <<  "    distance = " << dist1 << std::endl;
-            std::cout << "      vec_ID2 = " << vec_ID2 <<  "    distance = " << dist2 << std::endl;
-            // std::cout << "      vec_ID_dummy = " << vec_ID2 <<  "    distance = " << dist2 << std::endl;
+            std::cout << "      vec_ID0 = " << interpreted_result_array[i].vec_ID0 <<  
+                "    distance = " << interpreted_result_array[i].dist0 << std::endl;
+            std::cout << "      vec_ID1 = " << interpreted_result_array[i].vec_ID1 <<  
+                "    distance = " << interpreted_result_array[i].dist1 << std::endl;
+            std::cout << "      vec_ID2 = " << interpreted_result_array[i].vec_ID2 <<  
+                "    distance = " << interpreted_result_array[i].dist2 << std::endl;
     }
 // ============================================================================
 // Step 3: Release Allocated Resources

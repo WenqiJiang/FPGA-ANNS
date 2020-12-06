@@ -1,5 +1,49 @@
 mkdir -p ./xclbin
 g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = true]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:1647:3:   required from ‘ap_private<_AP_W, _AP_S, true>::ap_private(int) [with int _AP_W = 32; bool _AP_S = true]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:77:89:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+             : (excess_bits ? (((uint64_t)VAL) << (excess_bits)) >> (excess_bits)
+               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                            : (uint64_t)VAL));
+                            ~~~~~~~~~~~~~~~~
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, false>::cpSext(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5335:13:   required from ‘void ap_private<_AP_W, _AP_S, false>::cpSextOrTrunc(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4598:20:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:77:89:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5292:45: warning: enum constant in boolean context [-Wint-in-bool-context]
+       static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5300:43: warning: enum constant in boolean context [-Wint-in-bool-context]
+     static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                  ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, false>::cpSext(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = false; int _AP_W = 512; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5335:13:   required from ‘void ap_private<_AP_W, _AP_S, false>::cpSextOrTrunc(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = false; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4598:20:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = false; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int_base.h:215:13:   required from ‘ap_int_base<_AP_W, _AP_S>::ap_int_base(const ap_int_base<_AP_W2, _AP_S2>&) [with int _AP_W2 = 32; bool _AP_S2 = false; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int_ref.h:413:31:   required from ‘ap_range_ref<_AP_W, _AP_S>& ap_range_ref<_AP_W, _AP_S>::operator=(const ap_int_base<_AP_W2, _AP_S2>&) [with int _AP_W2 = 32; bool _AP_S2 = false; int _AP_W = 512; bool _AP_S = false]’
+src/host.cpp:135:92:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5292:45: warning: enum constant in boolean context [-Wint-in-bool-context]
+       static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5300:43: warning: enum constant in boolean context [-Wint-in-bool-context]
+     static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                  ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 mkdir -p ./xclbin
 /opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
 Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
@@ -12,11 +56,11 @@ INFO: [v++ 60-1306] Additional information associated with this v++ compile can 
 	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/vadd.sw_emu
 	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/logs/vadd.sw_emu
 WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
-Running Dispatch Server on port:44675
-INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/xclbin/vadd.sw_emu.xo.compile_summary, at Thu Nov 19 13:10:18 2020
-INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Nov 19 13:10:18 2020
-Running Rule Check Server on port:35541
-INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Thu Nov 19 13:10:19 2020
+Running Dispatch Server on port:41919
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/xclbin/vadd.sw_emu.xo.compile_summary, at Tue Dec  1 10:43:51 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Dec  1 10:43:51 2020
+Running Rule Check Server on port:36395
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Tue Dec  1 10:43:52 2020
 INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
 INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
 INFO: [v++ 60-585] Compiling for software emulation target
@@ -28,6 +72,28 @@ INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
 INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
 INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
 INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining function 'ap_uint512_to_eight_int_float_struct_t'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
 INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
 INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
@@ -35,10 +101,21 @@ INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
 INFO: [v++ 60-594] Finished kernel compilation
 INFO: [v++ 60-244] Generating system estimate report...
 INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/vadd.sw_emu/system_estimate_vadd.sw_emu.xtxt
-Add Instance write_result_ap_uint_512_32_s write_result_ap_uint_512_32_U0 306
-Add Instance load_input_32_5 load_input_32_5_U0 314
+Add Instance write_result_ap_uint_512_32_s write_result_ap_uint_512_32_U0 988
+Add Instance load_input_32_5 load_input_32_5_U0 996
+Add Instance add_one_32_54 add_one_32_54_U0 1006
+Add Instance add_one_32_55 add_one_32_55_U0 1014
+Add Instance add_one_32_56 add_one_32_56_U0 1022
+Add Instance add_one_32_57 add_one_32_57_U0 1030
+Add Instance add_one_32_58 add_one_32_58_U0 1038
+Add Instance add_one_32_59 add_one_32_59_U0 1046
+Add Instance add_one_32_60 add_one_32_60_U0 1054
+Add Instance add_one_32_61 add_one_32_61_U0 1062
+Add Instance type_conversion_and_split_32_s type_conversion_and_split_32_U0 1070
+Add Instance ap_uint512_to_eight_int_float_struct_t grp_ap_uint512_to_eight_int_float_struct_t_fu_373 373
+Add Instance merge_result_32_s merge_result_32_U0 1091
 INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xo
-INFO: [v++ 60-791] Total elapsed time: 0h 3m 5s
+INFO: [v++ 60-791] Total elapsed time: 0h 3m 49s
 mkdir -p ./xclbin
 /opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.sw_emu.xclbin' xclbin/vadd.sw_emu.xo  #--from_step vpl.impl.phys_opt_design
 Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
@@ -51,11 +128,11 @@ INFO: [v++ 60-1306] Additional information associated with this v++ link can be 
 	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/link
 	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/logs/link
 WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
-Running Dispatch Server on port:42733
-INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/xclbin/vadd.sw_emu.xclbin.link_summary, at Thu Nov 19 13:13:25 2020
-INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Nov 19 13:13:25 2020
-Running Rule Check Server on port:43215
-INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Thu Nov 19 13:13:26 2020
+Running Dispatch Server on port:36731
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/xclbin/vadd.sw_emu.xclbin.link_summary, at Tue Dec  1 10:47:36 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Dec  1 10:47:36 2020
+Running Rule Check Server on port:42233
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Tue Dec  1 10:47:37 2020
 INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
 INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
 INFO: [v++ 60-629] Linking for software emulation target
@@ -69,15 +146,6 @@ INFO: [v++ 60-1307] Run completed. Additional information can be found in:
 	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/ap_uint_behavior_test/_x.sw_emu/vadd/logs/link/link.steps.log
 
 INFO: [v++ 60-791] Total elapsed time: 0h 0m 14s
-emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
-
-****** configutil v2019.2 (64-bit)
-  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
-INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
-INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
-emulation configuration file `emconfig.json` is created in ./xclbin directory 
 cp -rf ./xclbin/emconfig.json .
 XCL_EMULATION_MODE=sw_emu ./host ./xclbin/vadd.sw_emu.xclbin
 Found Platform
@@ -95,291 +163,291 @@ Starting copy from Host to device...
 Host to device finished...
 Comparing Results...
 i = 0
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 1
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 2
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 3
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 4
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 5
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 6
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 7
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 8
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 9
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 10
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 11
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 12
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 13
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 14
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 15
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 16
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 17
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 18
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 19
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 20
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 21
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 22
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 23
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 24
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 25
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 26
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 27
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 28
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 29
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 30
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 i = 31
-      int = 0    float = 0
-      int = 33    float = 0
-      int = 1    float = 4.57048e-41
-      int = 851610304    float = 3.07739e-41
-      int = -210577264    float = 4.57005e-41
-      int = 49    float = 0
-      int = -330953000    float = 5.00731
-      int = 76965814    float = 5.00732
+      int = 1    float = 1.06535e+09
+      int = 2    float = 1.06535e+09
+      int = 3    float = 1.06535e+09
+      int = 4    float = 1.07374e+09
+      int = 5    float = 1.07374e+09
+      int = 6    float = 1.07374e+09
+      int = 7    float = 1.07794e+09
+      int = 8    float = 1.07794e+09
 TEST PASSED

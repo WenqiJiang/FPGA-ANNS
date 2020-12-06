@@ -128,14 +128,14 @@ void vadd(
     // Load int and float as ap_uint<512> type, and then add them by 1
     load_input<QUERY_NUM>(table_DDR0, s_raw_input);
 
-    write_result<t_axi, QUERY_NUM>(s_raw_input, out_PLRAM);
+    // write_result<t_axi, QUERY_NUM>(s_raw_input, out_PLRAM);
 
-    // type_conversion_and_split<QUERY_NUM>(s_raw_input, s_int_float_struct);
+    type_conversion_and_split<QUERY_NUM>(s_raw_input, s_int_float_struct);
 
-    // add_one_wrapper<QUERY_NUM>(s_int_float_struct, s_int_float_struct_result);
+    add_one_wrapper<QUERY_NUM>(s_int_float_struct, s_int_float_struct_result);
 
-    // merge_result<QUERY_NUM>(s_int_float_struct_result, s_result);
-    // write_result<t_axi, QUERY_NUM>(s_result, out_PLRAM);
+    merge_result<QUERY_NUM>(s_int_float_struct_result, s_result);
+    write_result<t_axi, QUERY_NUM>(s_result, out_PLRAM);
 }
 
 
@@ -160,7 +160,8 @@ eight_int_float_struct_t ap_uint512_to_eight_int_float_struct_t(ap_uint<512> in)
     for (int i = 0; i < 8; i++) {
     #pragma HLS UNROLL
         out.fs[i].i = in.range(31 + 64 * i, 0 + 64 * i);
-        out.fs[i].f = in.range(63 + 64 * i, 32 + 64 * i);
+        ap_uint<32> tmp_f = in.range(63 + 64 * i, 32 + 64 * i);
+        out.fs[i].f = *((float*) (&tmp_f));
     }
 
     return out;
@@ -229,7 +230,7 @@ void merge_result(
         #pragma HLS UNROLL
             fs[i] = s_int_float_struct_result[i].read();
             result.range(31 + 64 * i, 0 + 64 * i) = fs[i].i;
-            result.range(63 + 64 * i, 32 + 64 * i) = fs[i].f;
+            result.range(63 + 64 * i, 32 + 64 * i) = *((ap_uint<32>*) (&fs[i].f));
         }
 
         s_result.write(result);

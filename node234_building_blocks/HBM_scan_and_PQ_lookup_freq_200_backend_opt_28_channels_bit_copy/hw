@@ -1,0 +1,585 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = true]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:1647:3:   required from ‘ap_private<_AP_W, _AP_S, true>::ap_private(int) [with int _AP_W = 32; bool _AP_S = true]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:71:87:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+             : (excess_bits ? (((uint64_t)VAL) << (excess_bits)) >> (excess_bits)
+               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                            : (uint64_t)VAL));
+                            ~~~~~~~~~~~~~~~~
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, false>::cpSext(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5335:13:   required from ‘void ap_private<_AP_W, _AP_S, false>::cpSextOrTrunc(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4598:20:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:71:87:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5292:45: warning: enum constant in boolean context [-Wint-in-bool-context]
+       static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5300:43: warning: enum constant in boolean context [-Wint-in-bool-context]
+     static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                  ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:41689
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/xclbin/vadd.hw.xo.compile_summary, at Fri Dec  4 20:03:55 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Fri Dec  4 20:03:55 2020
+Running Rule Check Server on port:39549
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Fri Dec  4 20:03:56 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 200 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining function 'ap_uint512_to_three_PQ_codes'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 273.97 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance PQ_lookup_computation_134217728_115 PQ_lookup_computation_134217728_115_U0 36314
+Add Instance PQ_lookup_computation_134217728_116 PQ_lookup_computation_134217728_116_U0 36353
+Add Instance PQ_lookup_computation_134217728_117 PQ_lookup_computation_134217728_117_U0 36392
+Add Instance PQ_lookup_computation_134217728_118 PQ_lookup_computation_134217728_118_U0 36431
+Add Instance PQ_lookup_computation_134217728_119 PQ_lookup_computation_134217728_119_U0 36470
+Add Instance PQ_lookup_computation_134217728_120 PQ_lookup_computation_134217728_120_U0 36509
+Add Instance PQ_lookup_computation_134217728_121 PQ_lookup_computation_134217728_121_U0 36548
+Add Instance PQ_lookup_computation_134217728_122 PQ_lookup_computation_134217728_122_U0 36587
+Add Instance PQ_lookup_computation_134217728_123 PQ_lookup_computation_134217728_123_U0 36626
+Add Instance PQ_lookup_computation_134217728_124 PQ_lookup_computation_134217728_124_U0 36665
+Add Instance PQ_lookup_computation_134217728_125 PQ_lookup_computation_134217728_125_U0 36704
+Add Instance PQ_lookup_computation_134217728_126 PQ_lookup_computation_134217728_126_U0 36743
+Add Instance PQ_lookup_computation_134217728_127 PQ_lookup_computation_134217728_127_U0 36782
+Add Instance PQ_lookup_computation_134217728_128 PQ_lookup_computation_134217728_128_U0 36821
+Add Instance PQ_lookup_computation_134217728_129 PQ_lookup_computation_134217728_129_U0 36860
+Add Instance PQ_lookup_computation_134217728_130 PQ_lookup_computation_134217728_130_U0 36899
+Add Instance PQ_lookup_computation_134217728_131 PQ_lookup_computation_134217728_131_U0 36938
+Add Instance PQ_lookup_computation_134217728_132 PQ_lookup_computation_134217728_132_U0 36977
+Add Instance PQ_lookup_computation_134217728_133 PQ_lookup_computation_134217728_133_U0 37016
+Add Instance PQ_lookup_computation_134217728_134 PQ_lookup_computation_134217728_134_U0 37055
+Add Instance PQ_lookup_computation_134217728_135 PQ_lookup_computation_134217728_135_U0 37094
+Add Instance PQ_lookup_computation_134217728_136 PQ_lookup_computation_134217728_136_U0 37133
+Add Instance PQ_lookup_computation_134217728_137 PQ_lookup_computation_134217728_137_U0 37172
+Add Instance PQ_lookup_computation_134217728_138 PQ_lookup_computation_134217728_138_U0 37211
+Add Instance PQ_lookup_computation_134217728_139 PQ_lookup_computation_134217728_139_U0 37250
+Add Instance PQ_lookup_computation_134217728_140 PQ_lookup_computation_134217728_140_U0 37289
+Add Instance PQ_lookup_computation_134217728_141 PQ_lookup_computation_134217728_141_U0 37328
+Add Instance PQ_lookup_computation_134217728_142 PQ_lookup_computation_134217728_142_U0 37367
+Add Instance PQ_lookup_computation_134217728_143 PQ_lookup_computation_134217728_143_U0 37406
+Add Instance PQ_lookup_computation_134217728_144 PQ_lookup_computation_134217728_144_U0 37445
+Add Instance PQ_lookup_computation_134217728_145 PQ_lookup_computation_134217728_145_U0 37484
+Add Instance PQ_lookup_computation_134217728_146 PQ_lookup_computation_134217728_146_U0 37523
+Add Instance PQ_lookup_computation_134217728_147 PQ_lookup_computation_134217728_147_U0 37562
+Add Instance PQ_lookup_computation_134217728_148 PQ_lookup_computation_134217728_148_U0 37601
+Add Instance PQ_lookup_computation_134217728_149 PQ_lookup_computation_134217728_149_U0 37640
+Add Instance PQ_lookup_computation_134217728_150 PQ_lookup_computation_134217728_150_U0 37679
+Add Instance PQ_lookup_computation_134217728_151 PQ_lookup_computation_134217728_151_U0 37718
+Add Instance PQ_lookup_computation_134217728_152 PQ_lookup_computation_134217728_152_U0 37757
+Add Instance PQ_lookup_computation_134217728_153 PQ_lookup_computation_134217728_153_U0 37796
+Add Instance PQ_lookup_computation_134217728_154 PQ_lookup_computation_134217728_154_U0 37835
+Add Instance PQ_lookup_computation_134217728_155 PQ_lookup_computation_134217728_155_U0 37874
+Add Instance PQ_lookup_computation_134217728_156 PQ_lookup_computation_134217728_156_U0 37913
+Add Instance PQ_lookup_computation_134217728_157 PQ_lookup_computation_134217728_157_U0 37952
+Add Instance PQ_lookup_computation_134217728_158 PQ_lookup_computation_134217728_158_U0 37991
+Add Instance PQ_lookup_computation_134217728_159 PQ_lookup_computation_134217728_159_U0 38030
+Add Instance PQ_lookup_computation_134217728_160 PQ_lookup_computation_134217728_160_U0 38069
+Add Instance PQ_lookup_computation_134217728_161 PQ_lookup_computation_134217728_161_U0 38108
+Add Instance PQ_lookup_computation_134217728_162 PQ_lookup_computation_134217728_162_U0 38147
+Add Instance PQ_lookup_computation_134217728_163 PQ_lookup_computation_134217728_163_U0 38186
+Add Instance PQ_lookup_computation_134217728_164 PQ_lookup_computation_134217728_164_U0 38225
+Add Instance PQ_lookup_computation_134217728_165 PQ_lookup_computation_134217728_165_U0 38264
+Add Instance PQ_lookup_computation_134217728_166 PQ_lookup_computation_134217728_166_U0 38303
+Add Instance PQ_lookup_computation_134217728_167 PQ_lookup_computation_134217728_167_U0 38342
+Add Instance PQ_lookup_computation_134217728_168 PQ_lookup_computation_134217728_168_U0 38381
+Add Instance PQ_lookup_computation_134217728_169 PQ_lookup_computation_134217728_169_U0 38420
+Add Instance PQ_lookup_computation_134217728_170 PQ_lookup_computation_134217728_170_U0 38459
+Add Instance PQ_lookup_computation_134217728_171 PQ_lookup_computation_134217728_171_U0 38498
+Add Instance PQ_lookup_computation_134217728_172 PQ_lookup_computation_134217728_172_U0 38537
+Add Instance PQ_lookup_computation_134217728_173 PQ_lookup_computation_134217728_173_U0 38576
+Add Instance PQ_lookup_computation_134217728_174 PQ_lookup_computation_134217728_174_U0 38615
+Add Instance PQ_lookup_computation_134217728_175 PQ_lookup_computation_134217728_175_U0 38654
+Add Instance PQ_lookup_computation_134217728_176 PQ_lookup_computation_134217728_176_U0 38693
+Add Instance PQ_lookup_computation_134217728_177 PQ_lookup_computation_134217728_177_U0 38732
+Add Instance PQ_lookup_computation_134217728_178 PQ_lookup_computation_134217728_178_U0 38771
+Add Instance PQ_lookup_computation_134217728_179 PQ_lookup_computation_134217728_179_U0 38810
+Add Instance PQ_lookup_computation_134217728_180 PQ_lookup_computation_134217728_180_U0 38849
+Add Instance PQ_lookup_computation_134217728_181 PQ_lookup_computation_134217728_181_U0 38888
+Add Instance PQ_lookup_computation_134217728_182 PQ_lookup_computation_134217728_182_U0 38927
+Add Instance PQ_lookup_computation_134217728_183 PQ_lookup_computation_134217728_183_U0 38966
+Add Instance PQ_lookup_computation_134217728_184 PQ_lookup_computation_134217728_184_U0 39005
+Add Instance PQ_lookup_computation_134217728_185 PQ_lookup_computation_134217728_185_U0 39044
+Add Instance PQ_lookup_computation_134217728_186 PQ_lookup_computation_134217728_186_U0 39083
+Add Instance PQ_lookup_computation_134217728_187 PQ_lookup_computation_134217728_187_U0 39122
+Add Instance PQ_lookup_computation_134217728_188 PQ_lookup_computation_134217728_188_U0 39161
+Add Instance PQ_lookup_computation_134217728_189 PQ_lookup_computation_134217728_189_U0 39200
+Add Instance PQ_lookup_computation_134217728_190 PQ_lookup_computation_134217728_190_U0 39239
+Add Instance PQ_lookup_computation_134217728_191 PQ_lookup_computation_134217728_191_U0 39278
+Add Instance PQ_lookup_computation_134217728_192 PQ_lookup_computation_134217728_192_U0 39317
+Add Instance PQ_lookup_computation_134217728_193 PQ_lookup_computation_134217728_193_U0 39356
+Add Instance PQ_lookup_computation_134217728_194 PQ_lookup_computation_134217728_194_U0 39395
+Add Instance PQ_lookup_computation_134217728_195 PQ_lookup_computation_134217728_195_U0 39434
+Add Instance PQ_lookup_computation_134217728_196 PQ_lookup_computation_134217728_196_U0 39473
+Add Instance PQ_lookup_computation_134217728_197 PQ_lookup_computation_134217728_197_U0 39512
+Add Instance PQ_lookup_computation_134217728_198 PQ_lookup_computation_134217728_198_U0 39551
+Add Instance reduce_result reduce_result_U0 39590
+Add Instance load_PQ_codes_128_1048576_59 load_PQ_codes_128_1048576_59_U0 39625
+Add Instance load_PQ_codes_128_1048576_60 load_PQ_codes_128_1048576_60_U0 39633
+Add Instance load_PQ_codes_128_1048576_61 load_PQ_codes_128_1048576_61_U0 39641
+Add Instance load_PQ_codes_128_1048576_62 load_PQ_codes_128_1048576_62_U0 39649
+Add Instance load_PQ_codes_128_1048576_63 load_PQ_codes_128_1048576_63_U0 39657
+Add Instance load_PQ_codes_128_1048576_64 load_PQ_codes_128_1048576_64_U0 39665
+Add Instance load_PQ_codes_128_1048576_65 load_PQ_codes_128_1048576_65_U0 39673
+Add Instance load_PQ_codes_128_1048576_66 load_PQ_codes_128_1048576_66_U0 39681
+Add Instance load_PQ_codes_128_1048576_67 load_PQ_codes_128_1048576_67_U0 39689
+Add Instance load_PQ_codes_128_1048576_68 load_PQ_codes_128_1048576_68_U0 39697
+Add Instance load_PQ_codes_128_1048576_69 load_PQ_codes_128_1048576_69_U0 39705
+Add Instance load_PQ_codes_128_1048576_70 load_PQ_codes_128_1048576_70_U0 39713
+Add Instance load_PQ_codes_128_1048576_71 load_PQ_codes_128_1048576_71_U0 39721
+Add Instance load_PQ_codes_128_1048576_72 load_PQ_codes_128_1048576_72_U0 39729
+Add Instance load_PQ_codes_128_1048576_73 load_PQ_codes_128_1048576_73_U0 39737
+Add Instance load_PQ_codes_128_1048576_74 load_PQ_codes_128_1048576_74_U0 39745
+Add Instance load_PQ_codes_128_1048576_75 load_PQ_codes_128_1048576_75_U0 39753
+Add Instance load_PQ_codes_128_1048576_76 load_PQ_codes_128_1048576_76_U0 39761
+Add Instance load_PQ_codes_128_1048576_77 load_PQ_codes_128_1048576_77_U0 39769
+Add Instance load_PQ_codes_128_1048576_78 load_PQ_codes_128_1048576_78_U0 39777
+Add Instance load_PQ_codes_128_1048576_79 load_PQ_codes_128_1048576_79_U0 39785
+Add Instance load_PQ_codes_128_1048576_80 load_PQ_codes_128_1048576_80_U0 39793
+Add Instance load_PQ_codes_128_1048576_81 load_PQ_codes_128_1048576_81_U0 39801
+Add Instance load_PQ_codes_128_1048576_82 load_PQ_codes_128_1048576_82_U0 39809
+Add Instance load_PQ_codes_128_1048576_83 load_PQ_codes_128_1048576_83_U0 39817
+Add Instance load_PQ_codes_128_1048576_84 load_PQ_codes_128_1048576_84_U0 39825
+Add Instance load_PQ_codes_128_1048576_85 load_PQ_codes_128_1048576_85_U0 39833
+Add Instance load_PQ_codes_128_1048576_86 load_PQ_codes_128_1048576_86_U0 39841
+Add Instance consume_and_write_134217728_227 consume_and_write_134217728_227_U0 39849
+Add Instance consume_and_write_134217728_228 consume_and_write_134217728_228_U0 39855
+Add Instance consume_and_write_134217728_229 consume_and_write_134217728_229_U0 39861
+Add Instance consume_and_write_134217728_230 consume_and_write_134217728_230_U0 39867
+Add Instance consume_and_write_134217728_231 consume_and_write_134217728_231_U0 39873
+Add Instance consume_and_write_134217728_232 consume_and_write_134217728_232_U0 39879
+Add Instance consume_and_write_134217728_233 consume_and_write_134217728_233_U0 39885
+Add Instance consume_and_write_134217728_234 consume_and_write_134217728_234_U0 39891
+Add Instance consume_and_write_134217728_235 consume_and_write_134217728_235_U0 39897
+Add Instance consume_and_write_134217728_236 consume_and_write_134217728_236_U0 39903
+Add Instance consume_and_write_134217728_237 consume_and_write_134217728_237_U0 39909
+Add Instance consume_and_write_134217728_238 consume_and_write_134217728_238_U0 39915
+Add Instance consume_and_write_134217728_239 consume_and_write_134217728_239_U0 39921
+Add Instance consume_and_write_134217728_240 consume_and_write_134217728_240_U0 39927
+Add Instance consume_and_write_134217728_241 consume_and_write_134217728_241_U0 39933
+Add Instance consume_and_write_134217728_242 consume_and_write_134217728_242_U0 39939
+Add Instance consume_and_write_134217728_243 consume_and_write_134217728_243_U0 39945
+Add Instance consume_and_write_134217728_244 consume_and_write_134217728_244_U0 39951
+Add Instance consume_and_write_134217728_245 consume_and_write_134217728_245_U0 39957
+Add Instance consume_and_write_134217728_246 consume_and_write_134217728_246_U0 39963
+Add Instance consume_and_write_134217728_247 consume_and_write_134217728_247_U0 39969
+Add Instance consume_and_write_134217728_248 consume_and_write_134217728_248_U0 39975
+Add Instance consume_and_write_134217728_249 consume_and_write_134217728_249_U0 39981
+Add Instance consume_and_write_134217728_250 consume_and_write_134217728_250_U0 39987
+Add Instance consume_and_write_134217728_251 consume_and_write_134217728_251_U0 39993
+Add Instance consume_and_write_134217728_252 consume_and_write_134217728_252_U0 39999
+Add Instance consume_and_write_134217728_253 consume_and_write_134217728_253_U0 40005
+Add Instance consume_and_write_134217728_254 consume_and_write_134217728_254_U0 40011
+Add Instance type_conversion_and_split_134217728_87 type_conversion_and_split_134217728_87_U0 40017
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_88 type_conversion_and_split_134217728_88_U0 40073
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_89 type_conversion_and_split_134217728_89_U0 40129
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_90 type_conversion_and_split_134217728_90_U0 40185
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_91 type_conversion_and_split_134217728_91_U0 40241
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_92 type_conversion_and_split_134217728_92_U0 40297
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_93 type_conversion_and_split_134217728_93_U0 40353
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_94 type_conversion_and_split_134217728_94_U0 40409
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_95 type_conversion_and_split_134217728_95_U0 40465
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_96 type_conversion_and_split_134217728_96_U0 40521
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_97 type_conversion_and_split_134217728_97_U0 40577
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_98 type_conversion_and_split_134217728_98_U0 40633
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_99 type_conversion_and_split_134217728_99_U0 40689
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_100 type_conversion_and_split_134217728_100_U0 40745
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_101 type_conversion_and_split_134217728_101_U0 40801
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_102 type_conversion_and_split_134217728_102_U0 40857
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_103 type_conversion_and_split_134217728_103_U0 40913
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_104 type_conversion_and_split_134217728_104_U0 40969
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_105 type_conversion_and_split_134217728_105_U0 41025
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_106 type_conversion_and_split_134217728_106_U0 41081
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_107 type_conversion_and_split_134217728_107_U0 41137
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_108 type_conversion_and_split_134217728_108_U0 41193
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_109 type_conversion_and_split_134217728_109_U0 41249
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_110 type_conversion_and_split_134217728_110_U0 41305
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_111 type_conversion_and_split_134217728_111_U0 41361
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_112 type_conversion_and_split_134217728_112_U0 41417
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_113 type_conversion_and_split_134217728_113_U0 41473
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance type_conversion_and_split_134217728_114 type_conversion_and_split_134217728_114_U0 41529
+Add Instance ap_uint512_to_three_PQ_codes grp_ap_uint512_to_three_PQ_codes_fu_954 954
+Add Instance merge_result_134217728_199 merge_result_134217728_199_U0 41585
+Add Instance merge_result_134217728_200 merge_result_134217728_200_U0 41596
+Add Instance merge_result_134217728_201 merge_result_134217728_201_U0 41607
+Add Instance merge_result_134217728_202 merge_result_134217728_202_U0 41618
+Add Instance merge_result_134217728_203 merge_result_134217728_203_U0 41629
+Add Instance merge_result_134217728_204 merge_result_134217728_204_U0 41640
+Add Instance merge_result_134217728_205 merge_result_134217728_205_U0 41651
+Add Instance merge_result_134217728_206 merge_result_134217728_206_U0 41662
+Add Instance merge_result_134217728_207 merge_result_134217728_207_U0 41673
+Add Instance merge_result_134217728_208 merge_result_134217728_208_U0 41684
+Add Instance merge_result_134217728_209 merge_result_134217728_209_U0 41695
+Add Instance merge_result_134217728_210 merge_result_134217728_210_U0 41706
+Add Instance merge_result_134217728_211 merge_result_134217728_211_U0 41717
+Add Instance merge_result_134217728_212 merge_result_134217728_212_U0 41728
+Add Instance merge_result_134217728_213 merge_result_134217728_213_U0 41739
+Add Instance merge_result_134217728_214 merge_result_134217728_214_U0 41750
+Add Instance merge_result_134217728_215 merge_result_134217728_215_U0 41761
+Add Instance merge_result_134217728_216 merge_result_134217728_216_U0 41772
+Add Instance merge_result_134217728_217 merge_result_134217728_217_U0 41783
+Add Instance merge_result_134217728_218 merge_result_134217728_218_U0 41794
+Add Instance merge_result_134217728_219 merge_result_134217728_219_U0 41805
+Add Instance merge_result_134217728_220 merge_result_134217728_220_U0 41816
+Add Instance merge_result_134217728_221 merge_result_134217728_221_U0 41827
+Add Instance merge_result_134217728_222 merge_result_134217728_222_U0 41838
+Add Instance merge_result_134217728_223 merge_result_134217728_223_U0 41849
+Add Instance merge_result_134217728_224 merge_result_134217728_224_U0 41860
+Add Instance merge_result_134217728_225 merge_result_134217728_225_U0 41871
+Add Instance merge_result_134217728_226 merge_result_134217728_226_U0 41882
+Add Instance vadd_entry32 vadd_entry32_U0 41893
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 38m 59s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:42675
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/xclbin/vadd.hw.xclbin.link_summary, at Fri Dec  4 20:42:57 2020
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Fri Dec  4 20:42:57 2020
+Running Rule Check Server on port:39373
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Fri Dec  4 20:42:58 2020
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [20:43:20] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Fri Dec  4 20:43:26 2020
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [20:43:40] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [20:43:47] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 87595 ; free virtual = 433193
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [20:43:47] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.HBM_in0:HBM[0] -sp vadd_1.HBM_in1:HBM[1] -sp vadd_1.HBM_in2:HBM[2] -sp vadd_1.HBM_in3:HBM[3] -sp vadd_1.HBM_in4:HBM[4] -sp vadd_1.HBM_in5:HBM[5] -sp vadd_1.HBM_in6:HBM[6] -sp vadd_1.HBM_in7:HBM[7] -sp vadd_1.HBM_in8:HBM[8] -sp vadd_1.HBM_in9:HBM[9] -sp vadd_1.HBM_in10:HBM[10] -sp vadd_1.HBM_in11:HBM[11] -sp vadd_1.HBM_in12:HBM[12] -sp vadd_1.HBM_in13:HBM[13] -sp vadd_1.HBM_in14:HBM[14] -sp vadd_1.HBM_in15:HBM[15] -sp vadd_1.HBM_in16:HBM[16] -sp vadd_1.HBM_in17:HBM[17] -sp vadd_1.HBM_in18:HBM[18] -sp vadd_1.HBM_in19:HBM[19] -sp vadd_1.HBM_in20:HBM[20] -sp vadd_1.HBM_in21:HBM[21] -sp vadd_1.HBM_in22:HBM[22] -sp vadd_1.HBM_in23:HBM[23] -sp vadd_1.HBM_in24:HBM[24] -sp vadd_1.HBM_in25:HBM[25] -sp vadd_1.HBM_in26:HBM[26] -sp vadd_1.HBM_in27:HBM[27] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in0 to HBM[0] for directive vadd_1.HBM_in0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in1 to HBM[1] for directive vadd_1.HBM_in1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in2 to HBM[2] for directive vadd_1.HBM_in2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in3 to HBM[3] for directive vadd_1.HBM_in3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in4 to HBM[4] for directive vadd_1.HBM_in4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in5 to HBM[5] for directive vadd_1.HBM_in5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in6 to HBM[6] for directive vadd_1.HBM_in6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in7 to HBM[7] for directive vadd_1.HBM_in7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in8 to HBM[8] for directive vadd_1.HBM_in8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in9 to HBM[9] for directive vadd_1.HBM_in9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in10 to HBM[10] for directive vadd_1.HBM_in10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in11 to HBM[11] for directive vadd_1.HBM_in11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in12 to HBM[12] for directive vadd_1.HBM_in12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in13 to HBM[13] for directive vadd_1.HBM_in13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in14 to HBM[14] for directive vadd_1.HBM_in14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in15 to HBM[15] for directive vadd_1.HBM_in15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in16 to HBM[16] for directive vadd_1.HBM_in16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in17 to HBM[17] for directive vadd_1.HBM_in17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in18 to HBM[18] for directive vadd_1.HBM_in18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in19 to HBM[19] for directive vadd_1.HBM_in19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in20 to HBM[20] for directive vadd_1.HBM_in20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in21 to HBM[21] for directive vadd_1.HBM_in21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in22 to HBM[22] for directive vadd_1.HBM_in22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in23 to HBM[23] for directive vadd_1.HBM_in23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in24 to HBM[24] for directive vadd_1.HBM_in24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in25 to HBM[25] for directive vadd_1.HBM_in25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in26 to HBM[26] for directive vadd_1.HBM_in26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in27 to HBM[27] for directive vadd_1.HBM_in27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [20:43:52] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 87741 ; free virtual = 433339
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [20:43:52] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [20:43:56] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 295.457 ; gain = 0.000 ; free physical = 87733 ; free virtual = 433335
+INFO: [v++ 60-1441] [20:43:56] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:36 . Memory (MB): peak = 726.426 ; gain = 0.000 ; free physical = 87751 ; free virtual = 433354
+INFO: [v++ 60-1443] [20:43:56] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [20:43:59] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 726.426 ; gain = 0.000 ; free physical = 87750 ; free virtual = 433353
+INFO: [v++ 60-1443] [20:43:59] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [20:44:01] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 726.426 ; gain = 0.000 ; free physical = 87744 ; free virtual = 433347
+INFO: [v++ 60-1443] [20:44:01] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 200 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[20:45:16] Run vpl: Step create_project: Started
+Creating Vivado project.
+[20:45:20] Run vpl: Step create_project: Completed
+[20:45:20] Run vpl: Step create_bd: Started
+[20:47:02] Run vpl: Step create_bd: RUNNING...
+[20:48:39] Run vpl: Step create_bd: RUNNING...
+[20:50:12] Run vpl: Step create_bd: RUNNING...
+[20:51:45] Run vpl: Step create_bd: RUNNING...
+[20:53:18] Run vpl: Step create_bd: RUNNING...
+[20:55:07] Run vpl: Step create_bd: RUNNING...
+[20:56:39] Run vpl: Step create_bd: RUNNING...
+[20:57:05] Run vpl: Step create_bd: Completed
+[20:57:05] Run vpl: Step update_bd: Started
+[20:58:37] Run vpl: Step update_bd: RUNNING...
+[21:00:20] Run vpl: Step update_bd: RUNNING...
+[21:00:32] Run vpl: Step update_bd: Completed
+[21:00:32] Run vpl: Step generate_target: Started
+[21:02:05] Run vpl: Step generate_target: RUNNING...
+[21:03:37] Run vpl: Step generate_target: RUNNING...
+[21:05:08] Run vpl: Step generate_target: RUNNING...
+[21:06:54] Run vpl: Step generate_target: RUNNING...
+[21:08:28] Run vpl: Step generate_target: RUNNING...
+[21:10:10] Run vpl: Step generate_target: RUNNING...
+[21:11:23] Run vpl: Step generate_target: Completed
+[21:11:23] Run vpl: Step config_hw_runs: Started
+[21:12:34] Run vpl: Step config_hw_runs: Completed
+[21:12:34] Run vpl: Step synth: Started
+/opt/Xilinx/Vitis/2019.2/bin/loader: line 280: 58935 Segmentation fault      "$RDI_PROG" "$@"
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Interrupt
