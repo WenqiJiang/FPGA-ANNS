@@ -1,32 +1,48 @@
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[0], s_PQ_0[0], s_PQ_1[0], s_PQ_2[0]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[1], s_PQ_0[1], s_PQ_1[1], s_PQ_2[1]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[2], s_PQ_0[2], s_PQ_1[2], s_PQ_2[2]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[3], s_PQ_0[3], s_PQ_1[3], s_PQ_2[3]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[4], s_PQ_0[4], s_PQ_1[4], s_PQ_2[4]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[5], s_PQ_0[5], s_PQ_1[5], s_PQ_2[5]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[6], s_PQ_0[6], s_PQ_1[6], s_PQ_2[6]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[7], s_PQ_0[7], s_PQ_1[7], s_PQ_2[7]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[8], s_PQ_0[8], s_PQ_1[8], s_PQ_2[8]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[9], s_PQ_0[9], s_PQ_1[9], s_PQ_2[9]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[10], s_PQ_0[10], s_PQ_1[10], s_PQ_2[10]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[11], s_PQ_0[11], s_PQ_1[11], s_PQ_2[11]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[12], s_PQ_0[12], s_PQ_1[12], s_PQ_2[12]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[13], s_PQ_0[13], s_PQ_1[13], s_PQ_2[13]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[14], s_PQ_0[14], s_PQ_1[14], s_PQ_2[14]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[15], s_PQ_0[15], s_PQ_1[15], s_PQ_2[15]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[16], s_PQ_0[16], s_PQ_1[16], s_PQ_2[16]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[17], s_PQ_0[17], s_PQ_1[17], s_PQ_2[17]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[18], s_PQ_0[18], s_PQ_1[18], s_PQ_2[18]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[19], s_PQ_0[19], s_PQ_1[19], s_PQ_2[19]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[20], s_PQ_0[20], s_PQ_1[20], s_PQ_2[20]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[21], s_PQ_0[21], s_PQ_1[21], s_PQ_2[21]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[22], s_PQ_0[22], s_PQ_1[22], s_PQ_2[22]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[23], s_PQ_0[23], s_PQ_1[23], s_PQ_2[23]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[24], s_PQ_0[24], s_PQ_1[24], s_PQ_2[24]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[25], s_PQ_0[25], s_PQ_1[25], s_PQ_2[25]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[26], s_PQ_0[26], s_PQ_1[26], s_PQ_2[26]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[27], s_PQ_0[27], s_PQ_1[27], s_PQ_2[27]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[28], s_PQ_0[28], s_PQ_1[28], s_PQ_2[28]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[29], s_PQ_0[29], s_PQ_1[29], s_PQ_2[29]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[30], s_PQ_0[30], s_PQ_1[30], s_PQ_2[30]);
-    type_conversion_and_split<QUERY_NUM>(s_raw_input[31], s_PQ_0[31], s_PQ_1[31], s_PQ_2[31]);
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_0[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_1[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_2[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_3[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_4[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_5[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_6[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_7[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_8[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_9[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_10[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_11[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_12[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_13[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_14[i] = s_PQ_quantizer_init.read();
+    }
+    for (int i = 0; i < K * D / M; i++) {
+        sub_quantizer_15[i] = s_PQ_quantizer_init.read();
+    }
