@@ -1,5 +1,7 @@
 host 
 xclbin
+hw_out
+hw_out*
 ./xclbin
 ./xclbin/*
 .run/*

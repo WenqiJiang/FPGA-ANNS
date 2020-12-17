@@ -1,0 +1,14 @@
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/HBM_performance_test
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/bitonic_sort_32_with_vecID_copy_all
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/fifth_test
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/fourth_test
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/second_test_struct_512_channels_28_opt1
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/merge_2_streams_with_vecID
+make cleanall
+cd /mnt/scratch/wenqi/FPGA-ANNS/unused/test_lookup_performance_axi_128
+make cleanall

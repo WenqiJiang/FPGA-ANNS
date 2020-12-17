@@ -1,6 +1,22 @@
 #pragma once
 #include <ap_int.h>
 
+#define NLIST 8192
+#define NPROBE 32
+#define D 128
+#define M 16
+#define K 256
+#define PE_NUM_CENTER_DIST_COMP 32  // TODO: Rename this to PE_NUM_CENTER_DIST_COMP
+#define CENTROIDS_PER_PARTITION (NLIST / PE_NUM_CENTER_DIST_COMP)
+
+#define PE_NUM_TABLE_CONSTRUCTION 4
+#define NPROBE_PER_TABLE_CONSTRUCTION_PE (NPROBE / PE_NUM_TABLE_CONSTRUCTION) // 
+
+#define LARGE_NUM 99999999 // used to init the heap
+
+#define QUERY_NUM 32
+#define MERGE_ITER (NLIST/PE_NUM_CENTER_DIST_COMP) // the number of input sorted array (32 elements per partition)
+
 //////////////////////////////   TEMPLATE START  //////////////////////////////
 
 #define PLRAM_BANK_NUM 4
@@ -59,7 +75,3 @@
 //typedef ap_int<512> t_axi;
 typedef float t_axi;
 typedef float D_TYPE;
-
-#define NUM_LOOPS 32
-#define MERGE_ITER 8 // the number of input sorted array (32 elements per partition)
-#define LARGE_NUM 9999999999

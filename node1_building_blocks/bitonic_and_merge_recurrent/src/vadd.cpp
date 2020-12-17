@@ -104,29 +104,29 @@ void vadd(
 #pragma HLS dataflow
 
     // Input unordered numbers
-    hls::stream<float> s_input_stream[32];
+    hls::stream<float> s_input_stream[PE_NUM_CENTER_DIST_COMP];
 #pragma HLS stream variable=s_input_stream depth=4
 #pragma HLS array_partition variable=s_input_stream dim=1
 
-    hls::stream<float> s_merge_input_0;
-#pragma HLS stream variable=s_merge_input_0 depth=8
-    hls::stream<float> s_merge_input_1;
-#pragma HLS stream variable=s_merge_input_1 depth=8
+    hls::stream<float> s_merge_input_A;
+#pragma HLS stream variable=s_merge_input_A depth=8
+    hls::stream<float> s_merge_input_B;
+#pragma HLS stream variable=s_merge_input_B depth=8
     hls::stream<float> s_merge_partial_output;
 #pragma HLS stream variable=s_merge_partial_output depth=8
     hls::stream<float> s_merge_output;
 #pragma HLS stream variable=s_merge_output depth=8
 
 
-    broadcast_stream<32 * MERGE_ITER, 32>(table_DDR0, s_input_stream);
+    broadcast_stream<NLIST, PE_NUM_CENTER_DIST_COMP>(table_DDR0, s_input_stream);
 
-    bitonic_sort(s_input_stream, s_merge_input_0);
+    bitonic_sort(s_input_stream, s_merge_input_A);
 
     // periodically write large numbers, and write results out
-    merge_filter_streams<32>(s_merge_input_0, s_merge_input_1, s_merge_partial_output);
-    result_redirect<32>(s_merge_partial_output, s_merge_input_1, s_merge_output); 
+    merge_filter_streams<PE_NUM_CENTER_DIST_COMP>(s_merge_input_A, s_merge_input_B, s_merge_partial_output);
+    result_redirect<PE_NUM_CENTER_DIST_COMP>(s_merge_partial_output, s_merge_input_B, s_merge_output); 
 
-    write_result<32 * NUM_LOOPS>(s_merge_output, out_PLRAM);
+    write_result<NPROBE * QUERY_NUM>(s_merge_output, out_PLRAM);
 }
 
 template<const int total_len, const int stream_num> 
@@ -141,7 +141,7 @@ void broadcast_stream(const float* data_source,
         input_array[i] = data_source[i];
     }
 
-    for (int iter = 0; iter < NUM_LOOPS; iter++) { 
+    for (int iter = 0; iter < QUERY_NUM; iter++) { 
         for (int i = 0; i < total_len / stream_num; i++) {
             for (int j = 0; j < stream_num; j++)
             #pragma HLS UNROLL
@@ -163,7 +163,7 @@ void load_stream_to_local(
 
 template<const int input_stream_len>
 void merge_filter_arrays(
-    float input_array_0[input_stream_len],float input_array_1[input_stream_len],
+    float input_array_A[input_stream_len],float input_array_B[input_stream_len],
     hls::stream<float>& s_merge_partial_output) {
 
     int count0, count1;
@@ -177,8 +177,8 @@ void merge_filter_arrays(
     // printf("merge_filter_arrays, i = %d\n", i);
     #pragma HLS pipeline II=1
 
-        reg0 = input_array_0[count0];
-        reg1 = input_array_1[count1];
+        reg0 = input_array_A[count0];
+        reg1 = input_array_B[count1];
 
         if (reg0 <= reg1) {
             s_merge_partial_output.write(reg0);
@@ -193,40 +193,40 @@ void merge_filter_arrays(
 
 template<const int input_stream_len>
 void merge_filter_streams(
-    hls::stream<float>& s_merge_input_0, hls::stream<float>& s_merge_input_1,
+    hls::stream<float>& s_merge_input_A, hls::stream<float>& s_merge_input_B,
     hls::stream<float>& s_merge_partial_output) {
     // This function merge two sorted streams to a single sorted stream, 
     // and ONLY output the smallest half
 
-    float input_array_0[input_stream_len];
-    float input_array_1[input_stream_len];
+    float input_array_A[input_stream_len];
+    float input_array_B[input_stream_len];
     
-    for (int iter = 0; iter < NUM_LOOPS * MERGE_ITER; iter++) {
+    for (int iter = 0; iter < QUERY_NUM * MERGE_ITER; iter++) {
     // printf("merge_filter_streams, iter = %d\n", iter);
     #pragma HLS dataflow
 
-        load_stream_to_local<input_stream_len>(s_merge_input_0, input_array_0);
-        load_stream_to_local<input_stream_len>(s_merge_input_1, input_array_1);
-        merge_filter_arrays<input_stream_len>(input_array_0, input_array_1, s_merge_partial_output);
+        load_stream_to_local<input_stream_len>(s_merge_input_A, input_array_A);
+        load_stream_to_local<input_stream_len>(s_merge_input_B, input_array_B);
+        merge_filter_arrays<input_stream_len>(input_array_A, input_array_B, s_merge_partial_output);
     }
 }
 
 template<const int input_stream_len>
 void result_redirect(
     hls::stream<float>& s_merge_partial_output, 
-    hls::stream<float>& s_merge_input_1, 
+    hls::stream<float>& s_merge_input_B, 
     hls::stream<float>& s_merge_output) {
 
-    for (int iter = 0; iter < NUM_LOOPS; iter++) {
+    for (int iter = 0; iter < QUERY_NUM; iter++) {
         
         // printf("result_redirect, iter = %d\n", iter);
 
         // First merge iteration: no read from merge module, write large number to 
-        //   s_merge_input_1 directly
+        //   s_merge_input_B directly
         for (int i = 0; i < input_stream_len; i++) {
         // printf("result_redirect first stage, i = %d\n", i);
         #pragma HLS pipeline II=1
-            s_merge_input_1.write(LARGE_NUM);
+            s_merge_input_B.write(LARGE_NUM);
         }
 
         // Middle merge iterations: redirect partial result to input
@@ -236,7 +236,7 @@ void result_redirect(
             for (int i = 0; i < input_stream_len; i++) {
         // printf("result_redirect Middle stage, m = %d, i = %d\n", m, i);
             #pragma HLS pipeline II=1
-                s_merge_input_1.write(s_merge_partial_output.read());
+                s_merge_input_B.write(s_merge_partial_output.read());
             }
         }
 
@@ -306,7 +306,7 @@ void bitonic_sort(hls::stream<float> (&s_input_stream)[32],
     // Total: 15 sub-stages
     
     
-    for (int iter = 0; iter < NUM_LOOPS * MERGE_ITER; iter++) {
+    for (int iter = 0; iter < QUERY_NUM * MERGE_ITER; iter++) {
 
         // load data from input stream
         for (int i = 0; i < 32; i++) {

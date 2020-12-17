@@ -118,6 +118,7 @@ int main(int argc, char** argv)
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
     int size_results_out = QUERY_NUM * NPROBE * K; 
+    // suppose QUERY_NUM = 128, 128 * 32 * 256 * 64 = 64 MB(each element 64 byte)
     std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
     std::vector<result_t,aligned_allocator<result_t>> source_sw_results(size_results_out);
 
@@ -532,7 +533,7 @@ int main(int argc, char** argv)
     std::cout << "Comparing Results..." << std::endl;
     bool match = true;
 
-    for (int query_id = 0 ; query_id < QUERY_NUM < 64? QUERY_NUM: 64; query_id++) {
+    for (int query_id = 0 ; query_id < (QUERY_NUM < 64? QUERY_NUM: 64); query_id++) {
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
             for (int row = 0; row < K; row++) {
                 int result_adddr = query_id * NPROBE * K + nprobe_id * K + row;

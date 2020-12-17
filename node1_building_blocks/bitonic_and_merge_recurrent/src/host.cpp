@@ -117,42 +117,40 @@ int main(int argc, char** argv)
 
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int size_results_out = 32 * NUM_LOOPS; 
+    int size_results_out = NPROBE * QUERY_NUM; 
     std::vector<float,aligned_allocator<float>> source_hw_results(size_results_out);
     std::vector<float,aligned_allocator<float>> source_sw_results(size_results_out);
 
 //// INIT SORTED arrays ////
-    // MERGE_ITER = 8, the following array are 8 unsorted arrays, each with 32 elements
-    // 8 * 32 = 256 elements in total
-    float input_array[32 * MERGE_ITER] = {
-       631, 794, 430,  56, 969, 953, 357, 220,  28, 572, 140, 271, 508,
-       170, 378, 976, 258, 365, 178, 141, 662, 338, 896, 687, 990, 229,
-       617, 155, 524, 401,  75,  75, 613,  20,  62, 344, 138, 484, 504,
-       395, 911, 700, 893, 900, 468, 687, 354, 951, 917, 384, 539, 500,
-       492, 948, 702, 575, 494, 208, 756, 553, 443, 455, 221,  80, 340,
-       670, 955, 244, 976, 400, 124, 830, 660, 726, 644, 557, 260, 171,
-       784, 217, 742, 453, 882, 521,  94, 386,  70, 187, 564, 225,  86,
-       566,  67, 528, 913, 756, 636, 580, 223, 736, 347, 332, 357, 504,
-       855, 227,  14, 486, 479, 922, 688,  11, 218, 209, 696, 260, 484,
-       606, 628,   7, 359, 244, 838, 223, 967, 365, 536, 976, 662, 794,
-       551, 812, 535,  80, 586, 140, 504, 255, 233, 877, 848,  35, 912,
-       756, 154, 417, 524, 869, 443, 964, 668, 661, 825, 775, 699, 499,
-       553, 140, 746, 253, 427, 542, 600, 627, 847, 896, 273, 638, 905,
-       546, 474, 809, 481, 407, 197,  66, 857,  68, 798, 552,  88, 189,
-       477, 988, 644, 342, 626, 708, 787, 855, 549, 584, 312, 360, 235,
-       494, 857, 705,  71, 739,  95, 303, 434, 793, 495, 874, 872, 748,
-       145, 878, 651, 513, 464, 541, 695, 327, 971, 164, 393, 280, 330,
-       755,  73, 740,  72, 314, 220, 361, 381, 431, 569, 448, 712, 300,
-       519, 636, 596, 421, 268, 355, 634, 479, 738, 829, 737,  67, 646,
-         0, 368, 398, 794, 288, 933,  33,  30, 528
-    };
-    // the true smallest 32 numbers:
-    //     0,   7,  11,  14,  20,  28,  30,  33,  35,  56,  62,  66,  67,
-    //    67,  68,  70,  71,  72,  73,  75,  75,  80,  80,  86,  88,  94,
-    //    95, 124, 138, 140, 140, 140
-    for (int i = 0; i < 32 * MERGE_ITER; i++) {
-        DDR_embedding0[i] = input_array[i];
-    }
+
+    // DDR 0 -> raw inputs, array of 8192 floats
+    int DDR_0_content_size = 8192 * sizeof(float); 
+    int source_sw_results_content_size = 32 * sizeof(float);
+
+    char* DDR_0_content_char = (char*) malloc(DDR_0_content_size);
+    char* source_sw_results_content_char = (char*) malloc(source_sw_results_content_size);
+
+    std::ifstream DDR_0_content_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/node1_building_blocks/bitonic_and_merge_recurrent/test_input_array_float32_8192", 
+        std::ios::in | std::ios::binary);
+    std::ifstream source_sw_results_content_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/node1_building_blocks/bitonic_and_merge_recurrent/test_result_float32_32", 
+        std::ios::in | std::ios::binary);
+
+    DDR_0_content_fstream.read(DDR_0_content_char, DDR_0_content_size);
+    source_sw_results_content_fstream.read(source_sw_results_content_char, source_sw_results_content_size);
+
+    std::cout << "DDR_0_content_fstream read bytes: " << DDR_0_content_fstream.gcount() << std::endl;
+    std::cout << "source_sw_results_content_fstream read bytes: " << source_sw_results_content_fstream.gcount() << std::endl;
+
+    memcpy(&DDR_embedding0[0], DDR_0_content_char, DDR_0_content_size);
+    memcpy(&source_sw_results[0], source_sw_results_content_char, source_sw_results_content_size);
+
+    free(DDR_0_content_char);
+    free(source_sw_results_content_char);
+//     for (int i = 0; i < 8192; i++) {
+//         DDR_embedding0[i] = float(8191 - i);
+//     }
 // OPENCL HOST CODE AREA START
 	
 // ------------------------------------------------------------------------------------
@@ -495,10 +493,17 @@ int main(int argc, char** argv)
     std::cout << "Comparing Results..." << std::endl;
     bool match = true;
 
-    for (int i = 0 ; i < size_results_out; i++) {
-            std::cout << "i = " << i << " result = " << source_hw_results[i] << std::endl;
+    for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
+        for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
+            std::cout << "query_id = " << query_id 
+                << "\tnprobe_id = " << nprobe_id 
+                << "\tsw result = " << source_sw_results[nprobe_id] 
+                << "\thw result = " << source_hw_results[query_id * NPROBE + nprobe_id] 
+                << "\t\t" << (source_sw_results[nprobe_id] == source_hw_results[query_id * NPROBE + nprobe_id])
+                << std::endl;
+        }
     }
-
+    
 // ============================================================================
 // Step 3: Release Allocated Resources
 // ============================================================================
