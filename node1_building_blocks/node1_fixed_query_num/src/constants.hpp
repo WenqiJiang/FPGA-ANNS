@@ -17,6 +17,9 @@
 
 #define LARGE_NUM 99999999 // used to init the heap
 
+// don't exceed HBM bank size
+#define QUERY_NUM  64 //  // 1024
+
 typedef struct {
     float dist;
     int cell_ID;

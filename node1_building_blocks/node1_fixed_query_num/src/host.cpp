@@ -115,23 +115,21 @@ int main(int argc, char** argv)
 
 //     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding0(DDR_embedding0_size, 0);
 //     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding1(DDR_embedding1_size, 0);
-
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    const int query_num = 1024;
-    int size_result_dist_table_sw = query_num * NPROBE * K;
-    int size_result_cell_IDs_sw = query_num *  NPROBE / 16;
-    int size_results_out_hw = NPROBE / 16 + NPROBE * K; // hardware: only the result of the first query 
-    // suppose query_num = 128, 128 * 32 * 256 * 64 = 64 MB(each element 64 byte)
-    std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out_hw);
-    std::vector<result_t,aligned_allocator<result_t>> source_sw_results_dist_table(size_result_dist_table_sw);
-    std::vector<result_t,aligned_allocator<result_t>> source_sw_results_cell_IDs(size_result_cell_IDs_sw);
+    int size_result_dist_table = QUERY_NUM * NPROBE * K;
+    int size_result_cell_IDs = QUERY_NUM *  NPROBE / 16;
+    int size_results_out = size_result_dist_table + size_result_cell_IDs; 
+    // suppose QUERY_NUM = 128, 128 * 32 * 256 * 64 = 64 MB(each element 64 byte)
+    std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
+    std::vector<result_t,aligned_allocator<result_t>> source_sw_results_dist_table(size_result_dist_table);
+    std::vector<result_t,aligned_allocator<result_t>> source_sw_results_cell_IDs(size_result_cell_IDs);
 
     /////////////////          init contents         /////////////////
 
     // HBM 0 -> query vectors
-    int HBM_0_content_size = query_num * 128 * sizeof(float) < 10000 * 128 * sizeof(float)? 
-        query_num * 128 * sizeof(float) : 10000 * 128 * sizeof(float);
+    int HBM_0_content_size = QUERY_NUM * 128 * sizeof(float) < 10000 * 128 * sizeof(float)? 
+        QUERY_NUM * 128 * sizeof(float) : 10000 * 128 * sizeof(float);
 
     // HBM 1 -> coarse center vectors
     int HBM_1_content_size = 8192 * 128 * sizeof(float);
@@ -141,12 +139,12 @@ int main(int argc, char** argv)
 
     // HBM 27 -> result, float32_batch_size_64_nprobe_32_K_256_M_16_raw
     int source_sw_results_dist_table_content_size = 
-        size_result_dist_table_sw * sizeof(result_t) < 64 * 32 * 256 * 16 * sizeof(float)?
-        size_result_dist_table_sw * sizeof(result_t) : 64 * 32 * 256 * 16 * sizeof(float);
+        size_result_dist_table * sizeof(result_t) < 64 * 32 * 256 * 16 * sizeof(float)?
+        size_result_dist_table * sizeof(result_t) : 64 * 32 * 256 * 16 * sizeof(float);
 
     int source_sw_results_cell_IDs_content_size = 
-        size_result_cell_IDs_sw * sizeof(result_t) < 64 * 32 * sizeof(int)?
-        size_result_cell_IDs_sw * sizeof(result_t) : 64 * 32 * sizeof(int);
+        size_result_cell_IDs * sizeof(result_t) < 64 * 32 * sizeof(int)?
+        size_result_cell_IDs * sizeof(result_t) : 64 * 32 * sizeof(int);
 
     char* HBM_0_content_char = (char*) malloc(HBM_0_content_size);
     char* HBM_1_content_char = (char*) malloc(HBM_1_content_size);
@@ -454,7 +452,7 @@ int main(int argc, char** argv)
 // .......................................................
     OCL_CHECK(err, cl::Buffer buffer_output(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY | CL_MEM_EXT_PTR_XILINX, 
-        size_results_out_hw * sizeof(result_t), &sourcce_hw_resultsExt, &err));
+        size_results_out * sizeof(result_t), &sourcce_hw_resultsExt, &err));
 
 // ============================================================================
 // Step 2: Set Kernel Arguments and Run the Application
@@ -502,7 +500,6 @@ int main(int argc, char** argv)
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(1 + 32, buffer_DDR_embedding1));
 
     OCL_CHECK(err, err = krnl_vector_add.setArg(4, buffer_output));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(5, query_num));
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 // ------------------------------------------------------
 // Step 2: Copy Input data from Host to Global Memory on the device
@@ -539,7 +536,7 @@ int main(int argc, char** argv)
     std::cout << "Comparing Results..." << std::endl;
     bool match = true;
 
-    for (int query_id = 0 ; query_id < (query_num < 64? query_num: 64); query_id++) {
+    for (int query_id = 0 ; query_id < (QUERY_NUM < 64? QUERY_NUM: 64); query_id++) {
 
         printf("query_id: %d\nsearched cell IDs:\n", query_id);
         for (int i = 0; i < NPROBE / 16; i++) {

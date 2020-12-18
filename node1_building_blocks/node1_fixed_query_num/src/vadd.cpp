@@ -6,10 +6,11 @@
 
 #include "vadd.hpp"
 
+// NOTE: HBM1 -> int 
 void vadd(  
     float* table_HBM0, float* table_HBM1, 
     float* table_HBM2, float* table_HBM3,
-    result_t* table_HBM27, int query_num
+    result_t* table_HBM27
     /* t_axi* table_HBM4, t_axi* table_HBM5, 
     t_axi* table_HBM6, t_axi* table_HBM7, 
     t_axi* table_HBM8, t_axi* table_HBM9, 
@@ -105,7 +106,6 @@ void vadd(
 
 //#pragma HLS INTERFACE s_axilite port=out_PLRAM bundle=control
 
-#pragma HLS INTERFACE s_axilite port=query_num bundle=control
 #pragma HLS INTERFACE s_axilite port=return bundle=control
     
 #pragma HLS dataflow
@@ -186,7 +186,7 @@ void vadd(
     // HBM2: PQ quantizer
     // HBM27: output
 
-    load_query_vectors(table_HBM0, s_query_vectors_distance_computation_PE, s_query_vectors_lookup_PE, query_num);
+    load_query_vectors<QUERY_NUM>(table_HBM0, s_query_vectors_distance_computation_PE, s_query_vectors_lookup_PE);
 
     load_center_vectors(table_HBM1, s_center_vectors_init_distance_computation_PE, s_center_vectors_init_lookup_PE);
 
@@ -194,50 +194,45 @@ void vadd(
 
 ////////////////////     Center Distance Computation     ////////////////////    
 
-    compute_cell_distance_wrapper(
-        s_center_vectors_init_distance_computation_PE, s_query_vectors_distance_computation_PE, 
-        s_partial_cell_distance, query_num);
+    compute_cell_distance_wrapper<QUERY_NUM>(s_center_vectors_init_distance_computation_PE, s_query_vectors_distance_computation_PE, s_partial_cell_distance);
 
 ////////////////////     Sorting Network     ////////////////////    
 
-    bitonic_sort(s_partial_cell_distance, s_merge_input_A, query_num);
+    bitonic_sort(s_partial_cell_distance, s_merge_input_A);
 
     // periodically write large numbers, and write results out
-    merge_filter_streams<PE_NUM_CENTER_DIST_COMP>(s_merge_input_A, s_merge_input_B, s_merge_partial_output, query_num);
-    result_redirect<PE_NUM_CENTER_DIST_COMP>(s_merge_partial_output, s_merge_input_B, s_merge_output, query_num); 
+    merge_filter_streams<PE_NUM_CENTER_DIST_COMP>(s_merge_input_A, s_merge_input_B, s_merge_partial_output);
+    result_redirect<PE_NUM_CENTER_DIST_COMP>(s_merge_partial_output, s_merge_input_B, s_merge_output); 
 
     //  dist struct to int
-    split_cell_ID(s_merge_output, s_searched_cell_id_lookup_PE, s_result_searched_cell_ID, query_num);
+    split_cell_ID(s_merge_output, s_searched_cell_id_lookup_PE, s_result_searched_cell_ID);
 
 ////////////////////     Center Vector Lookup     ////////////////////    
 
-    lookup_center_vectors(s_center_vectors_init_lookup_PE, s_searched_cell_id_lookup_PE, 
-        s_center_vectors_lookup_PE, query_num);
+    lookup_center_vectors<QUERY_NUM>(s_center_vectors_init_lookup_PE, s_searched_cell_id_lookup_PE, s_center_vectors_lookup_PE);
 
 ////////////////////     Distance Lookup Table Construction     ////////////////////    
 
-    query_vectors_dispatcher(s_query_vectors_lookup_PE, s_query_vectors_table_construction_PE, query_num);
+    query_vectors_dispatcher<QUERY_NUM>(s_query_vectors_lookup_PE, s_query_vectors_table_construction_PE);
 
-    center_vectors_dispatcher(s_center_vectors_lookup_PE, s_center_vectors_table_construction_PE, query_num);
+    center_vectors_dispatcher<QUERY_NUM>(s_center_vectors_lookup_PE, s_center_vectors_table_construction_PE);
 
-    lookup_table_construction_wrapper<NPROBE_PER_TABLE_CONSTRUCTION_PE>(
-        s_PQ_quantizer_init, s_center_vectors_table_construction_PE, 
-        s_query_vectors_table_construction_PE, s_result_table_construction_PE, query_num);
+    lookup_table_construction_wrapper<QUERY_NUM, NPROBE_PER_TABLE_CONSTRUCTION_PE>(
+        s_PQ_quantizer_init, s_center_vectors_table_construction_PE, s_query_vectors_table_construction_PE, s_result_table_construction_PE);
 
-    gather_lookup_table<NPROBE_PER_TABLE_CONSTRUCTION_PE>(
-        s_result_table_construction_PE, s_result_all_distance_lookup_table, query_num);
+    gather_lookup_table<QUERY_NUM, NPROBE_PER_TABLE_CONSTRUCTION_PE>(s_result_table_construction_PE, s_result_all_distance_lookup_table);
 
 ////////////////////     write results      ////////////////////
-    write_result(s_result_searched_cell_ID, s_result_all_distance_lookup_table, table_HBM27, query_num);
+    write_result(s_result_searched_cell_ID, s_result_all_distance_lookup_table, table_HBM27);
 }
 
 ////////////////////     init      ////////////////////
 
+template<const int query_num>
 void load_query_vectors(
     const float* DRAM_query_vector,
     hls::stream<float> (&s_query_vectors_distance_computation_PE)[PE_NUM_CENTER_DIST_COMP],
-    hls::stream<float>& s_query_vectors_lookup_PE, 
-    const int query_num) {
+    hls::stream<float>& s_query_vectors_lookup_PE) {
 
     // Data type: suppose each vector = 128 D, FPGA freq = 200 MHz
     //   then it takes 640 + 200 ns < 1 us to load a query vector, 
@@ -294,27 +289,28 @@ void load_PQ_quantizer(
 
 ////////////////////     Center Distance Computation     ////////////////////  
 
+template<const int query_num>
 void compute_cell_distance_wrapper(
     hls::stream<float> (&s_centroid_vectors)[PE_NUM_CENTER_DIST_COMP],
     hls::stream<float> (&s_query_vectors)[PE_NUM_CENTER_DIST_COMP],
-    hls::stream<dist_cell_ID_t> (&s_partial_cell_distance)[PE_NUM_CENTER_DIST_COMP],
-    const int query_num) {
+    hls::stream<dist_cell_ID_t> (&s_partial_cell_distance)[PE_NUM_CENTER_DIST_COMP]) {
 #pragma HLS inline
 
     for (int s = 0; s < PE_NUM_CENTER_DIST_COMP; s++) {
 #pragma HLS UNROLL
-        compute_cell_distance(
-            s * CENTROIDS_PER_PARTITION, s_centroid_vectors[s], 
-            s_query_vectors[s], s_partial_cell_distance[s], query_num);
+        compute_cell_distance<QUERY_NUM>(
+            s * CENTROIDS_PER_PARTITION, 
+            s_centroid_vectors[s], 
+            s_query_vectors[s], s_partial_cell_distance[s]);
     }
 }
 
+template<const int query_num>
 void compute_cell_distance(
     int start_cell_ID,
     hls::stream<float>& s_centroid_vectors,
     hls::stream<float>& s_query_vectors,
-    hls::stream<dist_cell_ID_t>& s_partial_cell_distance,
-    const int query_num) {
+    hls::stream<dist_cell_ID_t>& s_partial_cell_distance) {
 
     // what is the speed needed to compute these distances? need to match HBM
     // python performance_estimation_three_nodes_IVF.py --nlist=8192 --nprobe=32
@@ -451,14 +447,15 @@ void merge_filter_arrays(
 template<const int input_stream_len>
 void merge_filter_streams(
     hls::stream<dist_cell_ID_t>& s_merge_input_A, hls::stream<dist_cell_ID_t>& s_merge_input_B,
-    hls::stream<dist_cell_ID_t>& s_merge_partial_output, const int query_num) {
+    hls::stream<dist_cell_ID_t>& s_merge_partial_output) {
     // This function merge two sorted streams to a single sorted stream, 
     // and ONLY output the smallest half
 
     dist_cell_ID_t input_array_A[input_stream_len];
     dist_cell_ID_t input_array_B[input_stream_len];
     
-    for (int iter = 0; iter < query_num * MERGE_ITER; iter++) {
+    for (int iter = 0; iter < QUERY_NUM * MERGE_ITER; iter++) {
+    // printf("merge_filter_streams, iter = %d\n", iter);
 #pragma HLS dataflow
 
         load_stream_to_local<input_stream_len>(s_merge_input_A, input_array_A);
@@ -471,11 +468,11 @@ template<const int input_stream_len>
 void result_redirect(
     hls::stream<dist_cell_ID_t>& s_merge_partial_output, 
     hls::stream<dist_cell_ID_t>& s_merge_input_B, 
-    hls::stream<dist_cell_ID_t>& s_merge_output, 
-    const int query_num) {
+    hls::stream<dist_cell_ID_t>& s_merge_output) {
 
-    for (int iter = 0; iter < query_num; iter++) {
+    for (int iter = 0; iter < QUERY_NUM; iter++) {
         
+        // printf("result_redirect, iter = %d\n", iter);
 
         // First merge iteration: no read from merge module, write large number to 
         //   s_merge_input_B directly
@@ -484,6 +481,7 @@ void result_redirect(
         dummy.cell_ID = -1;
 
         for (int i = 0; i < input_stream_len; i++) {
+        // printf("result_redirect first stage, i = %d\n", i);
 #pragma HLS pipeline II=1
             s_merge_input_B.write(dummy);
         }
@@ -493,6 +491,7 @@ void result_redirect(
         //   the total number of read partition from partial results = MERGE_ITER
         for (int m = 0; m < MERGE_ITER - 1; m++) {
             for (int i = 0; i < input_stream_len; i++) {
+        // printf("result_redirect Middle stage, m = %d, i = %d\n", m, i);
 #pragma HLS pipeline II=1
                 s_merge_input_B.write(s_merge_partial_output.read());
             }
@@ -500,6 +499,7 @@ void result_redirect(
 
         // Final merge iteration: write partial result as final result
         for (int i = 0; i < input_stream_len; i++) {
+        // printf("result_redirect final stage, i = %d\n", i);
 #pragma HLS pipeline II=1
             s_merge_output.write(s_merge_partial_output.read());
         }
@@ -555,7 +555,7 @@ void compare_swap_range_interval(dist_cell_ID_t* array) {
 }
 
 void bitonic_sort(hls::stream<dist_cell_ID_t> (&s_input_stream)[32],
-    hls::stream<dist_cell_ID_t> &s_output_stream, const int query_num) {
+    hls::stream<dist_cell_ID_t> &s_output_stream) {
     // len = 32, np.random.randint(low=0, high=100, size=32)
 
     dist_cell_ID_t input_array[32];
@@ -563,7 +563,7 @@ void bitonic_sort(hls::stream<dist_cell_ID_t> (&s_input_stream)[32],
     // Total: 15 sub-stages
     
     
-    for (int iter = 0; iter < query_num * MERGE_ITER; iter++) {
+    for (int iter = 0; iter < QUERY_NUM * MERGE_ITER; iter++) {
 
         // load data from input stream
         for (int i = 0; i < 32; i++) {
@@ -606,11 +606,10 @@ void bitonic_sort(hls::stream<dist_cell_ID_t> (&s_input_stream)[32],
 void split_cell_ID(
     hls::stream<dist_cell_ID_t>& s_merge_output, 
     hls::stream<int>& s_searched_cell_id_lookup_PE, 
-    hls::stream<result_t>& s_result_searched_cell_ID,
-    const int query_num) {
+    hls::stream<result_t>& s_result_searched_cell_ID) {
 // NOTE! Here, input_stream_len must be NPROBE === 32
 
-    for (int query_id = 0; query_id < query_num; query_id++) {
+    for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
         
         dist_cell_ID_t tmp;
         int searched_cell_id_local[NPROBE];
@@ -649,11 +648,11 @@ void split_cell_ID(
 
 ////////////////////     Center Vector Lookup     ////////////////////   
 
+template<const int query_num>
 void lookup_center_vectors(
     hls::stream<float> &s_center_vectors_init_lookup_PE,
     hls::stream<int>& s_searched_cell_id_lookup_PE,
-    hls::stream<float>& s_center_vectors_lookup_PE,
-    const int query_num) {
+    hls::stream<float>& s_center_vectors_lookup_PE) {
 
     float center_vector_local[NLIST * D];
 #pragma HLS resource variable=center_vector_local core=RAM_2P_URAM
@@ -682,10 +681,10 @@ void lookup_center_vectors(
 
 ////////////////////     Distance Lookup Table Construction     ////////////////////   
 
+template<const int query_num>
 void query_vectors_dispatcher(
     hls::stream<float>& s_query_vectors,
-    hls::stream<float> (&s_query_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
-    const int query_num) {
+    hls::stream<float> (&s_query_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // Given an input stream of query vectors, broadcase it to all 
     //   distance table construction PEs
@@ -704,10 +703,10 @@ void query_vectors_dispatcher(
 }
 
 
+template<const int query_num>
 void center_vectors_dispatcher(
     hls::stream<float>& s_center_vectors_lookup_PE,
-    hls::stream<float> (&s_center_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
-    const int query_num) {
+    hls::stream<float> (&s_center_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // Given an input stream of center vectors, interleave it to all 
     //   distance table construction PEs, 
@@ -725,31 +724,28 @@ void center_vectors_dispatcher(
 }
 
 
-template<const int nprobe_per_PE>
+template<const int query_num, const int nprobe_per_PE>
 void lookup_table_construction_wrapper(
     hls::stream<float> (&s_PQ_quantizer_init)[PE_NUM_TABLE_CONSTRUCTION],
     hls::stream<float> (&s_center_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
     hls::stream<float> (&s_query_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
-    hls::stream<result_t> (&s_result_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
-    const int query_num) {
+    hls::stream<result_t> (&s_result_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 #pragma HLS inline
 
     for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
 #pragma HLS UNROLL
-        lookup_table_construction_PE<NPROBE_PER_TABLE_CONSTRUCTION_PE>(
+        lookup_table_construction_PE<QUERY_NUM, NPROBE_PER_TABLE_CONSTRUCTION_PE>(
             s_PQ_quantizer_init[s], s_center_vectors_table_construction_PE[s], 
-            s_query_vectors_table_construction_PE[s], s_result_table_construction_PE[s],
-            query_num);
+            s_query_vectors_table_construction_PE[s], s_result_table_construction_PE[s]);
     }
 }
 
-template<const int nprobe_per_PE>
+template<const int query_num, const int nprobe_per_PE>
 void lookup_table_construction_PE(
     hls::stream<float>& s_PQ_quantizer_init,
     hls::stream<float>& s_center_vectors_table_construction_PE,
     hls::stream<float>& s_query_vectors_table_construction_PE,
-    hls::stream<result_t>& s_result_table_construction_PE,
-    const int query_num) {
+    hls::stream<result_t>& s_result_table_construction_PE) {
 
     /* output format:
      *   lookup table dim: (K x M)
@@ -1048,11 +1044,10 @@ void lookup_table_construction_PE(
     }
 }
 
-template<const int nprobe_per_PE>
+template<const int query_num, const int nprobe_per_PE>
 void gather_lookup_table(
     hls::stream<result_t> (&s_result_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
-    hls::stream<result_t> &s_result_all_distance_lookup_table,
-    const int query_num) {
+    hls::stream<result_t> &s_result_all_distance_lookup_table) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
         
@@ -1071,25 +1066,19 @@ void gather_lookup_table(
 void write_result(
     hls::stream<result_t>& s_result_searched_cell_ID, 
     hls::stream<result_t>& s_result_all_distance_lookup_table, 
-    result_t* results_out, const int query_num) {
-    // Only write the distance table / searched cell ID
-    //   for the first query, because when there are many queries
-    //   the result will become very large
+    result_t* results_out) {
+    
+    // 32 cell IDs and 32 distance tables
+    const int query_unit_size = NPROBE / 16 + NPROBE * K; 
 
-    // first, write cell IDs, for NPROBE=32, 32 x 32 bit = 2 x 512 bit
-    for (int i = 0; i < NPROBE / 16; i++) {
-        results_out[i] = s_result_searched_cell_ID.read();
-    }
-    for (int row = 0; row < NPROBE * K; row++) {
-        results_out[NPROBE / 16 + row] = 
-            s_result_all_distance_lookup_table.read();
-    }
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
+    for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
+        // first, write cell IDs, for NPROBE=32, 32 x 32 bit = 2 x 512 bit
         for (int i = 0; i < NPROBE / 16; i++) {
+            results_out[query_id * query_unit_size + i] = 
                 s_result_searched_cell_ID.read();
         }
         for (int row = 0; row < NPROBE * K; row++) {
+            results_out[query_id * query_unit_size + NPROBE / 16 + row] = 
                 s_result_all_distance_lookup_table.read();
         }
     }
