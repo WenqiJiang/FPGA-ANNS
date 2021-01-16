@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    const int query_num = 1024;
+    const int query_num = 16384;// 1024;
     int size_result_dist_table_sw = query_num * NPROBE * K;
     int size_result_cell_IDs_sw = query_num *  NPROBE / 16;
     int size_results_out_hw = NPROBE / 16 + NPROBE * K; // hardware: only the result of the first query 
@@ -539,7 +539,7 @@ int main(int argc, char** argv)
     std::cout << "Comparing Results..." << std::endl;
     bool match = true;
 
-    for (int query_id = 0 ; query_id < (query_num < 64? query_num: 64); query_id++) {
+    for (int query_id = 0 ; query_id < 1/*(query_num < 64? query_num: 64)*/; query_id++) {
 
         printf("query_id: %d\nsearched cell IDs:\n", query_id);
         for (int i = 0; i < NPROBE / 16; i++) {

@@ -166,6 +166,7 @@ void vadd(
     // PE0 write 256 rows to s_result_all_distance_lookup_table, then PE1 write 256 rows
     // thus need a deep FIFO to make sure each PE can cache enough results
     // 32 * 512 = 16384 bits, BRAM = 18K bits
+    // The FIFO must be long enough (each PE -> output K=256 ap_uint<512> for each cell)
     hls::stream<result_t> s_result_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
 #pragma HLS stream variable=s_result_table_construction_PE depth=512
 #pragma HLS resource variable=s_result_table_construction_PE core=FIFO_BRAM
@@ -709,15 +710,18 @@ void center_vectors_dispatcher(
     hls::stream<float> (&s_center_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // Given an input stream of center vectors, interleave it to all 
-    //   distance table construction PEs, 
-    //   e.g., vector 0~7 -> PE0, 8~15 -> PE1, etc.
+    //   distance table construction PEs in a round-robin manner 
+    //   e.g., 4 PEs, vector 0,4,8 -> PE0, 1,5,9 -> PE1, etc.
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE; interleave_iter++) {
 
-            for (int n = 0; n < NPROBE_PER_TABLE_CONSTRUCTION_PE * D; n++) {
-#pragma HLS pipeline II=1
-                s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+
+                for (int n = 0; n < D; n++) {
+    #pragma HLS pipeline II=1
+                    s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
+                }
             }
         }
     }
@@ -1049,13 +1053,21 @@ void gather_lookup_table(
     hls::stream<result_t> (&s_result_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
     hls::stream<result_t> &s_result_all_distance_lookup_table) {
 
+    // Gather in a round-robin manner
+    // PE0: 0, 4, 8 ...
+    // PE1: 1, 5, 9 ...
+    // PE2: 2, 6, 10 ...
+    // PE3: 3, 7, 11 ...
     for (int query_id = 0; query_id < query_num; query_id++) {
         
-        for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
-            // each lookup table: K rows
-            for (int t = 0; t < nprobe_per_PE * K; t++) {
+        for (int interleave_iter = 0; interleave_iter < nprobe_per_PE; interleave_iter++) {
+
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+                // each lookup table: K rows
+                for (int t = 0; t < K; t++) {
 #pragma HLS pipeline II=1
-                s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
+                    s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
+                }
             }
         }
     }

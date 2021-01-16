@@ -1,0 +1,844 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:38297
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/xclbin/vadd.hw.xo.compile_summary, at Wed Jan  6 23:01:41 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Wed Jan  6 23:01:41 2021
+Running Rule Check Server on port:42481
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Wed Jan  6 23:01:42 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 160 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 219.20 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance sort_and_reduction_recurrent_128_16_s sort_and_reduction_recurrent_128_16_U0 3168
+Add Instance sort_and_reduction_128_16_s sort_and_reduction_128_16_U0 3004
+Add Instance bitonic_sort_16_167 bitonic_sort_16_167_U0 9364
+Add Instance dataflow_in_loop4474 dataflow_in_loop4474_U0 487
+Add Instance compare_swap_range_interval_16_8_s compare_swap_range_interval_16_8_U0 488
+Add Instance compare_swap_range_head_tail_16_4_s compare_swap_range_head_tail_16_4_U0 508
+Add Instance compare_swap_range_interval_16_8_14479 compare_swap_range_interval_16_8_14479_U0 528
+Add Instance compare_swap_range_head_tail_16_2_s compare_swap_range_head_tail_16_2_U0 548
+Add Instance compare_swap_range_interval_16_4_s compare_swap_range_interval_16_4_U0 568
+Add Instance compare_swap_range_interval_16_8_2 compare_swap_range_interval_16_8_2_U0 588
+Add Instance compare_swap_range_head_tail_16_1_s compare_swap_range_head_tail_16_1_U0 608
+Add Instance compare_swap_range_interval_16_2_s compare_swap_range_interval_16_2_U0 628
+Add Instance compare_swap_range_interval_16_4_14484 compare_swap_range_interval_16_4_14484_U0 648
+Add Instance compare_swap_range_interval_16_8_3 compare_swap_range_interval_16_8_3_U0 668
+Add Instance write_output_stream_16_s write_output_stream_16_U0 688
+Add Instance load_input_stream_16_s load_input_stream_16_U0 740
+Add Instance bitonic_sort_16_168 bitonic_sort_16_168_U0 9400
+Add Instance dataflow_in_loop4473 dataflow_in_loop4473_U0 487
+Add Instance compare_swap_range_interval_16_8_4 compare_swap_range_interval_16_8_4_U0 488
+Add Instance compare_swap_range_head_tail_16_4_1 compare_swap_range_head_tail_16_4_1_U0 508
+Add Instance compare_swap_range_interval_16_8_5 compare_swap_range_interval_16_8_5_U0 528
+Add Instance compare_swap_range_head_tail_16_2_1 compare_swap_range_head_tail_16_2_1_U0 548
+Add Instance compare_swap_range_interval_16_4_2 compare_swap_range_interval_16_4_2_U0 568
+Add Instance compare_swap_range_interval_16_8_6 compare_swap_range_interval_16_8_6_U0 588
+Add Instance compare_swap_range_head_tail_16_1_1 compare_swap_range_head_tail_16_1_1_U0 608
+Add Instance compare_swap_range_interval_16_2_14488 compare_swap_range_interval_16_2_14488_U0 628
+Add Instance compare_swap_range_interval_16_4_3 compare_swap_range_interval_16_4_3_U0 648
+Add Instance compare_swap_range_interval_16_8_7 compare_swap_range_interval_16_8_7_U0 668
+Add Instance write_output_stream_16_14492 write_output_stream_16_14492_U0 688
+Add Instance load_input_stream_16_14477 load_input_stream_16_14477_U0 740
+Add Instance bitonic_sort_16_169 bitonic_sort_16_169_U0 9436
+Add Instance dataflow_in_loop4472 dataflow_in_loop4472_U0 487
+Add Instance compare_swap_range_interval_16_8_8 compare_swap_range_interval_16_8_8_U0 488
+Add Instance compare_swap_range_head_tail_16_4_2 compare_swap_range_head_tail_16_4_2_U0 508
+Add Instance compare_swap_range_interval_16_8_9 compare_swap_range_interval_16_8_9_U0 528
+Add Instance compare_swap_range_head_tail_16_2_2 compare_swap_range_head_tail_16_2_2_U0 548
+Add Instance compare_swap_range_interval_16_4_4 compare_swap_range_interval_16_4_4_U0 568
+Add Instance compare_swap_range_interval_16_8_10 compare_swap_range_interval_16_8_10_U0 588
+Add Instance compare_swap_range_head_tail_16_1_2 compare_swap_range_head_tail_16_1_2_U0 608
+Add Instance compare_swap_range_interval_16_2_2 compare_swap_range_interval_16_2_2_U0 628
+Add Instance compare_swap_range_interval_16_4_5 compare_swap_range_interval_16_4_5_U0 648
+Add Instance compare_swap_range_interval_16_8_11 compare_swap_range_interval_16_8_11_U0 668
+Add Instance write_output_stream_16_24506 write_output_stream_16_24506_U0 688
+Add Instance load_input_stream_16_24494 load_input_stream_16_24494_U0 740
+Add Instance bitonic_sort_16_170 bitonic_sort_16_170_U0 9472
+Add Instance dataflow_in_loop4471 dataflow_in_loop4471_U0 487
+Add Instance compare_swap_range_interval_16_8_12 compare_swap_range_interval_16_8_12_U0 488
+Add Instance compare_swap_range_head_tail_16_4_3 compare_swap_range_head_tail_16_4_3_U0 508
+Add Instance compare_swap_range_interval_16_8_13 compare_swap_range_interval_16_8_13_U0 528
+Add Instance compare_swap_range_head_tail_16_2_3 compare_swap_range_head_tail_16_2_3_U0 548
+Add Instance compare_swap_range_interval_16_4_6 compare_swap_range_interval_16_4_6_U0 568
+Add Instance compare_swap_range_interval_16_8_14 compare_swap_range_interval_16_8_14_U0 588
+Add Instance compare_swap_range_head_tail_16_1_3 compare_swap_range_head_tail_16_1_3_U0 608
+Add Instance compare_swap_range_interval_16_2_3 compare_swap_range_interval_16_2_3_U0 628
+Add Instance compare_swap_range_interval_16_4_7 compare_swap_range_interval_16_4_7_U0 648
+Add Instance compare_swap_range_interval_16_8_15 compare_swap_range_interval_16_8_15_U0 668
+Add Instance write_output_stream_16_34520 write_output_stream_16_34520_U0 688
+Add Instance load_input_stream_16_34508 load_input_stream_16_34508_U0 740
+Add Instance bitonic_sort_16_171 bitonic_sort_16_171_U0 9508
+Add Instance dataflow_in_loop4470 dataflow_in_loop4470_U0 487
+Add Instance compare_swap_range_interval_16_8_16 compare_swap_range_interval_16_8_16_U0 488
+Add Instance compare_swap_range_head_tail_16_4_4 compare_swap_range_head_tail_16_4_4_U0 508
+Add Instance compare_swap_range_interval_16_8_17 compare_swap_range_interval_16_8_17_U0 528
+Add Instance compare_swap_range_head_tail_16_2_4 compare_swap_range_head_tail_16_2_4_U0 548
+Add Instance compare_swap_range_interval_16_4_8 compare_swap_range_interval_16_4_8_U0 568
+Add Instance compare_swap_range_interval_16_8_18 compare_swap_range_interval_16_8_18_U0 588
+Add Instance compare_swap_range_head_tail_16_1_4 compare_swap_range_head_tail_16_1_4_U0 608
+Add Instance compare_swap_range_interval_16_2_4 compare_swap_range_interval_16_2_4_U0 628
+Add Instance compare_swap_range_interval_16_4_9 compare_swap_range_interval_16_4_9_U0 648
+Add Instance compare_swap_range_interval_16_8_19 compare_swap_range_interval_16_8_19_U0 668
+Add Instance write_output_stream_16_4 write_output_stream_16_4_U0 688
+Add Instance load_input_stream_16_4 load_input_stream_16_4_U0 740
+Add Instance bitonic_sort_16_172 bitonic_sort_16_172_U0 9544
+Add Instance dataflow_in_loop4469 dataflow_in_loop4469_U0 487
+Add Instance compare_swap_range_interval_16_8_20 compare_swap_range_interval_16_8_20_U0 488
+Add Instance compare_swap_range_head_tail_16_4_5 compare_swap_range_head_tail_16_4_5_U0 508
+Add Instance compare_swap_range_interval_16_8_21 compare_swap_range_interval_16_8_21_U0 528
+Add Instance compare_swap_range_head_tail_16_2_5 compare_swap_range_head_tail_16_2_5_U0 548
+Add Instance compare_swap_range_interval_16_4_10 compare_swap_range_interval_16_4_10_U0 568
+Add Instance compare_swap_range_interval_16_8_22 compare_swap_range_interval_16_8_22_U0 588
+Add Instance compare_swap_range_head_tail_16_1_5 compare_swap_range_head_tail_16_1_5_U0 608
+Add Instance compare_swap_range_interval_16_2_5 compare_swap_range_interval_16_2_5_U0 628
+Add Instance compare_swap_range_interval_16_4_11 compare_swap_range_interval_16_4_11_U0 648
+Add Instance compare_swap_range_interval_16_8_23 compare_swap_range_interval_16_8_23_U0 668
+Add Instance write_output_stream_16_5 write_output_stream_16_5_U0 688
+Add Instance load_input_stream_16_5 load_input_stream_16_5_U0 740
+Add Instance bitonic_sort_16_173 bitonic_sort_16_173_U0 9580
+Add Instance dataflow_in_loop4468 dataflow_in_loop4468_U0 487
+Add Instance compare_swap_range_interval_16_8_24 compare_swap_range_interval_16_8_24_U0 488
+Add Instance compare_swap_range_head_tail_16_4_6 compare_swap_range_head_tail_16_4_6_U0 508
+Add Instance compare_swap_range_interval_16_8_25 compare_swap_range_interval_16_8_25_U0 528
+Add Instance compare_swap_range_head_tail_16_2_6 compare_swap_range_head_tail_16_2_6_U0 548
+Add Instance compare_swap_range_interval_16_4_12 compare_swap_range_interval_16_4_12_U0 568
+Add Instance compare_swap_range_interval_16_8_26 compare_swap_range_interval_16_8_26_U0 588
+Add Instance compare_swap_range_head_tail_16_1_6 compare_swap_range_head_tail_16_1_6_U0 608
+Add Instance compare_swap_range_interval_16_2_6 compare_swap_range_interval_16_2_6_U0 628
+Add Instance compare_swap_range_interval_16_4_13 compare_swap_range_interval_16_4_13_U0 648
+Add Instance compare_swap_range_interval_16_8_27 compare_swap_range_interval_16_8_27_U0 668
+Add Instance write_output_stream_16_6 write_output_stream_16_6_U0 688
+Add Instance load_input_stream_16_6 load_input_stream_16_6_U0 740
+Add Instance bitonic_sort_16_174 bitonic_sort_16_174_U0 9616
+Add Instance dataflow_in_loop4467 dataflow_in_loop4467_U0 487
+Add Instance compare_swap_range_interval_16_8_28 compare_swap_range_interval_16_8_28_U0 488
+Add Instance compare_swap_range_head_tail_16_4_7 compare_swap_range_head_tail_16_4_7_U0 508
+Add Instance compare_swap_range_interval_16_8_29 compare_swap_range_interval_16_8_29_U0 528
+Add Instance compare_swap_range_head_tail_16_2_7 compare_swap_range_head_tail_16_2_7_U0 548
+Add Instance compare_swap_range_interval_16_4_14 compare_swap_range_interval_16_4_14_U0 568
+Add Instance compare_swap_range_interval_16_8_30 compare_swap_range_interval_16_8_30_U0 588
+Add Instance compare_swap_range_head_tail_16_1_7 compare_swap_range_head_tail_16_1_7_U0 608
+Add Instance compare_swap_range_interval_16_2_7 compare_swap_range_interval_16_2_7_U0 628
+Add Instance compare_swap_range_interval_16_4_15 compare_swap_range_interval_16_4_15_U0 648
+Add Instance compare_swap_range_interval_16_8_31 compare_swap_range_interval_16_8_31_U0 668
+Add Instance write_output_stream_16_7 write_output_stream_16_7_U0 688
+Add Instance load_input_stream_16_7 load_input_stream_16_7_U0 740
+Add Instance parallel_merge_sort_16_2175 parallel_merge_sort_16_2175_U0 9652
+Add Instance dataflow_in_loop4466 dataflow_in_loop4466_U0 711
+Add Instance compare_select_range_head_tail_16_s compare_select_range_head_tail_16_U0 704
+Add Instance compare_swap_range_interval_16_1_s compare_swap_range_interval_16_1_U0 740
+Add Instance compare_swap_range_interval_16_2_1 compare_swap_range_interval_16_2_1_U0 760
+Add Instance compare_swap_range_interval_16_4_1 compare_swap_range_interval_16_4_1_U0 780
+Add Instance compare_swap_range_interval_16_8_1 compare_swap_range_interval_16_8_1_U0 800
+Add Instance write_output_stream_16_1 write_output_stream_16_1_U0 820
+Add Instance load_input_stream_16_8 load_input_stream_16_8_U0 872
+Add Instance load_input_stream_16_9 load_input_stream_16_9_U0 908
+Add Instance parallel_merge_sort_16_2176 parallel_merge_sort_16_2176_U0 9704
+Add Instance dataflow_in_loop4465 dataflow_in_loop4465_U0 711
+Add Instance compare_select_range_head_tail_16_1 compare_select_range_head_tail_16_1_U0 704
+Add Instance compare_swap_range_interval_16_1_1 compare_swap_range_interval_16_1_1_U0 740
+Add Instance compare_swap_range_interval_16_2_1_1 compare_swap_range_interval_16_2_1_1_U0 760
+Add Instance compare_swap_range_interval_16_4_1_1 compare_swap_range_interval_16_4_1_1_U0 780
+Add Instance compare_swap_range_interval_16_8_1_1 compare_swap_range_interval_16_8_1_1_U0 800
+Add Instance write_output_stream_16_1_1 write_output_stream_16_1_1_U0 820
+Add Instance load_input_stream_16_10 load_input_stream_16_10_U0 872
+Add Instance load_input_stream_16_11 load_input_stream_16_11_U0 908
+Add Instance parallel_merge_sort_16_2177 parallel_merge_sort_16_2177_U0 9756
+Add Instance dataflow_in_loop4464 dataflow_in_loop4464_U0 711
+Add Instance compare_select_range_head_tail_16_2 compare_select_range_head_tail_16_2_U0 704
+Add Instance compare_swap_range_interval_16_1_2 compare_swap_range_interval_16_1_2_U0 740
+Add Instance compare_swap_range_interval_16_2_1_2 compare_swap_range_interval_16_2_1_2_U0 760
+Add Instance compare_swap_range_interval_16_4_1_2 compare_swap_range_interval_16_4_1_2_U0 780
+Add Instance compare_swap_range_interval_16_8_1_2 compare_swap_range_interval_16_8_1_2_U0 800
+Add Instance write_output_stream_16_1_2 write_output_stream_16_1_2_U0 820
+Add Instance load_input_stream_16_12 load_input_stream_16_12_U0 872
+Add Instance load_input_stream_16_13 load_input_stream_16_13_U0 908
+Add Instance parallel_merge_sort_16_2178 parallel_merge_sort_16_2178_U0 9808
+Add Instance dataflow_in_loop4463 dataflow_in_loop4463_U0 711
+Add Instance compare_select_range_head_tail_16_3 compare_select_range_head_tail_16_3_U0 704
+Add Instance compare_swap_range_interval_16_1_3 compare_swap_range_interval_16_1_3_U0 740
+Add Instance compare_swap_range_interval_16_2_1_3 compare_swap_range_interval_16_2_1_3_U0 760
+Add Instance compare_swap_range_interval_16_4_1_3 compare_swap_range_interval_16_4_1_3_U0 780
+Add Instance compare_swap_range_interval_16_8_1_3 compare_swap_range_interval_16_8_1_3_U0 800
+Add Instance write_output_stream_16_1_3 write_output_stream_16_1_3_U0 820
+Add Instance load_input_stream_16_14 load_input_stream_16_14_U0 872
+Add Instance load_input_stream_16_15 load_input_stream_16_15_U0 908
+Add Instance parallel_merge_sort_16_1179 parallel_merge_sort_16_1179_U0 9860
+Add Instance dataflow_in_loop4462 dataflow_in_loop4462_U0 711
+Add Instance compare_select_range_head_tail_16_4 compare_select_range_head_tail_16_4_U0 704
+Add Instance compare_swap_range_interval_16_1_4 compare_swap_range_interval_16_1_4_U0 740
+Add Instance compare_swap_range_interval_16_2_1_4 compare_swap_range_interval_16_2_1_4_U0 760
+Add Instance compare_swap_range_interval_16_4_1_4 compare_swap_range_interval_16_4_1_4_U0 780
+Add Instance compare_swap_range_interval_16_8_1_4 compare_swap_range_interval_16_8_1_4_U0 800
+Add Instance write_output_stream_16_2 write_output_stream_16_2_U0 820
+Add Instance load_input_stream_16_1 load_input_stream_16_1_U0 872
+Add Instance load_input_stream_16_1_1 load_input_stream_16_1_1_U0 908
+Add Instance parallel_merge_sort_16_1180 parallel_merge_sort_16_1180_U0 9912
+Add Instance dataflow_in_loop4461 dataflow_in_loop4461_U0 711
+Add Instance compare_select_range_head_tail_16_5 compare_select_range_head_tail_16_5_U0 704
+Add Instance compare_swap_range_interval_16_1_5 compare_swap_range_interval_16_1_5_U0 740
+Add Instance compare_swap_range_interval_16_2_1_5 compare_swap_range_interval_16_2_1_5_U0 760
+Add Instance compare_swap_range_interval_16_4_1_5 compare_swap_range_interval_16_4_1_5_U0 780
+Add Instance compare_swap_range_interval_16_8_1_5 compare_swap_range_interval_16_8_1_5_U0 800
+Add Instance write_output_stream_16_2_1 write_output_stream_16_2_1_U0 820
+Add Instance load_input_stream_16_1_2 load_input_stream_16_1_2_U0 872
+Add Instance load_input_stream_16_1_3 load_input_stream_16_1_3_U0 908
+Add Instance parallel_merge_sort_16_181 parallel_merge_sort_16_181_U0 9964
+Add Instance dataflow_in_loop dataflow_in_loop_U0 711
+Add Instance compare_select_range_head_tail_16_6 compare_select_range_head_tail_16_6_U0 704
+Add Instance compare_swap_range_interval_16_1_6 compare_swap_range_interval_16_1_6_U0 740
+Add Instance compare_swap_range_interval_16_2_1_6 compare_swap_range_interval_16_2_1_6_U0 760
+Add Instance compare_swap_range_interval_16_4_1_6 compare_swap_range_interval_16_4_1_6_U0 780
+Add Instance compare_swap_range_interval_16_8_1_6 compare_swap_range_interval_16_8_1_6_U0 800
+Add Instance write_output_stream_16_3 write_output_stream_16_3_U0 820
+Add Instance load_input_stream_16_2 load_input_stream_16_2_U0 872
+Add Instance load_input_stream_16_2_1 load_input_stream_16_2_1_U0 908
+Add Instance forward_stream_134217728_39 forward_stream_134217728_39_U0 10032
+Add Instance forward_stream_134217728_40 forward_stream_134217728_40_U0 10039
+Add Instance forward_stream_134217728_41 forward_stream_134217728_41_U0 10046
+Add Instance forward_stream_134217728_42 forward_stream_134217728_42_U0 10053
+Add Instance forward_stream_134217728_43 forward_stream_134217728_43_U0 10060
+Add Instance forward_stream_134217728_44 forward_stream_134217728_44_U0 10067
+Add Instance forward_stream_134217728_45 forward_stream_134217728_45_U0 10074
+Add Instance forward_stream_134217728_46 forward_stream_134217728_46_U0 10081
+Add Instance forward_stream_134217728_47 forward_stream_134217728_47_U0 10088
+Add Instance forward_stream_134217728_48 forward_stream_134217728_48_U0 10095
+Add Instance forward_stream_134217728_49 forward_stream_134217728_49_U0 10102
+Add Instance forward_stream_134217728_50 forward_stream_134217728_50_U0 10109
+Add Instance forward_stream_134217728_51 forward_stream_134217728_51_U0 10116
+Add Instance forward_stream_134217728_52 forward_stream_134217728_52_U0 10123
+Add Instance forward_stream_134217728_53 forward_stream_134217728_53_U0 10130
+Add Instance forward_stream_134217728_54 forward_stream_134217728_54_U0 10137
+Add Instance forward_stream_134217728_55 forward_stream_134217728_55_U0 10144
+Add Instance forward_stream_134217728_56 forward_stream_134217728_56_U0 10151
+Add Instance forward_stream_134217728_57 forward_stream_134217728_57_U0 10158
+Add Instance forward_stream_134217728_58 forward_stream_134217728_58_U0 10165
+Add Instance forward_stream_134217728_59 forward_stream_134217728_59_U0 10172
+Add Instance forward_stream_134217728_60 forward_stream_134217728_60_U0 10179
+Add Instance forward_stream_134217728_61 forward_stream_134217728_61_U0 10186
+Add Instance forward_stream_134217728_62 forward_stream_134217728_62_U0 10193
+Add Instance forward_stream_134217728_63 forward_stream_134217728_63_U0 10200
+Add Instance forward_stream_134217728_64 forward_stream_134217728_64_U0 10207
+Add Instance forward_stream_134217728_65 forward_stream_134217728_65_U0 10214
+Add Instance forward_stream_134217728_66 forward_stream_134217728_66_U0 10221
+Add Instance forward_stream_134217728_67 forward_stream_134217728_67_U0 10228
+Add Instance forward_stream_134217728_68 forward_stream_134217728_68_U0 10235
+Add Instance forward_stream_134217728_69 forward_stream_134217728_69_U0 10242
+Add Instance forward_stream_134217728_70 forward_stream_134217728_70_U0 10249
+Add Instance forward_stream_134217728_71 forward_stream_134217728_71_U0 10256
+Add Instance forward_stream_134217728_72 forward_stream_134217728_72_U0 10263
+Add Instance forward_stream_134217728_73 forward_stream_134217728_73_U0 10270
+Add Instance forward_stream_134217728_74 forward_stream_134217728_74_U0 10277
+Add Instance forward_stream_134217728_75 forward_stream_134217728_75_U0 10284
+Add Instance forward_stream_134217728_76 forward_stream_134217728_76_U0 10291
+Add Instance forward_stream_134217728_77 forward_stream_134217728_77_U0 10298
+Add Instance forward_stream_134217728_78 forward_stream_134217728_78_U0 10305
+Add Instance forward_stream_134217728_79 forward_stream_134217728_79_U0 10312
+Add Instance forward_stream_134217728_80 forward_stream_134217728_80_U0 10319
+Add Instance forward_stream_134217728_81 forward_stream_134217728_81_U0 10326
+Add Instance forward_stream_134217728_82 forward_stream_134217728_82_U0 10333
+Add Instance forward_stream_134217728_83 forward_stream_134217728_83_U0 10340
+Add Instance forward_stream_134217728_84 forward_stream_134217728_84_U0 10347
+Add Instance forward_stream_134217728_85 forward_stream_134217728_85_U0 10354
+Add Instance forward_stream_134217728_86 forward_stream_134217728_86_U0 10361
+Add Instance forward_stream_134217728_87 forward_stream_134217728_87_U0 10368
+Add Instance forward_stream_134217728_88 forward_stream_134217728_88_U0 10375
+Add Instance forward_stream_134217728_89 forward_stream_134217728_89_U0 10382
+Add Instance forward_stream_134217728_90 forward_stream_134217728_90_U0 10389
+Add Instance forward_stream_134217728_91 forward_stream_134217728_91_U0 10396
+Add Instance forward_stream_134217728_92 forward_stream_134217728_92_U0 10403
+Add Instance forward_stream_134217728_93 forward_stream_134217728_93_U0 10410
+Add Instance forward_stream_134217728_94 forward_stream_134217728_94_U0 10417
+Add Instance forward_stream_134217728_95 forward_stream_134217728_95_U0 10424
+Add Instance forward_stream_134217728_96 forward_stream_134217728_96_U0 10431
+Add Instance forward_stream_134217728_97 forward_stream_134217728_97_U0 10438
+Add Instance forward_stream_134217728_98 forward_stream_134217728_98_U0 10445
+Add Instance forward_stream_134217728_99 forward_stream_134217728_99_U0 10452
+Add Instance forward_stream_134217728_100 forward_stream_134217728_100_U0 10459
+Add Instance forward_stream_134217728_101 forward_stream_134217728_101_U0 10466
+Add Instance forward_stream_134217728_102 forward_stream_134217728_102_U0 10473
+Add Instance forward_stream_134217728_103 forward_stream_134217728_103_U0 10480
+Add Instance forward_stream_134217728_104 forward_stream_134217728_104_U0 10487
+Add Instance forward_stream_134217728_105 forward_stream_134217728_105_U0 10494
+Add Instance forward_stream_134217728_106 forward_stream_134217728_106_U0 10501
+Add Instance forward_stream_134217728_107 forward_stream_134217728_107_U0 10508
+Add Instance forward_stream_134217728_108 forward_stream_134217728_108_U0 10515
+Add Instance forward_stream_134217728_109 forward_stream_134217728_109_U0 10522
+Add Instance forward_stream_134217728_110 forward_stream_134217728_110_U0 10529
+Add Instance forward_stream_134217728_111 forward_stream_134217728_111_U0 10536
+Add Instance forward_stream_134217728_112 forward_stream_134217728_112_U0 10543
+Add Instance forward_stream_134217728_113 forward_stream_134217728_113_U0 10550
+Add Instance forward_stream_134217728_114 forward_stream_134217728_114_U0 10557
+Add Instance forward_stream_134217728_115 forward_stream_134217728_115_U0 10564
+Add Instance forward_stream_134217728_116 forward_stream_134217728_116_U0 10571
+Add Instance forward_stream_134217728_117 forward_stream_134217728_117_U0 10578
+Add Instance forward_stream_134217728_118 forward_stream_134217728_118_U0 10585
+Add Instance forward_stream_134217728_119 forward_stream_134217728_119_U0 10592
+Add Instance forward_stream_134217728_120 forward_stream_134217728_120_U0 10599
+Add Instance forward_stream_134217728_121 forward_stream_134217728_121_U0 10606
+Add Instance forward_stream_134217728_122 forward_stream_134217728_122_U0 10613
+Add Instance forward_stream_134217728_123 forward_stream_134217728_123_U0 10620
+Add Instance forward_stream_134217728_124 forward_stream_134217728_124_U0 10627
+Add Instance forward_stream_134217728_125 forward_stream_134217728_125_U0 10634
+Add Instance forward_stream_134217728_126 forward_stream_134217728_126_U0 10641
+Add Instance forward_stream_134217728_127 forward_stream_134217728_127_U0 10648
+Add Instance forward_stream_134217728_128 forward_stream_134217728_128_U0 10655
+Add Instance forward_stream_134217728_129 forward_stream_134217728_129_U0 10662
+Add Instance forward_stream_134217728_130 forward_stream_134217728_130_U0 10669
+Add Instance forward_stream_134217728_131 forward_stream_134217728_131_U0 10676
+Add Instance forward_stream_134217728_132 forward_stream_134217728_132_U0 10683
+Add Instance forward_stream_134217728_133 forward_stream_134217728_133_U0 10690
+Add Instance forward_stream_134217728_134 forward_stream_134217728_134_U0 10697
+Add Instance forward_stream_134217728_135 forward_stream_134217728_135_U0 10704
+Add Instance forward_stream_134217728_136 forward_stream_134217728_136_U0 10711
+Add Instance forward_stream_134217728_137 forward_stream_134217728_137_U0 10718
+Add Instance forward_stream_134217728_138 forward_stream_134217728_138_U0 10725
+Add Instance forward_stream_134217728_139 forward_stream_134217728_139_U0 10732
+Add Instance forward_stream_134217728_140 forward_stream_134217728_140_U0 10739
+Add Instance forward_stream_134217728_141 forward_stream_134217728_141_U0 10746
+Add Instance forward_stream_134217728_142 forward_stream_134217728_142_U0 10753
+Add Instance forward_stream_134217728_143 forward_stream_134217728_143_U0 10760
+Add Instance forward_stream_134217728_144 forward_stream_134217728_144_U0 10767
+Add Instance forward_stream_134217728_145 forward_stream_134217728_145_U0 10774
+Add Instance forward_stream_134217728_146 forward_stream_134217728_146_U0 10781
+Add Instance forward_stream_134217728_147 forward_stream_134217728_147_U0 10788
+Add Instance forward_stream_134217728_148 forward_stream_134217728_148_U0 10795
+Add Instance forward_stream_134217728_149 forward_stream_134217728_149_U0 10802
+Add Instance forward_stream_134217728_150 forward_stream_134217728_150_U0 10809
+Add Instance forward_stream_134217728_151 forward_stream_134217728_151_U0 10816
+Add Instance forward_stream_134217728_152 forward_stream_134217728_152_U0 10823
+Add Instance forward_stream_134217728_153 forward_stream_134217728_153_U0 10830
+Add Instance forward_stream_134217728_154 forward_stream_134217728_154_U0 10837
+Add Instance forward_stream_134217728_155 forward_stream_134217728_155_U0 10844
+Add Instance forward_stream_134217728_156 forward_stream_134217728_156_U0 10851
+Add Instance forward_stream_134217728_157 forward_stream_134217728_157_U0 10858
+Add Instance forward_stream_134217728_158 forward_stream_134217728_158_U0 10865
+Add Instance forward_stream_134217728_159 forward_stream_134217728_159_U0 10872
+Add Instance forward_stream_134217728_160 forward_stream_134217728_160_U0 10879
+Add Instance forward_stream_134217728_161 forward_stream_134217728_161_U0 10886
+Add Instance forward_stream_134217728_162 forward_stream_134217728_162_U0 10893
+Add Instance forward_stream_134217728_163 forward_stream_134217728_163_U0 10900
+Add Instance forward_stream_134217728_164 forward_stream_134217728_164_U0 10907
+Add Instance forward_stream_134217728_165 forward_stream_134217728_165_U0 10914
+Add Instance forward_stream_134217728_166 forward_stream_134217728_166_U0 10921
+Add Instance parallel_merge_sort_16_3 parallel_merge_sort_16_3_U0 3280
+Add Instance dataflow_in_loop4475 dataflow_in_loop4475_U0 711
+Add Instance compare_select_range_head_tail_16_7 compare_select_range_head_tail_16_7_U0 704
+Add Instance compare_swap_range_interval_16_1_7 compare_swap_range_interval_16_1_7_U0 740
+Add Instance compare_swap_range_interval_16_2_1_7 compare_swap_range_interval_16_2_1_7_U0 760
+Add Instance compare_swap_range_interval_16_4_1_7 compare_swap_range_interval_16_4_1_7_U0 780
+Add Instance compare_swap_range_interval_16_8_1_7 compare_swap_range_interval_16_8_1_7_U0 800
+Add Instance write_output_stream_16_3_1 write_output_stream_16_3_1_U0 820
+Add Instance load_input_stream_16_3 load_input_stream_16_3_U0 872
+Add Instance load_input_stream_16_3_1 load_input_stream_16_3_1_U0 908
+Add Instance reduction_stream_redirect_16_s reduction_stream_redirect_16_U0 3332
+Add Instance broadcast_array_128_5 broadcast_array_128_5_U0 3316
+Add Instance write_result_16_s write_result_16_U0 3453
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 53m 55s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:37861
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/xclbin/vadd.hw.xclbin.link_summary, at Wed Jan  6 23:55:38 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Wed Jan  6 23:55:38 2021
+Running Rule Check Server on port:34965
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Wed Jan  6 23:55:39 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [23:56:01] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Wed Jan  6 23:56:08 2021
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM30' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM31' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [23:56:21] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [23:56:28] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 296.559 ; gain = 0.000 ; free physical = 72333 ; free virtual = 434897
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [23:56:28] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.table_HBM28:HBM[28] -sp vadd_1.table_HBM29:HBM[29] -sp vadd_1.table_HBM30:HBM[30] -sp vadd_1.table_HBM31:HBM[31] -sp vadd_1.table_DDR0:DDR[0] -sp vadd_1.table_DDR1:DDR[1] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM29, sptag: HBM[29]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM30, sptag: HBM[30]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM31, sptag: HBM[31]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR0, sptag: DDR[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR1, sptag: DDR[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM28 to HBM[28] for directive vadd_1.table_HBM28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM29 to HBM[29] for directive vadd_1.table_HBM29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM30 to HBM[30] for directive vadd_1.table_HBM30:HBM[30]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM31 to HBM[31] for directive vadd_1.table_HBM31:HBM[31]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR0 to DDR[0] for directive vadd_1.table_DDR0:DDR[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR1 to DDR[1] for directive vadd_1.table_DDR1:DDR[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [23:56:34] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 296.559 ; gain = 0.000 ; free physical = 72692 ; free virtual = 435239
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [23:56:34] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [23:56:38] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 296.559 ; gain = 0.000 ; free physical = 73076 ; free virtual = 435630
+INFO: [v++ 60-1441] [23:56:38] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:37 . Memory (MB): peak = 740.953 ; gain = 0.000 ; free physical = 73099 ; free virtual = 435652
+INFO: [v++ 60-1443] [23:56:38] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [23:56:42] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 740.953 ; gain = 0.000 ; free physical = 75122 ; free virtual = 437732
+INFO: [v++ 60-1443] [23:56:42] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [23:56:44] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 740.953 ; gain = 0.000 ; free physical = 74923 ; free virtual = 437487
+INFO: [v++ 60-1443] [23:56:44] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 160 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[23:58:02] Run vpl: Step create_project: Started
+Creating Vivado project.
+[23:58:06] Run vpl: Step create_project: Completed
+[23:58:06] Run vpl: Step create_bd: Started
+[23:59:52] Run vpl: Step create_bd: RUNNING...
+[00:01:44] Run vpl: Step create_bd: RUNNING...
+[00:03:27] Run vpl: Step create_bd: RUNNING...
+[00:05:32] Run vpl: Step create_bd: RUNNING...
+[00:07:20] Run vpl: Step create_bd: RUNNING...
+[00:09:18] Run vpl: Step create_bd: RUNNING...
+[00:11:05] Run vpl: Step create_bd: RUNNING...
+[00:11:47] Run vpl: Step create_bd: Completed
+[00:11:47] Run vpl: Step update_bd: Started
+[00:13:35] Run vpl: Step update_bd: RUNNING...
+[00:15:29] Run vpl: Step update_bd: RUNNING...
+[00:16:57] Run vpl: Step update_bd: Completed
+[00:16:57] Run vpl: Step generate_target: Started
+[00:18:39] Run vpl: Step generate_target: RUNNING...
+[00:20:22] Run vpl: Step generate_target: RUNNING...
+[00:22:00] Run vpl: Step generate_target: RUNNING...
+[00:23:52] Run vpl: Step generate_target: RUNNING...
+[00:25:31] Run vpl: Step generate_target: RUNNING...
+[00:27:25] Run vpl: Step generate_target: RUNNING...
+[00:29:13] Run vpl: Step generate_target: RUNNING...
+[00:31:04] Run vpl: Step generate_target: Completed
+[00:31:04] Run vpl: Step config_hw_runs: Started
+[00:33:10] Run vpl: Step config_hw_runs: Completed
+[00:33:10] Run vpl: Step synth: Started
+[00:35:14] Block-level synthesis in progress, 0 of 83 jobs complete, 8 jobs running.
+[00:37:11] Block-level synthesis in progress, 3 of 83 jobs complete, 5 jobs running.
+[00:38:36] Block-level synthesis in progress, 4 of 83 jobs complete, 7 jobs running.
+[00:40:09] Block-level synthesis in progress, 11 of 83 jobs complete, 4 jobs running.
+[00:42:12] Block-level synthesis in progress, 19 of 83 jobs complete, 5 jobs running.
+[00:44:34] Block-level synthesis in progress, 19 of 83 jobs complete, 8 jobs running.
+[00:46:06] Block-level synthesis in progress, 26 of 83 jobs complete, 7 jobs running.
+[00:47:44] Block-level synthesis in progress, 26 of 83 jobs complete, 8 jobs running.
+[00:49:11] Block-level synthesis in progress, 34 of 83 jobs complete, 7 jobs running.
+[00:50:41] Block-level synthesis in progress, 34 of 83 jobs complete, 8 jobs running.
+[00:52:16] Block-level synthesis in progress, 41 of 83 jobs complete, 8 jobs running.
+[00:53:52] Block-level synthesis in progress, 46 of 83 jobs complete, 6 jobs running.
+[00:56:20] Block-level synthesis in progress, 53 of 83 jobs complete, 5 jobs running.
+[00:57:54] Block-level synthesis in progress, 55 of 83 jobs complete, 7 jobs running.
+[00:59:26] Block-level synthesis in progress, 61 of 83 jobs complete, 8 jobs running.
+[01:01:00] Block-level synthesis in progress, 67 of 83 jobs complete, 4 jobs running.
+[01:02:30] Block-level synthesis in progress, 69 of 83 jobs complete, 7 jobs running.
+[01:04:03] Block-level synthesis in progress, 75 of 83 jobs complete, 7 jobs running.
+[01:05:31] Block-level synthesis in progress, 79 of 83 jobs complete, 4 jobs running.
+[01:07:15] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:08:46] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:10:19] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:11:50] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:13:23] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:14:57] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:16:31] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:18:05] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:19:37] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:21:11] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:23:26] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:25:54] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:27:57] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:29:31] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:31:16] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:33:45] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:35:20] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:37:49] Block-level synthesis in progress, 82 of 83 jobs complete, 1 job running.
+[01:40:49] Block-level synthesis in progress, 83 of 83 jobs complete, 0 jobs running.
+[01:42:18] Top-level synthesis in progress.
+[01:43:50] Top-level synthesis in progress.
+[01:45:21] Top-level synthesis in progress.
+[01:46:52] Top-level synthesis in progress.
+[01:48:22] Top-level synthesis in progress.
+[01:49:53] Top-level synthesis in progress.
+[01:51:25] Top-level synthesis in progress.
+[01:52:58] Top-level synthesis in progress.
+[01:54:29] Top-level synthesis in progress.
+[01:56:01] Top-level synthesis in progress.
+[01:57:47] Top-level synthesis in progress.
+[01:59:21] Top-level synthesis in progress.
+[02:00:52] Top-level synthesis in progress.
+[02:02:23] Top-level synthesis in progress.
+[02:03:08] Run vpl: Step synth: Completed
+[02:03:08] Run vpl: Step impl: Started
+[02:30:03] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 02h 33m 16s 
+
+[02:30:03] Starting logic optimization..
+[02:31:29] Phase 1 Generate And Synthesize MIG Cores
+[02:40:03] Phase 2 Generate And Synthesize Debug Cores
+[02:44:25] Phase 3 Retarget
+[02:44:25] Phase 4 Constant propagation
+[02:45:50] Phase 5 Sweep
+[02:50:08] Phase 6 BUFG optimization
+[02:50:08] Phase 7 Shift Register Optimization
+[02:50:08] Phase 8 Post Processing Netlist
+[02:58:53] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 28m 50s 
+
+[02:58:53] Starting logic placement..
+[03:00:19] Phase 1 Placer Initialization
+[03:00:19] Phase 1.1 Placer Initialization Netlist Sorting
+[03:03:11] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[03:06:02] Phase 1.3 Build Placer Netlist Model
+[03:10:16] Phase 1.4 Constrain Clocks/Macros
+[03:11:42] Phase 2 Global Placement
+[03:11:42] Phase 2.1 Floorplanning
+[03:18:54] Phase 2.2 Global Placement Core
+[03:36:12] Phase 2.2.1 Physical Synthesis In Placer
+[03:43:25] Phase 3 Detail Placement
+[03:43:25] Phase 3.1 Commit Multi Column Macros
+[03:43:25] Phase 3.2 Commit Most Macros & LUTRAMs
+[03:43:25] Phase 3.3 Area Swap Optimization
+[03:44:51] Phase 3.4 Pipeline Register Optimization
+[03:44:51] Phase 3.5 IO Cut Optimizer
+[03:44:51] Phase 3.6 Fast Optimization
+[03:46:17] Phase 3.7 Small Shape DP
+[03:46:17] Phase 3.7.1 Small Shape Clustering
+[03:47:42] Phase 3.7.2 Flow Legalize Slice Clusters
+[03:47:42] Phase 3.7.3 Slice Area Swap
+[03:51:59] Phase 3.7.4 Commit Slice Clusters
+[04:02:08] Phase 3.8 Place Remaining
+[04:02:08] Phase 3.9 Re-assign LUT pins
+[04:03:34] Phase 3.10 Pipeline Register Optimization
+[04:05:00] Phase 3.11 Fast Optimization
+[04:06:26] Phase 4 Post Placement Optimization and Clean-Up
+[04:06:26] Phase 4.1 Post Commit Optimization
+[04:09:19] Phase 4.1.1 Post Placement Optimization
+[04:09:19] Phase 4.1.1.1 BUFG Insertion
+[04:10:45] Phase 4.1.1.2 BUFG Replication
+[04:15:09] Phase 4.1.1.3 Replication
+[04:16:39] Phase 4.2 Post Placement Cleanup
+[04:18:06] Phase 4.3 Placer Reporting
+[04:18:06] Phase 4.4 Final Placement Cleanup
+[04:38:47] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 39m 52s 
+
+[04:38:47] Starting logic routing..
+[04:40:16] Phase 1 Build RT Design
+[04:46:09] Phase 2 Router Initialization
+[04:46:09] Phase 2.1 Fix Topology Constraints
+[04:46:09] Phase 2.2 Pre Route Cleanup
+[04:46:09] Phase 2.3 Global Clock Net Routing
+[04:47:37] Phase 2.4 Update Timing
+[04:53:22] Phase 2.5 Update Timing for Bus Skew
+[04:53:22] Phase 2.5.1 Update Timing
+[04:56:17] Phase 3 Initial Routing
+[04:56:17] Phase 3.1 Global Routing
+[04:59:12] Phase 4 Rip-up And Reroute
+[04:59:12] Phase 4.1 Global Iteration 0
+[07:53:15] Phase 4.2 Global Iteration 1
+[09:32:11] Phase 4.3 Global Iteration 2
+[09:52:33] Phase 4.4 Global Iteration 3
+[10:35:20] Phase 4.5 Global Iteration 4
+[11:06:46] Phase 4.6 Global Iteration 5
+[11:39:33] Phase 4.7 Global Iteration 6
+[12:06:57] Phase 4.8 Global Iteration 7
+[12:36:36] Phase 4.9 Global Iteration 8
+[13:13:21] Phase 5 Delay and Skew Optimization
+[13:13:21] Phase 5.1 Delay CleanUp
+[13:13:21] Phase 5.1.1 Update Timing
+[13:14:58] Phase 5.1.2 Update Timing
+[13:18:08] Phase 5.2 Clock Skew Optimization
+[13:18:08] Phase 6 Post Hold Fix
+[13:18:08] Phase 6.1 Hold Fix Iter
+[13:18:08] Phase 6.1.1 Update Timing
+[13:19:43] Phase 6.1.2 Lut RouteThru Assignment for hold
+[13:21:18] Phase 6.2 Additional Hold Fix
+[13:24:25] Phase 7 Route finalize
+[13:24:25] Phase 8 Verifying routed nets
+[13:25:58] Phase 9 Depositing Routes
+[13:27:31] Phase 10 Leaf Clock Prog Delay Opt
+[13:32:09] Phase 10.1 Delay CleanUp
+[13:32:09] Phase 10.1.1 Update Timing
+[13:35:11] Phase 10.1.2 Update Timing
+[13:36:43] Phase 10.2 Hold Fix Iter
+[13:36:43] Phase 10.2.1 Update Timing
+[13:38:14] Phase 10.2.2 Lut RouteThru Assignment for hold
+[13:39:48] Phase 10.3 Additional Hold Fix
+[13:45:55] Phase 11 Depositing Routes
+[13:47:26] Phase 12 Post Router Timing
+[13:50:34] Phase 13 Physical Synthesis in Router
+[13:50:34] Phase 13.1 Physical Synthesis Initialization
+[13:55:10] Phase 13.2 Critical Path Optimization
+[13:56:40] Phase 14 Route finalize
+[13:58:10] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 09h 19m 19s 
+
+[13:58:10] Starting bitstream generation..
+Starting optional post-route physical design optimization.
+[14:08:25] Phase 1 Physical Synthesis Initialization
+[14:11:17] Phase 2 SLL Register Hold Fix Optimization
+[14:11:17] Phase 3 Critical Path Optimization
+[14:37:20] Phase 4 Hold Fix Optimization
+[14:50:37] Run vpl: Step impl: Failed
+[14:51:14] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while  Compiling (bitstream) accelerator binary: vadd.hw Log file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log  :
+ERROR: [VPL-4] design did not meet timing - Design did not meet timing. One or more unscalable system clocks did not meet their required target frequency. Please try specifying a clock frequency lower than 160 MHz using the '--kernel_frequency' switch for the next compilation. For all system clocks, this design is using 0 nanoseconds as the threshold worst negative slack (WNS) value. List of system clocks with timing failure:
+system clock: mmcm_clkout0_1; slack: -0.417 ns
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, phys_opt_design (Post-Route) ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16_recurrent/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [14:52:42] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:19:58 ; elapsed = 14:55:52 . Memory (MB): peak = 740.953 ; gain = 0.000 ; free physical = 31180 ; free virtual = 374517
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Error 1

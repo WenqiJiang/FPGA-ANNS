@@ -397,7 +397,7 @@ int main(int argc, char** argv)
 // .......................................................
     OCL_CHECK(err, cl::Buffer buffer_output(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY | CL_MEM_EXT_PTR_XILINX, 
-        size_results_out *sizeof(t_axi), &sourcce_hw_resultsExt, &err));
+        size_results_out *sizeof(result_t), &sourcce_hw_resultsExt, &err));
 
 // ============================================================================
 // Step 2: Set Kernel Arguments and Run the Application
@@ -486,23 +486,23 @@ int main(int argc, char** argv)
 //     }
 
     // result_t = 256 bit = 3 * (ID + dist) + 1 dummy (ID + dist) = 8 float/int in total
-    host_PQ_results interpreted_result_array[HBM_CHANNEL_NUM];
-    // single_PQ_result interpreted_result_array[HBM_CHANNEL_NUM];
-    memcpy(interpreted_result_array, &source_hw_results[0], HBM_CHANNEL_NUM * 32);
-    // correct result: 2104
-    for (int i = 0 ; i < size_results_out; i++) {
-            std::cout << "i = " << i  << std::endl;
-            std::cout << "      vec_ID0 = " << interpreted_result_array[i].vec_ID0 <<  
-                "    distance = " << interpreted_result_array[i].dist0 << std::endl;
-            std::cout << "      vec_ID1 = " << interpreted_result_array[i].vec_ID1 <<  
-                "    distance = " << interpreted_result_array[i].dist1 << std::endl;
-            std::cout << "      vec_ID2 = " << interpreted_result_array[i].vec_ID2 <<  
-                "    distance = " << interpreted_result_array[i].dist2 << std::endl;
-    }
-// ============================================================================
-// Step 3: Release Allocated Resources
-// ============================================================================
-    delete[] fileBuf;
+//     host_PQ_results interpreted_result_array[HBM_CHANNEL_NUM];
+//     // single_PQ_result interpreted_result_array[HBM_CHANNEL_NUM];
+//     memcpy(interpreted_result_array, &source_hw_results[0], HBM_CHANNEL_NUM * 32);
+//     // correct result: 2104
+//     for (int i = 0 ; i < size_results_out; i++) {
+//             std::cout << "i = " << i  << std::endl;
+//             std::cout << "      vec_ID0 = " << interpreted_result_array[i].vec_ID0 <<  
+//                 "    distance = " << interpreted_result_array[i].dist0 << std::endl;
+//             std::cout << "      vec_ID1 = " << interpreted_result_array[i].vec_ID1 <<  
+//                 "    distance = " << interpreted_result_array[i].dist1 << std::endl;
+//             std::cout << "      vec_ID2 = " << interpreted_result_array[i].vec_ID2 <<  
+//                 "    distance = " << interpreted_result_array[i].dist2 << std::endl;
+//     }
+// // ============================================================================
+// // Step 3: Release Allocated Resources
+// // ============================================================================
+//     delete[] fileBuf;
 
     std::cout << "TEST " << (match ? "PASSED" : "FAILED") << std::endl; 
     return (match ? EXIT_SUCCESS : EXIT_FAILURE);

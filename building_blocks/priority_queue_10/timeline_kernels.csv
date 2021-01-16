@@ -1,0 +1,21 @@
+Kernel trace events
+Device, Binary, Kernel, Compute Unit, Function, Data Type, Index, Start Time (ms), End Time (ms), Value
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,top,top,0,0.151443,0.161928,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,outstanding,0,0.000000,0.151448,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,outstanding,0,0.151448,0.161832,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,outstanding,0,0.161832,0.161832,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,row,0,0.000000,0.151448,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,row,0,0.151448,0.161832,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,priority_queue_10_1024_U0,row,0,0.161832,0.161832,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,outstanding,0,0.000000,0.151443,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,outstanding,0,0.151443,0.156633,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,outstanding,0,0.156633,0.156633,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,row,0,0.000000,0.151443,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,row,0,0.151443,0.156633,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,read_input_1024_5_U0,row,0,0.156633,0.156633,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,outstanding,0,0.000000,0.151448,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,outstanding,0,0.151448,0.161928,1
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,outstanding,0,0.161928,0.161928,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,row,0,0.000000,0.151448,65535
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,row,0,0.151448,0.161928,0
+xilinx_u280_xdma_201920_3-0,vadd.hw_emu,vadd,vadd_1,write_result_10_U0,row,0,0.161928,0.161928,65535

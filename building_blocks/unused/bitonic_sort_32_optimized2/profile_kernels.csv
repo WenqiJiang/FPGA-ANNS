@@ -1,0 +1,51 @@
+Compute Units: Running Time and Stalls
+Compute Unit, Running Time (us), Intra-Kernel Dataflow Stalls (%), External Memory Stalls (%), External Stream Stalls (%)
+vadd_1,1.014,0.000,0.000,0.000
+
+Functions: Running Time and Stalls
+Compute Unit, Function, Running Time (us), Intra-Kernel Dataflow Stalls (%), External Memory Stalls (%), External Stream Stalls (%)
+vadd_1,grp_bitonic_sort_fu_258,0.186,0.000,0.000,0.000
+vadd_1,grp_bitonic_sort_fu_258/grp_compare_swap_range_interval_32_16_2_1_s_fu_274,0.071,0.000,0.000,0.000
+vadd_1,grp_bitonic_sort_fu_258/grp_compare_swap_range_interval_32_8_4_2_s_fu_406,0.043,0.000,0.000,0.000
+vadd_1,grp_bitonic_sort_fu_258/grp_compare_swap_range_interval_32_4_8_4_s_fu_474,0.029,0.000,0.000,0.000
+vadd_1,grp_write_result_32_s_fu_294,0.450,0.000,16.901,0.000
+vadd_1,grp_init_array_32_s_fu_333,0.357,0.000,6.338,0.000
+
+Compute Units: Port Data Transfer
+Compute Unit, Port, Write Time (us), Outstanding Write (%), Read Time (us), Outstanding Read (%)
+vadd_1,m_axi_gmem0,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem1,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem10,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem11,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem12,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem13,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem14,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem15,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem16,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem17,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem18,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem19,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem2,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem20,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem21,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem22,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem23,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem24,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem25,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem26,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem27,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem28,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem29,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem3,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem30,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem31,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem32,0.000,0.000,0.271,26.761
+vadd_1,m_axi_gmem33,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem34,0.250,24.648,0.000,0.000
+vadd_1,m_axi_gmem4,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem5,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem6,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem7,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem8,0.000,0.000,0.000,0.000
+vadd_1,m_axi_gmem9,0.000,0.000,0.000,0.000
+

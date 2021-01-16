@@ -1,0 +1,113 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:39:14 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 66765
+License: Customer
+
+Current time: 	Fri Dec 25 21:18:20 CET 2020
+Time zone: 	Central European Standard Time (Europe/Zurich)
+
+OS: Ubuntu
+OS Version: 4.14.156-U
+OS Architecture: amd64
+Available processors (cores): 80
+
+Display: localhost:13.0
+Screen size: 1440x878
+Screen resolution (DPI): 100
+Available screens: 1
+Available disk space: 24 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	9.0.4 64-bit
+Java home: 	/opt/Xilinx/Vivado/2019.2/tps/lnx64/jre9.0.4
+Java executable location: 	/opt/Xilinx/Vivado/2019.2/tps/lnx64/jre9.0.4/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	wejiang
+User home directory: /home/wejiang
+User working directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/failed_HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy_config_batch_size
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vivado
+HDI_APPROOT: /opt/Xilinx/Vivado/2019.2
+RDI_DATADIR: /opt/Xilinx/Vivado/2019.2/data
+RDI_BINDIR: /opt/Xilinx/Vivado/2019.2/bin
+
+Vivado preferences file location: /home/wejiang/.Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: /home/wejiang/.Xilinx/Vivado/2019.2/
+Vivado layouts directory: /home/wejiang/.Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	/opt/Xilinx/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/failed_HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy_config_batch_size/vivado.log
+Vivado journal file location: 	/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/failed_HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy_config_batch_size/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-66765-alveo0
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /opt/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: /opt/Xilinx/Xilinx.lic
+XILINX_DSP: /opt/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: /opt/Xilinx/Vivado/2019.2
+XILINX_SDK: /opt/Xilinx/Vitis/2019.2
+XILINX_VITIS: /opt/Xilinx/Vitis/2019.2
+XILINX_VIVADO: /opt/Xilinx/Vivado/2019.2
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2019.2
+XILINX_XRT: /opt/xilinx/xrt
+
+
+GUI allocated memory:	185 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,150 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 58 MB (+58241kb) [00:00:12]
+// [Engine Memory]: 1,148 MB (+1052019kb) [00:00:12]
+// bB (cr):  Open Checkpoint : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  2925 ms.
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,135 MB. GUI used memory: 45 MB. Current time: 12/25/20, 9:18:21 PM CET
+// Tcl Message: open_checkpoint /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/failed_HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy_config_batch_size/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/pfm_top_wrapper_routed_error.dcp 
+// Tcl Message: Command: open_checkpoint /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/failed_HBM_scan_and_PQ_lookup_freq_200_backend_opt_28_channels_bit_copy_config_batch_size/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/pfm_top_wrapper_routed_error.dcp  Starting open_checkpoint Task  Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.09 . Memory (MB): peak = 6720.453 ; gain = 2.969 ; free physical = 54942 ; free virtual = 268719 
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 84 MB (+23777kb) [00:00:21]
+// [Engine Memory]: 1,214 MB (+9664kb) [00:00:21]
+// WARNING: HEventQueue.dispatchEvent() is taking  7298 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2019.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,511 MB. GUI used memory: 48 MB. Current time: 12/25/20, 9:18:41 PM CET
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (bB)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,460 MB. GUI used memory: 48 MB. Current time: 12/25/20, 9:19:06 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,592 MB. GUI used memory: 47 MB. Current time: 12/25/20, 9:19:26 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,690 MB. GUI used memory: 47 MB. Current time: 12/25/20, 9:19:41 PM CET
+// [Engine Memory]: 2,717 MB (+1511688kb) [00:01:40]
+// HMemoryUtils.trashcanNow. Engine heap size: 2,831 MB. GUI used memory: 47 MB. Current time: 12/25/20, 9:20:00 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 3,335 MB. GUI used memory: 47 MB. Current time: 12/25/20, 9:20:21 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 3,634 MB. GUI used memory: 47 MB. Current time: 12/25/20, 9:20:36 PM CET

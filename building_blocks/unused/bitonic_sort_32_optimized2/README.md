@@ -1,0 +1,1 @@
+Equivalent with bitonic_sort_32_optimized in terms of performance and resources, but this file involves more manual efforts, thus ALWAYS use bitonic_sort_32_optimized.

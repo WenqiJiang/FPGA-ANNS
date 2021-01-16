@@ -2,6 +2,84 @@
 
 ARRAY_LEN = 32
 
+## Sorting Limite
+
+The largest array size is 128. Sorting 256 numbers and beyond will fail.
+
+## Optimization
+
+This implementation is already optimized by HLS, take the following function as example.
+
+```
+template<const int total_len, const int partition_num>
+void compare_swap_range_head_tail(float* array) {
+  
+    const int elements_per_partition = total_len / partition_num;
+    const int operations_per_partition = elements_per_partition / 2;
+
+    for (int i = 0; i < partition_num; i++) {
+        #pragma HLS UNROLL
+        for (int j = 0; j < operations_per_partition; j++) {
+            compare_swap(array, i * elements_per_partition + j, (i + 1) * elements_per_partition - 1 - j);
+        }
+    }
+}
+```
+
+Using const doesn't mean those values are evaluated dynamically, they are resolved at compile-time as constants. They are equivalent (EXACTLY THE SAME RESOURCE CONSUMPTION AND PERFORMANCE) to the following 2 versions:
+
+In unused/bitonic_sort_32_optimized_unroll:
+
+```
+template<>
+void compare_swap_range_head_tail<32, 8>(float* array) {
+
+    compare_swap(array, 0, 3);
+    compare_swap(array, 1, 2);
+
+    compare_swap(array, 4, 7);
+    compare_swap(array, 5, 6);
+
+    compare_swap(array, 8, 11);
+    compare_swap(array, 9, 10);
+
+    compare_swap(array, 12, 15);
+    compare_swap(array, 13, 14);
+
+    compare_swap(array, 16, 19);
+    compare_swap(array, 17, 18);
+
+    compare_swap(array, 20, 23);
+    compare_swap(array, 21, 22);
+
+    compare_swap(array, 24, 27);
+    compare_swap(array, 25, 26);
+
+    compare_swap(array, 28, 31);
+    compare_swap(array, 29, 30);
+}
+```
+
+Same as another version without "const int", in unused/bitonic_sort_32_optimized/src/vadd.cpp
+
+```
+template<const int total_len, const int partition_num>
+void compare_swap_range_head_tail(float* array) {
+
+    // const int elements_per_partition = total_len / partition_num;
+    // const int operations_per_partition = elements_per_partition / 2;
+
+    for (int i = 0; i < partition_num; i++) {
+#pragma HLS UNROLL
+        for (int j = 0; j < total_len / partition_num / 2; j++) {
+#pragma HLS UNROLL
+            compare_swap(array, i * total_len / partition_num + j,
+                (i + 1) * total_len / partition_num - 1 - j);
+        }
+    }
+}
+```
+
 ## HLS Version 1 
 Naive Implementation -> Low Performance, High Resource Consumption
 
@@ -196,6 +274,8 @@ in bitonic sort (I re-synthesized it by copying the content of sort function to 
 ## HLS Version 2: Maximum Performance, Maximum Resource Consumptions
 
 15 CC
+
+inline the compare-and-swap units
 
 22832 / 2607360 FF (0.88%)
 

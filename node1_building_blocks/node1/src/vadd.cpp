@@ -113,6 +113,7 @@ void vadd(
 ////////////////////     Center Distance Computation     ////////////////////    
     hls::stream<float> s_query_vectors_distance_computation_PE[PE_NUM_CENTER_DIST_COMP];
 #pragma HLS stream variable=s_query_vectors_distance_computation_PE depth=128
+#pragma HLS resource variable=s_query_vectors_distance_computation_PE core=FIFO_BRAM
 #pragma HLS array_partition variable=s_query_vectors_distance_computation_PE dim=1
 
     hls::stream<float> s_center_vectors_init_distance_computation_PE[PE_NUM_CENTER_DIST_COMP];
@@ -121,41 +122,52 @@ void vadd(
 #pragma HLS resource variable=s_center_vectors_init_distance_computation_PE core=FIFO_SRL
 
     hls::stream<dist_cell_ID_t> s_partial_cell_distance[PE_NUM_CENTER_DIST_COMP];
-#pragma HLS stream variable=s_partial_cell_distance depth=4
+#pragma HLS stream variable=s_partial_cell_distance depth=128
+#pragma HLS resource variable=s_query_vectors_distance_computation_PE core=FIFO_BRAM
 #pragma HLS array_partition variable=s_partial_cell_distance dim=1
 
 ////////////////////     Sorting Network     ////////////////////    
     hls::stream<dist_cell_ID_t> s_merge_input_A;
 #pragma HLS stream variable=s_merge_input_A depth=128
+#pragma HLS resource variable=s_merge_input_A core=FIFO_BRAM
     hls::stream<dist_cell_ID_t> s_merge_input_B;
 #pragma HLS stream variable=s_merge_input_B depth=128
+#pragma HLS resource variable=s_merge_input_B core=FIFO_BRAM
     hls::stream<dist_cell_ID_t> s_merge_partial_output;
 #pragma HLS stream variable=s_merge_partial_output depth=128
+#pragma HLS resource variable=s_merge_partial_output core=FIFO_BRAM
     hls::stream<dist_cell_ID_t> s_merge_output;
 #pragma HLS stream variable=s_merge_output depth=128
+#pragma HLS resource variable=s_merge_output core=FIFO_BRAM
 
 ////////////////////     Center Vector Lookup     ////////////////////    
     hls::stream<float> s_query_vectors_lookup_PE;
 #pragma HLS stream variable=s_query_vectors_lookup_PE depth=128
+#pragma HLS resource variable=s_query_vectors_lookup_PE core=FIFO_BRAM
 
     hls::stream<float> s_center_vectors_init_lookup_PE;
 #pragma HLS stream variable=s_center_vectors_init_lookup_PE depth=2
+#pragma HLS resource variable=s_center_vectors_init_lookup_PE core=FIFO_BRAM
 
     hls::stream<float> s_center_vectors_lookup_PE;
 #pragma HLS stream variable=s_center_vectors_lookup_PE depth=128
+#pragma HLS resource variable=s_center_vectors_lookup_PE core=FIFO_BRAM
 
     hls::stream<int> s_searched_cell_id_lookup_PE;
 #pragma HLS stream variable=s_searched_cell_id_lookup_PE depth=128
+#pragma HLS resource variable=s_searched_cell_id_lookup_PE core=FIFO_BRAM
 
 ////////////////////     Distance Lookup Table Construction     ////////////////////    
     hls::stream<float> s_query_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
-#pragma HLS stream variable=s_query_vectors_table_construction_PE depth=4
-#pragma HLS resource variable=s_query_vectors_table_construction_PE core=FIFO_SRL
+#pragma HLS stream variable=s_query_vectors_table_construction_PE depth=128
+#pragma HLS resource variable=s_query_vectors_table_construction_PE core=FIFO_BRAM
+// #pragma HLS resource variable=s_query_vectors_table_construction_PE core=FIFO_SRL
 #pragma HLS array_partition variable=s_query_vectors_table_construction_PE dim=1
 
     hls::stream<float> s_center_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
-#pragma HLS stream variable=s_center_vectors_table_construction_PE depth=4
-#pragma HLS resource variable=s_center_vectors_table_construction_PE core=FIFO_SRL
+#pragma HLS stream variable=s_center_vectors_table_construction_PE depth=128
+#pragma HLS resource variable=s_center_vectors_table_construction_PE core=FIFO_BRAM
+// #pragma HLS resource variable=s_center_vectors_table_construction_PE core=FIFO_SRL
 #pragma HLS array_partition variable=s_center_vectors_table_construction_PE dim=1
 
     hls::stream<float> s_PQ_quantizer_init[PE_NUM_TABLE_CONSTRUCTION];
@@ -166,6 +178,7 @@ void vadd(
     // PE0 write 256 rows to s_result_all_distance_lookup_table, then PE1 write 256 rows
     // thus need a deep FIFO to make sure each PE can cache enough results
     // 32 * 512 = 16384 bits, BRAM = 18K bits
+    // The FIFO must be long enough (each PE -> output K=256 ap_uint<512> for each cell)
     hls::stream<result_t> s_result_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
 #pragma HLS stream variable=s_result_table_construction_PE depth=512
 #pragma HLS resource variable=s_result_table_construction_PE core=FIFO_BRAM
@@ -173,11 +186,13 @@ void vadd(
 
 ////////////////////     Result     ////////////////////  
     hls::stream<result_t> s_result_searched_cell_ID;
-#pragma HLS stream variable=s_result_searched_cell_ID depth=4
-#pragma HLS resource variable=s_result_searched_cell_ID core=FIFO_SRL
+#pragma HLS stream variable=s_result_searched_cell_ID depth=128
+// #pragma HLS resource variable=s_result_searched_cell_ID core=FIFO_SRL
+#pragma HLS resource variable=s_result_searched_cell_ID core=FIFO_BRAM
     hls::stream<result_t> s_result_all_distance_lookup_table;
-#pragma HLS stream variable=s_result_all_distance_lookup_table depth=4
-#pragma HLS resource variable=s_result_all_distance_lookup_table core=FIFO_SRL
+#pragma HLS stream variable=s_result_all_distance_lookup_table depth=128
+// #pragma HLS resource variable=s_result_all_distance_lookup_table core=FIFO_SRL
+#pragma HLS resource variable=s_result_all_distance_lookup_table core=FIFO_BRAM
 
 ////////////////////     init      ////////////////////
 
@@ -687,7 +702,7 @@ void query_vectors_dispatcher(
     hls::stream<float> (&s_query_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
     const int query_num) {
 
-    // Given an input stream of query vectors, broadcase it to all 
+    // Given an input stream of query vectors, broadcast it to all 
     //   distance table construction PEs
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -710,15 +725,18 @@ void center_vectors_dispatcher(
     const int query_num) {
 
     // Given an input stream of center vectors, interleave it to all 
-    //   distance table construction PEs, 
-    //   e.g., vector 0~7 -> PE0, 8~15 -> PE1, etc.
+    //   distance table construction PEs in a round-robin manner 
+    //   e.g., 4 PEs, vector 0,4,8 -> PE0, 1,5,9 -> PE1, etc.
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE; interleave_iter++) {
 
-            for (int n = 0; n < NPROBE_PER_TABLE_CONSTRUCTION_PE * D; n++) {
-#pragma HLS pipeline II=1
-                s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+
+                for (int n = 0; n < D; n++) {
+    #pragma HLS pipeline II=1
+                    s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
+                }
             }
         }
     }
@@ -1054,13 +1072,21 @@ void gather_lookup_table(
     hls::stream<result_t> &s_result_all_distance_lookup_table,
     const int query_num) {
 
+    // Gather in a round-robin manner
+    // PE0: 0, 4, 8 ...
+    // PE1: 1, 5, 9 ...
+    // PE2: 2, 6, 10 ...
+    // PE3: 3, 7, 11 ...
     for (int query_id = 0; query_id < query_num; query_id++) {
         
-        for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
-            // each lookup table: K rows
-            for (int t = 0; t < nprobe_per_PE * K; t++) {
+        for (int interleave_iter = 0; interleave_iter < nprobe_per_PE; interleave_iter++) {
+
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+                // each lookup table: K rows
+                for (int t = 0; t < K; t++) {
 #pragma HLS pipeline II=1
-                s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
+                    s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
+                }
             }
         }
     }
@@ -1085,7 +1111,7 @@ void write_result(
             s_result_all_distance_lookup_table.read();
     }
 
-    for (int query_id = 0; query_id < query_num; query_id++) {
+    for (int query_id = 0; query_id < query_num - 1; query_id++) {
         for (int i = 0; i < NPROBE / 16; i++) {
                 s_result_searched_cell_ID.read();
         }

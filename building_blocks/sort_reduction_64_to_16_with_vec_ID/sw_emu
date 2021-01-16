@@ -1,0 +1,288 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/vadd.sw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/logs/vadd.sw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:36623
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/xclbin/vadd.sw_emu.xo.compile_summary, at Sat Jan 16 14:18:54 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sat Jan 16 14:18:54 2021
+Running Rule Check Server on port:34481
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Sat Jan 16 14:18:55 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 160 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/vadd.sw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 4>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.12590'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 2>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 1>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 2>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.12595'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'write_output_stream<16>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>.12588'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.4'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 4>.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.5'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 2>.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.6'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 1>.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 2>.12599'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.7'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'write_output_stream<16>.12603'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.8'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 4>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.9'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 2>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.4'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.10'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 1>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 2>.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.5'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.11'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'write_output_stream<16>.22616'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.12'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 4>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.13'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 2>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.6'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.14'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_head_tail<16, 1>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 2>.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>.7'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>.15'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'write_output_stream<16>.3'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 219.20 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/vadd.sw_emu/system_estimate_vadd.sw_emu.xtxt
+Add Instance sort_and_reduction_4_16_s sort_and_reduction_4_16_U0 3488
+Add Instance bitonic_sort_16_53 bitonic_sort_16_53_U0 6116
+Add Instance dataflow_in_loop2586 dataflow_in_loop2586_U0 935
+Add Instance compare_swap_range_interval_16_8_s compare_swap_range_interval_16_8_U0 936
+Add Instance compare_swap_range_head_tail_16_4_s compare_swap_range_head_tail_16_4_U0 972
+Add Instance compare_swap_range_interval_16_8_12590 compare_swap_range_interval_16_8_12590_U0 1008
+Add Instance compare_swap_range_head_tail_16_2_s compare_swap_range_head_tail_16_2_U0 1044
+Add Instance compare_swap_range_interval_16_4_s compare_swap_range_interval_16_4_U0 1080
+Add Instance compare_swap_range_interval_16_8_2 compare_swap_range_interval_16_8_2_U0 1116
+Add Instance compare_swap_range_head_tail_16_1_s compare_swap_range_head_tail_16_1_U0 1152
+Add Instance compare_swap_range_interval_16_2_s compare_swap_range_interval_16_2_U0 1188
+Add Instance compare_swap_range_interval_16_4_12595 compare_swap_range_interval_16_4_12595_U0 1224
+Add Instance compare_swap_range_interval_16_8_3 compare_swap_range_interval_16_8_3_U0 1260
+Add Instance load_input_stream_16_s load_input_stream_16_U0 1296
+Add Instance write_output_stream_16_s write_output_stream_16_U0 1364
+Add Instance bitonic_sort_16_54 bitonic_sort_16_54_U0 6216
+Add Instance dataflow_in_loop2585 dataflow_in_loop2585_U0 935
+Add Instance compare_swap_range_interval_16_8_4 compare_swap_range_interval_16_8_4_U0 936
+Add Instance compare_swap_range_head_tail_16_4_1 compare_swap_range_head_tail_16_4_1_U0 972
+Add Instance compare_swap_range_interval_16_8_5 compare_swap_range_interval_16_8_5_U0 1008
+Add Instance compare_swap_range_head_tail_16_2_1 compare_swap_range_head_tail_16_2_1_U0 1044
+Add Instance compare_swap_range_interval_16_4_2 compare_swap_range_interval_16_4_2_U0 1080
+Add Instance compare_swap_range_interval_16_8_6 compare_swap_range_interval_16_8_6_U0 1116
+Add Instance compare_swap_range_head_tail_16_1_1 compare_swap_range_head_tail_16_1_1_U0 1152
+Add Instance compare_swap_range_interval_16_2_12599 compare_swap_range_interval_16_2_12599_U0 1188
+Add Instance compare_swap_range_interval_16_4_3 compare_swap_range_interval_16_4_3_U0 1224
+Add Instance compare_swap_range_interval_16_8_7 compare_swap_range_interval_16_8_7_U0 1260
+Add Instance load_input_stream_16_12588 load_input_stream_16_12588_U0 1296
+Add Instance write_output_stream_16_12603 write_output_stream_16_12603_U0 1364
+Add Instance bitonic_sort_16_55 bitonic_sort_16_55_U0 6316
+Add Instance dataflow_in_loop2584 dataflow_in_loop2584_U0 935
+Add Instance compare_swap_range_interval_16_8_8 compare_swap_range_interval_16_8_8_U0 936
+Add Instance compare_swap_range_head_tail_16_4_2 compare_swap_range_head_tail_16_4_2_U0 972
+Add Instance compare_swap_range_interval_16_8_9 compare_swap_range_interval_16_8_9_U0 1008
+Add Instance compare_swap_range_head_tail_16_2_2 compare_swap_range_head_tail_16_2_2_U0 1044
+Add Instance compare_swap_range_interval_16_4_4 compare_swap_range_interval_16_4_4_U0 1080
+Add Instance compare_swap_range_interval_16_8_10 compare_swap_range_interval_16_8_10_U0 1116
+Add Instance compare_swap_range_head_tail_16_1_2 compare_swap_range_head_tail_16_1_2_U0 1152
+Add Instance compare_swap_range_interval_16_2_2 compare_swap_range_interval_16_2_2_U0 1188
+Add Instance compare_swap_range_interval_16_4_5 compare_swap_range_interval_16_4_5_U0 1224
+Add Instance compare_swap_range_interval_16_8_11 compare_swap_range_interval_16_8_11_U0 1260
+Add Instance load_input_stream_16_2 load_input_stream_16_2_U0 1296
+Add Instance write_output_stream_16_22616 write_output_stream_16_22616_U0 1364
+Add Instance bitonic_sort_16_56 bitonic_sort_16_56_U0 6416
+Add Instance dataflow_in_loop2583 dataflow_in_loop2583_U0 935
+Add Instance compare_swap_range_interval_16_8_12 compare_swap_range_interval_16_8_12_U0 936
+Add Instance compare_swap_range_head_tail_16_4_3 compare_swap_range_head_tail_16_4_3_U0 972
+Add Instance compare_swap_range_interval_16_8_13 compare_swap_range_interval_16_8_13_U0 1008
+Add Instance compare_swap_range_head_tail_16_2_3 compare_swap_range_head_tail_16_2_3_U0 1044
+Add Instance compare_swap_range_interval_16_4_6 compare_swap_range_interval_16_4_6_U0 1080
+Add Instance compare_swap_range_interval_16_8_14 compare_swap_range_interval_16_8_14_U0 1116
+Add Instance compare_swap_range_head_tail_16_1_3 compare_swap_range_head_tail_16_1_3_U0 1152
+Add Instance compare_swap_range_interval_16_2_3 compare_swap_range_interval_16_2_3_U0 1188
+Add Instance compare_swap_range_interval_16_4_7 compare_swap_range_interval_16_4_7_U0 1224
+Add Instance compare_swap_range_interval_16_8_15 compare_swap_range_interval_16_8_15_U0 1260
+Add Instance load_input_stream_16_3 load_input_stream_16_3_U0 1296
+Add Instance write_output_stream_16_3 write_output_stream_16_3_U0 1364
+Add Instance parallel_merge_sort_16_157 parallel_merge_sort_16_157_U0 6516
+Add Instance dataflow_in_loop2582 dataflow_in_loop2582_U0 1383
+Add Instance compare_select_range_head_tail_16_s compare_select_range_head_tail_16_U0 1376
+Add Instance compare_swap_range_interval_16_1_s compare_swap_range_interval_16_1_U0 1444
+Add Instance compare_swap_range_interval_16_2_1 compare_swap_range_interval_16_2_1_U0 1480
+Add Instance compare_swap_range_interval_16_4_1 compare_swap_range_interval_16_4_1_U0 1516
+Add Instance compare_swap_range_interval_16_8_1 compare_swap_range_interval_16_8_1_U0 1552
+Add Instance load_input_stream_16_4 load_input_stream_16_4_U0 1588
+Add Instance load_input_stream_16_5 load_input_stream_16_5_U0 1656
+Add Instance write_output_stream_16_1 write_output_stream_16_1_U0 1724
+Add Instance parallel_merge_sort_16_158 parallel_merge_sort_16_158_U0 6616
+Add Instance dataflow_in_loop2581 dataflow_in_loop2581_U0 1383
+Add Instance compare_select_range_head_tail_16_1 compare_select_range_head_tail_16_1_U0 1376
+Add Instance compare_swap_range_interval_16_1_1 compare_swap_range_interval_16_1_1_U0 1444
+Add Instance compare_swap_range_interval_16_2_1_1 compare_swap_range_interval_16_2_1_1_U0 1480
+Add Instance compare_swap_range_interval_16_4_1_1 compare_swap_range_interval_16_4_1_1_U0 1516
+Add Instance compare_swap_range_interval_16_8_1_1 compare_swap_range_interval_16_8_1_1_U0 1552
+Add Instance load_input_stream_16_6 load_input_stream_16_6_U0 1588
+Add Instance load_input_stream_16_7 load_input_stream_16_7_U0 1656
+Add Instance write_output_stream_16_1_1 write_output_stream_16_1_1_U0 1724
+Add Instance parallel_merge_sort_16_59 parallel_merge_sort_16_59_U0 6716
+Add Instance dataflow_in_loop dataflow_in_loop_U0 1383
+Add Instance compare_select_range_head_tail_16_2 compare_select_range_head_tail_16_2_U0 1376
+Add Instance compare_swap_range_interval_16_1_2 compare_swap_range_interval_16_1_2_U0 1444
+Add Instance compare_swap_range_interval_16_2_1_2 compare_swap_range_interval_16_2_1_2_U0 1480
+Add Instance compare_swap_range_interval_16_4_1_2 compare_swap_range_interval_16_4_1_2_U0 1516
+Add Instance compare_swap_range_interval_16_8_1_2 compare_swap_range_interval_16_8_1_2_U0 1552
+Add Instance load_input_stream_16_1 load_input_stream_16_1_U0 1588
+Add Instance load_input_stream_16_1_1 load_input_stream_16_1_1_U0 1656
+Add Instance write_output_stream_16_2 write_output_stream_16_2_U0 1724
+Add Instance write_result_16_s write_result_16_U0 3652
+Add Instance broadcast_array_4_16_5 broadcast_array_4_16_5_U0 3691
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 29m 27s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.sw_emu.xclbin' xclbin/vadd.sw_emu.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:44127
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/xclbin/vadd.sw_emu.xclbin.link_summary, at Sat Jan 16 14:48:20 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Sat Jan 16 14:48:20 2021
+Running Rule Check Server on port:36111
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Sat Jan 16 14:48:21 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-645] kernel flags are '-g -I /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/src -g'
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/link/system_estimate_vadd.sw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_64_to_16_with_vec_ID/_x.sw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 0m 13s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=sw_emu ./host ./xclbin/vadd.sw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 vec_ID = 19 dist = -9739
+i = 1 vec_ID = 8 dist = -9628
+i = 2 vec_ID = 3 dist = -9560
+i = 3 vec_ID = 12 dist = -9206
+i = 4 vec_ID = 15 dist = -9042
+i = 5 vec_ID = 11 dist = -8890
+i = 6 vec_ID = 6 dist = -8514
+i = 7 vec_ID = 59 dist = -8409
+i = 8 vec_ID = 34 dist = -8118
+i = 9 vec_ID = 54 dist = -7937
+TEST PASSED

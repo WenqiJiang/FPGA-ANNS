@@ -1,0 +1,662 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw_emu.xo' 'src/vadd.cpp'  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/vadd.hw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/logs/vadd.hw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:38757
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/xclbin/vadd.hw_emu.xo.compile_summary, at Tue Jan  5 14:47:46 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Jan  5 14:47:46 2021
+Running Rule Check Server on port:45579
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/vadd.hw_emu/v++_compile_vadd.hw_emu_guidance.html', at Tue Jan  5 14:47:47 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 200 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/vadd.hw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 273.97 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/vadd.hw_emu/system_estimate_vadd.hw_emu.xtxt
+Add Instance sort_and_reduction_128_16_s sort_and_reduction_128_16_U0 3168
+Add Instance bitonic_sort_16_165 bitonic_sort_16_165_U0 9364
+Add Instance dataflow_in_loop4132 dataflow_in_loop4132_U0 487
+Add Instance compare_swap_range_interval_16_8_s compare_swap_range_interval_16_8_U0 488
+Add Instance compare_swap_range_head_tail_16_4_s compare_swap_range_head_tail_16_4_U0 508
+Add Instance compare_swap_range_interval_16_8_14136 compare_swap_range_interval_16_8_14136_U0 528
+Add Instance compare_swap_range_head_tail_16_2_s compare_swap_range_head_tail_16_2_U0 548
+Add Instance compare_swap_range_interval_16_4_s compare_swap_range_interval_16_4_U0 568
+Add Instance compare_swap_range_interval_16_8_2 compare_swap_range_interval_16_8_2_U0 588
+Add Instance compare_swap_range_head_tail_16_1_s compare_swap_range_head_tail_16_1_U0 608
+Add Instance compare_swap_range_interval_16_2_s compare_swap_range_interval_16_2_U0 628
+Add Instance compare_swap_range_interval_16_4_14141 compare_swap_range_interval_16_4_14141_U0 648
+Add Instance compare_swap_range_interval_16_8_3 compare_swap_range_interval_16_8_3_U0 668
+Add Instance write_output_stream_16_s write_output_stream_16_U0 688
+Add Instance load_input_stream_16_s load_input_stream_16_U0 740
+Add Instance bitonic_sort_16_166 bitonic_sort_16_166_U0 9400
+Add Instance dataflow_in_loop4131 dataflow_in_loop4131_U0 487
+Add Instance compare_swap_range_interval_16_8_4 compare_swap_range_interval_16_8_4_U0 488
+Add Instance compare_swap_range_head_tail_16_4_1 compare_swap_range_head_tail_16_4_1_U0 508
+Add Instance compare_swap_range_interval_16_8_5 compare_swap_range_interval_16_8_5_U0 528
+Add Instance compare_swap_range_head_tail_16_2_1 compare_swap_range_head_tail_16_2_1_U0 548
+Add Instance compare_swap_range_interval_16_4_2 compare_swap_range_interval_16_4_2_U0 568
+Add Instance compare_swap_range_interval_16_8_6 compare_swap_range_interval_16_8_6_U0 588
+Add Instance compare_swap_range_head_tail_16_1_1 compare_swap_range_head_tail_16_1_1_U0 608
+Add Instance compare_swap_range_interval_16_2_14145 compare_swap_range_interval_16_2_14145_U0 628
+Add Instance compare_swap_range_interval_16_4_3 compare_swap_range_interval_16_4_3_U0 648
+Add Instance compare_swap_range_interval_16_8_7 compare_swap_range_interval_16_8_7_U0 668
+Add Instance write_output_stream_16_14149 write_output_stream_16_14149_U0 688
+Add Instance load_input_stream_16_14134 load_input_stream_16_14134_U0 740
+Add Instance bitonic_sort_16_167 bitonic_sort_16_167_U0 9436
+Add Instance dataflow_in_loop4130 dataflow_in_loop4130_U0 487
+Add Instance compare_swap_range_interval_16_8_8 compare_swap_range_interval_16_8_8_U0 488
+Add Instance compare_swap_range_head_tail_16_4_2 compare_swap_range_head_tail_16_4_2_U0 508
+Add Instance compare_swap_range_interval_16_8_9 compare_swap_range_interval_16_8_9_U0 528
+Add Instance compare_swap_range_head_tail_16_2_2 compare_swap_range_head_tail_16_2_2_U0 548
+Add Instance compare_swap_range_interval_16_4_4 compare_swap_range_interval_16_4_4_U0 568
+Add Instance compare_swap_range_interval_16_8_10 compare_swap_range_interval_16_8_10_U0 588
+Add Instance compare_swap_range_head_tail_16_1_2 compare_swap_range_head_tail_16_1_2_U0 608
+Add Instance compare_swap_range_interval_16_2_2 compare_swap_range_interval_16_2_2_U0 628
+Add Instance compare_swap_range_interval_16_4_5 compare_swap_range_interval_16_4_5_U0 648
+Add Instance compare_swap_range_interval_16_8_11 compare_swap_range_interval_16_8_11_U0 668
+Add Instance write_output_stream_16_24163 write_output_stream_16_24163_U0 688
+Add Instance load_input_stream_16_24151 load_input_stream_16_24151_U0 740
+Add Instance bitonic_sort_16_168 bitonic_sort_16_168_U0 9472
+Add Instance dataflow_in_loop4129 dataflow_in_loop4129_U0 487
+Add Instance compare_swap_range_interval_16_8_12 compare_swap_range_interval_16_8_12_U0 488
+Add Instance compare_swap_range_head_tail_16_4_3 compare_swap_range_head_tail_16_4_3_U0 508
+Add Instance compare_swap_range_interval_16_8_13 compare_swap_range_interval_16_8_13_U0 528
+Add Instance compare_swap_range_head_tail_16_2_3 compare_swap_range_head_tail_16_2_3_U0 548
+Add Instance compare_swap_range_interval_16_4_6 compare_swap_range_interval_16_4_6_U0 568
+Add Instance compare_swap_range_interval_16_8_14 compare_swap_range_interval_16_8_14_U0 588
+Add Instance compare_swap_range_head_tail_16_1_3 compare_swap_range_head_tail_16_1_3_U0 608
+Add Instance compare_swap_range_interval_16_2_3 compare_swap_range_interval_16_2_3_U0 628
+Add Instance compare_swap_range_interval_16_4_7 compare_swap_range_interval_16_4_7_U0 648
+Add Instance compare_swap_range_interval_16_8_15 compare_swap_range_interval_16_8_15_U0 668
+Add Instance write_output_stream_16_34176 write_output_stream_16_34176_U0 688
+Add Instance load_input_stream_16_3 load_input_stream_16_3_U0 740
+Add Instance bitonic_sort_16_169 bitonic_sort_16_169_U0 9508
+Add Instance dataflow_in_loop4128 dataflow_in_loop4128_U0 487
+Add Instance compare_swap_range_interval_16_8_16 compare_swap_range_interval_16_8_16_U0 488
+Add Instance compare_swap_range_head_tail_16_4_4 compare_swap_range_head_tail_16_4_4_U0 508
+Add Instance compare_swap_range_interval_16_8_17 compare_swap_range_interval_16_8_17_U0 528
+Add Instance compare_swap_range_head_tail_16_2_4 compare_swap_range_head_tail_16_2_4_U0 548
+Add Instance compare_swap_range_interval_16_4_8 compare_swap_range_interval_16_4_8_U0 568
+Add Instance compare_swap_range_interval_16_8_18 compare_swap_range_interval_16_8_18_U0 588
+Add Instance compare_swap_range_head_tail_16_1_4 compare_swap_range_head_tail_16_1_4_U0 608
+Add Instance compare_swap_range_interval_16_2_4 compare_swap_range_interval_16_2_4_U0 628
+Add Instance compare_swap_range_interval_16_4_9 compare_swap_range_interval_16_4_9_U0 648
+Add Instance compare_swap_range_interval_16_8_19 compare_swap_range_interval_16_8_19_U0 668
+Add Instance write_output_stream_16_4 write_output_stream_16_4_U0 688
+Add Instance load_input_stream_16_4 load_input_stream_16_4_U0 740
+Add Instance bitonic_sort_16_170 bitonic_sort_16_170_U0 9544
+Add Instance dataflow_in_loop4127 dataflow_in_loop4127_U0 487
+Add Instance compare_swap_range_interval_16_8_20 compare_swap_range_interval_16_8_20_U0 488
+Add Instance compare_swap_range_head_tail_16_4_5 compare_swap_range_head_tail_16_4_5_U0 508
+Add Instance compare_swap_range_interval_16_8_21 compare_swap_range_interval_16_8_21_U0 528
+Add Instance compare_swap_range_head_tail_16_2_5 compare_swap_range_head_tail_16_2_5_U0 548
+Add Instance compare_swap_range_interval_16_4_10 compare_swap_range_interval_16_4_10_U0 568
+Add Instance compare_swap_range_interval_16_8_22 compare_swap_range_interval_16_8_22_U0 588
+Add Instance compare_swap_range_head_tail_16_1_5 compare_swap_range_head_tail_16_1_5_U0 608
+Add Instance compare_swap_range_interval_16_2_5 compare_swap_range_interval_16_2_5_U0 628
+Add Instance compare_swap_range_interval_16_4_11 compare_swap_range_interval_16_4_11_U0 648
+Add Instance compare_swap_range_interval_16_8_23 compare_swap_range_interval_16_8_23_U0 668
+Add Instance write_output_stream_16_5 write_output_stream_16_5_U0 688
+Add Instance load_input_stream_16_5 load_input_stream_16_5_U0 740
+Add Instance bitonic_sort_16_171 bitonic_sort_16_171_U0 9580
+Add Instance dataflow_in_loop4126 dataflow_in_loop4126_U0 487
+Add Instance compare_swap_range_interval_16_8_24 compare_swap_range_interval_16_8_24_U0 488
+Add Instance compare_swap_range_head_tail_16_4_6 compare_swap_range_head_tail_16_4_6_U0 508
+Add Instance compare_swap_range_interval_16_8_25 compare_swap_range_interval_16_8_25_U0 528
+Add Instance compare_swap_range_head_tail_16_2_6 compare_swap_range_head_tail_16_2_6_U0 548
+Add Instance compare_swap_range_interval_16_4_12 compare_swap_range_interval_16_4_12_U0 568
+Add Instance compare_swap_range_interval_16_8_26 compare_swap_range_interval_16_8_26_U0 588
+Add Instance compare_swap_range_head_tail_16_1_6 compare_swap_range_head_tail_16_1_6_U0 608
+Add Instance compare_swap_range_interval_16_2_6 compare_swap_range_interval_16_2_6_U0 628
+Add Instance compare_swap_range_interval_16_4_13 compare_swap_range_interval_16_4_13_U0 648
+Add Instance compare_swap_range_interval_16_8_27 compare_swap_range_interval_16_8_27_U0 668
+Add Instance write_output_stream_16_6 write_output_stream_16_6_U0 688
+Add Instance load_input_stream_16_6 load_input_stream_16_6_U0 740
+Add Instance bitonic_sort_16_172 bitonic_sort_16_172_U0 9616
+Add Instance dataflow_in_loop4125 dataflow_in_loop4125_U0 487
+Add Instance compare_swap_range_interval_16_8_28 compare_swap_range_interval_16_8_28_U0 488
+Add Instance compare_swap_range_head_tail_16_4_7 compare_swap_range_head_tail_16_4_7_U0 508
+Add Instance compare_swap_range_interval_16_8_29 compare_swap_range_interval_16_8_29_U0 528
+Add Instance compare_swap_range_head_tail_16_2_7 compare_swap_range_head_tail_16_2_7_U0 548
+Add Instance compare_swap_range_interval_16_4_14 compare_swap_range_interval_16_4_14_U0 568
+Add Instance compare_swap_range_interval_16_8_30 compare_swap_range_interval_16_8_30_U0 588
+Add Instance compare_swap_range_head_tail_16_1_7 compare_swap_range_head_tail_16_1_7_U0 608
+Add Instance compare_swap_range_interval_16_2_7 compare_swap_range_interval_16_2_7_U0 628
+Add Instance compare_swap_range_interval_16_4_15 compare_swap_range_interval_16_4_15_U0 648
+Add Instance compare_swap_range_interval_16_8_31 compare_swap_range_interval_16_8_31_U0 668
+Add Instance write_output_stream_16_7 write_output_stream_16_7_U0 688
+Add Instance load_input_stream_16_7 load_input_stream_16_7_U0 740
+Add Instance parallel_merge_sort_16_2173 parallel_merge_sort_16_2173_U0 9652
+Add Instance dataflow_in_loop4124 dataflow_in_loop4124_U0 711
+Add Instance compare_select_range_head_tail_16_s compare_select_range_head_tail_16_U0 704
+Add Instance compare_swap_range_interval_16_1_s compare_swap_range_interval_16_1_U0 740
+Add Instance compare_swap_range_interval_16_2_1 compare_swap_range_interval_16_2_1_U0 760
+Add Instance compare_swap_range_interval_16_4_1 compare_swap_range_interval_16_4_1_U0 780
+Add Instance compare_swap_range_interval_16_8_1 compare_swap_range_interval_16_8_1_U0 800
+Add Instance write_output_stream_16_1 write_output_stream_16_1_U0 820
+Add Instance load_input_stream_16_8 load_input_stream_16_8_U0 872
+Add Instance load_input_stream_16_9 load_input_stream_16_9_U0 908
+Add Instance parallel_merge_sort_16_2174 parallel_merge_sort_16_2174_U0 9704
+Add Instance dataflow_in_loop4123 dataflow_in_loop4123_U0 711
+Add Instance compare_select_range_head_tail_16_1 compare_select_range_head_tail_16_1_U0 704
+Add Instance compare_swap_range_interval_16_1_1 compare_swap_range_interval_16_1_1_U0 740
+Add Instance compare_swap_range_interval_16_2_1_1 compare_swap_range_interval_16_2_1_1_U0 760
+Add Instance compare_swap_range_interval_16_4_1_1 compare_swap_range_interval_16_4_1_1_U0 780
+Add Instance compare_swap_range_interval_16_8_1_1 compare_swap_range_interval_16_8_1_1_U0 800
+Add Instance write_output_stream_16_1_1 write_output_stream_16_1_1_U0 820
+Add Instance load_input_stream_16_10 load_input_stream_16_10_U0 872
+Add Instance load_input_stream_16_11 load_input_stream_16_11_U0 908
+Add Instance parallel_merge_sort_16_2175 parallel_merge_sort_16_2175_U0 9756
+Add Instance dataflow_in_loop4122 dataflow_in_loop4122_U0 711
+Add Instance compare_select_range_head_tail_16_2 compare_select_range_head_tail_16_2_U0 704
+Add Instance compare_swap_range_interval_16_1_2 compare_swap_range_interval_16_1_2_U0 740
+Add Instance compare_swap_range_interval_16_2_1_2 compare_swap_range_interval_16_2_1_2_U0 760
+Add Instance compare_swap_range_interval_16_4_1_2 compare_swap_range_interval_16_4_1_2_U0 780
+Add Instance compare_swap_range_interval_16_8_1_2 compare_swap_range_interval_16_8_1_2_U0 800
+Add Instance write_output_stream_16_1_2 write_output_stream_16_1_2_U0 820
+Add Instance load_input_stream_16_12 load_input_stream_16_12_U0 872
+Add Instance load_input_stream_16_13 load_input_stream_16_13_U0 908
+Add Instance parallel_merge_sort_16_2176 parallel_merge_sort_16_2176_U0 9808
+Add Instance dataflow_in_loop4121 dataflow_in_loop4121_U0 711
+Add Instance compare_select_range_head_tail_16_3 compare_select_range_head_tail_16_3_U0 704
+Add Instance compare_swap_range_interval_16_1_3 compare_swap_range_interval_16_1_3_U0 740
+Add Instance compare_swap_range_interval_16_2_1_3 compare_swap_range_interval_16_2_1_3_U0 760
+Add Instance compare_swap_range_interval_16_4_1_3 compare_swap_range_interval_16_4_1_3_U0 780
+Add Instance compare_swap_range_interval_16_8_1_3 compare_swap_range_interval_16_8_1_3_U0 800
+Add Instance write_output_stream_16_1_3 write_output_stream_16_1_3_U0 820
+Add Instance load_input_stream_16_14 load_input_stream_16_14_U0 872
+Add Instance load_input_stream_16_15 load_input_stream_16_15_U0 908
+Add Instance parallel_merge_sort_16_1177 parallel_merge_sort_16_1177_U0 9860
+Add Instance dataflow_in_loop4120 dataflow_in_loop4120_U0 711
+Add Instance compare_select_range_head_tail_16_4 compare_select_range_head_tail_16_4_U0 704
+Add Instance compare_swap_range_interval_16_1_4 compare_swap_range_interval_16_1_4_U0 740
+Add Instance compare_swap_range_interval_16_2_1_4 compare_swap_range_interval_16_2_1_4_U0 760
+Add Instance compare_swap_range_interval_16_4_1_4 compare_swap_range_interval_16_4_1_4_U0 780
+Add Instance compare_swap_range_interval_16_8_1_4 compare_swap_range_interval_16_8_1_4_U0 800
+Add Instance write_output_stream_16_2 write_output_stream_16_2_U0 820
+Add Instance load_input_stream_16_1 load_input_stream_16_1_U0 872
+Add Instance load_input_stream_16_1_1 load_input_stream_16_1_1_U0 908
+Add Instance parallel_merge_sort_16_1178 parallel_merge_sort_16_1178_U0 9912
+Add Instance dataflow_in_loop4119 dataflow_in_loop4119_U0 711
+Add Instance compare_select_range_head_tail_16_5 compare_select_range_head_tail_16_5_U0 704
+Add Instance compare_swap_range_interval_16_1_5 compare_swap_range_interval_16_1_5_U0 740
+Add Instance compare_swap_range_interval_16_2_1_5 compare_swap_range_interval_16_2_1_5_U0 760
+Add Instance compare_swap_range_interval_16_4_1_5 compare_swap_range_interval_16_4_1_5_U0 780
+Add Instance compare_swap_range_interval_16_8_1_5 compare_swap_range_interval_16_8_1_5_U0 800
+Add Instance write_output_stream_16_2_1 write_output_stream_16_2_1_U0 820
+Add Instance load_input_stream_16_1_2 load_input_stream_16_1_2_U0 872
+Add Instance load_input_stream_16_1_3 load_input_stream_16_1_3_U0 908
+Add Instance parallel_merge_sort_16_179 parallel_merge_sort_16_179_U0 9964
+Add Instance dataflow_in_loop dataflow_in_loop_U0 711
+Add Instance compare_select_range_head_tail_16_6 compare_select_range_head_tail_16_6_U0 704
+Add Instance compare_swap_range_interval_16_1_6 compare_swap_range_interval_16_1_6_U0 740
+Add Instance compare_swap_range_interval_16_2_1_6 compare_swap_range_interval_16_2_1_6_U0 760
+Add Instance compare_swap_range_interval_16_4_1_6 compare_swap_range_interval_16_4_1_6_U0 780
+Add Instance compare_swap_range_interval_16_8_1_6 compare_swap_range_interval_16_8_1_6_U0 800
+Add Instance write_output_stream_16_3 write_output_stream_16_3_U0 820
+Add Instance load_input_stream_16_2 load_input_stream_16_2_U0 872
+Add Instance load_input_stream_16_2_1 load_input_stream_16_2_1_U0 908
+Add Instance forward_stream_1024_37 forward_stream_1024_37_U0 10032
+Add Instance forward_stream_1024_38 forward_stream_1024_38_U0 10039
+Add Instance forward_stream_1024_39 forward_stream_1024_39_U0 10046
+Add Instance forward_stream_1024_40 forward_stream_1024_40_U0 10053
+Add Instance forward_stream_1024_41 forward_stream_1024_41_U0 10060
+Add Instance forward_stream_1024_42 forward_stream_1024_42_U0 10067
+Add Instance forward_stream_1024_43 forward_stream_1024_43_U0 10074
+Add Instance forward_stream_1024_44 forward_stream_1024_44_U0 10081
+Add Instance forward_stream_1024_45 forward_stream_1024_45_U0 10088
+Add Instance forward_stream_1024_46 forward_stream_1024_46_U0 10095
+Add Instance forward_stream_1024_47 forward_stream_1024_47_U0 10102
+Add Instance forward_stream_1024_48 forward_stream_1024_48_U0 10109
+Add Instance forward_stream_1024_49 forward_stream_1024_49_U0 10116
+Add Instance forward_stream_1024_50 forward_stream_1024_50_U0 10123
+Add Instance forward_stream_1024_51 forward_stream_1024_51_U0 10130
+Add Instance forward_stream_1024_52 forward_stream_1024_52_U0 10137
+Add Instance forward_stream_1024_53 forward_stream_1024_53_U0 10144
+Add Instance forward_stream_1024_54 forward_stream_1024_54_U0 10151
+Add Instance forward_stream_1024_55 forward_stream_1024_55_U0 10158
+Add Instance forward_stream_1024_56 forward_stream_1024_56_U0 10165
+Add Instance forward_stream_1024_57 forward_stream_1024_57_U0 10172
+Add Instance forward_stream_1024_58 forward_stream_1024_58_U0 10179
+Add Instance forward_stream_1024_59 forward_stream_1024_59_U0 10186
+Add Instance forward_stream_1024_60 forward_stream_1024_60_U0 10193
+Add Instance forward_stream_1024_61 forward_stream_1024_61_U0 10200
+Add Instance forward_stream_1024_62 forward_stream_1024_62_U0 10207
+Add Instance forward_stream_1024_63 forward_stream_1024_63_U0 10214
+Add Instance forward_stream_1024_64 forward_stream_1024_64_U0 10221
+Add Instance forward_stream_1024_65 forward_stream_1024_65_U0 10228
+Add Instance forward_stream_1024_66 forward_stream_1024_66_U0 10235
+Add Instance forward_stream_1024_67 forward_stream_1024_67_U0 10242
+Add Instance forward_stream_1024_68 forward_stream_1024_68_U0 10249
+Add Instance forward_stream_1024_69 forward_stream_1024_69_U0 10256
+Add Instance forward_stream_1024_70 forward_stream_1024_70_U0 10263
+Add Instance forward_stream_1024_71 forward_stream_1024_71_U0 10270
+Add Instance forward_stream_1024_72 forward_stream_1024_72_U0 10277
+Add Instance forward_stream_1024_73 forward_stream_1024_73_U0 10284
+Add Instance forward_stream_1024_74 forward_stream_1024_74_U0 10291
+Add Instance forward_stream_1024_75 forward_stream_1024_75_U0 10298
+Add Instance forward_stream_1024_76 forward_stream_1024_76_U0 10305
+Add Instance forward_stream_1024_77 forward_stream_1024_77_U0 10312
+Add Instance forward_stream_1024_78 forward_stream_1024_78_U0 10319
+Add Instance forward_stream_1024_79 forward_stream_1024_79_U0 10326
+Add Instance forward_stream_1024_80 forward_stream_1024_80_U0 10333
+Add Instance forward_stream_1024_81 forward_stream_1024_81_U0 10340
+Add Instance forward_stream_1024_82 forward_stream_1024_82_U0 10347
+Add Instance forward_stream_1024_83 forward_stream_1024_83_U0 10354
+Add Instance forward_stream_1024_84 forward_stream_1024_84_U0 10361
+Add Instance forward_stream_1024_85 forward_stream_1024_85_U0 10368
+Add Instance forward_stream_1024_86 forward_stream_1024_86_U0 10375
+Add Instance forward_stream_1024_87 forward_stream_1024_87_U0 10382
+Add Instance forward_stream_1024_88 forward_stream_1024_88_U0 10389
+Add Instance forward_stream_1024_89 forward_stream_1024_89_U0 10396
+Add Instance forward_stream_1024_90 forward_stream_1024_90_U0 10403
+Add Instance forward_stream_1024_91 forward_stream_1024_91_U0 10410
+Add Instance forward_stream_1024_92 forward_stream_1024_92_U0 10417
+Add Instance forward_stream_1024_93 forward_stream_1024_93_U0 10424
+Add Instance forward_stream_1024_94 forward_stream_1024_94_U0 10431
+Add Instance forward_stream_1024_95 forward_stream_1024_95_U0 10438
+Add Instance forward_stream_1024_96 forward_stream_1024_96_U0 10445
+Add Instance forward_stream_1024_97 forward_stream_1024_97_U0 10452
+Add Instance forward_stream_1024_98 forward_stream_1024_98_U0 10459
+Add Instance forward_stream_1024_99 forward_stream_1024_99_U0 10466
+Add Instance forward_stream_1024_100 forward_stream_1024_100_U0 10473
+Add Instance forward_stream_1024_101 forward_stream_1024_101_U0 10480
+Add Instance forward_stream_1024_102 forward_stream_1024_102_U0 10487
+Add Instance forward_stream_1024_103 forward_stream_1024_103_U0 10494
+Add Instance forward_stream_1024_104 forward_stream_1024_104_U0 10501
+Add Instance forward_stream_1024_105 forward_stream_1024_105_U0 10508
+Add Instance forward_stream_1024_106 forward_stream_1024_106_U0 10515
+Add Instance forward_stream_1024_107 forward_stream_1024_107_U0 10522
+Add Instance forward_stream_1024_108 forward_stream_1024_108_U0 10529
+Add Instance forward_stream_1024_109 forward_stream_1024_109_U0 10536
+Add Instance forward_stream_1024_110 forward_stream_1024_110_U0 10543
+Add Instance forward_stream_1024_111 forward_stream_1024_111_U0 10550
+Add Instance forward_stream_1024_112 forward_stream_1024_112_U0 10557
+Add Instance forward_stream_1024_113 forward_stream_1024_113_U0 10564
+Add Instance forward_stream_1024_114 forward_stream_1024_114_U0 10571
+Add Instance forward_stream_1024_115 forward_stream_1024_115_U0 10578
+Add Instance forward_stream_1024_116 forward_stream_1024_116_U0 10585
+Add Instance forward_stream_1024_117 forward_stream_1024_117_U0 10592
+Add Instance forward_stream_1024_118 forward_stream_1024_118_U0 10599
+Add Instance forward_stream_1024_119 forward_stream_1024_119_U0 10606
+Add Instance forward_stream_1024_120 forward_stream_1024_120_U0 10613
+Add Instance forward_stream_1024_121 forward_stream_1024_121_U0 10620
+Add Instance forward_stream_1024_122 forward_stream_1024_122_U0 10627
+Add Instance forward_stream_1024_123 forward_stream_1024_123_U0 10634
+Add Instance forward_stream_1024_124 forward_stream_1024_124_U0 10641
+Add Instance forward_stream_1024_125 forward_stream_1024_125_U0 10648
+Add Instance forward_stream_1024_126 forward_stream_1024_126_U0 10655
+Add Instance forward_stream_1024_127 forward_stream_1024_127_U0 10662
+Add Instance forward_stream_1024_128 forward_stream_1024_128_U0 10669
+Add Instance forward_stream_1024_129 forward_stream_1024_129_U0 10676
+Add Instance forward_stream_1024_130 forward_stream_1024_130_U0 10683
+Add Instance forward_stream_1024_131 forward_stream_1024_131_U0 10690
+Add Instance forward_stream_1024_132 forward_stream_1024_132_U0 10697
+Add Instance forward_stream_1024_133 forward_stream_1024_133_U0 10704
+Add Instance forward_stream_1024_134 forward_stream_1024_134_U0 10711
+Add Instance forward_stream_1024_135 forward_stream_1024_135_U0 10718
+Add Instance forward_stream_1024_136 forward_stream_1024_136_U0 10725
+Add Instance forward_stream_1024_137 forward_stream_1024_137_U0 10732
+Add Instance forward_stream_1024_138 forward_stream_1024_138_U0 10739
+Add Instance forward_stream_1024_139 forward_stream_1024_139_U0 10746
+Add Instance forward_stream_1024_140 forward_stream_1024_140_U0 10753
+Add Instance forward_stream_1024_141 forward_stream_1024_141_U0 10760
+Add Instance forward_stream_1024_142 forward_stream_1024_142_U0 10767
+Add Instance forward_stream_1024_143 forward_stream_1024_143_U0 10774
+Add Instance forward_stream_1024_144 forward_stream_1024_144_U0 10781
+Add Instance forward_stream_1024_145 forward_stream_1024_145_U0 10788
+Add Instance forward_stream_1024_146 forward_stream_1024_146_U0 10795
+Add Instance forward_stream_1024_147 forward_stream_1024_147_U0 10802
+Add Instance forward_stream_1024_148 forward_stream_1024_148_U0 10809
+Add Instance forward_stream_1024_149 forward_stream_1024_149_U0 10816
+Add Instance forward_stream_1024_150 forward_stream_1024_150_U0 10823
+Add Instance forward_stream_1024_151 forward_stream_1024_151_U0 10830
+Add Instance forward_stream_1024_152 forward_stream_1024_152_U0 10837
+Add Instance forward_stream_1024_153 forward_stream_1024_153_U0 10844
+Add Instance forward_stream_1024_154 forward_stream_1024_154_U0 10851
+Add Instance forward_stream_1024_155 forward_stream_1024_155_U0 10858
+Add Instance forward_stream_1024_156 forward_stream_1024_156_U0 10865
+Add Instance forward_stream_1024_157 forward_stream_1024_157_U0 10872
+Add Instance forward_stream_1024_158 forward_stream_1024_158_U0 10879
+Add Instance forward_stream_1024_159 forward_stream_1024_159_U0 10886
+Add Instance forward_stream_1024_160 forward_stream_1024_160_U0 10893
+Add Instance forward_stream_1024_161 forward_stream_1024_161_U0 10900
+Add Instance forward_stream_1024_162 forward_stream_1024_162_U0 10907
+Add Instance forward_stream_1024_163 forward_stream_1024_163_U0 10914
+Add Instance forward_stream_1024_164 forward_stream_1024_164_U0 10921
+Add Instance broadcast_array_128_5 broadcast_array_128_5_U0 3316
+Add Instance write_result_16_s write_result_16_U0 3453
+WARNING: [v++ 17-1525] IP definition with the same IP name already exists in XO container. Will overwrite the existing IP definition.
+INFO: [v++ 60-586] Created xclbin/vadd.hw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 50m 10s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw_emu.xclbin' xclbin/vadd.hw_emu.xo  #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:46401
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/xclbin/vadd.hw_emu.xclbin.link_summary, at Tue Jan  5 15:38:16 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Jan  5 15:38:16 2021
+Running Rule Check Server on port:40453
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/link/v++_link_vadd.hw_emu_guidance.html', at Tue Jan  5 15:38:17 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [15:38:37] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/xclbin/vadd.hw_emu.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target emu --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Tue Jan  5 15:38:43 2021
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/xclbin/vadd.hw_emu.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM21' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM22' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM23' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM24' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM25' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM26' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM27' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM28' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM29' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM30' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_HBM31' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'table_DDR1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [15:38:56] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/emu/emu.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [15:39:03] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 287422 ; free virtual = 437845
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [15:39:03] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.table_HBM0:HBM[0] -sp vadd_1.table_HBM1:HBM[1] -sp vadd_1.table_HBM2:HBM[2] -sp vadd_1.table_HBM3:HBM[3] -sp vadd_1.table_HBM4:HBM[4] -sp vadd_1.table_HBM5:HBM[5] -sp vadd_1.table_HBM6:HBM[6] -sp vadd_1.table_HBM7:HBM[7] -sp vadd_1.table_HBM8:HBM[8] -sp vadd_1.table_HBM9:HBM[9] -sp vadd_1.table_HBM10:HBM[10] -sp vadd_1.table_HBM11:HBM[11] -sp vadd_1.table_HBM12:HBM[12] -sp vadd_1.table_HBM13:HBM[13] -sp vadd_1.table_HBM14:HBM[14] -sp vadd_1.table_HBM15:HBM[15] -sp vadd_1.table_HBM16:HBM[16] -sp vadd_1.table_HBM17:HBM[17] -sp vadd_1.table_HBM18:HBM[18] -sp vadd_1.table_HBM19:HBM[19] -sp vadd_1.table_HBM20:HBM[20] -sp vadd_1.table_HBM21:HBM[21] -sp vadd_1.table_HBM22:HBM[22] -sp vadd_1.table_HBM23:HBM[23] -sp vadd_1.table_HBM24:HBM[24] -sp vadd_1.table_HBM25:HBM[25] -sp vadd_1.table_HBM26:HBM[26] -sp vadd_1.table_HBM27:HBM[27] -sp vadd_1.table_HBM28:HBM[28] -sp vadd_1.table_HBM29:HBM[29] -sp vadd_1.table_HBM30:HBM[30] -sp vadd_1.table_HBM31:HBM[31] -sp vadd_1.table_DDR0:DDR[0] -sp vadd_1.table_DDR1:DDR[1] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM21, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM22, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM23, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM24, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM25, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM26, sptag: HBM[26]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM27, sptag: HBM[27]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM28, sptag: HBM[28]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM29, sptag: HBM[29]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM30, sptag: HBM[30]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_HBM31, sptag: HBM[31]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR0, sptag: DDR[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: table_DDR1, sptag: DDR[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM0 to HBM[0] for directive vadd_1.table_HBM0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM1 to HBM[1] for directive vadd_1.table_HBM1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM2 to HBM[2] for directive vadd_1.table_HBM2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM3 to HBM[3] for directive vadd_1.table_HBM3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM4 to HBM[4] for directive vadd_1.table_HBM4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM5 to HBM[5] for directive vadd_1.table_HBM5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM6 to HBM[6] for directive vadd_1.table_HBM6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM7 to HBM[7] for directive vadd_1.table_HBM7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM8 to HBM[8] for directive vadd_1.table_HBM8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM9 to HBM[9] for directive vadd_1.table_HBM9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM10 to HBM[10] for directive vadd_1.table_HBM10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM11 to HBM[11] for directive vadd_1.table_HBM11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM12 to HBM[12] for directive vadd_1.table_HBM12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM13 to HBM[13] for directive vadd_1.table_HBM13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM14 to HBM[14] for directive vadd_1.table_HBM14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM15 to HBM[15] for directive vadd_1.table_HBM15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM16 to HBM[16] for directive vadd_1.table_HBM16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM17 to HBM[17] for directive vadd_1.table_HBM17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM18 to HBM[18] for directive vadd_1.table_HBM18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM19 to HBM[19] for directive vadd_1.table_HBM19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM20 to HBM[20] for directive vadd_1.table_HBM20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM21 to HBM[21] for directive vadd_1.table_HBM21:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM22 to HBM[22] for directive vadd_1.table_HBM22:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM23 to HBM[23] for directive vadd_1.table_HBM23:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM24 to HBM[24] for directive vadd_1.table_HBM24:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM25 to HBM[25] for directive vadd_1.table_HBM25:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM26 to HBM[26] for directive vadd_1.table_HBM26:HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM27 to HBM[27] for directive vadd_1.table_HBM27:HBM[27]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM28 to HBM[28] for directive vadd_1.table_HBM28:HBM[28]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM29 to HBM[29] for directive vadd_1.table_HBM29:HBM[29]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM30 to HBM[30] for directive vadd_1.table_HBM30:HBM[30]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_HBM31 to HBM[31] for directive vadd_1.table_HBM31:HBM[31]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR0 to DDR[0] for directive vadd_1.table_DDR0:DDR[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.table_DDR1 to DDR[1] for directive vadd_1.table_DDR1:DDR[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [15:39:09] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 287542 ; free virtual = 438000
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [15:39:09] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int --target_bd emu/emu.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd emu/emu.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [15:39:14] cf2bd finished successfully
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 287429 ; free virtual = 437898
+INFO: [v++ 60-1441] [15:39:14] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:37 . Memory (MB): peak = 732.844 ; gain = 0.000 ; free physical = 287457 ; free virtual = 437925
+INFO: [v++ 60-1443] [15:39:14] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-1441] [15:39:17] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 732.844 ; gain = 0.000 ; free physical = 287443 ; free virtual = 437927
+INFO: [v++ 60-1443] [15:39:17] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw_emu/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw_emu.xclbin xclbin/vadd.hw_emu.xo  --generatedByXclbinName vadd.hw_emu --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [15:39:19] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 732.844 ; gain = 0.000 ; free physical = 287432 ; free virtual = 437924
+INFO: [v++ 60-1443] [15:39:19] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw_emu -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 200 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link --emulation_mode debug_waveform --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/.tlog/v++_link_vadd.hw_emu --iprepo /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/vivado/vpl/.local/hw_platform
+[15:40:20] Run vpl: Step create_project: Started
+Creating Vivado project.
+[15:40:23] Run vpl: Step create_project: Completed
+[15:40:23] Run vpl: Step create_bd: Started
+[15:41:54] Run vpl: Step create_bd: RUNNING...
+[15:43:02] Run vpl: Step create_bd: Completed
+[15:43:02] Run vpl: Step update_bd: Started
+[15:44:26] Run vpl: Step update_bd: RUNNING...
+[15:45:49] Run vpl: Step update_bd: RUNNING...
+[15:45:56] Run vpl: Step update_bd: Completed
+[15:45:56] Run vpl: Step generate_target: Started
+[15:47:18] Run vpl: Step generate_target: RUNNING...
+[15:48:51] Run vpl: Step generate_target: RUNNING...
+[15:49:10] Run vpl: Step generate_target: Completed
+[15:49:10] Run vpl: Step config_hw_emulation: Started
+[15:50:47] Run vpl: Step config_hw_emulation: RUNNING...
+[15:52:34] Run vpl: Step config_hw_emulation: RUNNING...
+[15:54:08] Run vpl: Step config_hw_emulation: RUNNING...
+[15:55:54] Run vpl: Step config_hw_emulation: RUNNING...
+[15:57:35] Run vpl: Step config_hw_emulation: RUNNING...
+[15:57:50] Run vpl: Step config_hw_emulation: Completed
+[15:58:10] Run vpl: FINISHED. Run Status: config_hw_emulation Complete!
+INFO: [v++ 60-1441] [15:59:28] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:00:18 ; elapsed = 00:20:09 . Memory (MB): peak = 732.844 ; gain = 0.000 ; free physical = 279663 ; free virtual = 437489
+INFO: [v++ 60-1443] [15:59:28] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'kernel2_clk_clk' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'kernel_clk_clk' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (KERNEL) clock: kernel2_clk_clk = 500, Kernel (DATA) clock: kernel_clk_clk = 200
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/vadd.hw_emu.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/building_blocks/sort_reduction_128_to_16/_x.hw_emu/vadd/link/int/vadd.hw_emu.xml
+/opt/Xilinx/Vitis/2019.2/bin/loader: line 280: 51243 Segmentation fault      "$RDI_PROG" "$@"
+Makefile:93: recipe for target 'xclbin/vadd.hw_emu.xclbin' failed
+make: *** [xclbin/vadd.hw_emu.xclbin] Interrupt
