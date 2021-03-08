@@ -117,7 +117,7 @@ int main(int argc, char** argv)
 
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int size_results_out = 10; 
+    int size_results_out = 16; 
     std::vector<ap_uint<64>,aligned_allocator<ap_uint<64>>> source_hw_results(size_results_out);
     std::vector<float,aligned_allocator<float>> source_sw_results(size_results_out);
 

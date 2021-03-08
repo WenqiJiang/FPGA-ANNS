@@ -3,6 +3,11 @@
 
 #define SORT_ARRAY_NUM (128 * 1024 * 1024)
 
+typedef struct {
+    int vec_ID;
+    float dist;
+} single_PQ_result; 
+
 #define LARGE_NUM 9999999
 
 //////////////////////////////   TEMPLATE START  //////////////////////////////

@@ -1,5 +1,5 @@
 #include "vadd.hpp"
-#include "sort_reduction_64_to_16.hpp"
+#include "sort_reduction_64_to_16_with_vecID.hpp"
 
 #include <stdio.h>
 
@@ -23,7 +23,7 @@ void vadd(
     const t_axi* table_HBM28, const t_axi* table_HBM29, 
     const t_axi* table_HBM30, const t_axi* table_HBM31, 
     const t_axi* table_DDR0, const t_axi* table_DDR1,
-    float* out_PLRAM
+    ap_uint<64>* out_PLRAM
     )
 {
 #pragma HLS INTERFACE m_axi port=table_HBM0  offset=slave bundle=gmem0
@@ -107,14 +107,14 @@ void vadd(
 
 #pragma HLS dataflow
 
-    hls::stream<float> input_stream[4][16];
+    hls::stream<single_PQ_result> input_stream[4][16];
 #pragma HLS array_partition variable=input_stream complete
-    hls::stream<float> output_stream[16];
+    hls::stream<single_PQ_result> output_stream[16];
 #pragma HLS array_partition variable=output_stream dim=1
 
     broadcast_array<4, 16>(table_HBM0, input_stream);
 
-    Sort_reduction<float, 64, 16, Collect_smallest> sort_reduction_module;
+    Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> sort_reduction_module;
 
     sort_reduction_module.sort_and_reduction(input_stream, output_stream);
 
@@ -123,14 +123,15 @@ void vadd(
 
 template<const int dim1, const int dim2>
 void broadcast_array(
-    const float* data_source, hls::stream<float> (&input_stream)[dim1][dim2]) {
+    const float* data_source, hls::stream<single_PQ_result> (&input_stream)[dim1][dim2]) {
     
-    float array[dim1 * dim2];
+    single_PQ_result array[dim1 * dim2];
 #pragma HLS array_partition variable=array complete
 
     for (int i = 0; i < dim1 * dim2; i++) {
 #pragma HLS pipeline II=1
-        array[i] = data_source[i];
+        array[i].vec_ID = i;
+        array[i].dist = data_source[i];
     }
 
     for (int iter = 0; iter < SORT_ARRAY_NUM; iter++) {
@@ -146,9 +147,9 @@ void broadcast_array(
 }
 
 template<const int total_len>
-void write_result(hls::stream<float> (&output_stream)[total_len], float* output) {
+void write_result(hls::stream<single_PQ_result> (&output_stream)[total_len], ap_uint<64>* output) {
 
-    float output_local[total_len];
+    single_PQ_result output_local[total_len];
 #pragma HLS array_partition variable=output_local complete
 
     for (int i = 0; i < SORT_ARRAY_NUM; i++) {
@@ -161,6 +162,11 @@ void write_result(hls::stream<float> (&output_stream)[total_len], float* output)
 
     for (int s = 0; s < total_len; s++) {
 #pragma HLS pipeline II=1
-        output[s] = output_local[s];
+        ap_uint<64> reg;
+        int vec_ID = output_local[s].vec_ID;
+        float dist = output_local[s].dist;
+        reg.range(31, 0) = *((ap_uint<32>*) (&vec_ID));
+        reg.range(63, 32) = *((ap_uint<32>*) (&dist));
+        output[s] = reg;
     }
 }

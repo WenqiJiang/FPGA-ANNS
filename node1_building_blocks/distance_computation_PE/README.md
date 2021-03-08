@@ -19,6 +19,8 @@ What I got: 6,539,267 (II=3)
 
 32 PE Throughput: 1 / (6,539,267/1024 * 5 * 1e-9) = 31318
 
+Wenqi: for this throughput, I can definitely use Priority Queue, it only takes 2 CC per insertion.
+
 ```
 * Summary: 
     + Detail: 

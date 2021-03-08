@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
     int size_results_out = 16; 
-    std::vector<float,aligned_allocator<float>> source_hw_results(size_results_out);
+    std::vector<ap_uint<64>,aligned_allocator<ap_uint<64>>> source_hw_results(size_results_out);
     std::vector<float,aligned_allocator<float>> source_sw_results(size_results_out);
 
 //// INIT SORT array ////
@@ -404,7 +404,7 @@ int main(int argc, char** argv)
 // .......................................................
     OCL_CHECK(err, cl::Buffer buffer_output(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY | CL_MEM_EXT_PTR_XILINX, 
-        size_results_out *sizeof(D_TYPE), &sourcce_hw_resultsExt, &err));
+        size_results_out *sizeof(ap_uint<64>), &sourcce_hw_resultsExt, &err));
 
 // ============================================================================
 // Step 2: Set Kernel Arguments and Run the Application
@@ -489,7 +489,12 @@ int main(int argc, char** argv)
     bool match = true;
 
     for (int i = 0 ; i < size_results_out; i++) {
-            std::cout << "i = " << i << " result = " << source_hw_results[i] << std::endl;
+            ap_uint<64> reg = source_hw_results[i];
+            ap_uint<32> raw_vec_ID = reg.range(31, 0); 
+            ap_uint<32>  raw_dist = reg.range(63, 32);
+            int vec_ID = *((int*) (&raw_vec_ID));
+            float dist = *((float*) (&raw_dist));
+            std::cout << "i = " << i << " vec_ID = " << vec_ID << " dist = "<< dist << std::endl;
     }
 
 // ============================================================================

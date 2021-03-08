@@ -1,0 +1,322 @@
+mkdir -p ./xclbin
+g++ -g -I./ -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2019.2/include -Wall -O0 -g -std=c++11 -fmessage-length=0 src/host.cpp src/host.hpp -o 'host' -L/opt/xilinx/xrt/lib -lOpenCL -lpthread -lrt -lstdc++
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = true]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:1647:3:   required from ‘ap_private<_AP_W, _AP_S, true>::ap_private(int) [with int _AP_W = 32; bool _AP_S = true]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:72:87:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+             : (excess_bits ? (((uint64_t)VAL) << (excess_bits)) >> (excess_bits)
+               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                            : (uint64_t)VAL));
+                            ~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:1426:20:   required from ‘ap_private<_AP_W, _AP_S>& ap_private<_AP_W, _AP_S, true>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 64; bool _AP_S1 = false; int _AP_W = 32; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int_base.h:364:13:   required from ‘ap_int_base<_AP_W, _AP_S>::ap_int_base(const ap_range_ref<_AP_W2, _AP_S2>&) [with int _AP_W2 = 64; bool _AP_S2 = false; int _AP_W = 32; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:237:69:   required from ‘ap_uint<_AP_W>::ap_uint(const ap_range_ref<_AP_W2, _AP_S2>&) [with int _AP_W2 = 64; bool _AP_S2 = false; int _AP_W = 32]’
+src/host.cpp:526:53:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+In file included from /opt/Xilinx/Vivado/2019.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2019.2/include/ap_int.h:54,
+                 from src/constants.hpp:2,
+                 from src/host.hpp:15,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, false>::cpSext(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5335:13:   required from ‘void ap_private<_AP_W, _AP_S, false>::cpSextOrTrunc(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4598:20:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2019.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:72:87:   required from here
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5292:45: warning: enum constant in boolean context [-Wint-in-bool-context]
+       static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2019.2/include/etc/ap_private.h:5300:43: warning: enum constant in boolean context [-Wint-in-bool-context]
+     static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                  ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/vadd.sw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/logs/vadd.sw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:32805
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/xclbin/vadd.sw_emu.xo.compile_summary, at Thu Mar  4 11:29:37 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Mar  4 11:29:37 2021
+Running Rule Check Server on port:35497
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Thu Mar  4 11:29:38 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/vadd.sw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 32, Depth = 35.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 2, Final II = 2, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/vadd.sw_emu/system_estimate_vadd.sw_emu.xtxt
+Add Instance stream_redirect_to_priority_queue_wrapper_4_s stream_redirect_to_priority_queue_wrapper_4_U0 444
+Add Instance insert_wrapper_4_52 insert_wrapper_4_52_U0 766
+Add Instance insert_wrapper_4_53 insert_wrapper_4_53_U0 775
+Add Instance insert_wrapper_4_54 insert_wrapper_4_54_U0 784
+Add Instance insert_wrapper_4_55 insert_wrapper_4_55_U0 793
+Add Instance insert_wrapper_4_56 insert_wrapper_4_56_U0 802
+Add Instance insert_wrapper_4_57 insert_wrapper_4_57_U0 811
+Add Instance insert_wrapper_4_58 insert_wrapper_4_58_U0 820
+Add Instance insert_wrapper_4_59 insert_wrapper_4_59_U0 829
+Add Instance insert_wrapper_4_60 insert_wrapper_4_60_U0 838
+Add Instance insert_wrapper_4_61 insert_wrapper_4_61_U0 847
+Add Instance insert_wrapper_4_62 insert_wrapper_4_62_U0 856
+Add Instance insert_wrapper_4_63 insert_wrapper_4_63_U0 865
+Add Instance insert_wrapper_4_64 insert_wrapper_4_64_U0 874
+Add Instance insert_wrapper_4_65 insert_wrapper_4_65_U0 883
+Add Instance insert_wrapper_4_66 insert_wrapper_4_66_U0 892
+Add Instance insert_wrapper_4_67 insert_wrapper_4_67_U0 901
+Add Instance insert_wrapper_4_68 insert_wrapper_4_68_U0 910
+Add Instance insert_wrapper_4_69 insert_wrapper_4_69_U0 919
+Add Instance insert_wrapper_4_70 insert_wrapper_4_70_U0 928
+Add Instance insert_wrapper_4_71 insert_wrapper_4_71_U0 937
+Add Instance insert_wrapper_4_1 insert_wrapper_4_1_U0 946
+Add Instance consume_and_redirect_sorted_streams_4_s consume_and_redirect_sorted_streams_4_U0 957
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_457 457
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_478 478
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_499 499
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_520 520
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_541 541
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_562 562
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_583 583
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_604 604
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_625 625
+Add Instance split_single_stream_4_s grp_split_single_stream_4_s_fu_646 646
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_667 667
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_676 676
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_685 685
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_694 694
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_703 703
+Add Instance consume_single_stream_4_s grp_consume_single_stream_4_s_fu_712 712
+Add Instance merge_streams_4_10_s merge_streams_4_10_U0 1087
+Add Instance send_iter_num_4_200_s send_iter_num_4_200_U0 1133
+Add Instance dummy_PQ_result_sender_wrapper_4_32_s dummy_PQ_result_sender_wrapper_4_32_U0 483
+Add Instance dummy_PQ_result_sender_4_32_36 dummy_PQ_result_sender_4_32_36_U0 224
+Add Instance dummy_PQ_result_sender_4_32_37 dummy_PQ_result_sender_4_32_37_U0 233
+Add Instance dummy_PQ_result_sender_4_32_38 dummy_PQ_result_sender_4_32_38_U0 242
+Add Instance dummy_PQ_result_sender_4_32_39 dummy_PQ_result_sender_4_32_39_U0 251
+Add Instance dummy_PQ_result_sender_4_32_40 dummy_PQ_result_sender_4_32_40_U0 260
+Add Instance dummy_PQ_result_sender_4_32_41 dummy_PQ_result_sender_4_32_41_U0 269
+Add Instance dummy_PQ_result_sender_4_32_42 dummy_PQ_result_sender_4_32_42_U0 278
+Add Instance dummy_PQ_result_sender_4_32_43 dummy_PQ_result_sender_4_32_43_U0 287
+Add Instance dummy_PQ_result_sender_4_32_44 dummy_PQ_result_sender_4_32_44_U0 296
+Add Instance dummy_PQ_result_sender_4_32_45 dummy_PQ_result_sender_4_32_45_U0 305
+Add Instance dummy_PQ_result_sender_4_32_46 dummy_PQ_result_sender_4_32_46_U0 314
+Add Instance dummy_PQ_result_sender_4_32_47 dummy_PQ_result_sender_4_32_47_U0 323
+Add Instance dummy_PQ_result_sender_4_32_48 dummy_PQ_result_sender_4_32_48_U0 332
+Add Instance dummy_PQ_result_sender_4_32_49 dummy_PQ_result_sender_4_32_49_U0 341
+Add Instance dummy_PQ_result_sender_4_32_50 dummy_PQ_result_sender_4_32_50_U0 350
+Add Instance dummy_PQ_result_sender_4_32_51 dummy_PQ_result_sender_4_32_51_U0 359
+Add Instance replicate_s_scanned_entries_every_cell_Dummy_4_32_s replicate_s_scanned_entries_every_cell_Dummy_4_32_U0 368
+Add Instance scan_controller_4_8192_32_s scan_controller_4_8192_32_U0 520
+Add Instance write_result_40_s write_result_40_U0 530
+Add Instance generate_scanned_cell_id_4_32_5 generate_scanned_cell_id_4_32_5_U0 539
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 8m 46s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.sw_emu.xclbin' xclbin/vadd.sw_emu.xo --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:43223
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/xclbin/vadd.sw_emu.xclbin.link_summary, at Thu Mar  4 11:38:25 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Thu Mar  4 11:38:25 2021
+Running Rule Check Server on port:44703
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Thu Mar  4 11:38:26 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-645] kernel flags are '-g -I /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/src -g'
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/link/system_estimate_vadd.sw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper/_x.sw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 0m 13s
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=sw_emu ./host ./xclbin/vadd.sw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 vec_ID = -1 dist = 1e+08
+i = 1 vec_ID = -1 dist = 1e+08
+i = 2 vec_ID = -1 dist = 1e+08
+i = 3 vec_ID = -1 dist = 1e+08
+i = 4 vec_ID = -1 dist = 1e+08
+i = 5 vec_ID = -1 dist = 1e+08
+i = 6 vec_ID = -1 dist = 1e+08
+i = 7 vec_ID = -1 dist = 1e+08
+i = 8 vec_ID = -1 dist = 1e+08
+i = 9 vec_ID = -1 dist = 1e+08
+i = 10 vec_ID = -1 dist = 1e+08
+i = 11 vec_ID = -1 dist = 1e+08
+i = 12 vec_ID = -1 dist = 1e+08
+i = 13 vec_ID = -1 dist = 1e+08
+i = 14 vec_ID = -1 dist = 1e+08
+i = 15 vec_ID = -1 dist = 1e+08
+i = 16 vec_ID = -1 dist = 1e+08
+i = 17 vec_ID = -1 dist = 1e+08
+i = 18 vec_ID = -1 dist = 1e+08
+i = 19 vec_ID = -1 dist = 1e+08
+i = 20 vec_ID = -1 dist = 1e+08
+i = 21 vec_ID = -1 dist = 1e+08
+i = 22 vec_ID = -1 dist = 1e+08
+i = 23 vec_ID = -1 dist = 1e+08
+i = 24 vec_ID = -1 dist = 1e+08
+i = 25 vec_ID = -1 dist = 1e+08
+i = 26 vec_ID = -1 dist = 1e+08
+i = 27 vec_ID = -1 dist = 1e+08
+i = 28 vec_ID = -1 dist = 1e+08
+i = 29 vec_ID = -1 dist = 1e+08
+i = 30 vec_ID = -1 dist = 1e+08
+i = 31 vec_ID = -1 dist = 1e+08
+i = 32 vec_ID = -1 dist = 1e+08
+i = 33 vec_ID = -1 dist = 1e+08
+i = 34 vec_ID = -1 dist = 1e+08
+i = 35 vec_ID = -1 dist = 1e+08
+i = 36 vec_ID = -1 dist = 1e+08
+i = 37 vec_ID = -1 dist = 1e+08
+i = 38 vec_ID = -1 dist = 1e+08
+i = 39 vec_ID = -1 dist = 1e+08
+TEST PASSED

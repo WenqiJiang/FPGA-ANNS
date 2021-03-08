@@ -1,0 +1,234 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -c -k vadd -I'src' -o'xclbin/vadd.sw_emu.xo' 'src/vadd.cpp'  --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/vadd.sw_emu
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/logs/vadd.sw_emu
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:34869
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/xclbin/vadd.sw_emu.xo.compile_summary, at Mon Mar  1 15:57:55 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Mar  1 15:57:55 2021
+Running Rule Check Server on port:41289
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/vadd.sw_emu/v++_compile_vadd.sw_emu_guidance.html', at Mon Mar  1 15:57:56 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/vadd.sw_emu/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'load_input_stream<16>.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining function 'compare_select_range_head_tail<16>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 1>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 2>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 4>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'compare_swap_range_interval<16, 8>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining function 'write_output_stream<16>'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/vadd.sw_emu/system_estimate_vadd.sw_emu.xtxt
+Add Instance parallel_merge_sort_16_4_4_66 parallel_merge_sort_16_4_4_66_U0 840
+Add Instance dataflow_parent_loop_proc dataflow_parent_loop_proc_U0 237
+Add Instance dataflow_in_loop dataflow_in_loop_U0 237
+Add Instance compare_select_range_head_tail_16_s compare_select_range_head_tail_16_U0 228
+Add Instance compare_swap_range_interval_16_1_s compare_swap_range_interval_16_1_U0 296
+Add Instance compare_swap_range_interval_16_2_s compare_swap_range_interval_16_2_U0 332
+Add Instance compare_swap_range_interval_16_4_s compare_swap_range_interval_16_4_U0 368
+Add Instance compare_swap_range_interval_16_8_s compare_swap_range_interval_16_8_U0 404
+Add Instance load_input_stream_16_s load_input_stream_16_U0 440
+Add Instance load_input_stream_16_1 load_input_stream_16_1_U0 508
+Add Instance write_output_stream_16_s write_output_stream_16_U0 576
+Add Instance consume_and_write_result_4_4_s consume_and_write_result_4_4_U0 940
+Add Instance dummy_PQ_result_sender_4_4_34 dummy_PQ_result_sender_4_4_34_U0 979
+Add Instance dummy_PQ_result_sender_4_4_35 dummy_PQ_result_sender_4_4_35_U0 985
+Add Instance dummy_PQ_result_sender_4_4_36 dummy_PQ_result_sender_4_4_36_U0 991
+Add Instance dummy_PQ_result_sender_4_4_37 dummy_PQ_result_sender_4_4_37_U0 997
+Add Instance dummy_PQ_result_sender_4_4_38 dummy_PQ_result_sender_4_4_38_U0 1003
+Add Instance dummy_PQ_result_sender_4_4_39 dummy_PQ_result_sender_4_4_39_U0 1009
+Add Instance dummy_PQ_result_sender_4_4_40 dummy_PQ_result_sender_4_4_40_U0 1015
+Add Instance dummy_PQ_result_sender_4_4_41 dummy_PQ_result_sender_4_4_41_U0 1021
+Add Instance dummy_PQ_result_sender_4_4_42 dummy_PQ_result_sender_4_4_42_U0 1027
+Add Instance dummy_PQ_result_sender_4_4_43 dummy_PQ_result_sender_4_4_43_U0 1033
+Add Instance dummy_PQ_result_sender_4_4_44 dummy_PQ_result_sender_4_4_44_U0 1039
+Add Instance dummy_PQ_result_sender_4_4_45 dummy_PQ_result_sender_4_4_45_U0 1045
+Add Instance dummy_PQ_result_sender_4_4_46 dummy_PQ_result_sender_4_4_46_U0 1051
+Add Instance dummy_PQ_result_sender_4_4_47 dummy_PQ_result_sender_4_4_47_U0 1057
+Add Instance dummy_PQ_result_sender_4_4_48 dummy_PQ_result_sender_4_4_48_U0 1063
+Add Instance dummy_PQ_result_sender_4_4_49 dummy_PQ_result_sender_4_4_49_U0 1069
+Add Instance dummy_PQ_result_sender_4_4_50 dummy_PQ_result_sender_4_4_50_U0 1075
+Add Instance dummy_PQ_result_sender_4_4_51 dummy_PQ_result_sender_4_4_51_U0 1081
+Add Instance dummy_PQ_result_sender_4_4_52 dummy_PQ_result_sender_4_4_52_U0 1087
+Add Instance dummy_PQ_result_sender_4_4_53 dummy_PQ_result_sender_4_4_53_U0 1093
+Add Instance dummy_PQ_result_sender_4_4_54 dummy_PQ_result_sender_4_4_54_U0 1099
+Add Instance dummy_PQ_result_sender_4_4_55 dummy_PQ_result_sender_4_4_55_U0 1105
+Add Instance dummy_PQ_result_sender_4_4_56 dummy_PQ_result_sender_4_4_56_U0 1111
+Add Instance dummy_PQ_result_sender_4_4_57 dummy_PQ_result_sender_4_4_57_U0 1117
+Add Instance dummy_PQ_result_sender_4_4_58 dummy_PQ_result_sender_4_4_58_U0 1123
+Add Instance dummy_PQ_result_sender_4_4_59 dummy_PQ_result_sender_4_4_59_U0 1129
+Add Instance dummy_PQ_result_sender_4_4_60 dummy_PQ_result_sender_4_4_60_U0 1135
+Add Instance dummy_PQ_result_sender_4_4_61 dummy_PQ_result_sender_4_4_61_U0 1141
+Add Instance dummy_PQ_result_sender_4_4_62 dummy_PQ_result_sender_4_4_62_U0 1147
+Add Instance dummy_PQ_result_sender_4_4_63 dummy_PQ_result_sender_4_4_63_U0 1153
+Add Instance dummy_PQ_result_sender_4_4_64 dummy_PQ_result_sender_4_4_64_U0 1159
+Add Instance dummy_PQ_result_sender_4_4_65 dummy_PQ_result_sender_4_4_65_U0 1165
+Add Instance vadd_entry4 vadd_entry4_U0 1171
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 7m 46s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t sw_emu --config design.cfg --save-temps --report estimate --temp_dir ./_x.sw_emu/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.sw_emu.xclbin' xclbin/vadd.sw_emu.xo --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:38467
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/xclbin/vadd.sw_emu.xclbin.link_summary, at Mon Mar  1 16:05:41 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Mon Mar  1 16:05:42 2021
+Running Rule Check Server on port:36657
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html', at Mon Mar  1 16:05:43 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for software emulation target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-645] kernel flags are '-g -I /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/src -g'
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/link/system_estimate_vadd.sw_emu.xtxt
+INFO: [v++ 60-586] Created xclbin/vadd.sw_emu.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/reports/link/v++_link_vadd.sw_emu_guidance.html
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_fixed_Parallel_merge/_x.sw_emu/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 0h 0m 16s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+cp -rf ./xclbin/emconfig.json .
+XCL_EMULATION_MODE=sw_emu ./host ./xclbin/vadd.sw_emu.xclbin
+Found Platform
+Platform Name: Xilinx
+Finished getting device...
+Finished creating context...
+Finished creating command queue...
+INFO: Reading ./xclbin/vadd.sw_emu.xclbin
+Loading: './xclbin/vadd.sw_emu.xclbin'
+Finished loading binary...
+Finished creating program...
+Finished creating kernel...
+Start to allocate device memory...
+Starting copy from Host to device...
+Host to device finished...
+Comparing Results...
+i = 0 vec_ID = -1 dist = 1e+08
+i = 1 vec_ID = -1 dist = 1e+08
+i = 2 vec_ID = -1 dist = 1e+08
+i = 3 vec_ID = -1 dist = 1e+08
+i = 4 vec_ID = -1 dist = 1e+08
+i = 5 vec_ID = -1 dist = 1e+08
+i = 6 vec_ID = -1 dist = 1e+08
+i = 7 vec_ID = -1 dist = 1e+08
+i = 8 vec_ID = -1 dist = 1e+08
+i = 9 vec_ID = -1 dist = 1e+08
+i = 10 vec_ID = -1 dist = 1e+08
+i = 11 vec_ID = -1 dist = 1e+08
+i = 12 vec_ID = -1 dist = 1e+08
+i = 13 vec_ID = -1 dist = 1e+08
+i = 14 vec_ID = -1 dist = 1e+08
+i = 15 vec_ID = -1 dist = 1e+08
+TEST PASSED

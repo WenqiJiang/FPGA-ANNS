@@ -1,0 +1,790 @@
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -c -k vadd -I'src' -o'xclbin/vadd.hw.xo' 'src/vadd.cpp'  --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/vadd.hw
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/logs/vadd.hw
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:36679
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/xclbin/vadd.hw.xo.compile_summary, at Fri Mar  5 22:29:01 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Fri Mar  5 22:29:02 2021
+Running Rule Check Server on port:32945
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/vadd.hw/v++_compile_vadd.hw_guidance.html', at Fri Mar  5 22:29:02 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 10.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 32, Depth = 35.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 2, Final II = 2, Depth = 3.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [v++ 204-61] Pipelining loop 'insert'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 5.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.3'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance stream_redirect_to_priority_queue_wrapper_2_s stream_redirect_to_priority_queue_wrapper_2_U0 438
+Add Instance insert_wrapper_2_52 insert_wrapper_2_52_U0 762
+Add Instance insert_wrapper_2_53 insert_wrapper_2_53_U0 771
+Add Instance insert_wrapper_2_54 insert_wrapper_2_54_U0 780
+Add Instance insert_wrapper_2_55 insert_wrapper_2_55_U0 789
+Add Instance insert_wrapper_2_56 insert_wrapper_2_56_U0 798
+Add Instance insert_wrapper_2_57 insert_wrapper_2_57_U0 807
+Add Instance insert_wrapper_2_58 insert_wrapper_2_58_U0 816
+Add Instance insert_wrapper_2_59 insert_wrapper_2_59_U0 825
+Add Instance insert_wrapper_2_60 insert_wrapper_2_60_U0 834
+Add Instance insert_wrapper_2_61 insert_wrapper_2_61_U0 843
+Add Instance insert_wrapper_2_62 insert_wrapper_2_62_U0 852
+Add Instance insert_wrapper_2_63 insert_wrapper_2_63_U0 861
+Add Instance insert_wrapper_2_64 insert_wrapper_2_64_U0 870
+Add Instance insert_wrapper_2_65 insert_wrapper_2_65_U0 879
+Add Instance insert_wrapper_2_66 insert_wrapper_2_66_U0 888
+Add Instance insert_wrapper_2_67 insert_wrapper_2_67_U0 897
+Add Instance insert_wrapper_2_68 insert_wrapper_2_68_U0 906
+Add Instance insert_wrapper_2_69 insert_wrapper_2_69_U0 915
+Add Instance insert_wrapper_2_70 insert_wrapper_2_70_U0 924
+Add Instance insert_wrapper_2_71 insert_wrapper_2_71_U0 933
+Add Instance insert_wrapper_2_1 insert_wrapper_2_1_U0 942
+Add Instance consume_and_redirect_sorted_streams_2_s consume_and_redirect_sorted_streams_2_U0 953
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_453 453
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_474 474
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_495 495
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_516 516
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_537 537
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_558 558
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_579 579
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_600 600
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_621 621
+Add Instance split_single_stream_2_s grp_split_single_stream_2_s_fu_642 642
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_663 663
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_672 672
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_681 681
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_690 690
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_699 699
+Add Instance consume_single_stream_2_s grp_consume_single_stream_2_s_fu_708 708
+Add Instance merge_streams_2_10_s merge_streams_2_10_U0 1083
+Add Instance send_iter_num_2_200_s send_iter_num_2_200_U0 1129
+Add Instance dummy_PQ_result_sender_wrapper_2_32_s dummy_PQ_result_sender_wrapper_2_32_U0 477
+Add Instance dummy_PQ_result_sender_2_32_36 dummy_PQ_result_sender_2_32_36_U0 220
+Add Instance dummy_PQ_result_sender_2_32_37 dummy_PQ_result_sender_2_32_37_U0 229
+Add Instance dummy_PQ_result_sender_2_32_38 dummy_PQ_result_sender_2_32_38_U0 238
+Add Instance dummy_PQ_result_sender_2_32_39 dummy_PQ_result_sender_2_32_39_U0 247
+Add Instance dummy_PQ_result_sender_2_32_40 dummy_PQ_result_sender_2_32_40_U0 256
+Add Instance dummy_PQ_result_sender_2_32_41 dummy_PQ_result_sender_2_32_41_U0 265
+Add Instance dummy_PQ_result_sender_2_32_42 dummy_PQ_result_sender_2_32_42_U0 274
+Add Instance dummy_PQ_result_sender_2_32_43 dummy_PQ_result_sender_2_32_43_U0 283
+Add Instance dummy_PQ_result_sender_2_32_44 dummy_PQ_result_sender_2_32_44_U0 292
+Add Instance dummy_PQ_result_sender_2_32_45 dummy_PQ_result_sender_2_32_45_U0 301
+Add Instance dummy_PQ_result_sender_2_32_46 dummy_PQ_result_sender_2_32_46_U0 310
+Add Instance dummy_PQ_result_sender_2_32_47 dummy_PQ_result_sender_2_32_47_U0 319
+Add Instance dummy_PQ_result_sender_2_32_48 dummy_PQ_result_sender_2_32_48_U0 328
+Add Instance dummy_PQ_result_sender_2_32_49 dummy_PQ_result_sender_2_32_49_U0 337
+Add Instance dummy_PQ_result_sender_2_32_50 dummy_PQ_result_sender_2_32_50_U0 346
+Add Instance dummy_PQ_result_sender_2_32_51 dummy_PQ_result_sender_2_32_51_U0 355
+Add Instance replicate_s_scanned_entries_every_cell_Dummy_2_32_s replicate_s_scanned_entries_every_cell_Dummy_2_32_U0 364
+Add Instance scan_controller_2_8192_32_s scan_controller_2_8192_32_U0 514
+Add Instance write_result_20_s write_result_20_U0 524
+Add Instance generate_scanned_cell_id_2_32_5 generate_scanned_cell_id_2_32_5_U0 533
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 7m 44s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:40229
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/xclbin/vadd.hw.xclbin.link_summary, at Fri Mar  5 22:36:48 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Fri Mar  5 22:36:48 2021
+Running Rule Check Server on port:45307
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Fri Mar  5 22:36:49 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [22:37:00] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Fri Mar  5 22:37:10 2021
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_info_start_addr_and_scanned_entries_every_cell' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [22:37:14] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [22:37:20] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 244065 ; free virtual = 393944
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [22:37:20] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.HBM_in0:HBM[0] -sp vadd_1.HBM_in1:HBM[1] -sp vadd_1.HBM_in2:HBM[2] -sp vadd_1.HBM_in3:HBM[3] -sp vadd_1.HBM_in4:HBM[4] -sp vadd_1.HBM_in5:HBM[5] -sp vadd_1.HBM_in6:HBM[6] -sp vadd_1.HBM_in7:HBM[7] -sp vadd_1.HBM_in8:HBM[8] -sp vadd_1.HBM_in9:HBM[9] -sp vadd_1.HBM_in10:HBM[10] -sp vadd_1.HBM_in11:HBM[11] -sp vadd_1.HBM_in12:HBM[12] -sp vadd_1.HBM_in13:HBM[13] -sp vadd_1.HBM_in14:HBM[14] -sp vadd_1.HBM_in15:HBM[15] -sp vadd_1.HBM_in16:HBM[16] -sp vadd_1.HBM_in17:HBM[17] -sp vadd_1.HBM_in18:HBM[18] -sp vadd_1.HBM_in19:HBM[19] -sp vadd_1.HBM_in20:HBM[20] -sp vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell:HBM[21] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_info_start_addr_and_scanned_entries_every_cell, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in0 to HBM[0] for directive vadd_1.HBM_in0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in1 to HBM[1] for directive vadd_1.HBM_in1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in2 to HBM[2] for directive vadd_1.HBM_in2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in3 to HBM[3] for directive vadd_1.HBM_in3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in4 to HBM[4] for directive vadd_1.HBM_in4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in5 to HBM[5] for directive vadd_1.HBM_in5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in6 to HBM[6] for directive vadd_1.HBM_in6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in7 to HBM[7] for directive vadd_1.HBM_in7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in8 to HBM[8] for directive vadd_1.HBM_in8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in9 to HBM[9] for directive vadd_1.HBM_in9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in10 to HBM[10] for directive vadd_1.HBM_in10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in11 to HBM[11] for directive vadd_1.HBM_in11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in12 to HBM[12] for directive vadd_1.HBM_in12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in13 to HBM[13] for directive vadd_1.HBM_in13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in14 to HBM[14] for directive vadd_1.HBM_in14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in15 to HBM[15] for directive vadd_1.HBM_in15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in16 to HBM[16] for directive vadd_1.HBM_in16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in17 to HBM[17] for directive vadd_1.HBM_in17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in18 to HBM[18] for directive vadd_1.HBM_in18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in19 to HBM[19] for directive vadd_1.HBM_in19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in20 to HBM[20] for directive vadd_1.HBM_in20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell to HBM[21] for directive vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [22:37:26] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 244046 ; free virtual = 393907
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [22:37:26] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [22:37:29] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 243974 ; free virtual = 393808
+INFO: [v++ 60-1441] [22:37:29] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:29 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 243980 ; free virtual = 393815
+INFO: [v++ 60-1443] [22:37:29] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [22:37:32] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 243836 ; free virtual = 393662
+INFO: [v++ 60-1443] [22:37:32] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo --jobs 32  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [22:37:34] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 243677 ; free virtual = 393490
+INFO: [v++ 60-1443] [22:37:34] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g -j 32 --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[22:38:54] Run vpl: Step create_project: Started
+Creating Vivado project.
+[22:38:57] Run vpl: Step create_project: Completed
+[22:38:57] Run vpl: Step create_bd: Started
+[22:40:59] Run vpl: Step create_bd: RUNNING...
+[22:43:06] Run vpl: Step create_bd: RUNNING...
+[22:45:27] Run vpl: Step create_bd: RUNNING...
+[22:47:50] Run vpl: Step create_bd: RUNNING...
+[22:48:43] Run vpl: Step create_bd: Completed
+[22:48:43] Run vpl: Step update_bd: Started
+[22:50:27] Run vpl: Step update_bd: RUNNING...
+[22:51:38] Run vpl: Step update_bd: Completed
+[22:51:38] Run vpl: Step generate_target: Started
+[22:53:25] Run vpl: Step generate_target: RUNNING...
+[22:55:11] Run vpl: Step generate_target: RUNNING...
+[22:56:54] Run vpl: Step generate_target: RUNNING...
+[22:59:17] Run vpl: Step generate_target: RUNNING...
+[23:00:17] Run vpl: Step generate_target: Completed
+[23:00:17] Run vpl: Step config_hw_runs: Started
+[23:01:20] Run vpl: Step config_hw_runs: Completed
+[23:01:20] Run vpl: Step synth: Started
+[23:02:46] Block-level synthesis in progress, 0 of 45 jobs complete, 32 jobs running.
+[23:04:06] Block-level synthesis in progress, 0 of 45 jobs complete, 32 jobs running.
+[23:06:44] Block-level synthesis in progress, 29 of 45 jobs complete, 14 jobs running.
+[23:08:03] Block-level synthesis in progress, 31 of 45 jobs complete, 12 jobs running.
+[23:09:09] Block-level synthesis in progress, 41 of 45 jobs complete, 3 jobs running.
+[23:10:34] Block-level synthesis in progress, 42 of 45 jobs complete, 3 jobs running.
+[23:11:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:13:17] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:14:36] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:15:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:17:14] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:18:32] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[23:19:52] Block-level synthesis in progress, 45 of 45 jobs complete, 0 jobs running.
+[23:20:53] Top-level synthesis in progress.
+[23:22:20] Top-level synthesis in progress.
+[23:23:38] Top-level synthesis in progress.
+[23:24:57] Top-level synthesis in progress.
+[23:26:15] Top-level synthesis in progress.
+[23:27:32] Top-level synthesis in progress.
+[23:28:48] Top-level synthesis in progress.
+[23:30:06] Top-level synthesis in progress.
+[23:31:24] Top-level synthesis in progress.
+[23:32:42] Top-level synthesis in progress.
+[23:34:00] Top-level synthesis in progress.
+[23:35:19] Top-level synthesis in progress.
+[23:36:38] Top-level synthesis in progress.
+[23:37:55] Top-level synthesis in progress.
+[23:39:13] Top-level synthesis in progress.
+[23:40:29] Top-level synthesis in progress.
+[23:41:48] Top-level synthesis in progress.
+[23:43:05] Top-level synthesis in progress.
+[23:44:23] Top-level synthesis in progress.
+[23:45:41] Top-level synthesis in progress.
+[23:47:00] Top-level synthesis in progress.
+[23:48:20] Top-level synthesis in progress.
+[23:49:38] Top-level synthesis in progress.
+[23:50:57] Top-level synthesis in progress.
+[23:52:14] Top-level synthesis in progress.
+[23:53:32] Top-level synthesis in progress.
+[23:54:51] Top-level synthesis in progress.
+[23:56:12] Top-level synthesis in progress.
+[23:57:30] Top-level synthesis in progress.
+[23:58:49] Top-level synthesis in progress.
+[00:00:08] Top-level synthesis in progress.
+[00:01:27] Top-level synthesis in progress.
+[00:02:47] Top-level synthesis in progress.
+[00:04:06] Top-level synthesis in progress.
+[00:05:24] Top-level synthesis in progress.
+[00:06:42] Top-level synthesis in progress.
+[00:08:03] Top-level synthesis in progress.
+[00:09:25] Top-level synthesis in progress.
+[00:10:43] Top-level synthesis in progress.
+[00:12:02] Top-level synthesis in progress.
+[00:13:20] Top-level synthesis in progress.
+[00:14:39] Top-level synthesis in progress.
+[00:15:56] Top-level synthesis in progress.
+[00:17:16] Top-level synthesis in progress.
+[00:18:35] Top-level synthesis in progress.
+[00:19:52] Top-level synthesis in progress.
+[00:21:13] Top-level synthesis in progress.
+[00:22:31] Top-level synthesis in progress.
+[00:23:49] Top-level synthesis in progress.
+[00:25:10] Top-level synthesis in progress.
+[00:26:32] Top-level synthesis in progress.
+[00:27:50] Top-level synthesis in progress.
+[00:29:08] Top-level synthesis in progress.
+[00:30:28] Top-level synthesis in progress.
+[00:31:47] Top-level synthesis in progress.
+[00:33:05] Top-level synthesis in progress.
+[00:34:26] Top-level synthesis in progress.
+[00:35:44] Top-level synthesis in progress.
+[00:37:03] Top-level synthesis in progress.
+[00:38:23] Top-level synthesis in progress.
+[00:39:43] Top-level synthesis in progress.
+[00:41:02] Top-level synthesis in progress.
+[00:42:21] Top-level synthesis in progress.
+[00:43:40] Top-level synthesis in progress.
+[00:44:58] Top-level synthesis in progress.
+[00:46:19] Top-level synthesis in progress.
+[00:47:40] Top-level synthesis in progress.
+[00:49:02] Top-level synthesis in progress.
+[00:50:23] Top-level synthesis in progress.
+[00:51:44] Top-level synthesis in progress.
+[00:53:02] Top-level synthesis in progress.
+[00:54:21] Top-level synthesis in progress.
+[00:55:42] Top-level synthesis in progress.
+[00:57:02] Top-level synthesis in progress.
+[00:58:23] Top-level synthesis in progress.
+[00:59:41] Top-level synthesis in progress.
+[01:01:01] Top-level synthesis in progress.
+[01:02:23] Top-level synthesis in progress.
+[01:03:41] Top-level synthesis in progress.
+[01:05:03] Top-level synthesis in progress.
+[01:06:23] Top-level synthesis in progress.
+[01:07:43] Top-level synthesis in progress.
+[01:09:01] Top-level synthesis in progress.
+[01:10:20] Top-level synthesis in progress.
+[01:11:41] Top-level synthesis in progress.
+[01:13:01] Top-level synthesis in progress.
+[01:14:21] Top-level synthesis in progress.
+[01:15:41] Top-level synthesis in progress.
+[01:17:00] Top-level synthesis in progress.
+[01:18:21] Top-level synthesis in progress.
+[01:19:39] Top-level synthesis in progress.
+[01:20:57] Top-level synthesis in progress.
+[01:22:14] Top-level synthesis in progress.
+[01:23:35] Top-level synthesis in progress.
+[01:24:53] Top-level synthesis in progress.
+[01:26:14] Top-level synthesis in progress.
+[01:27:34] Top-level synthesis in progress.
+[01:28:57] Top-level synthesis in progress.
+[01:30:16] Top-level synthesis in progress.
+[01:31:35] Top-level synthesis in progress.
+[01:32:55] Top-level synthesis in progress.
+[01:34:12] Top-level synthesis in progress.
+[01:35:31] Top-level synthesis in progress.
+[01:36:50] Top-level synthesis in progress.
+[01:38:06] Top-level synthesis in progress.
+[01:39:27] Top-level synthesis in progress.
+[01:40:45] Top-level synthesis in progress.
+[01:42:05] Top-level synthesis in progress.
+[01:43:26] Top-level synthesis in progress.
+[01:44:46] Top-level synthesis in progress.
+[01:46:06] Top-level synthesis in progress.
+[01:47:26] Top-level synthesis in progress.
+[01:48:49] Top-level synthesis in progress.
+[01:50:09] Top-level synthesis in progress.
+[01:51:28] Top-level synthesis in progress.
+[01:52:47] Top-level synthesis in progress.
+[01:54:08] Top-level synthesis in progress.
+[01:55:29] Top-level synthesis in progress.
+[01:56:49] Top-level synthesis in progress.
+[01:58:10] Top-level synthesis in progress.
+[01:59:29] Top-level synthesis in progress.
+[02:00:51] Top-level synthesis in progress.
+[02:02:12] Top-level synthesis in progress.
+[02:03:33] Top-level synthesis in progress.
+[02:04:54] Top-level synthesis in progress.
+[02:06:14] Top-level synthesis in progress.
+[02:07:33] Top-level synthesis in progress.
+[02:08:54] Top-level synthesis in progress.
+[02:10:13] Top-level synthesis in progress.
+[02:11:33] Top-level synthesis in progress.
+[02:12:51] Top-level synthesis in progress.
+[02:14:10] Top-level synthesis in progress.
+[02:15:29] Top-level synthesis in progress.
+[02:16:48] Top-level synthesis in progress.
+[02:18:06] Top-level synthesis in progress.
+[02:19:24] Top-level synthesis in progress.
+[02:20:41] Top-level synthesis in progress.
+[02:22:00] Top-level synthesis in progress.
+[02:23:17] Top-level synthesis in progress.
+[02:24:36] Top-level synthesis in progress.
+[02:25:55] Top-level synthesis in progress.
+[02:27:13] Top-level synthesis in progress.
+[02:28:32] Top-level synthesis in progress.
+[02:29:49] Top-level synthesis in progress.
+[02:31:08] Top-level synthesis in progress.
+[02:32:29] Top-level synthesis in progress.
+[02:33:46] Top-level synthesis in progress.
+[02:35:05] Top-level synthesis in progress.
+[02:36:23] Top-level synthesis in progress.
+[02:37:42] Top-level synthesis in progress.
+[02:39:00] Top-level synthesis in progress.
+[02:40:19] Top-level synthesis in progress.
+[02:41:42] Top-level synthesis in progress.
+[02:43:03] Top-level synthesis in progress.
+[02:44:22] Top-level synthesis in progress.
+[02:45:44] Top-level synthesis in progress.
+[02:47:04] Top-level synthesis in progress.
+[02:48:25] Top-level synthesis in progress.
+[02:49:43] Top-level synthesis in progress.
+[02:51:01] Top-level synthesis in progress.
+[02:52:20] Top-level synthesis in progress.
+[02:53:38] Top-level synthesis in progress.
+[02:54:56] Top-level synthesis in progress.
+[02:56:13] Top-level synthesis in progress.
+[02:57:31] Top-level synthesis in progress.
+[02:58:48] Top-level synthesis in progress.
+[03:00:05] Top-level synthesis in progress.
+[03:01:23] Top-level synthesis in progress.
+[03:02:44] Top-level synthesis in progress.
+[03:04:10] Top-level synthesis in progress.
+[03:05:29] Top-level synthesis in progress.
+[03:06:48] Top-level synthesis in progress.
+[03:08:06] Top-level synthesis in progress.
+[03:09:26] Top-level synthesis in progress.
+[03:10:45] Top-level synthesis in progress.
+[03:12:05] Top-level synthesis in progress.
+[03:13:22] Top-level synthesis in progress.
+[03:14:40] Top-level synthesis in progress.
+[03:15:58] Top-level synthesis in progress.
+[03:17:16] Top-level synthesis in progress.
+[03:18:35] Top-level synthesis in progress.
+[03:19:52] Top-level synthesis in progress.
+[03:21:09] Top-level synthesis in progress.
+[03:22:28] Top-level synthesis in progress.
+[03:23:45] Top-level synthesis in progress.
+[03:25:01] Top-level synthesis in progress.
+[03:26:21] Top-level synthesis in progress.
+[03:27:39] Top-level synthesis in progress.
+[03:28:57] Top-level synthesis in progress.
+[03:30:17] Top-level synthesis in progress.
+[03:31:36] Top-level synthesis in progress.
+[03:32:57] Top-level synthesis in progress.
+[03:34:16] Top-level synthesis in progress.
+[03:35:35] Top-level synthesis in progress.
+[03:36:52] Top-level synthesis in progress.
+[03:38:13] Top-level synthesis in progress.
+[03:39:31] Top-level synthesis in progress.
+[03:40:50] Top-level synthesis in progress.
+[03:42:09] Top-level synthesis in progress.
+[03:43:25] Top-level synthesis in progress.
+[03:44:43] Top-level synthesis in progress.
+[03:46:00] Top-level synthesis in progress.
+[03:47:16] Top-level synthesis in progress.
+[03:48:34] Top-level synthesis in progress.
+[03:49:52] Top-level synthesis in progress.
+[03:51:11] Top-level synthesis in progress.
+[03:52:31] Top-level synthesis in progress.
+[03:53:49] Top-level synthesis in progress.
+[03:55:09] Top-level synthesis in progress.
+[03:56:27] Top-level synthesis in progress.
+[03:57:45] Top-level synthesis in progress.
+[03:59:04] Top-level synthesis in progress.
+[04:00:23] Top-level synthesis in progress.
+[04:01:44] Top-level synthesis in progress.
+[04:03:04] Top-level synthesis in progress.
+[04:04:24] Top-level synthesis in progress.
+[04:05:41] Top-level synthesis in progress.
+[04:07:00] Top-level synthesis in progress.
+[04:08:17] Top-level synthesis in progress.
+[04:09:36] Top-level synthesis in progress.
+[04:10:10] Run vpl: Step synth: Completed
+[04:10:10] Run vpl: Step impl: Started
+[04:24:11] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 05h 46m 34s 
+
+[04:24:11] Starting logic optimization..
+[04:25:25] Phase 1 Retarget
+[04:25:25] Phase 2 Constant propagation
+[04:26:38] Phase 3 Sweep
+[04:29:05] Phase 4 BUFG optimization
+[04:29:05] Phase 5 Shift Register Optimization
+[04:29:05] Phase 6 Post Processing Netlist
+[04:34:05] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 09m 52s 
+
+[04:34:05] Starting logic placement..
+[04:35:17] Phase 1 Placer Initialization
+[04:35:17] Phase 1.1 Placer Initialization Netlist Sorting
+[04:37:44] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[04:38:55] Phase 1.3 Build Placer Netlist Model
+[04:41:21] Phase 1.4 Constrain Clocks/Macros
+[04:42:34] Phase 2 Global Placement
+[04:42:34] Phase 2.1 Floorplanning
+[04:45:01] Phase 2.2 Global Placement Core
+[04:53:33] Phase 2.2.1 Physical Synthesis In Placer
+[04:56:00] Phase 3 Detail Placement
+[04:56:00] Phase 3.1 Commit Multi Column Macros
+[04:56:00] Phase 3.2 Commit Most Macros & LUTRAMs
+[04:57:13] Phase 3.3 Area Swap Optimization
+[04:57:13] Phase 3.4 Pipeline Register Optimization
+[04:57:13] Phase 3.5 IO Cut Optimizer
+[04:57:13] Phase 3.6 Fast Optimization
+[04:58:24] Phase 3.7 Small Shape DP
+[04:58:24] Phase 3.7.1 Small Shape Clustering
+[04:59:38] Phase 3.7.2 Flow Legalize Slice Clusters
+[04:59:38] Phase 3.7.3 Slice Area Swap
+[05:00:51] Phase 3.7.4 Commit Slice Clusters
+[05:00:51] Phase 3.8 Place Remaining
+[05:00:51] Phase 3.9 Re-assign LUT pins
+[05:02:05] Phase 3.10 Pipeline Register Optimization
+[05:02:05] Phase 3.11 Fast Optimization
+[05:03:18] Phase 4 Post Placement Optimization and Clean-Up
+[05:03:18] Phase 4.1 Post Commit Optimization
+[05:04:31] Phase 4.1.1 Post Placement Optimization
+[05:04:31] Phase 4.1.1.1 BUFG Insertion
+[05:05:43] Phase 4.1.1.2 BUFG Replication
+[05:05:43] Phase 4.1.1.3 Replication
+[05:06:56] Phase 4.2 Post Placement Cleanup
+[05:08:08] Phase 4.3 Placer Reporting
+[05:08:08] Phase 4.4 Final Placement Cleanup
+[05:20:23] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 00h 46m 17s 
+
+[05:20:23] Starting logic routing..
+[05:21:36] Phase 1 Build RT Design
+[05:24:01] Phase 2 Router Initialization
+[05:24:01] Phase 2.1 Fix Topology Constraints
+[05:24:01] Phase 2.2 Pre Route Cleanup
+[05:25:14] Phase 2.3 Global Clock Net Routing
+[05:25:14] Phase 2.4 Update Timing
+[05:27:40] Phase 2.5 Update Timing for Bus Skew
+[05:27:40] Phase 2.5.1 Update Timing
+[05:28:54] Phase 3 Initial Routing
+[05:28:54] Phase 3.1 Global Routing
+[05:30:08] Phase 4 Rip-up And Reroute
+[05:30:08] Phase 4.1 Global Iteration 0
+[05:43:38] Phase 4.2 Global Iteration 1
+[05:46:03] Phase 4.3 Global Iteration 2
+[05:47:16] Phase 5 Delay and Skew Optimization
+[05:47:16] Phase 5.1 Delay CleanUp
+[05:47:16] Phase 5.1.1 Update Timing
+[05:48:29] Phase 5.2 Clock Skew Optimization
+[05:49:42] Phase 6 Post Hold Fix
+[05:49:42] Phase 6.1 Hold Fix Iter
+[05:49:42] Phase 6.1.1 Update Timing
+[05:49:42] Phase 6.1.2 Lut RouteThru Assignment for hold
+[05:50:55] Phase 6.2 Additional Hold Fix
+[05:52:08] Phase 7 Route finalize
+[05:52:08] Phase 8 Verifying routed nets
+[05:52:08] Phase 9 Depositing Routes
+[05:53:21] Phase 10 Route finalize
+[05:53:21] Phase 11 Post Router Timing
+[05:54:34] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 00h 34m 11s 
+
+[05:54:34] Starting bitstream generation..
+Starting optional post-route physical design optimization.
+[05:59:29] Phase 1 Physical Synthesis Initialization
+[06:01:57] Phase 2 SLL Register Hold Fix Optimization
+[06:01:57] Phase 3 Critical Path Optimization
+[06:01:57] Phase 4 Hold Fix Optimization
+Finished optional post-route physical design optimization.
+[06:16:37] Creating bitmap...
+[06:22:43] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[06:22:43] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 28m 09s 
+[06:22:23] Run vpl: Step impl: Completed
+[06:22:48] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [06:22:52] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:06:07 ; elapsed = 07:45:15 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 223906 ; free virtual = 388615
+INFO: [v++ 60-1443] [06:22:52] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 140, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [06:22:57] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 223927 ; free virtual = 388636
+INFO: [v++ 60-1443] [06:22:57] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 3896 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 54279839 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 8716 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 20120 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 27361 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (54370491 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [06:22:57] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.28 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 223882 ; free virtual = 388642
+INFO: [v++ 60-1443] [06:22:57] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [06:22:58] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.36 ; elapsed = 00:00:00.42 . Memory (MB): peak = 679.320 ; gain = 0.000 ; free physical = 223881 ; free virtual = 388642
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link/system_estimate_vadd.hw.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/xclbin/vadd.hw.ltx
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/_x.hw/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 7h 46m 10s
+./host ./xclbin/vadd.hw.xclbin
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 52290
+UID: 522663
+[Sat Mar  6 06:24:21 2021]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_Stream_redirect_to_priority_queue_wrapper_long_FIFO_query_num_2/host
+[XRT] WARNING: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+src/host.hpp:45 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:122: recipe for target 'check' failed
+make: *** [check] Error 1

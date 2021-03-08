@@ -132,7 +132,7 @@ void vadd(
     hls::stream<result_t> s_result;
 #pragma HLS stream variable=s_result depth=4
 
-    load_PQ_codes<QUERY_NUM>(table_DDR0, s_raw_input);
+    load_PQ_codes<QUERY_NUM>(table_HBM0, s_raw_input);
 
     type_conversion_and_split<QUERY_NUM>(s_raw_input, s_PQ_0, s_PQ_1, s_PQ_2);
 
@@ -213,14 +213,19 @@ template<const int query_num>
 void PQ_lookup_computation(
     hls::stream<single_PQ>& s_single_PQ, hls::stream<single_PQ_result>& s_single_PQ_result) {
 
-    float distance_lookup_table_local_0[256], distance_lookup_table_local_1[256], 
-        distance_lookup_table_local_2[256], distance_lookup_table_local_3[256], 
-        distance_lookup_table_local_4[256], distance_lookup_table_local_5[256], 
-        distance_lookup_table_local_6[256], distance_lookup_table_local_7[256], 
-        distance_lookup_table_local_8[256], distance_lookup_table_local_9[256], 
-        distance_lookup_table_local_10[256], distance_lookup_table_local_11[256], 
-        distance_lookup_table_local_12[256], distance_lookup_table_local_13[256], 
-        distance_lookup_table_local_14[256], distance_lookup_table_local_15[256];
+    // each BRAM stores 2 tables, which can be looked up concurrently by 2 ports
+    float distance_lookup_table_local_0[512], distance_lookup_table_local_1[512], 
+        distance_lookup_table_local_2[512], distance_lookup_table_local_3[512], 
+        distance_lookup_table_local_4[512], distance_lookup_table_local_5[512], 
+        distance_lookup_table_local_6[512], distance_lookup_table_local_7[512];
+#pragma HLS resource variable=distance_lookup_table_local_0 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_1 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_2 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_3 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_4 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_5 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_6 core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_lookup_table_local_7 core=RAM_2P_BRAM
 
     init_distance_table_partition(distance_lookup_table_local_0, 0);
     init_distance_table_partition(distance_lookup_table_local_1, 1);
@@ -230,51 +235,115 @@ void PQ_lookup_computation(
     init_distance_table_partition(distance_lookup_table_local_5, 5);
     init_distance_table_partition(distance_lookup_table_local_6, 6);
     init_distance_table_partition(distance_lookup_table_local_7, 7);
-    init_distance_table_partition(distance_lookup_table_local_8, 8);
-    init_distance_table_partition(distance_lookup_table_local_9, 9);
-    init_distance_table_partition(distance_lookup_table_local_10, 10);
-    init_distance_table_partition(distance_lookup_table_local_11, 11);
-    init_distance_table_partition(distance_lookup_table_local_12, 12);
-    init_distance_table_partition(distance_lookup_table_local_13, 13);
-    init_distance_table_partition(distance_lookup_table_local_14, 14);
-    init_distance_table_partition(distance_lookup_table_local_15, 15);
 
     for (int query_id = 0; query_id < query_num; query_id++) {
-    #pragma HLS pipeline II=1
+#pragma HLS pipeline II=1
 
         single_PQ PQ_local = s_single_PQ.read();
 
-        unsigned char lookup_idx_0 = PQ_local.PQ_code[0];
-        unsigned char lookup_idx_1 = PQ_local.PQ_code[1];
-        unsigned char lookup_idx_2 = PQ_local.PQ_code[2];
-        unsigned char lookup_idx_3 = PQ_local.PQ_code[3];
-        unsigned char lookup_idx_4 = PQ_local.PQ_code[4];
-        unsigned char lookup_idx_5 = PQ_local.PQ_code[5];
-        unsigned char lookup_idx_6 = PQ_local.PQ_code[6];
-        unsigned char lookup_idx_7 = PQ_local.PQ_code[7];
-        unsigned char lookup_idx_8 = PQ_local.PQ_code[8];
-        unsigned char lookup_idx_9 = PQ_local.PQ_code[9];
-        unsigned char lookup_idx_10 = PQ_local.PQ_code[10];
-        unsigned char lookup_idx_11 = PQ_local.PQ_code[11];
-        unsigned char lookup_idx_12 = PQ_local.PQ_code[12];
-        unsigned char lookup_idx_13 = PQ_local.PQ_code[13];
-        unsigned char lookup_idx_14 = PQ_local.PQ_code[14];
-        unsigned char lookup_idx_15 = PQ_local.PQ_code[15];
+        // unsigned char lookup_idx_0 = PQ_local.PQ_code[0];
+        // unsigned char lookup_idx_1 = PQ_local.PQ_code[1];
+        // unsigned char lookup_idx_2 = PQ_local.PQ_code[2];
+        // unsigned char lookup_idx_3 = PQ_local.PQ_code[3];
+        // unsigned char lookup_idx_4 = PQ_local.PQ_code[4];
+        // unsigned char lookup_idx_5 = PQ_local.PQ_code[5];
+        // unsigned char lookup_idx_6 = PQ_local.PQ_code[6];
+        // unsigned char lookup_idx_7 = PQ_local.PQ_code[7];
+
+        // // not adding 256 here, it will overflow
+        // short lookup_idx_8 = (short)PQ_local.PQ_code[8] + 256;
+        // short lookup_idx_9 = (short)PQ_local.PQ_code[9] + 256;
+        // short lookup_idx_10 = (short)PQ_local.PQ_code[10] + 256;
+        // short lookup_idx_11 = (short)PQ_local.PQ_code[11] + 256;
+        // short lookup_idx_12 = (short)PQ_local.PQ_code[12] + 256;
+        // short lookup_idx_13 = (short)PQ_local.PQ_code[13] + 256;
+        // short lookup_idx_14 = (short)PQ_local.PQ_code[14] + 256;
+        // short lookup_idx_15 = (short)PQ_local.PQ_code[15] + 256;
 
         single_PQ_result out; 
         out.vec_ID = PQ_local.vec_ID;
-        out.dist = 
-            distance_lookup_table_local_0[lookup_idx_0] + distance_lookup_table_local_1[lookup_idx_1] + 
-            distance_lookup_table_local_2[lookup_idx_2] + distance_lookup_table_local_3[lookup_idx_3] + 
-            distance_lookup_table_local_4[lookup_idx_4] + distance_lookup_table_local_5[lookup_idx_5] + 
-            distance_lookup_table_local_6[lookup_idx_6] + distance_lookup_table_local_7[lookup_idx_7] + 
-            distance_lookup_table_local_8[lookup_idx_8] + distance_lookup_table_local_9[lookup_idx_9] + 
-            distance_lookup_table_local_10[lookup_idx_10] + distance_lookup_table_local_11[lookup_idx_11] + 
-            distance_lookup_table_local_12[lookup_idx_12] + distance_lookup_table_local_13[lookup_idx_13] + 
-            distance_lookup_table_local_14[lookup_idx_14] + distance_lookup_table_local_15[lookup_idx_15];
 
-        // printf("lookup_idx_0: %c distance_lookup_table_local_0[lookup_idx_0]: %f dist: %f\n", 
-        //     lookup_idx_0, distance_lookup_table_local_0[lookup_idx_0], out.dist);
+        // float intermediate_dist_A_0, intermediate_dist_A_1, 
+        //     intermediate_dist_A_2, intermediate_dist_A_3, intermediate_dist_A_4,
+        //     intermediate_dist_A_5, intermediate_dist_A_6, intermediate_dist_A_7;
+        // float intermediate_dist_B_0, intermediate_dist_B_1,
+        //     intermediate_dist_B_2, intermediate_dist_B_3;
+        // float intermediate_dist_C_0, intermediate_dist_C_1;
+        // float dist;
+
+// #pragma HLS resource variable=intermediate_dist_A_0 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_1 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_2 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_3 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_4 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_5 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_6 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_A_7 core=FAddSub_fulldsp
+
+// #pragma HLS resource variable=intermediate_dist_B_0 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_B_1 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_B_2 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_B_3 core=FAddSub_fulldsp
+
+// #pragma HLS resource variable=intermediate_dist_C_0 core=FAddSub_fulldsp
+// #pragma HLS resource variable=intermediate_dist_C_1 core=FAddSub_fulldsp
+
+// #pragma HLS resource variable=dist core=FAddSub_fulldsp
+
+        // intermediate_dist_A_0 = 
+        //     distance_lookup_table_local_0[lookup_idx_0] + distance_lookup_table_local_0[lookup_idx_8];
+        // intermediate_dist_A_1 = 
+        //     distance_lookup_table_local_1[lookup_idx_1] + distance_lookup_table_local_1[lookup_idx_9];
+        // intermediate_dist_A_2 = 
+        //     distance_lookup_table_local_2[lookup_idx_2] + distance_lookup_table_local_2[lookup_idx_10];
+        // intermediate_dist_A_3 = 
+        //     distance_lookup_table_local_3[lookup_idx_3] + distance_lookup_table_local_3[lookup_idx_11];
+        // intermediate_dist_A_4 = 
+        //     distance_lookup_table_local_4[lookup_idx_4] + distance_lookup_table_local_4[lookup_idx_12];
+        // intermediate_dist_A_5 = 
+        //     distance_lookup_table_local_5[lookup_idx_5] + distance_lookup_table_local_5[lookup_idx_13];
+        // intermediate_dist_A_6 = 
+        //     distance_lookup_table_local_6[lookup_idx_6] + distance_lookup_table_local_6[lookup_idx_14];
+        // intermediate_dist_A_7 = 
+        //     distance_lookup_table_local_7[lookup_idx_7] + distance_lookup_table_local_7[lookup_idx_15];
+
+        // intermediate_dist_B_0 = intermediate_dist_A_0 + intermediate_dist_A_4;
+        // intermediate_dist_B_1 = intermediate_dist_A_1 + intermediate_dist_A_5;
+        // intermediate_dist_B_2 = intermediate_dist_A_2 + intermediate_dist_A_6;
+        // intermediate_dist_B_3 = intermediate_dist_A_3 + intermediate_dist_A_7;
+
+        // intermediate_dist_C_0 = intermediate_dist_B_0 + intermediate_dist_B_2;
+        // intermediate_dist_C_1 = intermediate_dist_B_1 + intermediate_dist_B_3;
+
+        // dist = intermediate_dist_C_0 + intermediate_dist_C_1;
+
+        // dist = 
+        //     distance_lookup_table_local_0[lookup_idx_0] + distance_lookup_table_local_0[lookup_idx_8] +
+        //     distance_lookup_table_local_1[lookup_idx_1] + distance_lookup_table_local_1[lookup_idx_9] +
+        //     distance_lookup_table_local_2[lookup_idx_2] + distance_lookup_table_local_2[lookup_idx_10] +
+        //     distance_lookup_table_local_3[lookup_idx_3] + distance_lookup_table_local_3[lookup_idx_11] +
+
+        //     distance_lookup_table_local_4[lookup_idx_4] + distance_lookup_table_local_4[lookup_idx_12] +
+        //     distance_lookup_table_local_5[lookup_idx_5] + distance_lookup_table_local_5[lookup_idx_13] +
+        //     distance_lookup_table_local_6[lookup_idx_6] + distance_lookup_table_local_6[lookup_idx_14] +
+        //     distance_lookup_table_local_7[lookup_idx_7] + distance_lookup_table_local_7[lookup_idx_15];
+
+        out.dist = 
+            distance_lookup_table_local_0[PQ_local.PQ_code[0]] + distance_lookup_table_local_1[PQ_local.PQ_code[1]] + 
+            distance_lookup_table_local_2[PQ_local.PQ_code[2]] + distance_lookup_table_local_3[PQ_local.PQ_code[3]] + 
+            distance_lookup_table_local_4[PQ_local.PQ_code[4]] + distance_lookup_table_local_5[PQ_local.PQ_code[5]] + 
+            distance_lookup_table_local_6[PQ_local.PQ_code[6]] + distance_lookup_table_local_7[PQ_local.PQ_code[7]] + 
+
+            distance_lookup_table_local_0[((short)PQ_local.PQ_code[8]) + 256] + 
+            distance_lookup_table_local_1[((short)PQ_local.PQ_code[9]) + 256] + 
+            distance_lookup_table_local_2[((short)PQ_local.PQ_code[10]) + 256] + 
+            distance_lookup_table_local_3[((short)PQ_local.PQ_code[11]) + 256] + 
+            distance_lookup_table_local_4[((short)PQ_local.PQ_code[12]) + 256] + 
+            distance_lookup_table_local_5[((short)PQ_local.PQ_code[13]) + 256] + 
+            distance_lookup_table_local_6[((short)PQ_local.PQ_code[14]) + 256] + 
+            distance_lookup_table_local_7[((short)PQ_local.PQ_code[15]) + 256];
+        // out.dist = dist;
+
         s_single_PQ_result.write(out);
     }
 }
