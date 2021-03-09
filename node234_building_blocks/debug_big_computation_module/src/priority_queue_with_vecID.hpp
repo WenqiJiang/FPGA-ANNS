@@ -26,17 +26,17 @@ class Priority_queue<single_PQ_result, queue_size, Collect_smallest> {
 #pragma HLS inline
         }
 
+        template<const int query_num>
         void insert_wrapper(
             hls::stream<int>& control_stream_iter_num_per_query,
             hls::stream<single_PQ_result> &s_input, 
-            hls::stream<single_PQ_result> &s_output, 
-            const int query_num) {
+            hls::stream<single_PQ_result> &s_output) {
             
             single_PQ_result queue[queue_size];
 #pragma HLS array_partition variable=queue complete
 
             for (int query_id = 0; query_id < query_num; query_id++) {
-// #pragma HLS loop_flatten
+#pragma HLS loop_flatten
                 // Fixed, originally "const int iter_num"
                 int iter_num = control_stream_iter_num_per_query.read();
 
@@ -45,7 +45,7 @@ class Priority_queue<single_PQ_result, queue_size, Collect_smallest> {
                     queue[i].dist = LARGE_NUM;
                 }
 
-                // insert: 
+                insert: 
                 for (int i = 0; i < iter_num; i++) {
 #pragma HLS pipeline II=1
                     single_PQ_result reg = s_input.read();

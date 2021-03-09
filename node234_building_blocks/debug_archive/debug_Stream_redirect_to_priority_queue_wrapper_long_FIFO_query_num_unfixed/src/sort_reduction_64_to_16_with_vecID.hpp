@@ -284,7 +284,7 @@ class Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> {
 #pragma HLS array_partition variable=result_stage_0 complete
 #pragma HLS array_partition variable=result_stage_1 complete
 #pragma HLS RESOURCE variable=result_stage_0 core=FIFO_SRL
-#pragma HLS RESOURCE variable=result_stage_1 core=FIFO_SRL 
+#pragma HLS RESOURCE variable=result_stage_1 core=FIFO_SRL
 
             hls::stream<int> control_stream_iter_num_per_query_replicated[7];
 #pragma HLS stream variable=control_stream_iter_num_per_query_replicated depth=8

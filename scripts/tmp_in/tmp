@@ -1,4 +1,1 @@
-    load_and_split_PQ_codes<QUERY_NUM, NPROBE>(
-        HBM_in0, s_start_addr[0], 
-        s_scanned_entries_every_cell_Load_unit[0], s_scanned_entries_every_cell_Split_unit[0],
-        s_single_PQ[0 * 3 + 0], s_single_PQ[0 * 3 + 1], s_single_PQ[0 * 3 + 2]);
+                s_single_PQ_result[2][0].write(out_PE32);

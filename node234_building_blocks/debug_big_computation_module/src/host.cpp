@@ -109,7 +109,6 @@ int main(int argc, char** argv)
 //     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding1(DDR_embedding1_size, 0);
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int query_num = 10000;
     int size_results_out = PRIORITY_QUEUE_LEN; // QUERY_NUM; 
     std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
     std::vector<result_t,aligned_allocator<result_t>> source_sw_results(size_results_out);
@@ -485,7 +484,6 @@ int main(int argc, char** argv)
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(1 + 32, buffer_DDR_embedding1));
 
     OCL_CHECK(err, err = krnl_vector_add.setArg(22, buffer_output));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(23, query_num));
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 // ------------------------------------------------------
 // Step 2: Copy Input data from Host to Global Memory on the device

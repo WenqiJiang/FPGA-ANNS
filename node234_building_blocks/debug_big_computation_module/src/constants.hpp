@@ -20,6 +20,7 @@
 // #define QUERY_NUM (ITER_NUM * QUERY_NUM_PER_ITER) 
 
 #define QUERY_NUM 10000
+#define SCAN_PER_NPROBE 200
 
 #define LARGE_NUM 99999999 // used to init the heap
 

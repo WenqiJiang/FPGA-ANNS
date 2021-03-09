@@ -29,7 +29,8 @@ void vadd(
     // const t_axi* HBM_in28, const t_axi* HBM_in29, 
     // const t_axi* HBM_in30, const t_axi* HBM_in31, 
     // const t_axi* table_DDR0, const t_axi* table_DDR1, 
-    result_t* out_PLRAM
+    result_t* out_PLRAM,
+    const int query_num
     )
 {
 #pragma HLS INTERFACE m_axi port=HBM_in0  offset=slave bundle=gmem0
@@ -109,6 +110,7 @@ void vadd(
 
 #pragma HLS INTERFACE s_axilite port=out_PLRAM bundle=control
 
+#pragma HLS INTERFACE s_axilite port=query_num bundle=control
 #pragma HLS INTERFACE s_axilite port=return bundle=control
     
 #pragma HLS dataflow
@@ -182,9 +184,9 @@ void vadd(
 
     ////////////// Data Streams Ends ///////////////
 
-    generate_scanned_cell_id<QUERY_NUM, NPROBE>(s_scanned_cell_id);
+    generate_scanned_cell_id<NPROBE>(s_scanned_cell_id, query_num);
 
-    scan_controller<QUERY_NUM, NLIST, NPROBE>(
+    scan_controller<NLIST, NPROBE>(
         HBM_info_start_addr_and_scanned_entries_every_cell,
         s_scanned_cell_id, s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit, 
@@ -193,40 +195,44 @@ void vadd(
         s_scanned_entries_every_cell_Dummy,
         s_last_valid_channel, 
         s_scanned_entries_per_query_Sort_and_reduction,
-        s_scanned_entries_per_query_Priority_queue);
+        s_scanned_entries_per_query_Priority_queue,
+        query_num);
 
-    load_and_split_PQ_codes_wrapper<QUERY_NUM, NPROBE>(
+    load_and_split_PQ_codes_wrapper<NPROBE>(
         HBM_in0, HBM_in1, HBM_in2, HBM_in3, HBM_in4, HBM_in5, HBM_in6, HBM_in7, 
         HBM_in8, HBM_in9, HBM_in10, HBM_in11, HBM_in12, HBM_in13, HBM_in14,
         HBM_in15, HBM_in16, HBM_in17, HBM_in18, HBM_in19, HBM_in20, 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit,
         s_scanned_entries_every_cell_Split_unit,
-        s_single_PQ);
+        s_single_PQ, 
+        query_num);
 
-    PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE>(
+    PQ_lookup_computation_wrapper<NPROBE>(
         s_single_PQ, 
         s_scanned_entries_every_cell_Dummy,
         s_scanned_entries_every_cell_PQ_lookup_computation,
         s_last_valid_channel,
-        s_single_PQ_result);
+        s_single_PQ_result,
+        query_num);
 
     Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> sort_reduction_module;
 
-    sort_reduction_module.sort_and_reduction<QUERY_NUM>(
-        s_scanned_entries_per_query_Sort_and_reduction, s_single_PQ_result, s_sorted_PQ_result);
+    sort_reduction_module.sort_and_reduction(
+        s_scanned_entries_per_query_Sort_and_reduction, s_single_PQ_result, s_sorted_PQ_result, query_num);
 
-    stream_redirect_to_priority_queue_wrapper<QUERY_NUM>(
-        s_scanned_entries_per_query_Priority_queue, s_sorted_PQ_result, s_output);
+    stream_redirect_to_priority_queue_wrapper(
+        s_scanned_entries_per_query_Priority_queue, s_sorted_PQ_result, s_output, query_num);
 
     // Maybe PLRAM doesn't have enough capacity? 1000 * 10 * 8B = 80KB, should be enough.
     // TODO: use HBM as output channel
-    write_result<QUERY_NUM * PRIORITY_QUEUE_LEN>(s_output, out_PLRAM);
+    write_result(s_output, out_PLRAM, query_num);
 }
 
 
-template<const int query_num, const int nprobe>
-void generate_scanned_cell_id(hls::stream<int>& s_scanned_cell_id) {
+template<const int nprobe>
+void generate_scanned_cell_id(hls::stream<int>& s_scanned_cell_id,
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
         for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
@@ -236,7 +242,7 @@ void generate_scanned_cell_id(hls::stream<int>& s_scanned_cell_id) {
 }
 
 
-template<const int query_num, const int nlist, const int nprobe>
+template<const int nlist, const int nprobe>
 void scan_controller(
     const int* HBM_info_start_addr_and_scanned_entries_every_cell,
     hls::stream<int>& s_scanned_cell_id_Input, // from the cluster selection unit
@@ -247,7 +253,8 @@ void scan_controller(
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
     hls::stream<int>& s_last_valid_channel,
     hls::stream<int>& s_scanned_entries_per_query_Sort_and_reduction,
-    hls::stream<int>& s_scanned_entries_per_query_Priority_queue) {
+    hls::stream<int>& s_scanned_entries_per_query_Priority_queue,
+    const int query_num) {
    
     // s_last_element_valid_PQ_lookup_computation -> last element of a channel can 
     //   be padded or not, 1 means valid (not padded), 0 means padded, should be discarded
@@ -308,12 +315,13 @@ void scan_controller(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void load_PQ_codes(
     const t_axi* src,
     hls::stream<int>& s_scanned_entries_every_cell,
     hls::stream<int>& s_start_addr_every_cell,
-    hls::stream<t_axi>& s_raw_input) {
+    hls::stream<t_axi>& s_raw_input,
+    const int query_num) {
 
     // s_scanned_entries_every_cell -> 
     //   number of axi width of scanned PQ code per Voronoi cell, 
@@ -370,13 +378,14 @@ three_PQ_codes ap_uint512_to_three_PQ_codes(ap_uint<512> in) {
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void type_conversion_and_split(
     hls::stream<int>& s_scanned_entries_every_cell,
     hls::stream<t_axi>& s_raw_input,
     hls::stream<single_PQ>& s_single_PQ_0,
     hls::stream<single_PQ>& s_single_PQ_1,
-    hls::stream<single_PQ>& s_single_PQ_2) {
+    hls::stream<single_PQ>& s_single_PQ_2,
+    const int query_num) {
 
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -398,7 +407,7 @@ void type_conversion_and_split(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void load_and_split_PQ_codes(
     const t_axi* HBM_in, // HBM for PQ code + vecID storage
     hls::stream<int>& s_start_addr_every_cell,
@@ -406,23 +415,25 @@ void load_and_split_PQ_codes(
     hls::stream<int>& s_scanned_entries_every_cell_Split_unit,
     hls::stream<single_PQ>& s_single_PQ_0,
     hls::stream<single_PQ>& s_single_PQ_1,
-    hls::stream<single_PQ>& s_single_PQ_2) {
+    hls::stream<single_PQ>& s_single_PQ_2,
+    const int query_num) {
 
 #pragma HLS dataflow
 
     hls::stream<t_axi> s_raw_input; // raw AXI width input
 
-    load_PQ_codes<query_num, nprobe>(
-        HBM_in, s_scanned_entries_every_cell_Load_unit, s_start_addr_every_cell, s_raw_input);
-    type_conversion_and_split<query_num, nprobe>(
+    load_PQ_codes<nprobe>(
+        HBM_in, s_scanned_entries_every_cell_Load_unit, s_start_addr_every_cell, s_raw_input, query_num);
+    type_conversion_and_split<nprobe>(
         s_scanned_entries_every_cell_Split_unit,
-        s_raw_input, s_single_PQ_0, s_single_PQ_1, s_single_PQ_2);
+        s_raw_input, s_single_PQ_0, s_single_PQ_1, s_single_PQ_2, query_num);
 }
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void replicate_s_start_addr_every_cell(
     hls::stream<int>& s_start_addr_every_cell,
-    hls::stream<int> (&s_start_addr_every_cell_replicated)[HBM_CHANNEL_NUM]) {
+    hls::stream<int> (&s_start_addr_every_cell_replicated)[HBM_CHANNEL_NUM],
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -438,10 +449,11 @@ void replicate_s_start_addr_every_cell(
     }
 }
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void replicate_s_scanned_entries_every_cell_Load_unit(
     hls::stream<int>& s_scanned_entries_every_cell_Load_unit,
-    hls::stream<int> (&s_scanned_entries_every_cell_Load_unit_replicated)[HBM_CHANNEL_NUM]) {
+    hls::stream<int> (&s_scanned_entries_every_cell_Load_unit_replicated)[HBM_CHANNEL_NUM],
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -459,10 +471,11 @@ void replicate_s_scanned_entries_every_cell_Load_unit(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void replicate_s_scanned_entries_every_cell_Split_unit(
     hls::stream<int>& s_scanned_entries_every_cell_Split_unit,
-    hls::stream<int> (&s_scanned_entries_every_cell_Split_unit_replicated)[HBM_CHANNEL_NUM]) {
+    hls::stream<int> (&s_scanned_entries_every_cell_Split_unit_replicated)[HBM_CHANNEL_NUM],
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -480,7 +493,7 @@ void replicate_s_scanned_entries_every_cell_Split_unit(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void load_and_split_PQ_codes_wrapper(
     const t_axi* HBM_in0, const t_axi* HBM_in1, 
     const t_axi* HBM_in2, const t_axi* HBM_in3, 
@@ -496,7 +509,8 @@ void load_and_split_PQ_codes_wrapper(
     hls::stream<int>& s_start_addr_every_cell,
     hls::stream<int>& s_scanned_entries_every_cell_Load_unit,
     hls::stream<int>& s_scanned_entries_every_cell_Split_unit,
-    hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM]) {
+    hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM],
+    const int query_num) {
 
 #pragma HLS dataflow
 
@@ -515,123 +529,147 @@ void load_and_split_PQ_codes_wrapper(
 #pragma HLS array_partition variable=s_scanned_entries_every_cell_Split_unit_replicated complete
 #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Split_unit_replicated core=FIFO_SRL
 
-    replicate_s_start_addr_every_cell<query_num, nprobe>(
+    replicate_s_start_addr_every_cell<nprobe>(
         s_start_addr_every_cell, 
-        s_start_addr_every_cell_replicated); 
+        s_start_addr_every_cell_replicated,
+        query_num); 
 
-    replicate_s_scanned_entries_every_cell_Load_unit<query_num, nprobe>(
+    replicate_s_scanned_entries_every_cell_Load_unit<nprobe>(
         s_scanned_entries_every_cell_Load_unit, 
-        s_scanned_entries_every_cell_Load_unit_replicated); 
+        s_scanned_entries_every_cell_Load_unit_replicated,
+        query_num); 
 
-    replicate_s_scanned_entries_every_cell_Split_unit<query_num, nprobe>(
+    replicate_s_scanned_entries_every_cell_Split_unit<nprobe>(
         s_scanned_entries_every_cell_Split_unit, 
-        s_scanned_entries_every_cell_Split_unit_replicated); 
+        s_scanned_entries_every_cell_Split_unit_replicated,
+        query_num); 
 
-    load_and_split_PQ_codes<query_num, nprobe>(
+    load_and_split_PQ_codes<nprobe>(
         HBM_in0, s_start_addr_every_cell_replicated[0], 
         s_scanned_entries_every_cell_Load_unit_replicated[0], 
         s_scanned_entries_every_cell_Split_unit_replicated[0],
-        s_single_PQ[0 * 3 + 0], s_single_PQ[0 * 3 + 1], s_single_PQ[0 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[0 * 3 + 0], s_single_PQ[0 * 3 + 1], s_single_PQ[0 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in1, s_start_addr_every_cell_replicated[1], 
         s_scanned_entries_every_cell_Load_unit_replicated[1], 
         s_scanned_entries_every_cell_Split_unit_replicated[1],
-        s_single_PQ[1 * 3 + 0], s_single_PQ[1 * 3 + 1], s_single_PQ[1 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[1 * 3 + 0], s_single_PQ[1 * 3 + 1], s_single_PQ[1 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in2, s_start_addr_every_cell_replicated[2], 
         s_scanned_entries_every_cell_Load_unit_replicated[2], 
         s_scanned_entries_every_cell_Split_unit_replicated[2],
-        s_single_PQ[2 * 3 + 0], s_single_PQ[2 * 3 + 1], s_single_PQ[2 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[2 * 3 + 0], s_single_PQ[2 * 3 + 1], s_single_PQ[2 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in3, s_start_addr_every_cell_replicated[3], 
         s_scanned_entries_every_cell_Load_unit_replicated[3], 
         s_scanned_entries_every_cell_Split_unit_replicated[3],
-        s_single_PQ[3 * 3 + 0], s_single_PQ[3 * 3 + 1], s_single_PQ[3 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[3 * 3 + 0], s_single_PQ[3 * 3 + 1], s_single_PQ[3 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in4, s_start_addr_every_cell_replicated[4], 
         s_scanned_entries_every_cell_Load_unit_replicated[4], 
         s_scanned_entries_every_cell_Split_unit_replicated[4],
-        s_single_PQ[4 * 3 + 0], s_single_PQ[4 * 3 + 1], s_single_PQ[4 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[4 * 3 + 0], s_single_PQ[4 * 3 + 1], s_single_PQ[4 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in5, s_start_addr_every_cell_replicated[5], 
         s_scanned_entries_every_cell_Load_unit_replicated[5], 
         s_scanned_entries_every_cell_Split_unit_replicated[5],
-        s_single_PQ[5 * 3 + 0], s_single_PQ[5 * 3 + 1], s_single_PQ[5 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[5 * 3 + 0], s_single_PQ[5 * 3 + 1], s_single_PQ[5 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in6, s_start_addr_every_cell_replicated[6], 
         s_scanned_entries_every_cell_Load_unit_replicated[6], 
         s_scanned_entries_every_cell_Split_unit_replicated[6],
-        s_single_PQ[6 * 3 + 0], s_single_PQ[6 * 3 + 1], s_single_PQ[6 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[6 * 3 + 0], s_single_PQ[6 * 3 + 1], s_single_PQ[6 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in7, s_start_addr_every_cell_replicated[7], 
         s_scanned_entries_every_cell_Load_unit_replicated[7], 
         s_scanned_entries_every_cell_Split_unit_replicated[7],
-        s_single_PQ[7 * 3 + 0], s_single_PQ[7 * 3 + 1], s_single_PQ[7 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[7 * 3 + 0], s_single_PQ[7 * 3 + 1], s_single_PQ[7 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in8, s_start_addr_every_cell_replicated[8], 
         s_scanned_entries_every_cell_Load_unit_replicated[8], 
         s_scanned_entries_every_cell_Split_unit_replicated[8],
-        s_single_PQ[8 * 3 + 0], s_single_PQ[8 * 3 + 1], s_single_PQ[8 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[8 * 3 + 0], s_single_PQ[8 * 3 + 1], s_single_PQ[8 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in9, s_start_addr_every_cell_replicated[9], 
         s_scanned_entries_every_cell_Load_unit_replicated[9], 
         s_scanned_entries_every_cell_Split_unit_replicated[9],
-        s_single_PQ[9 * 3 + 0], s_single_PQ[9 * 3 + 1], s_single_PQ[9 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[9 * 3 + 0], s_single_PQ[9 * 3 + 1], s_single_PQ[9 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in10, s_start_addr_every_cell_replicated[10], 
         s_scanned_entries_every_cell_Load_unit_replicated[10], 
         s_scanned_entries_every_cell_Split_unit_replicated[10],
-        s_single_PQ[10 * 3 + 0], s_single_PQ[10 * 3 + 1], s_single_PQ[10 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[10 * 3 + 0], s_single_PQ[10 * 3 + 1], s_single_PQ[10 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in11, s_start_addr_every_cell_replicated[11], 
         s_scanned_entries_every_cell_Load_unit_replicated[11], 
         s_scanned_entries_every_cell_Split_unit_replicated[11],
-        s_single_PQ[11 * 3 + 0], s_single_PQ[11 * 3 + 1], s_single_PQ[11 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[11 * 3 + 0], s_single_PQ[11 * 3 + 1], s_single_PQ[11 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in12, s_start_addr_every_cell_replicated[12], 
         s_scanned_entries_every_cell_Load_unit_replicated[12], 
         s_scanned_entries_every_cell_Split_unit_replicated[12],
-        s_single_PQ[12 * 3 + 0], s_single_PQ[12 * 3 + 1], s_single_PQ[12 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[12 * 3 + 0], s_single_PQ[12 * 3 + 1], s_single_PQ[12 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in13, s_start_addr_every_cell_replicated[13], 
         s_scanned_entries_every_cell_Load_unit_replicated[13], 
         s_scanned_entries_every_cell_Split_unit_replicated[13],
-        s_single_PQ[13 * 3 + 0], s_single_PQ[13 * 3 + 1], s_single_PQ[13 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[13 * 3 + 0], s_single_PQ[13 * 3 + 1], s_single_PQ[13 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in14, s_start_addr_every_cell_replicated[14], 
         s_scanned_entries_every_cell_Load_unit_replicated[14], 
         s_scanned_entries_every_cell_Split_unit_replicated[14],
-        s_single_PQ[14 * 3 + 0], s_single_PQ[14 * 3 + 1], s_single_PQ[14 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[14 * 3 + 0], s_single_PQ[14 * 3 + 1], s_single_PQ[14 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in15, s_start_addr_every_cell_replicated[15], 
         s_scanned_entries_every_cell_Load_unit_replicated[15], 
         s_scanned_entries_every_cell_Split_unit_replicated[15],
-        s_single_PQ[15 * 3 + 0], s_single_PQ[15 * 3 + 1], s_single_PQ[15 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[15 * 3 + 0], s_single_PQ[15 * 3 + 1], s_single_PQ[15 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in16, s_start_addr_every_cell_replicated[16], 
         s_scanned_entries_every_cell_Load_unit_replicated[16], 
         s_scanned_entries_every_cell_Split_unit_replicated[16],
-        s_single_PQ[16 * 3 + 0], s_single_PQ[16 * 3 + 1], s_single_PQ[16 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[16 * 3 + 0], s_single_PQ[16 * 3 + 1], s_single_PQ[16 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in17, s_start_addr_every_cell_replicated[17], 
         s_scanned_entries_every_cell_Load_unit_replicated[17], 
         s_scanned_entries_every_cell_Split_unit_replicated[17],
-        s_single_PQ[17 * 3 + 0], s_single_PQ[17 * 3 + 1], s_single_PQ[17 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[17 * 3 + 0], s_single_PQ[17 * 3 + 1], s_single_PQ[17 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in18, s_start_addr_every_cell_replicated[18], 
         s_scanned_entries_every_cell_Load_unit_replicated[18], 
         s_scanned_entries_every_cell_Split_unit_replicated[18],
-        s_single_PQ[18 * 3 + 0], s_single_PQ[18 * 3 + 1], s_single_PQ[18 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[18 * 3 + 0], s_single_PQ[18 * 3 + 1], s_single_PQ[18 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in19, s_start_addr_every_cell_replicated[19], 
         s_scanned_entries_every_cell_Load_unit_replicated[19], 
         s_scanned_entries_every_cell_Split_unit_replicated[19],
-        s_single_PQ[19 * 3 + 0], s_single_PQ[19 * 3 + 1], s_single_PQ[19 * 3 + 2]);
-    load_and_split_PQ_codes<query_num, nprobe>(
+        s_single_PQ[19 * 3 + 0], s_single_PQ[19 * 3 + 1], s_single_PQ[19 * 3 + 2],
+        query_num);
+    load_and_split_PQ_codes<nprobe>(
         HBM_in20, s_start_addr_every_cell_replicated[20], 
         s_scanned_entries_every_cell_Load_unit_replicated[20], 
         s_scanned_entries_every_cell_Split_unit_replicated[20],
-        s_single_PQ[20 * 3 + 0], s_single_PQ[20 * 3 + 1], s_single_PQ[20 * 3 + 2]);
+        s_single_PQ[20 * 3 + 0], s_single_PQ[20 * 3 + 1], s_single_PQ[20 * 3 + 2],
+        query_num);
 }
 
 void init_distance_table_partition(float table[512], float bias) {
@@ -643,12 +681,13 @@ void init_distance_table_partition(float table[512], float bias) {
 }
 
  
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void PQ_lookup_computation(
     hls::stream<single_PQ>& s_single_PQ, 
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
-    hls::stream<single_PQ_result>& s_single_PQ_result) {
+    hls::stream<single_PQ_result>& s_single_PQ_result,
+    const int query_num) {
 
     // each BRAM stores 2 tables, which can be looked up concurrently by 2 ports
     float distance_lookup_table_local_0[512], distance_lookup_table_local_1[512], 
@@ -723,10 +762,11 @@ void PQ_lookup_computation(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void dummy_PQ_result_sender(
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
-    hls::stream<single_PQ_result> &s_single_PQ_result) {
+    hls::stream<single_PQ_result> &s_single_PQ_result,
+    const int query_num) {
 
     single_PQ_result out; 
     out.vec_ID = -1;
@@ -749,10 +789,11 @@ void dummy_PQ_result_sender(
 
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void replicate_s_scanned_entries_every_cell_PQ_lookup_computation(
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
-    hls::stream<int> (&s_scanned_entries_every_cell_PQ_lookup_computation_replicated)[3 * HBM_CHANNEL_NUM]) {
+    hls::stream<int> (&s_scanned_entries_every_cell_PQ_lookup_computation_replicated)[3 * HBM_CHANNEL_NUM],
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -771,10 +812,11 @@ void replicate_s_scanned_entries_every_cell_PQ_lookup_computation(
 }
 
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void send_s_last_element_valid_PQ_lookup_computation(
     hls::stream<int>& s_last_valid_channel,
-    hls::stream<int> (&s_last_element_valid_PQ_lookup_computation)[3 * HBM_CHANNEL_NUM]) {
+    hls::stream<int> (&s_last_element_valid_PQ_lookup_computation)[3 * HBM_CHANNEL_NUM],
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -795,13 +837,14 @@ void send_s_last_element_valid_PQ_lookup_computation(
     }
 }
 
-template<const int query_num, const int nprobe>
+template<const int nprobe>
 void PQ_lookup_computation_wrapper(
     hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM], 
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation, 
     hls::stream<int>& s_last_valid_channel, 
-    hls::stream<single_PQ_result> (&s_single_PQ_result)[4][16]) {
+    hls::stream<single_PQ_result> (&s_single_PQ_result)[4][16],
+    const int query_num) {
 
 #pragma HLS dataflow
 
@@ -810,9 +853,10 @@ void PQ_lookup_computation_wrapper(
 #pragma HLS array_partition variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated complete
 #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated core=FIFO_SRL
 
-    replicate_s_scanned_entries_every_cell_PQ_lookup_computation<query_num, nprobe>(
+    replicate_s_scanned_entries_every_cell_PQ_lookup_computation<nprobe>(
         s_scanned_entries_every_cell_PQ_lookup_computation, 
-        s_scanned_entries_every_cell_PQ_lookup_computation_replicated);
+        s_scanned_entries_every_cell_PQ_lookup_computation_replicated,
+        query_num);
 
     hls::stream<int> s_last_element_valid_PQ_lookup_computation[3 * HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_last_element_valid_PQ_lookup_computation depth=8
@@ -820,43 +864,46 @@ void PQ_lookup_computation_wrapper(
 #pragma HLS RESOURCE variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
 
     // Note, here interpret the last valid element, rather than simply replicate
-    send_s_last_element_valid_PQ_lookup_computation<query_num, nprobe>(
+    send_s_last_element_valid_PQ_lookup_computation<nprobe>(
         s_last_valid_channel, 
-        s_last_element_valid_PQ_lookup_computation);
+        s_last_element_valid_PQ_lookup_computation,
+        query_num);
 
     for (int i = 0; i < 3; i++) {
 #pragma HLS UNROLL
         for (int j = 0; j < 16; j++) {
 #pragma HLS UNROLL
-            PQ_lookup_computation<query_num, nprobe>(
+            PQ_lookup_computation<nprobe>(
                 s_single_PQ[i * 16 + j], 
                 s_scanned_entries_every_cell_PQ_lookup_computation_replicated[i * 16 + j], 
                 s_last_element_valid_PQ_lookup_computation[i * 16 + j], 
-                s_single_PQ_result[i][j]);
+                s_single_PQ_result[i][j],
+                query_num);
         }
     }
 
     for (int j = 0; j < 15; j++) {
 #pragma HLS UNROLL
-        PQ_lookup_computation<query_num, nprobe>(
+        PQ_lookup_computation<nprobe>(
             s_single_PQ[48+ j], 
             s_scanned_entries_every_cell_PQ_lookup_computation_replicated[48 + j],
             s_last_element_valid_PQ_lookup_computation[48 + j], 
-            s_single_PQ_result[3][j]);
+            s_single_PQ_result[3][j],
+            query_num);
     }
 
-    dummy_PQ_result_sender<query_num, nprobe>(
-        s_scanned_entries_every_cell_Dummy, s_single_PQ_result[3][15]);
+    dummy_PQ_result_sender<nprobe>(
+        s_scanned_entries_every_cell_Dummy, s_single_PQ_result[3][15], query_num);
 }
 
 
 ////////////////////  Priority Queues for PQ results Starts  ////////////////////
 
 
-template<const int query_num>
 void replicate_scanned_entries_per_query_Redirected_sorted_stream(
         hls::stream<int>& s_scanned_entries_per_query_Priority_queue, 
-        hls::stream<int> (&s_scanned_entries_every_cell_Redirected_sorted_stream)[16]) {
+        hls::stream<int> (&s_scanned_entries_every_cell_Redirected_sorted_stream)[16],
+        const int query_num) {
     
     for (int i = 0; i < query_num; i++) {
 
@@ -870,10 +917,10 @@ void replicate_scanned_entries_per_query_Redirected_sorted_stream(
 }
 
 
-template<const int query_num>
 void consume_single_stream(
     hls::stream<single_PQ_result> &input_stream,
-    hls::stream<int>& s_scanned_entries_every_cell) {
+    hls::stream<int>& s_scanned_entries_every_cell,
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -887,14 +934,14 @@ void consume_single_stream(
 }
 
 
-template<const int query_num>
 void split_single_stream(
     hls::stream<single_PQ_result> &input_stream,
     hls::stream<int>& s_scanned_entries_every_cell,
     hls::stream<int>& s_scanned_entries_every_cell_Out_priority_queue_A, 
     hls::stream<int>& s_scanned_entries_every_cell_Out_priority_queue_B, 
     hls::stream<single_PQ_result> &output_stream_A,
-    hls::stream<single_PQ_result> &output_stream_B) {
+    hls::stream<single_PQ_result> &output_stream_B,
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -919,12 +966,12 @@ void split_single_stream(
 }
 
 
-template<const int query_num>
 void consume_and_redirect_sorted_streams(
     hls::stream<single_PQ_result> (&sorted_stream)[16], 
     hls::stream<int>& s_scanned_entries_per_query_In_Priority_queue,
     hls::stream<int> (&s_scanned_entries_every_cell_Out_priority_queue)[20],
-    hls::stream<single_PQ_result> (&redirected_sorted_stream)[20]) {
+    hls::stream<single_PQ_result> (&redirected_sorted_stream)[20],
+    const int query_num) {
     
 #pragma HLS dataflow
     // for the top 16 elements, discard the last 6 
@@ -936,32 +983,36 @@ void consume_and_redirect_sorted_streams(
 #pragma HLS array_partition variable=s_scanned_entries_every_cell_Replicated complete
 #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Replicated core=FIFO_SRL
 
-    replicate_scanned_entries_per_query_Redirected_sorted_stream<query_num>(
+    replicate_scanned_entries_per_query_Redirected_sorted_stream(
         s_scanned_entries_per_query_In_Priority_queue, 
-        s_scanned_entries_every_cell_Replicated);
+        s_scanned_entries_every_cell_Replicated,
+        query_num);
 
     for (int i = 0; i < 10; i++) {
 #pragma HLS UNROLL
-        split_single_stream<query_num>(
+        split_single_stream(
             sorted_stream[i], 
             s_scanned_entries_every_cell_Replicated[i],
             s_scanned_entries_every_cell_Out_priority_queue[2 * i],
             s_scanned_entries_every_cell_Out_priority_queue[2 * i + 1],
             redirected_sorted_stream[2 * i], 
-            redirected_sorted_stream[2 * i + 1]);
+            redirected_sorted_stream[2 * i + 1],
+            query_num);
     }
 
     for (int i = 10; i < 16; i++) {
 #pragma HLS UNROLL
-        consume_single_stream<query_num>(
+        consume_single_stream(
             sorted_stream[i], 
-            s_scanned_entries_every_cell_Replicated[i]);
+            s_scanned_entries_every_cell_Replicated[i],
+            query_num);
     }
 }
 
 
-template<const int query_num, const int iter_num_per_query>
-void send_iter_num(hls::stream<int>& s_merged_intermediate_result_iter) {
+template<const int iter_num_per_query>
+void send_iter_num(hls::stream<int>& s_merged_intermediate_result_iter,
+    const int query_num) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
         s_merged_intermediate_result_iter.write(iter_num_per_query);
@@ -969,10 +1020,11 @@ void send_iter_num(hls::stream<int>& s_merged_intermediate_result_iter) {
 }
 
 
-template<const int query_num, const int priority_queue_len>
+template<const int priority_queue_len>
 void merge_streams(
     hls::stream<single_PQ_result> (&intermediate_result)[20],
-    hls::stream<single_PQ_result> &output_stream) {
+    hls::stream<single_PQ_result> &output_stream,
+    const int query_num) {
     
     for (int query_id = 0; query_id < query_num; query_id++) {
         for (int d = 0; d < priority_queue_len; d++) {
@@ -985,11 +1037,11 @@ void merge_streams(
 }
 
 
-template<const int query_num>
 void stream_redirect_to_priority_queue_wrapper( 
     hls::stream<int>& s_scanned_entries_per_query_Priority_queue,
     hls::stream<single_PQ_result> (&sorted_stream)[16], 
-    hls::stream<single_PQ_result> &output_stream) {
+    hls::stream<single_PQ_result> &output_stream,
+    const int query_num) {
 
     // Given 16 input stream (last 6 streams are discarded), redirect them to 
     // 20 priority queues (because 2 CC per insertion), and then insert them to a final
@@ -1023,37 +1075,40 @@ void stream_redirect_to_priority_queue_wrapper(
 #pragma HLS array_partition variable=priority_queue_intermediate complete
     Priority_queue<single_PQ_result, PRIORITY_QUEUE_LEN, Collect_smallest> priority_queue_final;
 
-    consume_and_redirect_sorted_streams<query_num>(
+    consume_and_redirect_sorted_streams(
         sorted_stream, 
         s_scanned_entries_per_query_Priority_queue,
         s_scanned_entries_every_cell_Redirected_sorted_stream,
-        redirected_sorted_stream); 
+        redirected_sorted_stream,
+        query_num); 
 
     // 2 CC per insertion
     for (int i = 0; i < 20; i++) {
 #pragma HLS UNROLL
         // for each individual query, output intermediate_result
-        priority_queue_intermediate[i].insert_wrapper<query_num>(
+        priority_queue_intermediate[i].insert_wrapper(
             s_scanned_entries_every_cell_Redirected_sorted_stream[i], 
-            redirected_sorted_stream[i], intermediate_result[i]);
+            redirected_sorted_stream[i], intermediate_result[i],
+            query_num);
     }
 
-    merge_streams<query_num, PRIORITY_QUEUE_LEN>(intermediate_result, merged_intermediate_result);
+    merge_streams<PRIORITY_QUEUE_LEN>(intermediate_result, merged_intermediate_result, query_num);
 
     // depth is 20 * 10 
-    send_iter_num<query_num, 20 * PRIORITY_QUEUE_LEN>(s_merged_intermediate_result_iter);
-    priority_queue_final.insert_wrapper<query_num>(
+    send_iter_num<20 * PRIORITY_QUEUE_LEN>(s_merged_intermediate_result_iter, query_num);
+    priority_queue_final.insert_wrapper(
             s_merged_intermediate_result_iter,
-            merged_intermediate_result, output_stream); 
+            merged_intermediate_result, output_stream,
+            query_num); 
 }
 
 ////////////////////  Priority Queues for PQ results Ends  ////////////////////
 
-template<const int total_len>
-void write_result(hls::stream<single_PQ_result> &output_stream, ap_uint<64>* output) {
+void write_result(hls::stream<single_PQ_result> &output_stream, ap_uint<64>* output,
+    const int query_num) {
 
     // only write the last iteration
-    for (int i = 0; i < total_len - PRIORITY_QUEUE_LEN; i++) {
+    for (int i = 0; i < (query_num - 1) * PRIORITY_QUEUE_LEN; i++) {
         output_stream.read();
     }
 

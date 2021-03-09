@@ -889,6 +889,7 @@ void PQ_lookup_computation_wrapper(
 #pragma HLS RESOURCE variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
 
     // Note, here interpret the last valid element, rather than simply replicate
+    ///// Replace the logic below to a new function /////
     send_s_last_element_valid_PQ_lookup_computation<query_num, nprobe>(
         s_last_valid_channel, 
         s_last_element_valid_PQ_lookup_computation);
@@ -917,6 +918,7 @@ void PQ_lookup_computation_wrapper(
             s_last_element_valid_PQ_lookup_computation[48 + j], 
             s_single_PQ_result[3][j]);
     }
+    ///// Replace the logic above to a new function /////
 
     dummy_PQ_result_sender<query_num, nprobe>(
         s_scanned_entries_every_cell_Dummy, s_single_PQ_result[3][15]);

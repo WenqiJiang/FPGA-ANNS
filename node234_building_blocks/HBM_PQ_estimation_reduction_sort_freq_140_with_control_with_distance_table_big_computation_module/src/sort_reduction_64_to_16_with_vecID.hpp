@@ -3,10 +3,10 @@
 // Note! Template Function Specialization is NOT allowed in class scope
 namespace sort_reduction_64_to_16_with_vecID {
 
+    template<const int query_num>
     void replicate_control_stream_iter_num_per_query(
         hls::stream<int>& control_stream_iter_num_per_query,
-        hls::stream<int> (&control_stream_iter_num_per_query_replicated)[7],
-        const int query_num) {
+        hls::stream<int> (&control_stream_iter_num_per_query_replicated)[7]) {
         
         for (int query_id = 0; query_id < query_num; query_id++) {
             int iter_num_per_query = control_stream_iter_num_per_query.read();
@@ -101,11 +101,11 @@ namespace sort_reduction_64_to_16_with_vecID {
         }
     }
 
+    template<const int query_num>
     void bitonic_sort_16(
         hls::stream<int>& control_stream_iter_num_per_query,
         hls::stream<single_PQ_result> (&input_stream)[16],
-        hls::stream<single_PQ_result> (&output_stream)[16],
-        const int query_num) {
+        hls::stream<single_PQ_result> (&output_stream)[16]) {
 
         single_PQ_result input_array[16];
 #pragma HLS array_partition variable=input_array complete
@@ -136,12 +136,12 @@ namespace sort_reduction_64_to_16_with_vecID {
 
 
         for (int query_id = 0; query_id < query_num; query_id++) {
-// #pragma HLS loop_flatten
+#pragma HLS loop_flatten
             // Fixed, originally "const int iter_num"
             int iter_num = control_stream_iter_num_per_query.read();
 
             for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS dataflow
+    #pragma HLS dataflow
                 load_input_stream<16>(input_stream, input_array);
                 // Total: 15 sub-stages
                 // Stage 1
@@ -202,12 +202,12 @@ namespace sort_reduction_64_to_16_with_vecID {
         }
     }
 
+    template<const int query_num>
     void parallel_merge_sort_16(
         hls::stream<int>& control_stream_iter_num_per_query,
         hls::stream<single_PQ_result> (&input_stream_A)[16],
         hls::stream<single_PQ_result> (&input_stream_B)[16],
-        hls::stream<single_PQ_result> (&output_stream)[16],
-        const int query_num) {
+        hls::stream<single_PQ_result> (&output_stream)[16]) {
         
         // given 2 input sorted array A and B of len array_len, 
         // merge and sort and reduction to output array C of len array_len,
@@ -230,11 +230,13 @@ namespace sort_reduction_64_to_16_with_vecID {
 #pragma HLS array_partition variable=out_stage_4 complete
 
         for (int query_id = 0; query_id < query_num; query_id++) {
-
+#pragma HLS loop_flatten
+            // Fixed, orignally "const int iter_num"
             int iter_num = control_stream_iter_num_per_query.read();
 
             for (int iter = 0; iter < iter_num; iter++) {
 #pragma HLS dataflow
+#pragma HLS loop_flatten
                 load_input_stream<16>(input_stream_A, input_array_A);
                 load_input_stream<16>(input_stream_B, input_array_B);
 
@@ -270,11 +272,11 @@ class Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> {
         }
 
         // Top-level function in this class: 64 (4 * 16) -> 16
+        template<const int query_num>
         void sort_and_reduction(
             hls::stream<int>& control_stream_iter_num_per_query,
             hls::stream<single_PQ_result> (&input_stream)[4][16],
-            hls::stream<single_PQ_result> (&output_stream)[16],
-            const int query_num) {
+            hls::stream<single_PQ_result> (&output_stream)[16]) {
 
             hls::stream<single_PQ_result> result_stage_0[4][16];
             hls::stream<single_PQ_result> result_stage_1[2][16];
@@ -292,30 +294,27 @@ class Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> {
 
 #pragma HLS dataflow
 
-        sort_reduction_64_to_16_with_vecID::replicate_control_stream_iter_num_per_query(
+        sort_reduction_64_to_16_with_vecID::replicate_control_stream_iter_num_per_query<query_num>(
             control_stream_iter_num_per_query,
-            control_stream_iter_num_per_query_replicated,
-            query_num);
+            control_stream_iter_num_per_query_replicated);
 
             for (int i = 0; i < 4; i++) {
 #pragma HLS UNROLL
-                sort_reduction_64_to_16_with_vecID::bitonic_sort_16(
-                    control_stream_iter_num_per_query_replicated[i], input_stream[i], result_stage_0[i], query_num);
+                sort_reduction_64_to_16_with_vecID::bitonic_sort_16<query_num>(
+                    control_stream_iter_num_per_query_replicated[i], input_stream[i], result_stage_0[i]);
             }
 
             for (int i = 0; i < 2; i++) {
 #pragma HLS UNROLL
-                sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16(
+                sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16<query_num>(
                     control_stream_iter_num_per_query_replicated[4 + i],
                     result_stage_0[2 * i], result_stage_0[2 * i + 1], 
-                    result_stage_1[i],
-                    query_num);
+                    result_stage_1[i]);
             }
 
-            sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16(
+            sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16<query_num>(
                 control_stream_iter_num_per_query_replicated[6],
-                result_stage_1[0], result_stage_1[1], output_stream,
-                query_num);
+                result_stage_1[0], result_stage_1[1], output_stream);
         }
 
     private:
