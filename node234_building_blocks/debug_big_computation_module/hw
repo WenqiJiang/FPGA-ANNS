@@ -21,3 +21,783 @@ INFO: [v++ 60-585] Compiling for hardware target
 INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
 INFO: [v++ 60-242] Creating kernel: 'vadd'
 INFO: [v++ 60-1616] Creating a HLS clock using kernel_frequency option: 140 MHz
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/vadd.hw/vadd/vivado_hls.log :
+INFO: [v++ 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.1'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1.2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 63.
+INFO: [v++ 204-61] Pipelining loop 'Loop 1'.
+WARNING: [v++ 204-69] Unable to schedule 'store' operation ('output_array_0_vec_ID_addr_2_write_ln4081', /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:4081->/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:32) of variable 'tmp.vec_ID', /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:4081->/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:32 on array 'output_array[0].vec_ID', /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:4068->/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/src/vadd.cpp:32 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'output_array_0_vec_ID'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 8, Depth = 9.
+INFO: [v++ 204-61] Pipelining loop 'Loop 2'.
+INFO: [v++ 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 191.79 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/vadd.hw/system_estimate_vadd.hw.xtxt
+Add Instance PQ_lookup_computation_wrapper_10000_32_200_s PQ_lookup_computation_wrapper_10000_32_200_U0 7504
+Add Instance consume_and_write_result_10000_32_200_s consume_and_write_result_10000_32_200_U0 8724
+Add Instance dummy_single_PQ_sender_10000_32_200_s dummy_single_PQ_sender_10000_32_200_U0 8859
+Add Instance dummy_distance_LUT_sender_10000_32_s dummy_distance_LUT_sender_10000_32_U0 9934
+Add Instance dummy_last_valid_channel_sender_10000_32_s dummy_last_valid_channel_sender_10000_32_U0 9954
+Add Instance vadd_entry12 vadd_entry12_U0 9959
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xo
+INFO: [v++ 60-791] Total elapsed time: 0h 15m 26s
+mkdir -p ./xclbin
+/opt/Xilinx/Vitis/2019.2/bin/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -o'xclbin/vadd.hw.xclbin' xclbin/vadd.hw.xo --jobs 32 #--from_step vpl.impl.phys_opt_design
+Option Map File Used: '/opt/Xilinx/Vitis/2019.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link
+	Log files: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/logs/link
+WARNING: [v++ 60-1216] --report/-r option has been deprecated. Please use --report_level/-R estimate to generate an estimate report file for software emulation
+Running Dispatch Server on port:41115
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/xclbin/vadd.hw.xclbin.link_summary, at Tue Mar  9 15:51:07 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Tue Mar  9 15:51:07 2021
+Running Rule Check Server on port:40365
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html', at Tue Mar  9 15:51:08 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [15:51:17] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/xclbin/vadd.hw.xo -keep --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+INFO: [SYSTEM_LINK 82-76] Reading emulation BD and HPFM information
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Tue Mar  9 15:51:23 2021
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/xclbin/vadd.hw.xo
+INFO: [KernelCheck 83-118] 'vadd' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in0' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in1' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in2' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in3' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in4' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in5' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in6' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in7' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in8' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in9' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in10' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in11' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in12' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in13' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in14' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in15' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in16' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in17' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in18' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in19' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_in20' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'HBM_info_start_addr_and_scanned_entries_every_cell' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [KernelCheck 83-118] 'out_PLRAM' kernel.xml and component.xml caseness discrepency is being corrected, S_AXI_CONTROL is being replaced by s_axi_control
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [15:51:24] build_xd_ip_db started: /opt/Xilinx/Vitis/2019.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [15:51:31] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 125795 ; free virtual = 369032
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [15:51:31] cfgen started: /opt/Xilinx/Vitis/2019.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.HBM_in0:HBM[0] -sp vadd_1.HBM_in1:HBM[1] -sp vadd_1.HBM_in2:HBM[2] -sp vadd_1.HBM_in3:HBM[3] -sp vadd_1.HBM_in4:HBM[4] -sp vadd_1.HBM_in5:HBM[5] -sp vadd_1.HBM_in6:HBM[6] -sp vadd_1.HBM_in7:HBM[7] -sp vadd_1.HBM_in8:HBM[8] -sp vadd_1.HBM_in9:HBM[9] -sp vadd_1.HBM_in10:HBM[10] -sp vadd_1.HBM_in11:HBM[11] -sp vadd_1.HBM_in12:HBM[12] -sp vadd_1.HBM_in13:HBM[13] -sp vadd_1.HBM_in14:HBM[14] -sp vadd_1.HBM_in15:HBM[15] -sp vadd_1.HBM_in16:HBM[16] -sp vadd_1.HBM_in17:HBM[17] -sp vadd_1.HBM_in18:HBM[18] -sp vadd_1.HBM_in19:HBM[19] -sp vadd_1.HBM_in20:HBM[20] -sp vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell:HBM[21] -sp vadd_1.out_PLRAM:PLRAM[0] -dmclkid 0 -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in10, sptag: HBM[10]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in11, sptag: HBM[11]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in12, sptag: HBM[12]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in13, sptag: HBM[13]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in14, sptag: HBM[14]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in15, sptag: HBM[15]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in16, sptag: HBM[16]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in17, sptag: HBM[17]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in18, sptag: HBM[18]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in19, sptag: HBM[19]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in20, sptag: HBM[20]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_info_start_addr_and_scanned_entries_every_cell, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: out_PLRAM, sptag: PLRAM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in0 to HBM[0] for directive vadd_1.HBM_in0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in1 to HBM[1] for directive vadd_1.HBM_in1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in2 to HBM[2] for directive vadd_1.HBM_in2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in3 to HBM[3] for directive vadd_1.HBM_in3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in4 to HBM[4] for directive vadd_1.HBM_in4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in5 to HBM[5] for directive vadd_1.HBM_in5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in6 to HBM[6] for directive vadd_1.HBM_in6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in7 to HBM[7] for directive vadd_1.HBM_in7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in8 to HBM[8] for directive vadd_1.HBM_in8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in9 to HBM[9] for directive vadd_1.HBM_in9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in10 to HBM[10] for directive vadd_1.HBM_in10:HBM[10]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in11 to HBM[11] for directive vadd_1.HBM_in11:HBM[11]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in12 to HBM[12] for directive vadd_1.HBM_in12:HBM[12]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in13 to HBM[13] for directive vadd_1.HBM_in13:HBM[13]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in14 to HBM[14] for directive vadd_1.HBM_in14:HBM[14]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in15 to HBM[15] for directive vadd_1.HBM_in15:HBM[15]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in16 to HBM[16] for directive vadd_1.HBM_in16:HBM[16]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in17 to HBM[17] for directive vadd_1.HBM_in17:HBM[17]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in18 to HBM[18] for directive vadd_1.HBM_in18:HBM[18]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in19 to HBM[19] for directive vadd_1.HBM_in19:HBM[19]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in20 to HBM[20] for directive vadd_1.HBM_in20:HBM[20]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell to HBM[21] for directive vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.out_PLRAM to PLRAM[0] for directive vadd_1.out_PLRAM:PLRAM[0]
+INFO: [SYSTEM_LINK 82-37] [15:51:37] cfgen finished successfully
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 124802 ; free virtual = 368315
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [15:51:37] cf2bd started: /opt/Xilinx/Vitis/2019.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.xsd --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [15:51:40] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 295.461 ; gain = 0.000 ; free physical = 125187 ; free virtual = 368870
+INFO: [v++ 60-1441] [15:51:40] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 125211 ; free virtual = 368896
+INFO: [v++ 60-1443] [15:51:40] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/sdsl.dat -rtd /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/cf2sw.rtd -xclbin /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/xclbin_orig.xml -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [15:51:43] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 124890 ; free virtual = 368751
+INFO: [v++ 60-1443] [15:51:43] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram --rtdJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/cf2sw.rtd --diagramJsonFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/systemDiagramModel.json --platformFilePath /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --generatedByName v++ --generatedByVersion 2019.2 --generatedByChangeList 2708876 --generatedByTimeStamp Wed Nov  6 21:39:14 MST 2019 --generatedByOptions /opt/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/v++ -t hw --config design.cfg --save-temps --report estimate --temp_dir ./_x.hw/vadd -l --profile_kernel data:all:all:all:all -oxclbin/vadd.hw.xclbin xclbin/vadd.hw.xo --jobs 32  --generatedByXclbinName vadd.hw --kernelInfoDataFileName /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/kernel_info.dat
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+INFO: [v++ 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/kernel_info.dat'.
+WARNING: [v++ 82-157] Unable to populate kernel available resources BRAM entry.
+WARNING: [v++ 82-158] Unable to populate kernel available resources DSP entry.
+INFO: [v++ 60-1441] [15:51:45] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 124577 ; free virtual = 368642
+INFO: [v++ 60-1443] [15:51:45] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g -j 32 --kernel_frequency 140 --profile_kernel data:all:all:all:all -s --output_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int --log_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/logs/link --report_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link --config /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vplConfig.ini -k /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link --no-info --tlog_dir /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/.tlog/v++_link_vadd.hw --iprepo /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link/vpl.pb /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+
+****** vpl v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/vivado/vpl/.local/hw_platform
+[15:53:02] Run vpl: Step create_project: Started
+Creating Vivado project.
+[15:53:05] Run vpl: Step create_project: Completed
+[15:53:05] Run vpl: Step create_bd: Started
+[15:55:19] Run vpl: Step create_bd: RUNNING...
+[15:57:07] Run vpl: Step create_bd: RUNNING...
+[15:58:52] Run vpl: Step create_bd: RUNNING...
+[16:00:51] Run vpl: Step create_bd: RUNNING...
+[16:01:33] Run vpl: Step create_bd: Completed
+[16:01:33] Run vpl: Step update_bd: Started
+[16:03:15] Run vpl: Step update_bd: RUNNING...
+[16:04:05] Run vpl: Step update_bd: Completed
+[16:04:05] Run vpl: Step generate_target: Started
+[16:05:52] Run vpl: Step generate_target: RUNNING...
+[16:07:44] Run vpl: Step generate_target: RUNNING...
+[16:09:23] Run vpl: Step generate_target: RUNNING...
+[16:11:12] Run vpl: Step generate_target: RUNNING...
+[16:12:26] Run vpl: Step generate_target: Completed
+[16:12:26] Run vpl: Step config_hw_runs: Started
+[16:13:30] Run vpl: Step config_hw_runs: Completed
+[16:13:30] Run vpl: Step synth: Started
+[16:15:21] Block-level synthesis in progress, 0 of 45 jobs complete, 32 jobs running.
+[16:16:40] Block-level synthesis in progress, 0 of 45 jobs complete, 32 jobs running.
+[16:17:54] Block-level synthesis in progress, 23 of 45 jobs complete, 20 jobs running.
+[16:19:18] Block-level synthesis in progress, 30 of 45 jobs complete, 13 jobs running.
+[16:20:35] Block-level synthesis in progress, 41 of 45 jobs complete, 3 jobs running.
+[16:21:51] Block-level synthesis in progress, 42 of 45 jobs complete, 3 jobs running.
+[16:23:10] Block-level synthesis in progress, 43 of 45 jobs complete, 2 jobs running.
+[16:24:29] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:25:47] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:27:09] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:28:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:29:51] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:31:12] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:32:32] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:33:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:35:05] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:36:25] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:37:41] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:38:58] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:40:17] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:41:34] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:42:50] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:44:06] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:45:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:46:40] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:47:56] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:49:17] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:50:40] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:51:58] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:53:14] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:54:31] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:55:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:57:05] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:58:22] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[16:59:38] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:00:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:02:11] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:03:27] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:04:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:06:07] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:07:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:08:39] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:09:59] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:11:18] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:12:38] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:13:56] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:15:14] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:16:32] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:17:51] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:19:09] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:20:25] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:21:44] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:23:03] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:24:24] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:25:45] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:27:06] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:28:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:29:39] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:30:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:32:13] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:33:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:34:49] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:36:08] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:37:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:38:51] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:40:10] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:41:28] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:42:49] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:44:06] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:45:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:46:37] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:47:53] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:49:10] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:50:25] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:51:41] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:52:56] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:54:12] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:55:27] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:56:44] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:58:00] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[17:59:17] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:00:31] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:01:50] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:03:06] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:04:22] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:05:37] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:06:52] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:08:08] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:09:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:10:39] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:11:58] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:13:16] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:14:31] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:15:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:17:03] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:18:19] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:19:35] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:20:52] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:23:10] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:25:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:26:37] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:27:52] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:29:08] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:30:23] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:31:40] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:32:58] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:34:14] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:35:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:36:46] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:38:03] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:39:19] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:40:35] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:41:51] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:43:07] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:44:24] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:45:41] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:46:57] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:48:14] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:49:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:50:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:52:05] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:53:22] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:54:38] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:55:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:57:12] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:58:32] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[18:59:49] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:01:06] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:02:22] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:03:37] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:04:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:07:33] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:08:51] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:10:11] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:11:28] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:12:44] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:14:01] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:15:18] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:16:33] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:17:48] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:19:03] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:20:19] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:21:33] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:22:49] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:24:04] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:25:22] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:26:38] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:27:55] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:29:12] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:30:30] Block-level synthesis in progress, 44 of 45 jobs complete, 1 job running.
+[19:31:52] Block-level synthesis in progress, 45 of 45 jobs complete, 0 jobs running.
+[19:33:06] Block-level synthesis in progress, 45 of 45 jobs complete, 0 jobs running.
+[19:34:20] Top-level synthesis in progress.
+[19:35:42] Top-level synthesis in progress.
+[19:36:58] Top-level synthesis in progress.
+[19:38:13] Top-level synthesis in progress.
+[19:39:29] Top-level synthesis in progress.
+[19:40:47] Top-level synthesis in progress.
+[19:42:05] Top-level synthesis in progress.
+[19:43:22] Top-level synthesis in progress.
+[19:44:42] Top-level synthesis in progress.
+[19:46:02] Top-level synthesis in progress.
+[19:47:21] Top-level synthesis in progress.
+[19:48:40] Top-level synthesis in progress.
+[19:49:56] Top-level synthesis in progress.
+[19:51:12] Top-level synthesis in progress.
+[19:52:29] Top-level synthesis in progress.
+[19:53:45] Top-level synthesis in progress.
+[19:55:00] Top-level synthesis in progress.
+[19:56:15] Top-level synthesis in progress.
+[19:57:30] Top-level synthesis in progress.
+[19:58:45] Top-level synthesis in progress.
+[20:00:01] Top-level synthesis in progress.
+[20:01:17] Top-level synthesis in progress.
+[20:02:32] Top-level synthesis in progress.
+[20:03:49] Top-level synthesis in progress.
+[20:05:06] Top-level synthesis in progress.
+[20:06:22] Top-level synthesis in progress.
+[20:07:39] Top-level synthesis in progress.
+[20:08:56] Top-level synthesis in progress.
+[20:10:12] Top-level synthesis in progress.
+[20:11:26] Top-level synthesis in progress.
+[20:12:42] Top-level synthesis in progress.
+[20:14:01] Top-level synthesis in progress.
+[20:15:16] Top-level synthesis in progress.
+[20:16:32] Top-level synthesis in progress.
+[20:17:47] Top-level synthesis in progress.
+[20:19:04] Top-level synthesis in progress.
+[20:20:20] Top-level synthesis in progress.
+[20:21:37] Top-level synthesis in progress.
+[20:22:52] Top-level synthesis in progress.
+[20:24:07] Top-level synthesis in progress.
+[20:25:24] Top-level synthesis in progress.
+[20:26:40] Top-level synthesis in progress.
+[20:27:57] Top-level synthesis in progress.
+[20:29:16] Top-level synthesis in progress.
+[20:30:35] Top-level synthesis in progress.
+[20:31:55] Top-level synthesis in progress.
+[20:33:13] Top-level synthesis in progress.
+[20:34:30] Top-level synthesis in progress.
+[20:35:48] Top-level synthesis in progress.
+[20:37:07] Top-level synthesis in progress.
+[20:38:24] Top-level synthesis in progress.
+[20:39:42] Top-level synthesis in progress.
+[20:41:00] Top-level synthesis in progress.
+[20:42:16] Top-level synthesis in progress.
+[20:43:32] Top-level synthesis in progress.
+[20:44:51] Top-level synthesis in progress.
+[20:46:10] Top-level synthesis in progress.
+[20:47:28] Top-level synthesis in progress.
+[20:48:43] Top-level synthesis in progress.
+[20:50:05] Top-level synthesis in progress.
+[20:51:31] Top-level synthesis in progress.
+[20:52:54] Top-level synthesis in progress.
+[20:54:13] Top-level synthesis in progress.
+[20:55:51] Top-level synthesis in progress.
+[20:57:15] Top-level synthesis in progress.
+[20:58:46] Top-level synthesis in progress.
+[21:00:07] Top-level synthesis in progress.
+[21:01:23] Top-level synthesis in progress.
+[21:02:51] Top-level synthesis in progress.
+[21:04:12] Top-level synthesis in progress.
+[21:05:29] Top-level synthesis in progress.
+[21:06:51] Top-level synthesis in progress.
+[21:08:14] Top-level synthesis in progress.
+[21:09:36] Top-level synthesis in progress.
+[21:10:57] Top-level synthesis in progress.
+[21:12:23] Top-level synthesis in progress.
+[21:13:49] Top-level synthesis in progress.
+[21:15:14] Top-level synthesis in progress.
+[21:16:37] Top-level synthesis in progress.
+[21:17:58] Top-level synthesis in progress.
+[21:19:19] Top-level synthesis in progress.
+[21:20:42] Top-level synthesis in progress.
+[21:22:05] Top-level synthesis in progress.
+[21:23:27] Top-level synthesis in progress.
+[21:24:48] Top-level synthesis in progress.
+[21:26:08] Top-level synthesis in progress.
+[21:27:27] Top-level synthesis in progress.
+[21:28:47] Top-level synthesis in progress.
+[21:30:04] Top-level synthesis in progress.
+[21:31:24] Top-level synthesis in progress.
+[21:32:45] Top-level synthesis in progress.
+[21:34:06] Top-level synthesis in progress.
+[21:35:24] Top-level synthesis in progress.
+[21:36:43] Top-level synthesis in progress.
+[21:38:03] Top-level synthesis in progress.
+[21:39:23] Top-level synthesis in progress.
+[21:40:43] Top-level synthesis in progress.
+[21:42:01] Top-level synthesis in progress.
+[21:43:22] Top-level synthesis in progress.
+[21:44:40] Top-level synthesis in progress.
+[21:45:57] Top-level synthesis in progress.
+[21:47:14] Top-level synthesis in progress.
+[21:48:31] Top-level synthesis in progress.
+[21:49:48] Top-level synthesis in progress.
+[21:51:04] Top-level synthesis in progress.
+[21:52:21] Top-level synthesis in progress.
+[21:53:36] Top-level synthesis in progress.
+[21:54:52] Top-level synthesis in progress.
+[21:56:08] Top-level synthesis in progress.
+[21:57:25] Top-level synthesis in progress.
+[21:58:40] Top-level synthesis in progress.
+[21:59:57] Top-level synthesis in progress.
+[22:01:14] Top-level synthesis in progress.
+[22:02:29] Top-level synthesis in progress.
+[22:03:44] Top-level synthesis in progress.
+[22:05:01] Top-level synthesis in progress.
+[22:06:17] Top-level synthesis in progress.
+[22:07:33] Top-level synthesis in progress.
+[22:08:50] Top-level synthesis in progress.
+[22:10:06] Top-level synthesis in progress.
+[22:11:22] Top-level synthesis in progress.
+[22:12:38] Top-level synthesis in progress.
+[22:13:56] Top-level synthesis in progress.
+[22:15:12] Top-level synthesis in progress.
+[22:16:28] Top-level synthesis in progress.
+[22:17:44] Top-level synthesis in progress.
+[22:19:00] Top-level synthesis in progress.
+[22:20:15] Top-level synthesis in progress.
+[22:21:32] Top-level synthesis in progress.
+[22:22:48] Top-level synthesis in progress.
+[22:24:04] Top-level synthesis in progress.
+[22:25:19] Top-level synthesis in progress.
+[22:26:34] Top-level synthesis in progress.
+[22:27:50] Top-level synthesis in progress.
+[22:29:07] Top-level synthesis in progress.
+[22:30:24] Top-level synthesis in progress.
+[22:31:41] Top-level synthesis in progress.
+[22:33:00] Top-level synthesis in progress.
+[22:34:20] Top-level synthesis in progress.
+[22:35:38] Top-level synthesis in progress.
+[22:36:57] Top-level synthesis in progress.
+[22:38:16] Top-level synthesis in progress.
+[22:39:34] Top-level synthesis in progress.
+[22:40:52] Top-level synthesis in progress.
+[22:42:10] Top-level synthesis in progress.
+[22:43:26] Top-level synthesis in progress.
+[22:44:42] Top-level synthesis in progress.
+[22:45:59] Top-level synthesis in progress.
+[22:47:18] Top-level synthesis in progress.
+[22:48:35] Top-level synthesis in progress.
+[22:49:52] Top-level synthesis in progress.
+[22:51:09] Top-level synthesis in progress.
+[22:52:26] Top-level synthesis in progress.
+[22:53:44] Top-level synthesis in progress.
+[22:55:01] Top-level synthesis in progress.
+[22:56:16] Top-level synthesis in progress.
+[22:57:34] Top-level synthesis in progress.
+[22:58:50] Top-level synthesis in progress.
+[23:00:05] Top-level synthesis in progress.
+[23:01:24] Top-level synthesis in progress.
+[23:02:41] Top-level synthesis in progress.
+[23:03:57] Top-level synthesis in progress.
+[23:05:14] Top-level synthesis in progress.
+[23:06:31] Top-level synthesis in progress.
+[23:07:48] Top-level synthesis in progress.
+[23:09:05] Top-level synthesis in progress.
+[23:10:22] Top-level synthesis in progress.
+[23:11:38] Top-level synthesis in progress.
+[23:12:56] Top-level synthesis in progress.
+[23:14:15] Top-level synthesis in progress.
+[23:15:33] Top-level synthesis in progress.
+[23:16:50] Top-level synthesis in progress.
+[23:18:07] Top-level synthesis in progress.
+[23:19:25] Top-level synthesis in progress.
+[23:20:41] Top-level synthesis in progress.
+[23:21:57] Top-level synthesis in progress.
+[23:23:15] Top-level synthesis in progress.
+[23:24:30] Top-level synthesis in progress.
+[23:25:47] Top-level synthesis in progress.
+[23:27:04] Top-level synthesis in progress.
+[23:28:20] Top-level synthesis in progress.
+[23:29:36] Top-level synthesis in progress.
+[23:30:52] Top-level synthesis in progress.
+[23:32:07] Top-level synthesis in progress.
+[23:33:24] Top-level synthesis in progress.
+[23:34:42] Top-level synthesis in progress.
+[23:35:57] Top-level synthesis in progress.
+[23:37:13] Top-level synthesis in progress.
+[23:38:29] Top-level synthesis in progress.
+[23:39:44] Top-level synthesis in progress.
+[23:40:59] Top-level synthesis in progress.
+[23:42:15] Top-level synthesis in progress.
+[23:43:31] Top-level synthesis in progress.
+[23:44:46] Top-level synthesis in progress.
+[23:46:02] Top-level synthesis in progress.
+[23:47:19] Top-level synthesis in progress.
+[23:48:34] Top-level synthesis in progress.
+[23:49:50] Top-level synthesis in progress.
+[23:51:07] Top-level synthesis in progress.
+[23:52:25] Top-level synthesis in progress.
+[23:53:41] Top-level synthesis in progress.
+[23:54:58] Top-level synthesis in progress.
+[23:56:14] Top-level synthesis in progress.
+[23:57:29] Top-level synthesis in progress.
+[23:58:45] Top-level synthesis in progress.
+[00:00:01] Top-level synthesis in progress.
+[00:01:18] Top-level synthesis in progress.
+[00:02:35] Top-level synthesis in progress.
+[00:03:52] Top-level synthesis in progress.
+[00:05:09] Top-level synthesis in progress.
+[00:06:25] Top-level synthesis in progress.
+[00:07:42] Top-level synthesis in progress.
+[00:08:57] Top-level synthesis in progress.
+[00:10:15] Top-level synthesis in progress.
+[00:11:32] Top-level synthesis in progress.
+[00:12:50] Top-level synthesis in progress.
+[00:14:07] Top-level synthesis in progress.
+[00:15:22] Top-level synthesis in progress.
+[00:16:39] Top-level synthesis in progress.
+[00:17:56] Top-level synthesis in progress.
+[00:19:13] Top-level synthesis in progress.
+[00:20:31] Top-level synthesis in progress.
+[00:21:47] Top-level synthesis in progress.
+[00:23:03] Top-level synthesis in progress.
+[00:24:19] Top-level synthesis in progress.
+[00:25:35] Top-level synthesis in progress.
+[00:26:52] Top-level synthesis in progress.
+[00:28:09] Top-level synthesis in progress.
+[00:29:10] Run vpl: Step synth: Completed
+[00:29:10] Run vpl: Step impl: Started
+[00:53:56] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 09h 02m 05s 
+
+[00:53:56] Starting logic optimization..
+[00:55:41] Phase 1 Retarget
+[00:56:30] Phase 2 Constant propagation
+[00:57:26] Phase 3 Sweep
+[01:00:57] Phase 4 BUFG optimization
+[01:01:45] Phase 5 Shift Register Optimization
+[01:01:45] Phase 6 Post Processing Netlist
+[01:10:29] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 16m 32s 
+
+[01:10:29] Starting logic placement..
+[01:11:45] Phase 1 Placer Initialization
+[01:11:45] Phase 1.1 Placer Initialization Netlist Sorting
+[01:14:17] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[01:16:47] Phase 1.3 Build Placer Netlist Model
+[01:20:28] Phase 1.4 Constrain Clocks/Macros
+[01:21:43] Phase 2 Global Placement
+[01:21:43] Phase 2.1 Floorplanning
+[01:29:17] Phase 2.2 Global Placement Core
+[01:45:40] Phase 2.2.1 Physical Synthesis In Placer
+[01:50:31] Phase 3 Detail Placement
+[01:50:31] Phase 3.1 Commit Multi Column Macros
+[01:50:31] Phase 3.2 Commit Most Macros & LUTRAMs
+[01:51:45] Phase 3.3 Area Swap Optimization
+[01:53:00] Phase 3.4 Pipeline Register Optimization
+[01:53:00] Phase 3.5 IO Cut Optimizer
+[01:53:00] Phase 3.6 Fast Optimization
+[01:54:15] Phase 3.7 Small Shape DP
+[01:54:15] Phase 3.7.1 Small Shape Clustering
+[01:55:27] Phase 3.7.2 Flow Legalize Slice Clusters
+[01:55:27] Phase 3.7.3 Slice Area Swap
+[01:56:37] Phase 3.7.4 Commit Slice Clusters
+[02:00:20] Phase 3.8 Place Remaining
+[02:00:20] Phase 3.9 Re-assign LUT pins
+[02:01:33] Phase 3.10 Pipeline Register Optimization
+[02:01:33] Phase 3.11 Fast Optimization
+[02:04:00] Phase 4 Post Placement Optimization and Clean-Up
+[02:04:00] Phase 4.1 Post Commit Optimization
+[02:06:27] Phase 4.1.1 Post Placement Optimization
+[02:06:27] Phase 4.1.1.1 BUFG Insertion
+[02:39:03] Phase 4.1.1.2 BUFG Replication
+[02:39:03] Phase 4.1.1.3 Replication
+[02:40:15] Phase 4.2 Post Placement Cleanup
+[02:41:30] Phase 4.3 Placer Reporting
+[02:41:30] Phase 4.4 Final Placement Cleanup
+[03:02:34] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 52m 04s 
+
+[03:02:34] Starting logic routing..
+[03:03:47] Phase 1 Build RT Design
+[03:08:37] Phase 2 Router Initialization
+[03:08:37] Phase 2.1 Fix Topology Constraints
+[03:09:50] Phase 2.2 Pre Route Cleanup
+[03:09:50] Phase 2.3 Global Clock Net Routing
+[03:11:03] Phase 2.4 Update Timing
+[03:15:58] Phase 2.5 Update Timing for Bus Skew
+[03:15:58] Phase 2.5.1 Update Timing
+[03:18:25] Phase 3 Initial Routing
+[03:18:25] Phase 3.1 Global Routing
+[03:22:12] Phase 4 Rip-up And Reroute
+[03:22:12] Phase 4.1 Global Iteration 0
+[03:43:07] Phase 4.2 Global Iteration 1
+[03:46:45] Phase 4.3 Global Iteration 2
+[03:50:22] Phase 5 Delay and Skew Optimization
+[03:50:22] Phase 5.1 Delay CleanUp
+[03:50:22] Phase 5.1.1 Update Timing
+[03:52:48] Phase 5.2 Clock Skew Optimization
+[03:52:48] Phase 6 Post Hold Fix
+[03:52:48] Phase 6.1 Hold Fix Iter
+[03:52:48] Phase 6.1.1 Update Timing
+[03:55:17] Phase 6.1.2 Lut RouteThru Assignment for hold
+[03:55:17] Phase 6.2 Additional Hold Fix
+[03:58:57] Phase 7 Route finalize
+[03:58:57] Phase 8 Verifying routed nets
+[04:00:10] Phase 9 Depositing Routes
+[04:01:26] Phase 10 Route finalize
+[04:01:26] Phase 11 Post Router Timing
+[04:03:52] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 01h 01m 18s 
+
+[04:03:52] Starting bitstream generation..
+[04:13:48] Phase 1 Physical Synthesis Initialization
+Starting optional post-route physical design optimization.
+[04:17:30] Phase 2 SLL Register Hold Fix Optimization
+[04:18:45] Phase 3 Critical Path Optimization
+[04:18:45] Phase 4 Hold Fix Optimization
+Finished optional post-route physical design optimization.
+[04:38:41] Creating bitmap...
+[04:45:59] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[04:45:59] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 42m 05s 
+[04:45:58] Run vpl: Step impl: Completed
+[04:46:06] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [04:46:13] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:11:36 ; elapsed = 12:54:23 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 278615 ; free virtual = 392038
+INFO: [v++ 60-1443] [04:46:13] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 140, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [04:46:19] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 278572 ; free virtual = 392786
+INFO: [v++ 60-1443] [04:46:19] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 3896 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 62539463 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 8716 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 13182 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 27374 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (62623192 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [04:46:19] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.30 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 278464 ; free virtual = 392750
+INFO: [v++ 60-1443] [04:46:19] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [04:46:20] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.43 ; elapsed = 00:00:00.48 . Memory (MB): peak = 691.863 ; gain = 0.000 ; free physical = 278479 ; free virtual = 392783
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link/system_estimate_vadd.hw.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/xclbin/vadd.hw.ltx
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/_x.hw/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 12h 55m 14s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+./host ./xclbin/vadd.hw.xclbin
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 75712
+UID: 522663
+[Wed Mar 10 04:46:43 2021]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/debug_big_computation_module/host
+[XRT] WARNING: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+src/host.hpp:45 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:122: recipe for target 'check' failed
+make: *** [check] Error 1
