@@ -134,10 +134,6 @@ void vadd(
 // #pragma HLS array_partition variable=s_scanned_entries_every_cell_PQ_lookup_computation complete
 // #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation core=FIFO_SRL
 
-    hls::stream<int> s_scanned_entries_every_cell_Dummy;
-#pragma HLS stream variable=s_scanned_entries_every_cell_Dummy depth=512
-// #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Dummy core=FIFO_SRL
-
     hls::stream<int> s_last_valid_channel;
 #pragma HLS stream variable=s_last_valid_channel depth=512
 // #pragma HLS array_partition variable=s_last_valid_channel complete
@@ -166,6 +162,10 @@ void vadd(
 #pragma HLS array_partition variable=s_single_PQ complete
 #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
 
+    hls::stream<distance_LUT_PQ16_t> s_distance_LUT;
+#pragma HLS stream variable=s_distance_LUT depth=8
+#pragma HLS RESOURCE variable=s_distance_LUT core=FIFO_SRL
+
     // 64 streams = 21 channels * 3 + 1 dummy
     hls::stream<single_PQ_result> s_single_PQ_result[4][16];
 #pragma HLS stream variable=s_single_PQ_result depth=8
@@ -190,7 +190,6 @@ void vadd(
         s_scanned_entries_every_cell_Load_unit, 
         s_scanned_entries_every_cell_Split_unit,
         s_scanned_entries_every_cell_PQ_lookup_computation,
-        s_scanned_entries_every_cell_Dummy,
         s_last_valid_channel, 
         s_scanned_entries_per_query_Sort_and_reduction,
         s_scanned_entries_per_query_Priority_queue);
@@ -204,9 +203,11 @@ void vadd(
         s_scanned_entries_every_cell_Split_unit,
         s_single_PQ);
 
+    dummy_distance_LUT_sender<QUERY_NUM, NPROBE>(s_distance_LUT);
+
     PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE>(
         s_single_PQ, 
-        s_scanned_entries_every_cell_Dummy,
+        s_distance_LUT,
         s_scanned_entries_every_cell_PQ_lookup_computation,
         s_last_valid_channel,
         s_single_PQ_result);
@@ -244,7 +245,6 @@ void scan_controller(
     hls::stream<int>& s_scanned_entries_every_cell_Load_unit,
     hls::stream<int>& s_scanned_entries_every_cell_Split_unit,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
-    hls::stream<int>& s_scanned_entries_every_cell_Dummy,
     hls::stream<int>& s_last_valid_channel,
     hls::stream<int>& s_scanned_entries_per_query_Sort_and_reduction,
     hls::stream<int>& s_scanned_entries_per_query_Priority_queue) {
@@ -297,7 +297,6 @@ void scan_controller(
             s_start_addr_every_cell.write(start_addr);
             s_scanned_entries_every_cell_Load_unit.write(scanned_entries_every_cell);
             s_scanned_entries_every_cell_Split_unit.write(scanned_entries_every_cell);
-            s_scanned_entries_every_cell_Dummy.write(scanned_entries_every_cell);
             s_scanned_entries_every_cell_PQ_lookup_computation.write(scanned_entries_every_cell);
             s_last_valid_channel.write(last_valid_channel);
         }
@@ -679,249 +678,171 @@ void dummy_distance_LUT_sender(
     
 }
  
-template<const int query_num, const int nprobe>
-void PQ_lookup_computation(
-    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT,
-    hls::stream<single_PQ>& s_single_PQ, 
-    hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
-    hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
-    hls::stream<single_PQ_result>& s_single_PQ_result) {
+void init_distance_LUT(
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT, 
+    float distance_LUT[3 * HBM_CHANNEL_NUM][8][512]) {
 
-    // each BRAM stores 2 tables, which can be looked up concurrently by 2 ports
-    //    distance_lookup_table_local_0 -> LUT 0, 8
-    //    distance_lookup_table_local_1 -> LUT 1, 9
-    float distance_lookup_table_local_0[512], distance_lookup_table_local_1[512], 
-        distance_lookup_table_local_2[512], distance_lookup_table_local_3[512], 
-        distance_lookup_table_local_4[512], distance_lookup_table_local_5[512], 
-        distance_lookup_table_local_6[512], distance_lookup_table_local_7[512];
-    
-    // init_distance_table_partition(distance_lookup_table_local_0, 0);
-    // init_distance_table_partition(distance_lookup_table_local_1, 1);
-    // init_distance_table_partition(distance_lookup_table_local_2, 2);
-    // init_distance_table_partition(distance_lookup_table_local_3, 3);
-    // init_distance_table_partition(distance_lookup_table_local_4, 4);
-    // init_distance_table_partition(distance_lookup_table_local_5, 5);
-    // init_distance_table_partition(distance_lookup_table_local_6, 6);
-    // init_distance_table_partition(distance_lookup_table_local_7, 7);
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
-
-        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
-
-            int scanned_entries_every_cell = 
-                s_scanned_entries_every_cell_PQ_lookup_computation.read();
-            int last_element_valid = 
-                s_last_element_valid_PQ_lookup_computation.read();
-
-            for (int row_id = 0; row_id < K; row_id++) {
+    for (int row_id = 0; row_id < K; row_id++) {
 #pragma HLS pipeline II=1
-                distance_LUT_PQ16_t dist_row = s_distance_LUT.read();
-                
-                // col 0 ~ 7
-                distance_lookup_table_local_0[row_id] = dist_row.dist_0; 
-                distance_lookup_table_local_1[row_id] = dist_row.dist_1; 
-                distance_lookup_table_local_2[row_id] = dist_row.dist_2;
-                distance_lookup_table_local_3[row_id] = dist_row.dist_3; 
-                distance_lookup_table_local_4[row_id] = dist_row.dist_4; 
-                distance_lookup_table_local_5[row_id] = dist_row.dist_5; 
-                distance_lookup_table_local_6[row_id] = dist_row.dist_6; 
-                distance_lookup_table_local_7[row_id] = dist_row.dist_7; 
+        distance_LUT_PQ16_t dist_row = s_distance_LUT.read();
+        
+        for (int s = 0; s < 3 * HBM_CHANNEL_NUM; s++) {
+#pragma HLS UNROLL
+            // col 0 ~ 7
+            distance_LUT[s][0][row_id] = dist_row.dist_0; 
+            distance_LUT[s][1][row_id] = dist_row.dist_1; 
+            distance_LUT[s][2][row_id] = dist_row.dist_2;
+            distance_LUT[s][3][row_id] = dist_row.dist_3; 
+            distance_LUT[s][4][row_id] = dist_row.dist_4; 
+            distance_LUT[s][5][row_id] = dist_row.dist_5; 
+            distance_LUT[s][6][row_id] = dist_row.dist_6; 
+            distance_LUT[s][7][row_id] = dist_row.dist_7; 
 
-                // col 8 ~ 15
-                distance_lookup_table_local_0[row_id + 256] = dist_row.dist_8; 
-                distance_lookup_table_local_1[row_id + 256] = dist_row.dist_9; 
-                distance_lookup_table_local_2[row_id + 256] = dist_row.dist_10; 
-                distance_lookup_table_local_3[row_id + 256] = dist_row.dist_11; 
-                distance_lookup_table_local_4[row_id + 256] = dist_row.dist_12; 
-                distance_lookup_table_local_5[row_id + 256] = dist_row.dist_13; 
-                distance_lookup_table_local_6[row_id + 256] = dist_row.dist_14; 
-                distance_lookup_table_local_7[row_id + 256] = dist_row.dist_15;
-            }
-
-            for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
-#pragma HLS pipeline II=1
-
-                single_PQ PQ_local = s_single_PQ.read();
-
-                unsigned char lookup_idx_0 = PQ_local.PQ_code[0];
-                unsigned char lookup_idx_1 = PQ_local.PQ_code[1];
-                unsigned char lookup_idx_2 = PQ_local.PQ_code[2];
-                unsigned char lookup_idx_3 = PQ_local.PQ_code[3];
-                unsigned char lookup_idx_4 = PQ_local.PQ_code[4];
-                unsigned char lookup_idx_5 = PQ_local.PQ_code[5];
-                unsigned char lookup_idx_6 = PQ_local.PQ_code[6];
-                unsigned char lookup_idx_7 = PQ_local.PQ_code[7];
-
-                // not adding 256 here, it will overflow
-                unsigned char lookup_idx_8 = PQ_local.PQ_code[8];// + 256;
-                unsigned char lookup_idx_9 = PQ_local.PQ_code[9];// + 256;
-                unsigned char lookup_idx_10 = PQ_local.PQ_code[10];// + 256;
-                unsigned char lookup_idx_11 = PQ_local.PQ_code[11];// + 256;
-                unsigned char lookup_idx_12 = PQ_local.PQ_code[12];// + 256;
-                unsigned char lookup_idx_13 = PQ_local.PQ_code[13];// + 256;
-                unsigned char lookup_idx_14 = PQ_local.PQ_code[14];// + 256;
-                unsigned char lookup_idx_15 = PQ_local.PQ_code[15];// + 256;
-
-                single_PQ_result out; 
-                out.vec_ID = PQ_local.vec_ID;
-                out.dist = 
-                    distance_lookup_table_local_0[lookup_idx_0] + distance_lookup_table_local_1[lookup_idx_1] + 
-                    distance_lookup_table_local_2[lookup_idx_2] + distance_lookup_table_local_3[lookup_idx_3] + 
-                    distance_lookup_table_local_4[lookup_idx_4] + distance_lookup_table_local_5[lookup_idx_5] + 
-                    distance_lookup_table_local_6[lookup_idx_6] + distance_lookup_table_local_7[lookup_idx_7] + 
-
-                    distance_lookup_table_local_0[((int)lookup_idx_8) + 256] + distance_lookup_table_local_1[((int)lookup_idx_9) + 256] + 
-                    distance_lookup_table_local_2[((int)lookup_idx_10) + 256] + distance_lookup_table_local_3[((int)lookup_idx_11) + 256] + 
-                    distance_lookup_table_local_4[((int)lookup_idx_12) + 256] + distance_lookup_table_local_5[((int)lookup_idx_13) + 256] + 
-                    distance_lookup_table_local_6[((int)lookup_idx_14) + 256] + distance_lookup_table_local_7[((int)lookup_idx_15) + 256];
-
-                // for padded element, replace its distance by large number
-                if ((entry_id == (scanned_entries_every_cell - 1)) && (last_element_valid == 0)) {
-                    out.vec_ID = -1;
-                    out.dist = LARGE_NUM;
-                }
-                s_single_PQ_result.write(out);
-            }
+            // col 8 ~ 15
+            distance_LUT[s][0][row_id + 256] = dist_row.dist_8; 
+            distance_LUT[s][1][row_id + 256] = dist_row.dist_9; 
+            distance_LUT[s][2][row_id + 256] = dist_row.dist_10; 
+            distance_LUT[s][3][row_id + 256] = dist_row.dist_11; 
+            distance_LUT[s][4][row_id + 256] = dist_row.dist_12; 
+            distance_LUT[s][5][row_id + 256] = dist_row.dist_13; 
+            distance_LUT[s][6][row_id + 256] = dist_row.dist_14; 
+            distance_LUT[s][7][row_id + 256] = dist_row.dist_15;
         }
     }
 }
 
+void PQ_lookup_computation(
+    float distance_LUT[8][512],
+    hls::stream<single_PQ>& s_single_PQ, 
+    int scanned_entries_every_cell,
+    int last_element_valid, 
+    hls::stream<single_PQ_result>& s_single_PQ_result) {
 
-template<const int query_num, const int nprobe>
+    for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
+#pragma HLS pipeline II=1
+
+        single_PQ PQ_local = s_single_PQ.read();
+
+        single_PQ_result out; 
+        out.vec_ID = PQ_local.vec_ID;
+        out.dist = 
+            distance_LUT[0][PQ_local.PQ_code[0]] + 
+            distance_LUT[1][PQ_local.PQ_code[1]] + 
+            distance_LUT[2][PQ_local.PQ_code[2]] + 
+            distance_LUT[3][PQ_local.PQ_code[3]] + 
+            distance_LUT[4][PQ_local.PQ_code[4]] + 
+            distance_LUT[5][PQ_local.PQ_code[5]] + 
+            distance_LUT[6][PQ_local.PQ_code[6]] + 
+            distance_LUT[7][PQ_local.PQ_code[7]] + 
+
+            distance_LUT[0][((int)PQ_local.PQ_code[8]) + 256] + 
+            distance_LUT[1][((int)PQ_local.PQ_code[9]) + 256] + 
+            distance_LUT[2][((int)PQ_local.PQ_code[10]) + 256] + 
+            distance_LUT[3][((int)PQ_local.PQ_code[11]) + 256] + 
+            distance_LUT[4][((int)PQ_local.PQ_code[12]) + 256] + 
+            distance_LUT[5][((int)PQ_local.PQ_code[13]) + 256] + 
+            distance_LUT[6][((int)PQ_local.PQ_code[14]) + 256] + 
+            distance_LUT[7][((int)PQ_local.PQ_code[15]) + 256];
+
+        // for padded element, replace its distance by large number
+        if ((entry_id == (scanned_entries_every_cell - 1)) && (last_element_valid == 0)) {
+            out.vec_ID = -1;
+            out.dist = LARGE_NUM;
+        }
+        s_single_PQ_result.write(out);
+    }
+}
+
 void dummy_PQ_result_sender(
-    hls::stream<int>& s_scanned_entries_every_cell_Dummy,
+    int scanned_entries_every_cell,
     hls::stream<single_PQ_result> &s_single_PQ_result) {
 
     single_PQ_result out; 
     out.vec_ID = -1;
     out.dist = LARGE_NUM;
     
-    for (int query_id = 0; query_id < query_num; query_id++) {
-
-        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
-
-            int scanned_entries_every_cell = 
-                s_scanned_entries_every_cell_Dummy.read();
-
-            for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
+    for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
 #pragma HLS pipeline II=1
-                s_single_PQ_result.write(out);
-            }
-        }
-    }
-}
-
-
-
-template<const int query_num, const int nprobe>
-void replicate_s_scanned_entries_every_cell_PQ_lookup_computation(
-    hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
-    hls::stream<int> (&s_scanned_entries_every_cell_PQ_lookup_computation_replicated)[3 * HBM_CHANNEL_NUM]) {
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
-
-        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
-
-            int scanned_entries_every_cell_PQ_lookup_computation = 
-                s_scanned_entries_every_cell_PQ_lookup_computation.read();
-
-            for (int s = 0; s < 3 * HBM_CHANNEL_NUM; s++) {
-#pragma HLS UNROLL
-                s_scanned_entries_every_cell_PQ_lookup_computation_replicated[s].write(
-                    scanned_entries_every_cell_PQ_lookup_computation);
-            }
-        }
-    }
-}
-
-
-template<const int query_num, const int nprobe>
-void send_s_last_element_valid_PQ_lookup_computation(
-    hls::stream<int>& s_last_valid_channel,
-    hls::stream<int> (&s_last_element_valid_PQ_lookup_computation)[3 * HBM_CHANNEL_NUM]) {
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
-
-        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
-
-            int last_valid_channel = s_last_valid_channel.read(); 
-
-            for (int s = 0; s < 3 * HBM_CHANNEL_NUM; s++) {
-#pragma HLS UNROLL
-                if (s <= last_valid_channel) {
-                    s_last_element_valid_PQ_lookup_computation[s].write(1); // valid, not padding
-                }
-                else {
-                    s_last_element_valid_PQ_lookup_computation[s].write(0); // invalid, padded element
-                }
-            }
-        }
+        s_single_PQ_result.write(out);
     }
 }
 
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation_wrapper(
     hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM], 
-    hls::stream<int>& s_scanned_entries_every_cell_Dummy,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation, 
     hls::stream<int>& s_last_valid_channel, 
     hls::stream<single_PQ_result> (&s_single_PQ_result)[4][16]) {
 
+// Wenqi: Here, can enable (improve performance) or disable dataflow (save resources)
 #pragma HLS dataflow
 
-    hls::stream<distance_LUT_PQ16_t> s_distance_LUT[3 * HBM_CHANNEL_NUM];
-#pragma HLS stream variable=s_distance_LUT depth=8
-#pragma HLS array_partition variable=s_distance_LUT complete
-#pragma HLS RESOURCE variable=s_distance_LUT core=FIFO_SRL
+    float distance_LUT[3 * HBM_CHANNEL_NUM][8][512];
+#pragma HLS array_partition variable=distance_LUT dim=1
+#pragma HLS array_partition variable=distance_LUT dim=2
+#pragma HLS resource variable=distance_LUT core=RAM_2P_BRAM
 
-    hls::stream<int> s_scanned_entries_every_cell_PQ_lookup_computation_replicated[3 * HBM_CHANNEL_NUM];
-#pragma HLS stream variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated depth=8
-#pragma HLS array_partition variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated complete
-#pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated core=FIFO_SRL
+    int last_element_valid[3 * HBM_CHANNEL_NUM];
+#pragma HLS array_partition variable=last_element_valid complete
 
-    replicate_s_scanned_entries_every_cell_PQ_lookup_computation<query_num, nprobe>(
-        s_scanned_entries_every_cell_PQ_lookup_computation, 
-        s_scanned_entries_every_cell_PQ_lookup_computation_replicated);
+    int scanned_entries_every_cell_replicated[64];
+#pragma HLS array_partition variable=scanned_entries_every_cell_replicated complete
 
-    hls::stream<int> s_last_element_valid_PQ_lookup_computation[3 * HBM_CHANNEL_NUM];
-#pragma HLS stream variable=s_last_element_valid_PQ_lookup_computation depth=8
-#pragma HLS array_partition variable=s_last_element_valid_PQ_lookup_computation complete
-#pragma HLS RESOURCE variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
+    for (int query_id = 0; query_id < query_num; query_id++) {
 
-    // Note, here interpret the last valid element, rather than simply replicate
-    ///// Replace the logic below to a new function /////
-    send_s_last_element_valid_PQ_lookup_computation<query_num, nprobe>(
-        s_last_valid_channel, 
-        s_last_element_valid_PQ_lookup_computation);
+        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 
-    for (int i = 0; i < 3; i++) {
+            // per nprobe init
+            int scanned_entries_every_cell = 
+                s_scanned_entries_every_cell_PQ_lookup_computation.read();
+            int last_valid_channel = s_last_valid_channel.read();
+            
+            for (int s = 0; s < 3 * HBM_CHANNEL_NUM; s++) {
+#pragma HLS UNROLL 
+                if (s > last_valid_channel) {
+                    last_element_valid[s] = 0;
+                }
+                else {
+                    last_element_valid[s] = 1;
+                }
+            }
+            for (int s = 0; s < 64; s++) {
 #pragma HLS UNROLL
-        for (int j = 0; j < 16; j++) {
+                scanned_entries_every_cell_replicated[s] = scanned_entries_every_cell;
+            }
+
+            // load distance LUT
+            init_distance_LUT(s_distance_LUT, distance_LUT);
+
+            // Computer & Send results 
+            for (int i = 0; i < 3; i++) {
 #pragma HLS UNROLL
-            dummy_distance_LUT_sender<query_num, nprobe>(s_distance_LUT[i * 16 + j]);
-            PQ_lookup_computation<query_num, nprobe>(
-                s_distance_LUT[i * 16 + j],
-                s_single_PQ[i * 16 + j], 
-                s_scanned_entries_every_cell_PQ_lookup_computation_replicated[i * 16 + j], 
-                s_last_element_valid_PQ_lookup_computation[i * 16 + j], 
-                s_single_PQ_result[i][j]);
+                for (int j = 0; j < 16; j++) {
+#pragma HLS UNROLL
+                    PQ_lookup_computation(
+                        distance_LUT[i * 16 + j],
+                        s_single_PQ[i * 16 + j], 
+                        scanned_entries_every_cell_replicated[i * 16 + j], 
+                        last_element_valid[i * 16 + j], 
+                        s_single_PQ_result[i][j]);
+                }
+            }
+
+            for (int j = 0; j < 15; j++) {
+        #pragma HLS UNROLL
+                PQ_lookup_computation(
+                    distance_LUT[48 + j],
+                    s_single_PQ[48+ j], 
+                    scanned_entries_every_cell_replicated[48 + j], 
+                    last_element_valid[48 + j], 
+                    s_single_PQ_result[3][j]);
+            }
+
+            dummy_PQ_result_sender(
+                scanned_entries_every_cell_replicated[63], s_single_PQ_result[3][15]);
         }
     }
-
-    for (int j = 0; j < 15; j++) {
-#pragma HLS UNROLL
-        dummy_distance_LUT_sender<query_num, nprobe>(s_distance_LUT[48 + j]);
-        PQ_lookup_computation<query_num, nprobe>(
-            s_distance_LUT[48 + j],
-            s_single_PQ[48+ j], 
-            s_scanned_entries_every_cell_PQ_lookup_computation_replicated[48 + j],
-            s_last_element_valid_PQ_lookup_computation[48 + j], 
-            s_single_PQ_result[3][j]);
-    }
-    ///// Replace the logic above to a new function /////
-
-    dummy_PQ_result_sender<query_num, nprobe>(
-        s_scanned_entries_every_cell_Dummy, s_single_PQ_result[3][15]);
 }
 
 

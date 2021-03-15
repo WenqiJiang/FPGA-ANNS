@@ -1,1 +1,3 @@
-                s_single_PQ_result[2][0].write(out_PE32);
+    float distance_LUT_PE0[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE0 dim=1
+#pragma HLS resource variable=distance_LUT_PE0 core=RAM_2P_BRAM

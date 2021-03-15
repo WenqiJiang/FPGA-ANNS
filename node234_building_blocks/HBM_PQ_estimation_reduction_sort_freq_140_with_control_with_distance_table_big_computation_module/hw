@@ -1018,3 +1018,32 @@ Creating Vivado project.
 [04:45:01] Phase 3.7.2 Flow Legalize Slice Clusters
 [04:46:16] Phase 3.7.3 Slice Area Swap
 [04:52:33] Phase 3.7.4 Commit Slice Clusters
+[10:08:10] Phase 3.8 Place Remaining
+[10:42:00] Run vpl: Step impl: Failed
+[10:42:31] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while processing /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_PQ_estimation_reduction_sort_freq_140_with_control_with_distance_table_big_computation_module/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1 :
+ERROR: [VPL 30-488] Failed to commit 9 instances:
+pfm_top_i/dynamic_region/System_DPA/dpa_mon10/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[6]_i_7 with block Id: 17841 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon10/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[7]_i_7 with block Id: 17843 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[0]_i_7 with block Id: 19601 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[18]_i_7 with block Id: 19625 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[19]_i_7 with block Id: 19627 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[1]_i_7 with block Id: 19629 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[20]_i_7 with block Id: 19631 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[22]_i_7 with block Id: 19635 (LUT) . No site found for this instance.
+pfm_top_i/dynamic_region/System_DPA/dpa_mon11/inst/metric_counters_i/GEN_COUNTERS[5].acc_inst_0/Sample_Metric_Ram_Data[23]_i_7 with block Id: 19637 (LUT) . No site found for this instance.
+
+ERROR: [VPL 30-99] Placer failed with error: 'failed to commit all instances'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+ERROR: [VPL 17-69] Command failed: Placer could not place all instances
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, place_design ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_PQ_estimation_reduction_sort_freq_140_with_control_with_distance_table_big_computation_module/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [10:43:29] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:16:03 ; elapsed = 18:39:48 . Memory (MB): peak = 829.777 ; gain = 0.000 ; free physical = 327436 ; free virtual = 438592
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Error 1

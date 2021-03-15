@@ -1,16 +1,189 @@
-                s_single_PQ_result[2][0].write(out_PE32);
-                s_single_PQ_result[2][1].write(out_PE33);
-                s_single_PQ_result[2][2].write(out_PE34);
-                s_single_PQ_result[2][3].write(out_PE35);
-                s_single_PQ_result[2][4].write(out_PE36);
-                s_single_PQ_result[2][5].write(out_PE37);
-                s_single_PQ_result[2][6].write(out_PE38);
-                s_single_PQ_result[2][7].write(out_PE39);
-                s_single_PQ_result[2][8].write(out_PE40);
-                s_single_PQ_result[2][9].write(out_PE41);
-                s_single_PQ_result[2][10].write(out_PE42);
-                s_single_PQ_result[2][11].write(out_PE43);
-                s_single_PQ_result[2][12].write(out_PE44);
-                s_single_PQ_result[2][13].write(out_PE45);
-                s_single_PQ_result[2][14].write(out_PE46);
-                s_single_PQ_result[2][15].write(out_PE47);
+    float distance_LUT_PE0[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE0 dim=1
+#pragma HLS resource variable=distance_LUT_PE0 core=RAM_2P_BRAM
+    float distance_LUT_PE1[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE1 dim=1
+#pragma HLS resource variable=distance_LUT_PE1 core=RAM_2P_BRAM
+    float distance_LUT_PE2[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE2 dim=1
+#pragma HLS resource variable=distance_LUT_PE2 core=RAM_2P_BRAM
+    float distance_LUT_PE3[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE3 dim=1
+#pragma HLS resource variable=distance_LUT_PE3 core=RAM_2P_BRAM
+    float distance_LUT_PE4[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE4 dim=1
+#pragma HLS resource variable=distance_LUT_PE4 core=RAM_2P_BRAM
+    float distance_LUT_PE5[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE5 dim=1
+#pragma HLS resource variable=distance_LUT_PE5 core=RAM_2P_BRAM
+    float distance_LUT_PE6[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE6 dim=1
+#pragma HLS resource variable=distance_LUT_PE6 core=RAM_2P_BRAM
+    float distance_LUT_PE7[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE7 dim=1
+#pragma HLS resource variable=distance_LUT_PE7 core=RAM_2P_BRAM
+    float distance_LUT_PE8[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE8 dim=1
+#pragma HLS resource variable=distance_LUT_PE8 core=RAM_2P_BRAM
+    float distance_LUT_PE9[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE9 dim=1
+#pragma HLS resource variable=distance_LUT_PE9 core=RAM_2P_BRAM
+    float distance_LUT_PE10[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE10 dim=1
+#pragma HLS resource variable=distance_LUT_PE10 core=RAM_2P_BRAM
+    float distance_LUT_PE11[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE11 dim=1
+#pragma HLS resource variable=distance_LUT_PE11 core=RAM_2P_BRAM
+    float distance_LUT_PE12[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE12 dim=1
+#pragma HLS resource variable=distance_LUT_PE12 core=RAM_2P_BRAM
+    float distance_LUT_PE13[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE13 dim=1
+#pragma HLS resource variable=distance_LUT_PE13 core=RAM_2P_BRAM
+    float distance_LUT_PE14[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE14 dim=1
+#pragma HLS resource variable=distance_LUT_PE14 core=RAM_2P_BRAM
+    float distance_LUT_PE15[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE15 dim=1
+#pragma HLS resource variable=distance_LUT_PE15 core=RAM_2P_BRAM
+    float distance_LUT_PE16[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE16 dim=1
+#pragma HLS resource variable=distance_LUT_PE16 core=RAM_2P_BRAM
+    float distance_LUT_PE17[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE17 dim=1
+#pragma HLS resource variable=distance_LUT_PE17 core=RAM_2P_BRAM
+    float distance_LUT_PE18[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE18 dim=1
+#pragma HLS resource variable=distance_LUT_PE18 core=RAM_2P_BRAM
+    float distance_LUT_PE19[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE19 dim=1
+#pragma HLS resource variable=distance_LUT_PE19 core=RAM_2P_BRAM
+    float distance_LUT_PE20[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE20 dim=1
+#pragma HLS resource variable=distance_LUT_PE20 core=RAM_2P_BRAM
+    float distance_LUT_PE21[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE21 dim=1
+#pragma HLS resource variable=distance_LUT_PE21 core=RAM_2P_BRAM
+    float distance_LUT_PE22[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE22 dim=1
+#pragma HLS resource variable=distance_LUT_PE22 core=RAM_2P_BRAM
+    float distance_LUT_PE23[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE23 dim=1
+#pragma HLS resource variable=distance_LUT_PE23 core=RAM_2P_BRAM
+    float distance_LUT_PE24[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE24 dim=1
+#pragma HLS resource variable=distance_LUT_PE24 core=RAM_2P_BRAM
+    float distance_LUT_PE25[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE25 dim=1
+#pragma HLS resource variable=distance_LUT_PE25 core=RAM_2P_BRAM
+    float distance_LUT_PE26[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE26 dim=1
+#pragma HLS resource variable=distance_LUT_PE26 core=RAM_2P_BRAM
+    float distance_LUT_PE27[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE27 dim=1
+#pragma HLS resource variable=distance_LUT_PE27 core=RAM_2P_BRAM
+    float distance_LUT_PE28[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE28 dim=1
+#pragma HLS resource variable=distance_LUT_PE28 core=RAM_2P_BRAM
+    float distance_LUT_PE29[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE29 dim=1
+#pragma HLS resource variable=distance_LUT_PE29 core=RAM_2P_BRAM
+    float distance_LUT_PE30[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE30 dim=1
+#pragma HLS resource variable=distance_LUT_PE30 core=RAM_2P_BRAM
+    float distance_LUT_PE31[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE31 dim=1
+#pragma HLS resource variable=distance_LUT_PE31 core=RAM_2P_BRAM
+    float distance_LUT_PE32[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE32 dim=1
+#pragma HLS resource variable=distance_LUT_PE32 core=RAM_2P_BRAM
+    float distance_LUT_PE33[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE33 dim=1
+#pragma HLS resource variable=distance_LUT_PE33 core=RAM_2P_BRAM
+    float distance_LUT_PE34[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE34 dim=1
+#pragma HLS resource variable=distance_LUT_PE34 core=RAM_2P_BRAM
+    float distance_LUT_PE35[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE35 dim=1
+#pragma HLS resource variable=distance_LUT_PE35 core=RAM_2P_BRAM
+    float distance_LUT_PE36[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE36 dim=1
+#pragma HLS resource variable=distance_LUT_PE36 core=RAM_2P_BRAM
+    float distance_LUT_PE37[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE37 dim=1
+#pragma HLS resource variable=distance_LUT_PE37 core=RAM_2P_BRAM
+    float distance_LUT_PE38[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE38 dim=1
+#pragma HLS resource variable=distance_LUT_PE38 core=RAM_2P_BRAM
+    float distance_LUT_PE39[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE39 dim=1
+#pragma HLS resource variable=distance_LUT_PE39 core=RAM_2P_BRAM
+    float distance_LUT_PE40[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE40 dim=1
+#pragma HLS resource variable=distance_LUT_PE40 core=RAM_2P_BRAM
+    float distance_LUT_PE41[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE41 dim=1
+#pragma HLS resource variable=distance_LUT_PE41 core=RAM_2P_BRAM
+    float distance_LUT_PE42[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE42 dim=1
+#pragma HLS resource variable=distance_LUT_PE42 core=RAM_2P_BRAM
+    float distance_LUT_PE43[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE43 dim=1
+#pragma HLS resource variable=distance_LUT_PE43 core=RAM_2P_BRAM
+    float distance_LUT_PE44[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE44 dim=1
+#pragma HLS resource variable=distance_LUT_PE44 core=RAM_2P_BRAM
+    float distance_LUT_PE45[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE45 dim=1
+#pragma HLS resource variable=distance_LUT_PE45 core=RAM_2P_BRAM
+    float distance_LUT_PE46[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE46 dim=1
+#pragma HLS resource variable=distance_LUT_PE46 core=RAM_2P_BRAM
+    float distance_LUT_PE47[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE47 dim=1
+#pragma HLS resource variable=distance_LUT_PE47 core=RAM_2P_BRAM
+    float distance_LUT_PE48[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE48 dim=1
+#pragma HLS resource variable=distance_LUT_PE48 core=RAM_2P_BRAM
+    float distance_LUT_PE49[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE49 dim=1
+#pragma HLS resource variable=distance_LUT_PE49 core=RAM_2P_BRAM
+    float distance_LUT_PE50[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE50 dim=1
+#pragma HLS resource variable=distance_LUT_PE50 core=RAM_2P_BRAM
+    float distance_LUT_PE51[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE51 dim=1
+#pragma HLS resource variable=distance_LUT_PE51 core=RAM_2P_BRAM
+    float distance_LUT_PE52[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE52 dim=1
+#pragma HLS resource variable=distance_LUT_PE52 core=RAM_2P_BRAM
+    float distance_LUT_PE53[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE53 dim=1
+#pragma HLS resource variable=distance_LUT_PE53 core=RAM_2P_BRAM
+    float distance_LUT_PE54[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE54 dim=1
+#pragma HLS resource variable=distance_LUT_PE54 core=RAM_2P_BRAM
+    float distance_LUT_PE55[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE55 dim=1
+#pragma HLS resource variable=distance_LUT_PE55 core=RAM_2P_BRAM
+    float distance_LUT_PE56[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE56 dim=1
+#pragma HLS resource variable=distance_LUT_PE56 core=RAM_2P_BRAM
+    float distance_LUT_PE57[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE57 dim=1
+#pragma HLS resource variable=distance_LUT_PE57 core=RAM_2P_BRAM
+    float distance_LUT_PE58[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE58 dim=1
+#pragma HLS resource variable=distance_LUT_PE58 core=RAM_2P_BRAM
+    float distance_LUT_PE59[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE59 dim=1
+#pragma HLS resource variable=distance_LUT_PE59 core=RAM_2P_BRAM
+    float distance_LUT_PE60[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE60 dim=1
+#pragma HLS resource variable=distance_LUT_PE60 core=RAM_2P_BRAM
+    float distance_LUT_PE61[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE61 dim=1
+#pragma HLS resource variable=distance_LUT_PE61 core=RAM_2P_BRAM
+    float distance_LUT_PE62[8][512];
+#pragma HLS array_partition variable=distance_LUT_PE62 dim=1
+#pragma HLS resource variable=distance_LUT_PE62 core=RAM_2P_BRAM
