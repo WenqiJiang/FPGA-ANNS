@@ -1,5 +1,4 @@
 host 
-*csv
 xclbin
 ./xclbin
 ./xclbin/*

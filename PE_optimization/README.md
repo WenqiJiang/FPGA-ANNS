@@ -6,6 +6,7 @@ This folder is used for fine-tuning the performance and resource-utilization of 
 * distance_LUT_construction
 * distance_estimation_by_LUT
 * bitonic_sort
+* parallel_reduction_merge
 * priority_queue
 * sort_reduction_network
 
@@ -87,6 +88,14 @@ A deeply pipelined sorting network. Every cycle, the sorting network takes N inp
 Rather than serving as an independent module, the bitonic sort network is a building block to one PE that will be introduced later, i.e., sort_reduction_network.
 
 Currently, the bitonic sort supports N <= 128. For larger N, HLS struggles to finish the array partition.
+
+## parallel_reduction_merge
+
+Given 2 sorted streams, reduce the number by half and sort them. 
+
+For example, the inputs are two stream arrays, each with a 16 width. The parallel reduction unit will first select the top 16 out of the total 32 number, then sort the 16 numbers and output them.
+
+This is another building block for sort_reduction_network
 
 ## sort_reduction_network
 
