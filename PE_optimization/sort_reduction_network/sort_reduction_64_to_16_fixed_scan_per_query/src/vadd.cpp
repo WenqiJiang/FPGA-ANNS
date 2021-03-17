@@ -107,66 +107,91 @@ void vadd(
 
 #pragma HLS dataflow
 
-    hls::stream<single_PQ_result> input_stream[4][16];
-#pragma HLS array_partition variable=input_stream complete
-    hls::stream<single_PQ_result> output_stream[16];
-#pragma HLS array_partition variable=output_stream dim=1
+    hls::stream<single_PQ_result> s_input[4][16];
+#pragma HLS array_partition variable=s_input complete
+#pragma HLS stream variable=s_input depth=8
+#pragma HLS RESOURCE variable=s_input core=FIFO_SRL
 
-    broadcast_array<4, 16>(table_HBM0, input_stream);
+    hls::stream<single_PQ_result> s_output[16];
+#pragma HLS array_partition variable=s_output complete
+#pragma HLS stream variable=s_output depth=8
+#pragma HLS RESOURCE variable=s_output core=FIFO_SRL
+
+    dummy_input_sender<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_input);
+
+////////////////////     Core Function Starts     ////////////////////
 
     Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> sort_reduction_module;
 
-    sort_reduction_module.sort_and_reduction(input_stream, output_stream);
+    sort_reduction_module.sort_and_reduction<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_input, 
+        s_output);
 
-    write_result<16>(output_stream, out_PLRAM);
+////////////////////     Core Function Ends     ////////////////////
+
+    write_result<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_output,
+        out_PLRAM);
 }
 
-template<const int dim1, const int dim2>
-void broadcast_array(
-    const float* data_source, hls::stream<single_PQ_result> (&input_stream)[dim1][dim2]) {
-    
-    single_PQ_result array[dim1 * dim2];
-#pragma HLS array_partition variable=array complete
+////////////////////     Helper Function Starts     ////////////////////
 
-    for (int i = 0; i < dim1 * dim2; i++) {
-#pragma HLS pipeline II=1
-        array[i].vec_ID = i;
-        array[i].dist = data_source[i];
+template<const int query_num, const int iteration_per_query>
+void dummy_input_sender(
+    hls::stream<single_PQ_result> (&s_input)[4][16]) {
+
+    single_PQ_result input_array[4][16];
+#pragma HLS array_partition variable=input_array complete
+
+    for (int s1 = 0; s1 < 4; s1++) {
+        for (int s2 = 0; s2 < 16; s2++) {
+            input_array[s1][s2].dist = s2;
+        }
     }
 
-    for (int iter = 0; iter < SORT_ARRAY_NUM; iter++) {
-#pragma HLS pipeline II=1
-        for (int i = 0; i < dim1; i++) {
+    for (int query_id = 0; query_id < query_num; query_id++) {
+        
+        for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS pipeline II=1            
+            for (int s1 = 0; s1 < 4; s1++) {
 #pragma HLS UNROLL
-            for (int j = 0; j < dim2; j++) {
+                for (int s2 = 0; s2 < 16; s2++) {
 #pragma HLS UNROLL
-                input_stream[i][j].write(array[i * dim2 + j]);
+                    s_input[s1][s2].write(input_array[s1][s2]);
+                }
             }
         }
     }
 }
 
-template<const int total_len>
-void write_result(hls::stream<single_PQ_result> (&output_stream)[total_len], ap_uint<64>* output) {
 
-    single_PQ_result output_local[total_len];
-#pragma HLS array_partition variable=output_local complete
+template<const int query_num, const int iteration_per_query>
+void write_result(
+    hls::stream<single_PQ_result> (&s_output)[16],
+    ap_uint<64>* output) {
 
-    for (int i = 0; i < SORT_ARRAY_NUM; i++) {
+    single_PQ_result output_array[16];
+#pragma HLS array_partition variable=input_array complete
+
+    for (int query_id = 0; query_id < query_num; query_id++) {
+        
+        for (int iter = 0; iter < iteration_per_query; iter++) {            
 #pragma HLS pipeline II=1
-        for (int s = 0; s < total_len; s++) {
+            for (int s = 0; s < 16; s++) {
 #pragma HLS UNROLL
-        output_local[s] = output_stream[s].read();
+                output_array[s] = s_output[s].read();
+            }
         }
     }
 
-    for (int s = 0; s < total_len; s++) {
-#pragma HLS pipeline II=1
-        ap_uint<64> reg;
-        int vec_ID = output_local[s].vec_ID;
-        float dist = output_local[s].dist;
-        reg.range(31, 0) = *((ap_uint<32>*) (&vec_ID));
-        reg.range(63, 32) = *((ap_uint<32>*) (&dist));
-        output[s] = reg;
+    // Write the last set of results back
+    for (int i = 0; i < 16; i++) {
+        float dist_local = output_array[i].dist;
+        int cell_ID_local = output_array[i].vec_ID;
+        output[i].range(31, 0) = *((ap_uint<32>*) &dist_local);
+        output[i].range(63, 32) = *((ap_uint<32>*) &cell_ID_local);
     }
 }
+
+////////////////////     Helper Function Ends     ////////////////////

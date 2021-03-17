@@ -1,7 +1,8 @@
 #pragma once
 #include <ap_int.h>
 
-#define SORT_ARRAY_NUM (128 * 1024 * 1024)
+#define QUERY_NUM 10000
+#define ITERATION_PER_QUERY 10000
 
 typedef struct {
     int vec_ID;

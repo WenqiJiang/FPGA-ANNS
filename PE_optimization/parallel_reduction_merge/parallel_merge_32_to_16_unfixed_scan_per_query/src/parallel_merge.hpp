@@ -30,7 +30,7 @@ void bitonic_sort_16(
 void compare_select(
     single_PQ_result* input_array_A, single_PQ_result* input_array_B, 
     single_PQ_result* output_array, int idxA, int idxB);
-    
+
 template<const int array_len>
 void compare_select_range_head_tail(
     single_PQ_result* input_array_A, single_PQ_result* input_array_B, 
@@ -39,8 +39,8 @@ void compare_select_range_head_tail(
 template<const int query_num>
 void parallel_merge_sort_16(
     hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&input_stream_A)[16],
-    hls::stream<single_PQ_result> (&input_stream_B)[16],
+    hls::stream<single_PQ_result> (&s_input_A)[16],
+    hls::stream<single_PQ_result> (&s_input_B)[16],
     hls::stream<single_PQ_result> (&s_output)[16]);
 
 ////////////////////     Sorting Network Start    ////////////////////
@@ -230,8 +230,8 @@ void compare_select_range_head_tail(
 template<const int query_num>
 void parallel_merge_sort_16(
     hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&input_stream_A)[16],
-    hls::stream<single_PQ_result> (&input_stream_B)[16],
+    hls::stream<single_PQ_result> (&s_input_A)[16],
+    hls::stream<single_PQ_result> (&s_input_B)[16],
     hls::stream<single_PQ_result> (&s_output)[16]) {
     
     // given 2 input sorted array A and B of len array_len, 
@@ -261,8 +261,8 @@ void parallel_merge_sort_16(
 
         for (int iter = 0; iter < iter_num; iter++) {
 #pragma HLS dataflow
-            load_input_stream<16>(input_stream_A, input_array_A);
-            load_input_stream<16>(input_stream_B, input_array_B);
+            load_input_stream<16>(s_input_A, input_array_A);
+            load_input_stream<16>(s_input_B, input_array_B);
 
             // select the smallest 128 numbers
             compare_select_range_head_tail<16>(

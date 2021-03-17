@@ -23,7 +23,15 @@ In each implementation, the source file is in src/vadd.cpp. There is a core PE f
 
 For each PE folder, there should be a README.md indicating the parameter settings (e.g., query number) and the HLS report on performance and resource consumption. So that we can compare different version of implementations.
 
-Commands: 
+### Build 
+
+Vitis 2019.2 init: 
+
+source /opt/Xilinx/Vitis/2019.2/settings64.sh
+
+source /opt/xilinx/xrt/setup.sh
+
+Build: 
 
 make cleanall
 
@@ -35,7 +43,7 @@ time make check TARGET=hw DEVICE=xilinx_u280_xdma_201920_3 VER=host_cpp
 
 For hardware emulation and hardware build, we can stop at the stage where HLS report is already generated. This should be finished when it appears "Run vpl: create_project: Started" in the log.
 
-Report directory:
+### Report directory
 
 hw build:
 
@@ -44,6 +52,18 @@ vi _x.hw/vadd/reports/vadd.hw/hls_reports/vadd_csynth.rpt
 hw emulation:
 
 vi _x.hw_emu/vadd/reports/vadd.hw_emu/hls_reports/vadd_csynth.rpt 
+
+### Copy folder
+
+In order to make clear comparison between different version of implementation. We can use seperate folder for each version.
+
+Instead of copying files manually, there's a script used for copying the src file and neglecting the generated build files. Usage:
+
+```
+mkdir ../version2
+./cp_script ../version2
+```
+
 
 ## cluster_distance_computation
 

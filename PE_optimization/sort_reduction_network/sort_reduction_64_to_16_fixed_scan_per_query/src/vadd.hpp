@@ -26,9 +26,12 @@ void vadd(
     );
 }
 
-template<const int dim1, const int dim2>
-void broadcast_array(
-    const float* data_source, hls::stream<single_PQ_result> (&input_stream)[dim1][dim2]);
 
-template<const int total_len>
-void write_result(hls::stream<single_PQ_result> (&output_stream)[total_len], ap_uint<64>* output);
+template<const int query_num, const int iteration_per_query>
+void dummy_input_sender(
+    hls::stream<single_PQ_result> (&s_input)[4][16]);
+
+template<const int query_num, const int iteration_per_query>
+void write_result(
+    hls::stream<single_PQ_result> (&s_output)[16],
+    ap_uint<64>* output);
