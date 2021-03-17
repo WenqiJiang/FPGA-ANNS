@@ -1149,3 +1149,32 @@ Creating Vivado project.
 [04:04:14] Phase 3.7.2 Flow Legalize Slice Clusters
 [04:04:14] Phase 3.7.3 Slice Area Swap
 [04:12:41] Phase 3.7.4 Commit Slice Clusters
+[13:38:38] Phase 3.8 Place Remaining
+[13:50:15] Run vpl: Step impl: Failed
+[13:50:17] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while processing /mnt/scratch/wenqi/FPGA-ANNS/integrated_accelerator/entire-node-distance-LUT-array_broadcast_tree/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1 :
+ERROR: [VPL 30-488] Failed to commit 9 instances:
+pfm_top_i/dynamic_region/vadd_1/inst/compute_cell_distance339_U0/vadd_faddfsub_32ns_32ns_32_4_full_dsp_1_U205/vadd_vadd_ap_faddfsub_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/A_IP_DELAY/i_pipe/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1 with block Id: 225235 (LUT) at SLICE_X202Y442
+pfm_top_i/dynamic_region/vadd_1/inst/compute_cell_distance360_U0/vadd_fadd_32ns_32ns_32_4_no_dsp_1_U692/vadd_vadd_ap_fadd_2_no_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/LOGIC_SPEED.OP/EXP/COND_DET_A/MANT_CARRY.MANT_ALL_ZERO_DET/CARRY_ZERO_DET/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__4 with block Id: 389491 (LUT) at SLICE_X205Y630
+pfm_top_i/dynamic_region/vadd_1/inst/lookup_table_construction_PE_8_371_U0/vadd_fsub_32ns_32ns_32_4_full_dsp_1_U2075/vadd_vadd_ap_fsub_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/A_IP_DELAY/i_pipe/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1 with block Id: 1048972 (LUT) at SLICE_X204Y649
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper321_U0/vadd_fcmp_32ns_32ns_1_2_1_U23546/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.A_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__0 with block Id: 1476420 (LUT) at SLICE_X203Y380
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper330_U0/vadd_fcmp_32ns_32ns_1_2_1_U23662/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.B_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__2 with block Id: 1513708 (LUT) at SLICE_X203Y344
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper330_U0/vadd_fcmp_32ns_32ns_1_2_1_U23663/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.A_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__0 with block Id: 1514085 (LUT) at SLICE_X203Y351
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper330_U0/vadd_fcmp_32ns_32ns_1_2_1_U23664/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.A_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__0 with block Id: 1514418 (LUT) at SLICE_X203Y357
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper331_U0/vadd_fcmp_32ns_32ns_1_2_1_U23678/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.A_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__0 with block Id: 1518917 (LUT) at SLICE_X196Y336
+pfm_top_i/dynamic_region/vadd_1/inst/stream_redirect_to_priority_queue_wrapper_U0/insert_wrapper332_U0/vadd_fcmp_32ns_32ns_1_2_1_U23687/vadd_vadd_ap_fcmp_0_no_dsp_32_u/U0/i_synth/COMP_OP.SPD.OP/STRUCT_CMP.A_FRAC_NOT_ZERO_DET/WIDE_NOR/CHAIN_GEN[0].C_MUX.CARRY_MUX_i_1__0 with block Id: 1521830 (LUT) at SLICE_X197Y315
+
+ERROR: [VPL 30-99] Placer failed with error: 'failed to commit all instances'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+ERROR: [VPL 17-69] Command failed: Placer could not place all instances
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, place_design ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/integrated_accelerator/entire-node-distance-LUT-array_broadcast_tree/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [13:50:26] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:24:06 ; elapsed = 23:17:06 . Memory (MB): peak = 1003.188 ; gain = 0.000 ; free physical = 143474 ; free virtual = 407034
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:94: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Error 1

@@ -109,6 +109,66 @@ Rather than serving as an independent module, the bitonic sort network is a buil
 
 Currently, the bitonic sort supports N <= 128. For larger N, HLS struggles to finish the array partition.
 
+### Reference: *FLiMS: Fast Lightweight Merge Sorter*
+
+This paper covers both bitonic sort & parallel merge.
+
+<img src="2018 FLiMS- Fast Lightweight Merge Sorter_0.png" alt="2018 FLiMS- Fast Lightweight Merge Sorter_0" style="zoom: 33%;" />
+
+Another usefule reference: 2010 Sorting Networks on FPGAs
+
+### Map from figure to my code
+
+I draw a version for bitonic sort 16: 
+
+<img src="Bitonic-sort-16.png" style="zoom: 33%;" />
+
+* Bitonic Sort 16
+```
+        // Stage A
+        compare_swap_range_interval<16, 8>(input_array, out_stage1_0);   // A.0
+
+        // Stage B: 2 -> 4
+        compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0); // B.0
+        compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);  // B.1
+
+        // Stage C: 4 -> 8
+        compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0); // C.0
+        compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);  // C.1
+        compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
+
+        // Stage D: 8 -> 16
+        compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0); // D.0
+        compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);  // D.1
+        compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);  // D.2
+        compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);  // D.3
+```
+
+* Parallel merge (2 * 8 -> 8):
+```
+        // select the smallest 8 numbers
+        compare_select_range_head_tail<8>(
+            input_array_A, input_array_B, out_stage_0); // D.0
+
+        // sort the selected numbers
+        compare_swap_range_interval<8, 1>(out_stage_0, out_stage_1);  // D.1 lower half
+        compare_swap_range_interval<8, 2>(out_stage_1, out_stage_2);  // D.2 lower half
+        compare_swap_range_interval<8, 4>(out_stage_2, out_stage_3);  // D.3 lower half
+```
+
+* Extend to parallel merge (2 * 16 -> 16)
+```
+        // select the smallest 16 numbers
+        compare_select_range_head_tail<16>(
+            input_array_A, input_array_B, out_stage_0);
+
+        // sort the selected numbers
+        compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
+        compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
+        compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);
+        compare_swap_range_interval<16, 8>(out_stage_3, out_stage_4);
+```
+
 ## parallel_reduction_merge
 
 Given 2 sorted streams, reduce the number by half and sort them. 

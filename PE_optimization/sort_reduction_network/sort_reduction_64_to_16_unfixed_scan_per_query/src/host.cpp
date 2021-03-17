@@ -490,8 +490,8 @@ int main(int argc, char** argv)
 
     for (int i = 0 ; i < size_results_out; i++) {
             ap_uint<64> reg = source_hw_results[i];
-            ap_uint<32> raw_vec_ID = reg.range(31, 0); 
-            ap_uint<32>  raw_dist = reg.range(63, 32);
+            ap_uint<32> raw_vec_ID = reg.range(63, 32); 
+            ap_uint<32>  raw_dist = reg.range(31, 0);
             int vec_ID = *((int*) (&raw_vec_ID));
             float dist = *((float*) (&raw_dist));
             std::cout << "i = " << i << " vec_ID = " << vec_ID << " dist = "<< dist << std::endl;
