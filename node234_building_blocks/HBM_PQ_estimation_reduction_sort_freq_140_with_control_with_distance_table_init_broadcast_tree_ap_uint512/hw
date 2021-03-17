@@ -941,3 +941,43 @@ Creating Vivado project.
 
 [21:40:33] Starting logic routing..
 [21:43:07] Phase 1 Build RT Design
+[21:52:07] Phase 2 Router Initialization
+[21:52:07] Phase 2.1 Fix Topology Constraints
+[21:52:07] Phase 2.2 Pre Route Cleanup
+[21:53:23] Phase 2.3 Global Clock Net Routing
+[21:55:58] Phase 2.4 Update Timing
+[22:04:44] Phase 2.5 Update Timing for Bus Skew
+[22:04:44] Phase 2.5.1 Update Timing
+[22:09:44] Phase 3 Initial Routing
+[22:09:44] Phase 3.1 Global Routing
+[22:17:22] Phase 3.2 Update Timing
+[22:27:28] Phase 3.3 Update Timing
+[22:37:43] Phase 3.4 Update Timing
+[22:45:16] Phase 4 Rip-up And Reroute
+[22:45:16] Phase 4.1 Global Iteration 0
+[22:46:30] Phase 4.2 Global Iteration 1
+[00:32:21] Phase 4.3 Global Iteration 2
+[01:13:08] Phase 5 Delay and Skew Optimization
+[01:13:08] Phase 5.1 Delay CleanUp
+[01:14:21] Phase 5.2 Clock Skew Optimization
+[01:15:34] Phase 6 Post Hold Fix
+[01:15:34] Phase 6.1 Hold Fix Iter
+[01:16:48] Phase 6.2 Additional Hold Fix
+[01:19:17] Phase 7 Route finalize
+[01:20:30] Phase 8 Verifying routed nets
+[01:20:30] Phase 9 Depositing Routes
+[01:35:28] Run vpl: Step impl: Failed
+[01:35:52] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while processing /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_PQ_estimation_reduction_sort_freq_140_with_control_with_distance_table_init_broadcast_tree_ap_uint512/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1 :
+ERROR: [VPL 18-1000] Routing results verification failed due to partially-conflicted nets (Up to first 10 of violated nets):  pfm_top_i/dynamic_region/System_DPA/dpa_hub/inst/merge_tree_i/genblk1[5].merge_i/read[3] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[9] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[8] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[5] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[4] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[38] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[39] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[35] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[33] pfm_top_i/dynamic_region/vadd_1/inst/PQ_lookup_computation_wrapper_10000_32_U0/PQ_lookup_computation_wrapper_10000_32_Loop_1_proc492_U0/grp_PQ_lookup_computation_fu_7906/vadd_fadd_32ns_32ns_32_4_full_dsp_1_U4299/vadd_vadd_ap_fadd_2_full_dsp_32_u/U0/i_synth/ADDSUB_OP.ADDSUB/DSP.OP/DSP48E1_BODY.ALIGN_ADD/DSP2/DSP/P[27] 
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, route_design ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/HBM_PQ_estimation_reduction_sort_freq_140_with_control_with_distance_table_init_broadcast_tree_ap_uint512/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [01:36:00] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:13:55 ; elapsed = 14:41:48 . Memory (MB): peak = 863.230 ; gain = 0.000 ; free physical = 134041 ; free virtual = 430521
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Error 1

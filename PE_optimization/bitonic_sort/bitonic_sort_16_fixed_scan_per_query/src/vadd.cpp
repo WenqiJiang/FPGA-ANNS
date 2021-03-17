@@ -1,4 +1,6 @@
 #include "vadd.hpp"
+#include "bitonic_sort.hpp"
+
 #include <stdio.h>
 
 void vadd(  
@@ -101,175 +103,79 @@ void vadd(
 
 #pragma HLS INTERFACE s_axilite port=return bundle=control
 
-    dist_cell_ID_t input_array[32];
+#pragma HLS dataflow
+
+    hls::stream<single_PQ_result> s_input[16];
+#pragma HLS stream variable=s_input depth=8
+#pragma HLS RESOURCE variable=s_input core=FIFO_SRL
+
+    hls::stream<single_PQ_result> s_output[16];
+#pragma HLS stream variable=s_output depth=8
+#pragma HLS RESOURCE variable=s_output core=FIFO_SRL
+    
+    dummy_input_sender<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_input);
+
+////////////////////     Core Function Starts     ////////////////////
+    bitonic_sort_16<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_input,
+        s_output);
+////////////////////     Core Function Ends     ////////////////////
+
+    write_result<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_output,
+        out_PLRAM);
+}
+
+////////////////////     Helper Function Starts     ////////////////////
+
+
+template<const int query_num, const int iteration_per_query>
+void dummy_input_sender(
+    hls::stream<single_PQ_result> (&s_input)[16]) {
+
+    single_PQ_result input_array[16];
 #pragma HLS array_partition variable=input_array complete
 
-    init_array<32>(input_array, table_DDR0);
-
-    // write like this means unroll, try to use a loop to reuse the resources?
-    // for (int s = 1; s < 6; s++) {
-    //     if (s == 1) {
-    //         compare_swap_range_interval<32, 16>(input_array);
-    //     }
-    //     if (s == 2) {
-    //         compare_swap_range_head_tail<32, 8>(input_array);
-    //     }
-    //     if (s == 3) {
-    //         compare_swap_range_head_tail<32, 4>(input_array);
-    //     }
-    //     if (s == 4) {
-    //         compare_swap_range_head_tail<32, 2>(input_array);
-    //     }
-    //     if (s == 5) {
-    //         compare_swap_range_head_tail<32, 1>(input_array);
-    //     }
-    //     if (s >= 5) {
-    //         compare_swap_range_interval<32, 2>(input_array);
-    //     }
-    //     if (s >= 4) {
-    //         compare_swap_range_interval<32, 4>(input_array);
-    //     }
-    //     if (s >= 3) {
-    //         compare_swap_range_interval<32, 8>(input_array);
-    //     }
-    //     if (s >= 2) {
-    //         compare_swap_range_interval<32, 16>(input_array);
-    //     }
-    // }
-    
-    // // Total: 15 sub-stages
-    // // Stage 1
-    // compare_swap_range_interval<32, 16>(input_array);
-
-    // // Stage 2: 2 -> 4
-    // compare_swap_range_head_tail<32, 8>(input_array);
-    // compare_swap_range_interval<32, 16>(input_array);
-
-    // // Stage 3: 4 -> 8
-    // compare_swap_range_head_tail<32, 4>(input_array);
-    // compare_swap_range_interval<32, 8>(input_array);
-    // compare_swap_range_interval<32, 16>(input_array);
-
-    // // Stage 4: 8 -> 16
-    // compare_swap_range_head_tail<32, 2>(input_array);
-    // compare_swap_range_interval<32, 4>(input_array);
-    // compare_swap_range_interval<32, 8>(input_array);
-    // compare_swap_range_interval<32, 16>(input_array);
-      
-    // // Stage 5: 16 -> 32
-    // compare_swap_range_head_tail<32, 1>(input_array);
-    // compare_swap_range_interval<32, 2>(input_array);
-    // compare_swap_range_interval<32, 4>(input_array);
-    // compare_swap_range_interval<32, 8>(input_array);
-    // compare_swap_range_interval<32, 16>(input_array);
-
-    bitonic_sort(input_array);
-
-    write_result<32>(input_array, out_PLRAM);
-}
-
-template<const int total_len>
-void init_array(dist_cell_ID_t* array, const float* data_source) {
-    for (int i = 0; i < total_len; i++) {
-    #pragma HLS pipeline II=1
-        array[i].dist = data_source[i];
-        array[i].cell_ID = i;
-    }
-}
-
-void compare_swap(dist_cell_ID_t* array, int idxA, int idxB) {
-    // note: idxA must < idxB
-#pragma HLS inline
-    
-    // WENQI: diff
-    dist_cell_ID_t regA, regB;
-    if (array[idxA].dist > array[idxB].dist) {
-
-      	regA.dist = array[idxA].dist;
-      	regA.cell_ID = array[idxA].cell_ID;
-        regB.dist = array[idxB].dist;
-        regB.cell_ID = array[idxB].cell_ID;
-
-        array[idxA].dist = regB.dist;
-        array[idxA].cell_ID = regB.cell_ID;
-        array[idxB].dist = regA.dist;
-        array[idxB].cell_ID = regA.cell_ID;
-    }
-}
-
-template<const int total_len, const int partition_num>
-void compare_swap_range_head_tail(dist_cell_ID_t* array) {
-    // e.g., in the image phase merge 4 -> 8, the 1st stage
-    // Input these constants to make computation fast
-// #pragma HLS inline
-  
-    const int elements_per_partition = total_len / partition_num;
-    const int operations_per_partition = elements_per_partition / 2;
-
-    for (int i = 0; i < partition_num; i++) {
-    #pragma HLS UNROLL
-        for (int j = 0; j < operations_per_partition; j++) {
-        #pragma HLS UNROLL
-            compare_swap(array, i * elements_per_partition + j, (i + 1) * elements_per_partition - 1 - j);
+    for (int query_id = 0; query_id < query_num; query_id++) {
+        
+        for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS pipeline II=1            
+            for (int s = 0; s < 16; s++) {
+#pragma HLS UNROLL
+                s_input[s].write(input_array[s]);
+            }
         }
     }
 }
 
-template<const int total_len, const int partition_num>
-void compare_swap_range_interval(dist_cell_ID_t* array) {
-    // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
-// #pragma HLS inline
-  
-    const int elements_per_partition = total_len / partition_num;
-    const int operations_per_partition = elements_per_partition / 2;
-	const int interval = operations_per_partition;
 
-    for (int i = 0; i < partition_num; i++) {
-    #pragma HLS UNROLL
-        for (int j = 0; j < operations_per_partition; j++) {
-        #pragma HLS UNROLL
-        compare_swap(array, i * elements_per_partition + j, i * elements_per_partition + interval + j);
+template<const int query_num, const int iteration_per_query>
+void write_result(
+    hls::stream<single_PQ_result> (&s_output)[16],
+    ap_uint<64>* output) {
+
+    single_PQ_result output_array[16];
+#pragma HLS array_partition variable=input_array complete
+
+    for (int query_id = 0; query_id < query_num; query_id++) {
+
+        for (int iter = 0; iter < iteration_per_query; iter++) {            
+#pragma HLS pipeline II=1
+            for (int s = 0; s < 16; s++) {
+#pragma HLS UNROLL
+                output_array[s] = s_output[s].read();
+            }
         }
     }
-}
 
-void bitonic_sort(dist_cell_ID_t input_array[32]) {
-    // len = 32, np.random.randint(low=0, high=100, size=32)
-
-    // Total: 15 sub-stages
-    // Stage 1
-    compare_swap_range_interval<32, 16>(input_array);
-
-    // Stage 2: 2 -> 4
-    compare_swap_range_head_tail<32, 8>(input_array);
-    compare_swap_range_interval<32, 16>(input_array);
-
-    // Stage 3: 4 -> 8
-    compare_swap_range_head_tail<32, 4>(input_array);
-    compare_swap_range_interval<32, 8>(input_array);
-    compare_swap_range_interval<32, 16>(input_array);
-
-    // Stage 4: 8 -> 16
-    compare_swap_range_head_tail<32, 2>(input_array);
-    compare_swap_range_interval<32, 4>(input_array);
-    compare_swap_range_interval<32, 8>(input_array);
-    compare_swap_range_interval<32, 16>(input_array);
-      
-    // Stage 5: 16 -> 32
-    compare_swap_range_head_tail<32, 1>(input_array);
-    compare_swap_range_interval<32, 2>(input_array);
-    compare_swap_range_interval<32, 4>(input_array);
-    compare_swap_range_interval<32, 8>(input_array);
-    compare_swap_range_interval<32, 16>(input_array);
-}
-
-template<const int total_len>
-void write_result(dist_cell_ID_t* array, ap_uint<64>* output) {
-    for (int i = 0; i < total_len; i++) {
-    #pragma HLS pipeline II=1
-        float dist_local = array[i].dist;
-        int cell_ID_local = array[i].cell_ID;
+    // Write the last set of results back
+    for (int i = 0; i < 16; i++) {
+        float dist_local = output_array[i].dist;
+        int cell_ID_local = output_array[i].vec_ID;
         output[i].range(31, 0) = *((ap_uint<32>*) &dist_local);
         output[i].range(63, 32) = *((ap_uint<32>*) &cell_ID_local);
     }
 }
+
+////////////////////     Helper Function Ends     ////////////////////

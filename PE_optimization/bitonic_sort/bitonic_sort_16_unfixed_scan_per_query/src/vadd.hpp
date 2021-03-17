@@ -26,18 +26,17 @@ void vadd(
     );
 }
 
-template<const int total_len>
-void init_array(dist_cell_ID_t* array, const float* data_source);
+template<const int query_num>
+void control_signal_sender(
+    hls::stream<int> (&s_control_iter_num_per_query)[3]);
 
-void compare_swap(dist_cell_ID_t* array, int idxA, int idxB);
+template<const int query_num>
+void dummy_input_sender(
+    hls::stream<int>& s_control_iter_num_per_query,
+    hls::stream<single_PQ_result> (&s_input)[16]);
 
-template<const int total_len, const int partition_num>
-void compare_swap_range_head_tail(dist_cell_ID_t* array);
-
-template<const int total_len, const int partition_num>
-void compare_swap_range_interval(dist_cell_ID_t* array);
-
-void bitonic_sort(dist_cell_ID_t input_array[32]);
-
-template<const int total_len>
-void write_result(dist_cell_ID_t* array, ap_uint<64>* output);
+template<const int query_num>
+void write_result(
+    hls::stream<int>& s_control_iter_num_per_query,
+    hls::stream<single_PQ_result> (&s_output)[16],
+    ap_uint<64>* output);
