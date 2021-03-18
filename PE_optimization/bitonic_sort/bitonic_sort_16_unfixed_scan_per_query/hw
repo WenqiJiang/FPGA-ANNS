@@ -272,3 +272,231 @@ Creating Vivado project.
 [15:59:22] Block-level synthesis in progress, 42 of 84 jobs complete, 8 jobs running.
 [16:00:50] Block-level synthesis in progress, 49 of 84 jobs complete, 6 jobs running.
 [16:01:58] Block-level synthesis in progress, 50 of 84 jobs complete, 7 jobs running.
+[16:03:34] Block-level synthesis in progress, 55 of 84 jobs complete, 7 jobs running.
+[16:05:01] Block-level synthesis in progress, 62 of 84 jobs complete, 4 jobs running.
+[16:06:32] Block-level synthesis in progress, 63 of 84 jobs complete, 8 jobs running.
+[16:07:54] Block-level synthesis in progress, 71 of 84 jobs complete, 7 jobs running.
+[16:09:17] Block-level synthesis in progress, 77 of 84 jobs complete, 2 jobs running.
+[16:10:48] Block-level synthesis in progress, 79 of 84 jobs complete, 5 jobs running.
+[16:12:17] Block-level synthesis in progress, 84 of 84 jobs complete, 0 jobs running.
+[16:13:18] Top-level synthesis in progress.
+[16:15:11] Top-level synthesis in progress.
+[16:16:39] Top-level synthesis in progress.
+[16:18:14] Top-level synthesis in progress.
+[16:19:42] Top-level synthesis in progress.
+[16:21:12] Top-level synthesis in progress.
+[16:22:41] Top-level synthesis in progress.
+[16:24:10] Top-level synthesis in progress.
+[16:25:40] Top-level synthesis in progress.
+[16:27:08] Top-level synthesis in progress.
+[16:28:42] Top-level synthesis in progress.
+[16:30:13] Top-level synthesis in progress.
+[16:31:53] Top-level synthesis in progress.
+[16:34:34] Run vpl: Step synth: Completed
+[16:34:34] Run vpl: Step impl: Started
+[16:53:30] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 01h 45m 49s 
+
+[16:53:30] Starting logic optimization..
+[16:53:30] Phase 1 Generate And Synthesize MIG Cores
+[17:01:53] Phase 2 Generate And Synthesize Debug Cores
+[17:04:34] Phase 3 Retarget
+[17:04:34] Phase 4 Constant propagation
+[17:05:54] Phase 5 Sweep
+[17:10:00] Phase 6 BUFG optimization
+[17:10:00] Phase 7 Shift Register Optimization
+[17:10:00] Phase 8 Post Processing Netlist
+[17:15:33] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 22m 02s 
+
+[17:15:33] Starting logic placement..
+[17:17:06] Phase 1 Placer Initialization
+[17:17:06] Phase 1.1 Placer Initialization Netlist Sorting
+[17:20:09] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[17:21:37] Phase 1.3 Build Placer Netlist Model
+[17:24:27] Phase 1.4 Constrain Clocks/Macros
+[17:24:27] Phase 2 Global Placement
+[17:24:27] Phase 2.1 Floorplanning
+[17:28:26] Phase 2.2 Global Placement Core
+[17:38:18] Phase 2.2.1 Physical Synthesis In Placer
+[17:41:02] Phase 3 Detail Placement
+[17:41:02] Phase 3.1 Commit Multi Column Macros
+[17:41:02] Phase 3.2 Commit Most Macros & LUTRAMs
+[17:42:26] Phase 3.3 Area Swap Optimization
+[17:42:26] Phase 3.4 Pipeline Register Optimization
+[17:42:26] Phase 3.5 IO Cut Optimizer
+[17:42:26] Phase 3.6 Fast Optimization
+[17:43:48] Phase 3.7 Small Shape DP
+[17:43:48] Phase 3.7.1 Small Shape Clustering
+[17:43:48] Phase 3.7.2 Flow Legalize Slice Clusters
+[17:43:48] Phase 3.7.3 Slice Area Swap
+[17:45:08] Phase 3.7.4 Commit Slice Clusters
+[17:46:32] Phase 3.8 Place Remaining
+[17:46:32] Phase 3.9 Re-assign LUT pins
+[17:46:32] Phase 3.10 Pipeline Register Optimization
+[17:46:32] Phase 3.11 Fast Optimization
+[17:47:56] Phase 4 Post Placement Optimization and Clean-Up
+[17:47:56] Phase 4.1 Post Commit Optimization
+[17:49:20] Phase 4.1.1 Post Placement Optimization
+[17:49:20] Phase 4.1.1.1 BUFG Insertion
+[17:50:44] Phase 4.1.1.2 BUFG Replication
+[17:52:07] Phase 4.1.1.3 Replication
+[17:52:07] Phase 4.2 Post Placement Cleanup
+[17:53:34] Phase 4.3 Placer Reporting
+[17:53:34] Phase 4.4 Final Placement Cleanup
+[18:09:11] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 00h 53m 37s 
+
+[18:09:11] Starting logic routing..
+[18:09:11] Phase 1 Build RT Design
+[18:13:24] Phase 2 Router Initialization
+[18:13:24] Phase 2.1 Fix Topology Constraints
+[18:13:24] Phase 2.2 Pre Route Cleanup
+[18:13:24] Phase 2.3 Global Clock Net Routing
+[18:14:48] Phase 2.4 Update Timing
+[18:17:33] Phase 2.5 Update Timing for Bus Skew
+[18:17:33] Phase 2.5.1 Update Timing
+[18:19:03] Phase 3 Initial Routing
+[18:19:03] Phase 3.1 Global Routing
+[18:20:33] Phase 4 Rip-up And Reroute
+[18:20:33] Phase 4.1 Global Iteration 0
+[18:31:28] Phase 4.2 Global Iteration 1
+[18:32:48] Phase 4.3 Global Iteration 2
+[18:34:09] Phase 5 Delay and Skew Optimization
+[18:34:09] Phase 5.1 Delay CleanUp
+[18:34:09] Phase 5.1.1 Update Timing
+[18:35:28] Phase 5.2 Clock Skew Optimization
+[18:35:28] Phase 6 Post Hold Fix
+[18:35:28] Phase 6.1 Hold Fix Iter
+[18:35:28] Phase 6.1.1 Update Timing
+[18:36:53] Phase 6.1.2 Lut RouteThru Assignment for hold
+[18:36:53] Phase 6.2 Additional Hold Fix
+[18:39:34] Phase 7 Route finalize
+[18:39:34] Phase 8 Verifying routed nets
+[18:39:34] Phase 9 Depositing Routes
+[18:40:53] Phase 10 Route finalize
+[18:40:53] Phase 11 Post Router Timing
+[18:42:13] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 00h 33m 02s 
+
+[18:42:13] Starting bitstream generation..
+Starting optional post-route physical design optimization.
+[18:47:48] Phase 1 Physical Synthesis Initialization
+[18:51:48] Phase 2 SLL Register Hold Fix Optimization
+[18:51:48] Phase 3 Critical Path Optimization
+[18:51:48] Phase 4 Hold Fix Optimization
+Finished optional post-route physical design optimization.
+[19:08:34] Creating bitmap...
+[19:14:27] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[19:14:27] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 32m 13s 
+[19:14:36] Run vpl: Step impl: Completed
+[19:15:01] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [19:15:05] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:04:45 ; elapsed = 04:07:27 . Memory (MB): peak = 679.324 ; gain = 0.000 ; free physical = 117601 ; free virtual = 424259
+INFO: [v++ 60-1443] [19:15:05] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 140, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/address_map.xml -sdsl /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/sdsl.dat -xclbin /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/xclbin_orig.xml -rtd /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.rtd -o /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xml
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [19:15:11] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 679.324 ; gain = 0.000 ; free physical = 117583 ; free virtual = 424241
+INFO: [v++ 60-1443] [19:15:11] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/partial.bit --force --key-value SYS:mode:hw_pr --add-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.rtd --append-section :JSON:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xml --add-section SYSTEM_METADATA:RAW:/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/run_link
+XRT Build Version: 2.3.1301
+       Build Date: 2019-10-24 20:05:16
+          Hash ID: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 5624 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 57547559 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 12018 bytes
+Format : JSON
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 17805 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 35943 bytes
+Format : RAW
+File   : '/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (57655658 bytes) to the output file: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [19:15:11] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.28 . Memory (MB): peak = 679.324 ; gain = 0.000 ; free physical = 117521 ; free virtual = 424235
+INFO: [v++ 60-1443] [19:15:11] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --info /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xclbin.info --input /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/int/vadd.hw.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/link/run_link
+INFO: [v++ 60-1441] [19:15:12] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.39 ; elapsed = 00:00:00.44 . Memory (MB): peak = 679.324 ; gain = 0.000 ; free physical = 117516 ; free virtual = 424230
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/reports/link/system_estimate_vadd.hw.xtxt
+INFO: [v++ 60-586] Created /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/xclbin/vadd.hw.ltx
+INFO: [v++ 60-586] Created xclbin/vadd.hw.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/reports/link/v++_link_vadd.hw_guidance.html
+	Timing Report: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/reports/link/imp/xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Utilizations Report: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/reports/link/imp/kernel_util_routed.rpt
+	Vivado Log: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/logs/link/vivado.log
+	Steps Log File: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/_x.hw/vadd/logs/link/link.steps.log
+
+INFO: [v++ 60-791] Total elapsed time: 4h 8m 12s
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./xclbin
+
+****** configutil v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+emulation configuration file `emconfig.json` is created in ./xclbin directory 
+./host ./xclbin/vadd.hw.xclbin
+XRT build version: 2.3.1301
+Build hash: 192e706aea53163a04c574f9b3fe9ed76b6ca471
+Build date: 2019-10-24 20:05:16
+Git branch: 2019.2
+PID: 9689
+UID: 522663
+[Thu Mar 18 19:16:12 2021]
+HOST: alveo0
+EXE: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/bitonic_sort/bitonic_sort_16_unfixed_scan_per_query/host
+[XRT] WARNING: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+src/host.hpp:45 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:122: recipe for target 'check' failed
+make: *** [check] Error 1

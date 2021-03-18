@@ -22,7 +22,7 @@ void vadd(
     const t_axi* table_HBM26, const t_axi* table_HBM27, 
     const t_axi* table_HBM28, const t_axi* table_HBM29, 
     const t_axi* table_HBM30, const t_axi* table_HBM31, 
-    const t_axi* table_DDR0, const t_axi* table_DDR1,
+    const float* table_DDR0, const t_axi* table_DDR1,
     ap_uint<64>* out_PLRAM
     )
 {
@@ -127,7 +127,8 @@ void vadd(
 
     dummy_input_sender<QUERY_NUM>(
         s_control_iter_num_per_query[0],
-        s_input);
+        s_input,
+        table_DDR0);
 
 ////////////////////     Core Function Starts     ////////////////////
 
@@ -166,14 +167,16 @@ void control_signal_sender(
 template<const int query_num>
 void dummy_input_sender(
     hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&s_input)[4][16]) {
+    hls::stream<single_PQ_result> (&s_input)[4][16],
+    const float* array_DDR) {
 
     single_PQ_result input_array[4][16];
 #pragma HLS array_partition variable=input_array complete
 
     for (int s1 = 0; s1 < 4; s1++) {
         for (int s2 = 0; s2 < 16; s2++) {
-            input_array[s1][s2].dist = s2;
+            input_array[s1][s2].celll_ID = s1 * 16 + s2;
+            input_array[s1][s2].dist = array_DDR[s1 * 16 + s2];
         }
     }
 

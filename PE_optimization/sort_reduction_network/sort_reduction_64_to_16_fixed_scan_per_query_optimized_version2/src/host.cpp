@@ -144,7 +144,7 @@ int main(int argc, char** argv)
 //         9695]
         
     for (int i = 0; i < 64; i++) {
-        HBM_embedding0[i] = input_array[i];
+        DDR_embedding0[i] = input_array[i];
     }
 // OPENCL HOST CODE AREA START
 	

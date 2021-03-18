@@ -26,8 +26,7 @@ namespace sort_reduction_64_to_16_with_vecID {
         single_PQ_result* input_array, single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 1st stage
         // Input these constants to make computation fast
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         const int elements_per_partition = array_len / partition_num;
         const int operations_per_partition = elements_per_partition / 2;
@@ -46,8 +45,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void compare_swap_range_interval(
         single_PQ_result* input_array, single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         const int elements_per_partition = array_len / partition_num;
         const int operations_per_partition = elements_per_partition / 2;
@@ -67,8 +65,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void load_input_stream(
         hls::stream<single_PQ_result> (&s_input)[array_len], 
         single_PQ_result input_array[array_len]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline 
 
         for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -80,8 +77,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void write_output_stream(
         single_PQ_result output_array[array_len], 
         hls::stream<single_PQ_result> (&s_output)[array_len]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline 
 
         for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -92,8 +88,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void bitonic_sort_16(
         hls::stream<single_PQ_result> (&s_input)[16],
         hls::stream<single_PQ_result> (&s_output)[16]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
 
         single_PQ_result input_array[16];
 #pragma HLS array_partition variable=input_array complete
@@ -168,8 +163,7 @@ namespace sort_reduction_64_to_16_with_vecID {
         single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 1st stage
         // Input these constants to make computation fast
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         // A[0] <-> B[127], A[1] <-> B[126], etc.
         for (int j = 0; j < array_len; j++) {
@@ -184,8 +178,7 @@ namespace sort_reduction_64_to_16_with_vecID {
         hls::stream<single_PQ_result> (&s_input_A)[16],
         hls::stream<single_PQ_result> (&s_input_B)[16],
         hls::stream<single_PQ_result> (&s_output)[16]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline 
         // given 2 input sorted array A and B of len array_len, 
         // merge and sort and reduction to output array C of len array_len,
         // containing the smallest numbers among A and B. 
@@ -255,14 +248,12 @@ class Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> {
 #pragma HLS stream variable=s_result_stage_1 depth=8
 #pragma HLS RESOURCE variable=s_result_stage_1 core=FIFO_SRL
 
-#pragma HLS dataflow
-
             for (int query_id = 0; query_id < query_num; query_id++) {
 
                 int iter_num = s_control_iter_num_per_query.read();
 
                 for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS dataflow
+#pragma HLS pipeline II=1
 
                     for (int s = 0; s < 4; s++) {
 #pragma HLS UNROLL

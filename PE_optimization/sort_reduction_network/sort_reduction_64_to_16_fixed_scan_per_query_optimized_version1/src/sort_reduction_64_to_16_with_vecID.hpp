@@ -26,8 +26,7 @@ namespace sort_reduction_64_to_16_with_vecID {
         single_PQ_result* input_array, single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 1st stage
         // Input these constants to make computation fast
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         const int elements_per_partition = array_len / partition_num;
         const int operations_per_partition = elements_per_partition / 2;
@@ -46,8 +45,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void compare_swap_range_interval(
         single_PQ_result* input_array, single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         const int elements_per_partition = array_len / partition_num;
         const int operations_per_partition = elements_per_partition / 2;
@@ -67,8 +65,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void load_input_stream(
         hls::stream<single_PQ_result> (&s_input)[array_len], 
         single_PQ_result input_array[array_len]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline 
 
         for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -80,8 +77,7 @@ namespace sort_reduction_64_to_16_with_vecID {
     void write_output_stream(
         single_PQ_result output_array[array_len], 
         hls::stream<single_PQ_result> (&s_output)[array_len]) {
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline 
 
         for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -89,12 +85,10 @@ namespace sort_reduction_64_to_16_with_vecID {
         }
     }
 
+    template<const int query_num, const int iteration_per_query>
     void bitonic_sort_16(
         hls::stream<single_PQ_result> (&s_input)[16],
         hls::stream<single_PQ_result> (&s_output)[16]) {
-// #pragma HLS pipeline II=1
-#pragma HLS inline off
-#pragma HLS dataflow
 
         single_PQ_result input_array[16];
 #pragma HLS array_partition variable=input_array complete
@@ -123,27 +117,34 @@ namespace sort_reduction_64_to_16_with_vecID {
 #pragma HLS array_partition variable=out_stage4_2 complete
 #pragma HLS array_partition variable=out_stage4_3 complete
 
-        load_input_stream<16>(s_input, input_array);
-        // Total: 15 sub-stages
-        // Stage 1
-        compare_swap_range_interval<16, 8>(input_array, out_stage1_0);
+        for (int query_id = 0; query_id < query_num; query_id++) {
 
-        // Stage 2: 2 -> 4
-        compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0);
-        compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);
+            for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS pipeline II=1
 
-        // Stage 3: 4 -> 8
-        compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0);
-        compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);
-        compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
+                load_input_stream<16>(s_input, input_array);
+                // Total: 15 sub-stages
+                // Stage 1
+                compare_swap_range_interval<16, 8>(input_array, out_stage1_0);
 
-        // Stage 4: 8 -> 16
-        compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0);
-        compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);
-        compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);
-        compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);
-        
-        write_output_stream<16>(out_stage4_3, s_output);
+                // Stage 2: 2 -> 4
+                compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0);
+                compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);
+
+                // Stage 3: 4 -> 8
+                compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0);
+                compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);
+                compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
+
+                // Stage 4: 8 -> 16
+                compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0);
+                compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);
+                compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);
+                compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);
+                
+                write_output_stream<16>(out_stage4_3, s_output);
+            }
+        }
     }
     ////////////////////     Sorting Network Ends    ////////////////////
 
@@ -169,8 +170,7 @@ namespace sort_reduction_64_to_16_with_vecID {
         single_PQ_result* output_array) {
         // e.g., in the image phase merge 4 -> 8, the 1st stage
         // Input these constants to make computation fast
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
     
         // A[0] <-> B[127], A[1] <-> B[126], etc.
         for (int j = 0; j < array_len; j++) {
@@ -181,13 +181,12 @@ namespace sort_reduction_64_to_16_with_vecID {
         }
     }
 
+    template<const int query_num, const int iteration_per_query>
     void parallel_merge_sort_16(
         hls::stream<single_PQ_result> (&s_input_A)[16],
         hls::stream<single_PQ_result> (&s_input_B)[16],
         hls::stream<single_PQ_result> (&s_output)[16]) {
-// #pragma HLS pipeline II=1
-#pragma HLS inline off
-#pragma HLS dataflow
+
         // given 2 input sorted array A and B of len array_len, 
         // merge and sort and reduction to output array C of len array_len,
         // containing the smallest numbers among A and B. 
@@ -208,21 +207,29 @@ namespace sort_reduction_64_to_16_with_vecID {
 #pragma HLS array_partition variable=out_stage_3 complete
 #pragma HLS array_partition variable=out_stage_4 complete
 
-        load_input_stream<16>(s_input_A, input_array_A);
-        load_input_stream<16>(s_input_B, input_array_B);
 
-        // select the smallest 16 numbers
-        compare_select_range_head_tail<16>(
-            input_array_A, input_array_B, out_stage_0);
+        for (int query_id = 0; query_id < query_num; query_id++) {
 
-        // sort the smallest 16 numbers
-        /* Analogue to sorting 32 (a half of sorting 32) */
-        compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
-        compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
-        compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);
-        compare_swap_range_interval<16, 8>(out_stage_3, out_stage_4);
+            for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS pipeline II=1
 
-        write_output_stream<16>(out_stage_4, s_output);
+                load_input_stream<16>(s_input_A, input_array_A);
+                load_input_stream<16>(s_input_B, input_array_B);
+
+                // select the smallest 16 numbers
+                compare_select_range_head_tail<16>(
+                    input_array_A, input_array_B, out_stage_0);
+
+                // sort the smallest 16 numbers
+                /* Analogue to sorting 32 (a half of sorting 32) */
+                compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
+                compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
+                compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);
+                compare_swap_range_interval<16, 8>(out_stage_3, out_stage_4);
+
+                write_output_stream<16>(out_stage_4, s_output);
+            }
+        }
     }
 };
 
@@ -258,33 +265,25 @@ class Sort_reduction<single_PQ_result, 64, 16, Collect_smallest> {
 
 #pragma HLS dataflow
 
-            for (int query_id = 0; query_id < query_num; query_id++) {
-
-                for (int iter = 0; iter < iteration_per_query; iter++) {
-#pragma HLS dataflow
-// #pragma HLS pipeline II=1 
-
-                    for (int s = 0; s < 4; s++) {
+            for (int s = 0; s < 4; s++) {
 #pragma HLS UNROLL
-                        sort_reduction_64_to_16_with_vecID::bitonic_sort_16(
-                            s_input[s], 
-                            s_result_stage_0[s]);
-                    }
-
-                    for (int s = 0; s < 2; s++) {
-#pragma HLS UNROLL
-                        sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16(
-                            s_result_stage_0[2 * s], 
-                            s_result_stage_0[2 * s + 1], 
-                            s_result_stage_1[s]);
-                    }
-
-                    sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16(
-                        s_result_stage_1[0], 
-                        s_result_stage_1[1], 
-                        s_output);
-                }
+                sort_reduction_64_to_16_with_vecID::bitonic_sort_16<query_num, iteration_per_query>(
+                    s_input[s], 
+                    s_result_stage_0[s]);
             }
+
+            for (int s = 0; s < 2; s++) {
+#pragma HLS UNROLL
+                sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16<query_num, iteration_per_query>(
+                    s_result_stage_0[2 * s], 
+                    s_result_stage_0[2 * s + 1], 
+                    s_result_stage_1[s]);
+            }
+
+            sort_reduction_64_to_16_with_vecID::parallel_merge_sort_16<query_num, iteration_per_query>(
+                s_result_stage_1[0], 
+                s_result_stage_1[1], 
+                s_output);
         }
 
     private:

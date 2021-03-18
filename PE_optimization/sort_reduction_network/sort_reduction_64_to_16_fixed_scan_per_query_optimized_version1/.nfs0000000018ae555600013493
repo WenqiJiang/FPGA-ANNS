@@ -1,0 +1,12 @@
+Thu Mar 18 17:15:44 2021: Server was asked to start on port: '43443'
+Thu Mar 18 17:15:44 2021: Server is using token UUID: '835735a6-644c-4b88-ade6-6e67dea4ae3d'
+Thu Mar 18 17:15:44 2021: Attempting to start server on port '43443'
+Thu Mar 18 17:15:44 2021: XRC main fifo: created main fifo '/tmp/xrcmain835735a6-644c-4b88-ade6-6e67dea4ae3d', fd read = 11
+Thu Mar 18 17:15:44 2021: Running Rule Check Server
+Thu Mar 18 17:15:44 2021: Version 1.5.1
+Thu Mar 18 17:15:44 2021: Rule Check Server: Accepted socket connection from client
+Thu Mar 18 17:15:44 2021: EXCHANGE_TOKEN received, server token: 835735a6-644c-4b88-ade6-6e67dea4ae3d, passed token: 835735a6-644c-4b88-ade6-6e67dea4ae3d
+Thu Mar 18 17:15:44 2021: SESSION_MGR: creating session with session uuid: 'f892e8ae-f06b-457a-8fd7-2f393ab7dc23' and name 'v++_link_vadd.hw'
+Thu Mar 18 17:16:00 2021: Rule Check Server: Accepted socket connection from client
+Thu Mar 18 17:17:54 2021: Rule Check Server: Accepted socket connection from client
+Thu Mar 18 18:45:15 2021: Rule Check Server: Accepted socket connection from client
