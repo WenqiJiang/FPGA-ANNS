@@ -1,0 +1,312 @@
+/*
+
+Xilinx Vitis Analyzer v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:39:14 MST 2019
+
+Process ID (PID): 48036
+License: Customer
+
+Current time: 	Thu Mar 18 09:09:59 CET 2021
+Time zone: 	Central European Standard Time (Europe/Zurich)
+
+OS: Ubuntu
+OS Version: 4.14.156-U
+OS Architecture: amd64
+Available processors (cores): 80
+
+Display: localhost:11.0
+Screen size: 1440x878
+Screen resolution (DPI): 100
+Available screens: 1
+Available disk space: 23 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	9.0.4 64-bit
+Java home: 	/opt/Xilinx/Vitis/2019.2/tps/lnx64/jre9.0.4
+Java executable location: 	/opt/Xilinx/Vitis/2019.2/tps/lnx64/jre9.0.4/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	wejiang
+User home directory: /home/wejiang
+User working directory: /mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/sort_reduction_network/sort_reduction_64_to_16_fixed_scan_per_query_version2_add_dataflow
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vitis
+HDI_APPROOT: /opt/Xilinx/Vitis/2019.2
+RDI_DATADIR: /opt/Xilinx/Vitis/2019.2/data
+RDI_BINDIR: /opt/Xilinx/Vitis/2019.2/bin
+
+Vitis Analyzer preferences file location: /home/wejiang/.Xilinx/vitis_analyzer/2019.2/vitis_analyzer.xml
+Vitis Analyzer preferences directory: /home/wejiang/.Xilinx/vitis_analyzer/2019.2/
+Vitis Analyzer layouts directory: /home/wejiang/.Xilinx/vitis_analyzer/2019.2/layouts
+PlanAhead jar file location: 	/opt/Xilinx/Vitis/2019.2/lib/classes/frank.jar
+Vitis Analyzer log file location: 	/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/sort_reduction_network/sort_reduction_64_to_16_fixed_scan_per_query_version2_add_dataflow/vitis_analyzer.log
+Vitis Analyzer journal file location: 	/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/sort_reduction_network/sort_reduction_64_to_16_fixed_scan_per_query_version2_add_dataflow/vitis_analyzer.jou
+Engine tmp dir: 	./.Xil/vitis_analyzer-48036-alveo0
+
+Xilinx Environment Variables
+----------------------------
+XILINXD_LICENSE_FILE: /opt/Xilinx/Xilinx.lic
+XILINX_DSP: 
+XILINX_PLANAHEAD: /opt/Xilinx/Vitis/2019.2
+XILINX_SDK: /opt/Xilinx/Vitis/2019.2
+XILINX_VITIS: /opt/Xilinx/Vitis/2019.2
+XILINX_VIVADO: /opt/Xilinx/Vivado/2019.2
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2019.2
+XILINX_XRT: /opt/xilinx/xrt
+
+
+GUI allocated memory:	384 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,252 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// bB (cs):  Open Files : addNotify
+// Tcl Command: 'create_project dummy'
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  13890 ms.
+// Thread: AWT-XAWT
+// 	at java.desktop@9.0.4/sun.awt.X11.XToolkit.waitForEvents(Native Method)
+// 	at java.desktop@9.0.4/sun.awt.X11.XToolkit.run(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XToolkit.run(Unknown Source)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: main
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at ui.PlanAhead.c(SourceFile:1058)
+// 	at ui.PlanAhead.jswMain(SourceFile:1101)
+// Thread: Image Fetcher 3
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.nextImage(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.fetchloop(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.run(Unknown Source)
+// Thread: AWT-EventQueue-1
+// 	at java.desktop@9.0.4/sun.awt.X11.XlibWrapper.XGetInputFocus(Native Method)
+// 	at java.desktop@9.0.4/sun.awt.X11.XBaseWindow.xGetInputFocus(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XWindowPeer.getNativeFocusedWindowPeer(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XWindowPeer.getNativeFocusedWindow(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XDecoratedPeer.requestWindowFocus(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XWindowPeer.requestWindowFocus(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XWindowPeer.requestWindowFocus(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.X11.XComponentPeer.requestFocus(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.Component.requestFocusHelper(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.Component.requestFocusHelper(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.Component.requestFocusInWindow(Unknown Source)
+// 	at java.desktop@9.0.4/javax.swing.JComponent.requestFocusInWindow(Unknown Source)
+// 	at com.jidesoft.docking.Workspace.requestFocusInInternalWindow(Unknown Source)
+// 	at com.jidesoft.docking.DefaultDockingManager.d(Unknown Source)
+// 	at com.jidesoft.docking.DefaultDockingManager.f(Unknown Source)
+// 	at com.jidesoft.docking.DefaultDockingManager.c(Unknown Source)
+// 	at com.jidesoft.docking.DefaultDockingManager.b(Unknown Source)
+// 	at com.jidesoft.docking.DefaultDockingManager.hideFrame(Unknown Source)
+// 	at ui.views.aH.fwM(SourceFile:934)
+// 	at ui.views.h.ftl(SourceFile:329)
+// 	at ui.views.cP.ftl(SourceFile:393)
+// 	at ui.views.R.ftU(SourceFile:784)
+// 	at ui.views.R.q(SourceFile:705)
+// 	at ui.views.S.u.am(SourceFile:1104)
+// 	at ui.views.S.u.s(SourceFile:1038)
+// 	at ui.views.S.u.gPs(SourceFile:2489)
+// 	at ui.views.S.u.f(SourceFile:1599)
+// 	at ui.bp.c(SourceFile:400)
+// 	at ui.PlanAhead.a(SourceFile:1602)
+// 	at ui.frmwork.b.l.d(SourceFile:42)
+// 	at ui.frmwork.G.i(SourceFile:253)
+// 	at ui.frmwork.G.fireTclEvent(SourceFile:350)
+// 	at ui.frmwork.tcltasksi.task_manager_eval_in_tcl_or_bad_alloc(Native Method)
+// 	at ui.i.b(SourceFile:215)
+// 	at ui.c.j.g.eli(SourceFile:318)
+// 	at ui.c.j.b.a.ao(SourceFile:174)
+// 	at ui.c.j.b.a$$Lambda$209/297510829.run(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventQueue.access$500(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventQueue$3.run(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventQueue$3.run(Unknown Source)
+// 	at java.base@9.0.4/java.security.AccessController.doPrivileged(Native Method)
+// 	at java.base@9.0.4/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventQueue.dispatchEvent(Unknown Source)
+// 	at ui.frmwork.b.d.dispatchEvent(SourceFile:88)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+// 	at java.desktop@9.0.4/java.awt.EventDispatchThread.run(Unknown Source)
+// Thread: TimerQueue
+// 	at java.base@9.0.4/jdk.internal.misc.Unsafe.park(Native Method)
+// 	at java.base@9.0.4/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+// 	at java.base@9.0.4/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+// 	at java.base@9.0.4/java.util.concurrent.DelayQueue.take(Unknown Source)
+// 	at java.desktop@9.0.4/javax.swing.TimerQueue.run(Unknown Source)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: SyntheticaAnimation 70
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at de.javasoft.plaf.synthetica.painter.AnimationThreadFactory$AnimationThread.run(AnimationThreadFactory.java:119)
+// Thread: SyntheticaCleanerThread
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at de.javasoft.plaf.synthetica.StyleFactory$ComponentPropertyStore$1.run(StyleFactory.java:1885)
+// Thread: Thread-2
+// Thread: Process Messages Thread
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at ui.frmwork.d.h.construct(SourceFile:133)
+// 	at ui.frmwork.A.run(SourceFile:199)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: Monitor HEventQueue Thread
+// 	at java.base@9.0.4/java.lang.Thread.dumpThreads(Native Method)
+// 	at java.base@9.0.4/java.lang.Thread.getAllStackTraces(Unknown Source)
+// 	at ui.utils.d.c.eSS(SourceFile:486)
+// 	at ui.frmwork.b.e.construct(SourceFile:140)
+// 	at ui.frmwork.A.run(SourceFile:199)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: Java2D Disposer
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.desktop@9.0.4/sun.java2d.Disposer.run(Unknown Source)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: AWT-Shutdown
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.Object.wait(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.AWTAutoShutdown.run(Unknown Source)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// Thread: Image Fetcher 0
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.nextImage(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.fetchloop(Unknown Source)
+// 	at java.desktop@9.0.4/sun.awt.image.ImageFetcher.run(Unknown Source)
+// Thread: Batik CleanerThread
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at org.apache.batik.util.CleanerThread.run(CleanerThread.java:106)
+// Thread: Finalizer
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+// Thread: Common-Cleaner
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+// 	at java.base@9.0.4/jdk.internal.ref.CleanerImpl.run(Unknown Source)
+// 	at java.base@9.0.4/java.lang.Thread.run(Unknown Source)
+// 	at java.base@9.0.4/jdk.internal.misc.InnocuousThread.run(Unknown Source)
+// Thread: Attach Listener
+// Thread: hw_ila_monitor
+// 	at java.base@9.0.4/java.lang.Object.wait(Native Method)
+// 	at java.base@9.0.4/java.lang.Object.wait(Unknown Source)
+// 	at java.base@9.0.4/java.util.TimerThread.mainLoop(Unknown Source)
+// 	at java.base@9.0.4/java.util.TimerThread.run(Unknown Source)
+// Thread: SyntheticaAnimation 50
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at de.javasoft.plaf.synthetica.painter.AnimationThreadFactory$AnimationThread.run(AnimationThreadFactory.java:119)
+// Thread: SyntheticaAnimation 25
+// 	at java.base@9.0.4/java.lang.Thread.sleep(Native Method)
+// 	at de.javasoft.plaf.synthetica.painter.AnimationThreadFactory$AnimationThread.run(AnimationThreadFactory.java:119)
+// Thread: Reference Handler
+// 	at java.base@9.0.4/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+// 	at java.base@9.0.4/java.lang.ref.Reference.processPendingReferences(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.Reference.access$000(Unknown Source)
+// 	at java.base@9.0.4/java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+dismissDialog("Open Files"); // bB (cs)
+// Tcl Message: create_project dummy 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,038 MB. GUI used memory: 47 MB. Current time: 3/18/21, 9:10:13 AM CET
+// Tcl Message: create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:14 . Memory (MB): peak = 6569.309 ; gain = 16.008 ; free physical = 133623 ; free virtual = 430616 
+// Tcl Command: 'close_project'
+// TclEventType: PROJECT_CLOSE
+// s (cs): No Such File: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1726 ms.
+// Tcl Message: close_project 
+// WARNING: HEventQueue.dispatchEvent() is taking  1039 ms.
+// Elapsed time: 21 seconds
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (s)
+dismissDialog("No Such File"); // s (cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1655 ms.
+selectMenu("File"); // aa (q, cs)
+dismissMenu((HResource) null, "File"); // aa (q, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1654 ms.
+selectMenu("Run"); // aa (q, cs)
+dismissMenu((HResource) null, "Run"); // aa (q, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1539 ms.
+selectMenu("File"); // aa (q, cs)
+dismissMenu((HResource) null, "File"); // aa (q, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1705 ms.
+selectMenu("File"); // aa (q, cs)
+selectMenu("Open Report File"); // aa (cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1690 ms.
+selectMenuItem(FrankCommandResource.FrankCommand_OPEN_PROFILE_SUMMARY_REPORT_FILE, "Open Profile Summary..."); // ai (cs)
+dismissMenu((HResource) null, "File"); // aa (q, cs)
+// Run Command: FrankCommandResource.FrankCommand_OPEN_PROFILE_SUMMARY_REPORT_FILE
+// WARNING: HEventQueue.dispatchEvent() is taking  1769 ms.
+// Elapsed time: 33 seconds
+setFileChooser("/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/sort_reduction_network/sort_reduction_64_to_16_fixed_scan_per_query_version2_add_dataflow/profile_summary.csv");
+// Tcl Command: 'create_project dummy'
+// TclEventType: PROJECT_NEW
+// bB (cs):  Profile Summary Report : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  11734 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2693 ms.
+// Tcl Message: create_project dummy 
+// Tcl Message: create_project: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 6571.441 ; gain = 0.000 ; free physical = 133603 ; free virtual = 430597 
+// WARNING: HEventQueue.dispatchEvent() is taking  1132 ms.
+// [GUI Memory]: 109 MB (+111821kb) [00:01:43]
+// [Engine Memory]: 1,054 MB (+954243kb) [00:01:43]
+// 'c' command handler elapsed time: 50 seconds
+// Elapsed time: 17 seconds
+dismissDialog("Profile Summary Report"); // bB (cs)
+// bB (cs):  Kernel Guidance Report : addNotify
+dismissDialog("Kernel Guidance Report"); // bB (cs)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Profile Summary
+
+profile_summary.xprf", 0); // i (h, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1062 ms.
+selectTab((HResource) null, (HResource) null, "Kernels & Compute Units", 1); // d (k, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1177 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1661 ms.
+// Elapsed time: 305 seconds
+selectMenu("File"); // aa (q, cs)
+selectMenu("Open Report File"); // aa (cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1597 ms.
+selectMenuItem(FrankCommandResource.FrankCommand_OPEN_PROFILE_SUMMARY_REPORT_FILE, "Open Profile Summary..."); // ai (cs)
+dismissMenu((HResource) null, "File"); // aa (q, cs)
+// Run Command: FrankCommandResource.FrankCommand_OPEN_PROFILE_SUMMARY_REPORT_FILE
+// WARNING: HEventQueue.dispatchEvent() is taking  1808 ms.
+setFileChooser("/mnt/scratch/wenqi/FPGA-ANNS/PE_optimization/sort_reduction_network/sort_reduction_64_to_16_fixed_scan_per_query_version3_independent_control/profile_summary.csv");
+// bB (cs):  Profile Summary Report : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1228 ms.
+// 'c' command handler elapsed time: 13 seconds
+dismissDialog("Profile Summary Report"); // bB (cs)
+// bB (cs):  Kernel Guidance Report : addNotify
+dismissDialog("Kernel Guidance Report"); // bB (cs)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Profile Summary
+
+profile_summary.xprf", 2); // i (h, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1895 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1871 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// Elapsed time: 58 seconds
+selectTab((HResource) null, (HResource) null, "Kernels & Compute Units", 1); // d (k, cs)
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1509 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
