@@ -48,8 +48,7 @@ void compare_swap_range_head_tail(
     single_PQ_result* input_array, single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 1st stage
     // Input these constants to make computation fast
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline on 
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -68,8 +67,7 @@ template<const int array_len, const int partition_num>
 void compare_swap_range_interval(
     single_PQ_result* input_array, single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
-#pragma HLS pipeline II=1
-#pragma HLS inline off
+#pragma HLS inline
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -111,13 +109,10 @@ void write_output_stream(
     }
 }
 
-template<const int query_num, const int iteration_per_query>
-void bitonic_sort_16(
-    hls::stream<single_PQ_result> (&s_input)[16],
-    hls::stream<single_PQ_result> (&s_output)[16]) {
-
-    single_PQ_result input_array[16];
-#pragma HLS array_partition variable=input_array complete
+void bitonic_compare_swap_merged(single_PQ_result input_array[16],
+                                 single_PQ_result out_stage4_3[16]) {
+#pragma HLS PIPELINE II=1
+#pragma HLS INLINE off 
 
     single_PQ_result out_stage1_0[16];
 #pragma HLS array_partition variable=out_stage1_0 complete
@@ -137,10 +132,38 @@ void bitonic_sort_16(
     single_PQ_result out_stage4_0[16];
     single_PQ_result out_stage4_1[16];
     single_PQ_result out_stage4_2[16];
-    single_PQ_result out_stage4_3[16];
 #pragma HLS array_partition variable=out_stage4_0 complete
 #pragma HLS array_partition variable=out_stage4_1 complete
 #pragma HLS array_partition variable=out_stage4_2 complete
+
+    compare_swap_range_interval<16, 8>(input_array, out_stage1_0);
+
+    // Stage 2: 2 -> 4
+    compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0);
+    compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);
+
+    // Stage 3: 4 -> 8
+    compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0);
+    compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);
+    compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
+
+    // Stage 4: 8 -> 16
+    compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0);
+    compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);
+    compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);
+    compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);
+
+}
+
+template<const int query_num, const int iteration_per_query>
+void bitonic_sort_16(
+    hls::stream<single_PQ_result> (&s_input)[16],
+    hls::stream<single_PQ_result> (&s_output)[16]) {
+
+    single_PQ_result input_array[16];
+#pragma HLS array_partition variable=input_array complete
+
+    single_PQ_result out_stage4_3[16];
 #pragma HLS array_partition variable=out_stage4_3 complete
 
 
@@ -153,22 +176,7 @@ void bitonic_sort_16(
             load_input_stream<16>(s_input, input_array);
             // Total: 15 sub-stages
             // Stage 1
-            compare_swap_range_interval<16, 8>(input_array, out_stage1_0);
-
-            // Stage 2: 2 -> 4
-            compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0);
-            compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);
-
-            // Stage 3: 4 -> 8
-            compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0);
-            compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);
-            compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
-
-            // Stage 4: 8 -> 16
-            compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0);
-            compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);
-            compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);
-            compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);
+            bitonic_compare_swap_merged(input_array, out_stage4_3);
             
             write_output_stream<16>(out_stage4_3, s_output);
         }
@@ -210,6 +218,25 @@ void compare_select_range_head_tail(
     }
 }
 
+void parallel_merge_compare_swap_merged(single_PQ_result out_stage_0[16],
+                                        single_PQ_result out_stage_4[16]) {
+    #pragma HLS INLINE off
+    #pragma HLS PIPELINE II=1
+
+    single_PQ_result out_stage_1[16];
+    single_PQ_result out_stage_2[16];
+    single_PQ_result out_stage_3[16];
+#pragma HLS array_partition variable=out_stage_1 complete
+#pragma HLS array_partition variable=out_stage_2 complete
+#pragma HLS array_partition variable=out_stage_3 complete
+                                        
+  compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
+  compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
+  compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);
+  compare_swap_range_interval<16, 8>(out_stage_3, out_stage_4);
+
+}
+
 template<const int query_num, const int iteration_per_query>
 void parallel_merge_sort_16(
     hls::stream<single_PQ_result> (&input_stream_A)[16],
@@ -226,14 +253,8 @@ void parallel_merge_sort_16(
 #pragma HLS array_partition variable=input_array_B complete
 
     single_PQ_result out_stage_0[16];
-    single_PQ_result out_stage_1[16];
-    single_PQ_result out_stage_2[16];
-    single_PQ_result out_stage_3[16];
     single_PQ_result out_stage_4[16];
 #pragma HLS array_partition variable=out_stage_0 complete
-#pragma HLS array_partition variable=out_stage_1 complete
-#pragma HLS array_partition variable=out_stage_2 complete
-#pragma HLS array_partition variable=out_stage_3 complete
 #pragma HLS array_partition variable=out_stage_4 complete
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -250,10 +271,7 @@ void parallel_merge_sort_16(
 
             // sort the smallest 16 numbers
             /* Analogue to sorting 32 (a half of sorting 32) */
-            compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
-            compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
-            compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);
-            compare_swap_range_interval<16, 8>(out_stage_3, out_stage_4);
+            parallel_merge_compare_swap_merged(out_stage_0, out_stage_4);
 
             write_output_stream<16>(out_stage_4, s_output);
         }
