@@ -1,4 +1,5 @@
 #include "constants.hpp"
+#include <hls_stream.h>
 
 void compare_swap(
     single_PQ_result* input_array, single_PQ_result* output_array, int idxA, int idxB);
