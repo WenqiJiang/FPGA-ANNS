@@ -23,3 +23,6 @@ xmltmp*
 */xclbin
 _x/*
 _x.*
+.ycm_extra_conf.py
+v++.compile_summary
+hls_output
