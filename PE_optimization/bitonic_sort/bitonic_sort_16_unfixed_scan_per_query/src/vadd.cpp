@@ -20,7 +20,7 @@ void vadd(
     const t_axi* table_HBM26, const t_axi* table_HBM27, 
     const t_axi* table_HBM28, const t_axi* table_HBM29, 
     const t_axi* table_HBM30, const t_axi* table_HBM31, 
-    const t_axi* table_DDR0, const t_axi* table_DDR1,
+    const float* table_DDR0, const t_axi* table_DDR1,
     ap_uint<64>* out_PLRAM
     )
 {
@@ -124,7 +124,8 @@ void vadd(
 
     dummy_input_sender<QUERY_NUM>(
         s_control_iter_num_per_query[0],
-        s_input);
+        s_input, 
+        table_DDR0);
 
 ////////////////////     Core Function Starts     ////////////////////
     bitonic_sort_16<QUERY_NUM>(
@@ -159,10 +160,16 @@ void control_signal_sender(
 template<const int query_num>
 void dummy_input_sender(
     hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&s_input)[16]) {
+    hls::stream<single_PQ_result> (&s_input)[16],
+    const float* array_DDR) {
 
     single_PQ_result input_array[16];
 #pragma HLS array_partition variable=input_array complete
+    for (int i = 0; i < 16; i++) {
+#pragma HLS pipeline II=1
+        input_array[i].vec_ID = i;
+        input_array[i].dist = array_DDR[i];
+    }
 
     for (int query_id = 0; query_id < query_num; query_id++) {
         

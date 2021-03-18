@@ -21,19 +21,21 @@ void vadd(
     const t_axi* table_HBM26, const t_axi* table_HBM27, 
     const t_axi* table_HBM28, const t_axi* table_HBM29, 
     const t_axi* table_HBM30, const t_axi* table_HBM31, 
-    const t_axi* table_DDR0, const t_axi* table_DDR1,
+    const float* table_DDR0, const t_axi* table_DDR1,
     ap_uint<64>* out_PLRAM
     );
 }
 
 template<const int query_num>
 void control_signal_sender(
-    hls::stream<int> (&s_control_iter_num_per_query)[4]);
+    hls::stream<int> (&s_control_iter_num_per_query)[3]);
 
 template<const int query_num>
 void dummy_input_sender(
     hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&s_input)[16]);
+    hls::stream<single_PQ_result> (&s_input_A)[16],
+    hls::stream<single_PQ_result> (&s_input_B)[16],
+    const float* array_DDR);
 
 template<const int query_num>
 void write_result(

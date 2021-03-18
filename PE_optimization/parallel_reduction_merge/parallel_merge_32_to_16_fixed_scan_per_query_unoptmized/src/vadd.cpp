@@ -116,34 +116,19 @@ void vadd(
     hls::stream<single_PQ_result> s_output[16];
 #pragma HLS stream variable=s_output depth=8
 #pragma HLS RESOURCE variable=s_output core=FIFO_SRL
-
-    hls::stream<int> s_control_iter_num_per_query[3];
-#pragma HLS array_partition variable=s_control_iter_num_per_query complete
-#pragma HLS stream variable=s_control_iter_num_per_query depth=8
-#pragma HLS RESOURCE variable=s_control_iter_num_per_query core=FIFO_SRL
     
-
-    control_signal_sender<QUERY_NUM>(
-        s_control_iter_num_per_query);
-
-    dummy_input_sender<QUERY_NUM>(
-        s_control_iter_num_per_query[0],
-        s_input_A, 
-        s_input_B, 
-        table_DDR0);
+    dummy_input_sender<QUERY_NUM, ITERATION_PER_QUERY>(
+        s_input_A, s_input_B, table_DDR0);
 
 ////////////////////     Core Function Starts     ////////////////////
 
-    parallel_merge_sort_16<QUERY_NUM>(
-        s_control_iter_num_per_query[1],
+    parallel_merge_sort_16<QUERY_NUM, ITERATION_PER_QUERY>(
         s_input_A,
         s_input_B,
         s_output);
-
 ////////////////////     Core Function Ends     ////////////////////
 
-    write_result<QUERY_NUM>(
-        s_control_iter_num_per_query[2],
+    write_result<QUERY_NUM, ITERATION_PER_QUERY>(
         s_output,
         out_PLRAM);
 }
@@ -151,23 +136,8 @@ void vadd(
 ////////////////////     Helper Function Starts     ////////////////////
 
 
-template<const int query_num>
-void control_signal_sender(
-    hls::stream<int> (&s_control_iter_num_per_query)[3]) {
-
-    // Here I hard-coded the iteration per query, in reality this is not true
-    //   only for performance modeling
-    int iteration_per_query = 10000;
-    for (int query_id = 0; query_id < query_num; query_id++) {
-        s_control_iter_num_per_query[0].write(iteration_per_query);
-        s_control_iter_num_per_query[1].write(iteration_per_query);
-        s_control_iter_num_per_query[2].write(iteration_per_query);
-    }
-}
-
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void dummy_input_sender(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_input_A)[16],
     hls::stream<single_PQ_result> (&s_input_B)[16],
     const float* array_DDR) {
@@ -186,13 +156,9 @@ void dummy_input_sender(
         input_array_B[i - 16].dist = array_DDR[i];
     }
 
-
     for (int query_id = 0; query_id < query_num; query_id++) {
         
-        // Each query scans different number of entries
-        int iter_num = s_control_iter_num_per_query.read();
-
-        for (int iter = 0; iter < iter_num; iter++) {
+        for (int iter = 0; iter < iteration_per_query; iter++) {
 #pragma HLS pipeline II=1            
             for (int s = 0; s < 16; s++) {
 #pragma HLS UNROLL
@@ -204,9 +170,8 @@ void dummy_input_sender(
 }
 
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void write_result(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_output)[16],
     ap_uint<64>* output) {
 
@@ -214,11 +179,8 @@ void write_result(
 #pragma HLS array_partition variable=input_array complete
 
     for (int query_id = 0; query_id < query_num; query_id++) {
-        
-        // Each query scans different number of entries
-        int iter_num = s_control_iter_num_per_query.read();
 
-        for (int iter = 0; iter < iter_num; iter++) {            
+        for (int iter = 0; iter < iteration_per_query; iter++) {            
 #pragma HLS pipeline II=1
             for (int s = 0; s < 16; s++) {
 #pragma HLS UNROLL

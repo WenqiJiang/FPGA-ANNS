@@ -26,18 +26,13 @@ void vadd(
     );
 }
 
-template<const int query_num>
-void control_signal_sender(
-    hls::stream<int> (&s_control_iter_num_per_query)[3]);
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void dummy_input_sender(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_input)[16],
     const float* array_DDR);
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void write_result(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_output)[16],
     ap_uint<64>* output);

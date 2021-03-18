@@ -1,4 +1,5 @@
 #include "constants.hpp"
+#include <hls_stream.h>
 
 void compare_swap(
     single_PQ_result* input_array, single_PQ_result* output_array, int idxA, int idxB);
@@ -21,26 +22,9 @@ void write_output_stream(
     single_PQ_result output_array[array_len], 
     hls::stream<single_PQ_result> (&s_output)[array_len]);
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void bitonic_sort_16(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_input)[16],
-    hls::stream<single_PQ_result> (&s_output)[16]);
-
-void compare_select(
-    single_PQ_result* input_array_A, single_PQ_result* input_array_B, 
-    single_PQ_result* output_array, int idxA, int idxB);
-
-template<const int array_len>
-void compare_select_range_head_tail(
-    single_PQ_result* input_array_A, single_PQ_result* input_array_B, 
-    single_PQ_result* output_array);
-
-template<const int query_num>
-void parallel_merge_sort_16(
-    hls::stream<int>& s_control_iter_num_per_query,
-    hls::stream<single_PQ_result> (&s_input_A)[16],
-    hls::stream<single_PQ_result> (&s_input_B)[16],
     hls::stream<single_PQ_result> (&s_output)[16]);
 
 ////////////////////     Sorting Network Start    ////////////////////
@@ -62,9 +46,10 @@ void compare_swap(
 template<const int array_len, const int partition_num>
 void compare_swap_range_head_tail(
     single_PQ_result* input_array, single_PQ_result* output_array) {
+#pragma HLS inline off
+#pragma HLS pipeline II=1
     // e.g., in the image phase merge 4 -> 8, the 1st stage
     // Input these constants to make computation fast
-#pragma HLS inline
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -83,7 +68,8 @@ template<const int array_len, const int partition_num>
 void compare_swap_range_interval(
     single_PQ_result* input_array, single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
-#pragma HLS inline
+#pragma HLS inline off
+#pragma HLS pipeline II=1
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -103,7 +89,8 @@ template<const int array_len>
 void load_input_stream(
     hls::stream<single_PQ_result> (&s_input)[array_len], 
     single_PQ_result input_array[array_len]) {
-#pragma HLS inline
+#pragma HLS pipeline II=1
+#pragma HLS inline off
 
     for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -115,7 +102,8 @@ template<const int array_len>
 void write_output_stream(
     single_PQ_result output_array[array_len], 
     hls::stream<single_PQ_result> (&s_output)[array_len]) {
-#pragma HLS inline
+#pragma HLS pipeline II=1
+#pragma HLS inline off
 
     for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -123,9 +111,8 @@ void write_output_stream(
     }
 }
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void bitonic_sort_16(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&s_input)[16],
     hls::stream<single_PQ_result> (&s_output)[16]) {
 
@@ -156,13 +143,12 @@ void bitonic_sort_16(
 #pragma HLS array_partition variable=out_stage4_2 complete
 #pragma HLS array_partition variable=out_stage4_3 complete
 
-
+// dataflow has to be in the inner loop? put in outer loop -> 1200020001 CC / 
+// query num = 1e4, iteration_per_query = 1e4 (we have 12 stages)
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        int iter_num = s_control_iter_num_per_query.read();
-
-        for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS pipeline II=1
+        for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS dataflow
             load_input_stream<16>(s_input, input_array);
             // Total: 15 sub-stages
             // Stage 1
@@ -197,7 +183,6 @@ void compare_select(
     // note: idxOut = idxA
     // select the smallest of the two as output
 #pragma HLS inline
-#pragma HLS pipeline II=1
     if (input_array_A[idxA].dist > input_array_B[idxB].dist) {
         output_array[idxA] = input_array_B[idxB];
     }
@@ -212,8 +197,8 @@ void compare_select_range_head_tail(
     single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 1st stage
     // Input these constants to make computation fast
-#pragma HLS inline
 #pragma HLS pipeline II=1
+#pragma HLS inline off
 
     // A[0] <-> B[127], A[1] <-> B[126], etc.
     for (int j = 0; j < array_len; j++) {
@@ -224,9 +209,8 @@ void compare_select_range_head_tail(
     }
 }
 
-template<const int query_num>
+template<const int query_num, const int iteration_per_query>
 void parallel_merge_sort_16(
-    hls::stream<int>& s_control_iter_num_per_query,
     hls::stream<single_PQ_result> (&input_stream_A)[16],
     hls::stream<single_PQ_result> (&input_stream_B)[16],
     hls::stream<single_PQ_result> (&s_output)[16]) {
@@ -253,11 +237,9 @@ void parallel_merge_sort_16(
 
     for (int query_id = 0; query_id < query_num; query_id++) {
         
-        // Each query scans different number of entries
-        int iter_num = s_control_iter_num_per_query.read();
+        for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS dataflow
 
-        for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS pipeline II=1
             load_input_stream<16>(input_stream_A, input_array_A);
             load_input_stream<16>(input_stream_B, input_array_B);
 
@@ -267,6 +249,7 @@ void parallel_merge_sort_16(
 
             // sort the smallest 16 numbers
             /* Analogue to sorting 32 (a half of sorting 32) */
+            
             compare_swap_range_interval<16, 1>(out_stage_0, out_stage_1);
             compare_swap_range_interval<16, 2>(out_stage_1, out_stage_2);
             compare_swap_range_interval<16, 4>(out_stage_2, out_stage_3);

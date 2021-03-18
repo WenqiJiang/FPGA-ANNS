@@ -1,82 +1,43 @@
-# Performance
+# Bitonic Sort Optimization Log
 
-## Real Performance 
+## First version
 
-715.86 ms
+For each compare-swap iteration, using a single function, and connect the functions by dataflow.
 
-140 MHz
-
-10000 query * 10000 iterations per query
-
-Theoretical performance = 1e4 * 1e4 / (140 * 1e6) = 0.71428 s
-
-Achieved 714.28 / 715.86 = 99.779 % theoretical performance.
-
-## HLS Performance
-
-N/A due to the unfixed scanned iteration per query.
-
-# Resource 
-
-Very close to the fixed iteration per query version.
-
-FF = 28986 (fixed) : 29061 (unfixed)
-
-LUT = 43862 (fixed ): 44511 (unfixed)
-
-No DSP / BRAM / URAM usage.
-
-Placing 4 Bitonic 16 in sort-reduction module will consume:
-
-FF = 4 * 29061 / 2607360 = 4.458% of total FF
-
-LUT = 4 * 44511 / 1303680 = *13.657% of total LUT*
-
+Functions (inline off):
 ```
-================================================================
-== Utilization Estimates
-================================================================
-* Summary: 
-+---------------------+---------+-------+---------+---------+-----+
-|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
-+---------------------+---------+-------+---------+---------+-----+
-|DSP                  |        -|      -|        -|        -|    -|
-|Expression           |        -|      -|        0|       16|    -|
-|FIFO                 |        0|      -|      407|     3091|    -|
-|Instance             |        4|      0|    33496|    51175|    -|
-|Memory               |        -|      -|        -|        -|    -|
-|Multiplexer          |        -|      -|        -|        -|    -|
-|Register             |        -|      -|        6|        -|    -|
-+---------------------+---------+-------+---------+---------+-----+
-|Total                |        4|      0|    33909|    54282|    0|
-+---------------------+---------+-------+---------+---------+-----+
-|Available SLR        |     1344|   3008|   869120|   434560|  320|
-+---------------------+---------+-------+---------+---------+-----+
-|Utilization SLR (%)  |    ~0   |      0|        3|       12|    0|
-+---------------------+---------+-------+---------+---------+-----+
-|Available            |     4032|   9024|  2607360|  1303680|  960|
-+---------------------+---------+-------+---------+---------+-----+
-|Utilization (%)      |    ~0   |      0|        1|        4|    0|
-+---------------------+---------+-------+---------+---------+-----+
-
-+ Detail: 
-    * Instance: 
-    +----------------------------------+-------------------------------+---------+-------+-------+-------+-----+
-    |             Instance             |             Module            | BRAM_18K| DSP48E|   FF  |  LUT  | URAM|
-    +----------------------------------+-------------------------------+---------+-------+-------+-------+-----+
-    |bitonic_sort_16_10000_37_U0       |bitonic_sort_16_10000_37       |        0|      0|  29061|  44511|    0|
-    |control_signal_sender_10000_4_U0  |control_signal_sender_10000_4  |        0|      0|     22|    144|    0|
-    |dummy_input_sender_10000_U0       |dummy_input_sender_10000_s     |        0|      0|     99|    496|    0|
-    |vadd_control_s_axi_U              |vadd_control_s_axi             |        0|      0|   2486|   4520|    0|
-    |vadd_gmem34_m_axi_U               |vadd_gmem34_m_axi              |        4|      0|    566|    766|    0|
-    |write_result_10000_38_U0          |write_result_10000_38          |        0|      0|   1262|    738|    0|
-    +----------------------------------+-------------------------------+---------+-------+-------+-------+-----+
-    |Total                             |                               |        4|      0|  33496|  51175|    0|
-    +----------------------------------+-------------------------------+---------+-------+-------+-------+-----+
+template<const int array_len, const int partition_num>
+void compare_swap_range_head_tail(
+    single_PQ_result* input_array, single_PQ_result* output_array) {
+#pragma HLS inline off
 ```
 
-# TODO
+Bitonic sort loop:
+```
+        for (int iter = 0; iter < iteration_per_query; iter++) {
+#pragma HLS dataflow
+            load_input_stream<16>(s_input, input_array);
+            // Total: 15 sub-stages
+            // Stage 1
+            compare_swap_range_interval<16, 8>(input_array, out_stage1_0);
 
-There could be some overhead between queries. It might flush the pipeline, and might be related to FIFO depth.
+            // Stage 2: 2 -> 4
+            compare_swap_range_head_tail<16, 4>(out_stage1_0, out_stage2_0);
+            compare_swap_range_interval<16, 8>(out_stage2_0, out_stage2_1);
 
-But since the current result is already very close to theroetical performance, we don't need to spend time on this. 
+            // Stage 3: 4 -> 8
+            compare_swap_range_head_tail<16, 2>(out_stage2_1, out_stage3_0);
+            compare_swap_range_interval<16, 4>(out_stage3_0, out_stage3_1);
+            compare_swap_range_interval<16, 8>(out_stage3_1, out_stage3_2);
+
+            // Stage 4: 8 -> 16
+            compare_swap_range_head_tail<16, 1>(out_stage3_2, out_stage4_0);
+            compare_swap_range_interval<16, 2>(out_stage4_0, out_stage4_1);
+            compare_swap_range_interval<16, 4>(out_stage4_1, out_stage4_2);
+            compare_swap_range_interval<16, 8>(out_stage4_2, out_stage4_3);
+            
+            write_output_stream<16>(out_stage4_3, s_output);
+        }
+```
+
+The problem is that when treating these units as independent function, many FIFOs are added to the dataflow loop, consuming many LUTs.

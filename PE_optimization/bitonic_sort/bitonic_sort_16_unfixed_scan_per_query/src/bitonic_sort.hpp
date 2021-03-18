@@ -48,8 +48,8 @@ void compare_swap_range_head_tail(
     single_PQ_result* input_array, single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 1st stage
     // Input these constants to make computation fast
+#pragma HLS inline
 #pragma HLS pipeline II=1
-#pragma HLS inline off
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -68,8 +68,8 @@ template<const int array_len, const int partition_num>
 void compare_swap_range_interval(
     single_PQ_result* input_array, single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 2nd and 3rd stage
+#pragma HLS inline
 #pragma HLS pipeline II=1
-#pragma HLS inline off
 
     const int elements_per_partition = array_len / partition_num;
     const int operations_per_partition = elements_per_partition / 2;
@@ -89,8 +89,8 @@ template<const int array_len>
 void load_input_stream(
     hls::stream<single_PQ_result> (&s_input)[array_len], 
     single_PQ_result input_array[array_len]) {
+#pragma HLS inline
 #pragma HLS pipeline II=1
-#pragma HLS inline off
 
     for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -102,8 +102,8 @@ template<const int array_len>
 void write_output_stream(
     single_PQ_result output_array[array_len], 
     hls::stream<single_PQ_result> (&s_output)[array_len]) {
+#pragma HLS inline
 #pragma HLS pipeline II=1
-#pragma HLS inline off
 
     for (int s = 0; s < array_len; s++) {
 #pragma HLS UNROLL 
@@ -150,7 +150,7 @@ void bitonic_sort_16(
         int iter_num = s_control_iter_num_per_query.read();
 
         for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS dataflow
+#pragma HLS pipeline II=1
             load_input_stream<16>(s_input, input_array);
             // Total: 15 sub-stages
             // Stage 1
@@ -185,6 +185,7 @@ void compare_select(
     // note: idxOut = idxA
     // select the smallest of the two as output
 #pragma HLS inline
+#pragma HLS pipeline II=1
     if (input_array_A[idxA].dist > input_array_B[idxB].dist) {
         output_array[idxA] = input_array_B[idxB];
     }
@@ -199,8 +200,8 @@ void compare_select_range_head_tail(
     single_PQ_result* output_array) {
     // e.g., in the image phase merge 4 -> 8, the 1st stage
     // Input these constants to make computation fast
+#pragma HLS inline
 #pragma HLS pipeline II=1
-#pragma HLS inline off
 
     // A[0] <-> B[127], A[1] <-> B[126], etc.
     for (int j = 0; j < array_len; j++) {
@@ -244,7 +245,7 @@ void parallel_merge_sort_16(
         int iter_num = s_control_iter_num_per_query.read();
 
         for (int iter = 0; iter < iter_num; iter++) {
-#pragma HLS dataflow
+#pragma HLS pipeline II=1
             load_input_stream<16>(input_stream_A, input_array_A);
             load_input_stream<16>(input_stream_B, input_array_B);
 
