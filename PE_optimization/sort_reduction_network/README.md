@@ -1,6 +1,22 @@
+# Performance
+
+The performance is tested on "xxx", which is equivalent to the unfixed scan per query version of "xxx".
+
+## Real Performance
+
+Real Performance = xxx ms
+
+140 MHz, 10000 query, 10000 scan per query
+
+Theoretical performance  = 10000 * 10000 / 140 / 1e6 = 714.285 ms
+
+Conclusion: Reaches theoretical performance
+
+## Resource
+
 # Sort Reduction Optimization Log
 
-**We reduce the LUT usage from 297771 to 103612.**
+**We reduce the LUT usage from 297771 to 90548.** (Vitis consumes slightly more resources than the synthesis result of vitis_hls, I am not sure why)
 
 First, inline the compare-swapt units and interconnected them by pipeline loop.
 

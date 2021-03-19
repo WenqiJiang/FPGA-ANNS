@@ -147,7 +147,7 @@ void dummy_input_sender(
 
     for (int s1 = 0; s1 < 4; s1++) {
         for (int s2 = 0; s2 < 16; s2++) {
-            input_array[s1][s2].celll_ID = s1 * 16 + s2;
+            input_array[s1][s2].vec_ID = s1 * 16 + s2;
             input_array[s1][s2].dist = array_DDR[s1 * 16 + s2];
         }
     }
