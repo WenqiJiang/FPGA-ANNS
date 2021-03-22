@@ -1,6 +1,6 @@
 #include "constants.hpp"
 
-enum Order { Collect_smallest, Collect_largest };
+// enum Order { Collect_smallest, Collect_largest };
 
 // Note! Template Function Specialization is NOT allowed in class scope
 namespace sort_reduction_64_to_16_with_vecID {

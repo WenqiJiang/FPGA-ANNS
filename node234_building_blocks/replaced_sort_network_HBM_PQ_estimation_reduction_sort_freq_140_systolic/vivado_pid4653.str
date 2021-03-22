@@ -1,0 +1,562 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:39:14 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 4653
+License: Customer
+
+Current time: 	Sun Mar 21 16:15:12 CET 2021
+Time zone: 	Central European Standard Time (Europe/Zurich)
+
+OS: Ubuntu
+OS Version: 4.14.156-U
+OS Architecture: amd64
+Available processors (cores): 80
+
+Display: localhost:11.0
+Screen size: 1440x878
+Screen resolution (DPI): 100
+Available screens: 1
+Available disk space: 23 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	9.0.4 64-bit
+Java home: 	/opt/Xilinx/Vivado/2019.2/tps/lnx64/jre9.0.4
+Java executable location: 	/opt/Xilinx/Vivado/2019.2/tps/lnx64/jre9.0.4/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	wejiang
+User home directory: /home/wejiang
+User working directory: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vivado
+HDI_APPROOT: /opt/Xilinx/Vivado/2019.2
+RDI_DATADIR: /opt/Xilinx/Vivado/2019.2/data
+RDI_BINDIR: /opt/Xilinx/Vivado/2019.2/bin
+
+Vivado preferences file location: /home/wejiang/.Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: /home/wejiang/.Xilinx/Vivado/2019.2/
+Vivado layouts directory: /home/wejiang/.Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	/opt/Xilinx/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/vivado.log
+Vivado journal file location: 	/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-4653-alveo0
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /opt/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: /opt/Xilinx/Xilinx.lic
+XILINX_DSP: /opt/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: /opt/Xilinx/Vivado/2019.2
+XILINX_SDK: /opt/Xilinx/Vitis/2019.2
+XILINX_VITIS: /opt/Xilinx/Vitis/2019.2
+XILINX_VIVADO: /opt/Xilinx/Vivado/2019.2
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2019.2
+XILINX_XRT: /opt/xilinx/xrt
+
+
+GUI allocated memory:	185 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,172 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 92 MB (+93682kb) [00:00:11]
+// [Engine Memory]: 1,164 MB (+1068956kb) [00:00:11]
+// bB (cr):  Open Checkpoint : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1991 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,151 MB. GUI used memory: 45 MB. Current time: 3/21/21, 4:15:13 PM CET
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_checkpoint /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/pfm_top_wrapper_routed_error.dcp 
+// Tcl Message: Command: open_checkpoint /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/pfm_top_wrapper_routed_error.dcp  Starting open_checkpoint Task  Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.08 . Memory (MB): peak = 6739.266 ; gain = 0.000 ; free physical = 195117 ; free virtual = 437606 
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  3381 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2019.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,514 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:15:28 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,501 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:15:53 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,644 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:16:13 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 2,794 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:16:33 PM CET
+// [Engine Memory]: 2,796 MB (+1650326kb) [00:01:34]
+// HMemoryUtils.trashcanNow. Engine heap size: 3,122 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:16:48 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 3,552 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:17:08 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 3,803 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:17:23 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 4,149 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:17:43 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 4,413 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:17:58 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 4,787 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:18:18 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 5,078 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:18:33 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 5,523 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:18:53 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 5,691 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:19:08 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 5,936 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:19:28 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 6,137 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:19:43 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 6,356 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:19:58 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 7,027 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:20:18 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 7,469 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:20:33 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 9,245 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:20:53 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 10,238 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:21:08 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 13,593 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:21:28 PM CET
+// TclEventType: PHY_BLOCK_NEW
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PHY_BLOCK_ADD_INST
+// TclEventType: SIGNAL_INTERFACE_ADD
+// TclEventType: SIGNAL_HIERARCHY_CHANGED
+// TclEventType: SIGNAL_INTERFACE_ADD
+// TclEventType: SIGNAL_HIERARCHY_CHANGED
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PHY_BLOCK_ADD_INST
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PHY_BLOCK_ADD_INST
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: PHY_BLOCK_MODIFY
+// HMemoryUtils.trashcanNow. Engine heap size: 13,941 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:22:33 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 14,962 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:22:53 PM CET
+// [Engine Memory]: 15,027 MB (+12678287kb) [00:07:56]
+// HMemoryUtils.trashcanNow. Engine heap size: 15,441 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:23:08 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 15,820 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:23:28 PM CET
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 15,943 MB. GUI used memory: 48 MB. Current time: 3/21/21, 4:24:37 PM CET
+// [Engine Memory]: 15,943 MB (+172674kb) [00:09:41]
+// [GUI Memory]: 96 MB (+99kb) [00:09:41]
+// [GUI Memory]: 101 MB (+12kb) [00:09:41]
+// [GUI Memory]: 106 MB (+56kb) [00:09:41]
+// [GUI Memory]: 119 MB (+7641kb) [00:09:42]
+// [GUI Memory]: 125 MB (+145kb) [00:09:42]
+// [GUI Memory]: 173 MB (+44026kb) [00:09:44]
+// [GUI Memory]: 188 MB (+6614kb) [00:09:44]
+// TclEventType: DESIGN_NEW
+// Xgd.load filename: /opt/Xilinx/Vivado/2019.2/data/parts/xilinx/virtexuplusHBM/devint/virtexuplusHBM/xcu280/xcu280.xgd; ZipEntry: xcu280_detail.xgd elapsed time: 1.9s
+// [GUI Memory]: 200 MB (+1999kb) [00:09:46]
+// [GUI Memory]: 229 MB (+20393kb) [00:09:48]
+// Device: addNotify
+// DeviceView Instantiated
+// WARNING: HEventQueue.dispatchEvent() is taking  5075 ms.
+// Tcl Message: INFO: [Device 21-403] Loading part xcu280-fsvh2892-2L-e 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 11824.066 ; gain = 193.672 ; free physical = 188624 ; free virtual = 431116 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 30473 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 18 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2019.2 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: INFO: [Timing 38-478] Restoring timing data from binary archive. INFO: [Timing 38-479] Binary timing data restore complete. INFO: [Project 1-856] Restoring constraints from binary archive. INFO: [Constraints 18-4422] SNAPPING_MODE is set so implementation will use the DERIVED_RANGES which may be different then the GRID_RANGES. INFO: [Constraints 18-4421] A LAGUNA range, without usable sites, was added to DERIVED_RANGES for purposes of keeping the Programmable Unit together within the reconfigurable pblock. INFO: [Project 1-853] Binary constraint restore complete. 
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF File: Time (s): cpu = 00:01:14 ; elapsed = 00:01:13 . Memory (MB): peak = 21526.953 ; gain = 2178.727 ; free physical = 180150 ; free virtual = 422642 
+// Tcl Message: Restored from archive | CPU: 76.740000 secs | Memory: 1576.174339 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:01:15 ; elapsed = 00:01:14 . Memory (MB): peak = 21526.953 ; gain = 2178.727 ; free physical = 180157 ; free virtual = 422649 Netlist sorting complete. Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.41 . Memory (MB): peak = 21526.953 ; gain = 0.000 ; free physical = 180632 ; free virtual = 423124 
+// WARNING: HEventQueue.dispatchEvent() is taking  1505 ms.
+// Tcl Message: INFO: [Project 1-604] Checkpoint was created with Vivado v2019.2 (64-bit) build 2708876 
+// Device view-level: 0.0
+// [GUI Memory]: 249 MB (+9002kb) [00:09:52]
+// WARNING: HEventQueue.dispatchEvent() is taking  2081 ms.
+// TclEventType: PROJ_DESIGN_MODE_SET
+// TclEventType: PROJECT_DASHBOARD_GADGET_DELETE
+// TclEventType: PROJ_DESIGN_MODE_SET
+// [GUI Memory]: 272 MB (+10296kb) [00:09:59]
+// TclEventType: DESIGN_MODE_CHANGE
+// Tcl Message: open_checkpoint: Time (s): cpu = 00:09:31 ; elapsed = 00:09:49 . Memory (MB): peak = 21564.969 ; gain = 14840.102 ; free physical = 178985 ; free virtual = 421477 
+// OpenCheckpoint: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/pfm_top_wrapper_routed_error.dcp elapsed time: 589.7s
+// Project name: project_pfm_top_wrapper_routed_error; location: /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1; part: xcu280-fsvh2892-2L-e
+dismissDialog("Open Checkpoint"); // bB (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 16,541 MB. GUI used memory: 178 MB. Current time: 3/21/21, 4:25:18 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 17,135 MB. GUI used memory: 178 MB. Current time: 3/21/21, 4:25:38 PM CET
+// RouteApi::initDelayMediator elapsed time: 59.2s
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// HMemoryUtils.trashcanNow. Engine heap size: 18,250 MB. GUI used memory: 178 MB. Current time: 3/21/21, 4:25:58 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 20,702 MB. GUI used memory: 178 MB. Current time: 3/21/21, 4:26:23 PM CET
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgd elapsed time: 114.1s
+// Device view-level: 0.1
+// [Engine Memory]: 20,296 MB (+3728702kb) [00:11:36]
+// WARNING: HEventQueue.dispatchEvent() is taking  1171 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1700 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1619 ms.
+// Elapsed time: 698 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IO, "IO"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TIMING, "Timing"); // af (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[pfm_top_wrapper, Leaf Cells (16)]", 2, false); // bD (O, cr)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[pfm_top_wrapper, Leaf Cells (16)]", 2); // bD (O, cr)
+collapseTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[pfm_top_wrapper, Leaf Cells (16)]", 2); // bD (O, cr)
+expandTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[pfm_top_wrapper, Nets (431)]", 1); // bD (O, cr)
+collapseTree(PAResourceItoN.NetlistTreeView_NETLIST_TREE, "[pfm_top_wrapper, Nets (431)]", 1); // bD (O, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1530 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Elapsed time: 64 seconds
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1549 ms.
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1640 ms.
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1553 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1642 ms.
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2049 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1870 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_HELP, "Help"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_HELP, "Help"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1638 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1974 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FLOORPLANNING, "Floorplanning"); // af (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1651 ms.
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1578 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IO, "IO"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TIMING, "Timing"); // af (cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_HIGH_FANOUT_NETS, "Report High Fanout Nets..."); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_HIGH_FANOUT_NETS
+// a (cr): Report High Fanout Nets: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1921 ms.
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (a)
+// 'cm' command handler elapsed time: 5 seconds
+dismissDialog("Report High Fanout Nets"); // a (cr)
+// bB (cr):  Report High Fanout Nets : addNotify
+// Tcl Message: report_high_fanout_nets -name high_fanout_nets_1 
+// WARNING: HEventQueue.dispatchEvent() is taking  2234 ms.
+// TclEventType: HCR_HFN_GEN
+// Tcl Message: report_high_fanout_nets: Time (s): cpu = 00:02:59 ; elapsed = 00:02:53 . Memory (MB): peak = 26058.504 ; gain = 0.000 ; free physical = 175040 ; free virtual = 417534 
+// Tcl Message: report_high_fanout_nets: Time (s): cpu = 00:02:59 ; elapsed = 00:02:53 . Memory (MB): peak = 26058.504 ; gain = 0.000 ; free physical = 175041 ; free virtual = 417535 
+// Elapsed time: 174 seconds
+dismissDialog("Report High Fanout Nets"); // bB (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1651 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1888 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1713 ms.
+// Elapsed time: 20 seconds
+selectTable(PAResourceEtoH.GenericReportSelectableTablePanel_GENERIC_REPORT_TABLE, "pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/vadd_fcmp_32ns_32ns_1_2_1_U10718/grp_fu_1080_ce_BUFG ; 29379 ; BUFGCE", 1, "pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/vadd_fcmp_32ns_32ns_1_2_1_U10718/grp_fu_1080_ce_BUFG", 0); // t (O, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1576 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1686 ms.
+// Elapsed time: 21 seconds
+maximizeFrame(PAResourceOtoP.PAViews_HIGH_FANOUT_NETS, "High Fanout Nets - high_fanout_nets_1"); // aA (aL, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2176 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1561 ms.
+// Elapsed time: 27 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IO, "IO"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TIMING, "Timing"); // af (cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_DESIGN_ANALYSIS, "Report Design Analysis..."); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_DESIGN_ANALYSIS
+// o (cr): Report Design Analysis: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  2570 ms.
+// Elapsed time: 13 seconds
+selectCheckBox(PAResourceQtoS.ReportDesignAnalysisDialog_PERFORM_TIMING_PATHS_CHARACTERISTICS, "Timing", false); // g (p, o): FALSE
+// WARNING: HEventQueue.dispatchEvent() is taking  2456 ms.
+selectCheckBox(PAResourceQtoS.ReportDesignAnalysisDialog_MINIMUM_CONGESTION_LEVEL, "Minimum congestion level:", true); // g (Q, o): TRUE
+selectCheckBox(PAResourceQtoS.ReportDesignAnalysisDialog_MINIMUM_CONGESTION_LEVEL, "Minimum congestion level:", true); // g (Q, o): TRUE
+// WARNING: HEventQueue.dispatchEvent() is taking  3581 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2296 ms.
+// Elapsed time: 42 seconds
+setText(RDIResource.CommandLinePanel_COMMAND, "report_design_analysis -congestion -min_congestion_level 5 -name design_analysis_1"); // ac (t, o)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (o)
+// 'cl' command handler elapsed time: 63 seconds
+// WARNING: HEventQueue.dispatchEvent() is taking  1261 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1183 ms.
+dismissDialog("Report Design Analysis"); // o (cr)
+// bB (cr):  Report Design Analysis : addNotify
+// Tcl Message: report_design_analysis -congestion -min_congestion_level 5 -name design_analysis_1 
+// TclEventType: DESIGN_ANALYSIS_RESULT_GENERATED
+// WARNING: HEventQueue.dispatchEvent() is taking  1091 ms.
+// Tcl Message: report_design_analysis: Time (s): cpu = 00:01:19 ; elapsed = 00:01:18 . Memory (MB): peak = 26058.504 ; gain = 0.000 ; free physical = 175023 ; free virtual = 417518 
+// Elapsed time: 81 seconds
+dismissDialog("Report Design Analysis"); // bB (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2340 ms.
+// Elapsed time: 225 seconds
+maximizeFrame(PAResourceOtoP.PAViews_DESIGN_ANALYSIS, "Design Analysis - design_analysis_1"); // aA (aL, cr)
+// Elapsed time: 206 seconds
+selectTable(PAResourceQtoS.RDATablePanel_TABLE, "Window 1 ; North ; 7.0 ; 106.0 ; 25.0 ; 3.312 ; 66.0 ; 0.0 ; 56.0 ; 1.0 ; 80.0 ; 2% ; 24.0 ; 20.0 ; 16.0 ; pfm_top_i/dynamic_region/vadd_1/inst(30%) ; pfm_top_i/dynamic_region/System_DPA(11%) ; pfm_top_i/dynamic_region/vadd_1/inst/load_and_split_PQ_codes_wrapper_10000_32_U0(9%)", 0, "Window 1", 0); // W (O, cr)
+selectTable(PAResourceQtoS.RDATablePanel_TABLE, "Window 1 ; North ; 7.0 ; 106.0 ; 25.0 ; 3.312 ; 66.0 ; 0.0 ; 56.0 ; 1.0 ; 80.0 ; 2% ; 24.0 ; 20.0 ; 16.0 ; pfm_top_i/dynamic_region/vadd_1/inst(30%) ; pfm_top_i/dynamic_region/System_DPA(11%) ; pfm_top_i/dynamic_region/vadd_1/inst/load_and_split_PQ_codes_wrapper_10000_32_U0(9%)", 0, "Window 1", 0); // W (O, cr)
+selectTable(PAResourceQtoS.RDATablePanel_TABLE, "Window 1 ; North ; 7.0 ; 106.0 ; 25.0 ; 3.312 ; 66.0 ; 0.0 ; 56.0 ; 1.0 ; 80.0 ; 2% ; 24.0 ; 20.0 ; 16.0 ; pfm_top_i/dynamic_region/vadd_1/inst(30%) ; pfm_top_i/dynamic_region/System_DPA(11%) ; pfm_top_i/dynamic_region/vadd_1/inst/load_and_split_PQ_codes_wrapper_10000_32_U0(9%)", 0, "Window 1", 0, false, false, false, false, true); // W (O, cr) - Double Click
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, SLR Net Crossing]", 3, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, Router Initial Congestion]", 4, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, Placer Final]", 2, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, Router Initial Congestion]", 4, false); // q (O, cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 20,558 MB. GUI used memory: 197 MB. Current time: 3/21/21, 4:56:24 PM CET
+// WARNING: HEventQueue.dispatchEvent() is taking  1052 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1780 ms.
+// Elapsed time: 455 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_QOR_SUGGESTIONS, "Report QoR Suggestions..."); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_QOR_SUGGESTIONS
+// a (cr): Report QoR Suggestions: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1839 ms.
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (a)
+// Elapsed time: 20 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (a)
+// 'cq' command handler elapsed time: 28 seconds
+// WARNING: HEventQueue.dispatchEvent() is taking  1277 ms.
+dismissDialog("Report QoR Suggestions"); // a (cr)
+// Tcl Message: report_qor_suggestions -name qor_suggestions -max_paths 100 
+// bB (cr):  Report QoR Suggestions : addNotify
+// HMemoryUtils.trashcanNow. Engine heap size: 21,086 MB. GUI used memory: 197 MB. Current time: 3/21/21, 5:02:04 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 21,205 MB. GUI used memory: 197 MB. Current time: 3/21/21, 5:02:54 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 21,857 MB. GUI used memory: 196 MB. Current time: 3/21/21, 5:03:14 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 22,306 MB. GUI used memory: 195 MB. Current time: 3/21/21, 5:03:29 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 22,862 MB. GUI used memory: 195 MB. Current time: 3/21/21, 5:04:04 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 24,618 MB. GUI used memory: 195 MB. Current time: 3/21/21, 5:04:24 PM CET
+// [Engine Memory]: 24,618 MB (+3468298kb) [00:52:50]
+// HMemoryUtils.trashcanNow. Engine heap size: 24,682 MB. GUI used memory: 195 MB. Current time: 3/21/21, 5:10:09 PM CET
+// TclEventType: TIMING_RESULTS_STALE
+// HMemoryUtils.trashcanNow. Engine heap size: 27,280 MB. GUI used memory: 195 MB. Current time: 3/21/21, 5:12:34 PM CET
+// [Engine Memory]: 31,645 MB (+6077596kb) [00:58:55]
+// TclEventType: MSGMGR_REFRESH_MSG
+// Tcl Message: INFO: [DRC 23-27] Running DRC with 8 threads 
+// Tcl Message: RQA Time (s): cpu = 00:39:05 ; elapsed = 00:13:15 . Memory (MB): peak = 36838.348 ; gain = 10779.844 ; free physical = 170438 ; free virtual = 412957 
+// Tcl Message: INFO: [Timing 38-35] Done setting XDC timing constraints. 
+// TclEventType: TIMING_RESULTS_STALE
+// HMemoryUtils.trashcanNow. Engine heap size: 31,662 MB. GUI used memory: 192 MB. Current time: 3/21/21, 5:42:34 PM CET
+// TclEventType: QOR_SUGGESTIONS_RESULT_GENERATED
+// Report Qor Suggestions API::getResultInfo length(bytes): 7838563
+// Device view-level: 0.2
+// WARNING: HEventQueue.dispatchEvent() is taking  1199 ms.
+// Tcl Message: INFO: [Vivado_Tcl 4-1285] ML Strategies are available only in default/explore at successfully routed design. 
+// Tcl Message: Strategy Suggestions: Time (s): cpu = 00:33:08 ; elapsed = 00:33:33 . Memory (MB): peak = 36838.348 ; gain = 0.000 ; free physical = 169693 ; free virtual = 412256 
+// Tcl Message: report_qor_suggestions: Time (s): cpu = 01:21:25 ; elapsed = 00:51:49 . Memory (MB): peak = 36838.348 ; gain = 10779.844 ; free physical = 169695 ; free virtual = 412259 
+// WARNING: HEventQueue.dispatchEvent() is taking  1140 ms.
+// Elapsed time: 3111 seconds
+dismissDialog("Report QoR Suggestions"); // bB (cr)
+// Elapsed time: 1031 seconds
+maximizeFrame(PAResourceOtoP.PAViews_QOR_SUGGESTIONS, "QoR Suggestions - qor_suggestion"); // aA (aL, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, RQS Summary, GENERATED]", 2, false); // q (O, cr)
+// Elapsed time: 90 seconds
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Utilization, RQS_UTIL-3-1]", 4, false); // q (O, cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 31,655 MB. GUI used memory: 207 MB. Current time: 3/21/21, 6:12:35 PM CET
+// WARNING: HEventQueue.dispatchEvent() is taking  2141 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1008 ms.
+// Elapsed time: 237 seconds
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Utilization, RQS_UTIL-2-1]", 5, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Utilization, RQS_UTIL-3-1]", 4, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Utilization, RQS_UTIL-2-1]", 5, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Utilization, RQS_UTIL-6-1]", 6, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-3_1-1]", 8, false); // q (O, cr)
+// Elapsed time: 19 seconds
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-3_2-1]", 9, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-4_1-1]", 10, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-1_1-1]", 11, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-4_1-1]", 10, false); // q (O, cr)
+// Elapsed time: 48 seconds
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Congestion, RQS_CONG-1_1-1]", 11, false); // q (O, cr)
+selectTree(RDIResource.NavigableReportTab_REPORT_NAVIGATION_TREE, "[Report Contents, Timing, RQS_TIMING-59-1]", 13, false); // q (O, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  9148 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  9292 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1564 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  9155 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3190 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1710 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1618 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2207 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2125 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  8996 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  9473 ms.
+// Tcl Command: 'rdi::info_commands {v*}'
+// WARNING: HEventQueue.dispatchEvent() is taking  2645 ms.
+// Elapsed time: 896 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // aF (ac, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2477 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2435 ms.
+// Elapsed time: 10 seconds
+selectMenuItem(RDIResourceCommand.RDICommands_PASTE, "Paste"); // ai (ao, Popup.HeavyWeightWindow)
+applyEnter(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "phys_opt_design -help"); // aF (ac, cr)
+// Tcl Command: 'phys_opt_design -help'
+// Tcl Command: 'phys_opt_design -help'
+// Tcl Message: phys_opt_design -help 
+// WARNING: HEventQueue.dispatchEvent() is taking  1250 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2129 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1914 ms.
+// Elapsed time: 87 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+// Elapsed time: 10 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FLOORPLANNING, "Floorplanning"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IO_PLANNING, "I/O Planning"); // af (cr)
+// Elapsed time: 11 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FLOORPLANNING, "Floorplanning"); // af (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2314 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_IO_PLANNING, "I/O Planning"); // af (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2953 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_TIMING, "Timing"); // af (cr)
+// Elapsed time: 17 seconds
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 615, 139); // dT (af, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  3606 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1927 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1818 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1913 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1888 ms.
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1900 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1866 ms.
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2347 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2066 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2125 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // aa (q, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1929 ms.
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FLOORPLANNING, "Floorplanning"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IO_PLANNING, "I/O Planning"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TIMING, "Timing"); // af (cr)
+selectMenu(RDIResourceCommand.RDICommands_CUSTOM_COMMANDS, "Custom Commands"); // af (cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1863 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2296 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1333 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 208 MB. Current time: 3/21/21, 6:42:35 PM CET
+// Elapsed time: 386 seconds
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 1206, 405); // dT (af, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2021 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1961 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2989 ms.
+// Elapsed time: 13 seconds
+selectMenuItem(RDIResourceCommand.RDICommands_PASTE, "Paste"); // ai (ao, Popup.HeavyWeightWindow)
+applyEnter(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "phys_opt_design -force_replication_on_nets ${hi_fanout_nets}"); // aF (ac, cr)
+// Tcl Command: 'phys_opt_design -force_replication_on_nets ${hi_fanout_nets}'
+// Tcl Command: 'phys_opt_design -force_replication_on_nets ${hi_fanout_nets}'
+// WARNING: HEventQueue.dispatchEvent() is taking  1045 ms.
+// Tcl Message: phys_opt_design -force_replication_on_nets ${hi_fanout_nets} 
+// Tcl Message: can't read "hi_fanout_nets": no such variable 
+// Elapsed time: 14 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // aF (ac, cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 7:12:35 PM CET
+// WARNING: HEventQueue.dispatchEvent() is taking  2137 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1096 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3016 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  5730 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2833 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3152 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2732 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1004 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2808 ms.
+// Elapsed time: 2902 seconds
+selectMenuItem(RDIResourceCommand.RDICommands_PASTE, "Paste"); // ai (ao, Popup.HeavyWeightWindow)
+// Tcl Command: 'rdi::match_options {phys_opt_design} {force_replication_on_nets}'
+// WARNING: HEventQueue.dispatchEvent() is taking  3253 ms.
+applyEnter(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "phys_opt_design -force_replication_on_nets"); // aF (ac, cr)
+// Tcl Command: 'phys_opt_design -force_replication_on_nets'
+// Tcl Command: 'phys_opt_design -force_replication_on_nets'
+// WARNING: HEventQueue.dispatchEvent() is taking  1167 ms.
+// Tcl Message: phys_opt_design -force_replication_on_nets 
+// Tcl Message: ERROR: [Common 17-157] Error parsing command line options, please type 'phys_opt_design -help' for usage info. 
+// Elapsed time: 17 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // aF (ac, cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 7:42:35 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 8:12:35 PM CET
+// WARNING: HEventQueue.dispatchEvent() is taking  1454 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 8:42:36 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 9:12:36 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 207 MB. Current time: 3/21/21, 9:42:36 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 206 MB. Current time: 3/21/21, 10:12:36 PM CET
+// HMemoryUtils.trashcanNow. Engine heap size: 31,657 MB. GUI used memory: 206 MB. Current time: 3/21/21, 10:42:36 PM CET
