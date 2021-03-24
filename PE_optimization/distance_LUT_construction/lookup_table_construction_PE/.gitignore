@@ -1,8 +1,7 @@
 host 
+src/hls_output
+hls_output
 *csv
-sw_emu
-hw_emu
-hw
 xclbin
 ./xclbin
 ./xclbin/*

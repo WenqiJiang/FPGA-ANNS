@@ -1,4 +1,6 @@
 .DS_Store
+*.str
+*.csv
 saved_npy_data/
 delete
 *.swp

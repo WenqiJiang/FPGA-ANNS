@@ -868,3 +868,59 @@ Creating Vivado project.
 [19:03:55] Phase 3.7.2 Flow Legalize Slice Clusters
 [19:03:55] Phase 3.7.3 Slice Area Swap
 [19:08:34] Phase 3.7.4 Commit Slice Clusters
+[19:28:15] Phase 3.8 Place Remaining
+[19:29:24] Phase 3.9 Re-assign LUT pins
+[19:31:43] Phase 3.10 Pipeline Register Optimization
+[19:31:43] Phase 3.11 Fast Optimization
+[19:35:12] Phase 4 Post Placement Optimization and Clean-Up
+[19:35:12] Phase 4.1 Post Commit Optimization
+[19:38:38] Phase 4.1.1 Post Placement Optimization
+[19:40:57] Phase 4.1.1.1 BUFG Insertion
+[19:59:30] Phase 4.1.1.2 BUFG Replication
+[20:01:50] Phase 4.1.1.3 Replication
+[20:05:23] Phase 4.2 Post Placement Cleanup
+[20:07:47] Phase 4.3 Placer Reporting
+[20:07:47] Phase 4.4 Final Placement Cleanup
+[02:46:53] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 08h 51m 37s 
+
+[02:46:53] Starting logic routing..
+[02:52:48] Phase 1 Build RT Design
+[02:59:49] Phase 2 Router Initialization
+[02:59:49] Phase 2.1 Fix Topology Constraints
+[03:00:59] Phase 2.2 Pre Route Cleanup
+[03:02:10] Phase 2.3 Global Clock Net Routing
+[03:04:32] Phase 2.4 Update Timing
+[03:11:41] Phase 2.5 Update Timing for Bus Skew
+[03:11:41] Phase 2.5.1 Update Timing
+[03:16:22] Phase 3 Initial Routing
+[03:16:22] Phase 3.1 Global Routing
+[03:16:22] Phase 3.1.1 Build GR Node Graph
+[03:18:44] Phase 3.1.2 Run Global Routing
+[03:41:14] Phase 3.2 Initial Routing Verification
+[03:42:29] Phase 4 Rip-up And Reroute
+[03:42:29] Phase 4.1 Global Iteration 0
+[06:20:36] Phase 4.2 Global Iteration 1
+[07:13:35] Phase 5 Delay and Skew Optimization
+[07:13:35] Phase 5.1 Delay CleanUp
+[07:14:45] Phase 5.2 Clock Skew Optimization
+[07:15:57] Phase 6 Post Hold Fix
+[07:15:57] Phase 6.1 Hold Fix Iter
+[07:17:08] Phase 6.2 Additional Hold Fix
+[07:19:29] Phase 7 Route finalize
+[07:19:29] Phase 8 Verifying routed nets
+[07:20:40] Phase 9 Depositing Routes
+[07:33:39] Run vpl: Step impl: Failed
+[07:33:48] Run vpl: FINISHED. Run Status: impl ERROR
+
+===>The following messages were generated while processing /mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic_backend_opt_2/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1 :
+ERROR: [VPL 18-1000] Routing results verification failed due to partially-conflicted nets (Up to first 10 of violated nets):  pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/and_ln13_753_reg_647140 pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/out_stage3_2_0_vec_ID_15_reg_584420 pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/out_stage_1_0_vec_ID_11_reg_631780 pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1016_reg_55710_reg_n_25_[9] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1048_reg_56606_reg_n_25_[8] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1053_reg_56642_reg_n_25_[19] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1077_reg_57482_reg_n_25_[16] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1077_reg_57482_reg_n_25_[21] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_1165_reg_60114_reg_n_25_[19] pfm_top_i/dynamic_region/vadd_1/inst/sort_and_reduction_10000_U0/select_ln13_117_reg_56810_reg_n_25_[16] 
+ERROR: [VPL 60-704] Integration error, problem implementing dynamic region, route_design ERROR, please look at the run log file '/mnt/scratch/wenqi/FPGA-ANNS/node234_building_blocks/replaced_sort_network_HBM_PQ_estimation_reduction_sort_freq_140_systolic_backend_opt_2/_x.hw/vadd/link/vivado/vpl/prj/prj.runs/impl_1/runme.log' for more information
+ERROR: [VPL 60-1328] Vpl run 'vpl' failed
+ERROR: [VPL 60-806] Failed to finish platform linker
+INFO: [v++ 60-1442] [07:33:56] Run run_link: Step vpl: Failed
+Time (s): cpu = 00:20:34 ; elapsed = 20:45:38 . Memory (MB): peak = 834.012 ; gain = 0.000 ; free physical = 176312 ; free virtual = 429390
+ERROR: [v++ 60-661] v++ link run 'run_link' failed
+ERROR: [v++ 60-626] Kernel link failed to complete
+ERROR: [v++ 60-703] Failed to finish linking
+Makefile:93: recipe for target 'xclbin/vadd.hw.xclbin' failed
+make: *** [xclbin/vadd.hw.xclbin] Error 1
