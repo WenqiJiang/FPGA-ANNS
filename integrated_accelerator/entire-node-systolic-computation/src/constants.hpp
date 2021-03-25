@@ -1,5 +1,4 @@
 #pragma once
-#include <ap_int.h>
 
 #define NLIST 8192
 #define NPROBE 32
@@ -12,89 +11,17 @@
 #define HBM_CHANNEL_NUM 21
 #define PRIORITY_QUEUE_LEN 10
 
-// #define ITER_NUM 2
-// #define QUERY_NUM_PER_ITER 1024 
+#define PE_NUM_CENTER_DIST_COMP 32 
+#define CENTROIDS_PER_PARTITION (NLIST / PE_NUM_CENTER_DIST_COMP)
 
-// #define ITER_NUM 128
-// #define QUERY_NUM_PER_ITER (1024 * 1024) // 64 B * 1024 * 1024 = 64 MB
-// #define QUERY_NUM (ITER_NUM * QUERY_NUM_PER_ITER) 
+#define MERGE_ITER (NLIST/PE_NUM_CENTER_DIST_COMP) // the number of input sorted array (32 elements per partition)
+
+#define PE_NUM_TABLE_CONSTRUCTION 4
+#define NPROBE_PER_TABLE_CONSTRUCTION_PE (NPROBE / PE_NUM_TABLE_CONSTRUCTION) 
 
 #define QUERY_NUM 10000
 
 #define LARGE_NUM 99999999 // used to init the heap
-
-enum Order { Collect_smallest, Collect_largest };
-
-typedef struct {
-    int vec_ID;
-    unsigned char PQ_code[M];
-} single_PQ;
- 
-typedef struct {
-    // a wrapper for single_PQ
-    // used in the ap_uint<480> to 3 x PQ split function
-    single_PQ PQ_0;
-    single_PQ PQ_1;
-    single_PQ PQ_2;
-} three_PQ_codes;
-
-typedef struct {
-    int vec_ID;
-    float dist;
-} single_PQ_result; 
-
-typedef struct {
-    int vec_ID0;
-    float dist0;
-    int vec_ID1;
-    float dist1;
-    int vec_ID2;
-    float dist2;
-
-    // padd to 256 bits
-    int vec_ID_dummy;
-    float dist_dummy;
-} host_PQ_results;
-
-// typedef struct {
-//     // each distance LUT has K=256 such row
-//     // each distance_LUT_PQ16_t is the content of a single row (16 floats)
-//     float dist_0; 
-//     float dist_1; 
-//     float dist_2; 
-//     float dist_3; 
-//     float dist_4; 
-//     float dist_5; 
-//     float dist_6;
-//     float dist_7; 
-//     float dist_8; 
-//     float dist_9; 
-//     float dist_10; 
-//     float dist_11; 
-//     float dist_12; 
-//     float dist_13;
-//     float dist_14; 
-//     float dist_15;
-// } distance_LUT_PQ16_t;
-
-typedef struct {
-    // use 256-bit-wide FIFO as for distance LUT initializatoin
-    // each distance_LUT_PQ16_t is the content of a single row (16 floats)
-    // thus it takes 2 CC to init a row and 512 CC to init the entire table
-    float dist_0; 
-    float dist_1; 
-    float dist_2; 
-    float dist_3; 
-    float dist_4; 
-    float dist_5; 
-    float dist_6;
-    float dist_7; 
-} distance_FIFO_t;
-
-
-typedef ap_uint<64> result_t;
-typedef ap_uint<512> t_axi;
-typedef ap_uint<512> uint512_t;
 
 //////////////////////////////   TEMPLATE START  //////////////////////////////
 

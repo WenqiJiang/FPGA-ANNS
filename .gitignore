@@ -1,6 +1,12 @@
 .DS_Store
 *.str
 *.csv
+hw
+*/hw
+sw_emu
+*/sw_emu
+hw_emu
+*/hw_emu
 saved_npy_data/
 delete
 *.swp

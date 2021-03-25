@@ -1,6 +1,4 @@
 host 
-src/hls_output
-hls_output
 *csv
 xclbin
 ./xclbin

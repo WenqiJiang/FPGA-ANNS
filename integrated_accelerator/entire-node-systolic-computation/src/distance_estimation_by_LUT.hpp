@@ -1,18 +1,21 @@
+#pragma once 
+
 #include "constants.hpp"
+#include "types.hpp"
 
 template<const int query_num, const int nprobe>
 void dummy_distance_LUT_sender(
-    hls::stream<distance_FIFO_t>& s_distance_LUT);
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT);
 
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation(
     // input streams
-    hls::stream<distance_FIFO_t>& s_distance_LUT_in,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_in,
     hls::stream<single_PQ>& s_single_PQ,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
     // output streams
-    hls::stream<distance_FIFO_t>& s_distance_LUT_out,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
     hls::stream<single_PQ_result>& s_single_PQ_result);
 
 template<const int query_num, const int nprobe>
@@ -32,12 +35,12 @@ void send_s_last_element_valid_PQ_lookup_computation(
 
 template<const int query_num, const int nprobe>
 void dummy_distance_LUT_consumer(
-    hls::stream<distance_FIFO_t>& s_distance_LUT);
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT);
 
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation_wrapper(
     hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM], 
-    hls::stream<distance_FIFO_t>& s_distance_LUT,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation, 
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
     hls::stream<int>& s_last_valid_channel, 
@@ -47,37 +50,34 @@ void PQ_lookup_computation_wrapper(
 
 template<const int query_num, const int nprobe>
 void dummy_distance_LUT_sender(
-    hls::stream<distance_FIFO_t>& s_distance_LUT) {
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT) {
 
-    distance_FIFO_t dist_row_first_half;
-    distance_FIFO_t dist_row_second_half;
+    distance_LUT_PQ16_t dist_row;
 
-    dist_row_first_half.dist_0 = 0; 
-    dist_row_first_half.dist_1 = 1; 
-    dist_row_first_half.dist_2 = 2;
-    dist_row_first_half.dist_3 = 3; 
-    dist_row_first_half.dist_4 = 4; 
-    dist_row_first_half.dist_5 = 5; 
-    dist_row_first_half.dist_6 = 6; 
-    dist_row_first_half.dist_7 = 7; 
-
-    dist_row_second_half.dist_0 = 8; 
-    dist_row_second_half.dist_1 = 9; 
-    dist_row_second_half.dist_2 = 10; 
-    dist_row_second_half.dist_3 = 11; 
-    dist_row_second_half.dist_4 = 12; 
-    dist_row_second_half.dist_5 = 13; 
-    dist_row_second_half.dist_6 = 14; 
-    dist_row_second_half.dist_7 = 15;
+    dist_row.dist_0 = 0; 
+    dist_row.dist_1 = 1; 
+    dist_row.dist_2 = 2;
+    dist_row.dist_3 = 3; 
+    dist_row.dist_4 = 4; 
+    dist_row.dist_5 = 5; 
+    dist_row.dist_6 = 6; 
+    dist_row.dist_7 = 7; 
+    dist_row.dist_8 = 8; 
+    dist_row.dist_9 = 9; 
+    dist_row.dist_10 = 10; 
+    dist_row.dist_11 = 11; 
+    dist_row.dist_12 = 12; 
+    dist_row.dist_13 = 13; 
+    dist_row.dist_14 = 14; 
+    dist_row.dist_15 = 15;
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 
             for (int row_id = 0; row_id < K; row_id++) {
-#pragma HLS pipeline II=2
-                s_distance_LUT.write(dist_row_first_half);
-                s_distance_LUT.write(dist_row_second_half);
+#pragma HLS pipeline II=1
+                s_distance_LUT.write(dist_row);
             }
 
         }
@@ -88,12 +88,12 @@ void dummy_distance_LUT_sender(
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation(
     // input streams
-    hls::stream<distance_FIFO_t>& s_distance_LUT_in,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_in,
     hls::stream<single_PQ>& s_single_PQ,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
     // output streams
-    hls::stream<distance_FIFO_t>& s_distance_LUT_out,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
     hls::stream<single_PQ_result>& s_single_PQ_result) {
 
     float distance_LUT[16][256];
@@ -111,32 +111,29 @@ void PQ_lookup_computation(
 
             // Stage A: init distance LUT
             for (int row_id = 0; row_id < K; row_id++) {
-#pragma HLS pipeline II=2
+#pragma HLS pipeline II=1
 
                 // without duplication, HLS cannot achieve II=1
-                distance_FIFO_t dist_row_first_half = s_distance_LUT_in.read();
-                distance_FIFO_t dist_row_second_half = s_distance_LUT_in.read();
-                s_distance_LUT_out.write(dist_row_first_half);
-                s_distance_LUT_out.write(dist_row_second_half);
+                distance_LUT_PQ16_t dist_row = s_distance_LUT_in.read();
+                s_distance_LUT_out.write(dist_row);
                 
                 // col 0 ~ 7
-                distance_LUT[0][row_id] = dist_row_first_half.dist_0; 
-                distance_LUT[1][row_id] = dist_row_first_half.dist_1; 
-                distance_LUT[2][row_id] = dist_row_first_half.dist_2;
-                distance_LUT[3][row_id] = dist_row_first_half.dist_3; 
-                distance_LUT[4][row_id] = dist_row_first_half.dist_4; 
-                distance_LUT[5][row_id] = dist_row_first_half.dist_5; 
-                distance_LUT[6][row_id] = dist_row_first_half.dist_6; 
-                distance_LUT[7][row_id] = dist_row_first_half.dist_7; 
-
-                distance_LUT[8][row_id] = dist_row_second_half.dist_0; 
-                distance_LUT[9][row_id] = dist_row_second_half.dist_1; 
-                distance_LUT[10][row_id] = dist_row_second_half.dist_2; 
-                distance_LUT[11][row_id] = dist_row_second_half.dist_3; 
-                distance_LUT[12][row_id] = dist_row_second_half.dist_4; 
-                distance_LUT[13][row_id] = dist_row_second_half.dist_5; 
-                distance_LUT[14][row_id] = dist_row_second_half.dist_6; 
-                distance_LUT[15][row_id] = dist_row_second_half.dist_7;
+                distance_LUT[0][row_id] = dist_row.dist_0; 
+                distance_LUT[1][row_id] = dist_row.dist_1; 
+                distance_LUT[2][row_id] = dist_row.dist_2;
+                distance_LUT[3][row_id] = dist_row.dist_3; 
+                distance_LUT[4][row_id] = dist_row.dist_4; 
+                distance_LUT[5][row_id] = dist_row.dist_5; 
+                distance_LUT[6][row_id] = dist_row.dist_6; 
+                distance_LUT[7][row_id] = dist_row.dist_7; 
+                distance_LUT[8][row_id] = dist_row.dist_8; 
+                distance_LUT[9][row_id] = dist_row.dist_9; 
+                distance_LUT[10][row_id] = dist_row.dist_10; 
+                distance_LUT[11][row_id] = dist_row.dist_11; 
+                distance_LUT[12][row_id] = dist_row.dist_12; 
+                distance_LUT[13][row_id] = dist_row.dist_13; 
+                distance_LUT[14][row_id] = dist_row.dist_14; 
+                distance_LUT[15][row_id] = dist_row.dist_15;
             }
 
             // Stage B: compute estimated distance
@@ -148,7 +145,6 @@ void PQ_lookup_computation(
                 single_PQ_result out; 
                 out.vec_ID = PQ_local.vec_ID;
                 
-#pragma HLS resource variable=out.dist core=FAddSub_fulldsp
                 out.dist = 
                     distance_LUT[0][PQ_local.PQ_code[0]] + 
                     distance_LUT[1][PQ_local.PQ_code[1]] + 
@@ -252,19 +248,17 @@ void send_s_last_element_valid_PQ_lookup_computation(
 
 template<const int query_num, const int nprobe>
 void dummy_distance_LUT_consumer(
-    hls::stream<distance_FIFO_t>& s_distance_LUT) {
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT) {
 
-    distance_FIFO_t dist_row_first_half;
-    distance_FIFO_t dist_row_second_half;
+    distance_LUT_PQ16_t dist_row;
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 
             for (int row_id = 0; row_id < K; row_id++) {
-#pragma HLS pipeline II=2
-                dist_row_first_half = s_distance_LUT.read();
-                dist_row_second_half = s_distance_LUT.read();
+#pragma HLS pipeline II=1
+                dist_row = s_distance_LUT.read();
             }
 
         }
@@ -274,14 +268,14 @@ void dummy_distance_LUT_consumer(
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation_wrapper(
     hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM], 
-    hls::stream<distance_FIFO_t>& s_distance_LUT,
+    hls::stream<distance_LUT_PQ16_t>& s_distance_LUT,
     hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation, 
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
     hls::stream<int>& s_last_valid_channel, 
     hls::stream<single_PQ_result> (&s_single_PQ_result)[4][16]) {
 #pragma HLS dataflow
 
-    hls::stream<distance_FIFO_t> s_distance_LUT_systolic[3 * HBM_CHANNEL_NUM];
+    hls::stream<distance_LUT_PQ16_t> s_distance_LUT_systolic[3 * HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_distance_LUT_systolic depth=8
 #pragma HLS array_partition variable=s_distance_LUT_systolic complete
 #pragma HLS RESOURCE variable=s_distance_LUT_systolic core=FIFO_SRL

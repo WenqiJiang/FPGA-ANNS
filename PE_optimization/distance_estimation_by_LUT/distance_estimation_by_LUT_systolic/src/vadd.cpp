@@ -313,7 +313,6 @@ void PQ_lookup_computation(
                 single_PQ_result out; 
                 out.vec_ID = PQ_local.vec_ID;
                 
-#pragma HLS resource variable=out.dist core=FAddSub_fulldsp
                 out.dist = 
                     distance_LUT[0][PQ_local.PQ_code[0]] + 
                     distance_LUT[1][PQ_local.PQ_code[1]] + 

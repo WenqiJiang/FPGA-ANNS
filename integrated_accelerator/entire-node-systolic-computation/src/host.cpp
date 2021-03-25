@@ -26,6 +26,9 @@ int main(int argc, char** argv)
 
     std::string binaryFile = argv[1];
 //////////////////////////////   TEMPLATE START  //////////////////////////////
+    
+    int query_num = 10000;
+
     size_t HBM_embedding0_size =  HBM_BANK0_SIZE;
     size_t HBM_embedding1_size =  HBM_BANK1_SIZE;
     size_t HBM_embedding2_size =  HBM_BANK2_SIZE;
@@ -47,11 +50,14 @@ int main(int argc, char** argv)
     size_t HBM_embedding18_size =  HBM_BANK18_SIZE;
     size_t HBM_embedding19_size =  HBM_BANK19_SIZE;
     size_t HBM_embedding20_size =  HBM_BANK20_SIZE;
+
     size_t HBM_info_start_addr_and_scanned_entries_every_cell_size = NLIST * 3;
-    // size_t HBM_embedding21_size =  HBM_BANK21_SIZE;
-    // size_t HBM_embedding22_size =  HBM_BANK22_SIZE;
-    // size_t HBM_embedding23_size =  HBM_BANK23_SIZE;
-    // size_t HBM_embedding24_size =  HBM_BANK24_SIZE;
+    size_t HBM_query_vector_size = query_num * 128 * sizeof(float) < 10000 * 128 * sizeof(float)? 
+        query_num * 128 * sizeof(float) : 10000 * 128 * sizeof(float);
+    size_t HBM_vector_quantizer_size = 8192 * 128 * sizeof(float);
+    size_t HBM_product_quantizer_size = 16 * 256 * 8 * sizeof(float);
+    size_t HBM_out_size = PRIORITY_QUEUE_LEN * query_num; 
+
     // size_t HBM_embedding25_size =  HBM_BANK25_SIZE;
     // size_t HBM_embedding26_size =  HBM_BANK26_SIZE;
     // size_t HBM_embedding27_size =  HBM_BANK27_SIZE;
@@ -69,49 +75,52 @@ int main(int argc, char** argv)
 
     // allocate aligned 2D vectors
 //////////////////////////////   TEMPLATE START  //////////////////////////////
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding0(HBM_embedding0_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding1(HBM_embedding1_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding2(HBM_embedding2_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding3(HBM_embedding3_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding4(HBM_embedding4_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding5(HBM_embedding5_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding6(HBM_embedding6_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding7(HBM_embedding7_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding8(HBM_embedding8_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding9(HBM_embedding9_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding10(HBM_embedding10_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding11(HBM_embedding11_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding12(HBM_embedding12_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding13(HBM_embedding13_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding14(HBM_embedding14_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding15(HBM_embedding15_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding16(HBM_embedding16_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding17(HBM_embedding17_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding18(HBM_embedding18_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding19(HBM_embedding19_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding20(HBM_embedding20_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding0(HBM_embedding0_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding1(HBM_embedding1_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding2(HBM_embedding2_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding3(HBM_embedding3_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding4(HBM_embedding4_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding5(HBM_embedding5_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding6(HBM_embedding6_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding7(HBM_embedding7_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding8(HBM_embedding8_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding9(HBM_embedding9_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding10(HBM_embedding10_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding11(HBM_embedding11_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding12(HBM_embedding12_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding13(HBM_embedding13_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding14(HBM_embedding14_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding15(HBM_embedding15_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding16(HBM_embedding16_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding17(HBM_embedding17_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding18(HBM_embedding18_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding19(HBM_embedding19_size, 0);
+    std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding20(HBM_embedding20_size, 0);
     std::vector<int, aligned_allocator<int>> HBM_info_start_addr_and_scanned_entries_every_cell(
         HBM_info_start_addr_and_scanned_entries_every_cell_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_query_vectors(HBM_query_vector_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_vector_quantizer(HBM_vector_quantizer_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_product_quantizer(HBM_product_quantizer_size, 0);
+    std::vector<ap_uint64_t, aligned_allocator<ap_uint64_t>> HBM_out(HBM_out_size, 0);
     
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding21(HBM_embedding21_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding22(HBM_embedding22_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding23(HBM_embedding23_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding24(HBM_embedding24_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding25(HBM_embedding25_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding26(HBM_embedding26_size, 0);
-    // std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding27(HBM_embedding27_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding28(HBM_embedding28_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding29(HBM_embedding29_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding30(HBM_embedding30_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding31(HBM_embedding31_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding21(HBM_embedding21_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding22(HBM_embedding22_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding23(HBM_embedding23_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding24(HBM_embedding24_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding25(HBM_embedding25_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding26(HBM_embedding26_size, 0);
+    // std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding27(HBM_embedding27_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding28(HBM_embedding28_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding29(HBM_embedding29_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding30(HBM_embedding30_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> HBM_embedding31(HBM_embedding31_size, 0);
 
-//     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding0(DDR_embedding0_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding1(DDR_embedding1_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> DDR_embedding0(DDR_embedding0_size, 0);
+//     std::vector<ap_uint512_t, aligned_allocator<ap_uint512_t>> DDR_embedding1(DDR_embedding1_size, 0);
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int size_results_out = PRIORITY_QUEUE_LEN; // QUERY_NUM; 
-    std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
-    std::vector<result_t,aligned_allocator<result_t>> source_sw_results(size_results_out);
+    // std::vector<ap_uint64_t,aligned_allocator<ap_uint64_t>> source_hw_results(HBM_out_size);
+    // std::vector<ap_uint64_t,aligned_allocator<ap_uint64_t>> source_sw_results(HBM_out_size);
 
     // int start_addr_LUT[nlist];
     // int scanned_entries_every_cell_LUT[nlist];
@@ -161,6 +170,43 @@ int main(int argc, char** argv)
     //   vec_ID0 = 3    distance = 240
     //   vec_ID1 = 4    distance = 256
     //   vec_ID2 = 5    distance = 272
+
+
+    char* HBM_query_vector_char = (char*) malloc(HBM_query_vector_size);
+    char* HBM_vector_quantizer_char = (char*) malloc(HBM_vector_quantizer_size);
+    char* HBM_product_quantizer_char = (char*) malloc(HBM_product_quantizer_size);
+
+    std::ifstream HBM_query_vector_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/saved_npy_data/query_vectors_float32_10000_128_raw", 
+        std::ios::in | std::ios::binary);
+    std::ifstream HBM_vector_quantizer_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/saved_npy_data/coarse_centers_float32_8192_128_raw", 
+        std::ios::in | std::ios::binary);
+    std::ifstream HBM_product_quantizer_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/saved_npy_data/PQ_quantizer_float32_16_256_8_raw", 
+        std::ios::in | std::ios::binary);
+    std::ifstream source_sw_results_dist_table_content_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/saved_npy_data/debug_dist_table_float32_batch_size_64_nprobe_32_K_256_M_16_raw", 
+        std::ios::in | std::ios::binary);
+    std::ifstream source_sw_results_cell_IDs_content_fstream(
+        "/mnt/scratch/wenqi/FPGA-ANNS/saved_npy_data/debug_searched_cell_ids_int32_batch_size_64_nprobe_32_raw", 
+        std::ios::in | std::ios::binary);
+
+    HBM_query_vector_fstream.read(HBM_query_vector_char, HBM_query_vector_size);
+    HBM_vector_quantizer_fstream.read(HBM_vector_quantizer_char, HBM_vector_quantizer_size);
+    HBM_product_quantizer_fstream.read(HBM_product_quantizer_char, HBM_product_quantizer_size);
+
+    std::cout << "HBM_query_vector_fstream read bytes: " << HBM_query_vector_fstream.gcount() << std::endl;
+    std::cout << "HBM_vector_quantizer_fstream read bytes: " << HBM_vector_quantizer_fstream.gcount() << std::endl;
+    std::cout << "HBM_product_quantizer_fstream read bytes: " << HBM_product_quantizer_fstream.gcount() << std::endl;
+ 
+    memcpy(&HBM_query_vectors[0], HBM_query_vector_char, HBM_query_vector_size);
+    memcpy(&HBM_vector_quantizer[0], HBM_vector_quantizer_char, HBM_vector_quantizer_size);
+    memcpy(&HBM_product_quantizer[0], HBM_product_quantizer_char, HBM_product_quantizer_size);
+
+    free(HBM_query_vector_char);
+    free(HBM_vector_quantizer_char);
+    free(HBM_product_quantizer_char);
 
 // OPENCL HOST CODE AREA START
 	
@@ -227,12 +273,15 @@ int main(int argc, char** argv)
         HBM_embedding16Ext, HBM_embedding17Ext, HBM_embedding18Ext, HBM_embedding19Ext, 
         HBM_embedding20Ext, 
         HBM_info_start_addr_and_scanned_entries_every_cellExt, // HBM 21
-        /* HBM_embedding21Ext, HBM_embedding22Ext, HBM_embedding23Ext, 
-        HBM_embedding24Ext, HBM_embedding25Ext, HBM_embedding26Ext, HBM_embedding27Ext,
+        HBM_query_vectorExt, 
+        HBM_vector_quantizerExt, 
+        HBM_product_quantizerExt, 
+        HBM_outExt;
+        /* HBM_embedding25Ext, HBM_embedding26Ext, HBM_embedding27Ext,
         HBM_embedding28Ext, HBM_embedding29Ext, HBM_embedding30Ext, HBM_embedding31Ext, 
         DDR_embedding0Ext, DDR_embedding1Ext, */
         // PLRAM_embedding0Ext, PLRAM_embedding1Ext, PLRAM_embedding2Ext, PLRAM_embedding3Ext, 
-        sourcce_hw_resultsExt;
+        // sourcce_hw_resultsExt;
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
 //////////////////////////////   TEMPLATE START  //////////////////////////////
@@ -305,6 +354,23 @@ int main(int argc, char** argv)
     HBM_info_start_addr_and_scanned_entries_every_cellExt.param = 0;
     HBM_info_start_addr_and_scanned_entries_every_cellExt.flags = bank[21];
 
+
+    HBM_query_vectorExt.obj = HBM_query_vectors.data();
+    HBM_query_vectorExt.param = 0;
+    HBM_query_vectorExt.flags = bank[22];
+
+    HBM_vector_quantizerExt.obj = HBM_vector_quantizer.data();
+    HBM_vector_quantizerExt.param = 0;
+    HBM_vector_quantizerExt.flags = bank[23];
+
+    HBM_product_quantizerExt.obj = HBM_product_quantizer.data();
+    HBM_product_quantizerExt.param = 0;
+    HBM_product_quantizerExt.flags = bank[24];
+
+    HBM_outExt.obj = HBM_out.data();
+    HBM_outExt.param = 0;
+    HBM_outExt.flags = bank[25];
+
     // HBM_embedding21Ext.obj = HBM_embedding21.data();
     // HBM_embedding21Ext.param = 0;
     // HBM_embedding21Ext.flags = bank[21];
@@ -347,94 +413,101 @@ int main(int argc, char** argv)
 //     DDR_embedding1Ext.flags = bank[1 + 32];
 
     // PLRAM
-    sourcce_hw_resultsExt.obj = source_hw_results.data();
-    sourcce_hw_resultsExt.param = 0;
-    sourcce_hw_resultsExt.flags = bank[34];
+    // sourcce_hw_resultsExt.obj = source_hw_results.data();
+    // sourcce_hw_resultsExt.param = 0;
+    // sourcce_hw_resultsExt.flags = bank[34];
 
     // CL_MEM_EXT_PTR_XILINX
 //////////////////////////////   TEMPLATE START  //////////////////////////////
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding0_size *sizeof(t_axi), &HBM_embedding0Ext, &err));
+            HBM_embedding0_size *sizeof(ap_uint512_t), &HBM_embedding0Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding1(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding1_size *sizeof(t_axi), &HBM_embedding1Ext, &err));
+            HBM_embedding1_size *sizeof(ap_uint512_t), &HBM_embedding1Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding2(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding2_size *sizeof(t_axi), &HBM_embedding2Ext, &err));
+            HBM_embedding2_size *sizeof(ap_uint512_t), &HBM_embedding2Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding3(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding3_size *sizeof(t_axi), &HBM_embedding3Ext, &err));
+            HBM_embedding3_size *sizeof(ap_uint512_t), &HBM_embedding3Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding4(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding4_size *sizeof(t_axi), &HBM_embedding4Ext, &err));
+            HBM_embedding4_size *sizeof(ap_uint512_t), &HBM_embedding4Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding5(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding5_size *sizeof(t_axi), &HBM_embedding5Ext, &err));
+            HBM_embedding5_size *sizeof(ap_uint512_t), &HBM_embedding5Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding6(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding6_size *sizeof(t_axi), &HBM_embedding6Ext, &err));
+            HBM_embedding6_size *sizeof(ap_uint512_t), &HBM_embedding6Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding7(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding7_size *sizeof(t_axi), &HBM_embedding7Ext, &err));
+            HBM_embedding7_size *sizeof(ap_uint512_t), &HBM_embedding7Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding8(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding8_size *sizeof(t_axi), &HBM_embedding8Ext, &err));
+            HBM_embedding8_size *sizeof(ap_uint512_t), &HBM_embedding8Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding9(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding9_size *sizeof(t_axi), &HBM_embedding9Ext, &err));
+            HBM_embedding9_size *sizeof(ap_uint512_t), &HBM_embedding9Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding10(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding10_size *sizeof(t_axi), &HBM_embedding10Ext, &err));
+            HBM_embedding10_size *sizeof(ap_uint512_t), &HBM_embedding10Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding11(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding11_size *sizeof(t_axi), &HBM_embedding11Ext, &err));
+            HBM_embedding11_size *sizeof(ap_uint512_t), &HBM_embedding11Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding12(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding12_size *sizeof(t_axi), &HBM_embedding12Ext, &err));
+            HBM_embedding12_size *sizeof(ap_uint512_t), &HBM_embedding12Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding13(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding13_size *sizeof(t_axi), &HBM_embedding13Ext, &err));
+            HBM_embedding13_size *sizeof(ap_uint512_t), &HBM_embedding13Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding14(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding14_size *sizeof(t_axi), &HBM_embedding14Ext, &err));
+            HBM_embedding14_size *sizeof(ap_uint512_t), &HBM_embedding14Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding15(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding15_size *sizeof(t_axi), &HBM_embedding15Ext, &err));
+            HBM_embedding15_size *sizeof(ap_uint512_t), &HBM_embedding15Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding16(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding16_size *sizeof(t_axi), &HBM_embedding16Ext, &err));
+            HBM_embedding16_size *sizeof(ap_uint512_t), &HBM_embedding16Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding17(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding17_size *sizeof(t_axi), &HBM_embedding17Ext, &err));
+            HBM_embedding17_size *sizeof(ap_uint512_t), &HBM_embedding17Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding18(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding18_size *sizeof(t_axi), &HBM_embedding18Ext, &err));
+            HBM_embedding18_size *sizeof(ap_uint512_t), &HBM_embedding18Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding19(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding19_size *sizeof(t_axi), &HBM_embedding19Ext, &err));
+            HBM_embedding19_size *sizeof(ap_uint512_t), &HBM_embedding19Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding20(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding20_size *sizeof(t_axi), &HBM_embedding20Ext, &err));
+            HBM_embedding20_size *sizeof(ap_uint512_t), &HBM_embedding20Ext, &err));
 
     OCL_CHECK(err, cl::Buffer buffer_HBM_info_start_addr_and_scanned_entries_every_cell(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
         HBM_info_start_addr_and_scanned_entries_every_cell_size * sizeof(int), 
         &HBM_info_start_addr_and_scanned_entries_every_cellExt, &err));
 
+    OCL_CHECK(err, cl::Buffer buffer_HBM_query_vectors(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+            HBM_query_vector_size *sizeof(float), &HBM_query_vectorExt, &err));
+    OCL_CHECK(err, cl::Buffer buffer_HBM_vector_quantizer(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+            HBM_vector_quantizer_size *sizeof(float), &HBM_vector_quantizerExt, &err));
+    OCL_CHECK(err, cl::Buffer buffer_HBM_product_quantizer(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
+            HBM_product_quantizer_size *sizeof(float), &HBM_product_quantizerExt, &err));
+    
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding21(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding21_size *sizeof(t_axi), &HBM_embedding21Ext, &err));
+    //         HBM_embedding21_size *sizeof(ap_uint512_t), &HBM_embedding21Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding22(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding22_size *sizeof(t_axi), &HBM_embedding22Ext, &err));
+    //         HBM_embedding22_size *sizeof(ap_uint512_t), &HBM_embedding22Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding23(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding23_size *sizeof(t_axi), &HBM_embedding23Ext, &err));
+    //         HBM_embedding23_size *sizeof(ap_uint512_t), &HBM_embedding23Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding24(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding24_size *sizeof(t_axi), &HBM_embedding24Ext, &err));
+    //         HBM_embedding24_size *sizeof(ap_uint512_t), &HBM_embedding24Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding25(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding25_size *sizeof(t_axi), &HBM_embedding25Ext, &err));
+    //         HBM_embedding25_size *sizeof(ap_uint512_t), &HBM_embedding25Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding26(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding26_size *sizeof(t_axi), &HBM_embedding26Ext, &err));
+    //         HBM_embedding26_size *sizeof(ap_uint512_t), &HBM_embedding26Ext, &err));
     // OCL_CHECK(err, cl::Buffer buffer_HBM_embedding27(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-    //         HBM_embedding27_size *sizeof(t_axi), &HBM_embedding27Ext, &err));
+    //         HBM_embedding27_size *sizeof(ap_uint512_t), &HBM_embedding27Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding28(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding28_size *sizeof(t_axi), &HBM_embedding28Ext, &err));
+//             HBM_embedding28_size *sizeof(ap_uint512_t), &HBM_embedding28Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding29(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding29_size *sizeof(t_axi), &HBM_embedding29Ext, &err));
+//             HBM_embedding29_size *sizeof(ap_uint512_t), &HBM_embedding29Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding30(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding30_size *sizeof(t_axi), &HBM_embedding30Ext, &err));
+//             HBM_embedding30_size *sizeof(ap_uint512_t), &HBM_embedding30Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding31(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding31_size *sizeof(t_axi), &HBM_embedding31Ext, &err));
+//             HBM_embedding31_size *sizeof(ap_uint512_t), &HBM_embedding31Ext, &err));
 
 //     OCL_CHECK(err, cl::Buffer buffer_DDR_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             DDR_embedding0_size *sizeof(t_axi), &DDR_embedding0Ext, &err));
+//             DDR_embedding0_size *sizeof(ap_uint512_t), &DDR_embedding0Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_DDR_embedding1(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             DDR_embedding1_size *sizeof(t_axi), &DDR_embedding1Ext, &err));
+//             DDR_embedding1_size *sizeof(ap_uint512_t), &DDR_embedding1Ext, &err));
 
 // .......................................................
 // Allocate Global Memory for sourcce_hw_results
 // .......................................................
     OCL_CHECK(err, cl::Buffer buffer_output(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY | CL_MEM_EXT_PTR_XILINX, 
-        size_results_out *sizeof(ap_uint<64>), &sourcce_hw_resultsExt, &err));
+        HBM_out_size *sizeof(ap_uint64_t), &HBM_outExt, &err));
 
 // ============================================================================
 // Step 2: Set Kernel Arguments and Run the Application
@@ -467,6 +540,9 @@ int main(int argc, char** argv)
     OCL_CHECK(err, err = krnl_vector_add.setArg(19, buffer_HBM_embedding19));
     OCL_CHECK(err, err = krnl_vector_add.setArg(20, buffer_HBM_embedding20));
     OCL_CHECK(err, err = krnl_vector_add.setArg(21, buffer_HBM_info_start_addr_and_scanned_entries_every_cell));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(22, buffer_HBM_query_vectors));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(23, buffer_HBM_vector_quantizer));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(24, buffer_HBM_product_quantizer));
     
     // OCL_CHECK(err, err = krnl_vector_add.setArg(21, buffer_HBM_embedding21));
     // OCL_CHECK(err, err = krnl_vector_add.setArg(22, buffer_HBM_embedding22));
@@ -483,7 +559,8 @@ int main(int argc, char** argv)
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(0 + 32, buffer_DDR_embedding0));
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(1 + 32, buffer_DDR_embedding1));
 
-    OCL_CHECK(err, err = krnl_vector_add.setArg(22, buffer_output));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(25, buffer_output));
+    OCL_CHECK(err, err = krnl_vector_add.setArg(26, query_num));
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 // ------------------------------------------------------
 // Step 2: Copy Input data from Host to Global Memory on the device
@@ -497,7 +574,11 @@ int main(int argc, char** argv)
         buffer_HBM_embedding8, buffer_HBM_embedding9, buffer_HBM_embedding10, buffer_HBM_embedding11, 
         buffer_HBM_embedding12, buffer_HBM_embedding13, buffer_HBM_embedding14, buffer_HBM_embedding15, 
         buffer_HBM_embedding16, buffer_HBM_embedding17, buffer_HBM_embedding18, buffer_HBM_embedding19, 
-        buffer_HBM_embedding20, buffer_HBM_info_start_addr_and_scanned_entries_every_cell/*, buffer_HBM_embedding21, buffer_HBM_embedding22, buffer_HBM_embedding23, 
+        buffer_HBM_embedding20, buffer_HBM_info_start_addr_and_scanned_entries_every_cell,
+        buffer_HBM_query_vectors,
+        buffer_HBM_vector_quantizer,
+        buffer_HBM_product_quantizer
+        /*, buffer_HBM_embedding21, buffer_HBM_embedding22, buffer_HBM_embedding23, 
         buffer_HBM_embedding24, buffer_HBM_embedding25, buffer_HBM_embedding26, buffer_HBM_embedding27, 
         buffer_HBM_embedding28, buffer_HBM_embedding29, buffer_HBM_embedding30, buffer_HBM_embedding31, 
         buffer_DDR_embedding0, buffer_DDR_embedding1*/}, 0/* 0 means from host*/));	
@@ -521,8 +602,8 @@ int main(int argc, char** argv)
     bool match = true;
 
 
-    for (int i = 0 ; i < size_results_out; i++) {
-            ap_uint<64> reg = source_hw_results[i];
+    for (int i = 0 ; i < HBM_out_size; i++) {
+            ap_uint<64> reg = HBM_out[i];
             ap_uint<32> raw_vec_ID = reg.range(31, 0); 
             ap_uint<32>  raw_dist = reg.range(63, 32);
             int vec_ID = *((int*) (&raw_vec_ID));
