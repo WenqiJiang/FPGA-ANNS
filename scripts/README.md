@@ -81,3 +81,19 @@ python expand_function.py --file_name "tmp" --input_file_dir "./tmp_in/" --outpu
 #         int embedding_buffer13[BATCH_SIZE * DATA_SIZE13], 
 #         int embedding_buffer14[BATCH_SIZE * DATA_SIZE14]);
 
+
+## Commonly used commands
+
+String functions
+
+**Note that " -> “ , don’t let that happen**
+
+python expand_function.py --file_name "tmp" --input_file_dir "./tmp_in/" --output_file_dir "./tmp_out/"     --replaced_str_array "local_fc[0]" --replaced_num_array 0 --split_by_empty_line 1     --split_line_every_n 2 --start 0 --total_num 16 --deliminator "+" 
+
+python replicate_array.py --file_name "tmp" --input_file_dir "./tmp_in/" --output_file_dir "./tmp_out/" --replaced_str_array sub_quantizer_0 --replaced_num_array 0 --split_by_empty_line 0 --start_array 0 --total_num 16
+
+python replicate_array.py --file_name "tmp" --input_file_dir "./tmp_in/" --output_file_dir "./tmp_out/" --replaced_str_array start_addr_0 "0 * (D / M)" sub_quantizer_0 --replaced_num_array 0 0 0  --split_by_empty_line 0 --start_array 0 0 0 --total_num 28
+
+python expand_function.py --file_name "tmp" --input_file_dir "./tmp_in/" --output_file_dir "./tmp_out/"     --replaced_str_array "reg0" --replaced_num_array 0 --split_by_empty_line 1     --split_line_every_n 16 --start 0 --total_num 32 --deliminator "," 
+
+python replicate_array.py --file_name "tmp" --input_file_dir "./tmp_in/" --output_file_dir "./tmp_out/" --replaced_str_array HBM_embedding0 TABLE_SIZE_HBM_28 AXI_PADDED_SIZE_HBM_28 ADDR_AXI_HBM_28  --replaced_num_array 0 28 28 28 --split_by_empty_line 0 --start_array 0 28 28 28  --total_num 28

@@ -560,7 +560,7 @@ int main(int argc, char** argv)
 //     OCL_CHECK(err, err = krnl_vector_add.setArg(1 + 32, buffer_DDR_embedding1));
 
     OCL_CHECK(err, err = krnl_vector_add.setArg(25, buffer_output));
-    OCL_CHECK(err, err = krnl_vector_add.setArg(26, query_num));
+    // OCL_CHECK(err, err = krnl_vector_add.setArg(26, query_num));
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 // ------------------------------------------------------
 // Step 2: Copy Input data from Host to Global Memory on the device

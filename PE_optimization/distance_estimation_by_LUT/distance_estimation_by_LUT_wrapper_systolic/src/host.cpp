@@ -349,7 +349,7 @@ int main(int argc, char** argv)
     // PLRAM
     sourcce_hw_resultsExt.obj = source_hw_results.data();
     sourcce_hw_resultsExt.param = 0;
-    sourcce_hw_resultsExt.flags = bank[34];
+    sourcce_hw_resultsExt.flags = bank[22];
 
     // CL_MEM_EXT_PTR_XILINX
 //////////////////////////////   TEMPLATE START  //////////////////////////////

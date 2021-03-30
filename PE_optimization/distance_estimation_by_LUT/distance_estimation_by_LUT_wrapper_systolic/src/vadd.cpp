@@ -28,7 +28,7 @@ void vadd(
     // const t_axi* HBM_in28, const t_axi* HBM_in29, 
     // const t_axi* HBM_in30, const t_axi* HBM_in31, 
     // const t_axi* table_DDR0, const t_axi* table_DDR1, 
-    result_t* out_PLRAM
+    result_t* HBM_out
     )
 {
 #pragma HLS INTERFACE m_axi port=HBM_in0  offset=slave bundle=gmem0
@@ -68,7 +68,7 @@ void vadd(
 // #pragma HLS INTERFACE m_axi port=table_DDR1  offset=slave bundle=gmem33
 
 // PLRAM
-#pragma HLS INTERFACE m_axi port=out_PLRAM offset=slave bundle=gmem34
+#pragma HLS INTERFACE m_axi port=HBM_out offset=slave bundle=gmem34
 
 #pragma HLS INTERFACE s_axilite port=HBM_in0  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_in1  bundle=control
@@ -106,7 +106,7 @@ void vadd(
 // #pragma HLS INTERFACE s_axilite port=table_DDR0  bundle=control
 // #pragma HLS INTERFACE s_axilite port=table_DDR1  bundle=control
 
-#pragma HLS INTERFACE s_axilite port=out_PLRAM bundle=control
+#pragma HLS INTERFACE s_axilite port=HBM_out bundle=control
 
 #pragma HLS INTERFACE s_axilite port=return bundle=control
     
@@ -159,19 +159,19 @@ void vadd(
 
     // each 512 bit can store 3 set of (vecID, PQ code)
     hls::stream<single_PQ> s_single_PQ[3 * HBM_CHANNEL_NUM];
-#pragma HLS stream variable=s_single_PQ depth=8
+#pragma HLS stream variable=s_single_PQ depth=512
 #pragma HLS array_partition variable=s_single_PQ complete
-#pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
+// #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
 
     hls::stream<distance_LUT_PQ16_t> s_distance_LUT;
-#pragma HLS stream variable=s_distance_LUT depth=8
-#pragma HLS RESOURCE variable=s_distance_LUT core=FIFO_SRL
+#pragma HLS stream variable=s_distance_LUT depth=512
+// #pragma HLS RESOURCE variable=s_distance_LUT core=FIFO_SRL
 
     // 64 streams = 21 channels * 3 + 1 dummy
     hls::stream<single_PQ_result> s_single_PQ_result[4][16];
-#pragma HLS stream variable=s_single_PQ_result depth=8
+#pragma HLS stream variable=s_single_PQ_result depth=512
 #pragma HLS array_partition variable=s_single_PQ_result complete
-#pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
+// #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
 
     ////////////// Data Streams Ends ///////////////
 
@@ -214,5 +214,5 @@ void vadd(
     write_result<QUERY_NUM>(
         s_scanned_entries_per_query_Write_results,
         s_single_PQ_result,
-        out_PLRAM);
+        HBM_out);
 }
