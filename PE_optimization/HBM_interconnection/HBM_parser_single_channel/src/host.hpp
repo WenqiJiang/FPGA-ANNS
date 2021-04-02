@@ -21,7 +21,7 @@
 #include <iostream>
 #include <fstream>
 #include "cl2.hpp"
-// #include <CL/cl2.hpp>
+// #include "cl2.hpp"
 
 template <typename T>
 struct aligned_allocator

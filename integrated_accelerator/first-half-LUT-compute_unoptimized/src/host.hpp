@@ -18,7 +18,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <fstream>
-#include <CL/cl2.hpp>
+#include "cl2.hpp"
 #include <cstring> 
 
 template <typename T>

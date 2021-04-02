@@ -1,11 +1,12 @@
 #include <hls_stream.h>
 
 #include "constants.hpp"
+#include "types.hpp"
 
 extern "C" {
 
 void vadd(  
-    const t_axi* table_HBM0, const t_axi* table_HBM1, 
+    const float* table_HBM0, const float* table_HBM1, 
     const t_axi* table_HBM2, const t_axi* table_HBM3, 
     const t_axi* table_HBM4, const t_axi* table_HBM5, 
     const t_axi* table_HBM6, const t_axi* table_HBM7, 
@@ -19,10 +20,10 @@ void vadd(
     const t_axi* table_HBM22, const t_axi* table_HBM23, 
     const t_axi* table_HBM24, const t_axi* table_HBM25, 
     const t_axi* table_HBM26, const t_axi* table_HBM27, 
-    const t_axi* table_HBM28, const t_axi* table_HBM29, 
-    const t_axi* table_HBM30, const t_axi* table_HBM31, 
-    const t_axi* table_DDR0, const t_axi* table_DDR1,
-    float out_PLRAM[QUERY_NUM * CENTROIDS_PER_PARTITION]
+    float out_HBM[QUERY_NUM * NLIST]
+    // const t_axi* table_HBM28, const t_axi* table_HBM29, 
+    // const t_axi* table_HBM30, const t_axi* table_HBM31, 
+    // const t_axi* table_DDR0, const t_axi* table_DDR1,
     );
 }
 
@@ -34,12 +35,6 @@ void broadcast_query_vector(
 void broadcast_init_centroid_vectors(
     const float* table_DDR1,
     hls::stream<float>& s_centroid_vectors);
-
-template<const int query_num>
-void compute_cell_distance(
-    hls::stream<float>& s_centroid_vectors,
-    hls::stream<float>& s_query_vectors,
-    hls::stream<float>& s_partial_cell_distance);
 
 template<const int total_len>
 void write_result(

@@ -19,7 +19,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <fstream>
-#include <CL/cl2.hpp>
+#include "cl2.hpp"
 
 template <typename T>
 struct aligned_allocator
