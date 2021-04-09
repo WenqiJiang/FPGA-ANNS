@@ -343,14 +343,14 @@ void PQ_lookup_computation(
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
     hls::stream<single_PQ_result>& s_single_PQ_result) {
 
-    float distance_LUT[16][256];
-#pragma HLS array_partition variable=distance_LUT dim=1
-#pragma HLS resource variable=distance_LUT core=RAM_2P_BRAM
-
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 #pragma HLS dataflow
+
+            float distance_LUT[16][256];
+#pragma HLS array_partition variable=distance_LUT dim=1
+#pragma HLS resource variable=distance_LUT core=RAM_1P_BRAM
 
             // Stage A: init distance LUT
             load_distance_LUT(

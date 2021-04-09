@@ -73,7 +73,8 @@ void construct_single_distance_LUT(
 
         // the L1 diff between residual_center_vector annd sub-quantizers
         float L1_dist[M][D/M];
-#pragma HLS array_partition variable=L1_dist complete
+#pragma HLS array_partition variable=L1_dist dim=1
+#pragma HLS array_partition variable=L1_dist dim=2
 
         for (int m = 0; m < M; m++) {
 #pragma HLS UNROLL
@@ -143,9 +144,6 @@ void lookup_table_construction_PE(
     // store query and center vector into the format of M sub-vectors
     float query_vector_local[M][D / M];
 
-    float residual_center_vector[M][D / M]; // query_vector - center_vector
-#pragma HLS array_partition variable=residual_center_vector complete
-
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         // load query vector, cut it into M su-vectors
@@ -159,6 +157,10 @@ void lookup_table_construction_PE(
         // for each nprobe, construct LUT
         for (int nprobe_id = 0; nprobe_id < nprobe_per_PE; nprobe_id++) {
 #pragma HLS dataflow
+
+            float residual_center_vector[M][D / M]; // query_vector - center_vector
+#pragma HLS array_partition variable=residual_center_vector dim=1
+#pragma HLS array_partition variable=residual_center_vector dim=2
 
             // double buffering residual_center_vector
             compute_residual_vector(

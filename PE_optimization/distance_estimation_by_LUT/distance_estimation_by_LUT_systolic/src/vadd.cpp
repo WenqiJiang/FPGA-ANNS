@@ -266,7 +266,7 @@ void PQ_lookup_computation(
 
     float distance_LUT[16][256];
 #pragma HLS array_partition variable=distance_LUT dim=1
-#pragma HLS resource variable=distance_LUT core=RAM_2P_BRAM
+#pragma HLS resource variable=distance_LUT core=RAM_1P_BRAM
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
