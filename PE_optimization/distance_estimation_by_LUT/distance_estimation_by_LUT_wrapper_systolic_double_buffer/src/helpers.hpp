@@ -489,6 +489,7 @@ void load_and_split_PQ_codes_wrapper(
         s_single_PQ[20 * 3 + 0], s_single_PQ[20 * 3 + 1], s_single_PQ[20 * 3 + 2]);
 }
 
+
 template<const int query_num>
 void write_result(
     hls::stream<int> &s_scanned_entries_per_query_Write_results,
@@ -498,7 +499,8 @@ void write_result(
     single_PQ_result results[4][16];
 #pragma HLS array_partition variable=results complete
 
-    for (int query_id = 0; query_id < query_num; query_id++) {
+    // first query_num - 1 iterations
+    for (int query_id = 0; query_id < query_num - 1; query_id++) {
 
         int scanned_entries_per_query = s_scanned_entries_per_query_Write_results.read();
 
@@ -509,8 +511,35 @@ void write_result(
 #pragma HLS UNROLL
                 for (int s2 = 0; s2 < 16; s2++) {
 #pragma HLS UNROLL
-                    results[s1][s2] = s_single_PQ_result[s1][s2].read();
+                    s_single_PQ_result[s1][s2].read();
                 }
+            }
+        }
+    }
+
+    // last iteration
+    for (int query_id = 0; query_id < 1; query_id++) {
+
+        int scanned_entries_per_query = s_scanned_entries_per_query_Write_results.read();
+
+        // discard all but the last
+        for (int entry_id = 0; entry_id < scanned_entries_per_query - 1; entry_id++) {
+#pragma HLS pipeline II=1
+
+            for (int s1 = 0; s1 < 4; s1++) {
+#pragma HLS UNROLL
+                for (int s2 = 0; s2 < 16; s2++) {
+#pragma HLS UNROLL
+                    s_single_PQ_result[s1][s2].read();
+                }
+            }
+        }
+
+        for (int s1 = 0; s1 < 4; s1++) {
+#pragma HLS UNROLL
+            for (int s2 = 0; s2 < 16; s2++) {
+#pragma HLS UNROLL
+                results[s1][s2] = s_single_PQ_result[s1][s2].read();
             }
         }
     }
@@ -528,3 +557,46 @@ void write_result(
         }
     }
 }
+
+// template<const int query_num>
+// void write_result(
+//     hls::stream<int> &s_scanned_entries_per_query_Write_results,
+//     hls::stream<single_PQ_result> (&s_single_PQ_result)[4][16],
+//     ap_uint<64>* output) {
+
+//     single_PQ_result results[4][16];
+// #pragma HLS array_partition variable=results complete
+
+//     for (int query_id = 0; query_id < query_num; query_id++) {
+
+//         int scanned_entries_per_query = s_scanned_entries_per_query_Write_results.read();
+
+//         for (int entry_id = 0; entry_id < scanned_entries_per_query; entry_id++) {
+// #pragma HLS pipeline II=1
+// // turn off the dependence otherwise there's write dependency and II won't be 1
+// #pragma HLS dependence variable=results inter false 
+
+
+//             for (int s1 = 0; s1 < 4; s1++) {
+// #pragma HLS UNROLL
+//                 for (int s2 = 0; s2 < 16; s2++) {
+// #pragma HLS UNROLL
+//                     results[s1][s2] = s_single_PQ_result[s1][s2].read();
+//                 }
+//             }
+//         }
+//     }
+
+//     for (int s1 = 0; s1 < 4; s1++) {
+
+//         for (int s2 = 0; s2 < 16; s2++) {
+
+//             ap_uint<64> reg;
+//             int vec_ID = results[s1][s2].vec_ID;
+//             float dist = results[s1][s2].dist;
+//             reg.range(31, 0) = *((ap_uint<32>*) (&vec_ID));
+//             reg.range(63, 32) = *((ap_uint<32>*) (&dist));
+//             output[s1 * 16 + s2] = reg;
+//         }
+//     }
+// }

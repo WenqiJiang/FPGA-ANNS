@@ -80,6 +80,7 @@ typedef struct {
 typedef ap_uint<64> result_t;
 typedef ap_uint<512> t_axi;
 typedef ap_uint<512> uint512_t;
+typedef ap_uint<512> ap_uint512_t;
 
 //////////////////////////////   TEMPLATE START  //////////////////////////////
 

@@ -7,6 +7,7 @@
 #include "vadd.hpp"
 #include "helpers.hpp"
 #include "distance_estimation_by_LUT.hpp"
+#include "HBM_interconnections.hpp"
 
 void vadd(  
     const t_axi* HBM_in0, const t_axi* HBM_in1, 
@@ -157,21 +158,11 @@ void vadd(
 
     ////////////// Data Streams Starts ///////////////
 
-    // each 512 bit can store 3 set of (vecID, PQ code)
-    hls::stream<single_PQ> s_single_PQ[3 * HBM_CHANNEL_NUM];
-#pragma HLS stream variable=s_single_PQ depth=512
-#pragma HLS array_partition variable=s_single_PQ complete
-// #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
 
     hls::stream<distance_LUT_PQ16_t> s_distance_LUT;
 #pragma HLS stream variable=s_distance_LUT depth=512
 // #pragma HLS RESOURCE variable=s_distance_LUT core=FIFO_SRL
 
-    // 64 streams = 21 channels * 3 + 1 dummy
-    hls::stream<single_PQ_result> s_single_PQ_result[4][16];
-#pragma HLS stream variable=s_single_PQ_result depth=512
-#pragma HLS array_partition variable=s_single_PQ_result complete
-// #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
 
     ////////////// Data Streams Ends ///////////////
 
@@ -179,13 +170,21 @@ void vadd(
 
     scan_controller<QUERY_NUM, NLIST, NPROBE>(
         HBM_info_start_addr_and_scanned_entries_every_cell,
-        s_scanned_cell_id, s_start_addr_every_cell,
+        s_scanned_cell_id, 
+        s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit, 
         s_scanned_entries_every_cell_Split_unit,
         s_scanned_entries_every_cell_PQ_lookup_computation,
         s_scanned_entries_every_cell_Dummy,
         s_last_valid_channel, 
         s_scanned_entries_per_query_Write_results);
+
+
+    // each 512 bit can store 3 set of (vecID, PQ code)
+    hls::stream<single_PQ> s_single_PQ[3 * HBM_CHANNEL_NUM];
+#pragma HLS stream variable=s_single_PQ depth=8
+#pragma HLS array_partition variable=s_single_PQ complete
+// #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
 
     load_and_split_PQ_codes_wrapper<QUERY_NUM, NPROBE>(
         HBM_in0, HBM_in1, HBM_in2, HBM_in3, HBM_in4, HBM_in5, HBM_in6, HBM_in7, 
@@ -195,6 +194,12 @@ void vadd(
         s_scanned_entries_every_cell_Load_unit,
         s_scanned_entries_every_cell_Split_unit,
         s_single_PQ);
+
+    // 64 streams = 21 channels * 3 + 1 dummy
+    hls::stream<single_PQ_result> s_single_PQ_result[4][16];
+#pragma HLS stream variable=s_single_PQ_result depth=8
+#pragma HLS array_partition variable=s_single_PQ_result complete
+// #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
 
     dummy_distance_LUT_sender<QUERY_NUM, NPROBE>(s_distance_LUT);
 

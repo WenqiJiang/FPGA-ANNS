@@ -1,0 +1,225 @@
+# Performance & Resource Analysis
+
+Note: due to a bug in Vitis_hls 2019.2, these folders cannot by synthesized by vitis_hls -f synthesis.tcl (dataflow check error). To walk around this, build the project to hardware directly using the entire Vitis flow with "time make check TARGET=hw DEVICE=xilinx_u280_xdma_201920_3 VER=host_cpp".
+
+We don't need double buffering query vector. For nlist <= 8192, the initialization overhead is 128/(8192+128). For nlist = 16384, it might needs more PEs (e.g. 4 PE), the initialization overhead is 128/(4096 + 128), negligible as well.
+
+We use distance_computation_PE_optimized_version2 as the final version.
+
+## Nlist constraint & Multiple PEs
+
+There are 960 URAM slices on U280. Each with fixed width of 72 bit and size of 288Kb (given 64-bit real data width, the efficient size is 64 / 72 * 288 = 256Kb). 
+
+Total available URAM size = 960 * 256 * 1024 / 8  = 31,457,280 bytes = 30 MB
+
+We need 2 copies of coarse-grained centroids, one in this centroid distance computation step, another in the distance LUT construction step. Thus, we can only use half of the URAM resources in either step.
+
+* nlist = 8192
+  * 8192 * 128 * 4 = 4 MB
+* nlist = 16384
+  * 16384 * 128 * 4 = 8 MB
+* nlist = 32768
+  * 32768 * 128 * 4 = 16 MB > 30 / 2 = 15 MB, thus not possible
+
+For the case of using multiple PEs (16384), simply multiple the resource consumption of optimized_version2 by PE number (2 or 4).
+
+## distance_computation_PE_unoptimized
+
+A bad implementation as baseline. This implementation partitions the computation workload to 32 PEs.
+
+Resource consumption per PE:
+
+```
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|      296|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|     40|     3477|     3275|    -|
+|Memory               |        0|      -|      512|       64|    8|
+|Multiplexer          |        -|      -|        -|     1277|    -|
+|Register             |        0|      -|     3299|      544|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|     40|     7288|     5456|    8|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|      1|    ~0   |        1|    2|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|   ~0  |    ~0   |    ~0   |  ~0 |
++---------------------+---------+-------+---------+---------+-----+
+
+```
+
+Resource consumption 32 PE:
+
+DSP48E = 40 * 32 = 1280
+
+FF = 7288 * 32 = 233216
+
+LUT = 5456 * 32 = 174592
+
+URAM = 8 * 32 = 256
+
+Let's neglect this baseline anyway...
+
+## distance_computation_PE_optimized_version1
+
+This implementation use a single PE to compute the distance between the query vector and all cluster centers. The URAM consumption is not optimized, because the data format is float (URAM has fixed depth of 4096, thus using float limits the effective size of an URAM to 128Kb).
+
+```
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.018 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |   Latency (cycles)  |   Latency (absolute)  |       Interval      | Pipeline|
+    |    min   |    max   |    min    |    max    |    min   |    max   |   Type  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |  84638579|  84638579| 0.605 sec | 0.605 sec |  84638579|  84638579|   none  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+----------+----------+----------+-----------+-----------+---------+----------+
+        |             |   Latency (cycles)  | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  |    min   |    max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+----------+----------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |   1048576|   1048576|         2|          1|          1|  1048576|    yes   |
+        |- Loop 2     |  83590000|  83590000|      8359|          -|          -|    10000|    no    |
+        | + Loop 2.1  |       128|       128|         2|          1|          1|      128|    yes   |
+        | + Loop 2.2  |      8226|      8226|        36|          1|          1|     8192|    yes   |
+        +-------------+----------+----------+----------+-----------+-----------+---------+----------+
+```
+
+Resource:
+
+The storage is partitioned to 128 banks. Each bank is contains 2 URAM slices, each as a float array.
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|      207|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|    894|    75289|    67231|    -|
+|Memory               |        0|      -|        0|        0|  256|
+|Multiplexer          |        -|      -|        -|      209|    -|
+|Register             |        0|      -|    16666|       96|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|    894|    91955|    67743|  256|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     29|       10|       15|   80|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|      9|        3|        5|   26|
++---------------------+---------+-------+---------+---------+-----+
+```
+
+## distance_computation_PE_optimized_version2
+
+Optimize URAM usage. Use ap_uint<64> instead of struct.
+
+Same performance as "distance_computation_PE_optimized_version1" (thus shares *the same performance model*), half URAM consumption. 
+
+Performance (given nlist=8192, query num=10000):
+
+* Loop 2: computation loop (move from 1 iteration to the next = 1 CC)
+  * Loop 2.1: load query vector 
+    * II(2.1) = 1, N(2.1) = 128, L(2.1) = 2
+  * Loop 2.2: compute and write distance
+    * II(2.2) = 1, N(2.2) = 8192, L(2.2) = 36
+
+Use this formula: t = II * N + L for a single function unit
+
+Estimate the latency of Loop2  = **query_num * (1 + (128 + 2) + (nlist + 36))** = 10000 * (1 + (128 + 2) + (8192 + 36)) = 83590000
+
+This is exactly the HLS estimation number.
+
+**For settings with different nlist, just use this formula to estimate the performance**
+
+Throughput = 10000 / 0.605 = 16528 QPS
+
+```
+
++ Latency: 
+    * Summary: 
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |   Latency (cycles)  |   Latency (absolute)  |       Interval      | Pipeline|
+    |    min   |    max   |    min    |    max    |    min   |    max   |   Type  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |  84638579|  84638579| 0.605 sec | 0.605 sec |  84638579|  84638579|   none  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+----------+----------+----------+-----------+-----------+--------+----------+
+        |             |   Latency (cycles)  | Iteration|  Initiation Interval  |  Trip  |          |
+        |  Loop Name  |    min   |    max   |  Latency |  achieved |   target  |  Count | Pipelined|
+        +-------------+----------+----------+----------+-----------+-----------+--------+----------+
+        |- Loop 1     |   1048576|   1048576|         3|          2|          2|  524288|    yes   |
+        |- Loop 2     |  83590000|  83590000|      8359|          -|          -|   10000|    no    |
+        | + Loop 2.1  |       128|       128|         2|          1|          1|     128|    yes   |
+        | + Loop 2.2  |      8226|      8226|        36|          1|          1|    8192|    yes   |
+        +-------------+----------+----------+----------+-----------+-----------+--------+----------+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|      202|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|    894|    75289|    67231|    -|
+|Memory               |        0|      -|        0|        0|  128|
+|Multiplexer          |        -|      -|        -|      224|    -|
+|Register             |        0|      -|    16730|       96|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|    894|    92019|    67753|  128|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     29|       10|       15|   40|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|      9|        3|        5|   13|
++---------------------+---------+-------+---------+---------+-----+
+```
+
+## Unused Version
+
+There is one optimization approach not used in this project (optimized_1_distance_computation_PE, optimized_distance_computation_PE/). That is parallelized MAC accumulation instead of add tree. The reason is that the output rate of this method is not stable. Before outputing the first result, it takes 128 (D) * N (parallelism) cycles to finish accumulation (no value written into out FIFO), and then it suddenly outputs a lot of results.
+
+Besides, the multiple PE version of the baseline is moved to the unused folder.

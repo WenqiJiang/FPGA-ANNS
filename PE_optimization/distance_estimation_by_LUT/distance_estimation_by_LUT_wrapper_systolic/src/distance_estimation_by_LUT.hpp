@@ -275,12 +275,12 @@ void PQ_lookup_computation_wrapper(
     hls::stream<distance_LUT_PQ16_t> s_distance_LUT_systolic[3 * HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_distance_LUT_systolic depth=8
 #pragma HLS array_partition variable=s_distance_LUT_systolic complete
-#pragma HLS RESOURCE variable=s_distance_LUT_systolic core=FIFO_SRL
+// #pragma HLS RESOURCE variable=s_distance_LUT_systolic core=FIFO_SRL
 
     hls::stream<int> s_scanned_entries_every_cell_PQ_lookup_computation_replicated[3 * HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated depth=8
 #pragma HLS array_partition variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated complete
-#pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated core=FIFO_SRL
+// #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation_replicated core=FIFO_SRL
 
     replicate_s_scanned_entries_every_cell_PQ_lookup_computation<query_num, nprobe>(
         s_scanned_entries_every_cell_PQ_lookup_computation, 
@@ -289,7 +289,7 @@ void PQ_lookup_computation_wrapper(
     hls::stream<int> s_last_element_valid_PQ_lookup_computation[3 * HBM_CHANNEL_NUM];
 #pragma HLS stream variable=s_last_element_valid_PQ_lookup_computation depth=8
 #pragma HLS array_partition variable=s_last_element_valid_PQ_lookup_computation complete
-#pragma HLS RESOURCE variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
+// #pragma HLS RESOURCE variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
 
     // Note, here interpret the last valid element, rather than simply replicate
     send_s_last_element_valid_PQ_lookup_computation<query_num, nprobe>(
