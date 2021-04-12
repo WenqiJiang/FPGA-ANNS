@@ -2,9 +2,9 @@
 
 Refer to single_lookup_table_construction_PE_optimized_version2 as the final version.
 
-This version can roughly output 1 row of distance LUT per cycle (1 row per 1.2 cycle), thus should be sufficient for most cases. 
+This version can roughly output 1 row of distance LUT per cycle (1 row per 1.2 cycle, dependent to nprobe), thus should be sufficient for most cases. 
 
-For the case that 1 row per cycle must be guarannteed, use the 2 PE version multiple_lookup_table_construction_PEs_optimized_version2. This only gives marginal performance improvement because its capped by the gather LUT unit which only allows 1 row per CC, but consumes 2X resources. 
+For the case that 1 row per cycle must be guarannteed, use the 2 PE version multiple_lookup_table_construction_PEs_optimized_version1. This only gives marginal performance improvement because its capped by the gather LUT unit which only allows 1 row per CC, but consumes 2X resources. 
 
 ## multiple_lookup_table_construction_PEs_unoptimized
 
@@ -123,6 +123,7 @@ so total latency = 10000 * (128 + 32 / 2 * 431) = 70240000, very close to real l
 
 Real latency (without init) is 70312771 - 32768 = 70280003
 
+**Performance Verified on Hardware**
 
 ```
 + Latency: 
@@ -229,7 +230,95 @@ Single PE:
 +---------------------+---------+------+---------+---------+-----+
 ```
 
-## multiple_lookup_table_construction_PEs_optimized_version2
+## single_lookup_table_construction_PE_optimized_version2
+
+Similar as optimized_version1, except the fact that a wider data type is used for the center vector stream (16 float per cycle, thus the load stage of each nprobe is as low as 128 / 16 = 8 cycles).
+
+### Performance
+
+Same formula as the multiple PE version.
+
+total latency = query_num * (D * II_load_query + L_load_query + nprobe * ((L_load_centroid + N_load_centroid * II_load_centroid) + (L_compute_row + N_compute_row * II_compute_row))) =
+query_num * (L_load_query + nprobe * (L_load_and_compute_row))
+
+In this equation, L_load_query = 129, L_load_and_compute_row = 307 (including iteration count)
+
+To verify this, use query_num = 10000 and nprobe = 32, then 10000 * (129 + 32 * 307) = 99530000 is very close to 99600000 estimated by HLS
+
+**Performance Verified on Hardware**
+
+```
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.040 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |   Latency (cycles)  |   Latency (absolute)  |       Interval      | Pipeline|
+    |    min   |    max   |    min    |    max    |    min   |    max   |   Type  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+    |  99632771|  99632771| 0.712 sec | 0.712 sec |  99632771|  99632771|   none  |
+    +----------+----------+-----------+-----------+----------+----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+----------+----------+----------+-----------+-----------+-------+----------+
+        |                 |   Latency (cycles)  | Iteration|  Initiation Interval  |  Trip |          |
+        |    Loop Name    |    min   |    max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +-----------------+----------+----------+----------+-----------+-----------+-------+----------+
+        |- Loop 1         |     32768|     32768|         2|          1|          1|  32768|    yes   |
+        |- Loop 2         |  99600000|  99600000|      9960|          -|          -|  10000|    no    |
+        | + Loop 2.1      |       128|       128|         2|          1|          1|    128|    yes   |
+        | + Loop 2.2      |      9824|      9824|       307|          -|          -|     32|    no    |
+        |  ++ Loop 2.2.1  |        12|        12|         6|          1|          1|      8|    yes   |
+        |  ++ Loop 2.2.2  |       290|       290|        36|          1|          1|    256|    yes   |
+        +-----------------+----------+----------+----------+-----------+-----------+-------+----------+
+```
+
+### Resource
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|    21732|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|    864|    71824|    63856|    -|
+|Memory               |      128|      -|     1024|       64|    0|
+|Multiplexer          |        -|      -|        -|     3985|    -|
+|Register             |        0|      -|    21551|      400|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |      128|    864|    94399|    90037|    0|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        9|     28|       10|       20|    0|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        3|      9|        3|        6|    0|
++---------------------+---------+-------+---------+---------+-----+
+```
+
+## unused: dataflow version
+
+Although the HLS reports seem to successfully infer dataflow, the performance cannot be achieved on hardware. See "dataflow_behavior_test" folder for more details.
 
 version 2:
 
@@ -418,117 +507,3 @@ Wrapper of a single PE:
 +---------------------+---------+------+---------+---------+-----+
 ```
 
-## single_lookup_table_construction_PE_optimized_version2
-
-Same as the multiple PE optimized version 2, just with higher nprobe (because now we use a single PE to construct LUTs for all nprobes).
-
-### Performance
-
-Same formula as the multiple PE version.
-
-total latency = nprobe * (D * II_load_query + L_load_query + (L_dataflow + (nprobe / PE_num - 1) * L_per_loop))
-
-In this equation, L_per_loop = 297, which equals to max(load_res, compute_LUT), where compute_LUT takes over; L_dataflow = L_load_res + L_compute_row = 431, thus
-
-total latency = nprobe * (D * II_load_query + L_load_query + (L_load_res + L_compute_row + (nprobe / PE_num - 1) * (L_compute + K_start * II_compute)))) = 10000 * (128 + (431 + 31 * 297)) = 97660000
-
-
-```
-+ Latency: 
-    * Summary: 
-    +----------+----------+-----------+-----------+----------+----------+---------+
-    |   Latency (cycles)  |   Latency (absolute)  |       Interval      | Pipeline|
-    |    min   |    max   |    min    |    max    |    min   |    max   |   Type  |
-    +----------+----------+-----------+-----------+----------+----------+---------+
-    |  97742771|  97742771| 0.698 sec | 0.698 sec |  97742771|  97742771|   none  |
-    +----------+----------+-----------+-----------+----------+----------+---------+
-
-    + Detail: 
-        * Instance: 
-        +---------------------------------------+---------------------------+---------+---------+-----------+-----------+------+------+---------+
-        |                                       |                           |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
-        |                Instance               |           Module          |   min   |   max   |    min    |    max    |  min |  max |   Type  |
-        +---------------------------------------+---------------------------+---------+---------+-----------+-----------+------+------+---------+
-        |grp_dataflow_parent_loop_proc_fu_2301  |dataflow_parent_loop_proc  |     9640|     9640| 68.859 us | 68.859 us |  9640|  9640|   none  |
-        +---------------------------------------+---------------------------+---------+---------+-----------+-----------+------+------+---------+
-
-        * Loop: 
-        +-------------+----------+----------+----------+-----------+-----------+-------+----------+
-        |             |   Latency (cycles)  | Iteration|  Initiation Interval  |  Trip |          |
-        |  Loop Name  |    min   |    max   |  Latency |  achieved |   target  | Count | Pipelined|
-        +-------------+----------+----------+----------+-----------+-----------+-------+----------+
-        |- Loop 1     |     32768|     32768|         2|          1|          1|  32768|    yes   |
-        |- Loop 2     |  97710000|  97710000|      9771|          -|          -|  10000|    no    |
-        | + Loop 2.1  |       128|       128|         1|          -|          -|    128|    no    |
-        +-------------+----------+----------+----------+-----------+-----------+-------+----------+
-
-dataflow_parent_loop:
-
-    + Detail: 
-        * Instance: 
-        +---------------------+------------------+---------+---------+----------+----------+-----+-----+----------+
-        |                     |                  |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
-        |       Instance      |      Module      |   min   |   max   |    min   |    max   | min | max |   Type   |
-        +---------------------+------------------+---------+---------+----------+----------+-----+-----+----------+
-        |dataflow_in_loop_U0  |dataflow_in_loop  |      431|      431| 3.079 us | 3.079 us |  297|  297| dataflow |
-        +---------------------+------------------+---------+---------+----------+----------+-----+-----+----------+
-
-        * Loop: 
-        +----------+---------+---------+----------+-----------+-----------+------+----------+
-        |          |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
-        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
-        +----------+---------+---------+----------+-----------+-----------+------+----------+
-        |- Loop 1  |     9639|     9639|       433|          -|          -|    32|    no    |
-        +------
-        
-dataflow_in_loop:
-
-+ Latency: 
-    * Summary: 
-    +---------+---------+----------+----------+-----+-----+----------+
-    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
-    |   min   |   max   |    min   |    max   | min | max |   Type   |
-    +---------+---------+----------+----------+-----+-----+----------+
-    |      431|      431| 3.079 us | 3.079 us |  297|  297| dataflow |
-    +---------+---------+----------+----------+-----+-----+----------+
-
-    + Detail: 
-        * Instance: 
-        +----------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |                                  |                               |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
-        |             Instance             |             Module            |   min   |   max   |    min   |    max   | min | max |   Type  |
-        +----------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
-        |construct_single_distance_LUT_U0  |construct_single_distance_LUT  |      296|      296| 2.114 us | 2.114 us |  296|  296|   none  |
-        |compute_residual_vector_U0        |compute_residual_vector        |      134|      134| 0.957 us | 0.957 us |  134|  134|   none  |
-        +----------------------------------+-------------------------------+---------+---------+----------+----------+-----+-----+---------+
-```
-
-### Resource
-
-```
-================================================================
-== Utilization Estimates
-================================================================
-* Summary: 
-+---------------------+---------+------+---------+---------+-----+
-|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
-+---------------------+---------+------+---------+---------+-----+
-|DSP                  |        -|     -|        -|        -|    -|
-|Expression           |        -|     -|        0|      168|    -|
-|FIFO                 |        -|     -|        -|        -|    -|
-|Instance             |        0|   866|    89377|    65810|    -|
-|Memory               |      129|     -|        0|        0|    -|
-|Multiplexer          |        -|     -|        -|     4058|    -|
-|Register             |        -|     -|      125|        -|    -|
-+---------------------+---------+------+---------+---------+-----+
-|Total                |      129|   866|    89502|    70036|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available SLR        |     1344|  3008|   869120|   434560|  320|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization SLR (%)  |        9|    28|       10|       16|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available            |     4032|  9024|  2607360|  1303680|  960|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization (%)      |        3|     9|        3|        5|    0|
-+---------------------+---------+------+---------+---------+-----+
-```

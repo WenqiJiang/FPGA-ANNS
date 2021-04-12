@@ -29,6 +29,7 @@ We use 1000000 as the dataflow loop count and 128 as the per-function loop count
 * For non-canonical, HLS can fail to infer dataflow
   * and this is hard to debug, since HLS report shows the double buffering is successful, while on hardware, the performance is the same as without double buffering
 * Success and fail versions:
+  * these should also be the case no matter using double buffer or streams, as shown in some of other experiments
 ```
 // Success 1: simple and canonical form, single input and single output
     dataflow_read_input(s_in, buffer); // Produce function 
@@ -51,6 +52,7 @@ We use 1000000 as the dataflow loop count and 128 as the per-function loop count
 
     dataflow_write_output(
         s_in_B,
+        s_in_C,
         buffer, 
         s_out);
 ```

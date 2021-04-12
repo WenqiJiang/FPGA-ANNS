@@ -31,7 +31,7 @@ template<const int query_num>
 void lookup_center_vectors(
     hls::stream<float> &s_center_vectors_init_lookup_PE,
     hls::stream<int> &s_searched_cell_id_lookup_PE,
-    hls::stream<float> &s_center_vectors_LUT_construction_PE);
+    hls::stream<struct_16_float_t> &s_center_vectors_LUT_construction_PE);
 
 template<const int query_num, const int nlist, const int nprobe>
 void scan_controller(
@@ -131,10 +131,11 @@ template<const int query_num>
 void lookup_center_vectors(
     hls::stream<float> &s_center_vectors_init_lookup_PE,
     hls::stream<int> &s_searched_cell_id_lookup_PE,
-    hls::stream<float> &s_center_vectors_LUT_construction_PE) {
+    hls::stream<struct_16_float_t> &s_center_vectors_LUT_construction_PE) {
 
     float center_vector_local[NLIST * D];
 #pragma HLS resource variable=center_vector_local core=RAM_2P_URAM
+#pragma HLS array_partition variable=center_vector_local cyclic factor=16 dim=1
 
     // init: load center vectors from DRAM 
     for (int i = 0; i < NLIST * D; i++) {
@@ -150,9 +151,29 @@ void lookup_center_vectors(
             int vec_id = s_searched_cell_id_lookup_PE.read();
             int start_addr = vec_id * D;
 
-            for (int i = 0; i < D; i++) {
+            // Hardcoded, 8 iteration to send a center vector
+            for (int i = 0; i < 8; i++) {
 #pragma HLS pipeline II=1
-                s_center_vectors_LUT_construction_PE.write(center_vector_local[start_addr + i]);
+                struct_16_float_t reg;
+
+                reg.val_0 = center_vector_local[start_addr + i * 16 + 0];
+                reg.val_1 = center_vector_local[start_addr + i * 16 + 1];
+                reg.val_2 = center_vector_local[start_addr + i * 16 + 2];
+                reg.val_3 = center_vector_local[start_addr + i * 16 + 3];
+                reg.val_4 = center_vector_local[start_addr + i * 16 + 4];
+                reg.val_5 = center_vector_local[start_addr + i * 16 + 5];
+                reg.val_6 = center_vector_local[start_addr + i * 16 + 6];
+                reg.val_7 = center_vector_local[start_addr + i * 16 + 7];
+                reg.val_8 = center_vector_local[start_addr + i * 16 + 8];
+                reg.val_9 = center_vector_local[start_addr + i * 16 + 9];
+                reg.val_10 = center_vector_local[start_addr + i * 16 + 10];
+                reg.val_11 = center_vector_local[start_addr + i * 16 + 11];
+                reg.val_12 = center_vector_local[start_addr + i * 16 + 12];
+                reg.val_13 = center_vector_local[start_addr + i * 16 + 13];
+                reg.val_14 = center_vector_local[start_addr + i * 16 + 14];
+                reg.val_15 = center_vector_local[start_addr + i * 16 + 15];
+
+                s_center_vectors_LUT_construction_PE.write(reg);
             }
         }
     }

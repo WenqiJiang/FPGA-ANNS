@@ -2,7 +2,22 @@
 
 Test "bitonic_sort_16_unfixed_scan_per_query", which is the unfixed scan per query equivalent of "bitonic_sort_16_fixed_scan_per_query_version2".
 
-## Real Performance
+## Performance Modeling
+
+Total time =  query_num * (L + N * II) (i.e., 1 insertion per cycle, given each query scans many entries)
+
+here L=12
+
+```
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |- Loop 1     |        ?|        ?|         ?|          -|          -|  10000|    no    |
+        | + Loop 1.1  |        ?|        ?|        12|          1|          1|      ?|    yes   |
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+s
+```
 
 Real Performance = 715.971 ms
 
@@ -10,9 +25,9 @@ Real Performance = 715.971 ms
 
 Theoretical performance  = 10000 * 10000 / 140 / 1e6 = 714.285 ms
 
-Conclusion: Reaches theoretical performance
+**Results verified on hardware, reaches theoretical performance**
 
-## Resource Usage
+## Resource Usage (Vitis Build Flow)
 
 FF = 15693
 

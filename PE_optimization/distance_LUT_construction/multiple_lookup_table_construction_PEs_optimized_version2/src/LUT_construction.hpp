@@ -3,6 +3,7 @@
 #include "constants.hpp"
 #include "types.hpp"
 
+
 template<const int pe_num_table_construction>
 void replicate_product_quantizer(
     hls::stream<float> &s_product_quantizer_init,
@@ -13,24 +14,13 @@ void replicate_query_vectors(
     hls::stream<float>& s_query_vectors,
     hls::stream<float> (&s_query_vectors_replicated)[pe_num_table_construction]);
 
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
+template<const int query_num, const int pe_num_table_construction>
 void replicate_center_vectors(
     hls::stream<float>& s_center_vectors_lookup_PE,
     hls::stream<float> (&s_center_vectors_replicated)[pe_num_table_construction]);
 
-
-void compute_residual_vector(
-    hls::stream<float> &s_center_vectors_table_construction_PE,
-    float query_vector_local[M][D / M],
-    float residual_center_vector[M][D / M]);
-
 template<const int array_len>
 float square_sum(float array[array_len]);
-
-void construct_single_distance_LUT(
-    float product_quantizer[M][K][D / M],
-    float residual_center_vector[M][D / M],
-    hls::stream<distance_LUT_PQ16_t>& s_result_table_construction_PE);
 
 template<const int query_num, const int nprobe_per_PE>
 void lookup_table_construction_PE(
@@ -93,7 +83,7 @@ void replicate_query_vectors(
     }
 }
 
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
+template<const int query_num, const int pe_num_table_construction>
 void replicate_center_vectors(
     hls::stream<float>& s_center_vectors_lookup_PE,
     hls::stream<float> (&s_center_vectors_replicated)[pe_num_table_construction]) {
@@ -103,7 +93,7 @@ void replicate_center_vectors(
     //   e.g., 4 PEs, vector 0,4,8 -> PE0, 1,5,9 -> PE1, etc.
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        for (int interleave_iter = 0; interleave_iter < nprobe_per_PE; interleave_iter++) {
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE; interleave_iter++) {
 
             for (int s = 0; s < pe_num_table_construction; s++) {
 
@@ -112,23 +102,6 @@ void replicate_center_vectors(
                     s_center_vectors_replicated[s].write(s_center_vectors_lookup_PE.read());
                 }
             }
-        }
-    }
-}
-
-
-void compute_residual_vector(
-    hls::stream<float> &s_center_vectors_table_construction_PE,
-    float query_vector_local[M][D / M],
-    float residual_center_vector[M][D / M]) {
-        
-    float center_vector_local[M][D / M];
-
-    for (int m = 0; m < M; m++) {
-        for (int j = 0; j < D / M; j++) {
-#pragma HLS pipeline II=1
-            center_vector_local[m][j] = s_center_vectors_table_construction_PE.read();
-            residual_center_vector[m][j] = query_vector_local[m][j] - center_vector_local[m][j];
         }
     }
 }
@@ -148,51 +121,6 @@ float square_sum<8>(float array[8]) {
         array[7] * array[7];
 
     return result;
-}
-
-
-void construct_single_distance_LUT(
-    float product_quantizer[M][K][D / M],
-    float residual_center_vector[M][D / M],
-    hls::stream<distance_LUT_PQ16_t>& s_result_table_construction_PE) {
-
-    for (int k = 0; k < K; k++) {
-#pragma HLS pipeline II=1
-
-        // the L1 diff between residual_center_vector annd sub-quantizers
-        float L1_dist[M][D/M];
-#pragma HLS array_partition variable=L1_dist dim=1
-#pragma HLS array_partition variable=L1_dist dim=2
-
-        for (int m = 0; m < M; m++) {
-            for (int j = 0; j < D / M; j++) {
-#pragma HLS UNROLL
-                L1_dist[m][j] = residual_center_vector[m][j] - product_quantizer[m][k][j];
-            }
-        }
-
-        distance_LUT_PQ16_t dist_row;
-
-        // square distance
-        dist_row.dist_0 = square_sum<8>(L1_dist[0]);
-        dist_row.dist_1 = square_sum<8>(L1_dist[1]);
-        dist_row.dist_2 = square_sum<8>(L1_dist[2]);
-        dist_row.dist_3 = square_sum<8>(L1_dist[3]);
-        dist_row.dist_4 = square_sum<8>(L1_dist[4]);
-        dist_row.dist_5 = square_sum<8>(L1_dist[5]);
-        dist_row.dist_6 = square_sum<8>(L1_dist[6]);
-        dist_row.dist_7 = square_sum<8>(L1_dist[7]);
-        dist_row.dist_8 = square_sum<8>(L1_dist[8]);
-        dist_row.dist_9 = square_sum<8>(L1_dist[9]);
-        dist_row.dist_10 = square_sum<8>(L1_dist[10]);
-        dist_row.dist_11 = square_sum<8>(L1_dist[11]);
-        dist_row.dist_12 = square_sum<8>(L1_dist[12]);
-        dist_row.dist_13 = square_sum<8>(L1_dist[13]);
-        dist_row.dist_14 = square_sum<8>(L1_dist[14]);
-        dist_row.dist_15 = square_sum<8>(L1_dist[15]);
-        
-        s_result_table_construction_PE.write(dist_row);
-    }
 }
 
 template<const int query_num, const int nprobe_per_PE>
@@ -230,7 +158,10 @@ void lookup_table_construction_PE(
 
     // store query and center vector into the format of M sub-vectors
     float query_vector_local[M][D / M];
+    float center_vector_local[M][D / M];
 
+    float residual_center_vector[M][D / M]; // query_vector - center_vector
+#pragma HLS array_partition variable=residual_center_vector complete
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -244,25 +175,59 @@ void lookup_table_construction_PE(
 
         // for each nprobe, construct LUT
         for (int nprobe_id = 0; nprobe_id < nprobe_per_PE; nprobe_id++) {
-#pragma HLS dataflow
 
-            float residual_center_vector[M][D / M]; // query_vector - center_vector
-#pragma HLS array_partition variable=residual_center_vector dim=1
-#pragma HLS array_partition variable=residual_center_vector dim=2
+            // load center vector
+            residual_center_vectors:
+            for (int m = 0; m < M; m++) {
+                for (int j = 0; j < D / M; j++) {
+#pragma HLS pipeline II=1
+                    center_vector_local[m][j] = s_center_vectors_table_construction_PE.read();
+                    residual_center_vector[m][j] = query_vector_local[m][j] - center_vector_local[m][j];
+                }
+            }
 
-            // double buffering residual_center_vector
-            compute_residual_vector(
-                s_center_vectors_table_construction_PE,
-                query_vector_local,
-                residual_center_vector);
+            // construct distance lookup table
+            single_row_lookup_table_construction:
+            for (int k = 0; k < K; k++) {
+#pragma HLS pipeline II=1
 
-            construct_single_distance_LUT(
-                product_quantizer,
-                residual_center_vector,
-                s_result_table_construction_PE);
+                // the L1 diff between residual_center_vector and sub-quantizers
+                float L1_dist[M][D/M];
+#pragma HLS array_partition variable=L1_dist complete
+
+                for (int m = 0; m < M; m++) {
+                    for (int j = 0; j < D / M; j++) {
+#pragma HLS UNROLL
+                        L1_dist[m][j] = residual_center_vector[m][j] - product_quantizer[m][k][j];
+                    }
+                }
+
+                distance_LUT_PQ16_t dist_row;
+
+                // square distance
+                dist_row.dist_0 = square_sum<8>(L1_dist[0]);
+                dist_row.dist_1 = square_sum<8>(L1_dist[1]);
+                dist_row.dist_2 = square_sum<8>(L1_dist[2]);
+                dist_row.dist_3 = square_sum<8>(L1_dist[3]);
+                dist_row.dist_4 = square_sum<8>(L1_dist[4]);
+                dist_row.dist_5 = square_sum<8>(L1_dist[5]);
+                dist_row.dist_6 = square_sum<8>(L1_dist[6]);
+                dist_row.dist_7 = square_sum<8>(L1_dist[7]);
+                dist_row.dist_8 = square_sum<8>(L1_dist[8]);
+                dist_row.dist_9 = square_sum<8>(L1_dist[9]);
+                dist_row.dist_10 = square_sum<8>(L1_dist[10]);
+                dist_row.dist_11 = square_sum<8>(L1_dist[11]);
+                dist_row.dist_12 = square_sum<8>(L1_dist[12]);
+                dist_row.dist_13 = square_sum<8>(L1_dist[13]);
+                dist_row.dist_14 = square_sum<8>(L1_dist[14]);
+                dist_row.dist_15 = square_sum<8>(L1_dist[15]);
+                
+                s_result_table_construction_PE.write(dist_row);
+            }
         }
     }
 }
+
 
 template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
 void gather_lookup_table(
@@ -288,6 +253,7 @@ void gather_lookup_table(
         }
     }
 }
+
 
 template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
 void lookup_table_construction_wrapper(
@@ -321,7 +287,7 @@ void lookup_table_construction_wrapper(
 // #pragma HLS resource variable=s_center_vectors_replicated core=FIFO_BRAM
 #pragma HLS array_partition variable=s_center_vectors_replicated complete
 
-    replicate_center_vectors<query_num, pe_num_table_construction, nprobe_per_PE>(
+    replicate_center_vectors<query_num, pe_num_table_construction>(
         s_center_vectors,
         s_center_vectors_replicated); 
 

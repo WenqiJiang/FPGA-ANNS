@@ -117,6 +117,10 @@ void vadd(
 #pragma HLS stream variable=s_single_PQ_result depth=8
 #pragma HLS resource variable=s_single_PQ_result core=FIFO_SRL
 
+    hls::stream<int> s_scanned_entries_every_cell;
+#pragma HLS stream variable=s_scanned_entries_every_cell depth=8
+#pragma HLS resource variable=s_scanned_entries_every_cell core=FIFO_SRL
+
     hls::stream<int> s_last_element_valid_PQ_lookup_computation;
 #pragma HLS stream variable=s_last_element_valid_PQ_lookup_computation depth=8
 #pragma HLS resource variable=s_last_element_valid_PQ_lookup_computation core=FIFO_SRL
@@ -132,6 +136,9 @@ void vadd(
     send_PE_codes<QUERY_NUM, NPROBE, SCANNED_ENTRIES_PER_CELL>(
         s_PQ_codes);
 
+    dummy_scanned_entries_every_cell<QUERY_NUM, NPROBE>(
+        s_scanned_entries_every_cell);
+
     dummy_last_element_valid_sender<QUERY_NUM,  NPROBE>(
         s_last_element_valid_PQ_lookup_computation);
 
@@ -140,10 +147,11 @@ void vadd(
 
 ////////////////////    Core Function Starts     //////////////////// 
 
-    PQ_lookup_computation<QUERY_NUM, NPROBE, SCANNED_ENTRIES_PER_CELL>(
+    PQ_lookup_computation<QUERY_NUM, NPROBE>(
         // input streams
         s_distance_LUT_in,
         s_PQ_codes, 
+        s_scanned_entries_every_cell,
         s_last_element_valid_PQ_lookup_computation,
         // output streams
         s_distance_LUT_out,
@@ -193,6 +201,19 @@ void dummy_last_element_valid_sender(
 
             // invalid, padded element
             s_last_element_valid_PQ_lookup_computation.write(0); 
+        }
+    }
+}
+
+template<const int query_num, const int nprobe>
+void dummy_scanned_entries_every_cell(
+    hls::stream<int> &s_scanned_entries_every_cell) {
+
+    for (int query_id = 0; query_id < query_num; query_id++) {
+
+        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
+
+            s_scanned_entries_every_cell.write(SCANNED_ENTRIES_PER_CELL); 
         }
     }
 }
@@ -253,12 +274,12 @@ void dummy_distance_LUT_consumer(
     }
 }
 
-template<const int query_num, const int nprobe, const int scanned_entries_every_cell>
+template<const int query_num, const int nprobe>
 void PQ_lookup_computation(
     // input streams
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_in,
     hls::stream<single_PQ>& s_single_PQ,
-    // hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
+    hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
     // output streams
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
@@ -272,8 +293,8 @@ void PQ_lookup_computation(
 
         for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 
-            // int scanned_entries_every_cell = 
-            //     s_scanned_entries_every_cell_PQ_lookup_computation.read();
+            int scanned_entries_every_cell = 
+                s_scanned_entries_every_cell_PQ_lookup_computation.read();
             int last_element_valid = 
                 s_last_element_valid_PQ_lookup_computation.read();
 

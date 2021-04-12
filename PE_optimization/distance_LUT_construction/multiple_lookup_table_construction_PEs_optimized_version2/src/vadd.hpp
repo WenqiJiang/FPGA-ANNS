@@ -44,5 +44,6 @@ void load_PQ_quantizer(
     const float* DRAM_PQ_quantizer,
     hls::stream<float> &s_PQ_quantizer_init);
 
+template<const int total_len>
 void consume_and_write(
     hls::stream<distance_LUT_PQ16_t>& s_result, result_t* results_out);

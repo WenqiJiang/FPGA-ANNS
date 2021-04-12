@@ -198,7 +198,7 @@ void vadd(
 
     ////////////////////     Center Vector Lookup     ////////////////////    
 
-    hls::stream<float> s_center_vectors_LUT_construction_PE;
+    hls::stream<struct_16_float_t> s_center_vectors_LUT_construction_PE;
 #pragma HLS stream variable=s_center_vectors_LUT_construction_PE depth=128
 // #pragma HLS resource variable=s_center_vectors_LUT_construction_PE core=FIFO_BRAM
 

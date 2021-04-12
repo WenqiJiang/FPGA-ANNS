@@ -193,16 +193,16 @@ void stream_redirect_to_priority_queue_wrapper(
     hls::stream<single_PQ_result> redirected_sorted_stream[20];
 #pragma HLS stream variable=redirected_sorted_stream depth=8
 #pragma HLS array_partition variable=redirected_sorted_stream complete
-#pragma HLS RESOURCE variable=redirected_sorted_stream core=FIFO_SRL
+// #pragma HLS RESOURCE variable=redirected_sorted_stream core=FIFO_SRL
 
     hls::stream<single_PQ_result> intermediate_result[20];
-#pragma HLS stream variable=intermediate_result depth=8
+#pragma HLS stream variable=intermediate_result depth=16
 #pragma HLS array_partition variable=intermediate_result complete
-#pragma HLS RESOURCE variable=intermediate_result core=FIFO_SRL
+// #pragma HLS RESOURCE variable=intermediate_result core=FIFO_SRL
 
     // collecting results from multiple sources need deeper FIFO
     hls::stream<single_PQ_result> merged_intermediate_result;
-#pragma HLS stream variable=merged_intermediate_result depth=256
+#pragma HLS stream variable=merged_intermediate_result depth=1024
 
     hls::stream<int> s_merged_intermediate_result_iter;
 #pragma HLS stream variable=s_merged_intermediate_result_iter depth=8

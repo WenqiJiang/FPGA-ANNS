@@ -34,6 +34,10 @@ void dummy_last_element_valid_sender(
     hls::stream<int> &s_last_element_valid_PQ_lookup_computation);
 
 template<const int query_num, const int nprobe>
+void dummy_scanned_entries_every_cell(
+    hls::stream<int> &s_scanned_entries_every_cell);
+
+template<const int query_num, const int nprobe>
 void dummy_distance_LUT_sender(
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT);
 
@@ -41,12 +45,12 @@ template<const int query_num, const int nprobe>
 void dummy_distance_LUT_consumer(
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT);
 
-template<const int query_num, const int nprobe, const int scanned_entries_every_cell>
+template<const int query_num, const int nprobe>
 void PQ_lookup_computation(
     // input streams
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_in,
     hls::stream<single_PQ>& s_single_PQ,
-    // hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
+    hls::stream<int>& s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int>& s_last_element_valid_PQ_lookup_computation, 
     // output streams
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,

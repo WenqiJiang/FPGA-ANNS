@@ -6,7 +6,6 @@
 
 #include "vadd.hpp"
 
-
 // HBM 3 is used for output
 void vadd(  
     t_axi* table_HBM0, t_axi* table_HBM1, 
@@ -116,16 +115,17 @@ void vadd(
     //   HBM2 -> PQ codebook
     
     hls::stream<float> s_query_vectors;
-#pragma HLS stream variable=s_query_vectors depth=512
+#pragma HLS stream variable=s_query_vectors depth=128
 
     hls::stream<float> s_center_vectors;
-#pragma HLS stream variable=s_center_vectors depth=512
+#pragma HLS stream variable=s_center_vectors depth=128
 
     hls::stream<float> s_PQ_quantizer_init;
-#pragma HLS stream variable=s_PQ_quantizer_init depth=512
+#pragma HLS stream variable=s_PQ_quantizer_init depth=128
 
     hls::stream<distance_LUT_PQ16_t> s_lookup_table;
-#pragma HLS stream variable=s_lookup_table depth=512
+#pragma HLS stream variable=s_lookup_table depth=4
+#pragma HLS resource variable=s_lookup_table core=FIFO_SRL
 
     load_query_vectors<QUERY_NUM>(
         table_HBM0, 
@@ -145,7 +145,7 @@ void vadd(
         s_query_vectors,
         s_lookup_table);
 
-    consume_and_write(s_lookup_table, out_PLRAM);
+    consume_and_write<K>(s_lookup_table, out_PLRAM);
 }
 
 
@@ -158,18 +158,12 @@ void load_query_vectors(
     //   then it takes 640 + 200 ns < 1 us to load a query vector, 
     //   much faster than computing distance and constructing LUT (> 10 us)
 
-    float query_buffer[D];
-    for (int d = 0; d < D; d++) {
-#pragma HLS pipeline II=1
-        query_buffer[d] = DRAM_query_vector[d];
-    }
-
     // HBM0 -> query vector (1 vector per NPROBE=32 center vector)
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         for (int d = 0; d < D; d++) {
-#pragma HLS pipeline II=1
-            s_query_vectors.write(query_buffer[d]);
+        #pragma HLS pipeline II=1
+            s_query_vectors.write(DRAM_query_vector[query_id * D + d]);
         }
     }
 }
@@ -179,18 +173,15 @@ void load_center_vectors(
     const float* DRAM_center_vector,
     hls::stream<float>& s_center_vectors) {
 
-    float center_vector_buffer[D];
-    for (int i = 0; i < D; i++) {
-        center_vector_buffer[i] = DRAM_center_vector[i];
-    }
     //   HBM1 -> center vector
     for (int query_id = 0; query_id < query_num; query_id++) {
 
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
 
+            int start_addr = (query_id * NPROBE + nprobe_id) * D;
+
             for (int i = 0; i < D; i++) {
-#pragma HLS pipeline II=1
-                s_center_vectors.write(center_vector_buffer[i]);
+                s_center_vectors.write(DRAM_center_vector[start_addr + i]);
             }
         }
     }
@@ -207,20 +198,20 @@ void load_PQ_quantizer(
     }
 }
 
+template<const int total_len>
 void consume_and_write(
     hls::stream<distance_LUT_PQ16_t>& s_result, result_t* results_out) {
     
-    distance_LUT_PQ16_t result_local[K];
+    distance_LUT_PQ16_t result_local[total_len];
     for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
-            for (int i = 0; i < K; i++) {
-#pragma HLS pipeline II=1
+            for (int i = 0; i < total_len; i++) {
                 result_local[i] = s_result.read();
             }
         }
     }
 
-    for (int i = 0; i < K; i++) {
+    for (int i = 0; i < total_len; i++) {
         float tmp[16];
 #pragma HLS array_partition variable=tmp complete
         tmp[0] = result_local[i].dist_0;

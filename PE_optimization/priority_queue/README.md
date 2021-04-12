@@ -1,74 +1,65 @@
 # Priority Queue
 
-## Single Priority Queue (length = 10)
+## Performance Modeling
 
-folder: priority_queue_wrapper_unfixed
+* For a single queue
 
-Only consumes 3337 LUTs (~0.3% of all).
+Total time = query_num * (L_control + (L_insertion + N_insertion * II_insertion) + (L_output + N_output * II_output))
 
-```
-================================================================
-== Utilization Estimates
-================================================================
-* Summary: 
-+---------------------+---------+------+---------+---------+-----+
-|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
-+---------------------+---------+------+---------+---------+-----+
-|DSP                  |        -|     -|        -|        -|    -|
-|Expression           |        -|     -|        0|     2520|    -|
-|FIFO                 |        -|     -|        -|        -|    -|
-|Instance             |        -|     -|        0|      161|    -|
-|Memory               |        -|     -|        -|        -|    -|
-|Multiplexer          |        -|     -|        -|      656|    -|
-|Register             |        -|     -|     1849|        -|    -|
-+---------------------+---------+------+---------+---------+-----+
-|Total                |        0|     0|     1849|     3337|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available SLR        |     1344|  3008|   869120|   434560|  320|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization SLR (%)  |        0|     0|    ~0   |    ~0   |    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available            |     4032|  9024|  2607360|  1303680|  960|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization (%)      |        0|     0|    ~0   |    ~0   |    0|
-+---------------------+---------+------+---------+---------+-----+
-```
+Let's assume L_control = 3 CC, the HLS shows that L_insertion=5, II_insertion=2, L_output=2, II_output=1
 
-## Single Priority Queue (length = 100)
+* For a group of queue
 
-folder: priority_queue_distance_results_fixed_len100
+In our design, we use a group of queue of 2 hierachies, the first one contains 20 queues, while the second one only contains one to gather all results. As long as the FIFO between two blocks is long enough, the two level can be pipelined. Such that the total time consumption can still is equal to one single queue. Thus we can still use the formula above.
 
-This consumes 32377 LUTs (~2.5% of all). As a result, if we have topK=100, then for each HBM channel we need 6 priority queues of length 100. Suppose 21 used HBM channels, that is 21 * 6 * 32377 = 4079502 LUTs, 3 times of all LUT resources. Thus topK=100 is impossible.
+Real Performance (query num = 10000, iteration per query = 10000, such that for the first level of wrapper, each queue is only responsible for half of the query) = 717.15 ms (140 MHz)
+
+10000 * (3 + (5 + 10000 * 2) + (2 + 10 * 1)) / 2 = 100100000 CC = 100100000 / 140 / 1e6 = 0.715 s 
+
+**Performance Verified on Real Hardware**
+
+## Resource Modeling (Unfixed Length)
+
+Given the fixed length result, len=100 is almost 10X expensive compared with len=10, thus we can use linear model to estimate the priority queue resource consumption.
+
+### Single Priority Queue, length = 10 (Vitis Build Flow)
+
+FF = 2177 
+
+LUT = 3597
 
 ```
 ================================================================
 == Utilization Estimates
 ================================================================
 * Summary: 
-+---------------------+---------+------+---------+---------+-----+
-|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
-+---------------------+---------+------+---------+---------+-----+
-|DSP                  |        -|     -|        -|        -|    -|
-|Expression           |        -|     -|        0|    26095|    -|
-|FIFO                 |        -|     -|        -|        -|    -|
-|Instance             |        -|     -|        0|     1045|    -|
-|Memory               |        -|     -|        -|        -|    -|
-|Multiplexer          |        -|     -|        -|     5237|    -|
-|Register             |        -|     -|    16291|        -|    -|
-+---------------------+---------+------+---------+---------+-----+
-|Total                |        0|     0|    16291|    32377|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available SLR        |     1344|  3008|   869120|   434560|  320|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization SLR (%)  |        0|     0|        1|        7|    0|
-+---------------------+---------+------+---------+---------+-----+
-|Available            |     4032|  9024|  2607360|  1303680|  960|
-+---------------------+---------+------+---------+---------+-----+
-|Utilization (%)      |        0|     0|    ~0   |        2|    0|
-+---------------------+---------+------+---------+---------+-----+
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|     2583|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|      0|      330|      340|    -|
+|Memory               |        -|      -|        -|        -|    -|
+|Multiplexer          |        -|      -|        -|      674|    -|
+|Register             |        -|      -|     1847|        -|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|      0|     2177|     3597|    0|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|      0|    ~0   |    ~0   |    0|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|      0|    ~0   |    ~0   |    0|
++---------------------+---------+-------+---------+---------+-----+
+
 ```
 
-## Priority Queue Wrapper (length = 10)
+### Priority Queue Wrapper, length = 10
+
+**We shouldn't use this in the accelerator integration model, should use 21 * queue as the estimated resource instead.**
 
 folder: priority_queue_wrapper_unfixed
 
@@ -138,3 +129,76 @@ LUT = 85989
     |Total                                            |                                              |        0|   0| 43060| 79210|    0|
     +-------------------------------------------------+----------------------------------------------+---------+----+------+------+-----+
 ```
+
+## Fixed Length
+
+### Single Priority Queue (length = 10)
+
+folder: priority_queue_wrapper_unfixed
+
+Only consumes 3337 LUTs (~0.3% of all).
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|     2520|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        0|      161|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|      656|    -|
+|Register             |        -|     -|     1849|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|     1849|     3337|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|    ~0   |    ~0   |    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|    ~0   |    ~0   |    0|
++---------------------+---------+------+---------+---------+-----+
+```
+
+### Single Priority Queue (length = 100)
+
+folder: priority_queue_distance_results_fixed_len100
+
+Almost 10X expensive compared with len=10, thus we can use linear model to estimate the priority queue resource consumption.
+
+This consumes 32377 LUTs (~2.5% of all). As a result, if we have topK=100, then for each HBM channel we need 6 priority queues of length 100. Suppose 21 used HBM channels, that is 21 * 6 * 32377 = 4079502 LUTs, 3 times of all LUT resources. Thus topK=100 is impossible.
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|    26095|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|     -|        0|     1045|    -|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|     5237|    -|
+|Register             |        -|     -|    16291|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|     0|    16291|    32377|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     0|        1|        7|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|     0|    ~0   |        2|    0|
++---------------------+---------+------+---------+---------+-----+
+```
+
