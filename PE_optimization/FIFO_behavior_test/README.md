@@ -2,6 +2,12 @@
 
 This folder tests when **using BRAM as FIFO**, the relationship between data type, depth, and BRAM consumption.
 
+As in UG573, a BRAM 18K can be configured in several ways:
+
+For the 18 Kb mode, the supported configurations are 4K x 4, 2K x 9, 1K x 18, and 512 x 36.
+
+The supported configurations for the 36 Kb FIFO are 8K x 4, 4K x 9, 2K x 18, 1K x 36, and 512 x 72.
+
 ## 8-bit int
 
 18K -> 8 bit * 2048

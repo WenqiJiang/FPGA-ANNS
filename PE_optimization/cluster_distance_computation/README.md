@@ -4,7 +4,7 @@ Note: due to a bug in Vitis_hls 2019.2, these folders cannot by synthesized by v
 
 We don't need double buffering query vector. For nlist <= 8192, the initialization overhead is 128/(8192+128). For nlist = 16384, it might needs more PEs (e.g. 4 PE), the initialization overhead is 128/(4096 + 128), negligible as well.
 
-We use distance_computation_PE_optimized_version2 as the final version.
+We use **distance_computation_PE_optimized_version3** as the final version, because version 1 and version 2 use too wide SIMD such that the integrated entire accelerator failed to place / route.
 
 ## Nlist constraint & Multiple PEs
 
@@ -215,6 +215,96 @@ Throughput = 10000 / 0.605 = 16528 QPS
 |Available            |     4032|   9024|  2607360|  1303680|  960|
 +---------------------+---------+-------+---------+---------+-----+
 |Utilization (%)      |        0|      9|        3|        5|   13|
++---------------------+---------+-------+---------+---------+-----+
+```
+
+## distance_computation_PE_optimized_version3
+
+The first two versions will experience placement / routing error when integrating the entire accelerator. Thus, we partition it such that each PE is only responsible for vectorized computation of 8 floats (128/8 = 16PEs). And there's a gather PE to sum up all the results.
+
+### Performance
+
+The performance should be the same as version 2.
+
+total time = query_num * (L_load_query + (L_comp + N_comp * II_comp))
+
+Here, L_load_query = 128, L_comp = 36, N_comp = nlist
+
+Assume query_num = 10000, then 10000 * (128 + (8192 + 36)) = 83560000, very close to HLS estimation, HLS estimated a smaller number because it thinks all 16 PEs can load query vector in parallel while in fact this process is serial.
+
+
+```
+    * Summary: 
+    +----------+----------+-----------+-----------+----------+----------+----------+
+    |   Latency (cycles)  |   Latency (absolute)  |       Interval      | Pipeline |
+    |    min   |    max   |    min    |    max    |    min   |    max   |   Type   |
+    +----------+----------+-----------+-----------+----------+----------+----------+
+    |  83575529|  83575529| 0.597 sec | 0.597 sec |  82295540|  82295540| dataflow |
+    +----------+----------+-----------+-----------+----------+----------+----------+
+```
+
+
+### Resource
+
+*Use this in the paper, since the 16 small PE + gather PE together is a PE.*
+
+The wrapper of 16 PE and gather function.
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|       32|    -|
+|FIFO                 |        0|      -|      256|     2128|    -|
+|Instance             |        0|    894|    96494|    75137|  128|
+|Memory               |        -|      -|        -|        -|    -|
+|Multiplexer          |        -|      -|        -|       36|    -|
+|Register             |        -|      -|        6|        -|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|    894|    96756|    77333|  128|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     29|       11|       17|   40|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|      9|        3|        5|   13|
++---------------------+---------+-------+---------+---------+-----+
+```
+
+A single PE for partial computation:
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+-----+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++---------------------+---------+-------+---------+---------+-----+
+|DSP                  |        -|      -|        -|        -|    -|
+|Expression           |        -|      -|        0|      183|    -|
+|FIFO                 |        -|      -|        -|        -|    -|
+|Instance             |        -|     54|     4489|     3991|    -|
+|Memory               |        0|      -|        0|        0|    8|
+|Multiplexer          |        -|      -|        -|      206|    -|
+|Register             |        0|      -|     1244|       32|    -|
++---------------------+---------+-------+---------+---------+-----+
+|Total                |        0|     54|     5733|     4412|    8|
++---------------------+---------+-------+---------+---------+-----+
+|Available SLR        |     1344|   3008|   869120|   434560|  320|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization SLR (%)  |        0|      1|    ~0   |        1|    2|
++---------------------+---------+-------+---------+---------+-----+
+|Available            |     4032|   9024|  2607360|  1303680|  960|
++---------------------+---------+-------+---------+---------+-----+
+|Utilization (%)      |        0|   ~0  |    ~0   |    ~0   |  ~0 |
 +---------------------+---------+-------+---------+---------+-----+
 ```
 
