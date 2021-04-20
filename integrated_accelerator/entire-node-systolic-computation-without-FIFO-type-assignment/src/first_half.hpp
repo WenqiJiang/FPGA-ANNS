@@ -123,7 +123,10 @@ void load_center_vectors(
         for (int i = 0; i < CENTROIDS_PER_PARTITION * D; i++) {
 #pragma HLS pipeline II=1
             float reg = table_HBM1[s * CENTROIDS_PER_PARTITION * D + i];
-            s_center_vectors_init_distance_computation_PE[s].write(reg);
+            for (int s = 0; s < PE_NUM_CENTER_DIST_COMP; s++) {
+#pragma HLS UNROLL
+                s_center_vectors_init_distance_computation_PE[s].write(reg);
+            }
             s_center_vectors_init_lookup_PE.write(reg);
         }
     }

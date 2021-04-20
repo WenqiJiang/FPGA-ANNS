@@ -126,14 +126,14 @@ void partial_lookup_table_construction(
         }
     }
 
-    // store query and center vector into the format of M sub-vectors
-    float partial_query_vector_local[D / M];
+    for (int query_id = 0; query_id < query_num; query_id++) {
+
+        // store query and center vector into the format of M sub-vectors
+        float partial_query_vector_local[D / M];
 #pragma HLS array_partition variable=partial_query_vector_local complete
 
-    float partial_residual_center_vector[D / M]; // query_vector - center_vector
+        float partial_residual_center_vector[D / M]; // query_vector - center_vector
 #pragma HLS array_partition variable=partial_residual_center_vector complete
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
 
         // load query vector
         for (int j = 0; j < D / M; j++) {
@@ -147,33 +147,38 @@ void partial_lookup_table_construction(
             // load partial center vector
             struct_8_float_t reg = s_partial_center_vectors.read();
 
-            partial_residual_center_vector[0] = partial_query_vector_local[0] - reg.val_0;
-            partial_residual_center_vector[1] = partial_query_vector_local[1] - reg.val_1;
-            partial_residual_center_vector[2] = partial_query_vector_local[2] - reg.val_2;
-            partial_residual_center_vector[3] = partial_query_vector_local[3] - reg.val_3;
-            partial_residual_center_vector[4] = partial_query_vector_local[4] - reg.val_4;
-            partial_residual_center_vector[5] = partial_query_vector_local[5] - reg.val_5;
-            partial_residual_center_vector[6] = partial_query_vector_local[6] - reg.val_6;
-            partial_residual_center_vector[7] = partial_query_vector_local[7] - reg.val_7;
+//             partial_residual_center_vector[0] = partial_query_vector_local[0] - reg.val_0;
+//             partial_residual_center_vector[1] = partial_query_vector_local[1] - reg.val_1;
+//             partial_residual_center_vector[2] = partial_query_vector_local[2] - reg.val_2;
+//             partial_residual_center_vector[3] = partial_query_vector_local[3] - reg.val_3;
+//             partial_residual_center_vector[4] = partial_query_vector_local[4] - reg.val_4;
+//             partial_residual_center_vector[5] = partial_query_vector_local[5] - reg.val_5;
+//             partial_residual_center_vector[6] = partial_query_vector_local[6] - reg.val_6;
+//             partial_residual_center_vector[7] = partial_query_vector_local[7] - reg.val_7;
 
             for (int k = 0; k < K; k++) {
 #pragma HLS pipeline II=1
 
-                float L1_dist[D/M];
-#pragma HLS array_partition variable=L1_dist complete
-                float L2_dist[D/M];
-#pragma HLS array_partition variable=L2_dist complete
+//                 float L1_dist[D/M];
+// #pragma HLS array_partition variable=L1_dist complete
+//                 float L2_dist[D/M];
+// #pragma HLS array_partition variable=L2_dist complete
 
-                for (int j = 0; j < D / M; j++) {
-#pragma HLS UNROLL
-                    L1_dist[j] = partial_residual_center_vector[j] - sub_quantizer[k][j];
-                    L2_dist[j] = L1_dist[j] * L1_dist[j];
-                }
+//                 for (int l = 0; l < D / M; l++) {
+// #pragma HLS UNROLL
+//                     L1_dist[l] = partial_residual_center_vector[l] - sub_quantizer[k][l];
+//                     L2_dist[l] = L1_dist[l] * L1_dist[l];
+//                 }
 
-                float partial_distance = 
-                    reduction_sum_cluster_LUT_construction<float, 8>(L2_dist);
+//                 float partial_distance = 
+//                     L2_dist[0] + L2_dist[1] + L2_dist[2] + L2_dist[3] + 
+//                     L2_dist[4] + L2_dist[5] + L2_dist[6] + L2_dist[7];
                 
-                s_partial_result.write(partial_distance);
+//                 s_partial_result.write(partial_distance);
+
+
+                s_partial_result.write(reg.val_0);
+
             }
         }
     }

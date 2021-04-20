@@ -74,7 +74,7 @@ The unfixed scan per iteration version, used as single PE resource estimation.
 
 Single PE + delay
 
-Total time = query_num * nprobe * ((L_load + N_load * II_compute + PE_num - 1) + (L_compute + N_compute * II_compute))
+Total time = query_num * nprobe * ((L_load + N_load * II_load + PE_num - 1) + (L_compute + N_compute * II_compute))
 
 here, L_load = 2, N_load = 256, L_compute = 63, PE_num = 63
 
@@ -83,6 +83,8 @@ Take N_compute = 193, nprobe = 32 and query_num = 10000
 10000 * 32 * ((2 + 256 + 63) + (62 + 193)) = 184320000 cycles = 184320000 / 140 / 1e6 = 1.317 s
 
 Real Performance: 1306.35 ms (140MHz, suppose scanning 193 entries per Voronoi cell)
+
+And seems random DRAM access does not count (hide by the pipeline).
 
 **Performance verified on hardware**
 
