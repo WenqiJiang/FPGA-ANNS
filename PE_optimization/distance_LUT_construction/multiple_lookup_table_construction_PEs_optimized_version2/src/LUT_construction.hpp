@@ -142,9 +142,9 @@ void lookup_table_construction_PE(
     // first and last dimension needs to be partitioned such that we can
     //    compute a row of product quantizer LUT in parallel
     float product_quantizer[M][K][D / M];
-#pragma HLS array_partition variable=product_quantizer dim=1
+// #pragma HLS array_partition variable=product_quantizer dim=1
 #pragma HLS array_partition variable=product_quantizer dim=3
-// #pragma HLS resource variable=product_quantizer core=RAM_2P_BRAM
+// #pragma HLS resource variable=product_quantizer core=RAM_1P_BRAM
 
     // DRAM PQ quantizer format: 16 (M) x 256 (K) x 8 (D/M)
     for (int m = 0; m < M; m++) {
@@ -189,38 +189,41 @@ void lookup_table_construction_PE(
             // construct distance lookup table
             single_row_lookup_table_construction:
             for (int k = 0; k < K; k++) {
-#pragma HLS pipeline II=1
+#pragma HLS pipeline II=16
 
                 // the L1 diff between residual_center_vector and sub-quantizers
                 float L1_dist[M][D/M];
 #pragma HLS array_partition variable=L1_dist complete
+                float result_distance[M]; // result of a row
 
                 for (int m = 0; m < M; m++) {
+#pragma HLS pipeline II=1
                     for (int j = 0; j < D / M; j++) {
 #pragma HLS UNROLL
                         L1_dist[m][j] = residual_center_vector[m][j] - product_quantizer[m][k][j];
                     }
+                    result_distance[m] = square_sum<8>(L1_dist[m]);
                 }
 
                 distance_LUT_PQ16_t dist_row;
 
                 // square distance
-                dist_row.dist_0 = square_sum<8>(L1_dist[0]);
-                dist_row.dist_1 = square_sum<8>(L1_dist[1]);
-                dist_row.dist_2 = square_sum<8>(L1_dist[2]);
-                dist_row.dist_3 = square_sum<8>(L1_dist[3]);
-                dist_row.dist_4 = square_sum<8>(L1_dist[4]);
-                dist_row.dist_5 = square_sum<8>(L1_dist[5]);
-                dist_row.dist_6 = square_sum<8>(L1_dist[6]);
-                dist_row.dist_7 = square_sum<8>(L1_dist[7]);
-                dist_row.dist_8 = square_sum<8>(L1_dist[8]);
-                dist_row.dist_9 = square_sum<8>(L1_dist[9]);
-                dist_row.dist_10 = square_sum<8>(L1_dist[10]);
-                dist_row.dist_11 = square_sum<8>(L1_dist[11]);
-                dist_row.dist_12 = square_sum<8>(L1_dist[12]);
-                dist_row.dist_13 = square_sum<8>(L1_dist[13]);
-                dist_row.dist_14 = square_sum<8>(L1_dist[14]);
-                dist_row.dist_15 = square_sum<8>(L1_dist[15]);
+                dist_row.dist_0 = result_distance[0];
+                dist_row.dist_1 = result_distance[1];
+                dist_row.dist_2 = result_distance[2];
+                dist_row.dist_3 = result_distance[3];
+                dist_row.dist_4 = result_distance[4];
+                dist_row.dist_5 = result_distance[5];
+                dist_row.dist_6 = result_distance[6];
+                dist_row.dist_7 = result_distance[7];
+                dist_row.dist_8 = result_distance[8];
+                dist_row.dist_9 = result_distance[9];
+                dist_row.dist_10 = result_distance[10];
+                dist_row.dist_11 = result_distance[11];
+                dist_row.dist_12 = result_distance[12];
+                dist_row.dist_13 = result_distance[13];
+                dist_row.dist_14 = result_distance[14];
+                dist_row.dist_15 = result_distance[15];
                 
                 s_result_table_construction_PE.write(dist_row);
             }
@@ -263,9 +266,8 @@ void lookup_table_construction_wrapper(
     hls::stream<distance_LUT_PQ16_t> &s_distance_LUT) {
 #pragma HLS dataflow 
 
-
     hls::stream<float> s_product_quantizer_init_replicated[pe_num_table_construction]; 
-#pragma HLS stream variable=s_product_quantizer_init_replicated depth=4
+#pragma HLS stream variable=s_product_quantizer_init_replicated depth=2
 // #pragma HLS resource variable=s_product_quantizer_init_replicated core=FIFO_SRL
 #pragma HLS array_partition variable=s_product_quantizer_init_replicated complete
 

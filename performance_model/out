@@ -1,75 +1,10 @@
-
-get_priority_queue_info:
-
-{'cycles_per_query': 16426, 'QPS': 8523.07317667113, 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 6966.4, 'LUT': 11510.4, 'URAM': 0}
-
-get_bitonic_sort_16_info:
-
-{'cycles_per_query': 6115.515625, 'QPS': 22892.59133402999, 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 15693, 'LUT': 20373, 'URAM': 0}
-
-get_parallel_merge_32_to_16_info:
-
-{'cycles_per_query': 6110.515625, 'QPS': 22911.323461348646, 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 9480, 'LUT': 11861, 'URAM': 0}
-
-get_options_preprocessing_OPQ:
-
-{'name': 'UNROLL 8', 'cycles_per_query': 2341.0, 'QPS': 59803.5027765912, 'HBM_bank': 0, 'BRAM_18K': 33, 'DSP48E': 40, 'FF': 5134, 'LUT': 3660, 'URAM': 0}
-{'name': 'UNROLL 4', 'cycles_per_query': 4373.0, 'QPS': 32014.635261833984, 'HBM_bank': 0, 'BRAM_18K': 37, 'DSP48E': 20, 'FF': 2659, 'LUT': 2152, 'URAM': 0}
+best_solution_QPS 14973.262032085562
+best_solution_stage_option_list
 {'name': 'UNROLL 2', 'cycles_per_query': 8461.0, 'QPS': 16546.507505023048, 'HBM_bank': 0, 'BRAM_18K': 33, 'DSP48E': 10, 'FF': 1534, 'LUT': 1428, 'URAM': 0}
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-
-get_options_stage_1_cluster_distance_computation:
-
-nlist=1024
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 1188, 'QPS': 117845.11784511786, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 128}
-nlist=2048
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 2212, 'QPS': 63291.13924050632, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 128}
-nlist=4096
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 4260, 'QPS': 32863.849765258215, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 128}
-nlist=8192
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 8356, 'QPS': 16754.42795595979, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 128}
-nlist=16384
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 16548, 'QPS': 8460.236886632825, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 256}
-nlist=32768
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 32932, 'QPS': 4251.1842584720025, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 0, 'URAM': 512}
-nlist=65536
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 65700, 'QPS': 2130.8980213089803, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 8, 'URAM': 0}
-nlist=131072
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 131236, 'QPS': 1066.7804565820354, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 8, 'URAM': 0}
-nlist=262144
-{'name': 'distance_computation_PE_optimized_version3', 'cycles_per_query': 262308, 'QPS': 533.7237141070802, 'BRAM_18K': 0, 'DSP48E': 894, 'FF': 96756, 'LUT': 77333, 'HBM_bank': 8, 'URAM': 0}
-
-get_options_stage_2_select_Voronoi_cells:
-
-insertion_per_cycle = 1
-{'cycles_per_query': 16426, 'QPS': 8523.07317667113, 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 6966.4, 'LUT': 11510.4, 'URAM': 0, 'name': 'single prirority queue'}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 8234, 'QPS': 17002.671848433325, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 20899.199999999997, 'LUT': 34531.2, 'HBM_bank': 0, 'URAM': 0}
-insertion_per_cycle = 2
-{'cycles_per_query': 16426, 'QPS': 8523.07317667113, 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 6966.4, 'LUT': 11510.4, 'URAM': 0, 'name': 'single prirority queue'}
-{'name': 'hierachical prirority queue level A: 4 queues, level B: 1 queue', 'cycles_per_query': 4138, 'QPS': 33832.76945384243, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 34832.0, 'LUT': 57552.0, 'HBM_bank': 0, 'URAM': 0}
-
-get_options_stage_3_distance_LUT_construction:
-
-{'name': 'single_lookup_table_construction_PE_optimized_version2', 'cycles_per_query': 9953, 'QPS': 14066.110720385814, 'HBM_bank': 0, 'BRAM_18K': 128, 'DSP48E': 864, 'FF': 94399, 'LUT': 90037, 'URAM': 0}
-
-get_options_stage_4_distance_estimation_by_LUT:
-
-{'name': 'systolic array with 63 PEs', 'cycles_per_query': 18432, 'QPS': 7595.48611111111, 'HBM_bank': 0, 'BRAM_18K': 1008, 'DSP48E': 1890, 'FF': 342531, 'LUT': 335727, 'URAM': 0}
-
-get_options_stage_5_sort_reduction:
-
-nlist=8192, nprobe=32, nstreams=64
-{'name': 'hierarchical priority queue: [1, 128] total: 129', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 280833.0, 'LUT': 464013.0, 'URAM': 0, 'cycles_per_query': 6122, 'QPS': 22868.343678536425}
-{'name': 'sort reduction (4 sort 3 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 136929.0, 'LUT': 192612.0, 'URAM': 0}
-nlist=262144, nprobe=32, nstreams=64
-{'name': 'hierarchical priority queue: [1, 2, 14, 128] total: 145', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 315665.0, 'LUT': 521565.0, 'URAM': 0, 'cycles_per_query': 210, 'QPS': 666666.6666666666}
-{'name': 'sort reduction (4 sort 3 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 136929.0, 'LUT': 192612.0, 'URAM': 0}
-nlist=8192, nprobe=32, nstreams=48
-{'name': 'hierarchical priority queue: [1, 96] total: 97', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 211169.0, 'LUT': 348909.0, 'URAM': 0, 'cycles_per_query': 6122, 'QPS': 22868.343678536425}
-{'name': 'sort reduction (3 sort 2 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 111756.0, 'LUT': 160378.0, 'URAM': 0}
-nlist=8192, nprobe=32, nstreams=32
-{'name': 'hierarchical priority queue: [1, 64] total: 65', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 141505.0, 'LUT': 233805.0, 'URAM': 0, 'cycles_per_query': 6122, 'QPS': 22868.343678536425}
-{'name': 'sort reduction (2 sort 1 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 86583.0, 'LUT': 128144.0, 'URAM': 0}
-nlist=8192, nprobe=32, nstreams=16
-{'name': 'hierarchical priority queue: [1, 32] total: 33', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 71841.0, 'LUT': 118701.0, 'URAM': 0, 'cycles_per_query': 6122, 'QPS': 22868.343678536425}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 61410.0, 'LUT': 95910.0, 'URAM': 0}
+{'name': 'distance_computation_PE_unoptimized 22 PEs', 'cycles_per_query': 9146, 'QPS': 15307.238136890443, 'BRAM_18K': 0, 'DSP48E': 880, 'FF': 160336, 'LUT': 120032, 'HBM_bank': 0, 'URAM': 352.0}
+{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 8219, 'QPS': 17033.702396885266, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 11102.699999999999, 'LUT': 18344.699999999997, 'HBM_bank': 0, 'URAM': 0}
+{'name': 'multiple_lookup_table_construction_PEs_unoptimized 3 PEs', 'cycles_per_query': 7298, 'QPS': 19183.33790079474, 'BRAM_18K': 3, 'DSP48E': 648, 'FF': 120864, 'LUT': 81528, 'URAM': 304, 'HBM_bank': 0}
+{'name': 'systolic array with 84 PEs', 'cycles_per_query': 9350, 'QPS': 14973.262032085562, 'HBM_bank': 0, 'BRAM_18K': 1344, 'DSP48E': 2520, 'FF': 456708, 'LUT': 447636, 'URAM': 0}
+{'name': 'sort reduction (6sort 5 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 0, 'DSP48E': 0, 'FF': 187275.0, 'LUT': 257080.0, 'URAM': 0, 'cycles_per_query': 2482, 'QPS': 56406.124093473}
+best_solution_PE_num_list [1, 1, 1, 1, 1, 1]
+total_valid_design: 2601122

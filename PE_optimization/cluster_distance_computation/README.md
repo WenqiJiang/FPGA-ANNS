@@ -4,7 +4,7 @@ Note: due to a bug in Vitis_hls 2019.2, these folders cannot by synthesized by v
 
 We don't need double buffering query vector. For nlist <= 8192, the initialization overhead is 128/(8192+128). For nlist = 16384, it might needs more PEs (e.g. 4 PE), the initialization overhead is 128/(4096 + 128), negligible as well.
 
-We use **distance_computation_PE_optimized_version3** as the final version, because version 1 and version 2 use too wide SIMD such that the integrated entire accelerator failed to place / route.
+Although we implemented several optimized versions that save resources, the Vitis HLS flow somehow fail at the placement stage, thus we choose to use **distance_computation_PE_unoptimized** as the final version.
 
 ## Nlist constraint & Multiple PEs
 
@@ -23,11 +23,51 @@ We need 2 copies of coarse-grained centroids, one in this centroid distance comp
 
 For the case of using multiple PEs (16384), simply multiple the resource consumption of optimized_version2 by PE number (2 or 4).
 
+For the case of using float at URAM type, the effective URAM size is reduced by half, thus can only choose nlist < 8192 as the option.
+
 ## distance_computation_PE_unoptimized
 
-A bad implementation as baseline. This implementation partitions the computation workload to 32 PEs.
+
+Performance:
+
+The SIMD width is set to 16, and due to the dependency of accumulation (could have been optimized by the versions below, but fails at placement), the II is 3.
+
+Per PE computation rounds N_comp = Centroid_Per_PE * 128 / 16 = Centroid_Per_PE * 8. For the case that the centroids are evenly distributed, Centroid_Per_PE = nlist / PE_num. For the case that the centroids are unevenly distributed, e.g., PE num is set to 21, then need manual setting on Centroid_Per_PE.
+
+Total time = query_num * (L_load + (L_comp + N_comp * II_comp)) 
+
+here, L_load = 128, L_comp = 81, II_comp = 3
+
+suppose query_num = 1024, N_comp = 8192 / 32 * 8 = 2048 (PE num = 32, nprobe = 8192), 
+
+then 1024 * (128 + 81 + 2048 * 3) = 6505472 CC (very close to HLS report 6506496)
+
+
+```
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |- Loop 1     |    32768|    32768|         2|          1|          1|  32768|    yes   |
+        |- Loop 2     |  6506496|  6506496|      6354|          -|          -|   1024|    no    |
+        | + Loop 2.1  |      128|      128|         2|          1|          1|    128|    yes   |
+        | + Loop 2.2  |     6221|     6221|        81|          3|          1|   2048|    yes   |
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+
+```
 
 Resource consumption per PE:
+
+The variable is URAM consumption. The minimum URAM consumption per PE is 8 (for computation concurrency reason). 
+
+Constraints:
+8 * 128 Kb = 1 Mb = 128 KB per PE -> Centroid_Per_PE * D * sizeof(float) <= 128 KB -> Centroid_Per_PE <=  256
+
+* Centroid_Per_PE <=  256 -> 8 URAM
+* 256 < Centroid_Per_PE <= 512 -> 16 URAM
+* 512 < Centroid_Per_PE <= 768 -> 24 URAM
+* 768 < Centroid_Per_PE <= 1024 -> 32 URAM
 
 ```
 
@@ -59,19 +99,11 @@ Resource consumption per PE:
 
 ```
 
-Resource consumption 32 PE:
 
-DSP48E = 40 * 32 = 1280
 
-FF = 7288 * 32 = 233216
+## Unused Versions
 
-LUT = 5456 * 32 = 174592
-
-URAM = 8 * 32 = 256
-
-Let's neglect this baseline anyway...
-
-## distance_computation_PE_optimized_version1
+### distance_computation_PE_optimized_version1
 
 This implementation use a single PE to compute the distance between the query vector and all cluster centers. The URAM consumption is not optimized, because the data format is float (URAM has fixed depth of 4096, thus using float limits the effective size of an URAM to 128Kb).
 
@@ -141,7 +173,7 @@ The storage is partitioned to 128 banks. Each bank is contains 2 URAM slices, ea
 +---------------------+---------+-------+---------+---------+-----+
 ```
 
-## distance_computation_PE_optimized_version2
+### distance_computation_PE_optimized_version2
 
 Optimize URAM usage. Use ap_uint<64> instead of struct.
 
@@ -218,11 +250,11 @@ Throughput = 10000 / 0.605 = 16528 QPS
 +---------------------+---------+-------+---------+---------+-----+
 ```
 
-## distance_computation_PE_optimized_version3
+### distance_computation_PE_optimized_version3
 
 The first two versions will experience placement / routing error when integrating the entire accelerator. Thus, we partition it such that each PE is only responsible for vectorized computation of 8 floats (128/8 = 16PEs). And there's a gather PE to sum up all the results.
 
-### Performance
+Performance:
 
 The performance should be the same as version 2.
 
@@ -244,7 +276,7 @@ Assume query_num = 10000, then 10000 * (128 + (8192 + 36)) = 83560000, very clos
 ```
 
 
-### Resource
+Resource:
 
 *Use this in the paper, since the 16 small PE + gather PE together is a PE.*
 
@@ -308,7 +340,7 @@ A single PE for partial computation:
 +---------------------+---------+-------+---------+---------+-----+
 ```
 
-## Unused Version
+### Another Unused Version
 
 There is one optimization approach not used in this project (optimized_1_distance_computation_PE, optimized_distance_computation_PE/). That is parallelized MAC accumulation instead of add tree. The reason is that the output rate of this method is not stable. Before outputing the first result, it takes 128 (D) * N (parallelism) cycles to finish accumulation (no value written into out FIFO), and then it suddenly outputs a lot of results.
 
