@@ -264,13 +264,41 @@ void PQ_lookup_computation(
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
     hls::stream<single_PQ_result>& s_single_PQ_result) {
 
-    // Manual control on the double buffer
-    float distance_LUT_A[16][256];
-#pragma HLS array_partition variable=distance_LUT_A dim=1
-#pragma HLS resource variable=distance_LUT_A core=RAM_1P_BRAM
-    float distance_LUT_B[16][256];
-#pragma HLS array_partition variable=distance_LUT_B dim=1
-#pragma HLS resource variable=distance_LUT_B core=RAM_1P_BRAM
+    // Manual control on the double buffer, first 256 is buffer A, second 256 is buffer B
+    //    2D array will fail to infer the dependency, II=2 even if pragma dependency 
+    //    is turned off, thus use 16 1-D arrays
+    float distance_LUT_0[512];
+#pragma HLS array_partition variable=distance_LUT_0 block factor=2 dim=1
+    float distance_LUT_1[512];
+#pragma HLS array_partition variable=distance_LUT_1 block factor=2 dim=1
+    float distance_LUT_2[512];
+#pragma HLS array_partition variable=distance_LUT_2 block factor=2 dim=1
+    float distance_LUT_3[512];
+#pragma HLS array_partition variable=distance_LUT_3 block factor=2 dim=1
+    float distance_LUT_4[512];
+#pragma HLS array_partition variable=distance_LUT_4 block factor=2 dim=1
+    float distance_LUT_5[512];
+#pragma HLS array_partition variable=distance_LUT_5 block factor=2 dim=1
+    float distance_LUT_6[512];
+#pragma HLS array_partition variable=distance_LUT_6 block factor=2 dim=1
+    float distance_LUT_7[512];
+#pragma HLS array_partition variable=distance_LUT_7 block factor=2 dim=1
+    float distance_LUT_8[512];
+#pragma HLS array_partition variable=distance_LUT_8 block factor=2 dim=1
+    float distance_LUT_9[512];
+#pragma HLS array_partition variable=distance_LUT_9 block factor=2 dim=1
+    float distance_LUT_10[512];
+#pragma HLS array_partition variable=distance_LUT_10 block factor=2 dim=1
+    float distance_LUT_11[512];
+#pragma HLS array_partition variable=distance_LUT_11 block factor=2 dim=1
+    float distance_LUT_12[512];
+#pragma HLS array_partition variable=distance_LUT_12 block factor=2 dim=1
+    float distance_LUT_13[512];
+#pragma HLS array_partition variable=distance_LUT_13 block factor=2 dim=1
+    float distance_LUT_14[512];
+#pragma HLS array_partition variable=distance_LUT_14 block factor=2 dim=1
+    float distance_LUT_15[512];
+#pragma HLS array_partition variable=distance_LUT_15 block factor=2 dim=1
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -286,12 +314,27 @@ void PQ_lookup_computation(
 
             int nprobe_mod = nprobe_id % 2;
 
-            for (int common_iter = 0; common_iter < max_iter; common_iter++) {
+            for (unsigned int common_iter = 0; common_iter < max_iter; common_iter++) {
 #pragma HLS pipeline II=1
 
 // if read A, then write B, no read A & write A situation
-#pragma HLS dependence variable=distance_LUT_A false
-#pragma HLS dependence variable=distance_LUT_B false
+
+#pragma HLS dependence variable=distance_LUT_0 false
+#pragma HLS dependence variable=distance_LUT_1 false
+#pragma HLS dependence variable=distance_LUT_2 false
+#pragma HLS dependence variable=distance_LUT_3 false
+#pragma HLS dependence variable=distance_LUT_4 false
+#pragma HLS dependence variable=distance_LUT_5 false
+#pragma HLS dependence variable=distance_LUT_6 false
+#pragma HLS dependence variable=distance_LUT_7 false
+#pragma HLS dependence variable=distance_LUT_8 false
+#pragma HLS dependence variable=distance_LUT_9 false
+#pragma HLS dependence variable=distance_LUT_10 false
+#pragma HLS dependence variable=distance_LUT_11 false
+#pragma HLS dependence variable=distance_LUT_12 false
+#pragma HLS dependence variable=distance_LUT_13 false
+#pragma HLS dependence variable=distance_LUT_14 false
+#pragma HLS dependence variable=distance_LUT_15 false
 
                 // load part
                 // last iter not read 
@@ -305,43 +348,41 @@ void PQ_lookup_computation(
 
                         // even: load to buffer A
                         if (nprobe_mod == 0) { 
-#pragma HLS dependence variable=distance_LUT_A false
-                            distance_LUT_A[0][common_iter] = dist_row.dist_0; 
-                            distance_LUT_A[1][common_iter] = dist_row.dist_1; 
-                            distance_LUT_A[2][common_iter] = dist_row.dist_2;
-                            distance_LUT_A[3][common_iter] = dist_row.dist_3; 
-                            distance_LUT_A[4][common_iter] = dist_row.dist_4; 
-                            distance_LUT_A[5][common_iter] = dist_row.dist_5; 
-                            distance_LUT_A[6][common_iter] = dist_row.dist_6; 
-                            distance_LUT_A[7][common_iter] = dist_row.dist_7; 
-                            distance_LUT_A[8][common_iter] = dist_row.dist_8; 
-                            distance_LUT_A[9][common_iter] = dist_row.dist_9; 
-                            distance_LUT_A[10][common_iter] = dist_row.dist_10; 
-                            distance_LUT_A[11][common_iter] = dist_row.dist_11; 
-                            distance_LUT_A[12][common_iter] = dist_row.dist_12; 
-                            distance_LUT_A[13][common_iter] = dist_row.dist_13; 
-                            distance_LUT_A[14][common_iter] = dist_row.dist_14; 
-                            distance_LUT_A[15][common_iter] = dist_row.dist_15; 
+                            distance_LUT_0[common_iter] = dist_row.dist_0; 
+                            distance_LUT_1[common_iter] = dist_row.dist_1; 
+                            distance_LUT_2[common_iter] = dist_row.dist_2;
+                            distance_LUT_3[common_iter] = dist_row.dist_3; 
+                            distance_LUT_4[common_iter] = dist_row.dist_4; 
+                            distance_LUT_5[common_iter] = dist_row.dist_5; 
+                            distance_LUT_6[common_iter] = dist_row.dist_6; 
+                            distance_LUT_7[common_iter] = dist_row.dist_7; 
+                            distance_LUT_8[common_iter] = dist_row.dist_8; 
+                            distance_LUT_9[common_iter] = dist_row.dist_9; 
+                            distance_LUT_10[common_iter] = dist_row.dist_10; 
+                            distance_LUT_11[common_iter] = dist_row.dist_11; 
+                            distance_LUT_12[common_iter] = dist_row.dist_12; 
+                            distance_LUT_13[common_iter] = dist_row.dist_13; 
+                            distance_LUT_14[common_iter] = dist_row.dist_14; 
+                            distance_LUT_15[common_iter] = dist_row.dist_15; 
                         }
                         // odd: load to buffer B
                         else { 
-#pragma HLS dependence variable=distance_LUT_B false
-                            distance_LUT_B[0][common_iter] = dist_row.dist_0; 
-                            distance_LUT_B[1][common_iter] = dist_row.dist_1; 
-                            distance_LUT_B[2][common_iter] = dist_row.dist_2;
-                            distance_LUT_B[3][common_iter] = dist_row.dist_3; 
-                            distance_LUT_B[4][common_iter] = dist_row.dist_4; 
-                            distance_LUT_B[5][common_iter] = dist_row.dist_5; 
-                            distance_LUT_B[6][common_iter] = dist_row.dist_6; 
-                            distance_LUT_B[7][common_iter] = dist_row.dist_7; 
-                            distance_LUT_B[8][common_iter] = dist_row.dist_8; 
-                            distance_LUT_B[9][common_iter] = dist_row.dist_9; 
-                            distance_LUT_B[10][common_iter] = dist_row.dist_10; 
-                            distance_LUT_B[11][common_iter] = dist_row.dist_11; 
-                            distance_LUT_B[12][common_iter] = dist_row.dist_12; 
-                            distance_LUT_B[13][common_iter] = dist_row.dist_13; 
-                            distance_LUT_B[14][common_iter] = dist_row.dist_14; 
-                            distance_LUT_B[15][common_iter] = dist_row.dist_15;
+                            distance_LUT_0[256 + common_iter] = dist_row.dist_0;  
+                            distance_LUT_1[256 + common_iter] = dist_row.dist_1; 
+                            distance_LUT_2[256 + common_iter] = dist_row.dist_2;
+                            distance_LUT_3[256 + common_iter] = dist_row.dist_3; 
+                            distance_LUT_4[256 + common_iter] = dist_row.dist_4; 
+                            distance_LUT_5[256 + common_iter] = dist_row.dist_5; 
+                            distance_LUT_6[256 + common_iter] = dist_row.dist_6; 
+                            distance_LUT_7[256 + common_iter] = dist_row.dist_7; 
+                            distance_LUT_8[256 + common_iter] = dist_row.dist_8; 
+                            distance_LUT_9[256 + common_iter] = dist_row.dist_9; 
+                            distance_LUT_10[256 + common_iter] = dist_row.dist_10; 
+                            distance_LUT_11[256 + common_iter] = dist_row.dist_11; 
+                            distance_LUT_12[256 + common_iter] = dist_row.dist_12; 
+                            distance_LUT_13[256 + common_iter] = dist_row.dist_13; 
+                            distance_LUT_14[256 + common_iter] = dist_row.dist_14; 
+                            distance_LUT_15[256 + common_iter] = dist_row.dist_15;
                         }
                     }
                 }
@@ -349,8 +390,6 @@ void PQ_lookup_computation(
                 // compute part
                 // first iter not compute
                 if (nprobe_id > 0) { 
-#pragma HLS dependence variable=distance_LUT_A false
-#pragma HLS dependence variable=distance_LUT_B false
 
                     // compute or not
                     if (common_iter < scanned_entries_every_cell) { 
@@ -359,49 +398,46 @@ void PQ_lookup_computation(
 
                         single_PQ_result out; 
                         out.vec_ID = PQ_local.vec_ID;                       
-#pragma HLS dependence variable=out false 
 
                         // if odd, compute using buffer A 
                         if (nprobe_mod ==  1) {
-#pragma HLS dependence variable=distance_LUT_A false
                             out.dist = 
-                                distance_LUT_A[0][PQ_local.PQ_code[0]] + 
-                                distance_LUT_A[1][PQ_local.PQ_code[1]] + 
-                                distance_LUT_A[2][PQ_local.PQ_code[2]] + 
-                                distance_LUT_A[3][PQ_local.PQ_code[3]] + 
-                                distance_LUT_A[4][PQ_local.PQ_code[4]] + 
-                                distance_LUT_A[5][PQ_local.PQ_code[5]] + 
-                                distance_LUT_A[6][PQ_local.PQ_code[6]] + 
-                                distance_LUT_A[7][PQ_local.PQ_code[7]] + 
-                                distance_LUT_A[8][PQ_local.PQ_code[8]] + 
-                                distance_LUT_A[9][PQ_local.PQ_code[9]] + 
-                                distance_LUT_A[10][PQ_local.PQ_code[10]] + 
-                                distance_LUT_A[11][PQ_local.PQ_code[11]] + 
-                                distance_LUT_A[12][PQ_local.PQ_code[12]] + 
-                                distance_LUT_A[13][PQ_local.PQ_code[13]] + 
-                                distance_LUT_A[14][PQ_local.PQ_code[14]] + 
-                                distance_LUT_A[15][PQ_local.PQ_code[15]];
+                                distance_LUT_0[PQ_local.PQ_code[0]] + 
+                                distance_LUT_1[PQ_local.PQ_code[1]] + 
+                                distance_LUT_2[PQ_local.PQ_code[2]] + 
+                                distance_LUT_3[PQ_local.PQ_code[3]] + 
+                                distance_LUT_4[PQ_local.PQ_code[4]] + 
+                                distance_LUT_5[PQ_local.PQ_code[5]] + 
+                                distance_LUT_6[PQ_local.PQ_code[6]] + 
+                                distance_LUT_7[PQ_local.PQ_code[7]] + 
+                                distance_LUT_8[PQ_local.PQ_code[8]] + 
+                                distance_LUT_9[PQ_local.PQ_code[9]] + 
+                                distance_LUT_10[PQ_local.PQ_code[10]] + 
+                                distance_LUT_11[PQ_local.PQ_code[11]] + 
+                                distance_LUT_12[PQ_local.PQ_code[12]] + 
+                                distance_LUT_13[PQ_local.PQ_code[13]] + 
+                                distance_LUT_14[PQ_local.PQ_code[14]] + 
+                                distance_LUT_15[PQ_local.PQ_code[15]];
                         }
                         // if even, compute using buffer B
                         else {
-#pragma HLS dependence variable=distance_LUT_B false
                             out.dist = 
-                                distance_LUT_B[0][PQ_local.PQ_code[0]] + 
-                                distance_LUT_B[1][PQ_local.PQ_code[1]] + 
-                                distance_LUT_B[2][PQ_local.PQ_code[2]] + 
-                                distance_LUT_B[3][PQ_local.PQ_code[3]] + 
-                                distance_LUT_B[4][PQ_local.PQ_code[4]] + 
-                                distance_LUT_B[5][PQ_local.PQ_code[5]] + 
-                                distance_LUT_B[6][PQ_local.PQ_code[6]] + 
-                                distance_LUT_B[7][PQ_local.PQ_code[7]] + 
-                                distance_LUT_B[8][PQ_local.PQ_code[8]] + 
-                                distance_LUT_B[9][PQ_local.PQ_code[9]] + 
-                                distance_LUT_B[10][PQ_local.PQ_code[10]] + 
-                                distance_LUT_B[11][PQ_local.PQ_code[11]] + 
-                                distance_LUT_B[12][PQ_local.PQ_code[12]] + 
-                                distance_LUT_B[13][PQ_local.PQ_code[13]] + 
-                                distance_LUT_B[14][PQ_local.PQ_code[14]] + 
-                                distance_LUT_B[15][PQ_local.PQ_code[15]];
+                                distance_LUT_0[((unsigned int) 256) + PQ_local.PQ_code[0]] + 
+                                distance_LUT_1[((unsigned int) 256) + PQ_local.PQ_code[1]] + 
+                                distance_LUT_2[((unsigned int) 256) + PQ_local.PQ_code[2]] + 
+                                distance_LUT_3[((unsigned int) 256) + PQ_local.PQ_code[3]] + 
+                                distance_LUT_4[((unsigned int) 256) + PQ_local.PQ_code[4]] + 
+                                distance_LUT_5[((unsigned int) 256) + PQ_local.PQ_code[5]] + 
+                                distance_LUT_6[((unsigned int) 256) + PQ_local.PQ_code[6]] + 
+                                distance_LUT_7[((unsigned int) 256) + PQ_local.PQ_code[7]] + 
+                                distance_LUT_8[((unsigned int) 256) + PQ_local.PQ_code[8]] + 
+                                distance_LUT_9[((unsigned int) 256) + PQ_local.PQ_code[9]] + 
+                                distance_LUT_10[((unsigned int) 256) + PQ_local.PQ_code[10]] + 
+                                distance_LUT_11[((unsigned int) 256) + PQ_local.PQ_code[11]] + 
+                                distance_LUT_12[((unsigned int) 256) + PQ_local.PQ_code[12]] + 
+                                distance_LUT_13[((unsigned int) 256) + PQ_local.PQ_code[13]] + 
+                                distance_LUT_14[((unsigned int) 256) + PQ_local.PQ_code[14]] + 
+                                distance_LUT_15[((unsigned int) 256) + PQ_local.PQ_code[15]];
                             }
                         // for padded element, replace its distance by large number
                         if ((common_iter == (scanned_entries_every_cell - 1)) && (last_element_valid == 0)) {

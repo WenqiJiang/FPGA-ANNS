@@ -49,6 +49,7 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
     best_solution_QPS = 0
     best_solution_stage_option_list = []
     best_solution_PE_num_list = []
+    global total_valid_design
 
     ##### TODO: add no OPQ version
 
@@ -96,7 +97,6 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
 
                                     if fit_resource_constraints(option_list, PE_num_list):
 
-                                        global total_valid_design
                                         total_valid_design = total_valid_design + 1 # each valide design counts
 
                                         bottleneck_ID, accelerator_QPS = get_bottleneck(option_list, PE_num_list)
@@ -112,6 +112,35 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                                     best_solution_QPS = accelerator_QPS
                                                     best_solution_stage_option_list = option_list
                                                     best_solution_PE_num_list = PE_num_list
+        else: # no OPQ
+            for option_stage_1 in options_stage_1_cluster_distance_computation:
+                for option_stage_2 in options_stage_2_select_Voronoi_cells:
+                    for option_stage_3 in options_stage_3_distance_LUT_construction:
+                        for option_stage_4 in options_stage_4_distance_estimation_by_LUT:
+                            for option_stage_5 in options_stage_5_sort_reduction:
+
+                                option_list = \
+                                    [option_stage_1, option_stage_2, \
+                                        option_stage_3, option_stage_4, option_stage_5]
+                                PE_num_list = [1, 1, 1, 1, 1]
+
+                                if fit_resource_constraints(option_list, PE_num_list):
+
+                                    total_valid_design = total_valid_design + 1 # each valide design counts
+
+                                    bottleneck_ID, accelerator_QPS = get_bottleneck(option_list, PE_num_list)
+                                    if accelerator_QPS > best_solution_QPS:
+                                        best_solution_QPS = accelerator_QPS
+                                        best_solution_stage_option_list = option_list
+                                        best_solution_PE_num_list = PE_num_list
+                                    elif accelerator_QPS == best_solution_QPS:
+                                        # TODO: add tied condition
+                                        if resource_consumption_A_less_than_B(
+                                            option_list, PE_num_list,
+                                            best_solution_stage_option_list, best_solution_PE_num_list):
+                                                best_solution_QPS = accelerator_QPS
+                                                best_solution_stage_option_list = option_list
+                                                best_solution_PE_num_list = PE_num_list
 
     return best_solution_QPS, best_solution_stage_option_list, best_solution_PE_num_list
 
@@ -121,11 +150,56 @@ def combine_stages():
 if __name__ == "__main__":
 
     # unit_test()
-    best_solution_QPS, best_solution_stage_option_list, best_solution_PE_num_list = \
-        get_best_hardware(nlist=8192, nprobe=17, OPQ_enable=True)
-    print("best_solution_QPS", best_solution_QPS)
-    print("best_solution_stage_option_list")
+
+    # tuple: (setting_name, nlist, nprobe, OPQ_or_not)
+    algorithm_settings = [ \
+        ("IVF2048", 2048, 28, False),
+        ("IVF4096", 4096, 29, False),
+        ("IVF8192", 8192, 22, False),
+        ("IVF16384", 16384, 29, False),
+        ("IVF32768", 32768, 29, False),
+        ("IVF65536", 65536, 33, False),
+        ("IVF131072", 131072, 40, False),
+        ("IVF262144", 262144, 45, False),
+        ("IVF1024,OPQ", 1024, 13, True),
+        ("IVF2048,OPQ", 2048, 13, True),
+        ("IVF4096,OPQ", 4096, 17, True),
+        ("IVF8192,OPQ", 8192, 17, True),
+        ("IVF16384,OPQ", 16384, 21, True),
+        ("IVF32768,OPQ", 32768, 24, True),
+        ("IVF65536,OPQ", 65536, 30, True),
+        ("IVF131072,OPQ", 131072, 37, True),
+        ("IVF262144,OPQ", 262144, 42, True)
+    ]
+
+    best_solution_name = None
+    best_solution_QPS = 0 
+    best_solution_stage_option_list = None 
+    best_solution_PE_num_list = None
+
+    for name, nlist, nprobe, OPQ_enable in algorithm_settings:
+        print(name, nlist, nprobe, OPQ_enable)
+        current_solution_QPS, current_solution_stage_option_list, current_solution_PE_num_list = \
+            get_best_hardware(nlist=nlist, nprobe=nprobe, OPQ_enable=OPQ_enable)
+
+        if current_solution_QPS > best_solution_QPS:
+            best_solution_name = name
+            best_solution_QPS = current_solution_QPS
+            best_solution_stage_option_list = current_solution_stage_option_list
+            best_solution_PE_num_list = current_solution_PE_num_list
+            
+        print("option name", name)
+        print("QPS", current_solution_QPS)
+        print("stage_option_list")
+        for option in current_solution_stage_option_list:
+            print(option)
+        print("PE_num_list", current_solution_PE_num_list)
+
+    print("\n\nn======== Result =========\n")
+    print("best option name", best_solution_name)
+    print("QPS", best_solution_QPS)
+    print("stage_option_list")
     for option in best_solution_stage_option_list:
         print(option)
-    print("best_solution_PE_num_list", best_solution_PE_num_list)
+    print("PE_num_list", best_solution_PE_num_list)
     print("total_valid_design:", total_valid_design)

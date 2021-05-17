@@ -6,6 +6,8 @@ We don't need double buffering query vector. For nlist <= 8192, the initializati
 
 Although we implemented several optimized versions that save resources, the Vitis HLS flow somehow fail at the placement stage, thus we choose to use **distance_computation_PE_unoptimized** as the final version.
 
+**TODO: try smaller SIMD PEs (like optmized version 5, but with smaller unroll factor, e.g., 8). That consumes <60 DSPs per PE  and should work.
+
 ## Nlist constraint & Multiple PEs
 
 There are 960 URAM slices on U280. Each with fixed width of 72 bit and size of 288Kb (given 64-bit real data width, the efficient size is 64 / 72 * 288 = 256Kb). 

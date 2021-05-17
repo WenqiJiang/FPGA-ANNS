@@ -1,4 +1,7 @@
+#pragma once 
+
 #include "constants.hpp"
+#include "types.hpp"
 
 template<const int query_num, const int nprobe>
 void dummy_distance_LUT_sender(
@@ -82,7 +85,6 @@ void dummy_distance_LUT_sender(
     
 }
 
-
 template<const int query_num, const int nprobe>
 void PQ_lookup_computation(
     // input streams
@@ -94,210 +96,79 @@ void PQ_lookup_computation(
     hls::stream<distance_LUT_PQ16_t>& s_distance_LUT_out,
     hls::stream<single_PQ_result>& s_single_PQ_result) {
 
-    // Manual control on the double buffer, first 256 is buffer A, second 256 is buffer B
-    //    2D array will fail to infer the dependency, II=2 even if pragma dependency 
-    //    is turned off, thus use 16 1-D arrays
-    float distance_LUT_0[512];
-#pragma HLS array_partition variable=distance_LUT_0 block factor=2 dim=1
-    float distance_LUT_1[512];
-#pragma HLS array_partition variable=distance_LUT_1 block factor=2 dim=1
-    float distance_LUT_2[512];
-#pragma HLS array_partition variable=distance_LUT_2 block factor=2 dim=1
-    float distance_LUT_3[512];
-#pragma HLS array_partition variable=distance_LUT_3 block factor=2 dim=1
-    float distance_LUT_4[512];
-#pragma HLS array_partition variable=distance_LUT_4 block factor=2 dim=1
-    float distance_LUT_5[512];
-#pragma HLS array_partition variable=distance_LUT_5 block factor=2 dim=1
-    float distance_LUT_6[512];
-#pragma HLS array_partition variable=distance_LUT_6 block factor=2 dim=1
-    float distance_LUT_7[512];
-#pragma HLS array_partition variable=distance_LUT_7 block factor=2 dim=1
-    float distance_LUT_8[512];
-#pragma HLS array_partition variable=distance_LUT_8 block factor=2 dim=1
-    float distance_LUT_9[512];
-#pragma HLS array_partition variable=distance_LUT_9 block factor=2 dim=1
-    float distance_LUT_10[512];
-#pragma HLS array_partition variable=distance_LUT_10 block factor=2 dim=1
-    float distance_LUT_11[512];
-#pragma HLS array_partition variable=distance_LUT_11 block factor=2 dim=1
-    float distance_LUT_12[512];
-#pragma HLS array_partition variable=distance_LUT_12 block factor=2 dim=1
-    float distance_LUT_13[512];
-#pragma HLS array_partition variable=distance_LUT_13 block factor=2 dim=1
-    float distance_LUT_14[512];
-#pragma HLS array_partition variable=distance_LUT_14 block factor=2 dim=1
-    float distance_LUT_15[512];
-#pragma HLS array_partition variable=distance_LUT_15 block factor=2 dim=1
+    float distance_LUT[16][256];
+#pragma HLS array_partition variable=distance_LUT dim=1
+#pragma HLS resource variable=distance_LUT core=RAM_2P_BRAM
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        for (int nprobe_id = 0; nprobe_id < nprobe + 1; nprobe_id++) {
+        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
 
             int scanned_entries_every_cell = 
                 s_scanned_entries_every_cell_PQ_lookup_computation.read();
             int last_element_valid = 
                 s_last_element_valid_PQ_lookup_computation.read();
 
-            int max_iter = scanned_entries_every_cell > K?
-                scanned_entries_every_cell : K;
-
-            int nprobe_mod = nprobe_id % 2;
-
-            for (unsigned int common_iter = 0; common_iter < max_iter; common_iter++) {
+            // Stage A: init distance LUT
+            for (int row_id = 0; row_id < K; row_id++) {
 #pragma HLS pipeline II=1
 
-// if read A, then write B, no read A & write A situation
+                // without duplication, HLS cannot achieve II=1
+                distance_LUT_PQ16_t dist_row = s_distance_LUT_in.read();
+                s_distance_LUT_out.write(dist_row);
+                
+                // col 0 ~ 7
+                distance_LUT[0][row_id] = dist_row.dist_0; 
+                distance_LUT[1][row_id] = dist_row.dist_1; 
+                distance_LUT[2][row_id] = dist_row.dist_2;
+                distance_LUT[3][row_id] = dist_row.dist_3; 
+                distance_LUT[4][row_id] = dist_row.dist_4; 
+                distance_LUT[5][row_id] = dist_row.dist_5; 
+                distance_LUT[6][row_id] = dist_row.dist_6; 
+                distance_LUT[7][row_id] = dist_row.dist_7; 
+                distance_LUT[8][row_id] = dist_row.dist_8; 
+                distance_LUT[9][row_id] = dist_row.dist_9; 
+                distance_LUT[10][row_id] = dist_row.dist_10; 
+                distance_LUT[11][row_id] = dist_row.dist_11; 
+                distance_LUT[12][row_id] = dist_row.dist_12; 
+                distance_LUT[13][row_id] = dist_row.dist_13; 
+                distance_LUT[14][row_id] = dist_row.dist_14; 
+                distance_LUT[15][row_id] = dist_row.dist_15;
+            }
 
-#pragma HLS dependence variable=distance_LUT_0 false
-#pragma HLS dependence variable=distance_LUT_1 false
-#pragma HLS dependence variable=distance_LUT_2 false
-#pragma HLS dependence variable=distance_LUT_3 false
-#pragma HLS dependence variable=distance_LUT_4 false
-#pragma HLS dependence variable=distance_LUT_5 false
-#pragma HLS dependence variable=distance_LUT_6 false
-#pragma HLS dependence variable=distance_LUT_7 false
-#pragma HLS dependence variable=distance_LUT_8 false
-#pragma HLS dependence variable=distance_LUT_9 false
-#pragma HLS dependence variable=distance_LUT_10 false
-#pragma HLS dependence variable=distance_LUT_11 false
-#pragma HLS dependence variable=distance_LUT_12 false
-#pragma HLS dependence variable=distance_LUT_13 false
-#pragma HLS dependence variable=distance_LUT_14 false
-#pragma HLS dependence variable=distance_LUT_15 false
+            // Stage B: compute estimated distance
+            for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
+#pragma HLS pipeline II=1
 
-                // load part
-                // last iter not read 
-                if (nprobe_id < nprobe) { 
+                single_PQ PQ_local = s_single_PQ.read();
 
-                    // load or not
-                    if (common_iter < K) { 
+                single_PQ_result out; 
+                out.vec_ID = PQ_local.vec_ID;
+                
+                out.dist = 
+                    distance_LUT[0][PQ_local.PQ_code[0]] + 
+                    distance_LUT[1][PQ_local.PQ_code[1]] + 
+                    distance_LUT[2][PQ_local.PQ_code[2]] + 
+                    distance_LUT[3][PQ_local.PQ_code[3]] + 
+                    distance_LUT[4][PQ_local.PQ_code[4]] + 
+                    distance_LUT[5][PQ_local.PQ_code[5]] + 
+                    distance_LUT[6][PQ_local.PQ_code[6]] + 
+                    distance_LUT[7][PQ_local.PQ_code[7]] + 
+                    distance_LUT[8][PQ_local.PQ_code[8]] + 
+                    distance_LUT[9][PQ_local.PQ_code[9]] + 
+                    distance_LUT[10][PQ_local.PQ_code[10]] + 
+                    distance_LUT[11][PQ_local.PQ_code[11]] + 
+                    distance_LUT[12][PQ_local.PQ_code[12]] + 
+                    distance_LUT[13][PQ_local.PQ_code[13]] + 
+                    distance_LUT[14][PQ_local.PQ_code[14]] + 
+                    distance_LUT[15][PQ_local.PQ_code[15]];
 
-                        distance_LUT_PQ16_t dist_row = s_distance_LUT_in.read();
-                        s_distance_LUT_out.write(dist_row);
-
-                        // even: load to buffer A, odd: load to buffer B
-                        unsigned int idx;
-                        if (nprobe_mod == 0) { 
-                            idx = common_iter;
-                        }
-                        else { 
-                            idx = 256 + common_iter;
-                        }
-
-                        distance_LUT_0[idx] = dist_row.dist_0; 
-                        distance_LUT_1[idx] = dist_row.dist_1; 
-                        distance_LUT_2[idx] = dist_row.dist_2;
-                        distance_LUT_3[idx] = dist_row.dist_3; 
-                        distance_LUT_4[idx] = dist_row.dist_4; 
-                        distance_LUT_5[idx] = dist_row.dist_5; 
-                        distance_LUT_6[idx] = dist_row.dist_6; 
-                        distance_LUT_7[idx] = dist_row.dist_7; 
-                        distance_LUT_8[idx] = dist_row.dist_8; 
-                        distance_LUT_9[idx] = dist_row.dist_9; 
-                        distance_LUT_10[idx] = dist_row.dist_10; 
-                        distance_LUT_11[idx] = dist_row.dist_11; 
-                        distance_LUT_12[idx] = dist_row.dist_12; 
-                        distance_LUT_13[idx] = dist_row.dist_13; 
-                        distance_LUT_14[idx] = dist_row.dist_14; 
-                        distance_LUT_15[idx] = dist_row.dist_15; 
-                    }
+                // for padded element, replace its distance by large number
+                if ((entry_id == (scanned_entries_every_cell - 1)) && (last_element_valid == 0)) {
+                    out.vec_ID = -1;
+                    out.dist = LARGE_NUM;
                 }
-
-                // compute part
-                // first iter not compute
-                if (nprobe_id > 0) { 
-
-                    // compute or not
-                    if (common_iter < scanned_entries_every_cell) { 
-
-                        single_PQ PQ_local = s_single_PQ.read();
-
-                        single_PQ_result out; 
-                        out.vec_ID = PQ_local.vec_ID;                       
-
-                        unsigned int idx_0;
-                        unsigned int idx_1;
-                        unsigned int idx_2;
-                        unsigned int idx_3;
-                        unsigned int idx_4;
-                        unsigned int idx_5;
-                        unsigned int idx_6;
-                        unsigned int idx_7;
-                        unsigned int idx_8;
-                        unsigned int idx_9;
-                        unsigned int idx_10;
-                        unsigned int idx_11;
-                        unsigned int idx_12;
-                        unsigned int idx_13;
-                        unsigned int idx_14;
-                        unsigned int idx_15;
-
-                        // if odd, compute using buffer A
-                        // if even, compute using buffer B
-
-                        if (nprobe_mod == 0)  {
-                            idx_0 = ((unsigned int) 256) + PQ_local.PQ_code[0];
-                            idx_1 = ((unsigned int) 256) + PQ_local.PQ_code[1];
-                            idx_2 = ((unsigned int) 256) + PQ_local.PQ_code[2];
-                            idx_3 = ((unsigned int) 256) + PQ_local.PQ_code[3];
-                            idx_4 = ((unsigned int) 256) + PQ_local.PQ_code[4];
-                            idx_5 = ((unsigned int) 256) + PQ_local.PQ_code[5];
-                            idx_6 = ((unsigned int) 256) + PQ_local.PQ_code[6];
-                            idx_7 = ((unsigned int) 256) + PQ_local.PQ_code[7];
-                            idx_8 = ((unsigned int) 256) + PQ_local.PQ_code[8];
-                            idx_9 = ((unsigned int) 256) + PQ_local.PQ_code[9];
-                            idx_10 = ((unsigned int) 256) + PQ_local.PQ_code[10];
-                            idx_11 = ((unsigned int) 256) + PQ_local.PQ_code[11];
-                            idx_12 = ((unsigned int) 256) + PQ_local.PQ_code[12];
-                            idx_13 = ((unsigned int) 256) + PQ_local.PQ_code[13];
-                            idx_14 = ((unsigned int) 256) + PQ_local.PQ_code[14];
-                            idx_15 = ((unsigned int) 256) + PQ_local.PQ_code[15];
-                        }
-                        else {
-                            idx_0 = PQ_local.PQ_code[0];
-                            idx_1 = PQ_local.PQ_code[1];
-                            idx_2 = PQ_local.PQ_code[2];
-                            idx_3 = PQ_local.PQ_code[3];
-                            idx_4 = PQ_local.PQ_code[4];
-                            idx_5 = PQ_local.PQ_code[5];
-                            idx_6 = PQ_local.PQ_code[6];
-                            idx_7 = PQ_local.PQ_code[7];
-                            idx_8 = PQ_local.PQ_code[8];
-                            idx_9 = PQ_local.PQ_code[9];
-                            idx_10 = PQ_local.PQ_code[10];
-                            idx_11 = PQ_local.PQ_code[11];
-                            idx_12 = PQ_local.PQ_code[12];
-                            idx_13 = PQ_local.PQ_code[13];
-                            idx_14 = PQ_local.PQ_code[14];
-                            idx_15 = PQ_local.PQ_code[15];
-                        }
-                        out.dist = 
-                            distance_LUT_0[idx_0] + 
-                            distance_LUT_1[idx_1] + 
-                            distance_LUT_2[idx_2] + 
-                            distance_LUT_3[idx_3] + 
-                            distance_LUT_4[idx_4] + 
-                            distance_LUT_5[idx_5] + 
-                            distance_LUT_6[idx_6] + 
-                            distance_LUT_7[idx_7] + 
-                            distance_LUT_8[idx_8] + 
-                            distance_LUT_9[idx_9] + 
-                            distance_LUT_10[idx_10] + 
-                            distance_LUT_11[idx_11] + 
-                            distance_LUT_12[idx_12] + 
-                            distance_LUT_13[idx_13] + 
-                            distance_LUT_14[idx_14] + 
-                            distance_LUT_15[idx_15];
-                    
-                        // for padded element, replace its distance by large number
-                        if ((common_iter == (scanned_entries_every_cell - 1)) && (last_element_valid == 0)) {
-                            out.vec_ID = -1;
-                            out.dist = LARGE_NUM;
-                        }
-                        s_single_PQ_result.write(out);
-                    }
-                }
+                s_single_PQ_result.write(out);
             }
         }
     }
