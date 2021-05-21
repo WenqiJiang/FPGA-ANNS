@@ -53,46 +53,40 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
 
     ##### TODO: add no OPQ version
 
-    options_preprocessing_OPQ = get_options_preprocessing_OPQ()
-    options_stage_1_cluster_distance_computation = \
-        get_options_stage_1_cluster_distance_computation(nlist)
-    options_stage_2_select_Voronoi_cells = get_options_stage_2_select_Voronoi_cells(nlist, nprobe)
-    options_stage_3_distance_LUT_construction = get_options_stage_3_distance_LUT_construction(nlist, nprobe)
+    options_stage_1_OPQ = get_options_stage_1_OPQ()
+    options_stage_2_cluster_distance_computation = \
+        get_options_stage_2_cluster_distance_computation(nlist)
+    options_stage_3_select_Voronoi_cells = get_options_stage_3_select_Voronoi_cells(nlist, nprobe)
+    options_stage_4_distance_LUT_construction = get_options_stage_4_distance_LUT_construction(nlist, nprobe)
 
-    ##### TODO: here, stage_4_PE_num in related to HBM channel number
-    #####    Add shell consumption, use 28 channels at most (2 for network, 2 reserved)
+    ##### TODO: here, stage_5_PE_num in related to HBM channel number
+    #####    Add shell consumption, use 27 channels at most (2 for network, 2 reserved, 1 for value init)
     #####    HBM_bank should be included in the shell part
-    for stage_4_PE_num in range(1, 28 * 3 + 1):
+    for stage_5_PE_num in range(1, 27 * 3 + 1):
         # N_compute_per_nprobe * nprobe == N_insertion_per_stream
         # PE_num == input_stream_num
-        N_compute_per_nprobe = int(TOTAL_VECTORS / nlist / stage_4_PE_num) + 1
+        N_compute_per_nprobe = int(TOTAL_VECTORS / nlist / stage_5_PE_num) + 1
         N_insertion_per_stream = int(nprobe * N_compute_per_nprobe)
 
-        options_stage_4_distance_estimation_by_LUT = \
-            get_options_stage_4_distance_estimation_by_LUT(
-                stage_4_PE_num, nprobe, N_compute_per_nprobe)
-        options_stage_5_sort_reduction = \
-            get_options_stage_5_sort_reduction(
-                stage_4_PE_num, N_insertion_per_stream)
-
-        # tune PE num
-        #   the PE_num of stage 4 and 5 is fixed in the loop counter
-        #   OPQ (stage 0) and stage 2 already reflects the PE num in its options
-        #   thus, the tunable stages are 1 and 3
-
+        options_stage_5_distance_estimation_by_LUT = \
+            get_options_stage_5_distance_estimation_by_LUT(
+                stage_5_PE_num, nprobe, N_compute_per_nprobe)
+        options_stage_6_sort_reduction = \
+            get_options_stage6_sort_reduction(
+                stage_5_PE_num, N_insertion_per_stream)
 
         if OPQ_enable:
 
-            for option_preprocessing in options_preprocessing_OPQ:
-                for option_stage_1 in options_stage_1_cluster_distance_computation:
-                    for option_stage_2 in options_stage_2_select_Voronoi_cells:
-                        for option_stage_3 in options_stage_3_distance_LUT_construction:
-                            for option_stage_4 in options_stage_4_distance_estimation_by_LUT:
-                                for option_stage_5 in options_stage_5_sort_reduction:
+            for option_stage_1_OPQ in options_stage_1_OPQ:
+                for option_stage_2 in options_stage_2_cluster_distance_computation:
+                    for option_stage_3 in options_stage_3_select_Voronoi_cells:
+                        for option_stage_4 in options_stage_4_distance_LUT_construction:
+                            for option_stage_5 in options_stage_5_distance_estimation_by_LUT:
+                                for option_stage_6 in options_stage_6_sort_reduction:
 
                                     option_list = \
-                                        [option_preprocessing, option_stage_1, option_stage_2, \
-                                            option_stage_3, option_stage_4, option_stage_5]
+                                        [option_stage_1_OPQ, option_stage_2, option_stage_3, \
+                                            option_stage_4, option_stage_5, option_stage_6]
                                     PE_num_list = [1, 1, 1, 1, 1, 1]
 
                                     if fit_resource_constraints(option_list, PE_num_list):
@@ -113,15 +107,15 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                                     best_solution_stage_option_list = option_list
                                                     best_solution_PE_num_list = PE_num_list
         else: # no OPQ
-            for option_stage_1 in options_stage_1_cluster_distance_computation:
-                for option_stage_2 in options_stage_2_select_Voronoi_cells:
-                    for option_stage_3 in options_stage_3_distance_LUT_construction:
-                        for option_stage_4 in options_stage_4_distance_estimation_by_LUT:
-                            for option_stage_5 in options_stage_5_sort_reduction:
+            for option_stage_2 in options_stage_2_cluster_distance_computation:
+                for option_stage_3 in options_stage_3_select_Voronoi_cells:
+                    for option_stage_4 in options_stage_4_distance_LUT_construction:
+                        for option_stage_5 in options_stage_5_distance_estimation_by_LUT:
+                            for option_stage_6 in options_stage_6_sort_reduction:
 
                                 option_list = \
-                                    [option_stage_1, option_stage_2, \
-                                        option_stage_3, option_stage_4, option_stage_5]
+                                    [option_stage_2, option_stage_3, \
+                                        option_stage_4, option_stage_5, option_stage_6]
                                 PE_num_list = [1, 1, 1, 1, 1]
 
                                 if fit_resource_constraints(option_list, PE_num_list):
@@ -144,8 +138,6 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
 
     return best_solution_QPS, best_solution_stage_option_list, best_solution_PE_num_list
 
-def combine_stages():
-    pass
 
 if __name__ == "__main__":
 

@@ -6,7 +6,7 @@ from utils import *
 
 """ The 6 Stages (optional preprocessing + 5 stages) """
 
-def get_options_preprocessing_OPQ():
+def get_options_stage_1_OPQ():
     
     option_list = []
 
@@ -24,6 +24,7 @@ def get_options_preprocessing_OPQ():
     perf_resource_dict['cycles_per_query'] = cycles_per_query
     perf_resource_dict['QPS'] = QPS
     
+    #####  HLS Prediction #####
     perf_resource_dict["HBM_bank"] = 0
     perf_resource_dict["BRAM_18K"] = 33
     perf_resource_dict["DSP48E"] = 40
@@ -46,7 +47,8 @@ def get_options_preprocessing_OPQ():
     QPS = 1 / (cycles_per_query / FREQ)
     perf_resource_dict['cycles_per_query'] = cycles_per_query
     perf_resource_dict['QPS'] = QPS
-    
+   
+    #####  HLS Prediction ##### 
     perf_resource_dict["HBM_bank"] = 0
     perf_resource_dict["BRAM_18K"] = 37
     perf_resource_dict["DSP48E"] = 20
@@ -70,12 +72,21 @@ def get_options_preprocessing_OPQ():
     perf_resource_dict['cycles_per_query'] = cycles_per_query
     perf_resource_dict['QPS'] = QPS
 
-    perf_resource_dict["HBM_bank"] = 0
-    perf_resource_dict["BRAM_18K"] = 33
-    perf_resource_dict["DSP48E"] = 10
-    perf_resource_dict["FF"] = 1534
-    perf_resource_dict["LUT"] = 1428 
+    #####  HLS Prediction #####
+    # perf_resource_dict["HBM_bank"] = 0
+    # perf_resource_dict["BRAM_18K"] = 33
+    # perf_resource_dict["DSP48E"] = 10
+    # perf_resource_dict["FF"] = 1534
+    # perf_resource_dict["LUT"] = 1428 
+    # perf_resource_dict["URAM"] = 0
+
+    #####  Vivado Measured #####
+    perf_resource_dict["LUT"] = 1479
+    perf_resource_dict["FF"] = 1646
+    perf_resource_dict["BRAM_18K"] = 2 * 18.5
     perf_resource_dict["URAM"] = 0
+    perf_resource_dict["DSP48E"] = 20
+    perf_resource_dict["HBM_bank"] = 0
 
     option_list.append(perf_resource_dict)
 
@@ -92,7 +103,8 @@ def get_options_preprocessing_OPQ():
     QPS = 1 / (cycles_per_query / FREQ)
     perf_resource_dict['cycles_per_query'] = cycles_per_query
     perf_resource_dict['QPS'] = QPS
-    
+   
+    #####  HLS Prediction ##### 
     perf_resource_dict["HBM_bank"] = 0
     perf_resource_dict["BRAM_18K"] = 31
     perf_resource_dict["DSP48E"] = 5
@@ -104,7 +116,7 @@ def get_options_preprocessing_OPQ():
 
     return option_list
 
-def get_options_stage_1_cluster_distance_computation(nlist):
+def get_options_stage_2_cluster_distance_computation(nlist):
     
     """ The performance / resource of a single PE
         currently only the most optimized option is included """
@@ -126,17 +138,31 @@ def get_options_stage_1_cluster_distance_computation(nlist):
         perf_resource_dict['cycles_per_query'] = cycles_per_query
         perf_resource_dict['QPS'] = QPS
 
-        perf_resource_dict["BRAM_18K"] = 0
+        #####  HLS Prediction #####
+        # perf_resource_dict["BRAM_18K"] = 0
+        # perf_resource_dict["DSP48E"] = 40 * PE_num
+        # perf_resource_dict["FF"] = 7288 * PE_num
+        # perf_resource_dict["LUT"] = 5456 * PE_num
+
+        #####  Vivado Measured #####
+        perf_resource_dict["LUT"] = 5376 * PE_num
+        perf_resource_dict["FF"] = 6316 * PE_num
+        perf_resource_dict["BRAM_18K"] = 2 * 0 * PE_num
         perf_resource_dict["DSP48E"] = 40 * PE_num
-        perf_resource_dict["FF"] = 7288 * PE_num
-        perf_resource_dict["LUT"] = 5456 * PE_num
+
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * PE_num * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * PE_num * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * PE_num * 2
 
         # on-chip or off-chip storage given different nlist size
         i = np.ceil(centroids_Per_PE / 256) # centroids_Per_PE <= 256, URAM = 8
         if i * 8 * PE_num < MAX_URAM:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = i * 8 * PE_num
         else:
+            #####  HLS Prediction & Vivado Measured #####
             # Per PE: SIMD width = 16 float = 512 bit, II=3, then
             perf_resource_dict["HBM_bank"] = int(np.ceil(PE_num / 3))
             perf_resource_dict["URAM"] = 0
@@ -146,13 +172,13 @@ def get_options_stage_1_cluster_distance_computation(nlist):
 
     return option_list
 
-def get_options_stage_2_select_Voronoi_cells(nlist, nprobe):
+def get_options_stage_3_select_Voronoi_cells(nlist, nprobe):
     
     """ 
-    Insertion_per_cycle should equal to the PE num of stage 1, suppose
+    Insertion_per_cycle should equal to the PE num of stage 2, suppose
         it can output 1 distance per cycle  
     Here, we try insertion_per_cycle from 1 to 8, that should cover most cases
-        (larger insertion per cycle will lead to overutilization of stage 1 PEs)
+        (larger insertion per cycle will lead to overutilization of stage 2 PEs)
     """
 
     option_list = []
@@ -162,6 +188,11 @@ def get_options_stage_2_select_Voronoi_cells(nlist, nprobe):
     N_insertion_per_queue = nlist
     perf_resource_dict = get_priority_queue_info(queue_size, N_insertion_per_queue)
     perf_resource_dict["name"] = "single prirority queue"
+       
+    #####   FIFO Consumption (Vivado Measured)   #####
+    perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] 
+    perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] 
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] 
 
     option_list.append(perf_resource_dict)
     
@@ -170,7 +201,7 @@ def get_options_stage_2_select_Voronoi_cells(nlist, nprobe):
         queue_size_level_A = nprobe
         queue_size_level_B = nprobe
         # 2 level of queues, 
-        #  the first level collect the output of stage 1 in parallel
+        #  the first level collect the output of stage 2 in parallel
         #  the second level collect the result of level 1
         queue_num_level_A = int(insertion_per_cycle * 2)
         queue_num_level_B = 1
@@ -203,11 +234,16 @@ def get_options_stage_2_select_Voronoi_cells(nlist, nprobe):
         perf_resource_dict["URAM"] = queue_num_level_A * perf_resource_dict_level_A["URAM"] + \
             queue_num_level_B * perf_resource_dict_level_B["URAM"]
 
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * (queue_num_level_A + queue_num_level_B) * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * (queue_num_level_A + queue_num_level_B) * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * (queue_num_level_A + queue_num_level_B) * 2
+
         option_list.append(perf_resource_dict)
 
     return option_list
 
-def get_options_stage_3_distance_LUT_construction(nlist, nprobe):
+def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
     
     """ Now we only use the most optimized version, i.e.,
           single_lookup_table_construction_PE_optimized_version2 """
@@ -230,36 +266,55 @@ def get_options_stage_3_distance_LUT_construction(nlist, nprobe):
         perf_resource_dict['cycles_per_query'] = cycles_per_query
         perf_resource_dict['QPS'] = QPS
         
-        perf_resource_dict["BRAM_18K"] = 1 * PE_num
-        perf_resource_dict["DSP48E"] = 216 * PE_num
-        perf_resource_dict["FF"] = 40288 * PE_num
-        perf_resource_dict["LUT"] = 27176 * PE_num
+        #####  HLS Prediction #####
+        # perf_resource_dict["BRAM_18K"] = 1 * PE_num
+        # perf_resource_dict["DSP48E"] = 216 * PE_num
+        # perf_resource_dict["FF"] = 40288 * PE_num
+        # perf_resource_dict["LUT"] = 27176 * PE_num
+        # perf_resource_dict["URAM"] = 16 * PE_num
+
+        #####   Vivado Measured   #####
+        perf_resource_dict["LUT"] = 24746 * PE_num
+        perf_resource_dict["FF"] = 35870 * PE_num
+        perf_resource_dict["BRAM_18K"] = 2 * 0.5 * PE_num
         perf_resource_dict["URAM"] = 16 * PE_num
+        perf_resource_dict["DSP48E"] = 216 * PE_num
 
         if nlist <= 1024:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 32
         elif nlist <= 2048:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 64
         elif nlist <= 4096:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 128
         elif nlist <= 8192:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 256
         elif nlist <= 16384:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 0
             perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 512
         else:
+            #####  HLS Prediction & Vivado Measured #####
             perf_resource_dict["HBM_bank"] = 1
+
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 16 * (PE_num + 1)
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 16 * (PE_num + 1)
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 16 * (PE_num + 1)
 
         if (fit_resource_constraints([perf_resource_dict], [1])):
             option_list.append(perf_resource_dict)
 
     return option_list
 
-def get_options_stage_4_distance_estimation_by_LUT(PE_num, nprobe, N_compute_per_nprobe):
+def get_options_stage_5_distance_estimation_by_LUT(PE_num, nprobe, N_compute_per_nprobe):
     
     """ this function returns the performance and resource consumption of
           the entire systolic array """
@@ -281,19 +336,59 @@ def get_options_stage_4_distance_estimation_by_LUT(PE_num, nprobe, N_compute_per
     perf_resource_dict['cycles_per_query'] = cycles_per_query
     perf_resource_dict['QPS'] = QPS
 
-    perf_resource_dict["HBM_bank"] = 0 * PE_num 
-    perf_resource_dict["BRAM_18K"] = 16 * PE_num
-    perf_resource_dict["DSP48E"] = 30 * PE_num
-    perf_resource_dict["FF"] = 5437 * PE_num
-    perf_resource_dict["LUT"] = 5329 * PE_num
+    #####  HLS Prediction #####
+    # perf_resource_dict["HBM_bank"] = 0 * PE_num 
+    # perf_resource_dict["BRAM_18K"] = 16 * PE_num
+    # perf_resource_dict["DSP48E"] = 30 * PE_num
+    # perf_resource_dict["FF"] = 5437 * PE_num
+    # perf_resource_dict["LUT"] = 5329 * PE_num
+    # perf_resource_dict["URAM"] = 0 * PE_num
+
+    #####   Vivado Measured   #####
+    perf_resource_dict["LUT"] = 3937 * PE_num
+    perf_resource_dict["FF"] = 3954 * PE_num
+    perf_resource_dict["BRAM_18K"] = 2 * 8 * PE_num
     perf_resource_dict["URAM"] = 0 * PE_num
+    perf_resource_dict["DSP48E"] = 30 * PE_num
+    perf_resource_dict["HBM_bank"] = 0 * PE_num
+
+    #####   FIFO Consumption (Vivado Measured)   #####
+    perf_resource_dict["LUT"] += component["FIFO_d2_w8"]["LUT"] * 16 * PE_num
+    perf_resource_dict["FF"] += component["FIFO_d2_w8"]["FF"] * 16 * PE_num
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w8"]["BRAM_18K"] * 16 * PE_num
+
+    perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 17 * 3 * (PE_num / 3)
+    perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 17 * 3 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 17 * 3 * (PE_num / 3)
+
+    perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 7 * (PE_num / 3)
+    perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 7 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 7 * (PE_num / 3)
+
+
+    #####   AXI interface & Parser (Vivado Measured)   #####
+    # AXI interface
+    perf_resource_dict["LUT"] = 1159 * (PE_num / 3)
+    perf_resource_dict["FF"] = 3117 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] = 2 * 15 * (PE_num / 3)
+    perf_resource_dict["URAM"] = 0 * (PE_num / 3)
+    perf_resource_dict["DSP48E"] = 0 * (PE_num / 3)
+    perf_resource_dict["HBM_bank"] = 1 * (PE_num / 3)
+
+    # Type conversion (axi512 -> tuples paser)
+    perf_resource_dict["LUT"] = 290 * (PE_num / 3)
+    perf_resource_dict["FF"] = 1070 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] = 2 * 0 * (PE_num / 3)
+    perf_resource_dict["URAM"] = 0 * (PE_num / 3)
+    perf_resource_dict["DSP48E"] = 0 * (PE_num / 3)
+    perf_resource_dict["HBM_bank"] = 0 * (PE_num / 3)
 
     option_list.append(perf_resource_dict)
 
     return option_list
 
 
-def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream):
+def get_options_stage6_sort_reduction(input_stream_num, N_insertion_per_stream):
 
     """
         return 1 or 2 options 
@@ -378,7 +473,13 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
         # lower level is faster than upper level
         perf_resource_dict["cycles_per_query"] = perf_resource_dict_level_A["cycles_per_query"]
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
-    
+   
+        #####   FIFO Consumption (Vivado Measured)   #####
+        # Note I use depth=512 here, in practical it could be smaller but will consume more LUT/FF
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * np.sum(queue_num_array) * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * np.sum(queue_num_array) * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * np.sum(queue_num_array) * 2
+
         option_list.append(perf_resource_dict) 
 
     """ Option 2: sort reduction network """
@@ -417,6 +518,16 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             1 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             0 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 152
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 152
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 152
+        
 
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
@@ -453,7 +564,17 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             2 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             1 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
-            
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 216
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 216
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 216
+
+
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
 
@@ -489,7 +610,17 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             3 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             2 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
-            
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 280
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 280
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 280
+
+ 
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
 
@@ -525,7 +656,17 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             4 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             3 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
-            
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 344
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 344
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 344
+
+  
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
 
@@ -561,7 +702,17 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             5 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             4 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
-            
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 408
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 408
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 408
+
+   
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
 
@@ -597,7 +748,17 @@ def get_options_stage_5_sort_reduction(input_stream_num, N_insertion_per_stream)
             21 * perf_resource_dict_level_A["URAM"] + \
             6 * perf_resource_dict_bitonic_sort_16["URAM"] + \
             5 * perf_resource_dict_parallel_merge_32_to_16["URAM"]
-            
+           
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2
+
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 472
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 472
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 472
+
+    
         perf_resource_dict["cycles_per_query"] = N_insertion_per_stream
         perf_resource_dict["QPS"] = 1 / (perf_resource_dict["cycles_per_query"] / FREQ)
 
