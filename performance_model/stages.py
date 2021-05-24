@@ -305,9 +305,9 @@ def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
             perf_resource_dict["HBM_bank"] = 1
 
         #####   FIFO Consumption (Vivado Measured)   #####
-        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 16 * (PE_num + 1)
-        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 16 * (PE_num + 1)
-        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 16 * (PE_num + 1)
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 17 * PE_num
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 17 * PE_num
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 17 * PE_num
 
         if (fit_resource_constraints([perf_resource_dict], [1])):
             option_list.append(perf_resource_dict)
@@ -357,31 +357,31 @@ def get_options_stage_5_distance_estimation_by_LUT(PE_num, nprobe, N_compute_per
     perf_resource_dict["FF"] += component["FIFO_d2_w8"]["FF"] * 16 * PE_num
     perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w8"]["BRAM_18K"] * 16 * PE_num
 
-    perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 17 * 3 * (PE_num / 3)
-    perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 17 * 3 * (PE_num / 3)
-    perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 17 * 3 * (PE_num / 3)
+    perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * 19 * 3 * (PE_num / 3)
+    perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * 19 * 3 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * 19 * 3 * (PE_num / 3)
 
-    perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 7 * (PE_num / 3)
-    perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 7 * (PE_num / 3)
-    perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 7 * (PE_num / 3)
+    perf_resource_dict["LUT"] += component["FIFO_d2_w512"]["LUT"] * (PE_num / 3)
+    perf_resource_dict["FF"] += component["FIFO_d2_w512"]["FF"] * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w512"]["BRAM_18K"] * (PE_num / 3)
 
 
     #####   AXI interface & Parser (Vivado Measured)   #####
     # AXI interface
-    perf_resource_dict["LUT"] = 1159 * (PE_num / 3)
-    perf_resource_dict["FF"] = 3117 * (PE_num / 3)
-    perf_resource_dict["BRAM_18K"] = 2 * 15 * (PE_num / 3)
-    perf_resource_dict["URAM"] = 0 * (PE_num / 3)
-    perf_resource_dict["DSP48E"] = 0 * (PE_num / 3)
-    perf_resource_dict["HBM_bank"] = 1 * (PE_num / 3)
+    perf_resource_dict["LUT"] += 1159 * (PE_num / 3)
+    perf_resource_dict["FF"] += 3117 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += 2 * 7.5 * (PE_num / 3)
+    perf_resource_dict["URAM"] += 0 * (PE_num / 3)
+    perf_resource_dict["DSP48E"] += 0 * (PE_num / 3)
+    perf_resource_dict["HBM_bank"] += 1 * (PE_num / 3)
 
     # Type conversion (axi512 -> tuples paser)
-    perf_resource_dict["LUT"] = 290 * (PE_num / 3)
-    perf_resource_dict["FF"] = 1070 * (PE_num / 3)
-    perf_resource_dict["BRAM_18K"] = 2 * 0 * (PE_num / 3)
-    perf_resource_dict["URAM"] = 0 * (PE_num / 3)
-    perf_resource_dict["DSP48E"] = 0 * (PE_num / 3)
-    perf_resource_dict["HBM_bank"] = 0 * (PE_num / 3)
+    perf_resource_dict["LUT"] += 290 * (PE_num / 3)
+    perf_resource_dict["FF"] += 1070 * (PE_num / 3)
+    perf_resource_dict["BRAM_18K"] += 2 * 0 * (PE_num / 3)
+    perf_resource_dict["URAM"] += 0 * (PE_num / 3)
+    perf_resource_dict["DSP48E"] += 0 * (PE_num / 3)
+    perf_resource_dict["HBM_bank"] += 0 * (PE_num / 3)
 
     option_list.append(perf_resource_dict)
 

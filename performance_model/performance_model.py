@@ -51,18 +51,14 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
     best_solution_PE_num_list = []
     global total_valid_design
 
-    ##### TODO: add no OPQ version
-
     options_stage_1_OPQ = get_options_stage_1_OPQ()
     options_stage_2_cluster_distance_computation = \
         get_options_stage_2_cluster_distance_computation(nlist)
     options_stage_3_select_Voronoi_cells = get_options_stage_3_select_Voronoi_cells(nlist, nprobe)
     options_stage_4_distance_LUT_construction = get_options_stage_4_distance_LUT_construction(nlist, nprobe)
 
-    ##### TODO: here, stage_5_PE_num in related to HBM channel number
-    #####    Add shell consumption, use 27 channels at most (2 for network, 2 reserved, 1 for value init)
-    #####    HBM_bank should be included in the shell part
-    for stage_5_PE_num in range(1, 27 * 3 + 1):
+    # only allow 3x PE number, because each HBM can deliver 3 numbers per cycle
+    for stage_5_PE_num in range(3, 27 * 3 + 1, 3): 
         # N_compute_per_nprobe * nprobe == N_insertion_per_stream
         # PE_num == input_stream_num
         N_compute_per_nprobe = int(TOTAL_VECTORS / nlist / stage_5_PE_num) + 1
@@ -89,7 +85,7 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                             option_stage_4, option_stage_5, option_stage_6]
                                     PE_num_list = [1, 1, 1, 1, 1, 1]
 
-                                    if fit_resource_constraints(option_list, PE_num_list):
+                                    if fit_resource_constraints(option_list, PE_num_list, count_shell=True):
 
                                         total_valid_design = total_valid_design + 1 # each valide design counts
 
@@ -99,7 +95,6 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                             best_solution_stage_option_list = option_list
                                             best_solution_PE_num_list = PE_num_list
                                         elif accelerator_QPS == best_solution_QPS:
-                                            # TODO: add tied condition
                                             if resource_consumption_A_less_than_B(
                                                 option_list, PE_num_list,
                                                 best_solution_stage_option_list, best_solution_PE_num_list):
@@ -118,7 +113,7 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                         option_stage_4, option_stage_5, option_stage_6]
                                 PE_num_list = [1, 1, 1, 1, 1]
 
-                                if fit_resource_constraints(option_list, PE_num_list):
+                                if fit_resource_constraints(option_list, PE_num_list, count_shell=True):
 
                                     total_valid_design = total_valid_design + 1 # each valide design counts
 
@@ -128,7 +123,6 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
                                         best_solution_stage_option_list = option_list
                                         best_solution_PE_num_list = PE_num_list
                                     elif accelerator_QPS == best_solution_QPS:
-                                        # TODO: add tied condition
                                         if resource_consumption_A_less_than_B(
                                             option_list, PE_num_list,
                                             best_solution_stage_option_list, best_solution_PE_num_list):
@@ -187,7 +181,7 @@ if __name__ == "__main__":
             print(option)
         print("PE_num_list", current_solution_PE_num_list)
 
-    print("\n\nn======== Result =========\n")
+    print("\n\n======== Result =========\n")
     print("best option name", best_solution_name)
     print("QPS", best_solution_QPS)
     print("stage_option_list")
@@ -195,3 +189,18 @@ if __name__ == "__main__":
         print(option)
     print("PE_num_list", best_solution_PE_num_list)
     print("total_valid_design:", total_valid_design)
+
+    if len(best_solution_stage_option_list) == 5: # without OPQ
+        total_consumption_dict = get_resource_consumption(
+            best_solution_stage_option_list, 
+            PE_num_list=[1,1,1,1,1], 
+            count_shell=True)
+        print("Total resource consumption:\n{}".format(total_consumption_dict))
+        print("Utilization rate:\n{}".format(get_utilization_rate(total_consumption_dict)))
+    elif len(best_solution_stage_option_list) == 6: # with OPQ
+        total_consumption_dict = get_resource_consumption(
+            best_solution_stage_option_list, 
+            PE_num_list=[1,1,1,1,1,1], 
+            count_shell=True)
+        print("Total resource consumption:\n{}".format(total_consumption_dict))
+        print("Utilization rate:\n{}".format(get_utilization_rate(total_consumption_dict)))

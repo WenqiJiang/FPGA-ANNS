@@ -81,7 +81,7 @@ def resource_consumption_A_less_than_B(
     else:
         return False
 
-def fit_resource_constraints(perf_resource_dict_list, PE_num_list):
+def fit_resource_constraints(perf_resource_dict_list, PE_num_list, count_shell=False):
     """
     Given a list of stages (each stage is a perf_resource_dict),
        return whether it is within the resource constraint
@@ -102,6 +102,14 @@ def fit_resource_constraints(perf_resource_dict_list, PE_num_list):
         consumed_LUT = consumed_LUT + perf_resource_dict["LUT"] * PE_num_list[i] 
         consumed_URAM = consumed_URAM + perf_resource_dict["URAM"] * PE_num_list[i] 
 
+    if count_shell:
+        consumed_HBM_bank += shell_consumption["HBM_bank"]
+        consumed_BRAM_18K += shell_consumption["BRAM_18K"]
+        consumed_DSP48E += shell_consumption["DSP48E"]
+        consumed_FF += shell_consumption["FF"]
+        consumed_LUT += shell_consumption["LUT"]
+        consumed_URAM += shell_consumption["URAM"]
+
     if consumed_HBM_bank <= MAX_HBM_bank and consumed_BRAM_18K <= MAX_BRAM_18K and \
         consumed_DSP48E <= MAX_DSP48E and consumed_FF <= MAX_FF and \
         consumed_LUT < MAX_LUT and consumed_URAM < MAX_URAM:
@@ -110,33 +118,57 @@ def fit_resource_constraints(perf_resource_dict_list, PE_num_list):
         return False
 
 
-# def get_resource_consumption(perf_resource_dict_list, PE_num_list):
-#     """
-#     Given a list of stages (each stage is a perf_resource_dict),
-#        return whether it is within the resource constraint
-#     """
-#     consumed_HBM_bank = 0
-#     consumed_BRAM_18K = 0
-#     consumed_DSP48E = 0
-#     consumed_FF = 0
-#     consumed_LUT = 0
-#     consumed_URAM = 0
+def get_resource_consumption(perf_resource_dict_list, PE_num_list, count_shell=False):
+    """
+    Given a list of stages (each stage is a perf_resource_dict),
+       return the resource consumption dictionary
+    """
+    consumed_HBM_bank = 0
+    consumed_BRAM_18K = 0
+    consumed_DSP48E = 0
+    consumed_FF = 0
+    consumed_LUT = 0
+    consumed_URAM = 0
 
-#     for i, perf_resource_dict in enumerate(perf_resource_dict_list):
+    for i, perf_resource_dict in enumerate(perf_resource_dict_list):
 
-#         consumed_HBM_bank = consumed_HBM_bank + perf_resource_dict["HBM_bank"] * PE_num_list[i]
-#         consumed_BRAM_18K = consumed_BRAM_18K + perf_resource_dict["BRAM_18K"] * PE_num_list[i] 
-#         consumed_DSP48E = consumed_DSP48E + perf_resource_dict["DSP48E"] * PE_num_list[i] 
-#         consumed_FF = consumed_FF + perf_resource_dict["FF"] * PE_num_list[i] 
-#         consumed_LUT = consumed_LUT + perf_resource_dict["LUT"] * PE_num_list[i] 
-#         consumed_URAM = consumed_URAM + perf_resource_dict["URAM"] * PE_num_list[i] 
+        consumed_HBM_bank = consumed_HBM_bank + perf_resource_dict["HBM_bank"] * PE_num_list[i]
+        consumed_BRAM_18K = consumed_BRAM_18K + perf_resource_dict["BRAM_18K"] * PE_num_list[i] 
+        consumed_DSP48E = consumed_DSP48E + perf_resource_dict["DSP48E"] * PE_num_list[i] 
+        consumed_FF = consumed_FF + perf_resource_dict["FF"] * PE_num_list[i] 
+        consumed_LUT = consumed_LUT + perf_resource_dict["LUT"] * PE_num_list[i] 
+        consumed_URAM = consumed_URAM + perf_resource_dict["URAM"] * PE_num_list[i] 
 
-#     if consumed_HBM_bank <= MAX_HBM_bank and consumed_BRAM_18K <= MAX_BRAM_18K and \
-#         consumed_DSP48E <= MAX_DSP48E and consumed_FF <= MAX_FF and \
-#         consumed_LUT < MAX_LUT and consumed_URAM < MAX_URAM:
-#         return True
-#     else: 
-#         return False
+    perf_resource_dict = dict()
+    
+    if not count_shell:
+        perf_resource_dict["HBM_bank"] = consumed_HBM_bank
+        perf_resource_dict["BRAM_18K"] = consumed_BRAM_18K
+        perf_resource_dict["DSP48E"] = consumed_DSP48E
+        perf_resource_dict["FF"] = consumed_FF
+        perf_resource_dict["LUT"] = consumed_LUT
+        perf_resource_dict["URAM"] = consumed_URAM
+    else:
+        perf_resource_dict["HBM_bank"] = consumed_HBM_bank + shell_consumption["HBM_bank"]
+        perf_resource_dict["BRAM_18K"] = consumed_BRAM_18K + shell_consumption["BRAM_18K"]
+        perf_resource_dict["DSP48E"] = consumed_DSP48E + shell_consumption["DSP48E"]
+        perf_resource_dict["FF"] = consumed_FF + shell_consumption["FF"]
+        perf_resource_dict["LUT"] = consumed_LUT + shell_consumption["LUT"]
+        perf_resource_dict["URAM"] = consumed_URAM + shell_consumption["URAM"]
+
+    return perf_resource_dict
+
+def get_utilization_rate(perf_resource_dict):
+
+    utilization_rate = dict()
+
+    utilization_rate["BRAM_18K"] = "{}%".format(perf_resource_dict["BRAM_18K"] / TOTAL_BRAM_18K * 100)
+    utilization_rate["DSP48E"] = "{}%".format(perf_resource_dict["DSP48E"] / TOTAL_DSP48E * 100)
+    utilization_rate["FF"] = "{}%".format(perf_resource_dict["FF"] / TOTAL_FF * 100)
+    utilization_rate["LUT"] = "{}%".format(perf_resource_dict["LUT"] / TOTAL_LUT * 100)
+    utilization_rate["URAM"] = "{}%".format(perf_resource_dict["URAM"] / TOTAL_URAM * 100)
+
+    return utilization_rate
 
 def unit_test():
     """ Print the options of each function unit """

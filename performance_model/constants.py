@@ -51,6 +51,25 @@ component["FIFO_d2_w512"]["HBM_bank"] = 0
 
 #####     Shell     #####
 PE_num_dict = dict()
+
+PE_num_dict["network_kernel"] = 1
+component["network_kernel"] = dict()
+component["network_kernel"]["LUT"] = 126540
+component["network_kernel"]["FF"] = 197124
+component["network_kernel"]["BRAM_18K"] = 2 * 430
+component["network_kernel"]["URAM"] = 9
+component["network_kernel"]["DSP48E"] = 0
+component["network_kernel"]["HBM_bank"] = 0
+
+PE_num_dict["cmac_kernel"] = 1
+component["cmac_kernel"] = dict()
+component["cmac_kernel"]["LUT"] = 17256
+component["cmac_kernel"]["FF"] = 58280
+component["cmac_kernel"]["BRAM_18K"] = 2 * 18
+component["cmac_kernel"]["URAM"] = 9
+component["cmac_kernel"]["DSP48E"] = 0
+component["cmac_kernel"]["HBM_bank"] = 0
+
 PE_num_dict["hmss"] = 1
 component["hmss"] = dict()
 component["hmss"]["LUT"] = 55643 
@@ -121,14 +140,12 @@ def add_resources(component_dict, resource_list, PE_num_dict=None):
 
     return total_resource_consumption
 
-##### TODO: add network kernel #####
-
-component_list_shell = ["hmss", "System_DPA", "xdma", "static_region"]
+component_list_shell = ["network_kernel", "cmac_kernel", "hmss", "System_DPA", "xdma", "static_region"]
 
 shell_consumption = add_resources(component, component_list_shell)
 
 """ Resource related constants """
-MAX_UTIL_PERC = 0.8 
+MAX_UTIL_PERC = 0.6
 
 TOTAL_BRAM_18K = 4032 
 TOTAL_DSP48E = 9024
@@ -137,8 +154,8 @@ TOTAL_LUT = 1303680
 TOTAL_URAM = 960
 
 MAX_HBM_bank = 32 - 2 - 2 - 1 # reserve 30, 31 unused due to their overlap with PCIe; 2 for Network; 1 for value init
-MAX_BRAM_18K = TOTAL_BRAM_18K * MAX_UTIL_PERC - shell_consumption["BRAM_18K"]
-MAX_DSP48E = TOTAL_DSP48E * MAX_UTIL_PERC - shell_consumption["DSP48E"]
-MAX_FF = TOTAL_FF * MAX_UTIL_PERC - shell_consumption["FF"]
-MAX_LUT = TOTAL_LUT * MAX_UTIL_PERC - shell_consumption["LUT"]
-MAX_URAM = TOTAL_URAM * MAX_UTIL_PERC - shell_consumption["URAM"]
+MAX_BRAM_18K = TOTAL_BRAM_18K * MAX_UTIL_PERC
+MAX_DSP48E = TOTAL_DSP48E * MAX_UTIL_PERC
+MAX_FF = TOTAL_FF * MAX_UTIL_PERC
+MAX_LUT = TOTAL_LUT * MAX_UTIL_PERC
+MAX_URAM = TOTAL_URAM * MAX_UTIL_PERC

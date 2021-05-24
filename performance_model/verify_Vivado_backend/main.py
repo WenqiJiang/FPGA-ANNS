@@ -104,7 +104,7 @@ PE_num_dict["axi"] = 21 # for stoing PQ Codes
 component["axi"] = dict()
 component["axi"]["LUT"] = 1159
 component["axi"]["FF"] = 3117
-component["axi"]["BRAM_18K"] = 2 * 15
+component["axi"]["BRAM_18K"] = 2 * 7.5
 component["axi"]["URAM"] = 0
 component["axi"]["DSP48E"] = 0
 component["axi"]["HBM_bank"] = 1
@@ -173,7 +173,7 @@ component["stage4_PE"]["URAM"] = 16
 component["stage4_PE"]["DSP48E"] = 216
 component["stage4_PE"]["HBM_bank"] = 0
 
-PE_num_dict["FIFO_d512_w32"] += 16 * (PE_num_dict["stage4_PE"] + 1)
+PE_num_dict["FIFO_d512_w32"] += 17 * (PE_num_dict["stage4_PE"])
 
 ### Stage 5
 PE_num_dict["stage5_PE"] = 63
@@ -185,9 +185,9 @@ component["stage5_PE"]["URAM"] = 0
 component["stage5_PE"]["DSP48E"] = 30
 component["stage5_PE"]["HBM_bank"] = 0
 
-PE_num_dict["FIFO_d2_w8"] += 16 * PE_num_dict["stage5_PE"]
-PE_num_dict["FIFO_d2_w32"] += 17 * 3 * (PE_num_dict["stage5_PE"] / 3)
-PE_num_dict["FIFO_d512_w32"] += 7 * (PE_num_dict["stage5_PE"] / 3)
+PE_num_dict["FIFO_d2_w8"] += 16 * 3 * (PE_num_dict["stage5_PE"] / 3)
+PE_num_dict["FIFO_d2_w32"] += 19 * 3 * (PE_num_dict["stage5_PE"] / 3)
+PE_num_dict["FIFO_d2_w512"] += (PE_num_dict["stage5_PE"] / 3)
 
 ### Stage 6
 
@@ -259,7 +259,9 @@ component_list_shell = ["hmss", "System_DPA", "xdma", "static_region"]
 
 component_list_all = component_list_top_kernel + component_list_shell
 
-estimated_consumption = add_resources(component, ["vadd", "hmss", "System_DPA", "xdma", "static_region"])
+print(component_list_all)
+estimated_consumption = add_resources(component, component_list_all, PE_num_dict)
+# estimated_consumption = add_resources(component, ["vadd", "hmss", "System_DPA", "xdma", "static_region"])
 # print(add_resources(component, component_list_all, PE_num_dict))
 
 # the real consumption of the entire board
