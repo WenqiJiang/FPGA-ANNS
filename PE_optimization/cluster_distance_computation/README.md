@@ -1,12 +1,11 @@
 # Performance & Resource Analysis
 
-Note: due to a bug in Vitis_hls 2019.2, these folders cannot by synthesized by vitis_hls -f synthesis.tcl (dataflow check error). To walk around this, build the project to hardware directly using the entire Vitis flow with "time make check TARGET=hw DEVICE=xilinx_u280_xdma_201920_3 VER=host_cpp".
+Note: due to a bug in Vitis_hls 2019.2, some folders cannot by synthesized by vitis_hls -f synthesis.tcl (dataflow check error). To walk around this, build the project to hardware directly using the entire Vitis flow with "time make check TARGET=hw DEVICE=xilinx_u280_xdma_201920_3 VER=host_cpp".
 
 We don't need double buffering query vector. For nlist <= 8192, the initialization overhead is 128/(8192+128). For nlist = 16384, it might needs more PEs (e.g. 4 PE), the initialization overhead is 128/(4096 + 128), negligible as well.
 
-Although we implemented several optimized versions that save resources, the Vitis HLS flow somehow fail at the placement stage, thus we choose to use **distance_computation_PE_unoptimized** as the final version.
+Although we implemented several optimized versions that save resources, the Vitis HLS flow somehow fail at the placement stage, thus we choose to use **distance_computation_PE_systolic_optimized** as the final version.
 
-**TODO: try smaller SIMD PEs (like optmized version 5, but with smaller unroll factor, e.g., 8). That consumes <60 DSPs per PE  and should work.
 
 ## Nlist constraint & Multiple PEs
 
@@ -26,6 +25,201 @@ We need 2 copies of coarse-grained centroids, one in this centroid distance comp
 For the case of using multiple PEs (16384), simply multiple the resource consumption of optimized_version2 by PE number (2 or 4).
 
 For the case of using float at URAM type, the effective URAM size is reduced by half, thus can only choose nlist < 8192 as the option.
+
+## distance_computation_PE_unoptimized
+
+The systolic array implementation. With computation and forwarding in the same function. These prevents loop merging thus have bad performance.
+
+## distance_computation_PE
+
+Use 2 function, computation and forward, for a single systolic array PE in a dataflow region. This solves the performance problem in distance_computation_PE_unoptimized.
+
+Performance & Resource:
+
+Use the second last PE (last middle PE), because this consumes the same time as other PE except the last one (which may have smaller amount of data to compute without even centroid distribution to PEs, e.g., 17 PE for 8192 centroids) while consuming the most resource (should be same as other middle PE, slightly larger than head and tail systolic PE since they do not need to forward some data).
+
+Here we use 16 PEs for 8192 centroids, thus each PE computes 8192 / 16 = 512 rows.
+
+10000 Queries
+
+```
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.783 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline |
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type   |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |  126028579|  126028579| 0.900 sec | 0.900 sec |  126028580|  126028580| dataflow |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |                                                   |                                                |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+        |                      Instance                     |                     Module                     |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |compute_cell_distance_middle_10000_512_8192_65_U0  |compute_cell_distance_middle_10000_512_8192_65  |  126028579|  126028579| 0.900 sec | 0.900 sec |  126028579|  126028579|   none  |
+        |forward_cell_distance_middle_10000_512_66_U0       |forward_cell_distance_middle_10000_512_66       |   76800002|   76800002| 0.549 sec | 0.549 sec |   76800002|   76800002|   none  |
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+compute_cell_distance_middle_10000_512_8192_65_U0: 
+
+        * Loop: 
+        +-------------+-----------+-----------+----------+-----------+-----------+---------+----------+
+        |             |    Latency (cycles)   | Iteration|  Initiation Interval  |   Trip  |          |
+        |  Loop Name  |    min    |    max    |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +-------------+-----------+-----------+----------+-----------+-----------+---------+----------+
+        |- Loop 1     |    1048576|    1048576|         2|          1|          1|  1048576|    yes   |
+        |- Loop 2     |  124980000|  124980000|     12498|          -|          -|    10000|    no    |
+        | + Loop 2.1  |        128|        128|         2|          1|          1|      128|    yes   |
+        | + Loop 2.2  |      12365|      12365|        81|          3|          1|     4096|    yes   |
+        +-------------+-----------+-----------+----------+-----------+-----------+---------+----------+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       22|    -|
+|FIFO                 |        0|     -|       99|       66|    -|
+|Instance             |        0|    40|     7441|     5853|   16|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       45|    -|
+|Register             |        -|     -|        7|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|    40|     7547|     5986|   16|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     1|    ~0   |        1|    5|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|  ~0  |    ~0   |    ~0   |    1|
++---------------------+---------+------+---------+---------+-----+
+
+```
+
+
+## distance_computation_PE_optimized
+
+Optimize URAM usage by using ap_uint<64> at the cost of marginal LUT and FF consumption, but this is acceptable. This would also be more friendly for routing since one SLR ony has 320 URAMs. 
+
+
+Performance & Resource:
+
+Use the second last PE (last middle PE), because this consumes the same time as other PE except the last one (which may have smaller amount of data to compute without even centroid distribution to PEs, e.g., 17 PE for 8192 centroids) while consuming the most resource (should be same as other middle PE, slightly larger than head and tail systolic PE since they do not need to forward some data).
+
+Here we use 16 PEs for 8192 centroids, thus each PE computes 8192 / 16 = 512 rows.
+
+10000 Queries
+
+Performance Model
+
+total CC = query_num * (L_load_query + (L_compute + N_compute * II_compute))
+
+L_load_query = 128, L_compute = 81, II_compute = 3, N_compute = centroid_per_PE * 8 (unroll factor = 16, D = 128, thus need 128 / 16 = 8 iterations to compute one value)
+
+we have estimated total CC = 10000 * (128 + 81 + 512 * 8 * 3) = 124,970,000, very close to the real CC
+
+```
+
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.783 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline |
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type   |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |  126028579|  126028579| 0.900 sec | 0.900 sec |  126028580|  126028580| dataflow |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |                                                   |                                                |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+        |                      Instance                     |                     Module                     |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |compute_cell_distance_middle_10000_512_8192_65_U0  |compute_cell_distance_middle_10000_512_8192_65  |  126028579|  126028579| 0.900 sec | 0.900 sec |  126028579|  126028579|   none  |
+        |forward_cell_distance_middle_10000_512_66_U0       |forward_cell_distance_middle_10000_512_66       |   76800002|   76800002| 0.549 sec | 0.549 sec |   76800002|   76800002|   none  |
+        +---------------------------------------------------+------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+
+compute_cell_distance_middle:
+
+        +-------------+-----------+-----------+----------+-----------+-----------+--------+----------+
+        |             |    Latency (cycles)   | Iteration|  Initiation Interval  |  Trip  |          |
+        |  Loop Name  |    min    |    max    |  Latency |  achieved |   target  |  Count | Pipelined|
+        +-------------+-----------+-----------+----------+-----------+-----------+--------+----------+
+        |- Loop 1     |    1048576|    1048576|         3|          2|          1|  524288|    yes   |
+        |- Loop 2     |  124980000|  124980000|     12498|          -|          -|   10000|    no    |
+        | + Loop 2.1  |        128|        128|         2|          1|          1|     128|    yes   |
+        | + Loop 2.2  |      12365|      12365|        81|          3|          1|    4096|    yes   |
+        +-------------+-----------+-----------+----------+-----------+-----------+--------+----------+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       22|    -|
+|FIFO                 |        0|     -|       99|       66|    -|
+|Instance             |        0|    40|     7578|     5729|    8|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       45|    -|
+|Register             |        -|     -|        7|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        0|    40|     7684|     5862|    8|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        0|     1|    ~0   |        1|    2|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |        0|  ~0  |    ~0   |    ~0   |  ~0 |
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------------------------------------------+------------------------------------------------+---------+----+------+------+-----+
+    |                      Instance                     |                     Module                     | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +---------------------------------------------------+------------------------------------------------+---------+----+------+------+-----+
+    |compute_cell_distance_middle_10000_512_8192_65_U0  |compute_cell_distance_middle_10000_512_8192_65  |        0|  40|  7525|  5457|    8|
+    |forward_cell_distance_middle_10000_512_66_U0       |forward_cell_distance_middle_10000_512_66       |        0|   0|    53|   272|    0|
+    +---------------------------------------------------+------------------------------------------------+---------+----+------+------+-----+
+    |Total                                              |                                                |        0|  40|  7578|  5729|    8|
+    +---------------------------------------------------+------------------------------------------------+---------+----+------+------+-----+
+```
 
 ## distance_computation_PE_unoptimized
 
