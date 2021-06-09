@@ -39,4 +39,4 @@ void broadcast_init_centroid_vectors(
 
 template<const int total_len>
 void write_result(
-    hls::stream<dist_cell_ID_t>& s_result, ap_uint<64>* results_out) 
+    hls::stream<dist_cell_ID_t>& s_result, ap_uint<64>* results_out);

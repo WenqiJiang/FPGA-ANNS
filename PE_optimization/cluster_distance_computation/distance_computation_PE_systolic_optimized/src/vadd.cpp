@@ -152,7 +152,7 @@ void broadcast_init_centroid_vectors(
     const float* table_DDR1,
     hls::stream<float>& s_centroid_vectors) {
 
-    for (int i = 0; i < NLIST; i++) {
+    for (int i = 0; i < NLIST * D; i++) {
         s_centroid_vectors.write(table_DDR1[i]);
     }
 }

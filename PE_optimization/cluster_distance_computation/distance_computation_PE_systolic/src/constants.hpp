@@ -24,7 +24,9 @@
 #define NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER 2 //9
 #define NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER 1 //8
 
-#define QUERY_NUM 10000
+// #define QUERY_NUM 10 // sw_emu
+#define QUERY_NUM 5000
+// #define QUERY_NUM 10000
 
 #define LARGE_NUM 99999999 // used to init the heap
 

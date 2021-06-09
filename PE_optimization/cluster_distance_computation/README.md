@@ -26,11 +26,11 @@ For the case of using multiple PEs (16384), simply multiple the resource consump
 
 For the case of using float at URAM type, the effective URAM size is reduced by half, thus can only choose nlist < 8192 as the option.
 
-## distance_computation_PE_unoptimized
+## distance_computation_PE_systolic_unoptimized
 
 The systolic array implementation. With computation and forwarding in the same function. These prevents loop merging thus have bad performance.
 
-## distance_computation_PE
+## distance_computation_PE_systolic
 
 Use 2 function, computation and forward, for a single systolic array PE in a dataflow region. This solves the performance problem in distance_computation_PE_unoptimized.
 
@@ -116,12 +116,14 @@ compute_cell_distance_middle_10000_512_8192_65_U0:
 ```
 
 
-## distance_computation_PE_optimized
+## distance_computation_PE_systolic_optimized
 
 Optimize URAM usage by using ap_uint<64> at the cost of marginal LUT and FF consumption, but this is acceptable. This would also be more friendly for routing since one SLR ony has 320 URAMs. 
 
 
 Performance & Resource:
+
+(Performance verified on hardware)
 
 Use the second last PE (last middle PE), because this consumes the same time as other PE except the last one (which may have smaller amount of data to compute without even centroid distribution to PEs, e.g., 17 PE for 8192 centroids) while consuming the most resource (should be same as other middle PE, slightly larger than head and tail systolic PE since they do not need to forward some data).
 
@@ -130,6 +132,8 @@ Here we use 16 PEs for 8192 centroids, thus each PE computes 8192 / 16 = 512 row
 10000 Queries
 
 Performance Model
+
+Assume computation cycle >> systolic array query propagation delay.
 
 total CC = query_num * (L_load_query + (L_compute + N_compute * II_compute))
 

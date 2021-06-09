@@ -61,6 +61,16 @@ component["network_kernel"]["URAM"] = 9
 component["network_kernel"]["DSP48E"] = 0
 component["network_kernel"]["HBM_bank"] = 0
 
+
+PE_num_dict["network_user_kernel_functions"] = 1
+component["network_user_kernel_functions"] = dict()
+component["network_user_kernel_functions"]["LUT"] = 11242 + 21 * component["FIFO_d2_w32"]["LUT"] + 32 * component["FIFO_d512_w32"]["LUT"]
+component["network_user_kernel_functions"]["FF"] = 5124 + 21 * component["FIFO_d2_w32"]["FF"] + 32 * component["FIFO_d512_w32"]["FF"]
+component["network_user_kernel_functions"]["BRAM_18K"] = 2 * 0.5 + 21 * component["FIFO_d2_w32"]["BRAM_18K"] + 32 * component["FIFO_d512_w32"]["BRAM_18K"]
+component["network_user_kernel_functions"]["URAM"] = 0
+component["network_user_kernel_functions"]["DSP48E"] = 0
+component["network_user_kernel_functions"]["HBM_bank"] = 0
+
 PE_num_dict["cmac_kernel"] = 1
 component["cmac_kernel"] = dict()
 component["cmac_kernel"]["LUT"] = 17256
@@ -145,7 +155,7 @@ component_list_shell = ["network_kernel", "cmac_kernel", "hmss", "System_DPA", "
 shell_consumption = add_resources(component, component_list_shell)
 
 """ Resource related constants """
-MAX_UTIL_PERC = 0.6
+MAX_UTIL_PERC = 0.5
 
 TOTAL_BRAM_18K = 4032 
 TOTAL_DSP48E = 9024

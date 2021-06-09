@@ -1,10 +1,282 @@
 # Performance & Resource analysis for distance LUT PE
 
-Update: use the unoptimized version as the final version. Other more elegant code styles either causes placement error, or consumes more resources.
+Update: use the unoptimized small PE version as the final version. Other more elegant code styles either causes placement error, or consumes more resources.
 
 Previously, we optimized the PE as single_lookup_table_construction_PE_optimized_version2. This version can roughly output 1 row of distance LUT per cycle (1 row per 1.2 cycle, dependent to nprobe), thus should be sufficient for most cases. However, this large PE will lead to placement error.
 
-## multiple_lookup_table_construction_PEs_unoptimized
+Another try is when we use the large unoptimized version multiple_lookup_table_construction_PEs_unoptimized_large which consumes ~200 DSPs. This version works without network stack. But with the network stack only the small version survives the placement & routing.
+
+
+## multiple_lookup_table_construction_PEs_unoptimized_small
+
+A smaller version of "multiple_lookup_table_construction_PEs_unoptimized_large" DSP consumption ~50 vs ~200. This one survives placement & routing with network stack.
+
+
+Each PE is responsible for constructing one distance LUT. For example, nprobe=17 and PE_num=3, then the number of LUTs constructed by three PEs are: 6, 6, 5.
+
+Performance: 
+
+Per PE:
+
+total_time = query_num * (L_load_query + nprobe_per_PE * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
+
+here, L_load_query = 128, L_load_and_compute_residual = 132, L_compute = 68, N_comupte = 256, II_compute = 16
+
+nprobe_per_PE can be different for different PE for the case that each PE has different number of LUTs to construct, e.g., 6, 6, 5 as above.
+
+For all PEs, 
+
+total_time = query_num * (L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute))
+
+For the example above, nprobe_per_PE_max = 6
+
+Verification: Suppose query_num=10000, nprobe=32, nprobe_per_PE=8
+
+10000 * (128 + 8 * (132 + 68 + 256 * 16)) = 344960000, very close to 344392801 estimated by HLS.
+
+```
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.380 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |  344392801|  344392801| 2.460 sec | 2.460 sec |  344392801|  344392801|   none  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |                                           |    Latency (cycles)   | Iteration|  Initiation Interval  |  Trip |          |
+        |                 Loop Name                 |    min    |    max    |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |- Loop 1                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 2                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 3                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 4                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 5                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 6                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 7                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 8                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 9                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 10                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 11                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 12                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 13                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 14                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 15                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 16                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 17                                  |  344360000|  344360000|     34436|          -|          -|  10000|    no    |
+        | + Loop 17.1                               |        128|        128|         2|          1|          1|    128|    yes   |
+        | + Loop 17.2                               |      34304|      34304|      4288|          -|          -|      8|    no    |
+        |  ++ residual_center_vectors               |        132|        132|         6|          1|          1|    128|    yes   |
+        |  ++ single_row_lookup_table_construction  |       4147|       4147|        68|         16|         16|    256|    yes   |
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+```
+
+
+Utilization:
+
+Part 1: Per compute PE
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|      500|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|    54|     4489|     4228|    -|
+|Memory               |        1|     -|     1024|       64|   16|
+|Multiplexer          |        -|     -|        -|     6806|    -|
+|Register             |        -|     -|    17187|      352|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        1|    54|    22700|    11950|   16|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |    ~0   |     1|        2|        2|    5|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |    ~0   |  ~0  |    ~0   |    ~0   |    1|
++---------------------+---------+------+---------+---------+-----+
+```
+
+Part 2: Look up center vector
+
+For this part, LUT and FF consumption is negligible (< 500). Only URAM consumptionn.
+
+Since we use float as URAM data type, per URAM available size is reduced to 128Kb.
+
+* nlist = 1024 -> 32 URAM
+* nlist = 2048 -> 64 URAM
+* nlist = 4096 -> 128 URAM
+* nlist = 8192 -> 256 URAM
+* nlist = 16384 -> 512 URAM
+* nlist > 16384 -> 1 HBM bank
+
+If we use ap_uint<64>, then the URAM consumption will be:
+
+* nlist = 1024 -> 16 URAM
+* nlist = 2048 -> 32 URAM
+* nlist = 4096 -> 64 URAM
+* nlist = 8192 -> 128 URAM
+* nlist = 16384 -> 256 URAM
+* nlist = 32768 -> 512 URAM
+* nlist > 32768 HBM bank
+
+
+## multiple_lookup_table_construction_PEs_unoptimized_medium
+
+A medium-size version of "multiple_lookup_table_construction_PEs_unoptimized_large" DSP consumption ~100 vs ~200. This one survives placement & routing with network stack.
+
+
+Each PE is responsible for constructing one distance LUT. For example, nprobe=17 and PE_num=3, then the number of LUTs constructed by three PEs are: 6, 6, 5.
+
+Performance: 
+
+Per PE:
+
+total_time = query_num * (L_load_query + nprobe_per_PE * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
+
+here, L_load_query = 128, L_load_and_compute_residual = 132, L_compute = 53, N_comupte = 256, II_compute = 8
+
+nprobe_per_PE can be different for different PE for the case that each PE has different number of LUTs to construct, e.g., 6, 6, 5 as above.
+
+For all PEs, 
+
+total_time = query_num * (L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute))
+
+For the example above, nprobe_per_PE_max = 6
+
+Verification: Suppose query_num=10000, nprobe=32, nprobe_per_PE=8
+
+10000 * (128 + 8 * (132 + 53 + 256 * 8)) = 179920000, very close to 179992801 estimated by HLS.
+
+```
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.018 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+    |  179992801|  179992801| 1.286 sec | 1.286 sec |  179992801|  179992801|   none  |
+    +-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |                                           |    Latency (cycles)   | Iteration|  Initiation Interval  |  Trip |          |
+        |                 Loop Name                 |    min    |    max    |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |- Loop 1                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 2                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 3                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 4                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 5                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 6                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 7                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 8                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 9                                   |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 10                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 11                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 12                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 13                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 14                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 15                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 16                                  |       2048|       2048|         2|          1|          1|   2048|    yes   |
+        |- Loop 17                                  |  179960000|  179960000|     17996|          -|          -|  10000|    no    |
+        | + Loop 17.1                               |        128|        128|         2|          1|          1|    128|    yes   |
+        | + Loop 17.2                               |      17864|      17864|      2233|          -|          -|      8|    no    |
+        |  ++ residual_center_vectors               |        132|        132|         6|          1|          1|    128|    yes   |
+        |  ++ single_row_lookup_table_construction  |       2092|       2092|        53|          8|          8|    256|    yes   |
+        +-------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+
+```
+
+
+Utilization:
+
+Part 1: Per compute PE
+
+```
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|      500|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        -|   108|     8978|     8219|    -|
+|Memory               |        1|     -|     1024|       64|   16|
+|Multiplexer          |        -|     -|        -|     7499|    -|
+|Register             |        -|     -|    20029|     1376|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |        1|   108|    30031|    17658|   16|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |    ~0   |     3|        3|        4|    5|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |    ~0   |     1|        1|        1|    1|
++---------------------+---------+------+---------+---------+-----+
+```
+
+Part 2: Look up center vector
+
+For this part, LUT and FF consumption is negligible (< 500). Only URAM consumptionn.
+
+Since we use float as URAM data type, per URAM available size is reduced to 128Kb.
+
+* nlist = 1024 -> 32 URAM
+* nlist = 2048 -> 64 URAM
+* nlist = 4096 -> 128 URAM
+* nlist = 8192 -> 256 URAM
+* nlist = 16384 -> 512 URAM
+* nlist > 16384 -> 1 HBM bank
+
+If we use ap_uint<64>, then the URAM consumption will be:
+
+* nlist = 1024 -> 16 URAM
+* nlist = 2048 -> 32 URAM
+* nlist = 4096 -> 64 URAM
+* nlist = 8192 -> 128 URAM
+* nlist = 16384 -> 256 URAM
+* nlist = 32768 -> 512 URAM
+* nlist > 32768 HBM bank
+
+## multiple_lookup_table_construction_PEs_unoptimized_large
 
 Each PE is responsible for constructing one distance LUT. For example, nprobe=17 and PE_num=3, then the number of LUTs constructed by three PEs are: 6, 6, 5.
 
@@ -104,6 +376,16 @@ Since we use float as URAM data type, per URAM available size is reduced to 128K
 * nlist = 8192 -> 256 URAM
 * nlist = 16384 -> 512 URAM
 * nlist > 16384 -> 1 HBM bank
+
+If we use ap_uint<64>, then the URAM consumption will be:
+
+* nlist = 1024 -> 16 URAM
+* nlist = 2048 -> 32 URAM
+* nlist = 4096 -> 64 URAM
+* nlist = 8192 -> 128 URAM
+* nlist = 16384 -> 256 URAM
+* nlist = 32768 -> 512 URAM
+* nlist > 32768 HBM bank
 
 ## multiple_lookup_table_construction_PEs_optimized_version1
 

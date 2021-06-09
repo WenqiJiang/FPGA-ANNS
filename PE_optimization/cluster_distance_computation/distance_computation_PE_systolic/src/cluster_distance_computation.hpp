@@ -401,8 +401,6 @@ template<const int query_num, const int centroids_per_partition,
     const int centroids_per_partition_last_PE, const int total_centriods>
 void forward_cell_distance_tail(
     const int systolic_array_id,
-    hls::stream<float>& s_centroid_vectors_in,
-    hls::stream<float>& s_query_vectors_in,
     hls::stream<dist_cell_ID_t>& s_partial_cell_PE_result,
     hls::stream<dist_cell_ID_t>& s_partial_cell_distance_in,
     hls::stream<dist_cell_ID_t>& s_cell_distance_out) {
@@ -459,8 +457,6 @@ void compute_cell_distance_tail_PE(
 
     forward_cell_distance_tail<query_num, centroids_per_partition, centroids_per_partition_last_PE, total_centriods>(
         systolic_array_id,
-        s_centroid_vectors_in,
-        s_query_vectors_in,
         s_partial_cell_PE_result,
         s_partial_cell_distance_in,
         s_cell_distance_out);

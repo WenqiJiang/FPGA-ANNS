@@ -116,7 +116,7 @@ int main(int argc, char** argv)
 //     std::vector<float, aligned_allocator<float>> DDR_embedding1(DDR_embedding1_size, 0);
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-    int size_results_out = QUERY_NUM * CENTROIDS_PER_PARTITION; 
+    int size_results_out = QUERY_NUM * NLIST;
     std::vector<float,aligned_allocator<float>> source_hw_results(size_results_out);
     std::vector<float,aligned_allocator<float>> source_sw_results(size_results_out);
 
@@ -135,7 +135,7 @@ int main(int argc, char** argv)
         }
     }
 
-    // DDR1: centroids of single PE, CENTROIDS_PER_PARTITION * D
+    // DDR1: centroids of single PE, NLIST * D
 
     float center_vec[D] = {55, 1, 71, -11, -58, 56, 10, -21, 22, -40, -55, 65, 67, -89, -23, 97, 
         -16, -66, -34, 7, 4, -96, -92, -38, 2, -84, -59, 38, -28, -56, -65, 18, 12, 76, 79, -47, 
@@ -145,7 +145,7 @@ int main(int argc, char** argv)
         36, -40, 55, 26, -85, 58, -20, 81, 8, -90, 20, 0, 25, 99, 65, 72, -11, 7, -86, 86, 48, 6, 
         -23, -25, -74, 91, 54, 21, 52, -38, 9, 96};
 
-    for (int i = 0; i < CENTROIDS_PER_PARTITION; i++) {
+    for (int i = 0; i < NLIST; i++) {
         for (int j = 0; j < D; j++) {
             HBM_embedding1[i * D + j] = center_vec[j];
         }
