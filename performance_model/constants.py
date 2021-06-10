@@ -155,7 +155,7 @@ component_list_shell = ["network_kernel", "cmac_kernel", "hmss", "System_DPA", "
 shell_consumption = add_resources(component, component_list_shell)
 
 """ Resource related constants """
-MAX_UTIL_PERC = 0.5
+MAX_UTIL_PERC = 0.4
 
 TOTAL_BRAM_18K = 4032 
 TOTAL_DSP48E = 9024
@@ -169,3 +169,7 @@ MAX_DSP48E = TOTAL_DSP48E * MAX_UTIL_PERC
 MAX_FF = TOTAL_FF * MAX_UTIL_PERC
 MAX_LUT = TOTAL_LUT * MAX_UTIL_PERC
 MAX_URAM = TOTAL_URAM * MAX_UTIL_PERC
+
+# 1 Bank = 256 MB = 4194304 512-bit = 4194304 * 3 = 12582912 vectors
+# 100M / 12582912 = 7.94 (without considering padding)
+MIN_HBM_bank = 9 # at least 9 banks to hold PQ16 version

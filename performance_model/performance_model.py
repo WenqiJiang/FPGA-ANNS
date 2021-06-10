@@ -58,7 +58,7 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
     options_stage_4_distance_LUT_construction = get_options_stage_4_distance_LUT_construction(nlist, nprobe)
 
     # only allow 3x PE number, because each HBM can deliver 3 numbers per cycle
-    for stage_5_PE_num in range(3, 27 * 3 + 1, 3): 
+    for stage_5_PE_num in range(3 * MIN_HBM_bank, 27 * 3 + 1, 3): 
         # N_compute_per_nprobe * nprobe == N_insertion_per_stream
         # PE_num == input_stream_num
         N_compute_per_nprobe = int(TOTAL_VECTORS / nlist / stage_5_PE_num) + 1

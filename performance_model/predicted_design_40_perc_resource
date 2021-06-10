@@ -1,43 +1,23 @@
 IVF2048 2048 28 False
 option name IVF2048
-QPS 1135.8473421172193
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 1 PEs', 'cycles_per_query': 49361, 'QPS': 2836.2472397236684, 'LUT': 5430, 'FF': 6460, 'BRAM_18K': 2.0, 'DSP48E': 40, 'HBM_bank': 0, 'URAM': 32.0}
-{'cycles_per_query': 4134, 'QPS': 33865.50556361877, 'LUT': 5178.0, 'FF': 6176.599999999999, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 120416, 'QPS': 1162.6361945256444, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 48, 'DSP48E': 54, 'HBM_bank': 0}
-{'name': 'systolic array with 12 PEs', 'cycles_per_query': 123256, 'QPS': 1135.8473421172193, 'LUT': 65656.0, 'FF': 70572.0, 'BRAM_18K': 252.0, 'URAM': 0.0, 'DSP48E': 360.0, 'HBM_bank': 4.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 113960, 'QPS': 1228.5012285012285}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF4096 4096 29 False
 option name IVF4096
-QPS 1586.9777142986693
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 2 PEs', 'cycles_per_query': 49361, 'QPS': 2836.2472397236684, 'LUT': 10752, 'FF': 12730, 'BRAM_18K': 2.0, 'DSP48E': 80, 'HBM_bank': 0, 'URAM': 64.0}
-{'cycles_per_query': 8231, 'QPS': 17008.868910217472, 'LUT': 5361.0, 'FF': 6393.799999999999, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 64568, 'QPS': 2168.256721595837, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 96, 'DSP48E': 108, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 88218, 'QPS': 1586.9777142986693, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'hierarchical priority queue: [1, 18] total: 19', 'HBM_bank': 0, 'BRAM_18K': 38.0, 'DSP48E': 0, 'FF': 44878.0, 'LUT': 36822.0, 'URAM': 0, 'cycles_per_query': 78696, 'QPS': 1778.9976618887872}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF8192 8192 22 False
 option name IVF8192
-QPS 3541.3452052715456
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 5 PEs', 'cycles_per_query': 39533, 'QPS': 3541.3452052715456, 'LUT': 26718, 'FF': 31540, 'BRAM_18K': 2.0, 'DSP48E': 200, 'HBM_bank': 0, 'URAM': 160.0}
-{'cycles_per_query': 16416, 'QPS': 8528.265107212475, 'LUT': 4080.0, 'FF': 4873.4, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 3 PEs', 'cycles_per_query': 34496, 'QPS': 4058.441558441558, 'LUT': 48618, 'FF': 70470, 'BRAM_18K': 54.0, 'URAM': 176, 'DSP48E': 162, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 37092, 'QPS': 3774.3987921923867, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 29854, 'QPS': 4689.488845715817}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF16384 16384 29 False
 option name IVF16384
-QPS 1122.586439155815
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 24 PEs', 'cycles_per_query': 16595, 'QPS': 8436.275986742994, 'LUT': 127836, 'FF': 150670, 'BRAM_18K': 2.0, 'DSP48E': 960, 'HBM_bank': 8, 'URAM': 0}
-{'cycles_per_query': 32807, 'QPS': 4267.381961166824, 'LUT': 5361.0, 'FF': 6393.799999999999, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 124712, 'QPS': 1122.586439155815, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 272, 'DSP48E': 54, 'HBM_bank': 0}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 68382, 'QPS': 2047.3223947822523, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 59034, 'QPS': 2371.514720330657}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF32768 32768 29 False
 option name IVF32768
 QPS 0
@@ -45,89 +25,44 @@ stage_option_list
 PE_num_list []
 IVF65536 65536 33 False
 option name IVF65536
-QPS 1686.8689302841171
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 19 PEs', 'cycles_per_query': 82994, 'QPS': 1686.8689302841171, 'LUT': 101226, 'FF': 119320, 'BRAM_18K': 2.0, 'DSP48E': 760, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 65579, 'QPS': 2134.8297473276507, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 22072.8, 'LUT': 18441.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 73160, 'QPS': 1913.6139967195188, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 32, 'DSP48E': 108, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 27456, 'QPS': 5099.067599067599, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 16816, 'QPS': 8325.404376784016}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF131072 131072 40 False
 option name IVF131072
-QPS 814.1049497580944
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 19 PEs', 'cycles_per_query': 165776, 'QPS': 844.5130778882346, 'LUT': 101226, 'FF': 119320, 'BRAM_18K': 2.0, 'DSP48E': 760, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 131122, 'QPS': 1067.7079361205595, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 26634.0, 'LUT': 22284.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 171968, 'QPS': 814.1049497580944, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 16, 'DSP48E': 54, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 23120, 'QPS': 6055.363321799308, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 10220, 'QPS': 13698.630136986301}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF262144 262144 45 False
 option name IVF262144
-QPS 466.9717548798548
+QPS 0
 stage_option_list
-{'name': 'distance_computation_PE_systolic_optimized 21 PEs', 'cycles_per_query': 299804, 'QPS': 466.9717548798548, 'LUT': 111870, 'FF': 131860, 'BRAM_18K': 2.0, 'DSP48E': 840, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 262199, 'QPS': 533.9455909442828, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 29892.0, 'LUT': 25029.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 193448, 'QPS': 723.7086969107978, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 16, 'DSP48E': 54, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 20295, 'QPS': 6898.250800689826, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 5780, 'QPS': 24221.453287197233}
-PE_num_list [1, 1, 1, 1, 1]
+PE_num_list []
 IVF1024,OPQ 1024 13 True
 option name IVF1024,OPQ
-QPS 963.2585661208202
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 1 PEs', 'cycles_per_query': 24785, 'QPS': 5648.577768811781, 'LUT': 5430, 'FF': 6460, 'BRAM_18K': 2.0, 'DSP48E': 40, 'HBM_bank': 0, 'URAM': 16.0}
-{'cycles_per_query': 2071, 'QPS': 67600.19314340898, 'LUT': 2433.0, 'FF': 2918.6, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 55976, 'QPS': 2501.0718879519795, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 32, 'DSP48E': 54, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 145340, 'QPS': 963.2585661208202, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 141063, 'QPS': 992.464359895933}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF2048,OPQ 2048 13 True
 option name IVF2048,OPQ
-QPS 1871.2824968255027
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 1 PEs', 'cycles_per_query': 49361, 'QPS': 2836.2472397236684, 'LUT': 5430, 'FF': 6460, 'BRAM_18K': 2.0, 'DSP48E': 40, 'HBM_bank': 0, 'URAM': 32.0}
-{'cycles_per_query': 4119, 'QPS': 33988.83224083515, 'LUT': 2433.0, 'FF': 2918.6, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 55976, 'QPS': 2501.0718879519795, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 48, 'DSP48E': 54, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 74815, 'QPS': 1871.2824968255027, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 70538, 'QPS': 1984.7458107686637}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF4096,OPQ 4096 17 True
 option name IVF4096,OPQ
-QPS 2707.197277333024
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 2 PEs', 'cycles_per_query': 49361, 'QPS': 2836.2472397236684, 'LUT': 10752, 'FF': 12730, 'BRAM_18K': 2.0, 'DSP48E': 80, 'HBM_bank': 0, 'URAM': 64.0}
-{'cycles_per_query': 8219, 'QPS': 17033.702396885266, 'LUT': 3165.0, 'FF': 3787.3999999999996, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 38792, 'QPS': 3608.991544648381, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 96, 'DSP48E': 108, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 51714, 'QPS': 2707.197277333024, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 46121, 'QPS': 3035.493592940309}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF8192,OPQ 8192 17 True
 option name IVF8192,OPQ
-QPS 3608.991544648381
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 6 PEs', 'cycles_per_query': 32978, 'QPS': 4245.254412032265, 'LUT': 32040, 'FF': 37810, 'BRAM_18K': 2.0, 'DSP48E': 240, 'HBM_bank': 0, 'URAM': 144.0}
-{'cycles_per_query': 16411, 'QPS': 8530.863445250137, 'LUT': 3165.0, 'FF': 3787.3999999999996, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 38792, 'QPS': 3608.991544648381, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 160, 'DSP48E': 108, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 28662, 'QPS': 4884.516084013677, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 23069, 'QPS': 6068.750270926352}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF16384,OPQ 16384 21 True
 option name IVF16384,OPQ
-QPS 1549.6325157177014
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 24 PEs', 'cycles_per_query': 16595, 'QPS': 8436.275986742994, 'LUT': 127836, 'FF': 150670, 'BRAM_18K': 2.0, 'DSP48E': 960, 'HBM_bank': 8, 'URAM': 0}
-{'cycles_per_query': 32799, 'QPS': 4268.422817768835, 'LUT': 3897.0, 'FF': 4656.2, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 90344, 'QPS': 1549.6325157177014, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 272, 'DSP48E': 54, 'HBM_bank': 0}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 49518, 'QPS': 2827.2547356516825, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 42754, 'QPS': 3274.547410768583}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF32768,OPQ 32768 24 True
 option name IVF32768,OPQ
 QPS 0
@@ -135,53 +70,23 @@ stage_option_list
 PE_num_list []
 IVF65536,OPQ 65536 30 True
 option name IVF65536,OPQ
-QPS 1686.8689302841171
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 19 PEs', 'cycles_per_query': 82994, 'QPS': 1686.8689302841171, 'LUT': 101226, 'FF': 119320, 'BRAM_18K': 2.0, 'DSP48E': 760, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 65576, 'QPS': 2134.927412467976, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 20118.0, 'LUT': 16794.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 64568, 'QPS': 2168.256721595837, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 32, 'DSP48E': 108, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 24960, 'QPS': 5608.974358974358, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 15290, 'QPS': 9156.311314584696}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF131072,OPQ 131072 37 True
 option name IVF131072,OPQ
-QPS 880.0603469952225
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 20 PEs', 'cycles_per_query': 157496, 'QPS': 888.911464418144, 'LUT': 106548, 'FF': 125590, 'BRAM_18K': 2.0, 'DSP48E': 800, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 131119, 'QPS': 1067.7323652559887, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 24679.199999999997, 'LUT': 20637.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 159080, 'QPS': 880.0603469952225, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 16, 'DSP48E': 54, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 21386, 'QPS': 6546.338726269521, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 9454, 'QPS': 14808.546646921937}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 IVF262144,OPQ 262144 42 True
 option name IVF262144,OPQ
-QPS 466.9717548798548
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 21 PEs', 'cycles_per_query': 299804, 'QPS': 466.9717548798548, 'LUT': 111870, 'FF': 131860, 'BRAM_18K': 2.0, 'DSP48E': 840, 'HBM_bank': 7, 'URAM': 0}
-{'name': 'hierachical prirority queue level A: 2 queues, level B: 1 queue', 'cycles_per_query': 262196, 'QPS': 533.9517002547713, 'BRAM_18K': 6.0, 'DSP48E': 0, 'FF': 27937.199999999997, 'LUT': 23382.0, 'HBM_bank': 0, 'URAM': 0}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 1 PEs', 'cycles_per_query': 180560, 'QPS': 775.3655294638901, 'LUT': 16206, 'FF': 23490, 'BRAM_18K': 18.0, 'URAM': 16, 'DSP48E': 54, 'HBM_bank': 1}
-{'name': 'systolic array with 3 PEs', 'cycles_per_query': 18942, 'QPS': 7390.983000739097, 'LUT': 16414.0, 'FF': 17643.0, 'BRAM_18K': 63.0, 'URAM': 0.0, 'DSP48E': 90.0, 'HBM_bank': 1.0}
-{'name': 'hierarchical priority queue: [1, 6] total: 7', 'HBM_bank': 0, 'BRAM_18K': 14.0, 'DSP48E': 0, 'FF': 16534.0, 'LUT': 13566.0, 'URAM': 0, 'cycles_per_query': 5396, 'QPS': 25945.144551519643}
-PE_num_list [1, 1, 1, 1, 1, 1]
+PE_num_list []
 
 
 ======== Result =========
 
-best option name IVF8192,OPQ
-QPS 3608.991544648381
+best option name None
+QPS 0
 stage_option_list
-{'name': 'no UNROL', 'cycles_per_query': 16649.0, 'QPS': 8408.91344825515, 'HBM_bank': 0, 'BRAM_18K': 31, 'DSP48E': 5, 'FF': 1055, 'LUT': 1125, 'URAM': 0}
-{'name': 'distance_computation_PE_systolic_optimized 6 PEs', 'cycles_per_query': 32978, 'QPS': 4245.254412032265, 'LUT': 32040, 'FF': 37810, 'BRAM_18K': 2.0, 'DSP48E': 240, 'HBM_bank': 0, 'URAM': 144.0}
-{'cycles_per_query': 16411, 'QPS': 8530.863445250137, 'LUT': 3165.0, 'FF': 3787.3999999999996, 'BRAM_18K': 1.0, 'URAM': 0, 'DSP48E': 0, 'HBM_bank': 0, 'name': 'single prirority queue'}
-{'name': 'multiple_lookup_table_construction_PEs_unoptimized_small 2 PEs', 'cycles_per_query': 38792, 'QPS': 3608.991544648381, 'LUT': 32412, 'FF': 46980, 'BRAM_18K': 36.0, 'URAM': 160, 'DSP48E': 108, 'HBM_bank': 0}
-{'name': 'systolic array with 9 PEs', 'cycles_per_query': 28662, 'QPS': 4884.516084013677, 'LUT': 49242.0, 'FF': 52929.0, 'BRAM_18K': 189.0, 'URAM': 0.0, 'DSP48E': 270.0, 'HBM_bank': 3.0}
-{'name': 'sort reduction (1 sort 0 merge) + priority queue group (21)', 'HBM_bank': 0, 'BRAM_18K': 2.0, 'DSP48E': 0, 'FF': 62275.0, 'LUT': 53321.0, 'URAM': 0, 'cycles_per_query': 23069, 'QPS': 6068.750270926352}
-PE_num_list [1, 1, 1, 1, 1, 1]
-total_valid_design: 42652
-Total resource consumption:
-{'HBM_bank': 3.0, 'BRAM_18K': 1597.0, 'DSP48E': 627.0, 'FF': 784384.4, 'LUT': 508862.0, 'URAM': 322.0}
-Utilization rate:
-{'BRAM_18K': '39.60813492063492%', 'DSP48E': '6.94813829787234%', 'FF': '30.08347140402553%', 'LUT': '39.032738095238095%', 'URAM': '33.541666666666664%'}
