@@ -1,6 +1,6 @@
 #pragma once
 
-#define NLIST 4096
+#define NLIST 8192
 #define NPROBE 17
 #define D 128
 #define M 16
@@ -12,8 +12,8 @@
 // 16 = 15 equal one + 1 (all equal) diff must be 1!
 #define PE_NUM_CENTER_DIST_COMP 4
 #define PE_NUM_CENTER_DIST_COMP_EVEN 3
-#define CENTROIDS_PER_PARTITION_EVEN 1024
-#define CENTROIDS_PER_PARTITION_LAST_PE 1024
+#define CENTROIDS_PER_PARTITION_EVEN 2048
+#define CENTROIDS_PER_PARTITION_LAST_PE 2048
 
 #define MERGE_ITER (NLIST/PE_NUM_CENTER_DIST_COMP) // the number of input sorted array (32 elements per partition)
 
@@ -24,7 +24,8 @@
 #define NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER 5 //9
 #define NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER 2 //8
 
-#define QUERY_NUM 10000
+#define QUERY_NUM 10 // sw_emu
+// #define QUERY_NUM 10000
 
 #define LARGE_NUM 99999999 // used to init the heap
 
