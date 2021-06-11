@@ -19,7 +19,7 @@ void select_Voronoi_cell(
     // the depth of this priority queue is nprobe
     Priority_queue<dist_cell_ID_t, NPROBE, Collect_smallest> priority_queue_level_B;
 
-    priority_queue_level_B.insert_wrapper<QUERY_NUM, NPROBE * 2>(
+    priority_queue_level_B.insert_wrapper<QUERY_NUM, NLIST>(
         s_distance_cell_ID, 
         s_selected_distance_cell_ID); 
 

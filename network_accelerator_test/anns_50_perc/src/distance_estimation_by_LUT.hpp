@@ -223,7 +223,7 @@ void replicate_s_scanned_entries_every_cell_PQ_lookup_computation(
 template<const int query_num, const int nprobe>
 void replicate_s_scanned_entries_every_cell_Dummy(
     hls::stream<int>& s_scanned_entries_every_cell_Dummy,
-    hls::stream<int> (&s_scanned_entries_every_cell_Dummy_replicated)[2]) {
+    hls::stream<int> (&s_scanned_entries_every_cell_Dummy_replicated)[5]) {
 
     for (int query_id = 0; query_id < query_num; query_id++) {
 
@@ -232,7 +232,7 @@ void replicate_s_scanned_entries_every_cell_Dummy(
             int scanned_entries_every_cell_Dummy = 
                 s_scanned_entries_every_cell_Dummy.read();
 
-            for (int s = 0; s < 2; s++) {
+            for (int s = 0; s < 5; s++) {
 #pragma HLS UNROLL
                 s_scanned_entries_every_cell_Dummy_replicated[s].write(
                     scanned_entries_every_cell_Dummy);
@@ -309,7 +309,7 @@ void PQ_lookup_computation_wrapper(
         s_scanned_entries_every_cell_PQ_lookup_computation, 
         s_scanned_entries_every_cell_PQ_lookup_computation_replicated);
 
-    hls::stream<int> s_scanned_entries_every_cell_Dummy_replicated[2]; // 32 - 3 * 10 = 2
+    hls::stream<int> s_scanned_entries_every_cell_Dummy_replicated[5]; // 32 - 3 * 10 = 2
 #pragma HLS stream variable=s_scanned_entries_every_cell_Dummy_replicated depth=8
 #pragma HLS array_partition variable=s_scanned_entries_every_cell_Dummy_replicated complete
 // #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Dummy_replicated core=FIFO_SRL
@@ -353,10 +353,10 @@ void PQ_lookup_computation_wrapper(
             s_single_PQ_result[0][j]);
     }
 
-    // PE 16~29
+    // PE 16~26 
     for (int i = 1; i < 2; i++) {
 #pragma HLS UNROLL
-        for (int j = 0; j < 14; j++) {
+        for (int j = 0; j < 11; j++) {
 #pragma HLS UNROLL
             PQ_lookup_computation<query_num, nprobe>(
                 // input streams
@@ -372,12 +372,12 @@ void PQ_lookup_computation_wrapper(
 
     // consume the systolic output of the last PE
     dummy_distance_LUT_consumer<query_num, nprobe>(
-        s_distance_LUT_systolic[29]);
+        s_distance_LUT_systolic[26]);
 
-    for (int j = 14; j < 16; j++) {
+    for (int j = 11; j < 16; j++) {
 #pragma HLS UNROLL
         dummy_PQ_result_sender<query_num, nprobe>(
-            s_scanned_entries_every_cell_Dummy_replicated[j - 14], s_single_PQ_result[1][j]);
+            s_scanned_entries_every_cell_Dummy_replicated[j - 11], s_single_PQ_result[1][j]);
     }
 }
 

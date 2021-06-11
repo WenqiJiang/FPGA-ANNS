@@ -620,12 +620,12 @@ void compute_cell_distance_wrapper(
     hls::stream<dist_cell_ID_t> &s_cell_distance) {
 #pragma HLS inline
 
-    hls::stream<float> s_query_vectors_forward[CENTROIDS_PER_PARTITION_EVEN];
+    hls::stream<float> s_query_vectors_forward[PE_NUM_CENTER_DIST_COMP_EVEN];
 #pragma HLS stream variable=s_query_vectors_forward depth=8
-    hls::stream<float> s_centroid_vectors_forward[CENTROIDS_PER_PARTITION_EVEN];
+    hls::stream<float> s_centroid_vectors_forward[PE_NUM_CENTER_DIST_COMP_EVEN];
 #pragma HLS stream variable=s_centroid_vectors_forward depth=8
 
-    hls::stream<dist_cell_ID_t> s_partial_cell_distance_forward[CENTROIDS_PER_PARTITION_EVEN];
+    hls::stream<dist_cell_ID_t> s_partial_cell_distance_forward[PE_NUM_CENTER_DIST_COMP_EVEN];
 #pragma HLS stream variable=s_partial_cell_distance_forward depth=8
 
     // head

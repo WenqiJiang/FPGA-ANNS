@@ -105,7 +105,7 @@ void vadd(
 // #pragma HLS INTERFACE s_axilite port=HBM_in20  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_query_vectors  bundle=control
-#pragma HLS INTERFACE s_axilite port=HBM_product_quantizer  bundle=control
+#pragma HLS INTERFACE s_axilite port=HBM_vector_quantizer  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_product_quantizer  bundle=control
 #pragma HLS INTERFACE s_axilite port=HBM_OPQ_matrix  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_in26  bundle=control
