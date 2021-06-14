@@ -6,26 +6,28 @@
 
 #include "vadd.hpp"
 
+#include "stdio.h"
+
 // HBM 3 is used for output
 void vadd(  
-    t_axi* table_HBM0, t_axi* table_HBM1, 
-    t_axi* table_HBM2, t_axi* table_HBM3 , 
-    /* t_axi* table_HBM4, t_axi* table_HBM5, 
-    t_axi* table_HBM6, t_axi* table_HBM7, 
-    t_axi* table_HBM8, t_axi* table_HBM9, 
-    t_axi* table_HBM10, t_axi* table_HBM11, 
-    t_axi* table_HBM12, t_axi* table_HBM13, 
-    t_axi* table_HBM14, t_axi* table_HBM15, 
-    t_axi* table_HBM16, t_axi* table_HBM17, 
-    t_axi* table_HBM18, t_axi* table_HBM19, 
-    t_axi* table_HBM20, t_axi* table_HBM21, 
-    t_axi* table_HBM22, t_axi* table_HBM23, 
-    t_axi* table_HBM24, t_axi* table_HBM25, 
-    t_axi* table_HBM26, t_axi* table_HBM27, 
-    t_axi* table_HBM28, t_axi* table_HBM29, 
-    t_axi* table_HBM30, t_axi* table_HBM31, 
-    t_axi* table_DDR0, t_axi* table_DDR1, */
-    result_t out_PLRAM[K] 
+    float* table_HBM0, float* table_HBM1, 
+    float* table_HBM2, float* table_HBM3 , 
+    /* float* table_HBM4, float* table_HBM5, 
+    float* table_HBM6, float* table_HBM7, 
+    float* table_HBM8, float* table_HBM9, 
+    float* table_HBM10, float* table_HBM11, 
+    float* table_HBM12, float* table_HBM13, 
+    float* table_HBM14, float* table_HBM15, 
+    float* table_HBM16, float* table_HBM17, 
+    float* table_HBM18, float* table_HBM19, 
+    float* table_HBM20, float* table_HBM21, 
+    float* table_HBM22, float* table_HBM23, 
+    float* table_HBM24, float* table_HBM25, 
+    float* table_HBM26, float* table_HBM27, 
+    float* table_HBM28, float* table_HBM29, 
+    float* table_HBM30, float* table_HBM31, 
+    float* table_DDR0, float* table_DDR1, */
+    ap_uint512_t out_PLRAM[K] 
     )
 {
 #pragma HLS INTERFACE m_axi port=table_HBM0  offset=slave bundle=gmem0
@@ -115,17 +117,18 @@ void vadd(
     //   HBM2 -> PQ codebook
     
     hls::stream<float> s_query_vectors;
-#pragma HLS stream variable=s_query_vectors depth=128
+#pragma HLS stream variable=s_query_vectors depth=512
 
     hls::stream<float> s_center_vectors;
-#pragma HLS stream variable=s_center_vectors depth=128
+#pragma HLS stream variable=s_center_vectors depth=512
 
-    hls::stream<float> s_PQ_quantizer_init;
-#pragma HLS stream variable=s_PQ_quantizer_init depth=128
+    hls::stream<float> s_PQ_quantizer_init[PE_NUM_TABLE_CONSTRUCTION];
+#pragma HLS stream variable=s_PQ_quantizer_init depth=512
+#pragma HLS array_partition variable=s_PQ_quantizer_init complete
 
     hls::stream<distance_LUT_PQ16_t> s_lookup_table;
-#pragma HLS stream variable=s_lookup_table depth=4
-#pragma HLS resource variable=s_lookup_table core=FIFO_SRL
+#pragma HLS stream variable=s_lookup_table depth=512
+// #pragma HLS resource variable=s_lookup_table core=FIFO_SRL
 
     load_query_vectors<QUERY_NUM>(
         table_HBM0, 
@@ -139,13 +142,13 @@ void vadd(
         table_HBM2,
         s_PQ_quantizer_init);
 
-    lookup_table_construction_wrapper<QUERY_NUM, PE_NUM_TABLE_CONSTRUCTION, NPROBE_PER_TABLE_CONSTRUCTION_PE>(
+    lookup_table_construction_wrapper<QUERY_NUM>(
         s_PQ_quantizer_init,
         s_center_vectors,
         s_query_vectors,
         s_lookup_table);
 
-    consume_and_write<K>(s_lookup_table, out_PLRAM);
+    consume_and_write(s_lookup_table, out_PLRAM);
 }
 
 
@@ -189,29 +192,32 @@ void load_center_vectors(
 
 void load_PQ_quantizer(
     const float* DRAM_PQ_quantizer,
-    hls::stream<float> &s_PQ_quantizer_init) {
+    hls::stream<float> (&s_PQ_quantizer_init)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // load PQ quantizer centers from HBM
     for (int i = 0; i < K * D; i++) {
 #pragma HLS pipeline II=1
-        s_PQ_quantizer_init.write(DRAM_PQ_quantizer[i]);
+        for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
+#pragma HLS UNROLL
+            s_PQ_quantizer_init[s].write(DRAM_PQ_quantizer[i]);
+        }
     }
 }
 
-template<const int total_len>
 void consume_and_write(
-    hls::stream<distance_LUT_PQ16_t>& s_result, result_t* results_out) {
+    hls::stream<distance_LUT_PQ16_t>& s_result, ap_uint512_t* results_out) {
     
-    distance_LUT_PQ16_t result_local[total_len];
+    distance_LUT_PQ16_t result_local[K];
     for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
-            for (int i = 0; i < total_len; i++) {
+            for (int i = 0; i < K; i++) {
+                printf("consume result: query_id = %d, nprobe_id = %d, row = %d\n", query_id, nprobe_id, i);
                 result_local[i] = s_result.read();
             }
         }
     }
 
-    for (int i = 0; i < total_len; i++) {
+    for (int i = 0; i < K; i++) {
         float tmp[16];
 #pragma HLS array_partition variable=tmp complete
         tmp[0] = result_local[i].dist_0;
@@ -231,7 +237,7 @@ void consume_and_write(
         tmp[14] = result_local[i].dist_14;
         tmp[15] = result_local[i].dist_15;
 
-        result_t out;
+        ap_uint512_t out;
         for (int i = 0; i < 16; i++) {
 #pragma HLS UNROLL
             float reg = tmp[i];

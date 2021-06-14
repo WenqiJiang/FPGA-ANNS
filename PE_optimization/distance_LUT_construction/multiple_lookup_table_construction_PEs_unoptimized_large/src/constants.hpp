@@ -2,20 +2,24 @@
 #include <ap_int.h>
 
 #define NLIST 8192
-#define NPROBE 32
+#define NPROBE 17
 #define D 128
 #define M 16
 #define K 256
 #define CENTROID_PARTITIONS 32
 #define CENTROIDS_PER_PARTITION (NLIST / CENTROID_PARTITIONS)
-#define QUERY_NUM 10000
+#define QUERY_NUM 10 // sw_emu
+// #define QUERY_NUM 10000
 
 #define LARGE_NUM 99999999 // used to init the heap
 
-#define PE_NUM_TABLE_CONSTRUCTION 4
-#define NPROBE_PER_TABLE_CONSTRUCTION_PE (NPROBE / PE_NUM_TABLE_CONSTRUCTION) 
-
-//////////////////////////////   TEMPLATE START  //////////////////////////////
+// first PE: construct 9 tables per query, last one construct 8
+#define PE_NUM_TABLE_CONSTRUCTION 4 // 2
+#define PE_NUM_TABLE_CONSTRUCTION_LARGER 3 // 1
+#define PE_NUM_TABLE_CONSTRUCTION_SMALLER 1
+#define NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER 5 //9
+#define NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER 2 //8
+///////////////   TEMPLATE START  //////////////////////////////
 
 #define PLRAM_BANK_NUM 4
 #define HBM_BANK_NUM 32
@@ -70,7 +74,8 @@
 
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
-typedef float t_axi;
-typedef ap_uint<512> result_t;
+// typedef float t_axi;
+typedef ap_uint<512> ap_uint512_t;
+// typedef ap_uint<512> result_t;
 // typedef float D_TYPE;
 

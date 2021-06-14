@@ -53,7 +53,7 @@ void compute_cell_distance_middle(
                 ap_uint<32> reg_A_uint = *((ap_uint<32>*) (&reg_A));
                 ap_uint<32> reg_B_uint = *((ap_uint<32>*) (&reg_B));
                 ap_uint<64> val;
-                val.range(0, 31) = reg_A_uint;
+                val.range(31, 0) = reg_A_uint;
                 val.range(63, 32) = reg_B_uint;
                 cell_centroids_partition[(c - systolic_array_id * centroids_per_partition) * D / 2 + d] = val;
             }
@@ -88,22 +88,22 @@ void compute_cell_distance_middle(
                 ap_uint<64> tmp_6 = cell_centroids_partition[(c * D + d * 16) / 2 + 6];
                 ap_uint<64> tmp_7 = cell_centroids_partition[(c * D + d * 16) / 2 + 7];
 
-                ap_uint<64> cell_centroids_0_int = tmp_0.range(31, 0);
-                ap_uint<64> cell_centroids_1_int = tmp_0.range(63, 32);
-                ap_uint<64> cell_centroids_2_int = tmp_1.range(31, 0);
-                ap_uint<64> cell_centroids_3_int = tmp_1.range(63, 32);
-                ap_uint<64> cell_centroids_4_int = tmp_2.range(31, 0);
-                ap_uint<64> cell_centroids_5_int = tmp_2.range(63, 32);
-                ap_uint<64> cell_centroids_6_int = tmp_3.range(31, 0);
-                ap_uint<64> cell_centroids_7_int = tmp_3.range(63, 32);
-                ap_uint<64> cell_centroids_8_int = tmp_4.range(31, 0);
-                ap_uint<64> cell_centroids_9_int = tmp_4.range(63, 32);
-                ap_uint<64> cell_centroids_10_int = tmp_5.range(31, 0);
-                ap_uint<64> cell_centroids_11_int = tmp_5.range(63, 32);
-                ap_uint<64> cell_centroids_12_int = tmp_6.range(31, 0);
-                ap_uint<64> cell_centroids_13_int = tmp_6.range(63, 32);
-                ap_uint<64> cell_centroids_14_int = tmp_7.range(31, 0);
-                ap_uint<64> cell_centroids_15_int = tmp_7.range(63, 32);
+                ap_uint<32> cell_centroids_0_int = tmp_0.range(31, 0);
+                ap_uint<32> cell_centroids_1_int = tmp_0.range(63, 32);
+                ap_uint<32> cell_centroids_2_int = tmp_1.range(31, 0);
+                ap_uint<32> cell_centroids_3_int = tmp_1.range(63, 32);
+                ap_uint<32> cell_centroids_4_int = tmp_2.range(31, 0);
+                ap_uint<32> cell_centroids_5_int = tmp_2.range(63, 32);
+                ap_uint<32> cell_centroids_6_int = tmp_3.range(31, 0);
+                ap_uint<32> cell_centroids_7_int = tmp_3.range(63, 32);
+                ap_uint<32> cell_centroids_8_int = tmp_4.range(31, 0);
+                ap_uint<32> cell_centroids_9_int = tmp_4.range(63, 32);
+                ap_uint<32> cell_centroids_10_int = tmp_5.range(31, 0);
+                ap_uint<32> cell_centroids_11_int = tmp_5.range(63, 32);
+                ap_uint<32> cell_centroids_12_int = tmp_6.range(31, 0);
+                ap_uint<32> cell_centroids_13_int = tmp_6.range(63, 32);
+                ap_uint<32> cell_centroids_14_int = tmp_7.range(31, 0);
+                ap_uint<32> cell_centroids_15_int = tmp_7.range(63, 32);
 
                 float cell_centroids_0 = *((float*) (&cell_centroids_0_int));
                 float cell_centroids_1 = *((float*) (&cell_centroids_1_int));
@@ -270,7 +270,7 @@ void compute_cell_distance_head_PE(
                 ap_uint<32> reg_A_uint = *((ap_uint<32>*) (&reg_A));
                 ap_uint<32> reg_B_uint = *((ap_uint<32>*) (&reg_B));
                 ap_uint<64> val;
-                val.range(0, 31) = reg_A_uint;
+                val.range(31, 0) = reg_A_uint;
                 val.range(63, 32) = reg_B_uint;
                 cell_centroids_partition[(c - systolic_array_id * centroids_per_partition) * D / 2 + d] = val;
             }
@@ -307,22 +307,22 @@ void compute_cell_distance_head_PE(
                 ap_uint<64> tmp_6 = cell_centroids_partition[(c * D + d * 16) / 2 + 6];
                 ap_uint<64> tmp_7 = cell_centroids_partition[(c * D + d * 16) / 2 + 7];
 
-                ap_uint<64> cell_centroids_0_int = tmp_0.range(31, 0);
-                ap_uint<64> cell_centroids_1_int = tmp_0.range(63, 32);
-                ap_uint<64> cell_centroids_2_int = tmp_1.range(31, 0);
-                ap_uint<64> cell_centroids_3_int = tmp_1.range(63, 32);
-                ap_uint<64> cell_centroids_4_int = tmp_2.range(31, 0);
-                ap_uint<64> cell_centroids_5_int = tmp_2.range(63, 32);
-                ap_uint<64> cell_centroids_6_int = tmp_3.range(31, 0);
-                ap_uint<64> cell_centroids_7_int = tmp_3.range(63, 32);
-                ap_uint<64> cell_centroids_8_int = tmp_4.range(31, 0);
-                ap_uint<64> cell_centroids_9_int = tmp_4.range(63, 32);
-                ap_uint<64> cell_centroids_10_int = tmp_5.range(31, 0);
-                ap_uint<64> cell_centroids_11_int = tmp_5.range(63, 32);
-                ap_uint<64> cell_centroids_12_int = tmp_6.range(31, 0);
-                ap_uint<64> cell_centroids_13_int = tmp_6.range(63, 32);
-                ap_uint<64> cell_centroids_14_int = tmp_7.range(31, 0);
-                ap_uint<64> cell_centroids_15_int = tmp_7.range(63, 32);
+                ap_uint<32> cell_centroids_0_int = tmp_0.range(31, 0);
+                ap_uint<32> cell_centroids_1_int = tmp_0.range(63, 32);
+                ap_uint<32> cell_centroids_2_int = tmp_1.range(31, 0);
+                ap_uint<32> cell_centroids_3_int = tmp_1.range(63, 32);
+                ap_uint<32> cell_centroids_4_int = tmp_2.range(31, 0);
+                ap_uint<32> cell_centroids_5_int = tmp_2.range(63, 32);
+                ap_uint<32> cell_centroids_6_int = tmp_3.range(31, 0);
+                ap_uint<32> cell_centroids_7_int = tmp_3.range(63, 32);
+                ap_uint<32> cell_centroids_8_int = tmp_4.range(31, 0);
+                ap_uint<32> cell_centroids_9_int = tmp_4.range(63, 32);
+                ap_uint<32> cell_centroids_10_int = tmp_5.range(31, 0);
+                ap_uint<32> cell_centroids_11_int = tmp_5.range(63, 32);
+                ap_uint<32> cell_centroids_12_int = tmp_6.range(31, 0);
+                ap_uint<32> cell_centroids_13_int = tmp_6.range(63, 32);
+                ap_uint<32> cell_centroids_14_int = tmp_7.range(31, 0);
+                ap_uint<32> cell_centroids_15_int = tmp_7.range(63, 32);
 
                 float cell_centroids_0 = *((float*) (&cell_centroids_0_int));
                 float cell_centroids_1 = *((float*) (&cell_centroids_1_int));
@@ -426,7 +426,7 @@ void compute_cell_distance_tail(
                 ap_uint<32> reg_A_uint = *((ap_uint<32>*) (&reg_A));
                 ap_uint<32> reg_B_uint = *((ap_uint<32>*) (&reg_B));
                 ap_uint<64> val;
-                val.range(0, 31) = reg_A_uint;
+                val.range(31, 0) = reg_A_uint;
                 val.range(63, 32) = reg_B_uint;
                 cell_centroids_partition[(c - systolic_array_id * centroids_per_partition) * D / 2 + d] = val;
             }
@@ -463,22 +463,22 @@ void compute_cell_distance_tail(
                 ap_uint<64> tmp_6 = cell_centroids_partition[(c * D + d * 16) / 2 + 6];
                 ap_uint<64> tmp_7 = cell_centroids_partition[(c * D + d * 16) / 2 + 7];
 
-                ap_uint<64> cell_centroids_0_int = tmp_0.range(31, 0);
-                ap_uint<64> cell_centroids_1_int = tmp_0.range(63, 32);
-                ap_uint<64> cell_centroids_2_int = tmp_1.range(31, 0);
-                ap_uint<64> cell_centroids_3_int = tmp_1.range(63, 32);
-                ap_uint<64> cell_centroids_4_int = tmp_2.range(31, 0);
-                ap_uint<64> cell_centroids_5_int = tmp_2.range(63, 32);
-                ap_uint<64> cell_centroids_6_int = tmp_3.range(31, 0);
-                ap_uint<64> cell_centroids_7_int = tmp_3.range(63, 32);
-                ap_uint<64> cell_centroids_8_int = tmp_4.range(31, 0);
-                ap_uint<64> cell_centroids_9_int = tmp_4.range(63, 32);
-                ap_uint<64> cell_centroids_10_int = tmp_5.range(31, 0);
-                ap_uint<64> cell_centroids_11_int = tmp_5.range(63, 32);
-                ap_uint<64> cell_centroids_12_int = tmp_6.range(31, 0);
-                ap_uint<64> cell_centroids_13_int = tmp_6.range(63, 32);
-                ap_uint<64> cell_centroids_14_int = tmp_7.range(31, 0);
-                ap_uint<64> cell_centroids_15_int = tmp_7.range(63, 32);
+                ap_uint<32> cell_centroids_0_int = tmp_0.range(31, 0);
+                ap_uint<32> cell_centroids_1_int = tmp_0.range(63, 32);
+                ap_uint<32> cell_centroids_2_int = tmp_1.range(31, 0);
+                ap_uint<32> cell_centroids_3_int = tmp_1.range(63, 32);
+                ap_uint<32> cell_centroids_4_int = tmp_2.range(31, 0);
+                ap_uint<32> cell_centroids_5_int = tmp_2.range(63, 32);
+                ap_uint<32> cell_centroids_6_int = tmp_3.range(31, 0);
+                ap_uint<32> cell_centroids_7_int = tmp_3.range(63, 32);
+                ap_uint<32> cell_centroids_8_int = tmp_4.range(31, 0);
+                ap_uint<32> cell_centroids_9_int = tmp_4.range(63, 32);
+                ap_uint<32> cell_centroids_10_int = tmp_5.range(31, 0);
+                ap_uint<32> cell_centroids_11_int = tmp_5.range(63, 32);
+                ap_uint<32> cell_centroids_12_int = tmp_6.range(31, 0);
+                ap_uint<32> cell_centroids_13_int = tmp_6.range(63, 32);
+                ap_uint<32> cell_centroids_14_int = tmp_7.range(31, 0);
+                ap_uint<32> cell_centroids_15_int = tmp_7.range(63, 32);
 
                 float cell_centroids_0 = *((float*) (&cell_centroids_0_int));
                 float cell_centroids_1 = *((float*) (&cell_centroids_1_int));

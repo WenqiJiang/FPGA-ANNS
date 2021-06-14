@@ -1,11 +1,118 @@
 # Performance & Resource analysis for distance LUT PE
 
-Update: use the unoptimized small PE version as the final version. Other more elegant code styles either causes placement error, or consumes more resources.
+Update: use the multiple_lookup_table_construction_PEs_unoptimized_systolic_small version as the final version. Some other more elegant code styles either causes placement error, or consumes more resources.
 
 Previously, we optimized the PE as single_lookup_table_construction_PE_optimized_version2. This version can roughly output 1 row of distance LUT per cycle (1 row per 1.2 cycle, dependent to nprobe), thus should be sufficient for most cases. However, this large PE will lead to placement error.
 
 Another try is when we use the large unoptimized version multiple_lookup_table_construction_PEs_unoptimized_large which consumes ~200 DSPs. This version works without network stack. But with the network stack only the small version survives the placement & routing.
 
+## multiple_lookup_table_construction_PEs_optimized_version4_systolic
+
+I use two dataflow functions for LUT table construction and resource gathering, thus making a perfect nested loop. To be more specific, each row contains 16 values, and all of them must be gathered to pass as result. In this implementation, I use one function computing the 16 values per row, with a pipeline of 1 CC per value, and another function to gather 16 numbers as a wide data type. By doing this, FF / LUT usage is reduced by 2~3x compared to the unoptimized version.
+
+This version is also interconnected by systolic array, avoiding the high-fanout problem.
+
+The PE size can be increased by doing more aggressive unroll, e.g., compute 2 values per pipeline cycle and also increase the FIFO number between the two dataflow functions accordingly.
+
+
+Each PE is responsible for constructing one distance LUT. For example, nprobe=17 and PE_num=3, then the number of LUTs constructed by three PEs are: 6, 6, 5.
+
+Performance: 
+
+Per PE:
+
+total_time = query_num * (L_load_query + nprobe_per_PE * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
+
+here, L_load_query = 128, L_load_and_compute_residual = 132, L_compute = 36, N_comupte = 256 * m = 256 * 16 = 4096, II_compute = 1
+
+nprobe_per_PE can be different for different PE for the case that each PE has different number of LUTs to construct, e.g., 6, 6, 5 as above.
+
+For all PEs, 
+
+total_time = query_num * (L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute))
+
+For the example above, nprobe_per_PE_max = 6
+
+Verification: Suppose query_num=10000, nprobe=17, PE num=4, nprobe_per_PE=5 
+
+10000 * (128 + 5 * (132 + 36 + 4096 * 1)) = 214480000, very close to 214702771 estimated by HLS.
+
+10000 query performance:
+
+```
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 7.14 ns | 5.018 ns |   1.93 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline |
+    |    min    |    max    |    min    |    max    |    min    |    max    |   Type   |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+    |  214702771|  214702771| 1.534 sec | 1.534 sec |  214702772|  214702772| dataflow |
+    +-----------+-----------+-----------+-----------+-----------+-----------+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------------------------+-----------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |                                                        |                                                     |    Latency (cycles)   |   Latency (absolute)  |        Interval       | Pipeline|
+        |                        Instance                        |                        Module                       |    min    |    max    |    min    |    max    |    min    |    max    |   Type  |
+        +--------------------------------------------------------+-----------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+        |lookup_table_construction_compute_midlle_10000_5_35_U0  |lookup_table_construction_compute_midlle_10000_5_35  |  214702771|  214702771| 1.534 sec | 1.534 sec |  214702771|  214702771|   none  |
+        |gather_float_to_distance_LUT_PQ16_10000_5_136_U0        |gather_float_to_distance_LUT_PQ16_10000_5_136        |  204800002|  204800002| 1.463 sec | 1.463 sec |  204800002|  204800002|   none  |
+        |lookup_table_construction_forward_middle_10000_37_U0    |lookup_table_construction_forward_middle_10000_37    |   25850001|   25850001| 0.185 sec | 0.185 sec |   25850001|   25850001|   none  |
+        +--------------------------------------------------------+-----------------------------------------------------+-----------+-----------+-----------+-----------+-----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+Compute PE pipeline depth:
+
+        * Loop: 
+        +---------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |                                             |    Latency (cycles)   | Iteration|  Initiation Interval  |  Trip |          |
+        |                  Loop Name                  |    min    |    max    |  Latency |  achieved |   target  | Count | Pipelined|
+        +---------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+        |- Loop 1                                     |      32768|      32768|         2|          1|          1|  32768|    yes   |
+        |- Loop 2                                     |  214670000|  214670000|     21467|          -|          -|  10000|    no    |
+        | + Loop 2.1                                  |        128|        128|         2|          1|          1|    128|    yes   |
+        | + Loop 2.2                                  |      21335|      21335|      4267|          -|          -|      5|    no    |
+        |  ++ residual_center_vectors                 |        132|        132|         6|          1|          1|    128|    yes   |
+        |  ++ single_row_lookup_table_construction_L  |       4130|       4130|        36|          1|          1|   4096|    yes   |
+        +---------------------------------------------+-----------+-----------+----------+-----------+-----------+-------+----------+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|       22|    -|
+|FIFO                 |       16|     -|      322|      112|    -|
+|Instance             |        1|    54|     7497|     6233|    8|
+|Memory               |        -|     -|        -|        -|    -|
+|Multiplexer          |        -|     -|        -|       36|    -|
+|Register             |        -|     -|        6|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |       17|    54|     7825|     6403|    8|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1344|  3008|   869120|   434560|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |        1|     1|    ~0   |        1|    2|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4032|  9024|  2607360|  1303680|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |    ~0   |  ~0  |    ~0   |    ~0   |  ~0 |
++---------------------+---------+------+---------+---------+-----+
+```
 
 ## multiple_lookup_table_construction_PEs_unoptimized_small
 

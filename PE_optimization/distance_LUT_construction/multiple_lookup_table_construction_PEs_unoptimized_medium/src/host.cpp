@@ -73,52 +73,52 @@ int main(int argc, char** argv)
 
     // allocate aligned 2D vectors
 //////////////////////////////   TEMPLATE START  //////////////////////////////
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding0(HBM_embedding0_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding1(HBM_embedding1_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding2(HBM_embedding2_size, 0);
-    std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding3(HBM_embedding3_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding4(HBM_embedding4_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding5(HBM_embedding5_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding6(HBM_embedding6_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding7(HBM_embedding7_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding8(HBM_embedding8_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding9(HBM_embedding9_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding10(HBM_embedding10_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding11(HBM_embedding11_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding12(HBM_embedding12_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding13(HBM_embedding13_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding14(HBM_embedding14_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding15(HBM_embedding15_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding16(HBM_embedding16_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding17(HBM_embedding17_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding18(HBM_embedding18_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding19(HBM_embedding19_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding20(HBM_embedding20_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding21(HBM_embedding21_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding22(HBM_embedding22_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding23(HBM_embedding23_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding24(HBM_embedding24_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding25(HBM_embedding25_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding26(HBM_embedding26_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding27(HBM_embedding27_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding28(HBM_embedding28_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding29(HBM_embedding29_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding30(HBM_embedding30_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> HBM_embedding31(HBM_embedding31_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_embedding0(HBM_embedding0_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_embedding1(HBM_embedding1_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_embedding2(HBM_embedding2_size, 0);
+    std::vector<float, aligned_allocator<float>> HBM_embedding3(HBM_embedding3_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding4(HBM_embedding4_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding5(HBM_embedding5_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding6(HBM_embedding6_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding7(HBM_embedding7_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding8(HBM_embedding8_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding9(HBM_embedding9_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding10(HBM_embedding10_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding11(HBM_embedding11_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding12(HBM_embedding12_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding13(HBM_embedding13_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding14(HBM_embedding14_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding15(HBM_embedding15_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding16(HBM_embedding16_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding17(HBM_embedding17_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding18(HBM_embedding18_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding19(HBM_embedding19_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding20(HBM_embedding20_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding21(HBM_embedding21_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding22(HBM_embedding22_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding23(HBM_embedding23_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding24(HBM_embedding24_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding25(HBM_embedding25_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding26(HBM_embedding26_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding27(HBM_embedding27_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding28(HBM_embedding28_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding29(HBM_embedding29_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding30(HBM_embedding30_size, 0);
+//     std::vector<float, aligned_allocator<float>> HBM_embedding31(HBM_embedding31_size, 0);
 
 
-//     std::vector<t_axi, aligned_allocator<t_axi>> PLRAM_embedding0(PLRAM_embedding0_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> PLRAM_embedding1(PLRAM_embedding1_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> PLRAM_embedding2(PLRAM_embedding2_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> PLRAM_embedding3(PLRAM_embedding3_size, 0);
+//     std::vector<float, aligned_allocator<float>> PLRAM_embedding0(PLRAM_embedding0_size, 0);
+//     std::vector<float, aligned_allocator<float>> PLRAM_embedding1(PLRAM_embedding1_size, 0);
+//     std::vector<float, aligned_allocator<float>> PLRAM_embedding2(PLRAM_embedding2_size, 0);
+//     std::vector<float, aligned_allocator<float>> PLRAM_embedding3(PLRAM_embedding3_size, 0);
 
-//     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding0(DDR_embedding0_size, 0);
-//     std::vector<t_axi, aligned_allocator<t_axi>> DDR_embedding1(DDR_embedding1_size, 0);
+//     std::vector<float, aligned_allocator<float>> DDR_embedding0(DDR_embedding0_size, 0);
+//     std::vector<float, aligned_allocator<float>> DDR_embedding1(DDR_embedding1_size, 0);
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
     int size_results_out = K; 
-    std::vector<result_t,aligned_allocator<result_t>> source_hw_results(size_results_out);
-    std::vector<result_t,aligned_allocator<result_t>> source_sw_results(size_results_out);
+    std::vector<ap_uint512_t,aligned_allocator<ap_uint512_t>> source_hw_results(size_results_out);
+    std::vector<ap_uint512_t,aligned_allocator<ap_uint512_t>> source_sw_results(size_results_out);
 
 //     // DDR0: query vector, QUERY_NUM * D
 //     float query_vec[D] =  {9, 26, -34, -2, -83, -17, 6, 23, -43, -4, 13, 26, -53, -27, -68, 74, 11, 
@@ -337,81 +337,81 @@ int main(int argc, char** argv)
     // CL_MEM_EXT_PTR_XILINX
 //////////////////////////////   TEMPLATE START  //////////////////////////////
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding0_size *sizeof(t_axi), &HBM_embedding0Ext, &err));
+            HBM_embedding0_size *sizeof(float), &HBM_embedding0Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding1(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding1_size *sizeof(t_axi), &HBM_embedding1Ext, &err));
+            HBM_embedding1_size *sizeof(float), &HBM_embedding1Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding2(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding2_size *sizeof(t_axi), &HBM_embedding2Ext, &err));
+            HBM_embedding2_size *sizeof(float), &HBM_embedding2Ext, &err));
     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding3(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-            HBM_embedding3_size *sizeof(t_axi), &HBM_embedding3Ext, &err));
+            HBM_embedding3_size *sizeof(float), &HBM_embedding3Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding4(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding4_size *sizeof(t_axi), &HBM_embedding4Ext, &err));
+//             HBM_embedding4_size *sizeof(float), &HBM_embedding4Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding5(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding5_size *sizeof(t_axi), &HBM_embedding5Ext, &err));
+//             HBM_embedding5_size *sizeof(float), &HBM_embedding5Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding6(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding6_size *sizeof(t_axi), &HBM_embedding6Ext, &err));
+//             HBM_embedding6_size *sizeof(float), &HBM_embedding6Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding7(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding7_size *sizeof(t_axi), &HBM_embedding7Ext, &err));
+//             HBM_embedding7_size *sizeof(float), &HBM_embedding7Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding8(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding8_size *sizeof(t_axi), &HBM_embedding8Ext, &err));
+//             HBM_embedding8_size *sizeof(float), &HBM_embedding8Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding9(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding9_size *sizeof(t_axi), &HBM_embedding9Ext, &err));
+//             HBM_embedding9_size *sizeof(float), &HBM_embedding9Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding10(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding10_size *sizeof(t_axi), &HBM_embedding10Ext, &err));
+//             HBM_embedding10_size *sizeof(float), &HBM_embedding10Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding11(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding11_size *sizeof(t_axi), &HBM_embedding11Ext, &err));
+//             HBM_embedding11_size *sizeof(float), &HBM_embedding11Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding12(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding12_size *sizeof(t_axi), &HBM_embedding12Ext, &err));
+//             HBM_embedding12_size *sizeof(float), &HBM_embedding12Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding13(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding13_size *sizeof(t_axi), &HBM_embedding13Ext, &err));
+//             HBM_embedding13_size *sizeof(float), &HBM_embedding13Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding14(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding14_size *sizeof(t_axi), &HBM_embedding14Ext, &err));
+//             HBM_embedding14_size *sizeof(float), &HBM_embedding14Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding15(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding15_size *sizeof(t_axi), &HBM_embedding15Ext, &err));
+//             HBM_embedding15_size *sizeof(float), &HBM_embedding15Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding16(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding16_size *sizeof(t_axi), &HBM_embedding16Ext, &err));
+//             HBM_embedding16_size *sizeof(float), &HBM_embedding16Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding17(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding17_size *sizeof(t_axi), &HBM_embedding17Ext, &err));
+//             HBM_embedding17_size *sizeof(float), &HBM_embedding17Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding18(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding18_size *sizeof(t_axi), &HBM_embedding18Ext, &err));
+//             HBM_embedding18_size *sizeof(float), &HBM_embedding18Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding19(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding19_size *sizeof(t_axi), &HBM_embedding19Ext, &err));
+//             HBM_embedding19_size *sizeof(float), &HBM_embedding19Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding20(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding20_size *sizeof(t_axi), &HBM_embedding20Ext, &err));
+//             HBM_embedding20_size *sizeof(float), &HBM_embedding20Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding21(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding21_size *sizeof(t_axi), &HBM_embedding21Ext, &err));
+//             HBM_embedding21_size *sizeof(float), &HBM_embedding21Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding22(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding22_size *sizeof(t_axi), &HBM_embedding22Ext, &err));
+//             HBM_embedding22_size *sizeof(float), &HBM_embedding22Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding23(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding23_size *sizeof(t_axi), &HBM_embedding23Ext, &err));
+//             HBM_embedding23_size *sizeof(float), &HBM_embedding23Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding24(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding24_size *sizeof(t_axi), &HBM_embedding24Ext, &err));
+//             HBM_embedding24_size *sizeof(float), &HBM_embedding24Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding25(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding25_size *sizeof(t_axi), &HBM_embedding25Ext, &err));
+//             HBM_embedding25_size *sizeof(float), &HBM_embedding25Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding26(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding26_size *sizeof(t_axi), &HBM_embedding26Ext, &err));
+//             HBM_embedding26_size *sizeof(float), &HBM_embedding26Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding27(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding27_size *sizeof(t_axi), &HBM_embedding27Ext, &err));
+//             HBM_embedding27_size *sizeof(float), &HBM_embedding27Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding28(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding28_size *sizeof(t_axi), &HBM_embedding28Ext, &err));
+//             HBM_embedding28_size *sizeof(float), &HBM_embedding28Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding29(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding29_size *sizeof(t_axi), &HBM_embedding29Ext, &err));
+//             HBM_embedding29_size *sizeof(float), &HBM_embedding29Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding30(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding30_size *sizeof(t_axi), &HBM_embedding30Ext, &err));
+//             HBM_embedding30_size *sizeof(float), &HBM_embedding30Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_HBM_embedding31(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             HBM_embedding31_size *sizeof(t_axi), &HBM_embedding31Ext, &err));
+//             HBM_embedding31_size *sizeof(float), &HBM_embedding31Ext, &err));
 
 //     OCL_CHECK(err, cl::Buffer buffer_DDR_embedding0(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             DDR_embedding0_size *sizeof(t_axi), &DDR_embedding0Ext, &err));
+//             DDR_embedding0_size *sizeof(float), &DDR_embedding0Ext, &err));
 //     OCL_CHECK(err, cl::Buffer buffer_DDR_embedding1(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY | CL_MEM_EXT_PTR_XILINX, 
-//             DDR_embedding1_size *sizeof(t_axi), &DDR_embedding1Ext, &err));
+//             DDR_embedding1_size *sizeof(float), &DDR_embedding1Ext, &err));
 
 // .......................................................
 // Allocate Global Memory for sourcce_hw_results
 // .......................................................
     OCL_CHECK(err, cl::Buffer buffer_output(
         context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY | CL_MEM_EXT_PTR_XILINX, 
-        size_results_out * sizeof(result_t), &sourcce_hw_resultsExt, &err));
+        size_results_out * sizeof(ap_uint512_t), &sourcce_hw_resultsExt, &err));
 
 // ============================================================================
 // Step 2: Set Kernel Arguments and Run the Application

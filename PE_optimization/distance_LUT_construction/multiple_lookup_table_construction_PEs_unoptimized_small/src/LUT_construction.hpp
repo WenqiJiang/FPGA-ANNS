@@ -1,67 +1,22 @@
-#pragma once
+#pragma once 
 
 #include "constants.hpp"
 #include "types.hpp"
 
-
-template<const int pe_num_table_construction>
-void replicate_product_quantizer(
-    hls::stream<float> &s_product_quantizer_init,
-    hls::stream<float> (&s_product_quantizer_init_replicated)[pe_num_table_construction]);
-
-template<const int query_num, const int pe_num_table_construction>
-void replicate_query_vectors(
-    hls::stream<float>& s_query_vectors,
-    hls::stream<float> (&s_query_vectors_replicated)[pe_num_table_construction]);
-
-template<const int query_num, const int pe_num_table_construction>
-void replicate_center_vectors(
-    hls::stream<float>& s_center_vectors_lookup_PE,
-    hls::stream<float> (&s_center_vectors_replicated)[pe_num_table_construction]);
-
-template<const int query_num, const int nprobe_per_PE>
-void lookup_table_construction_PE(
-    hls::stream<float>& s_product_quantizer_init,
-    hls::stream<float>& s_center_vectors_table_construction_PE,
-    hls::stream<float>& s_query_vectors_table_construction_PE,
-    hls::stream<distance_LUT_PQ16_t>& s_result_table_construction_PE);
-
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
-void gather_lookup_table(
-    hls::stream<distance_LUT_PQ16_t> (&s_partial_distance_LUT)[pe_num_table_construction],
-    hls::stream<distance_LUT_PQ16_t> &s_distance_LUT);
-
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
+////////////////////     Function to call in top-level     ////////////////////
+template<const int query_num>
 void lookup_table_construction_wrapper(
-    hls::stream<float> &s_product_quantizer_init,
-    hls::stream<float> &s_center_vectors,
-    hls::stream<float> &s_query_vectors,
+    hls::stream<float> (&s_PQ_quantizer_init)[PE_NUM_TABLE_CONSTRUCTION],
+    hls::stream<float> &s_center_vectors_lookup_PE,
+    hls::stream<float> &s_query_vectors_lookup_PE,
     hls::stream<distance_LUT_PQ16_t> &s_distance_LUT);
+    
+////////////////////     Function to call in top-level     ////////////////////
 
-
-
-
-template<const int pe_num_table_construction>
-void replicate_product_quantizer(
-    hls::stream<float> &s_product_quantizer_init,
-    hls::stream<float> (&s_product_quantizer_init_replicated)[pe_num_table_construction]) {
-
-    // load PQ quantizer centers from HBM
-    for (int i = 0; i < K * D; i++) {
-#pragma HLS pipeline II=1
-
-        for (int s = 0; s < pe_num_table_construction; s++) {
-#pragma HLS UNROLL
-            s_product_quantizer_init_replicated[s].write(s_product_quantizer_init.read());
-        }
-    }
-}
-
-
-template<const int query_num, const int pe_num_table_construction>
-void replicate_query_vectors(
+template<const int query_num>
+void query_vectors_dispatcher(
     hls::stream<float>& s_query_vectors,
-    hls::stream<float> (&s_query_vectors_replicated)[pe_num_table_construction]) {
+    hls::stream<float> (&s_query_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // Given an input stream of query vectors, broadcast it to all 
     //   distance table construction PEs
@@ -71,31 +26,44 @@ void replicate_query_vectors(
         for (int d = 0; d < D; d++) {
 #pragma HLS pipeline II=1
             float reg = s_query_vectors.read(); 
-            for (int s = 0; s < pe_num_table_construction; s++) {
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
 #pragma HLS UNROLL
-                s_query_vectors_replicated[s].write(reg);
+                s_query_vectors_table_construction_PE[s].write(reg);
             }
         }
     }
 }
 
-template<const int query_num, const int pe_num_table_construction>
-void replicate_center_vectors(
+template<const int query_num>
+void center_vectors_dispatcher(
     hls::stream<float>& s_center_vectors_lookup_PE,
-    hls::stream<float> (&s_center_vectors_replicated)[pe_num_table_construction]) {
+    hls::stream<float> (&s_center_vectors_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION]) {
 
     // Given an input stream of center vectors, interleave it to all 
     //   distance table construction PEs in a round-robin manner 
     //   e.g., 4 PEs, vector 0,4,8 -> PE0, 1,5,9 -> PE1, etc.
     for (int query_id = 0; query_id < query_num; query_id++) {
 
-        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE; interleave_iter++) {
+        // first, interleave the common part of all PEs (decided by the PE of smaller scanned cells)
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER; interleave_iter++) {
 
-            for (int s = 0; s < pe_num_table_construction; s++) {
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
 
                 for (int n = 0; n < D; n++) {
 #pragma HLS pipeline II=1
-                    s_center_vectors_replicated[s].write(s_center_vectors_lookup_PE.read());
+                    s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
+                }
+            }
+        }
+
+        // then, interleave the rest workload
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER - NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER; interleave_iter++) {
+
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION_LARGER; s++) {
+
+                for (int n = 0; n < D; n++) {
+#pragma HLS pipeline II=1
+                    s_center_vectors_table_construction_PE[s].write(s_center_vectors_lookup_PE.read());
                 }
             }
         }
@@ -104,7 +72,7 @@ void replicate_center_vectors(
 
 template<const int query_num, const int nprobe_per_PE>
 void lookup_table_construction_PE(
-    hls::stream<float>& s_product_quantizer_init,
+    hls::stream<float>& s_PQ_quantizer_init,
     hls::stream<float>& s_center_vectors_table_construction_PE,
     hls::stream<float>& s_query_vectors_table_construction_PE,
     hls::stream<distance_LUT_PQ16_t>& s_result_table_construction_PE) {
@@ -153,52 +121,52 @@ void lookup_table_construction_PE(
 
     // DRAM PQ quantizer format: 16 (M) x 256 (K) x 8 (D/M)
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_0[i] = s_product_quantizer_init.read();
+        sub_quantizer_0[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_1[i] = s_product_quantizer_init.read();
+        sub_quantizer_1[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_2[i] = s_product_quantizer_init.read();
+        sub_quantizer_2[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_3[i] = s_product_quantizer_init.read();
+        sub_quantizer_3[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_4[i] = s_product_quantizer_init.read();
+        sub_quantizer_4[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_5[i] = s_product_quantizer_init.read();
+        sub_quantizer_5[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_6[i] = s_product_quantizer_init.read();
+        sub_quantizer_6[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_7[i] = s_product_quantizer_init.read();
+        sub_quantizer_7[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_8[i] = s_product_quantizer_init.read();
+        sub_quantizer_8[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_9[i] = s_product_quantizer_init.read();
+        sub_quantizer_9[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_10[i] = s_product_quantizer_init.read();
+        sub_quantizer_10[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_11[i] = s_product_quantizer_init.read();
+        sub_quantizer_11[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_12[i] = s_product_quantizer_init.read();
+        sub_quantizer_12[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_13[i] = s_product_quantizer_init.read();
+        sub_quantizer_13[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_14[i] = s_product_quantizer_init.read();
+        sub_quantizer_14[i] = s_PQ_quantizer_init.read();
     }
     for (int i = 0; i < K * D / M; i++) {
-        sub_quantizer_15[i] = s_product_quantizer_init.read();
+        sub_quantizer_15[i] = s_PQ_quantizer_init.read();
     }
 
 
@@ -229,8 +197,6 @@ void lookup_table_construction_PE(
             single_row_lookup_table_construction:
             for (int k = 0; k < K; k++) {
 #pragma HLS pipeline II=16
-                // TODO: register + partition
-                // TODO: remove init
                 float dist_0[D / M] = {0, 0, 0, 0, 0, 0, 0, 0};
                 float dist_1[D / M] = {0, 0, 0, 0, 0, 0, 0, 0};
                 float dist_2[D / M] = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -391,84 +357,99 @@ void lookup_table_construction_PE(
     }
 }
 
-
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
+template<const int query_num>
 void gather_lookup_table(
-    hls::stream<distance_LUT_PQ16_t> (&s_partial_distance_LUT)[pe_num_table_construction],
-    hls::stream<distance_LUT_PQ16_t> &s_distance_LUT) {
+    hls::stream<distance_LUT_PQ16_t> (&s_result_table_construction_PE)[PE_NUM_TABLE_CONSTRUCTION],
+    hls::stream<distance_LUT_PQ16_t> &s_result_all_distance_lookup_table) {
 
-    // Gather in a round-robin manner, e.g., for the case of 4 table construction PEs
+    // Gather in a round-robin manner
     // PE0: 0, 4, 8 ...
     // PE1: 1, 5, 9 ...
     // PE2: 2, 6, 10 ...
     // PE3: 3, 7, 11 ...
     for (int query_id = 0; query_id < query_num; query_id++) {
         
-        for (int interleave_iter = 0; interleave_iter < nprobe_per_PE; interleave_iter++) {
+        // all PEs, common part
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER; interleave_iter++) {
 
-            for (int s = 0; s < pe_num_table_construction; s++) {
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION; s++) {
                 // each lookup table: K rows
                 for (int t = 0; t < K; t++) {
 #pragma HLS pipeline II=1
-                    s_distance_LUT.write(s_partial_distance_LUT[s].read());
+                    s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
+                }
+            }
+        }
+
+        // the PEs that are in the last round
+        for (int interleave_iter = 0; interleave_iter < NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER - NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER; interleave_iter++) {
+
+            for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION_LARGER; s++) {
+                // each lookup table: K rows
+                for (int t = 0; t < K; t++) {
+#pragma HLS pipeline II=1
+                    s_result_all_distance_lookup_table.write(s_result_table_construction_PE[s].read());
                 }
             }
         }
     }
 }
 
-
-template<const int query_num, const int pe_num_table_construction, const int nprobe_per_PE>
+template<const int query_num>
 void lookup_table_construction_wrapper(
-    hls::stream<float> &s_product_quantizer_init,
-    hls::stream<float> &s_center_vectors,
-    hls::stream<float> &s_query_vectors,
+    hls::stream<float> (&s_PQ_quantizer_init)[PE_NUM_TABLE_CONSTRUCTION],
+    hls::stream<float> &s_center_vectors_lookup_PE,
+    hls::stream<float> &s_query_vectors_lookup_PE,
     hls::stream<distance_LUT_PQ16_t> &s_distance_LUT) {
-#pragma HLS dataflow 
 
+#pragma HLS inline
 
-    hls::stream<float> s_product_quantizer_init_replicated[pe_num_table_construction]; 
-#pragma HLS stream variable=s_product_quantizer_init_replicated depth=4
-// #pragma HLS resource variable=s_product_quantizer_init_replicated core=FIFO_SRL
-#pragma HLS array_partition variable=s_product_quantizer_init_replicated complete
+    hls::stream<float> s_query_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
+#pragma HLS stream variable=s_query_vectors_table_construction_PE depth=512
+// #pragma HLS resource variable=s_query_vectors_table_construction_PE core=FIFO_BRAM
+#pragma HLS array_partition variable=s_query_vectors_table_construction_PE complete
 
-    replicate_product_quantizer<pe_num_table_construction>(
-        s_product_quantizer_init,
-        s_product_quantizer_init_replicated);
+    query_vectors_dispatcher<QUERY_NUM>(
+        s_query_vectors_lookup_PE, 
+        s_query_vectors_table_construction_PE);
 
-    hls::stream<float> s_query_vectors_replicated[pe_num_table_construction];
-#pragma HLS stream variable=s_query_vectors_replicated depth=512
-// #pragma HLS resource variable=s_query_vectors_replicated core=FIFO_BRAM
-#pragma HLS array_partition variable=s_query_vectors_replicated complete
+    hls::stream<float> s_center_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
+#pragma HLS stream variable=s_center_vectors_table_construction_PE depth=512
+// #pragma HLS resource variable=s_center_vectors_table_construction_PE core=FIFO_BRAM
+#pragma HLS array_partition variable=s_center_vectors_table_construction_PE complete
 
-    replicate_query_vectors<query_num, pe_num_table_construction>(
-        s_query_vectors,
-        s_query_vectors_replicated);
+    center_vectors_dispatcher<QUERY_NUM>(
+        s_center_vectors_lookup_PE, 
+        s_center_vectors_table_construction_PE);
 
-    hls::stream<float> s_center_vectors_replicated[pe_num_table_construction];
-#pragma HLS stream variable=s_center_vectors_replicated depth=512
-// #pragma HLS resource variable=s_center_vectors_replicated core=FIFO_BRAM
-#pragma HLS array_partition variable=s_center_vectors_replicated complete
+    // PE0 write 256 rows to s_distance_LUT, then PE1 write 256 rows
+    // thus need a deep FIFO to make sure each PE can cache enough results
+    // 32 * 512 = 16384 bits, BRAM = 18K bits
+    // The FIFO must be long enough (each PE -> output K=256 ap_uint<512> for each cell)
+    hls::stream<distance_LUT_PQ16_t> s_result_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION];
+#pragma HLS stream variable=s_result_table_construction_PE depth=512
+// #pragma HLS resource variable=s_result_table_construction_PE core=FIFO_BRAM
+#pragma HLS array_partition variable=s_result_table_construction_PE complete
 
-    replicate_center_vectors<query_num, pe_num_table_construction>(
-        s_center_vectors,
-        s_center_vectors_replicated); 
-
-    hls::stream<distance_LUT_PQ16_t> s_partial_distance_LUT[pe_num_table_construction];
-#pragma HLS stream variable=s_partial_distance_LUT depth=512
-// #pragma HLS resource variable=s_partial_distance_LUT core=FIFO_BRAM
-#pragma HLS array_partition variable=s_partial_distance_LUT complete
-
-    for (int s = 0; s < pe_num_table_construction; s++) {
+    for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION_LARGER; s++) {
 #pragma HLS UNROLL
-        lookup_table_construction_PE<query_num, nprobe_per_PE>(
-            s_product_quantizer_init_replicated[s], 
-            s_center_vectors_replicated[s], 
-            s_query_vectors_replicated[s], 
-            s_partial_distance_LUT[s]);
+        lookup_table_construction_PE<query_num, NPROBE_PER_TABLE_CONSTRUCTION_PE_LARGER>(
+            s_PQ_quantizer_init[s], 
+            s_center_vectors_table_construction_PE[s], 
+            s_query_vectors_table_construction_PE[s], 
+            s_result_table_construction_PE[s]);
     }
 
-    gather_lookup_table<query_num, pe_num_table_construction, nprobe_per_PE>(
-        s_partial_distance_LUT, 
-        s_distance_LUT);
+    for (int s = 0; s < PE_NUM_TABLE_CONSTRUCTION_SMALLER; s++) {
+#pragma HLS UNROLL
+        lookup_table_construction_PE<query_num, NPROBE_PER_TABLE_CONSTRUCTION_PE_SMALLER>(
+            s_PQ_quantizer_init[PE_NUM_TABLE_CONSTRUCTION_LARGER + s], 
+            s_center_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION_LARGER + s], 
+            s_query_vectors_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION_LARGER + s], 
+            s_result_table_construction_PE[PE_NUM_TABLE_CONSTRUCTION_LARGER + s]);
+    }
+
+    gather_lookup_table<QUERY_NUM>(
+        s_result_table_construction_PE, 
+        s_distance_LUT); 
 }
