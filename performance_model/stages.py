@@ -296,9 +296,75 @@ def get_options_stage_3_select_Voronoi_cells(nlist, nprobe):
 def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
     
     """ Now we only use the most optimized version, i.e.,
-          single_lookup_table_construction_PE_optimized_version2 """
+          multiple_lookup_table_construction_PEs_optimized_version4_systolic """
 
     option_list = []
+
+    for PE_num in range(1, 128):
+
+        perf_resource_dict = dict()
+        perf_resource_dict["name"] = "multiple_lookup_table_construction_PEs_optimized_version4_systolic {} PEs".format(PE_num)
+
+        nprobe_per_PE_max = int(np.ceil(nprobe / PE_num))
+        L_load_query = 128
+        L_load_and_compute_residual = 132
+        L_compute = 68
+        N_comupte = 256
+        II_compute = 16
+        cycles_per_query = L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
+        QPS = 1 / (cycles_per_query / FREQ)
+        perf_resource_dict['cycles_per_query'] = cycles_per_query
+        perf_resource_dict['QPS'] = QPS
+        
+        #####  HLS Prediction #####
+        perf_resource_dict["BRAM_18K"] = 1 * PE_num
+        perf_resource_dict["DSP48E"] = 54 * PE_num
+        perf_resource_dict["FF"] = 7497 * PE_num
+        perf_resource_dict["LUT"] = 6233 * PE_num
+        perf_resource_dict["URAM"] = 8 * PE_num
+
+        #####   Vivado Measured   #####
+        # perf_resource_dict["LUT"] = 15288 * PE_num
+        # perf_resource_dict["FF"] = 21875 * PE_num
+        # perf_resource_dict["BRAM_18K"] = 2 * 0.5 * PE_num
+        # perf_resource_dict["URAM"] = 16 * PE_num
+        # perf_resource_dict["DSP48E"] = 54 * PE_num
+
+        if nlist <= 1024:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 16
+        elif nlist <= 2048:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 32
+        elif nlist <= 4096:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 64
+        elif nlist <= 8192:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 128
+        elif nlist <= 16384:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 256
+        elif nlist <= 32768:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 0
+            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 512
+        else:
+            #####  HLS Prediction & Vivado Measured #####
+            perf_resource_dict["HBM_bank"] = 1
+
+        #####   FIFO Consumption (Vivado Measured)   #####
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 17 * PE_num
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 17 * PE_num
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 17 * PE_num
+
+        if (fit_resource_constraints([perf_resource_dict], [1])):
+            option_list.append(perf_resource_dict)
 
     """ The large version of PE fail placement & routing after adding network stack """    
     """ Plus UNOPTIMIZED centroid lookup URAM """
@@ -437,71 +503,71 @@ def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
 
     """ Use smaller version of PEs to survive placement & routing, although much less resource efficient """
     """ Plus optimized centroid lookup URAM """
-    for PE_num in range(1, 128):
+    # for PE_num in range(1, 128):
 
-        perf_resource_dict = dict()
-        perf_resource_dict["name"] = "multiple_lookup_table_construction_PEs_unoptimized_small {} PEs".format(PE_num)
+    #     perf_resource_dict = dict()
+    #     perf_resource_dict["name"] = "multiple_lookup_table_construction_PEs_unoptimized_small {} PEs".format(PE_num)
 
-        nprobe_per_PE_max = int(np.ceil(nprobe / PE_num))
-        L_load_query = 128
-        L_load_and_compute_residual = 132
-        L_compute = 68
-        N_comupte = 256
-        II_compute = 16
-        cycles_per_query = L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
-        QPS = 1 / (cycles_per_query / FREQ)
-        perf_resource_dict['cycles_per_query'] = cycles_per_query
-        perf_resource_dict['QPS'] = QPS
+    #     nprobe_per_PE_max = int(np.ceil(nprobe / PE_num))
+    #     L_load_query = 128
+    #     L_load_and_compute_residual = 132
+    #     L_compute = 68
+    #     N_comupte = 256
+    #     II_compute = 16
+    #     cycles_per_query = L_load_query + nprobe_per_PE_max * (L_load_and_compute_residual + L_compute + N_comupte * II_compute)
+    #     QPS = 1 / (cycles_per_query / FREQ)
+    #     perf_resource_dict['cycles_per_query'] = cycles_per_query
+    #     perf_resource_dict['QPS'] = QPS
         
-        #####  HLS Prediction #####
-        # perf_resource_dict["BRAM_18K"] = 1 * PE_num
-        # perf_resource_dict["DSP48E"] = 216 * PE_num
-        # perf_resource_dict["FF"] = 40288 * PE_num
-        # perf_resource_dict["LUT"] = 27176 * PE_num
-        # perf_resource_dict["URAM"] = 16 * PE_num
+    #     #####  HLS Prediction #####
+    #     # perf_resource_dict["BRAM_18K"] = 1 * PE_num
+    #     # perf_resource_dict["DSP48E"] = 216 * PE_num
+    #     # perf_resource_dict["FF"] = 40288 * PE_num
+    #     # perf_resource_dict["LUT"] = 27176 * PE_num
+    #     # perf_resource_dict["URAM"] = 16 * PE_num
 
-        #####   Vivado Measured   #####
-        perf_resource_dict["LUT"] = 15288 * PE_num
-        perf_resource_dict["FF"] = 21875 * PE_num
-        perf_resource_dict["BRAM_18K"] = 2 * 0.5 * PE_num
-        perf_resource_dict["URAM"] = 16 * PE_num
-        perf_resource_dict["DSP48E"] = 54 * PE_num
+    #     #####   Vivado Measured   #####
+    #     perf_resource_dict["LUT"] = 15288 * PE_num
+    #     perf_resource_dict["FF"] = 21875 * PE_num
+    #     perf_resource_dict["BRAM_18K"] = 2 * 0.5 * PE_num
+    #     perf_resource_dict["URAM"] = 16 * PE_num
+    #     perf_resource_dict["DSP48E"] = 54 * PE_num
 
-        if nlist <= 1024:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 16
-        elif nlist <= 2048:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 32
-        elif nlist <= 4096:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 64
-        elif nlist <= 8192:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 128
-        elif nlist <= 16384:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 256
-        elif nlist <= 32768:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 0
-            perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 512
-        else:
-            #####  HLS Prediction & Vivado Measured #####
-            perf_resource_dict["HBM_bank"] = 1
+    #     if nlist <= 1024:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 16
+    #     elif nlist <= 2048:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 32
+    #     elif nlist <= 4096:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 64
+    #     elif nlist <= 8192:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 128
+    #     elif nlist <= 16384:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 256
+    #     elif nlist <= 32768:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 0
+    #         perf_resource_dict["URAM"] = perf_resource_dict["URAM"] + 512
+    #     else:
+    #         #####  HLS Prediction & Vivado Measured #####
+    #         perf_resource_dict["HBM_bank"] = 1
 
-        #####   FIFO Consumption (Vivado Measured)   #####
-        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 17 * PE_num
-        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 17 * PE_num
-        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 17 * PE_num
+    #     #####   FIFO Consumption (Vivado Measured)   #####
+    #     perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 17 * PE_num
+    #     perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 17 * PE_num
+    #     perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 17 * PE_num
 
-        if (fit_resource_constraints([perf_resource_dict], [1])):
-            option_list.append(perf_resource_dict)
+    #     if (fit_resource_constraints([perf_resource_dict], [1])):
+    #         option_list.append(perf_resource_dict)
 
     return option_list
 

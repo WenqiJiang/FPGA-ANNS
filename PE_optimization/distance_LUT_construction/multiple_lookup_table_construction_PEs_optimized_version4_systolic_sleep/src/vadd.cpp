@@ -125,9 +125,9 @@ void vadd(
     hls::stream<float> s_PQ_quantizer_init;
 #pragma HLS stream variable=s_PQ_quantizer_init depth=512
 
-    const int s_lookup_table_depth = K * PE_NUM_TABLE_CONSTRUCTION;
+    // const int s_lookup_table_depth = K * PE_NUM_TABLE_CONSTRUCTION;
     hls::stream<distance_LUT_PQ16_t> s_lookup_table;
-#pragma HLS stream variable=s_lookup_table depth=s_lookup_table_depth
+#pragma HLS stream variable=s_lookup_table depth=512
 // #pragma HLS resource variable=s_lookup_table core=FIFO_SRL
 
     load_query_vectors<QUERY_NUM>(
@@ -208,8 +208,12 @@ void consume_and_write(
     for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
             for (int i = 0; i < K; i++) {
-                printf("consume result: query_id = %d, nprobe_id = %d, row = %d\n", query_id, nprobe_id, i);
+                // printf("consume result: query_id = %d, nprobe_id = %d, row = %d\n", query_id, nprobe_id, i);
                 result_local[i] = s_result.read();
+            }
+            volatile int counter = 0; // dependency add ~ 3CC
+            for (int j = 0; j < 700; j++) {
+                counter++;
             }
         }
     }
