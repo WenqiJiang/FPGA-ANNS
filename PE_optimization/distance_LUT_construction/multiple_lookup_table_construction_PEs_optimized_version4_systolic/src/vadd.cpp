@@ -166,7 +166,7 @@ void load_query_vectors(
 
         for (int d = 0; d < D; d++) {
         #pragma HLS pipeline II=1
-            s_query_vectors.write(DRAM_query_vector[query_id * D + d]);
+            s_query_vectors.write(DRAM_query_vector[d]);
         }
     }
 }
@@ -181,10 +181,9 @@ void load_center_vectors(
 
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
 
-            int start_addr = (query_id * NPROBE + nprobe_id) * D;
 
             for (int i = 0; i < D; i++) {
-                s_center_vectors.write(DRAM_center_vector[start_addr + i]);
+                s_center_vectors.write(DRAM_center_vector[i]);
             }
         }
     }
@@ -208,7 +207,6 @@ void consume_and_write(
     for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
             for (int i = 0; i < K; i++) {
-                printf("consume result: query_id = %d, nprobe_id = %d, row = %d\n", query_id, nprobe_id, i);
                 result_local[i] = s_result.read();
             }
         }

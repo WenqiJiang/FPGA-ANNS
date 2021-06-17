@@ -166,7 +166,7 @@ void load_query_vectors(
 
         for (int d = 0; d < D; d++) {
         #pragma HLS pipeline II=1
-            s_query_vectors.write(DRAM_query_vector[query_id * D + d]);
+            s_query_vectors.write(DRAM_query_vector[d]);
         }
     }
 }
@@ -181,10 +181,8 @@ void load_center_vectors(
 
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
 
-            int start_addr = (query_id * NPROBE + nprobe_id) * D;
-
             for (int i = 0; i < D; i++) {
-                s_center_vectors.write(DRAM_center_vector[start_addr + i]);
+                s_center_vectors.write(DRAM_center_vector[i]);
             }
         }
     }

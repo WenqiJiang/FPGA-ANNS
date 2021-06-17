@@ -155,7 +155,7 @@ component_list_shell = ["network_kernel", "cmac_kernel", "hmss", "System_DPA", "
 shell_consumption = add_resources(component, component_list_shell)
 
 """ Resource related constants """
-MAX_UTIL_PERC = 0.4
+MAX_UTIL_PERC = 0.55
 
 TOTAL_BRAM_18K = 4032 
 TOTAL_DSP48E = 9024
@@ -173,3 +173,38 @@ MAX_URAM = TOTAL_URAM * MAX_UTIL_PERC
 # 1 Bank = 256 MB = 4194304 512-bit = 4194304 * 3 = 12582912 vectors
 # 100M / 12582912 = 7.94 (without considering padding)
 MIN_HBM_bank = 9 # at least 9 banks to hold PQ16 version
+
+
+"""
+An example of expected scanned ratio of a single index
+
+  e.g., suppose the query vectors has the same distribution as the trained vectors, 
+    then the larger a Voronoi cell, the more likely they will be searched
+  e.g., searching 32 cells over 8192 in 100 M dataset will not scan 32 / 8192 * 1e8 entries on average,
+    we need to scan more
+"""
+
+scan_ratio_with_OPQ = {
+    1024: 1.102495894347366,
+    2048: 1.12463916710666,
+    4096: 1.12302396550103,
+    8192: 1.135891773928242,
+    16384: 1.1527141392580655,
+    32768: 1.1441353378627621,
+    65536: 1.1411144965226643,
+    131072: 1.1476783059960072,
+    262144: 1.1543383003102523
+}
+
+
+scan_ratio_without_OPQ = {
+    1024: 1.1023307648983034,
+    2048: 1.1245342465011723,
+    4096: 1.1230564521721877,
+    8192: 1.135866022841546, 
+    16384: 1.1523836603564073, 
+    32768: 1.1440334275739672,
+    65536: 1.1410689577844846,
+    131072: 1.1476378583040157,
+    262144: 1.1543274466049378
+}

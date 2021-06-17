@@ -61,7 +61,10 @@ def get_best_hardware(nlist, nprobe, OPQ_enable=True):
     for stage_5_PE_num in range(3 * MIN_HBM_bank, 27 * 3 + 1, 3): 
         # N_compute_per_nprobe * nprobe == N_insertion_per_stream
         # PE_num == input_stream_num
-        N_compute_per_nprobe = int(TOTAL_VECTORS / nlist / stage_5_PE_num) + 1
+        if OPQ_enable:
+            N_compute_per_nprobe = int(scan_ratio_with_OPQ[nlist] * TOTAL_VECTORS / nlist / stage_5_PE_num) + 1
+        else:
+            N_compute_per_nprobe = int(scan_ratio_without_OPQ[nlist] * TOTAL_VECTORS / nlist / stage_5_PE_num) + 1
         N_insertion_per_stream = int(nprobe * N_compute_per_nprobe)
 
         options_stage_5_distance_estimation_by_LUT = \
