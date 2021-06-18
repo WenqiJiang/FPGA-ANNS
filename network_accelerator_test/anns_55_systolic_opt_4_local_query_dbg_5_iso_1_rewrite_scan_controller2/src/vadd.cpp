@@ -66,11 +66,10 @@ void write_result_sing_con(
 }
 
 
-void generate_input_stage_5_2(
+void generate_input_stage_5_1(
     int query_num,
     hls::stream<float>& s_query_vectors,
-    hls::stream<int>& s_searched_cell_id_scan_controller,
-    hls::stream<distance_LUT_PQ16_t> &s_distance_LUT) {
+    hls::stream<int>& s_searched_cell_id_scan_controller) {
 
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -83,21 +82,18 @@ void generate_input_stage_5_2(
             int ID_out = 0;
             s_searched_cell_id_scan_controller.write(ID_out);
         }
-        for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
-            for (int k = 0; k < K; k++) {
-                distance_LUT_PQ16_t tmp;
-                s_distance_LUT.write(tmp);
-            }
-        }
     }
 }
 
-void generate_HBM_contents(
+void consume_stage_5_1(
     int query_num,
-    hls::stream<int> &s_start_addr_every_cell,
-    hls::stream<int> &s_scanned_entries_every_cell_Load_unit, 
-    hls::stream<int> &s_scanned_entries_every_cell_Split_unit,
-    hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM]) {
+    hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
+    hls::stream<int> &s_scanned_entries_every_cell_Dummy,
+    hls::stream<int> &s_last_valid_channel, 
+    hls::stream<int> &s_scanned_entries_per_query_Sort_and_reduction,
+    hls::stream<int> &s_scanned_entries_per_query_Priority_queue,
+    hls::stream<single_PQ> (&s_single_PQ)[3 * HBM_CHANNEL_NUM],
+    hls::stream<single_PQ_result> &s_output) {
 
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -105,45 +101,20 @@ void generate_HBM_contents(
 
         for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
 
-            int scanned_entries_every_cell = s_scanned_entries_every_cell_Load_unit.read();
-            s_scanned_entries_every_cell_Split_unit.read();
-            s_start_addr_every_cell.read();
+            int scanned_entries_every_cell = s_scanned_entries_every_cell_PQ_lookup_computation.read();
+            s_scanned_entries_every_cell_Dummy.read();
+            s_last_valid_channel.read();
 
             for (int entry_id = 0; entry_id < scanned_entries_every_cell; entry_id++) {
                 for (int s = 0; s < 3 * HBM_CHANNEL_NUM; s++) {
 #pragma HLS UNROLL
-                    single_PQ tmp;
-                    s_single_PQ[s].write(tmp);
+                    s_single_PQ[s].read();
                 }
             }
         }
-    }
-}
 
-
-void consume_stage_5(
-    int query_num,
-    hls::stream<int> &s_scanned_entries_per_query_Sort_and_reduction,
-    hls::stream<int> &s_scanned_entries_per_query_Priority_queue,
-    hls::stream<single_PQ_result> (&s_single_PQ_result)[2][16],
-    hls::stream<single_PQ_result> &s_output) {
-
-    for (int query_id = 0; query_id < query_num; query_id++) {
-
-        int entry_num_array[100];
-#pragma HLS resource variable=entry_num_array core=RAM_1P_BRAM
-        entry_num_array[0] = s_scanned_entries_per_query_Sort_and_reduction.read();
-        entry_num_array[1] = s_scanned_entries_per_query_Priority_queue.read();
-
-        for (int r_iter = 0; r_iter < entry_num_array[0]; r_iter++) {
-            for (int s_A = 0; s_A < 2; s_A++) {
-#pragma HLS UNROLL
-                for (int s_B = 0; s_B < 16; s_B++) {
-#pragma HLS UNROLL
-                    s_single_PQ_result[s_A][s_B].read();
-                }
-            }
-        }
+        s_scanned_entries_per_query_Sort_and_reduction.read();
+        s_scanned_entries_per_query_Priority_queue.read();
 
         single_PQ_result out[PRIORITY_QUEUE_LEN];
 
@@ -194,14 +165,10 @@ void accelerator_kernel(
     hls::stream<int> s_searched_cell_id_scan_controller;
 #pragma HLS stream variable=s_searched_cell_id_scan_controller depth=512
 
-    hls::stream<distance_LUT_PQ16_t> s_distance_LUT;
-#pragma HLS stream variable=s_distance_LUT depth=512
-
-    generate_input_stage_5_2(
+    generate_input_stage_5_1(
         QUERY_NUM,
         s_query_vectors,
-        s_searched_cell_id_scan_controller,
-        s_distance_LUT);
+        s_searched_cell_id_scan_controller);
 
     ////////////////////     Load PQ Codes     ////////////////////    
 
@@ -255,30 +222,32 @@ void accelerator_kernel(
 #pragma HLS array_partition variable=s_single_PQ complete
 // #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
 
-
-    generate_HBM_contents(
-        QUERY_NUM,
+    load_and_split_PQ_codes_wrapper<QUERY_NUM, NPROBE>(
+        HBM_in0, HBM_in1, HBM_in2, HBM_in3, HBM_in4, HBM_in5, HBM_in6, HBM_in7, 
+        HBM_in8, 
+        // HBM_in9, 
+        // HBM_in10, 
         s_start_addr_every_cell,
-        s_scanned_entries_every_cell_Load_unit, 
+        s_scanned_entries_every_cell_Load_unit,
         s_scanned_entries_every_cell_Split_unit,
         s_single_PQ);
 
     // 64 streams = 21 channels * 3 + 1 dummy
-    hls::stream<single_PQ_result> s_single_PQ_result[2][16];
-#pragma HLS stream variable=s_single_PQ_result depth=8
-#pragma HLS array_partition variable=s_single_PQ_result complete
-// #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
+//     hls::stream<single_PQ_result> s_single_PQ_result[2][16];
+// #pragma HLS stream variable=s_single_PQ_result depth=8
+// #pragma HLS array_partition variable=s_single_PQ_result complete
+// // #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
 
 
     ////////////////////     Estimate Distance by LUT     ////////////////////    
 
-    PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE>(
-        s_single_PQ, 
-        s_distance_LUT, 
-        s_scanned_entries_every_cell_PQ_lookup_computation,
-        s_scanned_entries_every_cell_Dummy,
-        s_last_valid_channel,
-        s_single_PQ_result);
+    // PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE>(
+    //     s_single_PQ, 
+    //     s_distance_LUT, 
+    //     s_scanned_entries_every_cell_PQ_lookup_computation,
+    //     s_scanned_entries_every_cell_Dummy,
+    //     s_last_valid_channel,
+    //     s_single_PQ_result);
 
 //     ////////////////////     Sort Results     ////////////////////    
 //     Sort_reduction<single_PQ_result, 32, 16, Collect_smallest> sort_reduction_module;
@@ -298,12 +267,15 @@ void accelerator_kernel(
 //         s_sorted_PQ_result, 
 //         s_tuple_results);
 
-    consume_stage_5(
-        QUERY_NUM,
-        s_scanned_entries_per_query_Sort_and_reduction,
-        s_scanned_entries_per_query_Priority_queue,
-        s_single_PQ_result,
-        s_tuple_results);
+        consume_stage_5_1(
+            QUERY_NUM,
+            s_scanned_entries_every_cell_PQ_lookup_computation,
+            s_scanned_entries_every_cell_Dummy,
+            s_last_valid_channel, 
+            s_scanned_entries_per_query_Sort_and_reduction,
+            s_scanned_entries_per_query_Priority_queue,
+            s_single_PQ,
+            s_tuple_results);
 }
 
 void vadd(  

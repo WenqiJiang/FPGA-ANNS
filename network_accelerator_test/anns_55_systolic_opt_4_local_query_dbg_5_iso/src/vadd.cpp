@@ -82,7 +82,8 @@ void generate_input_stage_5(
 
             int ID_out = 0;
             s_searched_cell_id_scan_controller.write(ID_out);
-
+        }
+        for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
             for (int k = 0; k < K; k++) {
                 distance_LUT_PQ16_t tmp;
                 s_distance_LUT.write(tmp);
