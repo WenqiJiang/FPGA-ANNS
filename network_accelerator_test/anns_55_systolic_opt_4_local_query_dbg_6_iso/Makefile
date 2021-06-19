@@ -89,10 +89,10 @@ exe: $(EXECUTABLE)
 $(XCLBIN)/$(KERNEL_NAME).$(TARGET).xo: src/vadd.cpp
 # $(XCLBIN)/$(KERNEL_NAME).$(TARGET).xo: src/vadd.cpp src/first_half.cpp src/second_half.cpp
 	mkdir -p $(XCLBIN)
-	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR_vadd) -c -k $(KERNEL_NAME) -I'$(<D)' -o'$@' '$<'  --jobs 32 #--from_step vpl.impl.phys_opt_design
+	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR_vadd) -c -k $(KERNEL_NAME) -I'$(<D)' -o'$@' '$<'  --jobs 8 #--from_step vpl.impl.phys_opt_design
 $(XCLBIN)/$(KERNEL_NAME).$(TARGET).xclbin: $(BINARY_CONTAINER_vadd_OBJS)
 	mkdir -p $(XCLBIN)
-	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR_vadd) -l $(LDCLFLAGS) -o'$@' $(+) --jobs 32 #--from_step vpl.impl.phys_opt_design
+	$(VPP) $(CLFLAGS) --temp_dir $(BUILD_DIR_vadd) -l $(LDCLFLAGS) -o'$@' $(+) --jobs 8 #--from_step vpl.impl.phys_opt_design
 
 
 ifeq ($(VER),host_cpp)

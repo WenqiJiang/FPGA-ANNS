@@ -317,18 +317,18 @@ def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
         perf_resource_dict['QPS'] = QPS
         
         #####  HLS Prediction #####
-        perf_resource_dict["BRAM_18K"] = 1 * PE_num
-        perf_resource_dict["DSP48E"] = 54 * PE_num
-        perf_resource_dict["FF"] = 7497 * PE_num
-        perf_resource_dict["LUT"] = 6233 * PE_num
-        perf_resource_dict["URAM"] = 8 * PE_num
+        # perf_resource_dict["BRAM_18K"] = 1 * PE_num
+        # perf_resource_dict["DSP48E"] = 54 * PE_num
+        # perf_resource_dict["FF"] = 7497 * PE_num
+        # perf_resource_dict["LUT"] = 6233 * PE_num
+        # perf_resource_dict["URAM"] = 8 * PE_num
 
         #####   Vivado Measured   #####
-        # perf_resource_dict["LUT"] = 15288 * PE_num
-        # perf_resource_dict["FF"] = 21875 * PE_num
-        # perf_resource_dict["BRAM_18K"] = 2 * 0.5 * PE_num
-        # perf_resource_dict["URAM"] = 16 * PE_num
-        # perf_resource_dict["DSP48E"] = 54 * PE_num
+        perf_resource_dict["LUT"] = 6128 * PE_num
+        perf_resource_dict["FF"] = 7577 * PE_num
+        perf_resource_dict["BRAM_18K"] = 2 * 9 * PE_num
+        perf_resource_dict["URAM"] = 8 * PE_num
+        perf_resource_dict["DSP48E"] = 54 * PE_num
 
         if nlist <= 1024:
             #####  HLS Prediction & Vivado Measured #####
@@ -359,9 +359,26 @@ def get_options_stage_4_distance_LUT_construction(nlist, nprobe):
             perf_resource_dict["HBM_bank"] = 1
 
         #####   FIFO Consumption (Vivado Measured)   #####
-        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 17 * PE_num
-        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 17 * PE_num
-        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 17 * PE_num
+
+        # PQ quantizer init
+        perf_resource_dict["LUT"] += component["FIFO_d2_w32"]["LUT"] * PE_num
+        perf_resource_dict["FF"] += component["FIFO_d2_w32"]["FF"] * PE_num
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w32"]["BRAM_18K"] * PE_num
+
+        # forward query vector + center vector dispatcher
+        perf_resource_dict["LUT"] += component["FIFO_d512_w32"]["LUT"] * 2 * PE_num
+        perf_resource_dict["FF"] += component["FIFO_d512_w32"]["FF"] * 2 * PE_num
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w32"]["BRAM_18K"] * 2 * PE_num
+
+        # output FIFO to stage 5
+        perf_resource_dict["LUT"] += component["FIFO_d512_w512"]["LUT"] * int(np.ceil(PE_num / 2))
+        perf_resource_dict["FF"] += component["FIFO_d512_w512"]["FF"] * int(np.ceil(PE_num / 2))
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d512_w512"]["BRAM_18K"] * int(np.ceil(PE_num / 2))
+
+        # LUT forward between PEs
+        perf_resource_dict["LUT"] += component["FIFO_d2_w512"]["LUT"] * PE_num
+        perf_resource_dict["FF"] += component["FIFO_d2_w512"]["FF"] * PE_num
+        perf_resource_dict["BRAM_18K"] += component["FIFO_d2_w512"]["BRAM_18K"] * PE_num
 
         if (fit_resource_constraints([perf_resource_dict], [1])):
             option_list.append(perf_resource_dict)

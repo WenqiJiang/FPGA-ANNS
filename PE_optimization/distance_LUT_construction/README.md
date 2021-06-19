@@ -1,6 +1,6 @@
 # Performance & Resource analysis for distance LUT PE
 
-Update: use the multiple_lookup_table_construction_PEs_unoptimized_systolic_small version as the final version. Some other more elegant code styles either causes placement error, or consumes more resources.
+Update: use the multiple_lookup_table_construction_PEs_optimized_version4_systolic version as the final version. Some other code styles either causes placement error, or consumes more resources.
 
 Previously, we optimized the PE as single_lookup_table_construction_PE_optimized_version2. This version can roughly output 1 row of distance LUT per cycle (1 row per 1.2 cycle, dependent to nprobe), thus should be sufficient for most cases. However, this large PE will lead to placement error.
 
@@ -112,6 +112,25 @@ Compute PE pipeline depth:
 +---------------------+---------+------+---------+---------+-----+
 |Utilization (%)      |    ~0   |  ~0  |    ~0   |    ~0   |  ~0 |
 +---------------------+---------+------+---------+---------+-----+
+```
+
+There are two MUST-NOTICE stuffs:
+
+First, the query forward FIFO must be long (we use 512 here), otherwise theoretical performance cannot be achieved. This can also be achieved by increasing the depth of the forward LUT FIFO, but that one is very wide (512-bit) thus consuming more resources. We thus to choose to use long query forward FIFO.
+
+```
+    hls::stream<float> s_query_vectors_table_construction_PE_forward[PE_NUM_TABLE_CONSTRUCTION_LARGER];
+#pragma HLS stream variable=s_query_vectors_table_construction_PE_forward depth=512
+```
+
+Second, the output LUT FIFO must be long as well, because the next stage (stage 5) won't consume those LUTs immediately. In unused_opt4_systolic_experiments there are two experiments about it. multiple_lookup_table_construction_PEs_optimized_version4_systolic_sleep assumes the slow consumption, and takes 1.5s (theoretical 1.22 s) while by increasing the FIFO depth to 256 * PE_NUM_systolic in multiple_lookup_table_construction_PEs_optimized_version4_systolic_sleep_long_FIFO, the theoretical performance is achieved.
+
+Currently we set the output FIFO depth to K * PE_NUM, which is not necessarily enough (a safer depth is K * NPROBE but too expensive) if stage 5 are continually accessing clusters of unbalanced sizes. 
+
+```
+    const int s_lookup_table_depth = K * PE_NUM_TABLE_CONSTRUCTION;
+    hls::stream<distance_LUT_PQ16_t> s_lookup_table;
+#pragma HLS stream variable=s_lookup_table depth=s_lookup_table_depth
 ```
 
 ## multiple_lookup_table_construction_PEs_unoptimized_small
