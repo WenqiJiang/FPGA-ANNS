@@ -1,0 +1,100 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /opt/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'wejiang' on host 'ubuntu' (Linux_x86_64 version 5.4.0-74-generic) on Sat Jun 19 15:59:52 CEST 2021
+INFO: [HLS 200-10] On os Ubuntu 18.04.5 LTS
+INFO: [HLS 200-10] In directory '/home/wejiang/anns_debug_scan_controller/anns_55_systolic_opt_4_local_query_dbg_scan_controller_iso_do_while_read'
+Sourcing Tcl script 'sim_hls_2020.2.tcl'
+INFO: [HLS 200-1510] Running: open_project hls_test 
+INFO: [HLS 200-10] Creating and opening project '/home/wejiang/anns_debug_scan_controller/anns_55_systolic_opt_4_local_query_dbg_scan_controller_iso_do_while_read/hls_test'.
+INFO: [HLS 200-1510] Running: set_top vadd 
+INFO: [HLS 200-1510] Running: add_files src/vadd.cpp -cflags -std=c++0x 
+INFO: [HLS 200-10] Adding design file 'src/vadd.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb test_bench.cpp -cflags -std=c++0x -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'test_bench.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vitis 
+INFO: [HLS 200-10] Creating and opening solution '/home/wejiang/anns_debug_scan_controller/anns_55_systolic_opt_4_local_query_dbg_scan_controller_iso_do_while_read/hls_test/solution1'.
+INFO: [HLS 200-1505] Using flow_target 'vitis'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_latency=64
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_alignment_byte_size=64
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_max_widen_bitwidth=512
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_offset=slave
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_rtl -register_reset_num=3
+INFO: [HLS 200-1510] Running: set_part xcu280-fsvh2892-2l-e 
+INFO: [HLS 200-10] Setting target device to 'xcu280-fsvh2892-2L-e'
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../test_bench.cpp in debug mode
+   Compiling ../../../../src/vadd.cpp in debug mode
+   Generating csim.exe
+generate_input_scan_controller starts
+generate_input_scan_controller query 0 nprobe 0
+generate_input_scan_controller query 0 nprobe 1
+generate_input_scan_controller query 0 nprobe 2
+generate_input_scan_controller query 0 nprobe 3
+generate_input_scan_controller query 0 nprobe 4
+generate_input_scan_controller query 0 nprobe 5
+generate_input_scan_controller query 0 nprobe 6
+generate_input_scan_controller query 0 nprobe 7
+generate_input_scan_controller query 0 nprobe 8
+generate_input_scan_controller query 0 nprobe 9
+generate_input_scan_controller query 0 nprobe 10
+generate_input_scan_controller query 0 nprobe 11
+generate_input_scan_controller query 0 nprobe 12
+generate_input_scan_controller query 0 nprobe 13
+generate_input_scan_controller query 0 nprobe 14
+generate_input_scan_controller query 0 nprobe 15
+generate_input_scan_controller query 0 nprobe 16
+scan_controller query 0 nprobe 0
+scan_controller query 0 nprobe 1
+scan_controller query 0 nprobe 2
+scan_controller query 0 nprobe 3
+scan_controller query 0 nprobe 4
+scan_controller query 0 nprobe 5
+scan_controller query 0 nprobe 6
+scan_controller query 0 nprobe 7
+scan_controller query 0 nprobe 8
+scan_controller query 0 nprobe 9
+scan_controller query 0 nprobe 10
+scan_controller query 0 nprobe 11
+scan_controller query 0 nprobe 12
+scan_controller query 0 nprobe 13
+scan_controller query 0 nprobe 14
+scan_controller query 0 nprobe 15
+scan_controller query 0 nprobe 16
+consume_scan_controller_stage_A_1_per_cell starts
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 0
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 1
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 2
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 3
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 4
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 5
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 6
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 7
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 8
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 9
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 10
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 11
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 12
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 13
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 14
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 15
+consume_scan_controller_stage_A_1_per_cell query 0 nprobe 16
+consume_scan_controller_stage_A_per_queryconsume_scan_controller_stage_A_per_query starts
+consume_scan_controller_stage_A_per_query query 0
+consume_scan_controller_stage_B starts
+consume_scan_controller_stage_B query 0
+write_result_sing_con starts
+SUCCESS!
+The maximum depth reached by any of the 14 hls::stream() instances in the design is 128
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 3.08 seconds. CPU system time: 0.3 seconds. Elapsed time: 2.75 seconds; current allocated memory: 167.518 MB.
+[2Kvitis_hls> [11C
