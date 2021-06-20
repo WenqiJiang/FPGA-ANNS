@@ -13,6 +13,7 @@ topK = 10
 component = dict()
 
 # FIFO depth=512, width=32 bit
+# depth 512, width = 512 = 16 * FIFO_d512_w32
 component["FIFO_d512_w32"] = dict()
 component["FIFO_d512_w32"]["LUT"] = 54
 component["FIFO_d512_w32"]["FF"] = 95
