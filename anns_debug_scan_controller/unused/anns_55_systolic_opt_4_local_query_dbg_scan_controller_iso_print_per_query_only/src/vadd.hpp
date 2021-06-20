@@ -16,6 +16,7 @@
 #include "types.hpp"
 
 const int output_size = QUERY_NUM * PRIORITY_QUEUE_LEN;
+const int HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid_size = NLIST * 3;
 
 extern "C" {
 
@@ -41,8 +42,8 @@ void vadd(
     // // const ap_uint512_t* HBM_in18, 
     // // const ap_uint512_t* HBM_in19, 
     // // const ap_uint512_t* HBM_in20, 
-    // // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
-    // const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
+    // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
+    const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
     // // HBM22: query vectors
     // float* HBM_query_vectors,
     // // HBM23: center vector table (Vector_quantizer)

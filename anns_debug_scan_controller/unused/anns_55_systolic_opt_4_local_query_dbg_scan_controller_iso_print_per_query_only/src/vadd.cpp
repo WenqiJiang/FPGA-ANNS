@@ -1,6 +1,19 @@
 #include <stdio.h>
 #include "vadd.hpp"
 
+#include "cluster_distance_computation.hpp"
+// #include "constants.hpp"
+#include "distance_estimation_by_LUT.hpp"
+#include "HBM_interconnections.hpp"
+#include "helpers.hpp"
+#include "LUT_construction.hpp"
+#include "OPQ_preprocessing.hpp"
+#include "priority_queue_distance_results_wrapper.hpp"
+#include "priority_queue_vector_quantizer.hpp"
+#include "select_Voronoi_cell.hpp"
+#include "sort_reduction_32_to_16_with_vecID.hpp"
+// #include "types.hpp"
+
 #include "stdio.h"
 
 // #define GUARD
@@ -11,6 +24,14 @@ void load_query_vectors_sing_con(
     // const float* DRAM_query_vector,
     hls::stream<int>& s_control_send,
     hls::stream<float>& s_query_vectors) {
+
+    // guarantee there's only 1 query in the pipeline
+
+    // Data type: suppose each vector = 128 D, FPGA freq = 200 MHz
+    //   then it takes 640 + 200 ns < 1 us to load a query vector, 
+    //   much faster than computing distance and constructing LUT (> 10 us)
+
+    // query vector (1 vector per NPROBE=32 center vector)
 
     // 1 st query no need control signal
     for (int d = 0; d < D; d++) {
@@ -43,6 +64,12 @@ void generate_input_scan_controller(
     hls::stream<int>& s_searched_cell_id_scan_controller) {
 
 
+#ifdef GUARD
+    volatile int guard = 0;
+    while (s_query_vectors.empty()) {
+        guard++;
+    }
+#endif
     printf("generate_input_scan_controller starts\n");
 
     for (int query_id = 0; query_id < query_num; query_id++) {
@@ -63,94 +90,6 @@ void generate_input_scan_controller(
         }
     }
 }
-
-template<const int query_num, const int nlist, const int nprobe>
-void scan_controller(
-    // const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid,
-    hls::stream<int> &s_scanned_cell_id_Input, // from the cluster selection unit
-    // hls::stream<int> &s_start_addr_every_cell,
-    // hls::stream<int> &s_scanned_entries_every_cell_Load_unit,
-    // hls::stream<int> &s_scanned_entries_every_cell_Split_unit,
-    // hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
-    // hls::stream<int> &s_scanned_entries_every_cell_Dummy,
-    // hls::stream<int> &s_last_valid_channel,
-    hls::stream<int> &s_scanned_entries_per_query_Sort_and_reduction,
-    hls::stream<int> &s_scanned_entries_per_query_Priority_queue) {
-   
-    // s_last_element_valid_PQ_lookup_computation -> last element of a channel can 
-    //   be padded or not, 1 means valid (not padded), 0 means padded, should be discarded
-    // last_valid_channel_LUT -> for each Voronoi cell, the last line in HBM may contain 
-    //   padding, this is for storing where the last non-padded element id, ranges from 0~62
-    //   e.g., all 63 elements store valid element, then last_valid_channel_LUT[x] = 62
-    //   e.g., only the first channels's first element is valid, then last_valid_channel_LUT[x] = 0 
-    int start_addr_LUT[nlist];
-    int scanned_entries_every_cell_LUT[nlist];
-    int last_valid_channel_LUT[nlist];  
-#pragma HLS resource variable=start_addr_LUT core=RAM_2P_URAM
-#pragma HLS resource variable=scanned_entries_every_cell_LUT core=RAM_2P_URAM
-#pragma HLS resource variable=last_valid_channel_LUT core=RAM_2P_URAM
-
-    // init LUTs
-//     for (int i = 0; i < nlist; i++) {
-// #pragma HLS pipeline II=1
-//         start_addr_LUT[i] = HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid[i];
-//     }
-//     for (int i = 0; i < nlist; i++) {
-// #pragma HLS pipeline II=1
-//         scanned_entries_every_cell_LUT[i] = 
-//             HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid[nlist + i];
-//     }
-//     // ---- Fixed ----
-//     for (int i = 0; i < nlist; i++) {
-// #pragma HLS pipeline II=1
-//         last_valid_channel_LUT[i] = 
-//             HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid[2 * nlist + i];
-//     }
-
-    // volatile int guard = 0;
-    // while (
-    //     s_scanned_cell_id_Input.empty()
-    //     ) {
-    //     guard++;
-    // }
-
-    // send control signals
-    for (int query_id = 0; query_id < query_num; query_id++) {
-        
-        int accumulated_scanned_entries_per_query = 0;
-
-        for (int nprobe_id = 0; nprobe_id < nprobe; nprobe_id++) {
-
-            // volatile int guard = 0;
-            // while (
-            //     s_scanned_cell_id_Input.empty()
-            //     ) {
-            //     guard++;
-            // }
-            printf("scan_controller start query %d nprobe %d\n", query_id, nprobe_id);
-            int cell_id = s_scanned_cell_id_Input.read();
-
-            // int start_addr = start_addr_LUT[cell_id];
-            // int scanned_entries_every_cell = scanned_entries_every_cell_LUT[cell_id];
-            // int last_valid_channel = last_valid_channel_LUT[cell_id];
-
-            accumulated_scanned_entries_per_query += cell_id;
-
-            // s_start_addr_every_cell.write(start_addr);
-            // s_scanned_entries_every_cell_Load_unit.write(scanned_entries_every_cell);
-            // s_scanned_entries_every_cell_Split_unit.write(scanned_entries_every_cell);
-            // s_scanned_entries_every_cell_Dummy.write(scanned_entries_every_cell);
-            // s_scanned_entries_every_cell_PQ_lookup_computation.write(scanned_entries_every_cell);
-            // s_last_valid_channel.write(last_valid_channel);
-            printf("scan_controller end query %d nprobe %d\n", query_id, nprobe_id);
-        }
-
-        s_scanned_entries_per_query_Sort_and_reduction.write(accumulated_scanned_entries_per_query);
-        s_scanned_entries_per_query_Priority_queue.write(accumulated_scanned_entries_per_query);
-        printf("scan_controller end query %d\n", query_id);
-    }
-}
-
 
 void consume_scan_controller_stage_A_per_query(
     int query_num,
@@ -181,6 +120,7 @@ void consume_scan_controller_stage_A_per_query(
         printf("consume_scan_controller_stage_A_per_query end query %d\n", query_id);
     }
 }
+
 
 void consume_scan_controller_stage_B(
     int query_num,
@@ -219,6 +159,7 @@ void consume_scan_controller_stage_B(
     }
 }
 
+
 template<const int query_num>
 void write_result_sing_con(
     hls::stream<single_PQ_result> &output_stream, 
@@ -249,7 +190,7 @@ void write_result_sing_con(
         }
         printf("write_result_sing_con end query %d\n", i);
 
-
+        // last query no need to send control signal
 #ifdef FEEDBACK
         // last query no need to send control signal
         if (i < query_num - 1) {
@@ -269,20 +210,20 @@ void vadd(
     // const ap_uint512_t* HBM_in6, 
     // const ap_uint512_t* HBM_in7, 
     // const ap_uint512_t* HBM_in8, 
-    // const ap_uint512_t* HBM_in9, 
-    // const ap_uint512_t* HBM_in10, 
-    // const ap_uint512_t* HBM_in11, 
-    // const ap_uint512_t* HBM_in12, 
-    // const ap_uint512_t* HBM_in13, 
-    // const ap_uint512_t* HBM_in14, 
-    // const ap_uint512_t* HBM_in15, 
-    // const ap_uint512_t* HBM_in16, 
-    // const ap_uint512_t* HBM_in17, 
-    // const ap_uint512_t* HBM_in18, 
-    // const ap_uint512_t* HBM_in19, 
-    // const ap_uint512_t* HBM_in20, 
-    // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
-    // const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
+    // // const ap_uint512_t* HBM_in9, 
+    // // const ap_uint512_t* HBM_in10, 
+    // // const ap_uint512_t* HBM_in11, 
+    // // const ap_uint512_t* HBM_in12, 
+    // // const ap_uint512_t* HBM_in13, 
+    // // const ap_uint512_t* HBM_in14, 
+    // // const ap_uint512_t* HBM_in15, 
+    // // const ap_uint512_t* HBM_in16, 
+    // // const ap_uint512_t* HBM_in17, 
+    // // const ap_uint512_t* HBM_in18, 
+    // // const ap_uint512_t* HBM_in19, 
+    // // const ap_uint512_t* HBM_in20, 
+    // // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
+    const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
     // // HBM22: query vectors
     // float* HBM_query_vectors,
     // // HBM23: center vector table (Vector_quantizer)
@@ -301,41 +242,41 @@ void vadd(
     // const ap_uint512_t* table_DDR0, const ap_uint512_t* table_DDR1, 
     )
 {
-// #pragma HLS INTERFACE m_axi port=HBM_in0  depth=1024 offset=slave bundle=gmem0
-// #pragma HLS INTERFACE m_axi port=HBM_in1  depth=1024 offset=slave bundle=gmem1
-// #pragma HLS INTERFACE m_axi port=HBM_in2  depth=1024 offset=slave bundle=gmem2
-// #pragma HLS INTERFACE m_axi port=HBM_in3  depth=1024 offset=slave bundle=gmem3
-// #pragma HLS INTERFACE m_axi port=HBM_in4  depth=1024 offset=slave bundle=gmem4
-// #pragma HLS INTERFACE m_axi port=HBM_in5  depth=1024 offset=slave bundle=gmem5
-// #pragma HLS INTERFACE m_axi port=HBM_in6  depth=1024 offset=slave bundle=gmem6
-// #pragma HLS INTERFACE m_axi port=HBM_in7  depth=1024 offset=slave bundle=gmem7
-// #pragma HLS INTERFACE m_axi port=HBM_in8  depth=1024 offset=slave bundle=gmem8
-// #pragma HLS INTERFACE m_axi port=HBM_in9  depth=1024 offset=slave bundle=gmem9
-// #pragma HLS INTERFACE m_axi port=HBM_in10  depth=1024 offset=slave bundle=gmem10
-// #pragma HLS INTERFACE m_axi port=HBM_in11  depth=1024 offset=slave bundle=gmem11
-// #pragma HLS INTERFACE m_axi port=HBM_in12  depth=1024 offset=slave bundle=gmem12
-// #pragma HLS INTERFACE m_axi port=HBM_in13  depth=1024 offset=slave bundle=gmem13
-// #pragma HLS INTERFACE m_axi port=HBM_in14  depth=1024 offset=slave bundle=gmem14
-// #pragma HLS INTERFACE m_axi port=HBM_in15  depth=1024 offset=slave bundle=gmem15
-// #pragma HLS INTERFACE m_axi port=HBM_in16  depth=1024 offset=slave bundle=gmem16
-// #pragma HLS INTERFACE m_axi port=HBM_in17  depth=1024 offset=slave bundle=gmem17
-// #pragma HLS INTERFACE m_axi port=HBM_in18  depth=1024 offset=slave bundle=gmem18
-// #pragma HLS INTERFACE m_axi port=HBM_in19  depth=1024 offset=slave bundle=gmem19
-// #pragma HLS INTERFACE m_axi port=HBM_in20  depth=1024 offset=slave bundle=gmem20
-// #pragma HLS INTERFACE m_axi port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  depth=1024 offset=slave bundle=gmem21
-// #pragma HLS INTERFACE m_axi port=HBM_query_vectors  depth=1024 offset=slave bundle=gmem22
-// #pragma HLS INTERFACE m_axi port=HBM_vector_quantizer  depth=1024 offset=slave bundle=gmem23
-// #pragma HLS INTERFACE m_axi port=HBM_product_quantizer  depth=1024 offset=slave bundle=gmem24
-// #pragma HLS INTERFACE m_axi port=HBM_OPQ_matrix  depth=1024 offset=slave bundle=gmem25
-// #pragma HLS INTERFACE m_axi port=HBM_in26  depth=1024 offset=slave bundle=gmem26
-// #pragma HLS INTERFACE m_axi port=HBM_in27  depth=1024 offset=slave bundle=gmem27
-// #pragma HLS INTERFACE m_axi port=HBM_in28  depth=1024 offset=slave bundle=gmem28
-// #pragma HLS INTERFACE m_axi port=HBM_in29  depth=1024 offset=slave bundle=gmem29
-// #pragma HLS INTERFACE m_axi port=HBM_in30  depth=1024 offset=slave bundle=gmem30
-// #pragma HLS INTERFACE m_axi port=HBM_in31  depth=1024 offset=slave bundle=gmem31
+// #pragma HLS INTERFACE m_axi port=HBM_in0  offset=slave bundle=gmem0
+// #pragma HLS INTERFACE m_axi port=HBM_in1  offset=slave bundle=gmem1
+// #pragma HLS INTERFACE m_axi port=HBM_in2  offset=slave bundle=gmem2
+// #pragma HLS INTERFACE m_axi port=HBM_in3  offset=slave bundle=gmem3
+// #pragma HLS INTERFACE m_axi port=HBM_in4  offset=slave bundle=gmem4
+// #pragma HLS INTERFACE m_axi port=HBM_in5  offset=slave bundle=gmem5
+// #pragma HLS INTERFACE m_axi port=HBM_in6  offset=slave bundle=gmem6
+// #pragma HLS INTERFACE m_axi port=HBM_in7  offset=slave bundle=gmem7
+// #pragma HLS INTERFACE m_axi port=HBM_in8  offset=slave bundle=gmem8
+// #pragma HLS INTERFACE m_axi port=HBM_in9  offset=slave bundle=gmem9
+// #pragma HLS INTERFACE m_axi port=HBM_in10  offset=slave bundle=gmem10
+// #pragma HLS INTERFACE m_axi port=HBM_in11  offset=slave bundle=gmem11
+// #pragma HLS INTERFACE m_axi port=HBM_in12  offset=slave bundle=gmem12
+// #pragma HLS INTERFACE m_axi port=HBM_in13  offset=slave bundle=gmem13
+// #pragma HLS INTERFACE m_axi port=HBM_in14  offset=slave bundle=gmem14
+// #pragma HLS INTERFACE m_axi port=HBM_in15  offset=slave bundle=gmem15
+// #pragma HLS INTERFACE m_axi port=HBM_in16  offset=slave bundle=gmem16
+// #pragma HLS INTERFACE m_axi port=HBM_in17  offset=slave bundle=gmem17
+// #pragma HLS INTERFACE m_axi port=HBM_in18  offset=slave bundle=gmem18
+// #pragma HLS INTERFACE m_axi port=HBM_in19  offset=slave bundle=gmem19
+// #pragma HLS INTERFACE m_axi port=HBM_in20  offset=slave bundle=gmem20
+#pragma HLS INTERFACE m_axi port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  depth=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid_size offset=slave bundle=gmem21
+// #pragma HLS INTERFACE m_axi port=HBM_query_vectors  offset=slave bundle=gmem22
+// #pragma HLS INTERFACE m_axi port=HBM_vector_quantizer  offset=slave bundle=gmem23
+// #pragma HLS INTERFACE m_axi port=HBM_product_quantizer  offset=slave bundle=gmem24
+// #pragma HLS INTERFACE m_axi port=HBM_OPQ_matrix  offset=slave bundle=gmem25
+// #pragma HLS INTERFACE m_axi port=HBM_in26  offset=slave bundle=gmem26
+// #pragma HLS INTERFACE m_axi port=HBM_in27  offset=slave bundle=gmem27
+// #pragma HLS INTERFACE m_axi port=HBM_in28  offset=slave bundle=gmem28
+// #pragma HLS INTERFACE m_axi port=HBM_in29  offset=slave bundle=gmem29
+// #pragma HLS INTERFACE m_axi port=HBM_in30  offset=slave bundle=gmem30
+// #pragma HLS INTERFACE m_axi port=HBM_in31  offset=slave bundle=gmem31
 
-// #pragma HLS INTERFACE m_axi port=table_DDR0  depth=1024 offset=slave bundle=gmem32
-// #pragma HLS INTERFACE m_axi port=table_DDR1  depth=1024 offset=slave bundle=gmem33
+// #pragma HLS INTERFACE m_axi port=table_DDR0  offset=slave bundle=gmem32
+// #pragma HLS INTERFACE m_axi port=table_DDR1  offset=slave bundle=gmem33
 
 // PLRAM
 #pragma HLS INTERFACE m_axi port=HBM_out depth=output_size offset=slave bundle=gmem34
@@ -361,7 +302,7 @@ void vadd(
 // #pragma HLS INTERFACE s_axilite port=HBM_in18  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_in19  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_in20  bundle=control
-// #pragma HLS INTERFACE s_axilite port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  bundle=control
+#pragma HLS INTERFACE s_axilite port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_query_vectors  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_vector_quantizer  bundle=control
 // #pragma HLS INTERFACE s_axilite port=HBM_product_quantizer  bundle=control
@@ -399,6 +340,7 @@ void vadd(
     hls::stream<single_PQ_result> s_tuple_results; // the top 10 numbers
 #pragma HLS stream variable=s_tuple_results depth=512
 // #pragma HLS RESOURCE variable=s_tuple_results core=FIFO_BRAM
+
 
     hls::stream<int> s_searched_cell_id_scan_controller;
 #pragma HLS stream variable=s_searched_cell_id_scan_controller depth=512
@@ -443,7 +385,7 @@ void vadd(
 // #pragma HLS RESOURCE variable=s_scanned_entries_per_query_Priority_queue core=FIFO_BRAM
 
     scan_controller<QUERY_NUM, NLIST, NPROBE>(
-        // HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid,
+        HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid,
         s_searched_cell_id_scan_controller, 
         // s_start_addr_every_cell,
         // s_scanned_entries_every_cell_Load_unit, 
@@ -483,6 +425,8 @@ void vadd(
         // s_consume_scan_controller_stage_A_per_cell,
         s_consume_scan_controller_stage_A_per_query,
         s_tuple_results);
+
+    ////////////////////     Write Results     ////////////////////    
 
     write_result_sing_con<QUERY_NUM>(
         s_tuple_results, 
