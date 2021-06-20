@@ -15,32 +15,30 @@
 // #include "sort_reduction_32_to_16_with_vecID.hpp"
 #include "types.hpp"
 
-const int output_size = QUERY_NUM * PRIORITY_QUEUE_LEN;
-
 extern "C" {
 
 void vadd(  
-    // const ap_uint512_t* HBM_in0, 
-    // const ap_uint512_t* HBM_in1, 
-    // const ap_uint512_t* HBM_in2, 
-    // const ap_uint512_t* HBM_in3, 
-    // const ap_uint512_t* HBM_in4, 
-    // const ap_uint512_t* HBM_in5, 
-    // const ap_uint512_t* HBM_in6, 
-    // const ap_uint512_t* HBM_in7, 
-    // const ap_uint512_t* HBM_in8, 
-    // // const ap_uint512_t* HBM_in9, 
-    // // const ap_uint512_t* HBM_in10, 
-    // // const ap_uint512_t* HBM_in11, 
-    // // const ap_uint512_t* HBM_in12, 
-    // // const ap_uint512_t* HBM_in13, 
-    // // const ap_uint512_t* HBM_in14, 
-    // // const ap_uint512_t* HBM_in15, 
-    // // const ap_uint512_t* HBM_in16, 
-    // // const ap_uint512_t* HBM_in17, 
-    // // const ap_uint512_t* HBM_in18, 
-    // // const ap_uint512_t* HBM_in19, 
-    // // const ap_uint512_t* HBM_in20, 
+    const ap_uint512_t* HBM_in0, 
+    const ap_uint512_t* HBM_in1, 
+    const ap_uint512_t* HBM_in2, 
+    const ap_uint512_t* HBM_in3, 
+    const ap_uint512_t* HBM_in4, 
+    const ap_uint512_t* HBM_in5, 
+    const ap_uint512_t* HBM_in6, 
+    const ap_uint512_t* HBM_in7, 
+    const ap_uint512_t* HBM_in8, 
+    // const ap_uint512_t* HBM_in9, 
+    // const ap_uint512_t* HBM_in10, 
+    // const ap_uint512_t* HBM_in11, 
+    // const ap_uint512_t* HBM_in12, 
+    // const ap_uint512_t* HBM_in13, 
+    // const ap_uint512_t* HBM_in14, 
+    // const ap_uint512_t* HBM_in15, 
+    // const ap_uint512_t* HBM_in16, 
+    // const ap_uint512_t* HBM_in17, 
+    // const ap_uint512_t* HBM_in18, 
+    // const ap_uint512_t* HBM_in19, 
+    // const ap_uint512_t* HBM_in20, 
     // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
     const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
     // HBM22: query vectors

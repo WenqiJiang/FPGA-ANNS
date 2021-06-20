@@ -16,19 +16,20 @@
 #include "types.hpp"
 
 const int output_size = QUERY_NUM * PRIORITY_QUEUE_LEN;
+const int HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid_depth = NLIST * 3;
 
 extern "C" {
 
 void vadd(  
-    // const ap_uint512_t* HBM_in0, 
-    // const ap_uint512_t* HBM_in1, 
-    // const ap_uint512_t* HBM_in2, 
-    // const ap_uint512_t* HBM_in3, 
-    // const ap_uint512_t* HBM_in4, 
-    // const ap_uint512_t* HBM_in5, 
-    // const ap_uint512_t* HBM_in6, 
-    // const ap_uint512_t* HBM_in7, 
-    // const ap_uint512_t* HBM_in8, 
+    const ap_uint512_t* HBM_in0, 
+    const ap_uint512_t* HBM_in1, 
+    const ap_uint512_t* HBM_in2, 
+    const ap_uint512_t* HBM_in3, 
+    const ap_uint512_t* HBM_in4, 
+    const ap_uint512_t* HBM_in5, 
+    const ap_uint512_t* HBM_in6, 
+    const ap_uint512_t* HBM_in7, 
+    const ap_uint512_t* HBM_in8, 
     // // const ap_uint512_t* HBM_in9, 
     // // const ap_uint512_t* HBM_in10, 
     // // const ap_uint512_t* HBM_in11, 

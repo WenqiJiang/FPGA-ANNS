@@ -16,6 +16,7 @@
 #include "types.hpp"
 
 const int output_size = QUERY_NUM * PRIORITY_QUEUE_LEN;
+const int HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid_depth = NLIST * 3;
 
 extern "C" {
 

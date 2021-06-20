@@ -26,15 +26,15 @@ int main(int argc, char *argv[]) {
   // ap_uint512_t* HBM_in8 = new ap_uint512_t(HBM_SIZE);
 
   int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid = 
-    new int(HBM_SIZE);
+    new int(HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid_depth);
   float* HBM_query_vectors  = 
-    new float(HBM_SIZE);
+    new float(1024);
   float* HBM_vector_quantizer = 
-    new float(HBM_SIZE);
+    new float(1024);
   float* HBM_product_quantizer = 
-    new float(HBM_SIZE);
+    new float(1024);
   float* HBM_OPQ_matrix = 
-    new float(HBM_SIZE);
+    new float(1024);
 
   float* HBM_out = new float(output_size);
 
