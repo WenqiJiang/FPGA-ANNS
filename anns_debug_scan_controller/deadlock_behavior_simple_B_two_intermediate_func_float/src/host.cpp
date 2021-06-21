@@ -99,6 +99,11 @@ int main(int argc, char** argv)
     std::vector<int, aligned_allocator<int>> sw_result_vec_ID(sw_result_vec_ID_len, 0);
     std::vector<float, aligned_allocator<float>> sw_result_dist(sw_result_dist_len, 0);
 
+    for (int query_id = 0; query_id < QUERY_NUM; query_id++) {
+        for (int d = 0; d < D; d++) {
+            HBM_query_vectors[query_id * D + d] = 1;
+        }
+    }
 //////////////////////////////   TEMPLATE END  //////////////////////////////
 
     // char* HBM_embedding0_char = (char*) malloc(HBM_embedding0_size);

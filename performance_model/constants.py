@@ -156,7 +156,7 @@ component_list_shell = ["network_kernel", "cmac_kernel", "hmss", "System_DPA", "
 shell_consumption = add_resources(component, component_list_shell)
 
 """ Resource related constants """
-MAX_UTIL_PERC = 0.55
+MAX_UTIL_PERC = 0.8
 
 TOTAL_BRAM_18K = 4032 
 TOTAL_DSP48E = 9024
