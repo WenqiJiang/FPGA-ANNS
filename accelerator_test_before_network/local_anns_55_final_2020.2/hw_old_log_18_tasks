@@ -1,0 +1,689 @@
+WARNING: "make check" is a deprecated command. Please use "make run" instead
+make run
+make[1]: Entering directory '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2'
+make[1]: Circular host <- host dependency dropped.
+g++ -o host includes/xcl2/xcl2.cpp src/host.cpp -I/opt/xilinx/xrt/include -I/opt/Xilinx/Vivado/2020.2/include -Wall -O0 -g -std=c++1y -I./includes/xcl2 -fmessage-length=0 -L/opt/xilinx/xrt/lib -lOpenCL -pthread -lrt -lstdc++ 
+In file included from src/host.hpp:26:0,
+                 from src/host.cpp:1:
+./includes/xcl2/xcl2.hpp:26:0: warning: "OCL_CHECK" redefined
+ #define OCL_CHECK(error, call)                                                                   \
+ 
+In file included from src/host.cpp:1:0:
+src/host.hpp:8:0: note: this is the location of the previous definition
+ #define OCL_CHECK(error,call)                                       \
+ 
+src/host.cpp: In function ‘int main(int, char**)’:
+src/host.cpp:116:14: warning: unused variable ‘fileBufSize’ [-Wunused-variable]
+     unsigned fileBufSize;
+              ^~~~~~~~~~~
+In file included from /opt/Xilinx/Vivado/2020.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2020.2/include/ap_int.h:54,
+                 from src/types.hpp:3,
+                 from src/host.hpp:16,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = true]’:
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:1647:3:   required from ‘ap_private<_AP_W, _AP_S, true>::ap_private(int) [with int _AP_W = 32; bool _AP_S = true]’
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:120:100:   required from here
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+             : (excess_bits ? (((uint64_t)VAL) << (excess_bits)) >> (excess_bits)
+               ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                            : (uint64_t)VAL));
+                            ~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, true>::clearUnusedBits() volatile [with int _AP_W = 32; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:1426:20:   required from ‘ap_private<_AP_W, _AP_S>& ap_private<_AP_W, _AP_S, true>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 64; bool _AP_S1 = false; int _AP_W = 32; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/ap_int_base.h:364:13:   required from ‘ap_int_base<_AP_W, _AP_S>::ap_int_base(const ap_range_ref<_AP_W2, _AP_S2>&) [with int _AP_W2 = 64; bool _AP_S2 = false; int _AP_W = 32; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/ap_int.h:237:69:   required from ‘ap_uint<_AP_W>::ap_uint(const ap_range_ref<_AP_W2, _AP_S2>&) [with int _AP_W2 = 64; bool _AP_S2 = false; int _AP_W = 32]’
+src/host.cpp:771:53:   required from here
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:2144:28: warning: enum constant in boolean context [-Wint-in-bool-context]
+In file included from /opt/Xilinx/Vivado/2020.2/include/ap_common.h:641:0,
+                 from /opt/Xilinx/Vivado/2020.2/include/ap_int.h:54,
+                 from src/types.hpp:3,
+                 from src/host.hpp:16,
+                 from src/host.cpp:1:
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h: In instantiation of ‘void ap_private<_AP_W, _AP_S, false>::cpSext(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’:
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:5335:13:   required from ‘void ap_private<_AP_W, _AP_S, false>::cpSextOrTrunc(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:4598:20:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(const ap_private<_AP_W1, _AP_S1>&) [with int _AP_W1 = 32; bool _AP_S1 = true; int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:4665:3:   required from ‘ap_private<_AP_W, _AP_S, false>& ap_private<_AP_W, _AP_S, false>::operator=(int) [with int _AP_W = 512; bool _AP_S = false]’
+/opt/Xilinx/Vivado/2020.2/include/ap_int.h:301:3:   required from ‘ap_uint<_AP_W>::ap_uint(int) [with int _AP_W = 512]’
+src/host.cpp:120:100:   required from here
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:5292:45: warning: enum constant in boolean context [-Wint-in-bool-context]
+       static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/opt/Xilinx/Vivado/2020.2/include/etc/ap_private.h:5300:43: warning: enum constant in boolean context [-Wint-in-bool-context]
+     static const uint64_t mask = wordBits ? (~0ULL << (wordBits)) : 0ULL;
+                                  ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mkdir -p ./_x.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  -c -k vadd --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3  -I'src' -o'_x.hw.xilinx_u280_xdma_201920_3/vadd.xo' 'src/vadd.cpp'
+Option Map File Used: '/opt/Xilinx/Vitis/2020.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2020.2 (64-bit)
+  **** SW Build (by xbuild) on 2020-11-18-05:13:29
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ compile can be found at:
+	Reports: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd
+	Log files: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/logs/vadd
+Running Dispatch Server on port:38671
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo.compile_summary, at Wed Aug  4 17:31:06 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Wed Aug  4 17:31:06 2021
+Running Rule Check Server on port:42529
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/v++_compile_vadd_guidance.html', at Wed Aug  4 17:31:07 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 74-74] Compiler Version string: 2020.2
+INFO: [v++ 60-585] Compiling for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-242] Creating kernel: 'vadd'
+WARNING: /opt/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4 does not exist.
+
+===>The following messages were generated while  performing high-level synthesis for kernel: vadd Log file: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/vadd/vadd/vitis_hls.log :
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_89_1_VITIS_LOOP_91_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_89_1_VITIS_LOOP_91_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_180_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_180_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_192_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_192_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_203_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_203_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_29_1_VITIS_LOOP_30_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_29_1_VITIS_LOOP_30_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_45_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_51_5_VITIS_LOOP_53_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 36, loop 'VITIS_LOOP_51_5_VITIS_LOOP_53_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_72_7'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_72_7'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_135_1_VITIS_LOOP_137_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_135_1_VITIS_LOOP_137_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_262_1_VITIS_LOOP_263_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_262_1_VITIS_LOOP_263_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_285_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_285_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_293_5_VITIS_LOOP_298_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_293_5_VITIS_LOOP_298_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_45_1_VITIS_LOOP_46_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_66_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_66_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_74_5_VITIS_LOOP_79_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_183_1_VITIS_LOOP_186_2_VITIS_LOOP_189_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_420_1_VITIS_LOOP_421_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_420_1_VITIS_LOOP_421_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_442_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_442_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_449_5_VITIS_LOOP_454_6'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 4, Depth = 135, loop 'VITIS_LOOP_449_5_VITIS_LOOP_454_6'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_562_2_VITIS_LOOP_565_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_562_2_VITIS_LOOP_565_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_579_4_VITIS_LOOP_580_5'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_579_4_VITIS_LOOP_580_5'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_18_1_VITIS_LOOP_20_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 3, loop 'VITIS_LOOP_18_1_VITIS_LOOP_20_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_38_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 5, loop 'VITIS_LOOP_38_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_49_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_49_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_38_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 5, loop 'VITIS_LOOP_38_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_49_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_49_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_33_1_VITIS_LOOP_35_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 3, loop 'VITIS_LOOP_33_1_VITIS_LOOP_35_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_38_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 5, loop 'VITIS_LOOP_38_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_49_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_49_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_217_1_VITIS_LOOP_223_2'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_217_1_VITIS_LOOP_223_2'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_243_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 2, Depth = 4, loop 'VITIS_LOOP_243_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_261_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 5, loop 'VITIS_LOOP_261_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_28_2_VITIS_LOOP_30_3_VITIS_LOOP_32_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_28_2_VITIS_LOOP_30_3_VITIS_LOOP_32_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_42_6_VITIS_LOOP_44_7'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_42_6_VITIS_LOOP_44_7'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_112_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_112_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_126_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_126_3'
+INFO: [v++ 204-61] Pipelining loop 'residual_center_vectors'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 10, loop 'residual_center_vectors'
+INFO: [v++ 204-61] Pipelining loop 'single_row_lookup_table_construction_VITIS_LOOP_148_5'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 64, loop 'single_row_lookup_table_construction_VITIS_LOOP_148_5'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 16, Final II = 16, Depth = 17, loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_226_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_226_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_241_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_241_3'
+INFO: [v++ 204-61] Pipelining loop 'residual_center_vectors'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 10, loop 'residual_center_vectors'
+INFO: [v++ 204-61] Pipelining loop 'single_row_lookup_table_construction_VITIS_LOOP_262_5'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 64, loop 'single_row_lookup_table_construction_VITIS_LOOP_262_5'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 16, Final II = 16, Depth = 17, loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_310_4'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_310_4'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_316_5'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_316_5'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_226_1'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'VITIS_LOOP_226_1'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_241_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_241_3'
+INFO: [v++ 204-61] Pipelining loop 'residual_center_vectors'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 10, loop 'residual_center_vectors'
+INFO: [v++ 204-61] Pipelining loop 'single_row_lookup_table_construction_VITIS_LOOP_262_5'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 64, loop 'single_row_lookup_table_construction_VITIS_LOOP_262_5'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'.
+INFO: [v++ 200-1470] Pipelining result : Target II = 16, Final II = 16, Depth = 17, loop 'VITIS_LOOP_58_1_VITIS_LOOP_60_2_VITIS_LOOP_63_3'
+INFO: [v++ 204-61] Pipelining loop 'VITIS_LOOP_308_3_VITIS_LOOP_310_4'.
+INFO: [v++ 17-14] Message 'v++ 204-61' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 2, loop 'VITIS_LOOP_308_3_VITIS_LOOP_310_4'
+INFO: [v++ 17-14] Message 'v++ 200-1470' appears 100 times and further instances of the messages will be disabled.
+INFO: [v++ 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [v++ 200-789] **** Estimated Fmax: 227.63 MHz
+INFO: [v++ 60-594] Finished kernel compilation
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/vadd/system_estimate_vadd.xtxt
+INFO: [v++ 60-586] Created _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [v++ 60-2343] Use the vitis_analyzer tool to visualize and navigate the relevant reports. Run the following command. 
+    vitis_analyzer /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo.compile_summary 
+INFO: [v++ 60-791] Total elapsed time: 0h 33m 1s
+INFO: [v++ 60-1653] Closing dispatch client.
+mkdir -p ./build_dir.hw.xilinx_u280_xdma_201920_3
+v++ -t hw --platform xilinx_u280_xdma_201920_3 --save-temps  -l  --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3  --config design.cfg  -o'./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin' _x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+WARNING: [v++ 60-1603] The supplied option 'profile_kernel' is deprecated. The supplied option is replaced by an alternative feature controlled by option ''profile.*''. New options extend profiling beyond kernel and compute units to include additional interfaces.
+Option Map File Used: '/opt/Xilinx/Vitis/2020.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2020.2 (64-bit)
+  **** SW Build (by xbuild) on 2020-11-18-05:13:29
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ link can be found at:
+	Reports: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link
+	Log files: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/logs/link
+Running Dispatch Server on port:41269
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin.link_summary, at Wed Aug  4 18:04:10 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Wed Aug  4 18:04:10 2021
+Running Rule Check Server on port:40963
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd.link_guidance.html', at Wed Aug  4 18:04:11 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 74-74] Compiler Version string: 2020.2
+INFO: [v++ 60-629] Linking for hardware target
+INFO: [v++ 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [v++ 60-1332] Run 'run_link' status: Not started
+INFO: [v++ 60-1443] [18:04:21] Run run_link: Step system_link: Started
+INFO: [v++ 60-1453] Command Line: system_link --xo /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo -keep --config /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/syslinkConfig.ini --xpfm /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --target hw --output_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int --temp_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [SYSTEM_LINK 60-1316] Initiating connection to rulecheck server, at Wed Aug  4 18:04:23 2021
+INFO: [SYSTEM_LINK 82-70] Extracting xo v3 file /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/vadd.xo
+INFO: [SYSTEM_LINK 82-53] Creating IP database /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-38] [18:04:23] build_xd_ip_db started: /opt/Xilinx/Vitis/2020.2/bin/build_xd_ip_db -ip_search 0  -sds-pf /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/xilinx_u280_xdma_201920_3.hpfm -clkid 0 -ip /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/iprepo/xilinx_com_hls_vadd_1_0,vadd -o /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml
+INFO: [SYSTEM_LINK 82-37] [18:04:31] build_xd_ip_db finished successfully
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1694.145 ; gain = 0.000 ; free physical = 39952 ; free virtual = 302987
+INFO: [SYSTEM_LINK 82-51] Create system connectivity graph
+INFO: [SYSTEM_LINK 82-102] Applying explicit connections to the system connectivity graph: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [SYSTEM_LINK 82-38] [18:04:31] cfgen started: /opt/Xilinx/Vitis/2020.2/bin/cfgen  -nk vadd:1:vadd_1 -sp vadd_1.HBM_in0:HBM[0] -sp vadd_1.HBM_in1:HBM[1] -sp vadd_1.HBM_in2:HBM[2] -sp vadd_1.HBM_in3:HBM[3] -sp vadd_1.HBM_in4:HBM[4] -sp vadd_1.HBM_in5:HBM[5] -sp vadd_1.HBM_in6:HBM[6] -sp vadd_1.HBM_in7:HBM[7] -sp vadd_1.HBM_in8:HBM[8] -sp vadd_1.HBM_in9:HBM[9] -sp vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid:HBM[21] -sp vadd_1.HBM_query_vectors:HBM[22] -sp vadd_1.HBM_vector_quantizer:HBM[23] -sp vadd_1.HBM_product_quantizer:HBM[24] -sp vadd_1.HBM_OPQ_matrix:HBM[25] -sp vadd_1.HBM_out:HBM[26] -dmclkid 0 -r /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd, num: 1  {vadd_1}
+INFO: [CFGEN 83-0] Port Specs: 
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in0, sptag: HBM[0]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in1, sptag: HBM[1]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in2, sptag: HBM[2]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in3, sptag: HBM[3]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in4, sptag: HBM[4]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in5, sptag: HBM[5]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in6, sptag: HBM[6]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in7, sptag: HBM[7]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in8, sptag: HBM[8]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_in9, sptag: HBM[9]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, sptag: HBM[21]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_query_vectors, sptag: HBM[22]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_vector_quantizer, sptag: HBM[23]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_product_quantizer, sptag: HBM[24]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_OPQ_matrix, sptag: HBM[25]
+INFO: [CFGEN 83-0]   kernel: vadd_1, k_port: HBM_out, sptag: HBM[26]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in0 to HBM[0] for directive vadd_1.HBM_in0:HBM[0]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in1 to HBM[1] for directive vadd_1.HBM_in1:HBM[1]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in2 to HBM[2] for directive vadd_1.HBM_in2:HBM[2]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in3 to HBM[3] for directive vadd_1.HBM_in3:HBM[3]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in4 to HBM[4] for directive vadd_1.HBM_in4:HBM[4]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in5 to HBM[5] for directive vadd_1.HBM_in5:HBM[5]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in6 to HBM[6] for directive vadd_1.HBM_in6:HBM[6]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in7 to HBM[7] for directive vadd_1.HBM_in7:HBM[7]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in8 to HBM[8] for directive vadd_1.HBM_in8:HBM[8]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_in9 to HBM[9] for directive vadd_1.HBM_in9:HBM[9]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid to HBM[21] for directive vadd_1.HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid:HBM[21]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_query_vectors to HBM[22] for directive vadd_1.HBM_query_vectors:HBM[22]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_vector_quantizer to HBM[23] for directive vadd_1.HBM_vector_quantizer:HBM[23]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_product_quantizer to HBM[24] for directive vadd_1.HBM_product_quantizer:HBM[24]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_OPQ_matrix to HBM[25] for directive vadd_1.HBM_OPQ_matrix:HBM[25]
+INFO: [CFGEN 83-2228] Creating mapping for argument vadd_1.HBM_out to HBM[26] for directive vadd_1.HBM_out:HBM[26]
+INFO: [SYSTEM_LINK 82-37] [18:04:38] cfgen finished successfully
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1694.145 ; gain = 0.000 ; free physical = 39971 ; free virtual = 303006
+INFO: [SYSTEM_LINK 82-52] Create top-level block diagram
+INFO: [SYSTEM_LINK 82-38] [18:04:38] cf2bd started: /opt/Xilinx/Vitis/2020.2/bin/cf2bd  --linux --trace_buffer 1024 --input_file /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml --ip_db /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml --cf_name dr --working_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd --temp_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link --output_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int --target_bd pfm_dynamic.bd
+INFO: [CF2BD 82-31] Launching cf2xd: cf2xd -linux -trace-buffer 1024 -i /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/cfgraph/cfgen_cfgraph.xml -r /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.cdb/xd_ip_db.xml -o dr.xml
+INFO: [CF2BD 82-28] cf2xd finished successfully
+INFO: [CF2BD 82-31] Launching cf_xsd: cf_xsd -disable-address-gen -bd pfm_dynamic.bd -dn dr -dp /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/sys_link/_sysl/.xsd
+INFO: [CF2BD 82-28] cf_xsd finished successfully
+INFO: [SYSTEM_LINK 82-37] [18:04:41] cf2bd finished successfully
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1694.145 ; gain = 0.000 ; free physical = 39922 ; free virtual = 302963
+INFO: [v++ 60-1441] [18:04:41] Run run_link: Step system_link: Completed
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:21 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 39960 ; free virtual = 303001
+INFO: [v++ 60-1443] [18:04:41] Run run_link: Step cf2sw: Started
+INFO: [v++ 60-1453] Command Line: cf2sw -sdsl /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -rtd /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw.rtd -nofilter /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/cf2sw_full.rtd -xclbin /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -o /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.1.xml
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [18:04:46] Run run_link: Step cf2sw: Completed
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 39959 ; free virtual = 303000
+INFO: [v++ 60-1443] [18:04:46] Run run_link: Step rtd2_system_diagram: Started
+INFO: [v++ 60-1453] Command Line: rtd2SystemDiagram
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [18:04:47] Run run_link: Step rtd2_system_diagram: Completed
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:02 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 39158 ; free virtual = 302199
+INFO: [v++ 60-1443] [18:04:47] Run run_link: Step vpl: Started
+INFO: [v++ 60-1453] Command Line: vpl -t hw -f xilinx_u280_xdma_201920_3 -g --kernel_frequency 140 --remote_ip_cache /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/.ipcache -s --profile_kernel data:all:all:all --output_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int --log_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/logs/link --report_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link --config /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vplConfig.ini -k /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat --webtalk_flag Vitis --temp_dir /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link --no-info --iprepo /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/xo/ip_repo/xilinx_com_hls_vadd_1_0 --messageDb /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link/vpl.pb /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/dr.bd.tcl
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+
+****** vpl v2020.2 (64-bit)
+  **** SW Build (by xbuild) on 2020-11-18-05:13:29
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: [VPL 60-839] Read in kernel information from file '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/kernel_info.dat'.
+INFO: [VPL 74-74] Compiler Version string: 2020.2
+INFO: [VPL 60-423]   Target device: xilinx_u280_xdma_201920_3
+INFO: [VPL 60-1032] Extracting hardware platform to /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/vivado/vpl/.local/hw_platform
+WARNING: /opt/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4 does not exist.
+[18:05:10] Run vpl: Step create_project: Started
+Creating Vivado project.
+[18:05:12] Run vpl: Step create_project: Completed
+[18:05:12] Run vpl: Step create_bd: Started
+[18:06:02] Run vpl: Step create_bd: Completed
+[18:06:02] Run vpl: Step update_bd: Started
+[18:06:34] Run vpl: Step update_bd: Completed
+[18:06:34] Run vpl: Step generate_target: Started
+[18:07:50] Run vpl: Step generate_target: RUNNING...
+[18:08:44] Run vpl: Step generate_target: Completed
+[18:08:44] Run vpl: Step config_hw_runs: Started
+[18:08:48] Run vpl: Step config_hw_runs: Completed
+[18:08:48] Run vpl: Step synth: Started
+[18:14:19] Block-level synthesis in progress, 0 of 18 jobs complete, 8 jobs running.
+[18:14:49] Block-level synthesis in progress, 0 of 18 jobs complete, 8 jobs running.
+[18:15:20] Block-level synthesis in progress, 0 of 18 jobs complete, 8 jobs running.
+[18:15:50] Block-level synthesis in progress, 0 of 18 jobs complete, 8 jobs running.
+[18:16:20] Block-level synthesis in progress, 8 of 18 jobs complete, 0 jobs running.
+[18:16:50] Block-level synthesis in progress, 8 of 18 jobs complete, 8 jobs running.
+[18:17:20] Block-level synthesis in progress, 8 of 18 jobs complete, 8 jobs running.
+[18:17:51] Block-level synthesis in progress, 8 of 18 jobs complete, 8 jobs running.
+[18:18:21] Block-level synthesis in progress, 12 of 18 jobs complete, 4 jobs running.
+[18:18:51] Block-level synthesis in progress, 16 of 18 jobs complete, 1 job running.
+[18:19:21] Block-level synthesis in progress, 16 of 18 jobs complete, 1 job running.
+[18:19:52] Block-level synthesis in progress, 16 of 18 jobs complete, 1 job running.
+[18:20:22] Block-level synthesis in progress, 17 of 18 jobs complete, 0 jobs running.
+[18:20:52] Block-level synthesis in progress, 17 of 18 jobs complete, 1 job running.
+[18:21:22] Block-level synthesis in progress, 17 of 18 jobs complete, 1 job running.
+[18:21:52] Block-level synthesis in progress, 17 of 18 jobs complete, 1 job running.
+[18:22:12] Run vpl: Step synth: Completed
+[18:22:12] Run vpl: Step impl: Started
+[18:46:55] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 00h 42m 06s 
+
+[18:46:55] Starting logic optimization..
+[18:49:26] Phase 1 Retarget
+[18:50:27] Phase 2 Constant propagation
+[18:50:57] Phase 3 Sweep
+[18:52:58] Phase 4 BUFG optimization
+[18:53:29] Phase 5 Shift Register Optimization
+[18:53:29] Phase 6 Post Processing Netlist
+[19:03:34] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 16m 38s 
+
+[19:03:34] Starting logic placement..
+[19:05:05] Phase 1 Placer Initialization
+[19:05:05] Phase 1.1 Placer Initialization Netlist Sorting
+[19:08:37] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[19:10:38] Phase 1.3 Build Placer Netlist Model
+[19:15:40] Phase 1.4 Constrain Clocks/Macros
+[19:17:11] Phase 2 Global Placement
+[19:17:11] Phase 2.1 Floorplanning
+[19:20:13] Phase 2.1.1 Partition Driven Placement
+[19:20:13] Phase 2.1.1.1 PBP: Partition Driven Placement
+[19:24:46] Phase 2.1.1.2 PBP: Clock Region Placement
+[19:27:18] Phase 2.1.1.3 PBP: Discrete Incremental
+[19:27:49] Phase 2.1.1.4 PBP: Compute Congestion
+[19:27:49] Phase 2.1.1.5 PBP: Macro Placement
+[19:27:49] Phase 2.1.1.6 PBP: UpdateTiming
+[19:28:50] Phase 2.1.1.7 PBP: Add part constraints
+[19:28:50] Phase 2.2 Update Timing before SLR Path Opt
+[19:28:50] Phase 2.3 Global Placement Core
+[19:48:38] Phase 2.3.1 Physical Synthesis In Placer
+[19:58:47] Phase 3 Detail Placement
+[19:58:47] Phase 3.1 Commit Multi Column Macros
+[19:58:47] Phase 3.2 Commit Most Macros & LUTRAMs
+[20:03:21] Phase 3.3 Small Shape DP
+[20:03:21] Phase 3.3.1 Small Shape Clustering
+[20:05:23] Phase 3.3.2 Flow Legalize Slice Clusters
+[20:05:23] Phase 3.3.3 Slice Area Swap
+[20:08:26] Phase 3.4 Place Remaining
+[20:08:57] Phase 3.5 Re-assign LUT pins
+[20:09:27] Phase 3.6 Pipeline Register Optimization
+[20:09:57] Phase 3.7 Fast Optimization
+[20:11:59] Phase 4 Post Placement Optimization and Clean-Up
+[20:11:59] Phase 4.1 Post Commit Optimization
+[20:15:33] Phase 4.1.1 Post Placement Optimization
+[20:16:33] Phase 4.1.1.1 BUFG Insertion
+[20:16:33] Phase 1 Physical Synthesis Initialization
+[20:22:39] Phase 4.1.1.2 BUFG Replication
+[20:24:41] Phase 4.1.1.3 Replication
+[20:27:13] Phase 4.2 Post Placement Cleanup
+[20:27:44] Phase 4.3 Placer Reporting
+[20:27:44] Phase 4.3.1 Print Estimated Congestion
+[20:27:44] Phase 4.4 Final Placement Cleanup
+[20:59:15] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 01h 55m 39s 
+
+[20:59:15] Starting logic routing..
+[21:02:49] Phase 1 Build RT Design
+[21:07:53] Phase 2 Router Initialization
+[21:07:53] Phase 2.1 Fix Topology Constraints
+[21:08:54] Phase 2.2 Pre Route Cleanup
+[21:09:25] Phase 2.3 Global Clock Net Routing
+[21:11:57] Phase 2.4 Update Timing
+[21:18:33] Phase 2.5 Update Timing for Bus Skew
+[21:18:33] Phase 2.5.1 Update Timing
+[21:22:06] Phase 3 Initial Routing
+[21:22:06] Phase 3.1 Global Routing
+[21:26:10] Phase 4 Rip-up And Reroute
+[21:26:10] Phase 4.1 Global Iteration 0
+[21:57:08] Phase 4.2 Global Iteration 1
+[22:00:11] Phase 4.3 Global Iteration 2
+[22:07:48] Phase 5 Delay and Skew Optimization
+[22:07:48] Phase 5.1 Delay CleanUp
+[22:07:48] Phase 5.1.1 Update Timing
+[22:10:50] Phase 5.2 Clock Skew Optimization
+[22:11:51] Phase 6 Post Hold Fix
+[22:11:51] Phase 6.1 Hold Fix Iter
+[22:11:51] Phase 6.1.1 Update Timing
+[22:15:25] Phase 6.1.2 Lut RouteThru Assignment for hold
+[22:15:55] Phase 6.1.3 Global Iteration for Hold
+[22:15:55] Phase 6.1.3.1 Update Timing
+[22:21:00] Phase 6.2 Additional Hold Fix
+[22:25:04] Phase 7 Route finalize
+[22:25:34] Phase 8 Verifying routed nets
+[22:26:35] Phase 9 Depositing Routes
+[22:28:07] Phase 10 Route finalize
+[22:29:08] Phase 11 Post Router Timing
+[22:31:40] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 01h 32m 25s 
+
+[22:31:40] Starting bitstream generation..
+Starting optional post-route physical design optimization.
+[22:51:59] Phase 1 Physical Synthesis Initialization
+[22:59:36] Phase 2 SLL Register Hold Fix Optimization
+[23:00:07] Phase 3 Critical Path Optimization
+[23:00:07] Phase 4 Hold Fix Optimization
+Finished optional post-route physical design optimization.
+[23:21:58] Creating bitmap...
+[23:30:36] Writing bitstream ./pfm_top_i_dynamic_region_my_rm_partial.bit...
+[23:30:36] Finished 6th of 6 tasks (FPGA bitstream generation). Elapsed time: 00h 58m 56s 
+[23:30:54] Run vpl: Step impl: Completed
+[23:30:55] Run vpl: FINISHED. Run Status: impl Complete!
+INFO: [v++ 60-1441] [23:30:55] Run run_link: Step vpl: Completed
+Time (s): cpu = 00:03:59 ; elapsed = 05:26:07 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 49388 ; free virtual = 315648
+INFO: [v++ 60-1443] [23:30:55] Run run_link: Step rtdgen: Started
+INFO: [v++ 60-1453] Command Line: rtdgen
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-991] clock name 'clkwiz_kernel_clk_out1' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clkwiz_kernel2_clk_out1' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [v++ 60-991] clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' (clock ID '') is being mapped to clock name 'clk_out1_pfm_top_clkwiz_hbm_aclk_0' in the xclbin
+INFO: [v++ 60-1230] The compiler selected the following frequencies for the runtime controllable kernel clock(s) and scalable system clock(s): System (SYSTEM) clock: clk_out1_pfm_top_clkwiz_hbm_aclk_0 = 450, Kernel (DATA) clock: clkwiz_kernel_clk_out1 = 140, Kernel (KERNEL) clock: clkwiz_kernel2_clk_out1 = 500
+INFO: [v++ 60-1453] Command Line: cf2sw -a /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/address_map.xml -sdsl /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/sdsl.dat -xclbin /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/xclbin_orig.xml -rtd /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.rtd -o /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.xml
+INFO: [v++ 60-1652] Cf2sw returned exit code: 0
+INFO: [v++ 60-2311] HPISystemDiagram::writeSystemDiagramAfterRunningVivado, rtdInputFilePath: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.rtd
+INFO: [v++ 60-2312] HPISystemDiagram::writeSystemDiagramAfterRunningVivado, systemDiagramOutputFilePath: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json
+INFO: [v++ 60-1618] Launching 
+INFO: [v++ 60-1441] [23:30:59] Run run_link: Step rtdgen: Completed
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 49432 ; free virtual = 315692
+INFO: [v++ 60-1443] [23:30:59] Run run_link: Step xclbinutil: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --add-section DEBUG_IP_LAYOUT:JSON:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/debug_ip_layout.rtd --add-section BITSTREAM:RAW:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit --force --target hw --key-value SYS:dfx_enable:true --add-section :JSON:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.rtd --append-section :JSON:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/appendSection.rtd --add-section CLOCK_FREQ_TOPOLOGY:JSON:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link_xml.rtd --add-section BUILD_METADATA:JSON:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link_build.rtd --add-section EMBEDDED_METADATA:RAW:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.xml --add-section SYSTEM_METADATA:RAW:/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json --output /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+XRT Build Version: 2.9.317 (2020.2_PU1)
+       Build Date: 2021-03-13 05:10:45
+          Hash ID: b0230e59e22351fb957dc46a6e68d7560e5f630c
+Creating a default 'in-memory' xclbin image.
+
+Section: 'DEBUG_IP_LAYOUT'(9) was successfully added.
+Size   : 3176 bytes
+Format : JSON
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/debug_ip_layout.rtd'
+
+Section: 'BITSTREAM'(0) was successfully added.
+Size   : 74008035 bytes
+Format : RAW
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/partial.bit'
+
+Section: 'MEM_TOPOLOGY'(6) was successfully added.
+Format : JSON
+File   : 'mem_topology'
+
+Section: 'IP_LAYOUT'(8) was successfully added.
+Format : JSON
+File   : 'ip_layout'
+
+Section: 'CONNECTIVITY'(7) was successfully added.
+Format : JSON
+File   : 'connectivity'
+
+Section: 'CLOCK_FREQ_TOPOLOGY'(11) was successfully added.
+Size   : 410 bytes
+Format : JSON
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link_xml.rtd'
+
+Section: 'BUILD_METADATA'(14) was successfully added.
+Size   : 8026 bytes
+Format : JSON
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link_build.rtd'
+
+Section: 'EMBEDDED_METADATA'(2) was successfully added.
+Size   : 1025858 bytes
+Format : RAW
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/vadd.link.xml'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 26014 bytes
+Format : RAW
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/int/systemDiagramModelSlrBaseAddress.json'
+
+Section: 'IP_LAYOUT'(8) was successfully appended to.
+Format : JSON
+File   : 'ip_layout'
+Successfully wrote (75108036 bytes) to the output file: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [23:30:59] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.26 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 49354 ; free virtual = 315685
+INFO: [v++ 60-1443] [23:30:59] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --force --info /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin.info --input /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [23:31:00] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.62 ; elapsed = 00:00:00.75 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 49342 ; free virtual = 315673
+INFO: [v++ 60-1443] [23:31:00] Run run_link: Step generate_sc_driver: Started
+INFO: [v++ 60-1453] Command Line: 
+INFO: [v++ 60-1454] Run Directory: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/link/run_link
+INFO: [v++ 60-1441] [23:31:00] Run run_link: Step generate_sc_driver: Completed
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1584.980 ; gain = 0.000 ; free physical = 49342 ; free virtual = 315673
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link/system_estimate_vadd.link.xtxt
+INFO: [v++ 60-586] Created /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.ltx
+INFO: [v++ 60-586] Created ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+	Guidance: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link/v++_link_vadd.link_guidance.html
+	Timing Report: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/reports/link/imp/impl_1_xilinx_u280_xdma_201920_3_bb_locked_timing_summary_routed.rpt
+	Vivado Log: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/logs/link/vivado.log
+	Steps Log File: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x.hw.xilinx_u280_xdma_201920_3/logs/link/link.steps.log
+
+INFO: [v++ 60-2343] Use the vitis_analyzer tool to visualize and navigate the relevant reports. Run the following command. 
+    vitis_analyzer /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin.link_summary 
+INFO: [v++ 60-791] Total elapsed time: 5h 27m 0s
+INFO: [v++ 60-1653] Closing dispatch client.
+v++ -p ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.link.xclbin -t hw --platform xilinx_u280_xdma_201920_3 --package.out_dir ./package.hw -o ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+Option Map File Used: '/opt/Xilinx/Vitis/2020.2/data/vitis/vpp/optMap.xml'
+
+****** v++ v2020.2 (64-bit)
+  **** SW Build (by xbuild) on 2020-11-18-05:13:29
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: [v++ 60-1306] Additional information associated with this v++ package can be found at:
+	Reports: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/reports/package
+	Log files: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/logs/package
+Running Dispatch Server on port:43003
+INFO: [v++ 60-1548] Creating build summary session with primary output /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin.package_summary, at Wed Aug  4 23:31:12 2021
+INFO: [v++ 60-1316] Initiating connection to rulecheck server, at Wed Aug  4 23:31:12 2021
+Running Rule Check Server on port:36943
+INFO: [v++ 60-1315] Creating rulecheck session with output '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/reports/package/v++_package_vadd_guidance.html', at Wed Aug  4 23:31:13 2021
+INFO: [v++ 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [v++ 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [v++ 74-74] Compiler Version string: 2020.2
+INFO: [v++ 60-2256] Packaging for hardware
+
+Section: 'SYSTEM_METADATA'(22) was successfully written.
+Format: RAW
+File  : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/package/extractedSystemDiagram.json'
+
+Section: 'SYSTEM_METADATA'(22) was successfully added.
+Size   : 26050 bytes
+Format : RAW
+File   : '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/package/packagedSystemDiagram.json'
+Successfully wrote (75108076 bytes) to the output file: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/_x/package/upsert.xclbin
+INFO: [v++ 60-2460] Successfully copied a temporary xclbin to the output xclbin: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+INFO: [v++ 60-2343] Use the vitis_analyzer tool to visualize and navigate the relevant reports. Run the following command. 
+    vitis_analyzer /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin.package_summary 
+INFO: [v++ 60-791] Total elapsed time: 0h 0m 19s
+INFO: [v++ 60-1653] Closing dispatch client.
+emconfigutil --platform xilinx_u280_xdma_201920_3 --od ./_x.hw.xilinx_u280_xdma_201920_3
+
+****** configutil v2020.2 (64-bit)
+  **** SW Build (by xbuild) on 2020-11-18-05:13:29
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+INFO: [ConfigUtil 60-895]   Target platform: /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
+INFO: [ConfigUtil 60-1578]   This platform contains Xilinx Shell Archive '/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/hw/xilinx_u280_xdma_201920_3.xsa'
+INFO: [ConfigUtil 60-1032]  
+emulation configuration file `emconfig.json` is created in ./_x.hw.xilinx_u280_xdma_201920_3 directory 
+./host ./build_dir.hw.xilinx_u280_xdma_201920_3/vadd.xclbin
+XRT build version: 2.9.317
+Build hash: b0230e59e22351fb957dc46a6e68d7560e5f630c
+Build date: 2021-03-13 05:10:45
+Git branch: 2020.2_PU1
+PID: 54258
+UID: 522663
+[Wed Aug  4 21:31:32 2021 GMT]
+HOST: alveo0
+EXE: /mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2/host
+[XRT] WARNING: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+[XRT] ERROR: No devices found
+includes/xcl2/xcl2.cpp:34 Error calling err = cl::Platform::get(&platforms), error code is: -1001
+Makefile:278: recipe for target 'run' failed
+make[1]: *** [run] Error 1
+make[1]: Leaving directory '/mnt/local/wejiang/FPGA-ANNS/network_accelerator_test/local_anns_55_final_2020.2'
+Makefile:141: recipe for target 'check' failed
+make: *** [check] Error 2
