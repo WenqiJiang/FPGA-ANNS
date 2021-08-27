@@ -69,9 +69,19 @@ Variable to be replaced (<--variable_name-->):
 
 // stage 5
 #define HBM_CHANNEL_NUM 10
+#define STAGE5_COMP_PE_NUM 10
+
+// stage 6
 // number of 16 outputs per cycle, e.g., HBM channel num = 10, comp PE num = 30, then 
 //   SORT_GROUP_NUM = 2; if HBM channel = 12, PE_num = 36, then SORT_GROUP_NUM = 3
-#define SORT_GROUP_NUM 2
+// #define SORT_GROUP_NUM 2
+//  20 = 10 (STAGE5_COMP_PE_NUM) * 2
+// (STAGE6_PRIORITY_QUEUE_L1_NUM - 1) * STAGE6_STREAM_PER_L2_QUEUE_LARGER + STAGE6_STREAM_PER_L2_QUEUE_SMALLER = STAGE6_PRIORITY_QUEUE_L1_NUM
+#define STAGE_6_PRIORITY_QUEUE_LEVEL3
+#define STAGE6_PRIORITY_QUEUE_L1_NUM (2 * STAGE5_COMP_PE_NUM)
+#define STAGE6_PRIORITY_QUEUE_L2_NUM 3
+#define STAGE6_STREAM_PER_L2_QUEUE_LARGER 7
+#define STAGE6_STREAM_PER_L2_QUEUE_SMALLER 6
 
 
 //////////////////////////////   TEMPLATE START  //////////////////////////////

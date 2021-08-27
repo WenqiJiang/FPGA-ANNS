@@ -313,7 +313,7 @@ void vadd(
 #pragma HLS stream variable=s_output depth=512
 // #pragma HLS RESOURCE variable=s_output core=FIFO_BRAM
 
-    stage6_priority_queue_group_L2_wrapper<QUERY_NUM, HBM_CHANNEL_NUM>(
+    stage6_priority_queue_group_L2_wrapper<QUERY_NUM>(
         s_scanned_entries_per_query_Priority_queue, 
         s_single_PQ_result, 
         s_output);
