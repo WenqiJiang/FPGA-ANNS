@@ -23,8 +23,8 @@ void vadd(
     // const ap_uint512_t* HBM_in18, 
     // const ap_uint512_t* HBM_in19, 
     // const ap_uint512_t* HBM_in20, 
-    // HBM21: assigned for HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid
-    const int* HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid, 
+    // HBM21: assigned for HBM_addr_info
+    const int* HBM_addr_info, 
     // HBM22: query vectors
     float* HBM_query_vectors,
     // HBM23: center vector table (Vector_quantizer)
@@ -64,7 +64,7 @@ void vadd(
 // #pragma HLS INTERFACE m_axi port=HBM_in18  offset=slave bundle=gmem18
 // #pragma HLS INTERFACE m_axi port=HBM_in19  offset=slave bundle=gmem19
 // #pragma HLS INTERFACE m_axi port=HBM_in20  offset=slave bundle=gmem20
-#pragma HLS INTERFACE m_axi port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  offset=slave bundle=gmem21
+#pragma HLS INTERFACE m_axi port=HBM_addr_info  offset=slave bundle=gmem21
 #pragma HLS INTERFACE m_axi port=HBM_query_vectors  offset=slave bundle=gmem22
 #pragma HLS INTERFACE m_axi port=HBM_vector_quantizer  offset=slave bundle=gmem23
 #pragma HLS INTERFACE m_axi port=HBM_product_quantizer  offset=slave bundle=gmem24
@@ -103,7 +103,7 @@ void vadd(
 // #pragma HLS INTERFACE s_axilite port=HBM_in18  
 // #pragma HLS INTERFACE s_axilite port=HBM_in19  
 // #pragma HLS INTERFACE s_axilite port=HBM_in20  
-#pragma HLS INTERFACE s_axilite port=HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid  
+#pragma HLS INTERFACE s_axilite port=HBM_addr_info  
 #pragma HLS INTERFACE s_axilite port=HBM_query_vectors  
 #pragma HLS INTERFACE s_axilite port=HBM_vector_quantizer  
 #pragma HLS INTERFACE s_axilite port=HBM_product_quantizer  
@@ -295,7 +295,7 @@ void vadd(
 // #pragma HLS RESOURCE variable=s_scanned_entries_per_query_Priority_queue core=FIFO_BRAM
 
     scan_controller<QUERY_NUM, NLIST, NPROBE>(
-        HBM_info_start_addr_and_scanned_entries_every_cell_and_last_element_valid,
+        HBM_addr_info,
         s_searched_cell_id_scan_controller, 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit, 

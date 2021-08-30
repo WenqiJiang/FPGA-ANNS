@@ -265,13 +265,12 @@ void vadd(
         s_searched_cell_id_scan_controller, 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit, 
-        s_scanned_entries_every_cell_Split_unit,
         s_scanned_entries_every_cell_PQ_lookup_computation,
         s_last_valid_channel, 
         s_scanned_entries_per_query_Priority_queue);
 
     // each 512 bit can store 3 set of (vecID, PQ code)
-    hls::stream<single_PQ> s_single_PQ[HBM_CHANNEL_NUM];
+    hls::stream<single_PQ> s_single_PQ[STAGE5_COMP_PE_NUM];
 #pragma HLS stream variable=s_single_PQ depth=8
 #pragma HLS array_partition variable=s_single_PQ complete
 // #pragma HLS RESOURCE variable=s_single_PQ core=FIFO_SRL
@@ -290,11 +289,10 @@ void vadd(
 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit,
-        s_scanned_entries_every_cell_Split_unit,
         s_single_PQ);
 
     // 64 streams = 21 channels * 3 + 1 dummy
-    hls::stream<single_PQ_result> s_single_PQ_result[HBM_CHANNEL_NUM];
+    hls::stream<single_PQ_result> s_single_PQ_result[STAGE5_COMP_PE_NUM];
 #pragma HLS stream variable=s_single_PQ_result depth=8
 #pragma HLS array_partition variable=s_single_PQ_result complete
 // #pragma HLS RESOURCE variable=s_single_PQ_result core=FIFO_SRL
@@ -302,7 +300,7 @@ void vadd(
 
     ////////////////////     Estimate Distance by LUT     ////////////////////    
 
-    PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE>(
+    PQ_lookup_computation_wrapper<QUERY_NUM, NPROBE, STAGE5_COMP_PE_NUM, PQ_CODE_CHANNELS_PER_STREAM>(
         s_single_PQ, 
         s_distance_LUT, 
         s_scanned_entries_every_cell_PQ_lookup_computation,
