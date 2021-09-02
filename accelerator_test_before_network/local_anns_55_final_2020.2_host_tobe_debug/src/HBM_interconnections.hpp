@@ -158,7 +158,6 @@ void type_conversion_and_split(
     }
 }
 
-
 template<const int query_num, const int nprobe>
 void load_and_split_PQ_codes(
     const ap_uint512_t* HBM_in, // HBM for PQ code + vecID storage
@@ -182,7 +181,6 @@ void load_and_split_PQ_codes(
         s_scanned_entries_every_cell_Split_unit,
         s_raw_input, s_single_PQ_0, s_single_PQ_1, s_single_PQ_2);
 }
-
 
 template<const int query_num, const int nprobe>
 void replicate_s_start_addr_every_cell(

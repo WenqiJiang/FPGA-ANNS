@@ -57,7 +57,6 @@ void scan_controller(
     hls::stream<int> &s_scanned_cell_id_Input, // from the cluster selection unit
     hls::stream<int> &s_start_addr_every_cell,
     hls::stream<int> &s_scanned_entries_every_cell_Load_unit,
-    hls::stream<int> &s_scanned_entries_every_cell_Split_unit,
     hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int> &s_last_valid_channel,
     hls::stream<int> &s_scanned_entries_per_query_Priority_queue);
@@ -276,7 +275,6 @@ void scan_controller(
     hls::stream<int> &s_scanned_cell_id_Input, // from the cluster selection unit
     hls::stream<int> &s_start_addr_every_cell,
     hls::stream<int> &s_scanned_entries_every_cell_Load_unit,
-    hls::stream<int> &s_scanned_entries_every_cell_Split_unit,
     hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
     hls::stream<int> &s_last_valid_channel,
     hls::stream<int> &s_scanned_entries_per_query_Priority_queue) {
@@ -325,11 +323,10 @@ void scan_controller(
             int last_valid_channel = last_valid_channel_LUT[cell_id];
 
             // each distance compute unit takes all 3 streams in from HBM
-            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * 3;
+            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * PQ_CODE_CHANNELS_PER_STREAM;
 
             s_start_addr_every_cell.write(start_addr);
             s_scanned_entries_every_cell_Load_unit.write(scanned_entries_every_cell);
-            s_scanned_entries_every_cell_Split_unit.write(scanned_entries_every_cell);
             s_scanned_entries_every_cell_PQ_lookup_computation.write(scanned_entries_every_cell_compute_unit);
             s_last_valid_channel.write(last_valid_channel);
 

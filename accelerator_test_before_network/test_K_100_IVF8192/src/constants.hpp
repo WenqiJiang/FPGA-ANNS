@@ -70,6 +70,7 @@ Variable to be replaced (<--variable_name-->):
 // stage 5
 #define HBM_CHANNEL_NUM 10
 #define STAGE5_COMP_PE_NUM 10
+#define PQ_CODE_CHANNELS_PER_STREAM (HBM_CHANNEL_NUM * 3 / STAGE5_COMP_PE_NUM)
 
 // stage 6
 // number of 16 outputs per cycle, e.g., HBM channel num = 10, comp PE num = 30, then 

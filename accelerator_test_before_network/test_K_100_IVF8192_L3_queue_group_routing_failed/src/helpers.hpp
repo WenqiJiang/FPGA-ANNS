@@ -325,7 +325,7 @@ void scan_controller(
             int last_valid_channel = last_valid_channel_LUT[cell_id];
 
             // each distance compute unit takes all 3 streams in from HBM
-            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * 3;
+            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * PQ_CODE_CHANNELS_PER_STREAM;
 
             s_start_addr_every_cell.write(start_addr);
             s_scanned_entries_every_cell_Load_unit.write(scanned_entries_every_cell);

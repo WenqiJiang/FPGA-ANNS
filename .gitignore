@@ -43,3 +43,6 @@ v++.compile_summary
 hls_output
 integrated_accelerator/entire-node-systolic-computation-without-FIFO-type-assignment-latest-PE-LUT-construction/hd_visual/
 integrated_accelerator/entire-node-systolic-computation-without-FIFO-type-assignment-latest-PE/hd_visual/
+*/build_dir*/
+*/build_dir/
+*/build_dir.hw.xilinx_u280_xdma_201920_3/

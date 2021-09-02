@@ -236,10 +236,6 @@ void vadd(
 #pragma HLS stream variable=s_scanned_entries_every_cell_Load_unit depth=512
 // #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Load_unit core=FIFO_BRAM
 
-    hls::stream<int> s_scanned_entries_every_cell_Split_unit;
-#pragma HLS stream variable=s_scanned_entries_every_cell_Split_unit depth=512
-// #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_Split_unit core=FIFO_BRAM
-
     hls::stream<int> s_scanned_entries_every_cell_PQ_lookup_computation;
 #pragma HLS stream variable=s_scanned_entries_every_cell_PQ_lookup_computation depth=512
 // #pragma HLS RESOURCE variable=s_scanned_entries_every_cell_PQ_lookup_computation core=FIFO_BRAM
@@ -265,7 +261,6 @@ void vadd(
         s_searched_cell_id_scan_controller, 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit, 
-        s_scanned_entries_every_cell_Split_unit,
         s_scanned_entries_every_cell_PQ_lookup_computation,
         s_last_valid_channel, 
         s_scanned_entries_per_query_Priority_queue);
@@ -290,7 +285,6 @@ void vadd(
 
         s_start_addr_every_cell,
         s_scanned_entries_every_cell_Load_unit,
-        s_scanned_entries_every_cell_Split_unit,
         s_single_PQ);
 
     // 64 streams = 21 channels * 3 + 1 dummy

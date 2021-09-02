@@ -58,7 +58,13 @@ void scan_controller(
     hls::stream<int> &s_start_addr_every_cell,
     hls::stream<int> &s_scanned_entries_every_cell_Load_unit,
     hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
+    ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+    // hls::stream<int> &s_scanned_entries_every_cell_Dummy,
+    ///// Template END /////
     hls::stream<int> &s_last_valid_channel,
+    ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+    // hls::stream<int> &s_scanned_entries_per_query_Sort_and_reduction,
+    ///// Template END /////
     hls::stream<int> &s_scanned_entries_per_query_Priority_queue);
 
 template<const int query_num>
@@ -229,6 +235,28 @@ void split_cell_ID(
 
 template<const int query_num>
 void lookup_center_vectors(
+    float* HBM_vector_quantizer,
+    hls::stream<int>& s_searched_cell_id_lookup_PE,
+    hls::stream<float>& s_center_vectors_lookup_PE) {
+
+    //  lookup center vectors given ID
+    for (int query_id = 0; query_id < query_num; query_id++) {
+
+        for (int nprobe_id = 0; nprobe_id < NPROBE; nprobe_id++) {
+
+            int vec_id = s_searched_cell_id_lookup_PE.read();
+            int start_addr = vec_id * D;
+
+            for (int i = 0; i < D; i++) {
+#pragma HLS pipeline II=1
+                s_center_vectors_lookup_PE.write(HBM_vector_quantizer[start_addr + i]);
+            }
+        }
+    }
+}
+
+template<const int query_num>
+void lookup_center_vectors(
     hls::stream<float> &s_center_vectors_init_lookup_PE,
     hls::stream<int>& s_searched_cell_id_lookup_PE,
     hls::stream<float>& s_center_vectors_lookup_PE) {
@@ -276,7 +304,13 @@ void scan_controller(
     hls::stream<int> &s_start_addr_every_cell,
     hls::stream<int> &s_scanned_entries_every_cell_Load_unit,
     hls::stream<int> &s_scanned_entries_every_cell_PQ_lookup_computation,
+    ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+    // hls::stream<int> &s_scanned_entries_every_cell_Dummy,
+    ///// Template END /////
     hls::stream<int> &s_last_valid_channel,
+    ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+    // hls::stream<int> &s_scanned_entries_per_query_Sort_and_reduction,
+    ///// Template END /////
     hls::stream<int> &s_scanned_entries_per_query_Priority_queue) {
    
     // s_last_element_valid_PQ_lookup_computation -> last element of a channel can 
@@ -323,16 +357,22 @@ void scan_controller(
             int last_valid_channel = last_valid_channel_LUT[cell_id];
 
             // each distance compute unit takes all 3 streams in from HBM
-            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * 3;
+            int scanned_entries_every_cell_compute_unit = scanned_entries_every_cell * PQ_CODE_CHANNELS_PER_STREAM;
 
             s_start_addr_every_cell.write(start_addr);
             s_scanned_entries_every_cell_Load_unit.write(scanned_entries_every_cell);
             s_scanned_entries_every_cell_PQ_lookup_computation.write(scanned_entries_every_cell_compute_unit);
+            ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+            // s_scanned_entries_every_cell_Dummy.write(scanned_entries_every_cell_compute_unit);
+            ///// Template END /////
             s_last_valid_channel.write(last_valid_channel);
 
             accumulated_scanned_entries_per_query += scanned_entries_every_cell_compute_unit;
         }
 
+        ///// Template START: if there's a sort-reduction unit in stage 6, add the signal below
+        // s_scanned_entries_per_query_Sort_and_reduction.write(accumulated_scanned_entries_per_query);
+        ///// Template END /////
         s_scanned_entries_per_query_Priority_queue.write(accumulated_scanned_entries_per_query);
     }
 }
